@@ -1,0 +1,52 @@
+.all-partners {
+  display: flex;
+  justify-content: center;
+}
+.wid-fr-partners {
+  /* width: 80em; */
+  max-width:1000px;
+}
+/* .logo-for-partners {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+  overflow-x: scroll;
+  height: 250px;
+} */
+.logo-for-partners::-webkit-scrollbar {
+  display: none;
+}
+/* .logo-for-partners img {
+  cursor: pointer;
+} */
+.logo-for-partners {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    overflow: hidden;
+    /* animation: scroll 60s linear infinite; */
+    /* width: 800%; Set a width large enough to accommodate all images */
+  }
+  
+  .logo-for-partners img {
+    width: 100%;
+    min-width: 100px;
+    cursor: pointer;
+  }
+  
+  /* @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  } */
+  
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .wid-fr-partners {
+    width: 100%;
+    padding: 1em;
+  }
+}

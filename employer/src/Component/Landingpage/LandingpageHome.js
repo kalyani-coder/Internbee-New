@@ -10,31 +10,29 @@ import {
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
 
-import Footer from '../Components/Footer';
-import LandingPage from './Landingpage/LandingPage';
-import Navbar from '../Components/Navbar';
-// import Navbar from './../../../employer/src/Component/Navbar/Navbar';
+import Navbar from './Navbar';
+import LandingPage from './LandingPage';
 
 
-const RightArrow = ({ onClick }) => (
-    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={onClick}>
-        {/* You can customize the right arrow icon here */}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-        </svg>
-    </div>
-);
+// const RightArrow = ({ onClick }) => (
+//     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={onClick}>
+//         {/* You can customize the right arrow icon here */}
+//         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
+//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+//         </svg>
+//     </div>
+// );
 
-const LeftArrow = ({ onClick }) => (
-    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={onClick}>
-        {/* You can customize the left arrow icon here */}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-        </svg>
-    </div>
-);
+// const LeftArrow = ({ onClick }) => (
+//     <div className="absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={onClick}>
+//         {/* You can customize the left arrow icon here */}
+//         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
+//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+//         </svg>
+//     </div>
+// );
 
-const Home = () => {
+const LandingpageHome = () => {
     const navigate = useNavigate();
     const companiesRef = useRef(null);
     const internshipsRef = useRef(null);
@@ -53,14 +51,14 @@ const Home = () => {
         setShowDropdown(!showDropdown); // Toggle showDropdown state
     };
 
-    const handleRegisterClick = (event) => {
-        const buttonRect = event.target.getBoundingClientRect();
-        setDropdownPosition({
-            top: buttonRect.bottom + window.scrollY,
-            left: buttonRect.left + window.scrollX,
-        });
-        setShowDropdown(!showDropdown); // Toggle showDropdown state
-    };
+    // const handleRegisterClick = (event) => {
+    //     const buttonRect = event.target.getBoundingClientRect();
+    //     setDropdownPosition({
+    //         top: buttonRect.bottom + window.scrollY,
+    //         left: buttonRect.left + window.scrollX,
+    //     });
+    //     setShowDropdown(!showDropdown); // Toggle showDropdown state
+    // };
     const handleUserTypeSelect = (userType) => {
         setShowDropdown(false);
 
@@ -206,8 +204,8 @@ const Home = () => {
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 1,
-        nextArrow: <RightArrow />,
-        prevArrow: <LeftArrow />,
+        // nextArrow: <RightArrow />,
+        // prevArrow: <LeftArrow />,
         draggable: false,
     };
     const socialIcons = [
@@ -234,7 +232,6 @@ const Home = () => {
 
             <div>
                 <Navbar />
-
             </div>
             <div>
 
@@ -248,4 +245,4 @@ const Home = () => {
     )
 };
 
-export default Home;
+export default LandingpageHome;

@@ -16,45 +16,46 @@ import SearchCVPage from './Component/Searchcv/Searchcv';
 import AccountSettings from './Component/AccountSetting/AccountSetting';
 import MessageComponent from './Component/Message/Message';
 import Registration from './Component/Signup/Signup';
+import LandingpageHome from './Component/Landingpage/LandingpageHome';
 
 function App() {
   return (
-   <>
-   
-   <Router>
+    <>
+
+      <Router>
         {/* <Navbar /> */}
         {/* <CandidatePage/> */}
         {/* <SearchCVPage/> */}
-       {/* <Packages/> */}
-       {/* <AccountSettings/> */}
-       {/* <MessageComponent/> */}
+        {/* <Packages/> */}
+        {/* <AccountSettings/> */}
+        {/* <MessageComponent/> */}
 
-       
-         <Routes>
-         
-        <Route path="/employer-registration" element={<EmployerRegistration/>} />
-        <Route path="/sidebar" element={<EmployerSidebar/>} />
-        <Route path="/jobs" element={<Jobs/>}/> 
-        <Route path='/postinternship' element={<PostInternship/>}/>
-        <Route path='/weeklycalender' element={<WeeklyCalendar/>}/>
-        <Route path="/candidates" element={<CandidatePage/>} />
-        <Route path='/accountsetting'element={<AccountSettings/>} />
-        <Route path='/searchcv' element={<SearchCVPage/>} />
-        <Route path="/packages" element={<Packages/>} />
-        <Route path="/home" element={<EmployerSection/>} />
-        <Route path="/view-profile-page" element={<ViewProfilePage/>} />
-        <Route path='/' element={<Login/>}/>
-        <Route path='/signup' element={<Registration/>}/>
-        <Route path='/Sidebar' element={<Jobs/>} />
-        <Route path='/home' element={<PostInternship/>}/> 
-        <Route path='/message' element={<MessageComponent/>} />
+
+        <Routes>
+          <Route path="/" element={<LandingpageHome />} />
+          <Route path="/employer-registration" element={<EmployerRegistration />} />
+          <Route path="/sidebar" element={<EmployerSidebar />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path='/postinternship' element={<PostInternship />} />
+          <Route path='/weeklycalender' element={<WeeklyCalendar />} />
+          <Route path="/candidates" element={<CandidatePage />} />
+          <Route path='/accountsetting' element={<AccountSettings />} />
+          <Route path='/searchcv' element={<SearchCVPage />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/home" element={<EmployerSection />} />
+          <Route path="/view-profile-page" element={<ViewProfilePage />} />
+          <Route path='/employer-login' element={<Login />} />
+          <Route path='/signup' element={<Registration />} />
+          <Route path='/Sidebar' element={<Jobs />} />
+          <Route path='/home' element={<PostInternship />} />
+          <Route path='/message' element={<MessageComponent />} />
         </Routes>
-      
-    </Router> 
-   
-   
-   
-   </>
+
+      </Router>
+
+
+
+    </>
   );
 }
 
