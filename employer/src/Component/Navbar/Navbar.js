@@ -6,33 +6,44 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between p-4"  style={{ backgroundColor: '#FFBD59' }}>
       <div className="flex items-center">
+        <Link to={'/home'}>
         <img
           src="./Internsb.jpeg"
           alt=""
           className="h-16 w-auto"
-        />
+          />
+          </Link>
       </div>
+
       <div className="flex items-center">
         <input
           type="text"
-          placeholder="Search internships"
+          placeholder="Search by Location..."
           className="border border-gray-300 rounded-md px-4 py-2 mr-4"
         />
+
+        
         <ul className="flex items-center space-x-4">
           <li>
-            <a href="#" className="text-white hover:text-black">
+            <Link to={'/home'}>
+            <a  className="text-white hover:text-black">
               Home
             </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-black">
+            <Link to={'/aboutus'}>
+            <a  className="text-white hover:text-black">
               About Us
             </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-black">
+            <Link to={'/jobs'}>
+            <a  className="text-white hover:text-black">
               Internships
             </a>
+            </Link>
           </li>
           {/* Profile button with links */}
           <li className="relative group">

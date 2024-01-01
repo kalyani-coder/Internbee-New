@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -43,9 +44,9 @@ const Login = () => {
     }
   };
 
-  const handleregistration = () => {
-    navigate("/Signup");
-  };
+  // const handleregistration = () => {
+  //   navigate("/Signup");
+  // };
   const handleHome = () => {
     navigate("/Home");
   };
@@ -165,16 +166,18 @@ const Login = () => {
                 >
                   Sign in
                 </button>
+                <Link to={'/register'}>
                 <p className="text-sm font-light text-gray-500 dark:text-black">
                   Don’t have an account yet?{" "}
                   <a
                     href="#"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                    onClick={handleregistration}
-                  >
+                    
+                    >
                     Sign up
                   </a>
                 </p>
+                    </Link>
               </form>
             </div>
           </div>

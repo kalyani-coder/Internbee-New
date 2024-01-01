@@ -130,9 +130,9 @@ const onSubmit = async (data) => {
     alert("Registering with Google...");
   };
 
-  const handleSignin = () => {
-    navigate("/Signin");
-  };
+  // const handleSignin = () => {
+  //   navigate("/Signin");
+  // };
   const handleHome = () => {
     navigate("/Home");
   };
@@ -387,11 +387,11 @@ const onSubmit = async (data) => {
             </button>
             <p className="text-sm font-light text-gray-500 dark:text-black">
               Already have an account ?{" "}
-              <Link to={'/'}>
+              <Link to={'/login'}>
               <a
                 href="#"
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                onClick={handleSignin}
+                
                 >
                 Log in{""}
               </a>

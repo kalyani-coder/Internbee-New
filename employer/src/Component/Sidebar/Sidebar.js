@@ -27,17 +27,25 @@ const Sidebar = () => {
         {/* Navigation container with top margin */}
         <nav className="mt-4">
 
+        <Link to={{
+            pathname: '/PostInternship' }}>
+          <a  className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
+            <FontAwesomeIcon icon={faBriefcase} className="w-6 h-6 mr-2 text-amber-300" />
+           Post Internship
+          </a>
+          </Link>
+
           {/* Jobs link with blue icon */}
           <Link to={{
             pathname: '/jobs' }}>
-          <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
+          <a className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faBriefcase} className="w-6 h-6 mr-2 text-amber-300" />
             Internship
           </a>
           </Link>
           {/* Candidates link with green icon */}
           <Link to="/candidates">
-          <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
+          <a  className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faUser} className="w-6 h-6 mr-2 text-amber-300" />
             Candidates
           </a>
@@ -45,7 +53,7 @@ const Sidebar = () => {
 
           {/* Interviews link with purple icon */}
           <Link to={{pathname:'/weeklycalender'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+          <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faComments} className="w-6 h-6 mr-2 text-amber-300" />
             Interviews
           </a>
@@ -53,21 +61,21 @@ const Sidebar = () => {
 
           {/* Search CV link with yellow icon */}
           <Link to={{pathname:'/searchcv'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+          <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faSearch} className="w-6 h-6 mr-2 text-amber-300" />
             Search CV
           </a>
           </Link>
           {/* Messages link with orange icon */}
           <Link to={{pathname:'/message'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+          <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faInbox} className="w-6 h-6 mr-2 text-amber-300" />
             Helpdesk
           </a>
           </Link>
 
           {/* FAQs link with pink icon */}
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+          <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
             <FontAwesomeIcon icon={faQuestion} className="w-6 h-6 mr-2 text-amber-300" />
             FAQs
           </a>
