@@ -75,6 +75,19 @@ router.post("/signin", async (req, res) => {
   }
 });
 
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedEmpAuth = await EmployerAuth.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedEmpAuth);
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const allEmpAuth = await EmployerAuth.find();

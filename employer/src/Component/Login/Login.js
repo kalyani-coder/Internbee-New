@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const {
@@ -91,6 +90,7 @@ const Login = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
                 Sign in to your account
               </h1>
+
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="space-y-4 md:space-y-6"
