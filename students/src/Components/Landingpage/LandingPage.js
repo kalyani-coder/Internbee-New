@@ -55,17 +55,17 @@ const LandingPage = () => {
 
                 <div className="carousel-container mt-5" onMouseEnter={handleTrackerHover} onMouseLeave={handleTrackerLeave}>
                     <div className="carousel" ref={carouselRef}>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        {/* <div className="card" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div> */}
-                        {/* Add more cards as needed */}
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
+                        {/* <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
+                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div> */}
+                        {/* Add more card-landing-pages as needed */}
                     </div>
                 </div>
             </section>
@@ -85,11 +85,11 @@ const LandingPage = () => {
                     </ul>
                 </div>
 
-                {/* Card Carousel */}
+                {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel h-96" ref={carouselRef}>
-                        {/* Dummy Data for Card Carousel */}
-                        <div className="card">
+                        {/* Dummy Data for card-landing-page Carousel */}
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -110,7 +110,7 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -131,8 +131,8 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card">
+                        <div className="card-landing-page">
+                            <div className="card-landing-page">
                                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                     <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -173,11 +173,11 @@ const LandingPage = () => {
                     </ul>
                 </div>
 
-                {/* Card Carousel */}
+                {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel h-96" ref={carouselRef}>
-                        {/* Dummy Data for Card Carousel */}
-                        <div className="card">
+                        {/* Dummy Data for card-landing-page Carousel */}
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -198,7 +198,7 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -219,8 +219,8 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card">
+                        <div className="card-landing-page">
+                            <div className="card-landing-page">
                                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                     <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -262,11 +262,11 @@ const LandingPage = () => {
                     </ul>
                 </div>
 
-                {/* Card Carousel */}
+                {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel h-96" ref={carouselRef}>
-                        {/* Dummy Data for Card Carousel */}
-                        <div className="card">
+                        {/* Dummy Data for card-landing-page Carousel */}
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -287,7 +287,7 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                 <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
@@ -308,8 +308,8 @@ const LandingPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card">
+                        <div className="card-landing-page">
+                            <div className="card-landing-page">
                                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                                     <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 

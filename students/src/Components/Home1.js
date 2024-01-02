@@ -297,7 +297,7 @@ const Home1 = () => {
                                 <img src={`./${company.logo}`} alt={`Logo of ${company.name}`} className="w-16 h-16 mx-auto mb-4" />
                                 <h2 className="text-xl font-bold">{company.name}</h2>
                                 <p className="text-gray-600">{company.description}</p>
-                                <button className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2">
+                                <button className="mt-4 bg-amber-300 hover:bg-yellow-300 text-black rounded-md px-4 py-2">
                                     View Internship
                                 </button>
                             </div>

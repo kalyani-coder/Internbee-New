@@ -59,7 +59,7 @@ section {
   display: none;
 }
 
-.card {
+.card-landing-page {
   flex: 0 0 auto;
   width: 400px;
   height: 300px;
@@ -71,11 +71,11 @@ section {
   position: relative;
 }
 
-.card-info {
+.card-landing-page-info {
   padding: 20px;
 }
 
-.card-actions {
+.card-landing-page-actions {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -121,7 +121,7 @@ section {
   color: #000;
 }
 /* Add the following styles to your CSS file or style block */
-.card-info {
+.card-landing-page-info {
   position: relative;
   padding-bottom: 15px; /* Add padding at the bottom */
 }
