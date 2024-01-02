@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import './LandingPage.css';
 import Partners from './Partners';
 // import Footer from './Footer';
-import Footer from './../Footer';
+import Footer from '../../Component/Footer/Footer';
 
 
 const LandingPage = () => {
