@@ -17,7 +17,6 @@ const PostInternshipSchema = new mongoose.Schema({
     position : String,
     job_Description : String,
     stipend : String,
-    
 
 })
 
