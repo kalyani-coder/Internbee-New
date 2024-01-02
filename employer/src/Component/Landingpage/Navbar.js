@@ -97,40 +97,6 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-
-
-                    <button
-                        className="px-6 py-2 text-xl font-bold border rounded-md focus:outline-none"
-                        onClick={handleLoginClick}
-
-                    >
-                        Login
-                    </button>
-                    <button
-                        className="px-6 py-2 text-xl font-bold border rounded-md bg-yellow-300 focus:outline-none"
-                        onClick={handleRegisterClick}
-                    >
-                        Register
-                    </button>
-                    {showDropdown && (
-                        <div
-                            className="absolute w-36 bg-white border rounded-md shadow-md ml-6"
-                            style={{ top: dropdownPosition.top, left: dropdownPosition.left }}
-                        >
-                            <div
-                                className="cursor-pointer border-b border-gray-700 py-4 flex flex-col items-center"
-                                onClick={() => handleUserTypeSelect('employer')}
-                            >
-                                Employer
-                            </div>
-                            <div
-                                className="cursor-pointer flex flex-col items-center py-4"
-                                onClick={() => handleUserTypeSelect('student')}
-                            >
-                                Student
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
