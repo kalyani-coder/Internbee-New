@@ -1,110 +1,87 @@
 import React, { useState, useEffect } from "react";
 import Alert from "../../Alert/Aleart";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+import { enIN } from "date-fns/locale";
 
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
   const [alert, setAlert] = useState(null);
-  const [jobs, setJobs] = useState([]);
   const [formData, setFormData] = useState({
     job_Title: "",
     location: "",
     company_Name: "",
-    start_Date: "",
+    start_Date: new Date(),
     empName: "",
     empEmail: "",
     empPhone: "",
-    end_Date: "",
+    end_Date: new Date(),
     job_Type: "Full-time",
     skills: "",
     position: "",
     job_Description: "",
-    stipend : "",
-    userId: "", // Include userId in formData
+    stipend: "",
+    userId: "",
   });
- 
+
   useEffect(() => {
-    // Fetch all job posts
-    fetch(`http://localhost:8000/api/postinternship`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("API Response:", data);
-
-        if (data && data.jobs) {
-          // Update state with fetched jobs
-          setJobs(data.jobs);
-        } else {
-          console.error("No jobs found in the response");
-          // Handle error, e.g., set an alert message
-          // setAlert({
-          //   type: "danger",
-          //   message: "No jobs found",
-          // });
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching jobs:", error);
-        // Handle error, e.g., set an alert message
-        setAlert({
-          type: "danger",
-          message: "Error fetching jobs",
-        });
-      });
+    // Your existing useEffect logic to fetch user details from localStorage
   }, []);
-  
-  
-
-
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: formatStipend(value)
+      [name]: value,
     });
   };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    // Validation and form submission logic
-    const requiredFields = [
-      "job_Title",
-      "location",
-      "company_Name",
-      "start_Date",
-      "end_Date",
-      "position",
-      "job_Description",
-    ];
-    const isFormValid = requiredFields.every(
-      (field) => formData[field].trim() !== ""
-    );
-  
-    if (!isFormValid) {
-      setAlert({
-        type: "danger",
-        message: "Please fill out all required fields",
-      });
-      return;
-    }
-  
-    // Fetch employer ID from local storage
-    const employerId = localStorage.getItem("userId");
-    console.log(employerId);
-  
-    // Include employer ID in formData
+
+  const handleStartDateChange = (date) => {
     setFormData({
       ...formData,
-      userId: employerId,
+      start_Date: date,
     });
+  };
+
+  const handleEndDateChange = (date) => {
+    setFormData({
+      ...formData,
+      end_Date: date,
+    });
+  };
+   useEffect(() => {
+     const userId = localStorage.getItem("userId");
+     const email = localStorage.getItem("email");
+     const empName = localStorage.getItem("empName");
+     const number = localStorage.getItem("number");
+
+     if (userId && email && empName && number) {
+       setFormData({
+         ...formData,
+         userId,
+         empEmail: email,
+         empPhone: number,
+         empName,
+       });
+     } else {
+       console.error("Error fetching employer details from localStorage");
+       setAlert({
+         type: "danger",
+         message: "Error fetching employer details from localStorage",
+       });
+     }
+   }, []);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+
   
+
     try {
+      console.log(formData);
       setPosting(true);
       const response = await fetch("http://localhost:8000/api/postinternship", {
         method: "POST",
@@ -113,7 +90,7 @@ const PostInternship = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         setAlert({
           type: "success",
@@ -133,13 +110,6 @@ const PostInternship = () => {
       // Handle other types of errors, e.g., network issues
     }
   };
-
-  const formatStipend = (value) => {
-    // Remove existing commas and format the number with commas
-    const formattedValue = value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return formattedValue;
-  };
-
   return (
     <div className="max-w-3xl mx-auto mt-8 p-8 bg-amber-300 rounded shadow-md">
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -220,6 +190,7 @@ const PostInternship = () => {
         </div>
 
         {/* Start Date */}
+
         <div className="w-full md:w-1/2 px-4 mb-4">
           <label
             htmlFor="start_Date"
@@ -227,18 +198,18 @@ const PostInternship = () => {
           >
             Start Date:
           </label>
-          <input
-            type="date"
+          <DatePicker
             id="start_Date"
-            name="start_Date"
-            value={formData.start_Date}
-            onChange={handleChange}
+            selected={formData.start_Date}
+            onChange={handleStartDateChange}
+            locale={enIN}
+            dateFormat="dd/MM/yyyy"
             className="mt-1 p-2 border rounded-md w-full"
             required
           />
         </div>
-
         {/* End Date */}
+
         <div className="w-full md:w-1/2 px-4 mb-4">
           <label
             htmlFor="end_Date"
@@ -246,13 +217,14 @@ const PostInternship = () => {
           >
             End Date:
           </label>
-          <input
-            type="date"
+          <DatePicker
             id="end_Date"
-            name="end_Date"
-            value={formData.end_Date}
-            onChange={handleChange}
+            selected={formData.end_Date}
+            onChange={handleEndDateChange}
+            locale={enIN}
+            dateFormat="dd/MM/yyyy"
             className="mt-1 p-2 border rounded-md w-full"
+            required
           />
         </div>
 
@@ -314,27 +286,26 @@ const PostInternship = () => {
             placeholder="Enter the position here"
             required
           />
-
-          
         </div>
 
         <div className="w-full md:w-1/2 px-4 mb-4">
-      <label htmlFor="stipend" className="block text-sm font-medium text-black">
-        Enter Stipend:
-      </label>
-      <input
-        placeholder="Enter Stipend ex 10,000"
-        type="text" // Change type to "text" to allow non-numeric characters
-        id="stipend"
-        name="stipend"
-        value={formData.stipend}
-        onChange={handleChange}
-        className="mt-1 p-2 border rounded-md w-full"
-        required
-      />
-    </div>
-
-       
+          <label
+            htmlFor="stipend"
+            className="block text-sm font-medium text-black"
+          >
+            Enter Stipend:
+          </label>
+          <input
+            placeholder="Enter Stipend ex 10,000"
+            type="text" // Change type to "text" to allow non-numeric characters
+            id="stipend"
+            name="stipend"
+            value={formData.stipend}
+            onChange={handleChange}
+            className="mt-1 p-2 border rounded-md w-full"
+            required
+          />
+        </div>
 
         {/* Job Description */}
         <div className="w-full px-4 mb-4">
