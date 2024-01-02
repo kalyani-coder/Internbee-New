@@ -10,7 +10,16 @@ const Login = () => {
     setError,
     formState: { errors },
   } = useForm();
+useEffect(() => {
+  const storedData = localStorage.getItem("userId");
+  const email = localStorage.getItem("email");
+  const empName = localStorage.getItem("empName");
+  const number = localStorage.getItem("number");
 
+  if (storedData && email && empName && number) {
+    navigate("/Home");
+  }
+}, [navigate]);
   const onSubmit = async (data) => {
     try {
       const response = await fetch("http://localhost:8000/api/empauth/signin", {

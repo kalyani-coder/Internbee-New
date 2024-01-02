@@ -11,6 +11,7 @@ const studentsDetails = require('./routes/StudentsDetails');
 const Resume = require('./routes/Resume');
 
 const empAuthRoutes  = require('./routes/empAuthRoutes');
+const applyInternship = require('./routes/applyInternship');
 
 
 
@@ -41,6 +42,9 @@ apiRouter.use("/studentsdetails" , studentsDetails)
 apiRouter.use("/resume" , Resume)
 
 apiRouter.use("/empauth" , empAuthRoutes)
+apiRouter.use("/applyinternship" , applyInternship)
+
+
 
 
 app.use('/api', apiRouter)
