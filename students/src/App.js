@@ -24,29 +24,29 @@ import ViewProfile from './Components/ViewProfile/ViewProfile';
 
 function App() {
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key === 'c') {
-        e.preventDefault();
-        console.log("Copying is disabled!");
-        // You can add a custom message or behavior here if needed
-      }
-    };
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.ctrlKey && e.key === 'c') {
+  //       e.preventDefault();
+  //       console.log("Copying is disabled!");
+  //       // You can add a custom message or behavior here if needed
+  //     }
+  //   };
 
-    const handleContextMenu = (e) => {
-      e.preventDefault();
-      console.log("Right-clicking is disabled!");
-      // You can add a custom message or behavior here if needed
-    };
+  //   const handleContextMenu = (e) => {
+  //     e.preventDefault();
+  //     console.log("Right-clicking is disabled!");
+  //     // You can add a custom message or behavior here if needed
+  //   };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('contextmenu', handleContextMenu);
+  //   document.addEventListener('keydown', handleKeyDown);
+  //   document.addEventListener('contextmenu', handleContextMenu);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyDown);
+  //     document.removeEventListener('contextmenu', handleContextMenu);
+  //   };
+  // }, []);
   return (
 
     <Router>
