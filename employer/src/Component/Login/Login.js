@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:8000/auth/signin", {
+      const response = await fetch("http://localhost:8000/api/empauth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,34 +22,43 @@ const Login = () => {
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        const responseData = await response.json();
+      const responseData = await response.json();
 
-        if (responseData.userId) {
-          // Storing userId in localStorage upon successful login
-          localStorage.setItem("userId", responseData.userId);
-          navigate("/Home");
-        } else {
-          setError("email", { type: "manual", message: "Invalid credentials" });
-        }
+      if (response.ok) {
+        localStorage.setItem("userId", responseData.userId);
+        localStorage.setItem("empName", responseData.empName);
+        localStorage.setItem("email", responseData.email);
+        localStorage.setItem("number", responseData.number);
+
+        navigate("/Home");
       } else {
-        setError("email", {
-          type: "manual",
-          message: "User Not Found. Please Sign up",
-        });
-        console.error("Invalid credentials");
+        if (response.status === 404) {
+          setError("email", {
+            type: "manual",
+            message: "User Not Found. Please Sign up",
+          });
+        } else if (response.status === 401) {
+          setError("email", {
+            type: "manual",
+            message: "Invalid credentials",
+          });
+        } else {
+          setError("email", {
+            type: "manual",
+            message: "Something went wrong. Please try again later",
+          });
+        }
+        console.error("Error signing in:", responseData.error);
       }
     } catch (error) {
       console.error("Error signing in:", error);
+      setError("email", {
+        type: "manual",
+        message: "Something went wrong. Please try again later",
+      });
     }
   };
 
-  // const handleregistration = () => {
-  //   navigate("/Signup");
-  // };
-  const handleHome = () => {
-    navigate("/Home");
-  };
   return (
     <>
       <div className="">
@@ -85,7 +94,6 @@ const Login = () => {
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="space-y-4 md:space-y-6"
-                action="#"
               >
                 <div>
                   <label
@@ -166,18 +174,15 @@ const Login = () => {
                 >
                   Sign in
                 </button>
-                <Link to={'/register'}>
                 <p className="text-sm font-light text-gray-500 dark:text-black">
                   Don’t have an account yet?{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/register"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                    
-                    >
+                  >
                     Sign up
-                  </a>
+                  </Link>
                 </p>
-                    </Link>
               </form>
             </div>
           </div>
