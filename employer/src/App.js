@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./Component/Login/Login"
 import EmployerRegistration from './Component/Signup/Signup';
@@ -17,8 +17,24 @@ import AccountSettings from './Component/AccountSetting/AccountSetting';
 import MessageComponent from './Component/Message/Message';
 import Registration from './Component/Signup/Signup';
 import LandingpageHome from './Component/Landingpage/LandingpageHome';
+import "./App.css"
 
 function App() {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+        console.log("Copying is disabled!");
+        // You can add a custom message or behavior here if needed
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <>
 

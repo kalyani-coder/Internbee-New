@@ -5,11 +5,17 @@ import { FaUser } from 'react-icons/fa';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 const Profile = () => {
+
+    const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
+    const handleProfileIconClick = () => {
+        setShowProfileDropdown(!showProfileDropdown);
+    };
 
     const navigate = useNavigate();
 
@@ -57,47 +63,64 @@ const Profile = () => {
 
 
 
+    const handleCreateProfile = () => {
 
+        navigate('/Profile')
 
-   const handleSubmit = async (e) => {
-  e.preventDefault();
+    };
+    const handleViewProfile = () => {
 
-  try {
-    // Get the user ID from local storage
-    const userId = localStorage.getItem('userId');
-    const email = localStorage.getItem('email');
-    const number = localStorage.getItem('number');
+        navigate('/viewprofile')
 
-    // Include the user ID in the form data
-    const formDataWithUserId = {
-      ...formData,
-      userId: userId,
-      user_email : email,
-      user_number : number,
-   
     };
 
-    console.log('Form Data:', formDataWithUserId);
+    const handleLogout = () => {
 
-    const response = await fetch('http://localhost:8000/api/studentsdetails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formDataWithUserId),
-    });
+        navigate('/login')
 
-    if (response.ok) {
-      console.log('Data submitted successfully:', response);
-      alert("Your Details Submitted Successfully");
-    } else {
-      console.error('Error submitting data');
-    }
-  } catch (error) {
-    console.error('Error creating data:', error);
-    // Handle the error appropriately in the frontend, e.g., show a user-friendly error message
-  }
-};
+
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            // Get the user ID from local storage
+            const userId = localStorage.getItem('userId');
+            const email = localStorage.getItem('email');
+            const number = localStorage.getItem('number');
+
+            // Include the user ID in the form data
+            const formDataWithUserId = {
+                ...formData,
+                userId: userId,
+                user_email: email,
+                user_number: number,
+
+            };
+
+            console.log('Form Data:', formDataWithUserId);
+
+            const response = await fetch('http://localhost:8000/api/studentsdetails', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formDataWithUserId),
+            });
+
+            if (response.ok) {
+                console.log('Data submitted successfully:', response);
+                alert("Your Details Submitted Successfully");
+            } else {
+                console.error('Error submitting data');
+            }
+        } catch (error) {
+            console.error('Error creating data:', error);
+            // Handle the error appropriately in the frontend, e.g., show a user-friendly error message
+        }
+    };
 
 
 
@@ -106,7 +129,7 @@ const Profile = () => {
             {/* <Sidebar /> */}
             <div className="">
 
-                <div className="bg-slate-50 p-6 flex items-center justify-between border shadow-xl">
+                <div className="bg-amber-300 p-6 flex items-center justify-between border shadow-xl">
 
                     <div className="flex items-center space-x-2">
                         <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
@@ -115,11 +138,9 @@ const Profile = () => {
 
 
                     <div className="flex items-center space-x-6">
-                        <a href="#" className="text-large font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
-                        <a href="#" className="text-large font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</a>
-                        <a href="#" className="text-large font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</a>
-
-
+                        <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
+                        <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link>
+                        <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</Link>
                     </div>
 
                     {/* Search Bar */}
@@ -137,8 +158,36 @@ const Profile = () => {
                             <IoNotificationsOutline className="mr-4  text-4xl" />
 
                         </div>
-                        <div className="">
+                        <div
+                            className="cursor-pointer"
+                            onMouseEnter={() => setShowProfileDropdown(true)}
+                            // onMouseLeave={() => setShowProfileDropdown(false)}
+                            onClick={handleProfileIconClick}
+
+                        >
                             <FaUser className="mr-4  text-4xl" />
+                            {showProfileDropdown && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
+                                    <div
+                                        className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                                        onClick={handleCreateProfile}
+                                    >
+                                        Create Profile
+                                    </div>
+                                    <div
+                                        className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                                        onClick={handleViewProfile}
+                                    >
+                                        View Profile
+                                    </div>
+                                    <div
+                                        className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                                        onClick={handleLogout}
+                                    >
+                                        Log Out
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -475,37 +524,37 @@ const Profile = () => {
 
                     <div>
                         <button type="submit"
-                        style={{marginLeft : "1300px", marginTop: "-100px"}}
+                            style={{ marginLeft: "1300px", marginTop: "-100px" }}
                             className=' p-2 text-xl text-white border rounded-md  bg-gray-800 submit-your-application'
                         >   Save Your Details
 
                         </button>
                     </div>
-                        </form> 
-                   {/* here is the button for save  */}
+                </form>
+                {/* here is the button for save  */}
 
                 <hr />
 
 
 
-                 <form>
-                <div className="mt-6 text-2xl font-bold">
-                    <h6>4.Upload Documents</h6>
-                </div>
+                <form>
+                    <div className="mt-6 text-2xl font-bold">
+                        <h6>4.Upload Documents</h6>
+                    </div>
 
-                
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         <div className="form-group">
-                        <label htmlFor="resume" className="block text-xl font-medium">
-            Resume
-          </label>
-          <input
-            type="file"
-            id="students_resume"
-            accept=".pdf, .doc, .docx"
-            className="mt-1 p-2 w-full border rounded-md text-xl"
-            
-          />
+                            <label htmlFor="resume" className="block text-xl font-medium">
+                                Resume
+                            </label>
+                            <input
+                                type="file"
+                                id="students_resume"
+                                accept=".pdf, .doc, .docx"
+                                className="mt-1 p-2 w-full border rounded-md text-xl"
+
+                            />
                         </div>
 
                         <div className="form-group col-span-3 md:col-span-1 mt-10">
@@ -513,46 +562,46 @@ const Profile = () => {
                         </div>
 
                         <div className="form-group">
-                        <label htmlFor="certification" className="block text-xl font-medium mt-10">
-            Certification
-          </label>
-          <input
-            type="file"
-            id="certification"
-            accept="image/*"
-            className="mt-1 p-2 w-full border rounded-md text-xl"
-           
-          />
+                            <label htmlFor="certification" className="block text-xl font-medium mt-10">
+                                Certification
+                            </label>
+                            <input
+                                type="file"
+                                id="certification"
+                                accept="image/*"
+                                className="mt-1 p-2 w-full border rounded-md text-xl"
+
+                            />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="profilePicture" className="block text-xl font-medium mt-10">
-            Profile Picture
-          </label>
-          <input
-            type="file"
-            id="profile_picture"
-            accept="image/*"
-            className="mt-1 p-2 w-full border rounded-md text-xl"
-           
-          />
+                                Profile Picture
+                            </label>
+                            <input
+                                type="file"
+                                id="profile_picture"
+                                accept="image/*"
+                                className="mt-1 p-2 w-full border rounded-md text-xl"
+
+                            />
                         </div>
                     </div>
                     <hr />
                     <div className="text-xl flex justify-end m-4">
-                         {/* <button type="button" className='mt-8 p-2 text-xl text-white border rounded-md  bg-gray-800'>Save Your Details</button> */}
+                        {/* <button type="button" className='mt-8 p-2 text-xl text-white border rounded-md  bg-gray-800'>Save Your Details</button> */}
 
-                        
+
                     </div>
 
-                    
+
                     <div className="form-group">
-                            <button type='button'
-                             style={{ marginTop: "-400px" }} 
+                        <button type='button'
+                            style={{ marginTop: "-400px" }}
                             className='mt-8 p-2 text-xl text-white border rounded-md bg-red-800' onClick={handleResume}>Create Resume</button>
-                        </div>
+                    </div>
                 </form>
-                   
+
             </div>
 
         </div >

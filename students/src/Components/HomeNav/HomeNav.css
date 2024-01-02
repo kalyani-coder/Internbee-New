@@ -1,0 +1,7 @@
+@media  (min-width:325px) and (max-width: 425px) {
+
+    .homenav-responsive{
+        display: none
+    }
+
+}

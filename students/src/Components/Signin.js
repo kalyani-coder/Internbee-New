@@ -33,7 +33,7 @@ const Login = () => {
           localStorage.setItem('fullName', responseData.fullName);
           localStorage.setItem('userEmail', responseData.email);
           localStorage.setItem('number', responseData.number);
-          navigate('/Home1');
+          navigate('/home');
         } else {
           // Handle the case where userId is missing in the response
           setError('email', {
@@ -65,10 +65,10 @@ const Login = () => {
   //       },
   //       body: JSON.stringify(data),
   //     });
-  
+
   //     if (response.ok) {
   //       const responseData = await response.json();
-  
+
   //       // Assuming the response contains the userId, name, and email
   //       if (responseData._id && responseData.fullName && responseData.email) {
   //         // The credentials are correct, navigate to the home page
@@ -97,7 +97,7 @@ const Login = () => {
   //     console.error('Error signing in:', error);
   //   }
   // };
-  
+
 
   const handleregistration = () => {
     navigate('/Registration');

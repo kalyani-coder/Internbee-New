@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -12,6 +12,9 @@ import Signin from './Components/Signin';
 import Profile from './Components/Profile';
 import Internship from './Components/Internship';
 import Footer from './Components/Footer';
+import Companies from './Components/Companies/Companies';
+import Blogs from './Components/Blogs/Blogs';
+import ViewProfile from './Components/ViewProfile/ViewProfile';
 
 
 
@@ -20,21 +23,48 @@ import Footer from './Components/Footer';
 
 
 function App() {
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+        console.log("Copying is disabled!");
+        // You can add a custom message or behavior here if needed
+      }
+    };
+
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      console.log("Right-clicking is disabled!");
+      // You can add a custom message or behavior here if needed
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('contextmenu', handleContextMenu);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
   return (
 
     <Router>
       <Routes>
         {/* <Route path="/Profile" element={<Profile />} /> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/Registration" element={<Registration />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Home1" element={<Home1/>} />
 
-        <Route path="/Resume" element={<Resume />} />
-        <Route path="/Signin" element={<Signin />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Internship" element={<Internship />} />
-        <Route path="/Footer" element={<Footer />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Registration />} />
+        {/* <Route path="/Home" element={<Home />} /> */}
+        <Route path="/home" element={<Home1 />} />
+        <Route path='/blogs' element={<Blogs />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/login" element={<Signin />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/internship" element={<Internship />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/companies" element={<Companies />} />
+        <Route path="/viewprofile" element={<ViewProfile />} />
 
 
 

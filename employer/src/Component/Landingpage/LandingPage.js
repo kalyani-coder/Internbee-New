@@ -45,10 +45,10 @@ const LandingPage = () => {
         <div className="flex flex-col h-screen">
             {/* Section 1: Dream Career */}
             <section id="dream-career-section">
-                <h1>
+                <h1 className="heading">
                     Make Your Dream Career a Reality
                 </h1>
-                <h2>
+                <h2 className="sub-heading">
                     Trending on Internbee <span>🔥</span>
                 </h2>
 
@@ -71,7 +71,7 @@ const LandingPage = () => {
 
             {/* Section 2: Latest Internships and Categories */}
             <section className="flex-1">
-                <h1>
+                <h1 className="heading">
                     Latest Internships on InternBee
                 </h1>
 
@@ -159,7 +159,7 @@ const LandingPage = () => {
 
             {/* Section 3: Another Section */}
             <section className="flex-1">
-                <h1>
+                <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
 
@@ -248,7 +248,7 @@ const LandingPage = () => {
             {/* section 4 */}
 
             <section className="flex-1">
-                <h1>
+                <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
 

@@ -1,6 +1,6 @@
 // Import necessary modules and components
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { FaUser, FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
 import Footer from '../Components/Footer';
@@ -71,10 +71,14 @@ const Internship = () => {
     };
 
     // Function to navigate to the user's profile
-    const handleViewProfile = () => {
+    const handleCreateProfile = () => {
         navigate('/Profile');
     };
+    const handleViewProfile = () => {
 
+        navigate('/viewprofile')
+
+    };
     // Function to handle user logout
     const handleLogout = () => {
         navigate('/Signin');
@@ -140,15 +144,9 @@ const Internship = () => {
 
                 {/* Navigation links */}
                 <div className="flex items-center space-x-6">
-                    <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleHome}>
-                        Home
-                    </a>
-                    <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleCompaniesClick}>
-                        Companies
-                    </a>
-                    <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleInternshipsClick}>
-                        Internships
-                    </a>
+                    <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
+                    <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleCompaniesClick}>Companies</Link>
+                    <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={Internship}>Internships</Link>
                 </div>
 
                 {/* Search Bar */}
@@ -161,12 +159,12 @@ const Internship = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     {/* Navbar Search button */}
-                    <button
+                    {/* <button
                         className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2"
                         onClick={handleSearch}
                     >
                         Navbar Search
-                    </button>
+                    </button> */}
                 </div>
 
                 {/* Notifications and User Profile */}
@@ -183,6 +181,12 @@ const Internship = () => {
                         {/* Profile dropdown */}
                         {showProfileDropdown && (
                             <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
+                                <div
+                                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                                    onClick={handleCreateProfile}
+                                >
+                                    Create Profile
+                                </div>
                                 <div
                                     className="py-2 px-4 cursor-pointer hover:bg-gray-100"
                                     onClick={handleViewProfile}

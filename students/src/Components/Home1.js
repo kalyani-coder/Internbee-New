@@ -1,11 +1,11 @@
-import React, { useState, useRef , useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Sidebar from './Sidebar';
 
 import { IoNotificationsOutline } from 'react-icons/io5';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -38,7 +38,7 @@ const LeftArrow = ({ onClick }) => (
 
 const Home1 = () => {
     const [internships, setInternships] = useState([]);
-  
+
     const companiesRef = useRef(null);
     const internshipsRef = useRef(null);
     const navigate = useNavigate();
@@ -48,37 +48,42 @@ const Home1 = () => {
         setShowProfileDropdown(!showProfileDropdown);
     };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/postinternship/');
-        if (response.ok) {
-          const data = await response.json();
-          setInternships(data);
-        } else {
-          console.error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/postinternship/');
+                if (response.ok) {
+                    const data = await response.json();
+                    setInternships(data);
+                } else {
+                    console.error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleInternshipClick = (id) => {
+        navigate(`/internship/${id}`);
     };
 
-    fetchData();
-  }, []);
-
-  const handleInternshipClick = (id) => {
-    navigate(`/internship/${id}`);
-  };
-
-    const handleViewProfile = () => {
+    const handleCreateProfile = () => {
 
         navigate('/Profile')
+
+    };
+    const handleViewProfile = () => {
+
+        navigate('/viewprofile')
 
     };
 
     const handleLogout = () => {
 
-        navigate('/Signin')
+        navigate('/login')
 
 
     };
@@ -95,17 +100,17 @@ const Home1 = () => {
         }
     };
     const Internship = () => {
-        navigate('/Internship')
+        navigate('/internship')
     }
 
     const handleResume = () => {
-        navigate('/Resume');
+        navigate('/resume');
     };
     const handleregistration = () => {
-        navigate('/Registration');
+        navigate('/register');
     };
     const handleSignin = () => {
-        navigate('/Signin');
+        navigate('/login');
     };
 
     const companies = [
@@ -205,22 +210,22 @@ const Home1 = () => {
 
 
     const Internshipp = () => {
-        navigate('/Internship');
+        navigate('/internship');
     };
 
 
     return (
         <>
-            <div className="mb-10">
-                <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
+            <div className="mb-10 ">
+                <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-amber-300 shadow-md p-4 flex items-center justify-between border">
                     <div className="flex items-center space-x-2">
                         <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
                         <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
                     </div>
                     <div className="flex items-center space-x-6">
-                        <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
-                        <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleCompaniesClick}>Companies</a>
-                        <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={Internship}>Internships</a>
+                        <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
+                        <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleCompaniesClick}>Companies</Link>
+                        <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={Internship}>Internships</Link>
                     </div>
 
                     <div className="flex items-center">
@@ -246,9 +251,15 @@ const Home1 = () => {
                                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
                                     <div
                                         className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                                        onClick={handleCreateProfile}
+                                    >
+                                        Create Profile
+                                    </div>
+                                    <div
+                                        className="py-2 px-4 cursor-pointer hover:bg-gray-100"
                                         onClick={handleViewProfile}
                                     >
-                                        View & Update Profile
+                                        View Profile
                                     </div>
                                     <div
                                         className="py-2 px-4 cursor-pointer hover:bg-gray-100"
@@ -294,48 +305,48 @@ const Home1 = () => {
                     </Slider>
                 </div>
                 <div className="flex flex-col items-center ">
-                <div className='mt-80 mb-10 text-4xl font-bold flex flex-col items-center'>
-                    <h1>Dream Internship here</h1>
+                    <div className='mt-80 mb-10 text-4xl font-bold flex flex-col items-center'>
+                        <h1>Dream Internship here</h1>
+                    </div>
+
+                    {internships.slice(0, 3).map(internship => (
+                        <div key={internship._id} className="card w-full m-6  rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden">
+                            <div className="flex-grow px-6 py-4 pr-20 pl-20">
+                                <h2 className="card-title text-2xl font-semibold text-gray-800">{internship.job_Title}</h2>
+                                <p className="card-company text-xl text-gray-700">{internship.company_Name}</p>
+
+                                <div className="flex justify-between items-center my-4">
+                                    <div className="flex items-center">
+                                        <FaCalendar className="mr-2" />
+                                        <p className="card-company text-xl text-gray-700">{internship.start_Date}</p>
+                                    </div>
+                                    {/* Other details here */}
+                                    <div className="flex items-center">
+                                        <FaMoneyBill className="mr-2" />
+                                        <p className="card-location text-xl text-gray-700">&#x20B9;{internship.stipend}</p>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <FaMapMarkerAlt className="mr-2" />
+                                        <p className="card-duration text-xl text-gray-700">{internship.location}</p>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <FaRegClock className="mr-2" />
+                                        <p className="card-duration text-xl text-gray-700">{internship.end_Date}</p>
+                                    </div>
+                                </div>
+
+                                <p className="card-description text-base text-gray-700 my-4">{internship.job_Description}</p>
+                                {/* Additional details here */}
+                                <button className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2" onClick={() => handleInternshipClick(internship._id)}>
+                                    View Internship
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+
                 </div>
 
-                {internships.slice(0, 3).map(internship => (
-    <div key={internship._id} className="card w-full m-6  rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden">
-        <div className="flex-grow px-6 py-4 pr-20 pl-20">
-            <h2 className="card-title text-2xl font-semibold text-gray-800">{internship.job_Title}</h2>
-            <p className="card-company text-xl text-gray-700">{internship.company_Name}</p>
 
-            <div className="flex justify-between items-center my-4">
-                <div className="flex items-center">
-                    <FaCalendar className="mr-2" />
-                    <p className="card-company text-xl text-gray-700">{internship.start_Date}</p>
-                </div>
-                {/* Other details here */}
-                <div className="flex items-center">
-                    <FaMoneyBill className="mr-2" />
-                    <p className="card-location text-xl text-gray-700">&#x20B9;{internship.stipend}</p>
-                </div>
-                <div className="flex items-center">
-                    <FaMapMarkerAlt className="mr-2" />
-                    <p className="card-duration text-xl text-gray-700">{internship.location}</p>
-                </div>
-                <div className="flex items-center">
-                    <FaRegClock className="mr-2" />
-                    <p className="card-duration text-xl text-gray-700">{internship.end_Date}</p>
-                </div>
-            </div>
-
-            <p className="card-description text-base text-gray-700 my-4">{internship.job_Description}</p>
-            {/* Additional details here */}
-            <button className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2" onClick={() => handleInternshipClick(internship._id)}>
-                View Internship
-            </button>
-        </div>
-    </div>
-))}
-
-                </div>
-    
-        
                 <div className="mt-10 flex justify-center">
                     <button className="bg-blue-500 w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" onClick={Internshipp}>
                         View All
