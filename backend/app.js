@@ -10,6 +10,8 @@ const postInternship = require('./routes/postInternship');
 const studentsDetails = require('./routes/StudentsDetails');
 const Resume = require('./routes/Resume');
 
+const empAuthRoutes  = require('./routes/empAuthRoutes');
+
 
 
 mongoose
@@ -37,6 +39,8 @@ apiRouter.use("/postinternship" , postInternship)
 apiRouter.use("/studentsdetails" , studentsDetails)
 
 apiRouter.use("/resume" , Resume)
+
+apiRouter.use("/empauth" , empAuthRoutes)
 
 
 app.use('/api', apiRouter)

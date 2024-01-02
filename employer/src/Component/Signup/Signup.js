@@ -39,13 +39,13 @@ const onSubmit = async (data) => {
   const { confirmPassword, ...postData } = data;
 
   try {
-    const response = await fetch("http://localhost:8000/auth/signup", {
+    const response = await fetch("http://localhost:8000/api/empauth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        fullName: postData.fullName,
+        empName: postData.fullName,
         email: postData.email,
         password: postData.password,
         number: postData.number,
@@ -220,7 +220,7 @@ const onSubmit = async (data) => {
                       required: "Full Name is required",
                     })}
                     className="px-2 mt-1 p-2 flex-grow border rounded"
-                    placeholder="Enter The Full Name"
+                    placeholder="Enter Your Copany Name"
                     style={{ width: "100%" }}
                   />
                 </div>

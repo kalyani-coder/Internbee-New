@@ -1,40 +1,39 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user"); 
+const EmployerAuth = require("../models/EmployerAuth");
 
 const router = express.Router();
 const jwtKey = "amar";
 
 router.post("/signup", async (req, res) => {
-  const { fullName, email, number, password } = req.body;
+  const { empName, email, number, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ email });
-    const existingnumber = await User.findOne({ number });
+    const existingUser = await EmployerAuth.findOne({ email });
+    const existingNumber = await EmployerAuth.findOne({ number });
 
     if (existingUser) {
       return res.status(409).json({ error: "User already exists" });
-    } else if (existingnumber) {
+    } else if (existingNumber) {
       return res.status(409).json({ error: "Number already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({
-      fullName: fullName,
+    const newEmpAuth = new EmployerAuth({
+      empName: empName,
       email: email,
       number: number,
       password: hashedPassword,
-    
     });
 
-    const createdUser = await newUser.save();
-    const token = jwt.sign({ email: createdUser.email }, jwtKey);
+    const createdEmpAuth = await newEmpAuth.save();
+    const token = jwt.sign({ email: createdEmpAuth.email }, jwtKey);
 
-    // Return the token and created user's email in the response
+    // Return the token and created user's ID in the response
     res.json({
-      userId: createdUser._id,
+      userId: createdEmpAuth._id,
     });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
@@ -45,13 +44,13 @@ router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const empAuth = await EmployerAuth.findOne({ email });
 
-    if (!user) {
+    if (!empAuth) {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, empAuth.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid password" });
@@ -61,9 +60,10 @@ router.post("/signin", async (req, res) => {
 
     // Include user data in the response with modified userId (_id)
     res.json({
-      userId: user._id, 
-      email: user.email,
-      Number: user.number,
+      userId: empAuth._id,
+      empName: empAuth.empName,
+      email: empAuth.email,
+      number: empAuth.number,
     });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
@@ -72,8 +72,8 @@ router.post("/signin", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const allUsers = await User.find();
-    res.json(allUsers);
+    const allEmpAuth = await EmployerAuth.find();
+    res.json(allEmpAuth);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }

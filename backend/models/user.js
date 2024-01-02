@@ -22,12 +22,8 @@ const userSchema = new mongoose.Schema({
     maxLength : 10,
 
   },
-  userType: {
-    type: String,
-    enum: ["admin", "employer", "student"],
-    required: true,
-  },
-  // Add any other fields specific to your application
+ 
+ 
 });
 
 const User = mongoose.model("User", userSchema);
