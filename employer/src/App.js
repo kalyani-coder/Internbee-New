@@ -17,7 +17,7 @@ import AccountSettings from './Component/AccountSetting/AccountSetting';
 import MessageComponent from './Component/Message/Message';
 import Registration from './Component/Signup/Signup';
 import LandingpageHome from './Component/Landingpage/LandingpageHome';
-import "./App.css"
+import AboutUs from './Component/Aboutus/AboutUs';
 
 function App() {
   useEffect(() => {
@@ -49,6 +49,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<LandingpageHome />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Registration />} />
+          <Route path="/home" element={<EmployerSection />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path='/postinternship' element={<PostInternship />} />
           <Route path="/employer-registration" element={<EmployerRegistration />} />
           <Route path="/sidebar" element={<EmployerSidebar />} />
           <Route path="/jobs" element={<Jobs />} />
@@ -58,12 +63,8 @@ function App() {
           <Route path='/accountsetting' element={<AccountSettings />} />
           <Route path='/searchcv' element={<SearchCVPage />} />
           <Route path="/packages" element={<Packages />} />
-          <Route path="/home" element={<EmployerSection />} />
           <Route path="/view-profile-page" element={<ViewProfilePage />} />
-          <Route path='/employer-login' element={<Login />} />
-          <Route path='/signup' element={<Registration />} />
           <Route path='/Sidebar' element={<Jobs />} />
-          <Route path='/home' element={<PostInternship />} />
           <Route path='/message' element={<MessageComponent />} />
         </Routes>
 

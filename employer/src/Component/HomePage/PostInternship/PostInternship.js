@@ -18,6 +18,7 @@ const PostInternship = () => {
     skills: "",
     position: "",
     job_Description: "",
+    stipend : "",
     userId: "", // Include userId in formData
   });
  
@@ -53,12 +54,21 @@ const PostInternship = () => {
   
 
 
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: formatStipend(value)
     });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -122,6 +132,12 @@ const PostInternship = () => {
       setPosting(false);
       // Handle other types of errors, e.g., network issues
     }
+  };
+
+  const formatStipend = (value) => {
+    // Remove existing commas and format the number with commas
+    const formattedValue = value.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return formattedValue;
   };
 
   return (
@@ -298,7 +314,27 @@ const PostInternship = () => {
             placeholder="Enter the position here"
             required
           />
+
+          
         </div>
+
+        <div className="w-full md:w-1/2 px-4 mb-4">
+      <label htmlFor="stipend" className="block text-sm font-medium text-black">
+        Enter Stipend:
+      </label>
+      <input
+        placeholder="Enter Stipend ex 10,000"
+        type="text" // Change type to "text" to allow non-numeric characters
+        id="stipend"
+        name="stipend"
+        value={formData.stipend}
+        onChange={handleChange}
+        className="mt-1 p-2 border rounded-md w-full"
+        required
+      />
+    </div>
+
+       
 
         {/* Job Description */}
         <div className="w-full px-4 mb-4">

@@ -58,10 +58,51 @@ const Navbar = () => {
                 </div> */}
                 <div className="flex items-center space-x-6 mr-10">
 
-                    
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle bg-secondary fw-bold text-dark py-2 px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <Link to={'/login'}>
+                                <a class="dropdown-item" > Employers</a>
+                                </Link>
+                         </li><hr/>
+                            <li>
+                                <Link>
+                                <a class="dropdown-item" > Students </a>
+                                </Link>
+                                
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle bg-secondary fw-bold text-dark py-2 px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Register
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <Link to={'/register'}>
+                                <a class="dropdown-item" > Employers </a>
+                                </Link>
+                            </li><hr/>
+                            <li>
+                                 <Link>
+                                <a class="dropdown-item" > Students </a>
+                                </Link>
+                                
+                            </li>
+                        </ul>
+                    </div>
+
+
+
                     <button
                         className="px-6 py-2 text-xl font-bold border rounded-md focus:outline-none"
                         onClick={handleLoginClick}
+
                     >
                         Login
                     </button>
