@@ -431,7 +431,7 @@ const ViewProfilePage = () => {
       </div>
 
       {/* Save/Update Button */}
-      {Object.values(editMode).some((value) => value) && (
+      {/* {Object.values(editMode).some((value) => value) && (
         <div className="flex justify-end">
           <button
             onClick={handleSaveUpdate}
@@ -440,9 +440,11 @@ const ViewProfilePage = () => {
             Save/Update
           </button>
         </div>
-      )}
+      )} */}
+    <button className='btn btn-dark'>Update And Save</button>
     </div>
-    <div><Footer/></div>
+
+    
     </>
   );
 };

@@ -44,10 +44,11 @@ const EmployerSection = () => {
       <div>
         {jobs.map((job) => (
           <div
+          
             key={job._id}
-            className="mb-8 p-4 bg-gray-200 rounded-md"
+            className="mb-8 p-4 rounded-md bg-amber-200"
           >
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl font-semibold mb-2 ">
               {job.job_Title}
             </h3>
             <p>Location: {job.location}</p>

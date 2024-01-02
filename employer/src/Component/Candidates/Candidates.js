@@ -59,8 +59,9 @@ const CandidatePage = () => {
               <div>
                 {candidates.map((candidate) => (
                   <div
+                 
                     key={candidate._id}
-                    className="mb-8 p-4 bg-gray-200 rounded-md"
+                    className="mb-8 p-4 rounded-md bg-amber-200"
                   >
                     <h3 className="text-xl font-semibold mb-2">
                       {candidate.firstName} {candidate.lastName}
@@ -69,7 +70,7 @@ const CandidatePage = () => {
                     <p>Contact Number: {candidate.user_number}</p>
                     {/* Display more fields as needed */}
                     <button
-                      className="bg-blue-500 text-white px-4 py-2 mt-2"
+                      className="bg-dark text-white px-4 py-2 mt-2 rounded"
                       onClick={() => handleViewMore(candidate)}
                     >
                       View More
