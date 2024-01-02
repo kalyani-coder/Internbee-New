@@ -7,9 +7,11 @@ const router = express.Router();
 const jwtKey = "amar";
 
 router.post("/signup", async (req, res) => {
-  const { empName, email, number, password } = req.body;
+  const { empName, email, number, password, companyAddress, Description } =
+    req.body;
 
   try {
+    const existingempName = await EmployerAuth.findOne({ empName });
     const existingUser = await EmployerAuth.findOne({ email });
     const existingNumber = await EmployerAuth.findOne({ number });
 
@@ -17,6 +19,8 @@ router.post("/signup", async (req, res) => {
       return res.status(409).json({ error: "User already exists" });
     } else if (existingNumber) {
       return res.status(409).json({ error: "Number already exists" });
+    } else if (existingempName) {
+      return res.status(409).json({ error: "Comapany Name already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,6 +30,8 @@ router.post("/signup", async (req, res) => {
       email: email,
       number: number,
       password: hashedPassword,
+      companyAddress: companyAddress,
+      Description: Description,
     });
 
     const createdEmpAuth = await newEmpAuth.save();
@@ -58,7 +64,6 @@ router.post("/signin", async (req, res) => {
 
     const token = jwt.sign({ email }, jwtKey);
 
-    // Include user data in the response with modified userId (_id)
     res.json({
       userId: empAuth._id,
       empName: empAuth.empName,

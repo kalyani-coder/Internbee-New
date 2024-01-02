@@ -7,13 +7,16 @@ import {
   FaLock,
   FaEye,
   FaEyeSlash,
+  FaMapMarkerAlt,
+  FaInfoCircle,
 } from "react-icons/fa";
+
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const Registration = () => {
-     const [showErrorPopup, setShowErrorPopup] = useState(false);
-     const [errorMessage, setErrorMessage] = useState("");
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [showEmailOtpInput, setShowEmailOtpInput] = useState(false);
   const [emailOtp, setEmailOtp] = useState("");
 
@@ -21,86 +24,91 @@ const Registration = () => {
   const [mobileOtp, setMobileOtp] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
 
- const {
-   register,
-   handleSubmit,
-   setError,
-   formState: { errors },
-   watch,
- } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+    watch,
+  } = useForm();
 
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const onSubmit = async (data) => {
+    const { confirmPassword, ...postData } = data;
 
+    try {
+      const response = await fetch("http://localhost:8000/api/empauth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          empName: postData.fullName,
+          email: postData.email,
+          password: postData.password,
+          number: postData.number,
+          companyAddress: postData.companyAddress,
 
-const onSubmit = async (data) => {
-  const { confirmPassword, ...postData } = data;
+          Description: postData.Description,
+        }),
+      });
 
-  try {
-    const response = await fetch("http://localhost:8000/api/empauth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        empName: postData.fullName,
-        email: postData.email,
-        password: postData.password,
-        number: postData.number,
-        userType: "employer",
-      }),
-    });
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
 
-    if (response.ok) {
-      const result = await response.json();
-      console.log(result);
-
-      // Redirect to another page after successful registration
-      alert("Data Submitted Successfully!");
-      navigate("/");
-    } else {
-      const errorResponse = await response.json();
-
-      // Handle specific errors based on response status
-      if (
-        response.status === 409 &&
-        errorResponse.error === "User already exists"
-      ) {
-        setError("email", { type: "manual", message: "User already exists" });
-        setErrorMessage("User already exists");
-        setShowErrorPopup(true);
-      } else if (
-        response.status === 409 &&
-        errorResponse.error === "Number already exists"
-      ) {
-        setError("number", {
-          type: "manual",
-          message: "Number already exists",
-        });
-        setErrorMessage("Number already exists");
-        setShowErrorPopup(true);
+        // Redirect to another page after successful registration
+        alert("Data Submitted Successfully!");
+        navigate("/");
       } else {
-        console.error("Unknown error occurred");
-        setError("email", {
-          type: "manual",
-          message: "Something went wrong. Please try again.",
-        });
-        setErrorMessage("Something went wrong. Please try again.");
-        setShowErrorPopup(true);
+        const errorResponse = await response.json();
+
+        // Handle specific errors based on response status
+        if (
+          response.status === 409 &&
+          errorResponse.error === "User already exists"
+        ) {
+          setError("email", { type: "manual", message: "User already exists" });
+          setErrorMessage("User already exists");
+          setShowErrorPopup(true);
+        } else if (
+          response.status === 409 &&
+          errorResponse.error === "Number already exists"
+        ) {
+          setError("number", {
+            type: "manual",
+            message: "Number already exists",
+          });
+          setErrorMessage("Number already exists");
+          setShowErrorPopup(true);
+        } else if (
+          response.status === 409 &&
+          errorResponse.error === "Comapany Name already exists"
+        ) {
+          setErrorMessage("Company Name already exists");
+          setShowErrorPopup(true);
+        } else {
+          console.error("Unknown error occurred");
+          setError("email", {
+            type: "manual",
+            message: "Something went wrong. Please try again.",
+          });
+          setErrorMessage("Something went wrong. Please try again.");
+          setShowErrorPopup(true);
+        }
       }
+    } catch (error) {
+      console.error("Error:", error);
+      setError("email", {
+        type: "manual",
+        message: "Something went wrong. Please try again.",
+      });
+      setErrorMessage("Something went wrong. Please try again.");
+      setShowErrorPopup(true);
     }
-  } catch (error) {
-    console.error("Error:", error);
-    setError("email", {
-      type: "manual",
-      message: "Something went wrong. Please try again.",
-    });
-    setErrorMessage("Something went wrong. Please try again.");
-    setShowErrorPopup(true);
-  }
-};
+  };
 
   const sendEmailOTP = () => {
     setShowEmailOtpInput(true);
@@ -251,7 +259,7 @@ const onSubmit = async (data) => {
                       },
                     })}
                     className="mt-1 p-1 flex-grow border rounded"
-                    placeholder="Enter Email"
+                    placeholder="Enter Your Company Email"
                     style={{ width: "100%" }}
                   />
                 </div>
@@ -306,6 +314,56 @@ const onSubmit = async (data) => {
 
               {errors && errors.mobile && (
                 <p className="text-red-500">{errors.mobile.message}</p>
+              )}
+            </div>
+            {/* Company Address Input */}
+            <div className="flex flex-col mb-4">
+              <div className="flex items-center">
+                <div>
+                  <FaMapMarkerAlt className="mr-2 inline-block" size={25} />
+                </div>
+                <div className="flex-grow">
+                  <input
+                    type="text"
+                    id="companyAddress"
+                    name="companyAddress"
+                    {...register("companyAddress", {
+                      required: "Company Address is required",
+                    })}
+                    className="px-2 mt-1 p-2 flex-grow border rounded"
+                    placeholder="Enter Company Address"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </div>
+
+              {errors && errors.companyAddress && (
+                <p className="text-red-500">{errors.companyAddress.message}</p>
+              )}
+            </div>
+
+            {/* Company Description Input */}
+            <div className="flex flex-col mb-4">
+              <div className="flex items-center">
+                <div>
+                  <FaInfoCircle className="mr-2 inline-block" size={25} />
+                </div>
+                <div className="flex-grow">
+                  <textarea
+                    id="Description"
+                    name="Description"
+                    {...register("Description", {
+                      required: "Company Description is required",
+                    })}
+                    className="px-2 mt-1 p-2 flex-grow border rounded"
+                    placeholder="Enter Company Description"
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </div>
+
+              {errors && errors.Description && (
+                <p className="text-red-500">{errors.Description.message}</p>
               )}
             </div>
 
@@ -387,15 +445,14 @@ const onSubmit = async (data) => {
             </button>
             <p className="text-sm font-light text-gray-500 dark:text-black">
               Already have an account ?{" "}
-              <Link to={'/login'}>
-              <a
-                href="#"
-                className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                
+              <Link to={"/login"}>
+                <a
+                  href="#"
+                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
-                Log in{""}
-              </a>
-                </Link>
+                  Log in{""}
+                </a>
+              </Link>
             </p>
           </form>
         </div>

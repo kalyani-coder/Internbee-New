@@ -1,3 +1,4 @@
+const { compare } = require("bcrypt");
 const mongoose = require("mongoose");
 
 const EmpAuthSchema = new mongoose.Schema({
@@ -34,6 +35,14 @@ const EmpAuthSchema = new mongoose.Schema({
       },
       message: "Please enter a valid 10-digit phone number",
     },
+  },
+  companyAddress: {
+    type: String,
+    required: true,
+  },
+  Description: {
+    type: String,
+    required: true,
   },
 });
 
