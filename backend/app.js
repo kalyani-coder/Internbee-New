@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 apiRouter = express.Router();
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -9,9 +12,27 @@ const employerRoutes = require("./routes/employerRoutes");
 const postInternship = require('./routes/postInternship');
 const studentsDetails = require('./routes/StudentsDetails');
 const Resume = require('./routes/Resume');
-
 const empAuthRoutes  = require('./routes/empAuthRoutes');
+const ImapgeUpload = require('./routes/UploadImagePdf')
 
+
+const bodyParser = require("body-parser");
+const multer = require('multer');
+
+app.use(bodyParser.json({ limit: "10mb" }));
+
+
+app.use('/public', express.static('public'));
+
+// for storing image path 
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage: storage });
 
 
 mongoose
@@ -25,9 +46,7 @@ mongoose
     console.log("Error connecting to MongoDB", err);
   });
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+
 
 
 app.use("/auth", authRoutes); // Mount authentication routes
@@ -42,6 +61,7 @@ apiRouter.use("/resume" , Resume)
 
 apiRouter.use("/empauth" , empAuthRoutes)
 
+apiRouter.use("/imageupload", ImapgeUpload)
 
 app.use('/api', apiRouter)
 
