@@ -15,7 +15,7 @@ import Footer from './Components/Footer';
 import Companies from './Components/Companies/Companies';
 import Blogs from './Components/Blogs/Blogs';
 import ViewProfile from './Components/ViewProfile/ViewProfile';
-
+import UploadImagePdf  from './Components/UploadImagePdf/UploadImage';
 
 
 
@@ -65,6 +65,7 @@ function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/viewprofile" element={<ViewProfile />} />
+        <Route path="/uploadimage" element={<UploadImagePdf />} />
 
 
 
