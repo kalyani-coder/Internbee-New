@@ -1,154 +1,126 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Component/Navbar/Navbar';
 import Sidebar from '../Component/Sidebar/Sidebar';
-import Footer from '../Component/Footer/Footer';
 
 const Jobs = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
-  const [searchCriteria, setSearchCriteria] = useState({
-    internshipTitle: '',
-    location: '',
-    datePosted: '',
-  });
-  const [searchResults, setSearchResults] = useState([]);
-  
-  const toggleExpansion = () => {
-    setIsExpanded(!isExpanded);
+  const [internships, setInternships] = useState([]);
+  const [filteredInternships, setFilteredInternships] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [expandedInternshipId, setExpandedInternshipId] = useState(null);
+
+  useEffect(() => {
+    // Function to fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/postinternship');
+        const data = await response.json();
+        setInternships(data);
+        setFilteredInternships(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Function to filter internships based on search input
+  const filterInternships = () => {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    const filtered = internships.filter(internship =>
+      internship.company_Name.toLowerCase().includes(lowerSearchTerm) ||
+      internship.job_Title.toLowerCase().includes(lowerSearchTerm) ||
+      internship.skills.toLowerCase().includes(lowerSearchTerm)
+    );
+    setFilteredInternships(filtered);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSearchCriteria((prevCriteria) => ({
-      ...prevCriteria,
-      [name]: value,
-    }));
-  };
-
-  const handleSearch = async () => {
-    try {
-      // Make a request to the API with search criteria
-      const response = await fetch(`http://localhost:8000/api/postinternship?title=${searchCriteria.internshipTitle}&location=${searchCriteria.location}&date=${searchCriteria.datePosted}`);
-      const data = await response.json();
-      setSearchResults(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  // Function to handle "View More" button click
+  const handleToggleDetails = (internshipId) => {
+    setExpandedInternshipId((prevId) => (prevId === internshipId ? null : internshipId));
   };
 
   return (
     <>
-      <div><Navbar/></div>
+
+      <div>
+        <Navbar />
+      </div>
+
       <div className='flex'>
-        <div><Sidebar/></div>
-        <div className="flex-1 flex justify-start p-6 flex-col">
-          <div className="max-w-md mt-8 p-6 bg-amber-300 rounded shadow-md">
-            <div
-              className="flex justify-between items-center cursor-pointer w-full"
-              onClick={toggleExpansion}
-            >
-              <h2 className="text-2xl font-bold">Search Posted Internship</h2>
-              <svg
-                className={`h-6 w-6 ${isExpanded ? 'transform rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d={isExpanded ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}
-                ></path>
-              </svg>
-            </div>
 
-            {isExpanded && (
-              <div className="w-full mt-4">
-                <div className="mb-4 w-full">
-                  <label htmlFor="internshipTitle" className="block text-sm font-medium text-black">
-                    Internship Title:
-                  </label>
-                  <input
-                    type="text"
-                    id="internshipTitle"
-                    name="internshipTitle"
-                    placeholder="Enter job title"
-                    value={searchCriteria.internshipTitle}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
-                  />
+
+        <div>
+          <Sidebar />
+        </div>
+        <div className="w-full p-4">
+          <h1 className="text-2xl font-bold mb-4">Internship List</h1>
+
+          {/* Search Box */}
+          <input
+            type="text"
+            placeholder="Search by company, job title, or skills"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyUp={filterInternships}
+            className="w-full p-2 border rounded mb-4"
+          />
+
+          {/* Display Message for No Results */}
+          {searchTerm && filteredInternships.length === 0 && (
+            <p className="text-red-500">No matching results found.</p>
+          )}
+
+          {/* Internship List */}
+          <ul className="grid gap-4">
+            {filteredInternships.map(internship => (
+              <li key={internship._id} className="bg-white p-4 rounded shadow">
+                <h2 className="text-lg font-semibold">{internship.job_Title}</h2>
+                <p className="text-gray-600">Company: {internship.company_Name}</p>
+                <p className="text-gray-600">Skills: {internship.skills}</p>
+
+                {/* Internship Details */}
+                <div
+                  className={`transition-all mt-2 overflow-hidden ${expandedInternshipId === internship._id ? 'max-h-full' : 'max-h-0'
+                    }`}
+                >
+                  <p>Location: {internship.location}</p>
+                  <p>Start Date: {internship.start_Date}</p>
+                  <p>End Date: {internship.end_Date}</p>
+                  <p>Job Type: {internship.job_Type}</p>
+                  <p>Position: {internship.position}</p>
+                  <p>Job Description: {internship.job_Description}</p>
                 </div>
 
-                <div className="mb-4 w-full">
-                  <label htmlFor="location" className="block text-sm font-medium text-black">
-                    Location:
-                  </label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    placeholder="Enter location"
-                    value={searchCriteria.location}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
-                  />
-                </div>
-
-                <div className="mb-4 w-full">
-                  <label htmlFor="datePosted" className="block text-sm font-medium text-black">
-                    Date Posted:
-                  </label>
-                  <input
-                    type="date"
-                    id="datePosted"
-                    name="datePosted"
-                    value={searchCriteria.datePosted}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-blue-500"
-                  />
-                </div>
-
-                <div className="w-full">
+                {/* View More Button */}
+                {expandedInternshipId !== internship._id && (
                   <button
-                    type="button"
-                    onClick={handleSearch}
-                    className="bg-black text-amber-300 py-2 px-4 rounded hover:bg-blue-600 hover:text-white focus:outline-none"
+                    className="bg-amber-300 text-black p-2 rounded mt-2 transition-all"
+                    onClick={() => handleToggleDetails(internship._id)}
+                    style={{ width: '100%' }}
                   >
-                    Search
+                    View More
                   </button>
-                </div>
-              </div>
-            )}
-          </div>
+                )}
 
-          <div className='flex'>
-      <div className="max-w-md mt-4 p-6 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-bold mb-4">Search Results</h2>
-        {searchResults.length === 0 ? (
-          <p>No results found.</p>
-        ) : (
-          <ul>
-            {searchResults.map((result) => (
-              <li key={result._id}>
-                {/* Display result details as needed */}
-                <p>{result.job_Title} - {result.location} - {result.start_Date}</p>
+                {/* View Less Button */}
+                {expandedInternshipId === internship._id && (
+                  <button
+                    className="bg-amber-300 text-black p-2 rounded mt-2 transition-all"
+                    onClick={() => handleToggleDetails(internship._id)}
+                    style={{ width: '100%' }}
+                  >
+                    View Less
+                  </button>
+                )}
+
               </li>
             ))}
           </ul>
-        )}
-      </div>
-      </div>
-
-      
         </div>
       </div>
-
-      {/* Display search results */}
-      
-
-      <div><Footer/></div>
     </>
+
   );
 };
 
