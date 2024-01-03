@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Sidebar from './Sidebar';
 import { FaUser } from 'react-icons/fa';
@@ -13,6 +13,212 @@ const Profile = () => {
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedPDF, setSelectedPDF] = useState(null);
+    const [selectedPDF2, setSelectedPDF2] = useState(null);
+    const [firstName , setFirstName] = useState('')
+    const [lastName , setLastName] = useState('')
+    const [email , setEmail] = useState('')
+    const [birthdate, setDateOfBirth] = useState('');
+
+    const [permanentaddress , setPermanentAddress] = useState('')
+    const [city , setCity] = useState('')
+    const [district , setDistrict] = useState('')
+    const [country , setCountry] = useState('')
+
+    const [currentaddress , setCurrentAddress] = useState('')
+    const [currentcity , setCurrentCity] = useState('')
+    const [currentdistrict , setCurrentDistrict] = useState('')
+    const [currentcountry , setCurrentCountry] = useState('')
+    const [education , setEducation] = useState('')
+    const [instituteName , setInstituteName] = useState('')
+    const [stream , setStream] = useState('')
+    const [passOutYear , setPassOutYear] = useState('')
+
+    const [keySkills , setKeySkills] = useState('')
+    const [languages , setLanguages] = useState('')
+    const [experience , setExperience] = useState('')
+    const [salaryExpectations , setSalaryExpectations] = useState('')
+    const [projectName , setProjectName] = useState('')
+    const [projectSummary , setProjectSummary] = useState('')
+
+    const handleKeySkills = (event) => {
+        setKeySkills(event.target.value);
+      
+    }
+    const handleLanguages = (event) => {
+        setLanguages(event.target.value);
+      
+    
+    }
+    const handleExperience = (event) => {
+        setExperience(event.target.value);
+    
+    }
+
+    const handleSalaryExpectations = (event) => {
+        setSalaryExpectations(event.target.value);
+    
+    
+    }
+
+    const handleProjectName = (event) => {
+        setProjectName(event.target.value);
+
+    }
+
+    const handleProjectSummary = (event) => {
+        setProjectSummary(event.target.value);
+    }
+
+
+
+    const handleEducationChange = (event) => {
+        setEducation(event.target.event);
+      };
+      const handleInstituteNameChange = (event) => {
+        setInstituteName(event.target.value);
+      
+      }
+      const handleStreamChange = (event) => {
+        setStream(event.target.value);
+      
+      
+      }
+      const handlePassOutYearChange = (event) => {
+        setPassOutYear(event.target.value);
+      }
+
+
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.files[0]);
+      };
+    
+      const handlePDFChange = (event) => {
+        setSelectedPDF(event.target.files[0]);
+      };
+
+      const handlePDFChange2 = (event) => {
+        setSelectedPDF2(event.target.files[0]);
+      };
+
+      const handleFirstNameChange = (event) => {
+        setFirstName(event.target.value);
+      
+      }
+
+      const handleLastNameChange = (event) => {
+        setLastName(event.target.value);
+      
+      }
+
+      const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+      
+      }
+      const handleDateOfBirthChange = (event) => {
+        setDateOfBirth(event.target.value);
+      };
+
+        const handlePermanentAddressChange = (event) => {
+        setPermanentAddress(event.target.value);
+      
+      }
+
+      
+    
+      const handleCityChange = (event) => {
+        setCity(event.target.value);
+      
+      }
+      const handleDistrictChange = (event) => {
+        setDistrict(event.target.value);
+      }
+      const handleCountryChange = (event) => {
+        setCountry(event.target.value);
+      }
+
+
+      const handleCurrentAddressChange = (event) => {
+        setCurrentAddress(event.target.value);
+      
+      }
+      const handleCurrentCityChange = (event) => {
+        setCurrentCity(event.target.value);
+      
+      
+      }
+      const handleCurrentDistrictChange = (event) => {
+        setCurrentDistrict(event.target.value);
+      
+      
+      }
+        const handleCurrentCountryChange = (event) => {
+            setCurrentCountry(event.target.value);
+        }
+
+
+        // const [userId, setUserId] = useState(null);
+        // useEffect(() => {
+        //     // Retrieve the user ID from localStorage when the component mounts
+        //     const storedUserId = localStorage.getItem('userId');
+        //     setUserId(storedUserId);
+        //   }, []);
+        //   console.log(userId);
+
+      const handleUpload = (e) => {
+        e.preventDefault();
+        if (selectedImage || selectedPDF) {
+          const formData = new FormData();
+          if (selectedImage) formData.append('image', selectedImage);
+          if (selectedPDF) formData.append('pdf', selectedPDF);
+          if (selectedPDF) formData.append('pdf2', selectedPDF2);
+            formData.append('firstName' , firstName)
+            formData.append('lastName' , lastName)
+            formData.append('email', email)
+            formData.append('birthdate', birthdate)
+
+            formData.append('permanentaddress', permanentaddress)
+            formData.append('city', city)
+            formData.append('district', district)
+            formData.append('country', country)
+            formData.append('currentaddress', currentaddress)
+            formData.append('currentCity', currentcity)
+            formData.append('currentdistrict', currentdistrict)
+            formData.append('currentcountry', currentcountry)
+
+            formData.append('education', education)
+            formData.append('instituteName', instituteName)
+            formData.append('stream', stream)
+            formData.append('passOutYear', passOutYear)
+
+            formData.append('keySkills', keySkills)
+            formData.append('languages', languages)
+            formData.append('experience', experience)
+            formData.append('salaryExpectations', salaryExpectations)
+            formData.append('projectName', projectName)
+            formData.append('projectSummary', projectSummary)
+            // formData.append('userId', userId);
+        
+        
+         
+    
+          fetch('http://localhost:8000/api/studentsdetails', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Files uploaded successfully:', data);
+              alert('Files Uploaded Successfully', 'success');
+            })
+            .catch((error) => {
+              console.error('Error uploading files:', error);
+              alert('Error Uploading Files', 'error');
+            });
+        }
+      };
+
     const handleProfileIconClick = () => {
         setShowProfileDropdown(!showProfileDropdown);
     };
@@ -26,40 +232,7 @@ const Profile = () => {
 
     // new code start here 
 
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        birthdate: '',
-        permanent_address: '',
-        city: '',
-        district: '',
-        country: '',
-        current_address: '',
-        current_city: '',
-        current_district: '',
-        current_country: '',
-        education: '',
-        instituteName: '',
-        stream: '',
-        passOutYear: '',
-        keySkills: '',
-        languages: ' ',
-        experience: ' ',
-        salaryExpectations: ' ',
-        projectName: ' ',
-        projectSummary: ' ',
-
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
+   
 
 
 
@@ -82,51 +255,10 @@ const Profile = () => {
     };
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            // Get the user ID from local storage
-            const userId = localStorage.getItem('userId');
-            const email = localStorage.getItem('email');
-            const number = localStorage.getItem('number');
-
-            // Include the user ID in the form data
-            const formDataWithUserId = {
-                ...formData,
-                userId: userId,
-                user_email: email,
-                user_number: number,
-
-            };
-
-            console.log('Form Data:', formDataWithUserId);
-
-            const response = await fetch('http://localhost:8000/api/studentsdetails', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formDataWithUserId),
-            });
-
-            if (response.ok) {
-                console.log('Data submitted successfully:', response);
-                alert("Your Details Submitted Successfully");
-            } else {
-                console.error('Error submitting data');
-            }
-        } catch (error) {
-            console.error('Error creating data:', error);
-            // Handle the error appropriately in the frontend, e.g., show a user-friendly error message
-        }
-    };
-
-
 
     return (
         <div className="">
-            {/* <Sidebar /> */}
+         
             <div className="">
 
                 <div className="bg-amber-300 p-6 flex items-center justify-between border shadow-xl">
@@ -161,7 +293,6 @@ const Profile = () => {
                         <div
                             className="cursor-pointer"
                             onMouseEnter={() => setShowProfileDropdown(true)}
-                            // onMouseLeave={() => setShowProfileDropdown(false)}
                             onClick={handleProfileIconClick}
 
                         >
@@ -200,7 +331,6 @@ const Profile = () => {
                     <h6>1.Personal Details</h6>
                 </div>
 
-                <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
 
                         <div className="form-group">
@@ -210,8 +340,10 @@ const Profile = () => {
                                 type="text"
                                 id="firstName"
                                 name="firstName"
-                                value={formData.firstName}
-                                onChange={handleChange}
+                                value={firstName}
+                                required
+                                onChange={handleFirstNameChange}
+                            
                             />
                         </div>
 
@@ -222,8 +354,10 @@ const Profile = () => {
                                 type="text"
                                 id="lastName"
                                 name="lastName"
-                                value={formData.lastName}
-                                onChange={handleChange}
+                                value={lastName}
+                                onChange={handleLastNameChange}
+                               
+                              
                             />
                         </div>
 
@@ -234,8 +368,8 @@ const Profile = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                value={formData.email}
-                                onChange={handleChange}
+                               value={email}
+                               onChange={handleEmailChange}
                                 required
                             />
                         </div>
@@ -247,8 +381,9 @@ const Profile = () => {
                                 type="text"
                                 id="birthdate"
                                 name="birthdate"
-                                value={formData.birthdate}
-                                onChange={handleChange}
+                                onChange={handleDateOfBirthChange}
+                                value={birthdate}
+                               
                             />
                         </div>
 
@@ -259,10 +394,12 @@ const Profile = () => {
                             <input
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
-                                id="permanent_address"
-                                name="permanent_address"
-                                value={formData.permanent_address}
-                                onChange={handleChange}
+                                id="permanentaddress"
+                                name="permanentaddress"
+                                value={permanentaddress}
+                                onChange={handlePermanentAddressChange}
+                                
+                              
                             />
                         </div>
 
@@ -273,8 +410,12 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="city"
                                 name="city"
-                                value={formData.city}
-                                onChange={handleChange}
+                                value={city}
+                                onChange={handleCityChange}
+                                
+                              
+
+                              
                             />
                         </div>
 
@@ -285,8 +426,11 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="district"
                                 name="district"
-                                value={formData.district}
-                                onChange={handleChange}
+                                value={district}
+                                onChange={handleDistrictChange}
+                           
+                               
+                               
                             />
                         </div>
 
@@ -297,8 +441,11 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="country"
                                 name="country"
-                                value={formData.country}
-                                onChange={handleChange}
+                                value={country}
+                                onChange={handleCountryChange}
+                              
+                               
+                             
                             />
                         </div>
 
@@ -309,10 +456,12 @@ const Profile = () => {
                             <input
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
-                                id="current_address"
-                                name="current_address"
-                                value={formData.current_address}
-                                onChange={handleChange}
+                                id="currentaddress"
+                                name="currentaddress"
+                                value={currentaddress}
+                                onChange={handleCurrentAddressChange}
+                              
+                             
                             />
                         </div>
 
@@ -323,10 +472,12 @@ const Profile = () => {
                             <input
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
-                                id="current_city"
-                                name="current_city"
-                                value={formData.current_city}
-                                onChange={handleChange}
+                                id="currentcity"
+                                name="currentcity"
+                                value={currentcity}
+                                onChange={handleCurrentCityChange}
+                               
+                              
                             />
                         </div>
 
@@ -337,10 +488,12 @@ const Profile = () => {
                             <input
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
-                                id="current_district"
-                                name="current_district"
-                                value={formData.current_district}
-                                onChange={handleChange}
+                                id="currentdistrict"
+                                name="currentdistrict"
+                                value={currentdistrict}
+                                onChange={handleCurrentDistrictChange}
+                              
+                             
                             />
                         </div>
 
@@ -351,10 +504,12 @@ const Profile = () => {
                             <input
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
-                                id="current_country"
-                                name="current_country"
-                                value={formData.current_country}
-                                onChange={handleChange}
+                                id="currentcountry"
+                                name="currentcountry"
+                                value={currentcountry}
+                                onChange={handleCurrentCountryChange}
+                              
+                              
                             />
                         </div>
                     </div>
@@ -372,14 +527,14 @@ const Profile = () => {
                             <label htmlFor="education" className="block text-large font-medium">
                                 Education
                             </label>
-                            <input
+                           <input 
                                 type="text"
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="education"
                                 name="education"
-                                value={formData.education}
-                                onChange={handleChange}
-                            />
+                                value={education}
+                                onChange={handleEducationChange}
+                           />
                         </div>
 
                         <div className="form-group">
@@ -391,8 +546,10 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="instituteName"
                                 name="instituteName"
-                                value={formData.instituteName}
-                                onChange={handleChange}
+                                value={instituteName}
+                                onChange={handleInstituteNameChange}
+
+                              
                             />
                         </div>
 
@@ -405,8 +562,10 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="stream"
                                 name="stream"
-                                value={formData.stream}
-                                onChange={handleChange}
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
                             />
                         </div>
 
@@ -419,8 +578,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="passOutYear"
                                 name="passOutYear"
-                                value={formData.passOutYear}
-                                onChange={handleChange}
+                                value={passOutYear}
+                                onChange={handlePassOutYearChange}
+                              
                             />
                         </div>
                     </div>
@@ -447,8 +607,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-large"
                                 id="keyskills"
                                 name="keySkills"
-                                value={formData.keySkills}
-                                onChange={handleChange}
+                                value={keySkills}
+                                onChange={handleKeySkills}
+                              
                             />
                         </div>
                         <div className="form-group">
@@ -460,8 +621,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
                                 id="languages"
                                 name="languages"
-                                value={formData.languages}
-                                onChange={handleChange}
+                                value={languages}
+                                onChange={handleLanguages}
+                             
                             />
                         </div>
 
@@ -474,8 +636,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
                                 id="experience"
                                 name="experience"
-                                value={formData.experience}
-                                onChange={handleChange}
+                                value={experience}
+                                onChange={handleExperience}
+                              
                             />
                         </div>
 
@@ -489,8 +652,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
                                 id="salaryexpectations"
                                 name="salaryExpectations"
-                                value={formData.salaryExpectations}
-                                onChange={handleChange}
+                                value={salaryExpectations}
+                                onChange={handleSalaryExpectations}
+                               
                             />
                         </div>
 
@@ -503,8 +667,9 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
                                 id="projectname"
                                 name="projectName"
-                                value={formData.projectName}
-                                onChange={handleChange}
+                                value={projectName}
+                                onChange={handleProjectName}
+                              
                             />
                         </div>
                         <div className="form-group">
@@ -516,28 +681,21 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
                                 rows="4"
                                 name="projectSummary"
-                                value={formData.projectSummary}
-                                onChange={handleChange}
+                                value={projectSummary}
+                                onChange={handleProjectSummary}
+                            
                             />
                         </div>
                     </div>
 
-                    <div>
-                        <button type="submit"
-                            style={{ marginLeft: "1300px", marginTop: "-100px" }}
-                            className=' p-2 text-xl text-white border rounded-md  bg-gray-800 submit-your-application'
-                        >   Save Your Details
-
-                        </button>
-                    </div>
-                </form>
+                   
+                
                 {/* here is the button for save  */}
 
                 <hr />
 
 
 
-                <form>
                     <div className="mt-6 text-2xl font-bold">
                         <h6>4.Upload Documents</h6>
                     </div>
@@ -549,9 +707,9 @@ const Profile = () => {
                                 Resume
                             </label>
                             <input
-                                type="file"
-                                id="students_resume"
-                                accept=".pdf, .doc, .docx"
+                             type="file"
+                             accept="application/pdf"
+                             onChange={handlePDFChange}
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
 
                             />
@@ -567,8 +725,8 @@ const Profile = () => {
                             </label>
                             <input
                                 type="file"
-                                id="certification"
-                                accept="image/*"
+                                accept="application/pdf"
+                                onChange={handlePDFChange2}
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
 
                             />
@@ -579,9 +737,9 @@ const Profile = () => {
                                 Profile Picture
                             </label>
                             <input
-                                type="file"
-                                id="profile_picture"
-                                accept="image/*"
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={handleImageChange}
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
 
                             />
@@ -598,10 +756,17 @@ const Profile = () => {
                     <div className="form-group">
                         <button type='button'
                             style={{ marginTop: "-400px" }}
-                            className='mt-8 p-2 text-xl text-white border rounded-md bg-red-800' onClick={handleResume}>Create Resume</button>
+                            className='mt-8 p-2 text-xl text-white border rounded-md bg-stone-700' onClick={handleResume}>Create Resume</button>
                     </div>
-                </form>
+               
+                    <div>
+                        <button  onClick={handleUpload}
+                            style={{ marginLeft: "1300px", marginTop: "-100px" }}
+                            className=' p-2 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application'
+                        >   Save Details
 
+                        </button>
+                    </div>
             </div>
 
         </div >

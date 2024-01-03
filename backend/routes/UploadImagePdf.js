@@ -61,6 +61,7 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
           pdfPath: req.files.pdf[0].path,
           serviceImage: publicImageUrl,
           servicePDF: publicPdfUrl,
+          serviceName : req.body.serviceName,
         });
   
         await fileData.save();

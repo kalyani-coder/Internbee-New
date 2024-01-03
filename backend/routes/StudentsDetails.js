@@ -1,7 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const StudentDetailsModel = require("../models/StudentsDetails"); // Adjust the path accordingly
+const multer = require('multer');
+const path = require('path');
 
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 // GET route
 router.get("/", async (req, res) => {
   try {
@@ -67,18 +77,76 @@ router.get("/studentId/:id", async (req, res) => {
 // });
 
 // POST ROUTE 
-router.post("/", async (req, res) => {
-  const studentData = req.body;
+// router.post("/", async (req, res) => {
+//   const studentData = req.body;
 
+//   try {
+//     // Create and save the new student without checking for existing students
+//     const student = new StudentDetailsModel(studentData);
+//     await student.save();
+//     res.status(201).json(student);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
+
+// image upload route 
+router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 } ,{name : 'pdf2' , maxCount : 1}]), async (req, res) => {
   try {
-    // Create and save the new student without checking for existing students
-    const student = new StudentDetailsModel(studentData);
-    await student.save();
-    res.status(201).json(student);
+    if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
+      const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
+      const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
+      const publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
+
+      const fileData = new StudentDetailsModel({
+        filename: req.files.image[0].originalname, // Assuming image is required for every entry
+        path: req.files.image[0].path,
+        pdfPath: req.files.pdf[0].path,
+        certificatePath: req.files.pdf2[0].path,
+        profile_pic: publicImageUrl,
+        student_PDF: publicPdfUrl,
+        student_certificate : publicPdfUrl2,
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        email : req.body.email,
+        birthdate : req.body.birthdate,
+        permanentaddress : req.body.permanentaddress,
+        city : req.body.city, 
+        district : req.body.district,
+        country : req.body.country,
+        currentaddress : req.body.currentaddress,
+        currentcity : req.body.currentcity,
+        currentdistrict : req.body.currentdistrict,
+        currentcountry : req.body.currentcountry,
+        passOutYear : req.body.passOutYear,
+        stream: req.body.stream,
+        instituteName: req.body.instituteName,
+        education: req.body.education,
+        keySkills : req.body.keySkills,
+        languages : req.body.languages,
+        experience : req.body.experience,
+        salaryExpectations : req.body.salaryExpectations,
+        projectName : req.body.projectName,
+        projectSummary: req.body.projectSummary,
+        // userId : req.body.userId,
+
+
+      });
+
+      await fileData.save();
+      res.status(201).json(fileData);
+    } else {
+      res.status(400).json({ error: 'Image and PDF files are required' });
+    }
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+
 
 // PATCH route
 router.patch("/:id", async (req, res) => {

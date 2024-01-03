@@ -6,8 +6,9 @@ const ImageSchema = new mongoose.Schema({
     serviceImage: String,
     servicePDF: String,
     pdfPath: String,
+    serviceName : String,
 })
 
 const ImageUpload = mongoose.model('ImageUpload', ImageSchema)
 
-module.exports = ImageUpload
+module.exports = ImageUpload;
