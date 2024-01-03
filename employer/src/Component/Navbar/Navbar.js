@@ -14,11 +14,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center">
-        <input
-          type="text"
-          placeholder="Search by Location..."
-          className="border border-gray-300 rounded-md px-4 py-2 mr-4"
-        />
+       
 
         <ul className="flex items-center space-x-4">
           <li>

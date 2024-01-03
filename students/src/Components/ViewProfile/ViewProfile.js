@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeNav from '../HomeNav/HomeNav';
-import Sidebar from '../Sidebar';
+
 
 const ViewProfile = () => {
     // Sample data for personal details
