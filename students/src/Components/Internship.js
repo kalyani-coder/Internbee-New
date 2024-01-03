@@ -21,7 +21,7 @@ const Internship = () => {
 
   // State for profile dropdown and search
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  
   const [mainSearchQuery, setMainSearchQuery] = useState("");
   const [filteredInternships, setFilteredInternships] = useState([]);
   const [allInternships, setAllInternships] = useState([]);
@@ -174,15 +174,7 @@ const Internship = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex items-center">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="p-2 rounded-md mr-2 border"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+        
 
         {/* Notifications and User Profile */}
         <div className="flex items-center space-x-4 relative">
