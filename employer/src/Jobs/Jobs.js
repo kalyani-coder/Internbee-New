@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../Component/Navbar/Navbar';
-import Sidebar from '../Component/Sidebar/Sidebar';
+import React, { useState, useEffect } from "react";
+import Navbar from "../Component/Navbar/Navbar";
+import Sidebar from "../Component/Sidebar/Sidebar";
 
 const Jobs = () => {
   const [internships, setInternships] = useState([]);
   const [filteredInternships, setFilteredInternships] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [expandedInternshipId, setExpandedInternshipId] = useState(null);
 
   useEffect(() => {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/postinternship');
+        const userId = localStorage.getItem("userId");
+        const response = await fetch(
+          `http://localhost:8000/api/postinternship/userId/${userId}`
+        );
         const data = await response.json();
         setInternships(data);
         setFilteredInternships(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -27,29 +30,29 @@ const Jobs = () => {
   // Function to filter internships based on search input
   const filterInternships = () => {
     const lowerSearchTerm = searchTerm.toLowerCase();
-    const filtered = internships.filter(internship =>
-      internship.company_Name.toLowerCase().includes(lowerSearchTerm) ||
-      internship.job_Title.toLowerCase().includes(lowerSearchTerm) ||
-      internship.skills.toLowerCase().includes(lowerSearchTerm)
+    const filtered = internships.filter(
+      (internship) =>
+        internship.company_Name.toLowerCase().includes(lowerSearchTerm) ||
+        internship.job_Title.toLowerCase().includes(lowerSearchTerm) ||
+        internship.skills.toLowerCase().includes(lowerSearchTerm)
     );
     setFilteredInternships(filtered);
   };
 
   // Function to handle "View More" button click
   const handleToggleDetails = (internshipId) => {
-    setExpandedInternshipId((prevId) => (prevId === internshipId ? null : internshipId));
+    setExpandedInternshipId((prevId) =>
+      prevId === internshipId ? null : internshipId
+    );
   };
 
   return (
     <>
-
       <div>
         <Navbar />
       </div>
 
-      <div className='flex'>
-
-
+      <div className="flex">
         <div>
           <Sidebar />
         </div>
@@ -73,16 +76,23 @@ const Jobs = () => {
 
           {/* Internship List */}
           <ul className="grid gap-4">
-            {filteredInternships.map(internship => (
+            {filteredInternships.map((internship) => (
               <li key={internship._id} className="bg-white p-4 rounded shadow">
-                <h2 className="text-lg font-semibold">{internship.job_Title}</h2>
-                <p className="text-gray-600">Company: {internship.company_Name}</p>
+                <h2 className="text-lg font-semibold">
+                  {internship.job_Title}
+                </h2>
+                <p className="text-gray-600">
+                  Company: {internship.company_Name}
+                </p>
                 <p className="text-gray-600">Skills: {internship.skills}</p>
 
                 {/* Internship Details */}
                 <div
-                  className={`transition-all mt-2 overflow-hidden ${expandedInternshipId === internship._id ? 'max-h-full' : 'max-h-0'
-                    }`}
+                  className={`transition-all mt-2 overflow-hidden ${
+                    expandedInternshipId === internship._id
+                      ? "max-h-full"
+                      : "max-h-0"
+                  }`}
                 >
                   <p>Location: {internship.location}</p>
                   <p>Start Date: {internship.start_Date}</p>
@@ -97,7 +107,7 @@ const Jobs = () => {
                   <button
                     className="bg-amber-300 text-black p-2 rounded mt-2 transition-all"
                     onClick={() => handleToggleDetails(internship._id)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   >
                     View More
                   </button>
@@ -108,19 +118,17 @@ const Jobs = () => {
                   <button
                     className="bg-amber-300 text-black p-2 rounded mt-2 transition-all"
                     onClick={() => handleToggleDetails(internship._id)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   >
                     View Less
                   </button>
                 )}
-
               </li>
             ))}
           </ul>
         </div>
       </div>
     </>
-
   );
 };
 
