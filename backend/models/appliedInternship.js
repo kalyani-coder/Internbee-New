@@ -13,7 +13,11 @@ const appliedInternship = new mongoose.Schema({
     type: String,
     required: true,
   },
-  deadline: {
+  end_Date: {
+    type: String,
+    required: true,
+  },
+  Resume: {
     type: String,
     required: true,
   },

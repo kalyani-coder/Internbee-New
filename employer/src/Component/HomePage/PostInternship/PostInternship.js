@@ -74,42 +74,51 @@ const PostInternship = () => {
    }, []);
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
+  // Formatting dates to the desired format
+  const formattedStartDate = format(formData.start_Date, "dd/MM/yyyy", {
+    locale: enIN,
+  });
+  const formattedEndDate = format(formData.end_Date, "dd/MM/yyyy", {
+    locale: enIN,
+  });
 
-  
+  try {
+    setPosting(true);
+    const response = await fetch("http://localhost:8000/api/postinternship", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        start_Date: formattedStartDate,
+        end_Date: formattedEndDate,
+      }),
+    });
 
-    try {
-      console.log(formData);
-      setPosting(true);
-      const response = await fetch("http://localhost:8000/api/postinternship", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    if (response.ok) {
+      setAlert({
+        type: "success",
+        message: "Form data submitted successfully",
       });
-
-      if (response.ok) {
-        setAlert({
-          type: "success",
-          message: "Form data submitted successfully",
-        });
-        setPosting(false);
-        // Handle success, e.g., redirect or show a success message
-      } else {
-        setAlert({ type: "danger", message: "Failed to submit form data" });
-        setPosting(false);
-        // Handle errors, e.g., show an error message to the user
-      }
-    } catch (error) {
-      setAlert({ type: "danger", message: "Error during form submission" });
-      console.error("Error during form submission", error);
       setPosting(false);
-      // Handle other types of errors, e.g., network issues
+      // Handle success, e.g., redirect or show a success message
+    } else {
+      setAlert({ type: "danger", message: "Failed to submit form data" });
+      setPosting(false);
+      // Handle errors, e.g., show an error message to the user
     }
-  };
+  } catch (error) {
+    setAlert({ type: "danger", message: "Error during form submission" });
+    console.error("Error during form submission", error);
+    setPosting(false);
+    // Handle other types of errors, e.g., network issues
+  }
+};
+
   return (
     <div className="max-w-3xl mx-auto mt-8 p-8 bg-amber-300 rounded shadow-md">
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -202,14 +211,12 @@ const PostInternship = () => {
             id="start_Date"
             selected={formData.start_Date}
             onChange={handleStartDateChange}
-            locale={enIN}
             dateFormat="dd/MM/yyyy"
             className="mt-1 p-2 border rounded-md w-full"
             required
           />
         </div>
         {/* End Date */}
-
         <div className="w-full md:w-1/2 px-4 mb-4">
           <label
             htmlFor="end_Date"
@@ -221,7 +228,6 @@ const PostInternship = () => {
             id="end_Date"
             selected={formData.end_Date}
             onChange={handleEndDateChange}
-            locale={enIN}
             dateFormat="dd/MM/yyyy"
             className="mt-1 p-2 border rounded-md w-full"
             required
