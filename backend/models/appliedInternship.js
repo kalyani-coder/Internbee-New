@@ -17,7 +17,15 @@ const appliedInternship = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Resume: {
+  InternName: {
+    type: String,
+    required: true,
+  },
+  InternEmail: {
+    type: String,
+    required: true,
+  },
+  InternNumber: {
     type: String,
     required: true,
   },
