@@ -1,6 +1,7 @@
 const express = require("express");
 const appliedInternshipModel = require("../models/appliedInternship");
 const PostInternship = require("../models/postInternship");
+const User = require("../models/user");
 
 const router = express.Router();
 
@@ -15,17 +16,22 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { postId, InternId, Resume } = req.body;
+    const { postId, InternId } = req.body;
 
     const existingPost = await PostInternship.findById(postId);
     const alreadyApplied = await appliedInternshipModel.findOne({
       postId,
       InternId,
     });
+    const existingUser = await User.findById(InternId);
+
+
 
     if (!existingPost) {
       return res.status(404).json({ message: "PostID not found" });
     }
+
+
 
     if (alreadyApplied) {
       return res
@@ -53,7 +59,9 @@ router.post("/", async (req, res) => {
       InternId,
       status: "pending",
       end_Date: formattedEndDateString,
-      Resume,
+      InternName: existingUser.fullName,
+      InternEmail: existingUser.email,
+      InternNumber: existingUser.number,
     });
 
     const savedInternship = await newAppliedInternship.save();
