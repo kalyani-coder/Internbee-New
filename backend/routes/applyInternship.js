@@ -44,7 +44,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Internship has expired" });
     }
 
-  
     const formattedEndDateString = `${endDate.getDate()}/${
       endDate.getMonth() + 1
     }/${endDate.getFullYear()}`;
@@ -64,9 +63,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-
-
-
 router.patch("/:id", async (req, res) => {
   try {
     const updatedInternship = await appliedInternshipModel.findByIdAndUpdate(
@@ -75,6 +71,30 @@ router.patch("/:id", async (req, res) => {
       { new: true }
     );
     res.status(200).json(updatedInternship);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const foundInternship = await appliedInternshipModel.findById(
+      req.params.id
+    );
+    res.status(200).json(foundInternship);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+});
+
+router.get("/postId/:id", async (req, res) => {
+  try {
+    const foundInternship = await appliedInternshipModel.find({
+      postId: req.params.id,
+    });
+    res.status(200).json(foundInternship);
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
@@ -90,6 +110,6 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 module.exports = router;
