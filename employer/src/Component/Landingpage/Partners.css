@@ -23,7 +23,9 @@
     display: flex;
     gap: 80px;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
+  overflow-x: scroll;
+
     /* animation: scroll 60s linear infinite; */
     /* width: 800%; Set a width large enough to accommodate all images */
   }

@@ -23,7 +23,9 @@
     display: flex;
     gap: 80px;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
+  overflow-x: scroll;
+
     /* animation: scroll 60s linear infinite; */
     /* width: 800%; Set a width large enough to accommodate all images */
   }
@@ -48,15 +50,5 @@
   .wid-fr-partners {
     width: 100%;
     padding: 1em;
-  }
-  .logo-for-partners {
-    display: flex;
-    gap: 80px;
-    /* align-items: center; */
-    padding:  0 10px;
-    /* overflow: hidden; */
-    overflow-x: scroll;
-    /* animation: scroll 60s linear infinite; */
-    /* width: 800%; Set a width large enough to accommodate all images */
   }
 }

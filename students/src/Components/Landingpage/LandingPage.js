@@ -5,6 +5,7 @@ import './LandingPage.css';
 import Partners from './Partners';
 // import Footer from './Footer';
 import Footer from './../Footer';
+// import Footer from './../Footer/Footer';
 
 
 const LandingPage = () => {
@@ -44,34 +45,11 @@ const LandingPage = () => {
 
     return (
         <div className="flex flex-col h-screen">
-            {/* Section 1: Dream Career */}
-            <section id="dream-career-section">
-                <h1 className="heading">
-                    Make Your Dream Career a Reality
-                </h1>
-                <h2 className="sub-heading">
-                    Trending on Internbee <span>🔥</span>
-                </h2>
 
-                <div className="carousel-container mt-5" onMouseEnter={handleTrackerHover} onMouseLeave={handleTrackerLeave}>
-                    <div className="carousel" ref={carouselRef}>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala.com/static/images/pgc_course_specific_banners/pgc_homepage_banner_new.png')", backgroundPosition: "inherit" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://internshala-uploads.internshala.com/banner-images/home_new/part_time_pocket_money_dece23-student.png.webp')", backgroundPosition: "inherit" }}></div>
-                        {/* <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div>
-                        <div className="card-landing-page" style={{ backgroundImage: "url('https://via.placeholder.com/600x300')" }}></div> */}
-                        {/* Add more card-landing-pages as needed */}
-                    </div>
-                </div>
-            </section>
+
 
             {/* Section 2: Latest Internships and Categories */}
-            <section className="flex-1 " id="dream-career-section">
+            <section section className="flex-1 p-20 " id="dream-career-section" >
                 <h1 className="heading ">
                     Latest Internships on InternBee
                 </h1>
@@ -87,11 +65,11 @@ const LandingPage = () => {
 
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
-                    <div className="carousel h-96" ref={carouselRef}>
+                    <div className="carousel" ref={carouselRef}>
                         {/* Dummy Data for card-landing-page Carousel */}
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
+
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Internship Title 1</h2>
@@ -112,7 +90,6 @@ const LandingPage = () => {
                         </div>
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Internship Title 2</h2>
@@ -134,7 +111,6 @@ const LandingPage = () => {
                         <div className="card-landing-page">
                             <div className="card-landing-page">
                                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                    <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
                                     <div className="p-4">
                                         <h2 className="text-xl font-semibold mb-2">Internship Title 3</h2>
@@ -156,99 +132,14 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Section 3: Another Section */}
-            <section className="flex-1" id="dream-career-section">
-                <h1 className="heading">
-                    Latest jobs on InternBee
-                </h1>
 
-                {/* Popular Categories */}
-                <div className="categories flex gap-10 ml-80">
-                    <p>Popular Categories:</p>
-                    <ul className='flex gap-5'>
-                        <li>Work from Home</li>
-                        <li>Part-Time</li>
-                    </ul>
-                </div>
-
-                {/* card-landing-page Carousel */}
-                <div className="carousel-container mt-5 overflow-hidden">
-                    <div className="carousel h-96" ref={carouselRef}>
-                        {/* Dummy Data for card-landing-page Carousel */}
-                        <div className="card-landing-page">
-                            <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
-
-                                <div className="p-4">
-                                    <h2 className="text-xl font-semibold mb-2">Internship Title 1</h2>
-                                    <p className="text-gray-700 mb-2">Company Name 1</p>
-                                    <hr className="my-2" />
-
-                                    <div className="flex items-center justify-between mt-2">
-                                        <div>
-                                            <p className="text-gray-600">Location: City 1</p>
-                                            <p className="text-gray-600">Stipend: $500</p>
-                                            <p className="text-gray-600">Duration: 3 months</p>
-                                        </div>
-
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-landing-page">
-                            <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
-
-                                <div className="p-4">
-                                    <h2 className="text-xl font-semibold mb-2">Internship Title 2</h2>
-                                    <p className="text-gray-700 mb-2">Company Name 2</p>
-                                    <hr className="my-2" />
-
-                                    <div className="flex items-center justify-between mt-2">
-                                        <div>
-                                            <p className="text-gray-600">Location: City 2</p>
-                                            <p className="text-gray-600">Stipend: $600</p>
-                                            <p className="text-gray-600">Duration: 4 months</p>
-                                        </div>
-
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-landing-page">
-                            <div className="card-landing-page">
-                                <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                    <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
-
-                                    <div className="p-4">
-                                        <h2 className="text-xl font-semibold mb-2">Internship Title 3</h2>
-                                        <p className="text-gray-700 mb-2">Company Name 3</p>
-                                        <hr className="my-2" />
-
-                                        <div className="flex items-center justify-between mt-2">
-                                            <div>
-                                                <p className="text-gray-600">Location: City 3</p>
-                                                <p className="text-gray-600">Stipend: $700</p>
-                                                <p className="text-gray-600">Duration: 5 months</p>
-                                            </div>
-
-                                            <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* section 4 */}
 
-            <section className="flex-1" id="dream-career-section">
+            <section section className="flex-1" id="dream-career-section" >
                 <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
@@ -268,7 +159,6 @@ const LandingPage = () => {
                         {/* Dummy Data for card-landing-page Carousel */}
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Internship Title 1</h2>
@@ -289,7 +179,6 @@ const LandingPage = () => {
                         </div>
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Internship Title 2</h2>
@@ -311,7 +200,6 @@ const LandingPage = () => {
                         <div className="card-landing-page">
                             <div className="card-landing-page">
                                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                                    <img className="w-full h-48 object-cover object-center" src="https://via.placeholder.com/600x300" alt="Internship" />
 
                                     <div className="p-4">
                                         <h2 className="text-xl font-semibold mb-2">Internship Title 3</h2>
@@ -333,12 +221,12 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* section 5 */}
 
 
-            <section id="dream-career-section">
+            <section section id="dream-career-section" >
                 <div className='text-center'>
                     <h1 className="text-2xl font-semibold mb-6 text-center">Top companies trust us</h1>
                 </div>
@@ -368,17 +256,17 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-            </section>
+            </section >
 
 
 
             {/* section 4 */}
 
-            <div>
+            <div div >
                 <Footer />
-            </div>
+            </div >
 
-        </div>
+        </div >
     );
 };
 
