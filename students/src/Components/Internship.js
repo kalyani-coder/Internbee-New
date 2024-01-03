@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
 import {
   FaUser,
-  FaCalendar,
+ 
   FaMoneyBill,
   FaMapMarkerAlt,
   FaRegClock,
@@ -15,7 +15,6 @@ import Footer from "../Components/Footer";
 const Internship = () => {
   // Refs for scrolling
   const companiesRef = useRef(null);
-  const internshipsRef = useRef(null);
 
   // React Router's navigate function
   const navigate = useNavigate();
@@ -75,47 +74,66 @@ const Internship = () => {
     }
   };
 
-  // Function to scroll to the internships section
-  const handleInternshipsClick = () => {
-    if (internshipsRef.current) {
-      internshipsRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+  const filterByStipendRange = (minStipend, maxStipend) => {
+    const filtered = allInternships.filter((internship) => {
+      const stipend = parseInt(internship.stipend); // Convert stipend to integer for comparison
+      return stipend >= minStipend && stipend <= maxStipend;
+    });
+    setFilteredInternships(filtered);
   };
 
-  // Function to handle the Navbar search logic
-  const handleSearch = () => {
-    const lowerCaseQuery = searchQuery.toLowerCase();
-    // Filter internships based on company name, position, or skills
+  const filterByLocation = (location) => {
+    if (location === "All") {
+      setFilteredInternships(allInternships); // Show all internships if "All" or "Any" is selected
+    } else {
+      const filtered = allInternships.filter(
+        (internship) =>
+          internship.location.toLowerCase() === location.toLowerCase()
+      );
+      setFilteredInternships(filtered);
+    }
+  };
+  const filterByJobType = (jobType) => {
     const filtered = allInternships.filter(
       (internship) =>
-        internship.companyName.toLowerCase().includes(lowerCaseQuery) ||
-        internship.position.toLowerCase().includes(lowerCaseQuery) ||
-        internship.skillsRequired.some((skill) =>
-          skill.toLowerCase().includes(lowerCaseQuery)
-        )
+        internship.job_Type.toLowerCase() === jobType.toLowerCase()
     );
     setFilteredInternships(filtered);
   };
+
+  // Function to handle the Navbar search logic
 
   // Function to handle the main search logic
   const handleMainSearch = () => {
     const lowerCaseQuery = mainSearchQuery.toLowerCase();
-    // Filter internships based on company name, position, or skills
-    const filtered = allInternships.filter(
-      (internship) =>
-        internship.companyName.toLowerCase().includes(lowerCaseQuery) ||
-        internship.position.toLowerCase().includes(lowerCaseQuery) ||
-        internship.skillsRequired.some((skill) =>
+
+    const filtered = allInternships.filter((item) => {
+      const {
+        job_Title,
+        empName,
+        position,
+        location,
+        skills, // Include skills field in the destructuring
+      } = item;
+
+      const skillsArray = skills.split(" "); // Split the skills string into an array
+
+      return (
+        job_Title.toLowerCase().includes(lowerCaseQuery) ||
+        empName.toLowerCase().includes(lowerCaseQuery) ||
+        position.toLowerCase().includes(lowerCaseQuery) ||
+        location.toLowerCase().includes(lowerCaseQuery) ||
+        skillsArray.some((skill) =>
           skill.toLowerCase().includes(lowerCaseQuery)
         )
-    );
+        // Add other checks as needed
+      );
+    });
+
     setFilteredInternships(filtered);
   };
 
-  // Function to navigate to the Home page
-  const handleHome = () => {
-    navigate("/Home1");
-  };
+
 
   // JSX structure for the Internship component
   return (
@@ -164,13 +182,6 @@ const Internship = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          {/* Navbar Search button */}
-          {/* <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2"
-                        onClick={handleSearch}
-                    >
-                        Navbar Search
-                    </button> */}
         </div>
 
         {/* Notifications and User Profile */}
@@ -220,7 +231,7 @@ const Internship = () => {
           {/* Input for main search query */}
           <input
             type="text"
-            placeholder="Enter skills/designations/companies"
+            placeholder="Enter skills/designations/companies/Location/Position"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
             className="h-16 w-1/2 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
@@ -252,51 +263,70 @@ const Internship = () => {
           {/* Location filter */}
           <div className="mb-4">
             <h3 className="text-md font-semibold mb-2">Location</h3>
-            <select className="w-full p-2 border rounded">
-              <option value="">All</option>
-              <option value="">Pune</option>
-              <option value="">Bangalore</option>
-              {/* Add more options as needed */}
+            <select
+              className="w-full p-2 border rounded"
+              onChange={(e) => {
+                const selectedLocation = e.target.value;
+                filterByLocation(selectedLocation);
+              }}
+            >
+              <option value="All">All</option>
+              <option value="Pune">Pune</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Mumbai">Mumbai</option>
+              {/* Add more locations as needed */}
             </select>
           </div>
           {/* Stipend filter */}
           <div className="mb-4">
             <h3 className="text-md font-semibold mb-2">Stipend</h3>
-            <select className="w-full p-2 border rounded">
-              <option value="">Any</option>
-              <option value="">1000-5000</option>
-              <option value="">5000-10000</option>
-              {/* Add more options as needed */}
-            </select>
-          </div>
-          {/* Duration filter */}
-          <div className="mb-4">
-            <h3 className="text-md font-semibold mb-2">Duration</h3>
-            <select className="w-full p-2 border rounded">
-              <option value="">All</option>
-              <option value="">1 month</option>
-              <option value="">2 months</option>
+            <select
+              className="w-full p-2 border rounded"
+              onChange={(e) => {
+                const [min, max] = e.target.value.split("-").map(Number);
+                filterByStipendRange(min, max);
+              }}
+            >
+              <option value="0-10000000">Any</option>
+              <option value="1000-5000">1000-5000</option>
+              <option value="5000-10000">5000-10000</option>
+              <option value="10000-20000">10000-20000</option>
               {/* Add more options as needed */}
             </select>
           </div>
           {/* Other filters */}
+
           <div>
             <h3 className="text-md font-semibold mb-2">Other Filters</h3>
             <label className="flex items-center space-x-2">
-              <input type="checkbox" className="form-checkbox" />
+              <input
+                type="checkbox"
+                className="form-checkbox"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    filterByJobType("part-time");
+                  } else {
+                    // If unchecked, reset the filter (show all)
+                    setFilteredInternships(allInternships);
+                  }
+                }}
+              />
               <span>Part-time</span>
             </label>
             <label className="flex items-center space-x-2">
-              <input type="checkbox" className="form-checkbox" />
+              <input
+                type="checkbox"
+                className="form-checkbox"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    filterByJobType("full-time");
+                  } else {
+                    // If unchecked, reset the filter (show all)
+                    setFilteredInternships(allInternships);
+                  }
+                }}
+              />
               <span>Full-time</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input type="checkbox" className="form-checkbox" />
-              <span>Work from Home</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input type="checkbox" className="form-checkbox" />
-              <span>Internship for women</span>
             </label>
           </div>
         </div>
@@ -344,6 +374,9 @@ const Internship = () => {
                       </p>
                     </div>
                   </div>
+                  <p className="card-description text-base text-gray-700 my-4">
+                    Job Type : {internship.job_Type}
+                  </p>
                   <p className="card-description text-base text-gray-700 my-4">
                     {internship.job_Description}
                   </p>
