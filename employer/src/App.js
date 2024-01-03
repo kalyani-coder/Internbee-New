@@ -18,10 +18,13 @@ import MessageComponent from './Component/Message/Message';
 import Registration from './Component/Signup/Signup';
 import LandingpageHome from './Component/Landingpage/LandingpageHome';
 import AboutUs from './Component/Aboutus/AboutUs';
+import FAQPage from './Component/FAQ/Faq';
+
 
 function App() {
   return (
     <>
+
 
       <Router>
 
@@ -44,6 +47,7 @@ function App() {
           <Route path="/view-profile-page" element={<ViewProfilePage />} />
           <Route path='/Sidebar' element={<Jobs />} />
           <Route path='/message' element={<MessageComponent />} />
+          <Route path="/faq" element={<FAQPage />} />
         </Routes>
 
       </Router>

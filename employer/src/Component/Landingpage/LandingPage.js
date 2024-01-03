@@ -72,8 +72,8 @@ const LandingPage = () => {
             </section>
 
             {/* Section 2: Latest Internships and Categories */}
-            <section className="flex-1">
-                <h1 className="heading">
+            <section className="flex-1 " id="dream-career-section">
+                <h1 className="heading ">
                     Latest Internships on InternBee
                 </h1>
 
@@ -160,7 +160,7 @@ const LandingPage = () => {
             </section>
 
             {/* Section 3: Another Section */}
-            <section className="flex-1">
+            <section className="flex-1" id="dream-career-section">
                 <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
@@ -249,7 +249,7 @@ const LandingPage = () => {
 
             {/* section 4 */}
 
-            <section className="flex-1">
+            <section className="flex-1" id="dream-career-section">
                 <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
@@ -339,9 +339,10 @@ const LandingPage = () => {
             {/* section 5 */}
 
 
-            <section>
-
-                <h1 className="text-2xl font-semibold mb-6">Top companies trust us</h1>
+            <section id="dream-career-section">
+                <div className='text-center'>
+                    <h1 className="text-2xl font-semibold mb-6 text-center">Top companies trust us</h1>
+                </div>
                 <Partners />
 
 
