@@ -10,15 +10,23 @@ const EmployerSection = () => {
 
   useEffect(() => {
     // Fetch all job posts
-    fetch(`http://localhost:8000/api/postinternship`)
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    const userId = localStorage.getItem("userId");
+
+    fetch(`http://localhost:8000/api/postinternship/userId/${userId}`)
       .then((response) => response.json())
       .then((data) => {
         // Sort jobs array based on posting date in descending order
-        const sortedJobs = data.sort((a, b) => new Date(b.start_Date) - new Date(a.start_Date));
+        const sortedJobs = data.sort(
+          (a, b) => new Date(b.start_Date) - new Date(a.start_Date)
+        );
         setJobs(sortedJobs);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  };
 
   return (
     <>
@@ -32,42 +40,41 @@ const EmployerSection = () => {
         <div className="flex w-full">
           {/* Posted Jobs Card */}
           <div className="w-1/2 p-4 border border-gray-300 shadow-md mr-4">
-  <h2 className="text-xl font-semibold mb-4">Posted Internship</h2>
-  <div className="scrollable-jobs max-h-96 overflow-y-auto">
-    {jobs.length === 0 ? (
-      <div>
-        <p className="text-black text-center">
-          No Internship posted yet.
-        </p>
-      </div>
-    ) : (
-      <div>
-        {jobs.map((job) => (
-          <div
-          
-            key={job._id}
-            className="mb-8 p-4 rounded-md bg-amber-200"
-          >
-            <h3 className="text-xl font-semibold mb-2 ">
-              {job.job_Title}
-            </h3>
-            <p>Location: {job.location}</p>
-            <p>Company Name: {job.company_Name}</p>
-            <p>Job Type: {job.job_Type}</p>
-            <p>Number of Positions: {job.position}</p>
-            <p>Skills: {job.skills}</p>
-            <p>Application start Date: {job.start_Date}</p>
-            <p>Application end Date: {job.end_Date}</p>
-            <p>Job Description: {job.job_Description}</p>
-            <p>Stipend: {job.stipend}</p>
-            {/* Add more fields as needed */}
-            {/* You can add a button for 'View More' if needed */}
+            <h2 className="text-xl font-semibold mb-4">Posted Internship</h2>
+            <div className="scrollable-jobs max-h-96 overflow-y-auto">
+              {jobs.length === 0 ? (
+                <div>
+                  <p className="text-black text-center">
+                    No Internship posted yet.
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  {jobs.map((job) => (
+                    <div
+                      key={job._id}
+                      className="mb-8 p-4 rounded-md bg-amber-200"
+                    >
+                      <h3 className="text-xl font-semibold mb-2 ">
+                        {job.job_Title}
+                      </h3>
+                      <p>Location: {job.location}</p>
+                      <p>Company Name: {job.company_Name}</p>
+                      <p>Job Type: {job.job_Type}</p>
+                      <p>Number of Positions: {job.position}</p>
+                      <p>Skills: {job.skills}</p>
+                      <p>Application start Date: {job.start_Date}</p>
+                      <p>Application end Date: {job.end_Date}</p>
+                      <p>Job Description: {job.job_Description}</p>
+                      <p>Stipend: {job.stipend}</p>
+                      {/* Add more fields as needed */}
+                      {/* You can add a button for 'View More' if needed */}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
 
           {/* Post Free Jobs Card */}
           <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md">
