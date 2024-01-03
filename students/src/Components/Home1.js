@@ -273,7 +273,7 @@ const Home1 = () => {
                     </div>
                 </div>
 
-                <div className='mt-80 mb-10 text-4xl font-bold flex flex-col items-center'>
+                <div className='mt-5 mb-10 text-4xl font-bold flex flex-col items-center'>
                     <h1>Search Your Dream Internship here</h1>
                 </div>
 
@@ -305,12 +305,12 @@ const Home1 = () => {
                     </Slider>
                 </div>
                 <div className="flex flex-col items-center ">
-                    <div className='mt-80 mb-10 text-4xl font-bold flex flex-col items-center'>
+                    <div className='mt-5 mb-10 text-4xl font-bold flex flex-col items-center'>
                         <h1>Dream Internship here</h1>
                     </div>
 
                     {internships.slice(0, 3).map(internship => (
-                        <div key={internship._id} className="card w-full m-6  rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden">
+                        <div key={internship._id} className="card w-3/4 m-6  rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden">
                             <div className="flex-grow px-6 py-4 pr-20 pl-20">
                                 <h2 className="card-title text-2xl font-semibold text-gray-800">{internship.job_Title}</h2>
                                 <p className="card-company text-xl text-gray-700">{internship.company_Name}</p>
