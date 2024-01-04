@@ -17,6 +17,7 @@ import Blogs from './Components/Blogs/Blogs';
 import ViewProfile from './Components/ViewProfile/ViewProfile';
 import UploadImagePdf from './Components/UploadImagePdf/UploadImage';
 import ApplyInternship from './Components/ApplyInternship/ApplyInternship';
+import AppliedIntersnship from './Components/ApplyInternship/AppliedIntersnship';
 
 
 
@@ -68,6 +69,7 @@ function App() {
         <Route path="/viewprofile" element={<ViewProfile />} />
         <Route path="/uploadimage" element={<UploadImagePdf />} />
         <Route path="/apply-internship/:internshipId" element={<ApplyInternship />} />
+        <Route path="/applied-internship" element={<AppliedIntersnship />} />
 
 
 

@@ -65,7 +65,8 @@ const Jobs = () => {
 
   // const handleCloseAppliedCandidates = () => {
   //   setSelectedInternshipId(null);
-  // };
+  // };  
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setExpandedInternshipId(null); // Close applied candidates

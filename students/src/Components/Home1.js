@@ -248,6 +248,10 @@ const Home1 = () => {
     navigate("/internship");
   };
 
+  const appliedinternship = () => {
+    navigate("/Applied-internship");
+  };
+
   return (
     <>
       <div className="mb-10 ">
@@ -283,6 +287,15 @@ const Home1 = () => {
               onClick={Internship}
             >
               Internships
+            </Link>
+
+
+            <Link
+              to="/applied-internship"
+              className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+
+            >
+              Applied Internship
             </Link>
           </div>
 
