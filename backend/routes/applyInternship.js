@@ -32,28 +32,23 @@ router.post("/", async (req, res) => {
   try {
     const { postId, InternId } = req.body;
 
+    // Get data from PostInternship based on postId
     const existingPost = await PostInternship.findById(postId);
-    const alreadyApplied = await appliedInternshipModel.findOne({
-      postId,
-      InternId,
-    });
-    const existingUser = await User.findById(InternId);
 
     if (!existingPost) {
       return res.status(404).json({ message: "PostID not found" });
     }
 
-    if (alreadyApplied) {
-      return res
-        .status(400)
-        .json({ message: "You already applied to this internship" });
+    const existingUser = await User.findById(InternId);
+
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
     }
 
     const endDateParts = existingPost.end_Date.split("/"); // Splitting the date string
     const formattedEndDate = `${endDateParts[2]}-${endDateParts[1]}-${endDateParts[0]}`; // Rearranging in YYYY-MM-DD format
 
     const endDate = new Date(formattedEndDate); // Creating a Date object from formatted date
-
     const currentDate = new Date();
 
     if (endDate < currentDate) {
@@ -64,14 +59,26 @@ router.post("/", async (req, res) => {
       endDate.getMonth() + 1
     }/${endDate.getFullYear()}`;
 
+    const appliedDateString = `${currentDate.getDate()}/${
+      currentDate.getMonth() + 1
+    }/${currentDate.getFullYear()}`;
+
     const newAppliedInternship = new appliedInternshipModel({
       postId,
       InternId,
       status: "pending",
       end_Date: formattedEndDateString,
+      appliedDate: appliedDateString,
       InternName: existingUser.fullName,
       InternEmail: existingUser.email,
       InternNumber: existingUser.number,
+      empName: existingPost.company_Name,
+      location: existingPost.location,
+      job_Description: existingPost.job_Description,
+      position: existingPost.position,
+      skills: existingPost.skills,
+      stipend: existingPost.stipend,
+      job_Title: existingPost.job_Title,
     });
 
     const savedInternship = await newAppliedInternship.save();
@@ -80,6 +87,7 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 
 router.patch("/:id", async (req, res) => {
   try {

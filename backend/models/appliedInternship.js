@@ -29,6 +29,32 @@ const appliedInternship = new mongoose.Schema({
     type: String,
     required: true,
   },
+  empName: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+  },
+  job_Description: {
+    type: String,
+  },
+  position: {
+    type: String,
+  },
+  skills: {
+    type: String,
+  },
+  stipend: {
+    type: String,
+  },
+  job_Title: {
+    type: String,
+  },
+  appliedDate:{
+    type:String,
+    required:true,
+  }
 });
 
 const appliedInternshipModel = mongoose.model(
