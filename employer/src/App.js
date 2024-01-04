@@ -20,6 +20,7 @@ import LandingpageHome from './Component/Landingpage/LandingpageHome';
 import AboutUs from './Component/Aboutus/AboutUs';
 import FAQPage from './Component/FAQ/Faq';
 import ViewStudentProfile from './Jobs/ViewStudentProfile';
+import GetPackage from './Component/GetPackage/GetPackage';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Route path='/message' element={<MessageComponent />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile/>}/>
+          <Route path='/getpackage' element={<GetPackage/>}/>
         </Routes>
 
       </Router>

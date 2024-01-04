@@ -16,6 +16,7 @@ const empAuthRoutes  = require('./routes/empAuthRoutes');
 const ImapgeUpload = require('./routes/UploadImagePdf')
 const applyInternship = require('./routes/applyInternship');
 const getAllEmployer = require('./routes/getAllEmployer');
+const packageSchemaNew = require("./routes/PackageRoute"); // Adjust the path accordingly
 
 
 const bodyParser = require("body-parser");
@@ -67,6 +68,7 @@ apiRouter.use("/getallemployer" , getAllEmployer)
 
 apiRouter.use("/imageupload", ImapgeUpload)
 apiRouter.use("/applyInternship", applyInternship)
+apiRouter.use("/packages", packageSchemaNew)
 
 app.use('/api', apiRouter)
 
