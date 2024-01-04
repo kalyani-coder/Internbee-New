@@ -9,6 +9,7 @@ const ApplyInternship = () => {
   const { internshipId } = useParams();
   const [internship, setInternship] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   useEffect(() => {
     const fetchInternshipData = async () => {
       try {
@@ -34,45 +35,50 @@ const ApplyInternship = () => {
   if (!internship) {
     return <p>Loading...</p>;
   }
- const handleConfirmation = async () => {
-   try {
-     const formData = {
-       postId: internshipId,
-       InternId: localStorage.getItem("userId"),
-     };
+const handleConfirmation = async () => {
+  setIsSubmitting(true); // Set submission state to true when starting the request
 
-     const response = await axios.post(
-       "http://localhost:8000/api/applyinternship/",
-       formData
-     );
+  try {
+    const formData = {
+      postId: internshipId,
+      InternId: localStorage.getItem("userId"),
+    };
 
-     console.log("Response:", response.data);
-     alert("Applied Successfully");
-     // Perform further actions upon successful submission
-     // For example, show a success message or redirect to a different page
+    const response = await axios.post(
+      "http://localhost:8000/api/applyinternship/",
+      formData
+    );
 
-     setShowConfirmation(false); // Close the confirmation popup upon successful submission
-   } catch (error) {
-     // Handle errors from the API
-     if (error.response) {
-       const errorMessage = error.response.data.message || "Server Error";
-       console.error("Server Error:", errorMessage);
-       alert(errorMessage);
-        setShowConfirmation(false);
-       // Display the error message to the user using an alert
-     } else if (error.request) {
-       console.error("Request Error:", error.request);
-       alert("Request Error");
-        setShowConfirmation(false);
-       // Handle request errors (no response received)
-     } else {
-       console.error("Error:", error.message);
-       alert("An error occurred");
-        setShowConfirmation(false);
-       // Handle other types of errors
-     }
-   }
- };
+    console.log("Response:", response.data);
+    alert("Applied Successfully");
+
+    // Perform further actions upon successful submission
+    // For example, show a success message or redirect to a different page
+
+    setShowConfirmation(false); // Close the confirmation popup upon successful submission
+  } catch (error) {
+    // Handle errors from the API
+    if (error.response) {
+      const errorMessage = error.response.data.message || "Server Error";
+      console.error("Server Error:", errorMessage);
+      alert(errorMessage);
+      setShowConfirmation(false); 
+    } else if (error.request) {
+      console.error("Request Error:", error.request);
+      alert("Request Error");
+      setShowConfirmation(false); 
+    } else {
+      console.error("Error:", error.message);
+      alert("An error occurred");
+      setShowConfirmation(false); 
+    }
+  } finally {
+    setIsSubmitting(false); 
+    setShowConfirmation(false); 
+    // Reset submission state regardless of success or failure
+  }
+};
+
 
 
   return (
@@ -83,6 +89,11 @@ const ApplyInternship = () => {
       <div className="mx-auto max-w-2xl p-6">
         <div className="card w-full m-6 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden mt-10">
           <div className="flex-grow px-6 py-4">
+            {isSubmitting && ( // Display loading spinner if isSubmitting is true
+              <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
+              </div>
+            )}
             <h2 className="card-title text-2xl font-semibold text-gray-800">
               {internship.job_Title}
             </h2>
@@ -141,12 +152,15 @@ const ApplyInternship = () => {
                   <div className="flex justify-end mt-4">
                     <button
                       onClick={() => setShowConfirmation(false)}
-                      className="bg-gray-300 text-black px-4 py-2 rounded-md mr-2"
+                      disabled={isSubmitting} // Disable the button while submitting
+                      className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+                    
                     >
                       Cancel
                     </button>
                     <button
                       onClick={handleConfirmation}
+                      disabled={isSubmitting} // Disable the button while submitting
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
                     >
                       Confirm
