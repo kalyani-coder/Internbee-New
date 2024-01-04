@@ -52,21 +52,21 @@ function App() {
 
     <Router>
       <Routes>
-        {/* <Route path="/Profile" element={<Profile />} /> */}
+        <Route path="/Profile" element={<Profile />} />
 
-        {/* <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
-  
+
         <Route path="/home" element={<Home1 />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/login" element={<Signin />} />
-        <Route path="/profile" element={<Profile />} /> */}
+        <Route path="/profile" element={<Profile />} />
         <Route path="/internship" element={<Internship />} />
-        {/* <Route path="/footer" element={<Footer />} />
+        <Route path="/footer" element={<Footer />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/viewprofile" element={<ViewProfile />} />
-        <Route path="/uploadimage" element={<UploadImagePdf />} /> */}
+        <Route path="/uploadimage" element={<UploadImagePdf />} />
         <Route path="/apply-internship/:internshipId" element={<ApplyInternship />} />
 
 
