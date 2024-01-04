@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
 import {
   FaUser,
- 
+
   FaMoneyBill,
   FaMapMarkerAlt,
   FaRegClock,
@@ -21,7 +21,7 @@ const Internship = () => {
 
   // State for profile dropdown and search
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-  
+
   const [mainSearchQuery, setMainSearchQuery] = useState("");
   const [filteredInternships, setFilteredInternships] = useState([]);
   const [allInternships, setAllInternships] = useState([]);
@@ -174,7 +174,7 @@ const Internship = () => {
         </div>
 
         {/* Search Bar */}
-        
+
 
         {/* Notifications and User Profile */}
         <div className="flex items-center space-x-4 relative">
@@ -372,9 +372,20 @@ const Internship = () => {
                   <p className="card-description text-base text-gray-700 my-4">
                     {internship.job_Description}
                   </p>
-                  <p className="card-skills text-base text-gray-700">
-                    Skills: {internship.skills}
-                  </p>
+                  <div className="flex justify-between">
+
+                    <p className="card-skills text-base text-gray-700">
+                      Skills: {internship.skills}
+                    </p>
+
+                    <div>
+                      <Link to={`/apply-internship/${internship._id}`}>
+                        <button className="bg-amber-300 text-black p-2 rounded-lg">
+                          Apply
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))

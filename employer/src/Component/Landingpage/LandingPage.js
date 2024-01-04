@@ -6,9 +6,17 @@ import Partners from './Partners';
 // import Footer from './Footer';
 // import Footer from './../Footer';
 import Footer from './../Footer/Footer';
+import Carousel from './Carousel';
 
 
 const LandingPage = () => {
+
+    const images = [
+        'https://dummyimage.com/500x500/000/fff',
+        'https://dummyimage.com/600x400/555/eee',
+        'https://dummyimage.com/600x400/888/ddd',
+        // Add more dummy image URLs as needed
+    ];
     const [trackerWidth, setTrackerWidth] = useState(0);
     const carouselRef = useRef(null);
 
@@ -41,12 +49,17 @@ const LandingPage = () => {
                 behavior: 'smooth',
             });
         }
+
     };
 
     return (
+
         <div className="flex flex-col h-screen">
 
+            <div className='mt-16 flex justify-center'>
+                <Carousel images={images} />
 
+            </div>
 
             {/* Section 2: Latest Internships and Categories */}
             <section section className="flex-1 p-20 " id="dream-career-section" >
