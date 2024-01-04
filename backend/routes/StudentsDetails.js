@@ -49,6 +49,21 @@ router.get("/studentId/:id", async (req, res) => {
   }
 });
 
+router.get("/userId/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const student = await StudentDetailsModel.findOne({
+      userId: userId,
+    });
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+    res.json(student);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // getting conflict 
 // POST route
 // router.post("/", async (req, res) => {
@@ -94,6 +109,16 @@ router.get("/studentId/:id", async (req, res) => {
 // image upload route 
 router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 } ,{name : 'pdf2' , maxCount : 1}]), async (req, res) => {
   try {
+
+    const existingProfile = await StudentDetailsModel.findOne({ userId: req.body.userId });
+
+    if (existingProfile) {
+      return res.status(400).json({ error: 'User already has a profile' });
+    }
+
+
+
+
     if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
       const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
       const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
@@ -129,7 +154,7 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
         salaryExpectations : req.body.salaryExpectations,
         projectName : req.body.projectName,
         projectSummary: req.body.projectSummary,
-        // userId : req.body.userId,
+        userId: req.body.userId,
 
 
       });
