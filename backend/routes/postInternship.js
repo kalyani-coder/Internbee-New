@@ -129,6 +129,21 @@ try {
     
 }
 
+router.get("/:id" , async (req,res) => {  
+  const {id } = req.params;
+  try {
+    const internship = await newInterShipSchema.findById(id);
+    res.json(internship);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+    
+  
+    
+  }
+})
+
 
 
 

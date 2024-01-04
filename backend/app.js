@@ -15,6 +15,7 @@ const Resume = require('./routes/Resume');
 const empAuthRoutes  = require('./routes/empAuthRoutes');
 const ImapgeUpload = require('./routes/UploadImagePdf')
 const applyInternship = require('./routes/applyInternship');
+const getAllEmployer = require('./routes/getAllEmployer');
 
 
 const bodyParser = require("body-parser");
@@ -61,6 +62,8 @@ apiRouter.use("/studentsdetails" , studentsDetails)
 apiRouter.use("/resume" , Resume)
 
 apiRouter.use("/empauth" , empAuthRoutes)
+apiRouter.use("/getallemployer" , getAllEmployer)
+
 
 apiRouter.use("/imageupload", ImapgeUpload)
 apiRouter.use("/applyInternship", applyInternship)

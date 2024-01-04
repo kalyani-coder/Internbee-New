@@ -101,10 +101,17 @@ router.patch("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allEmpAuth = await EmployerAuth.find();
-    res.json(allEmpAuth);
+    const formattedDetails = allEmpAuth.map((employer) => ({
+      empoyerName: employer.empName,
+      companyAddress: employer.companyAddress,
+      Description: employer.Description,
+    }));
+    res.json(formattedDetails);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+
 
 module.exports = router;
