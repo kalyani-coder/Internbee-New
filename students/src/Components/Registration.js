@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaMobile, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {Link} from "react-router-dom";
 import Alert from "./Alert/Aleart"; // Import the Alert component
 
 const Registration = () => {
@@ -80,9 +81,7 @@ const Registration = () => {
     alert("Registering with Google...");
   };
 
-  const handleSignin = () => {
-    navigate("/Signin");
-  };
+  
 
 
     return (
@@ -288,7 +287,7 @@ const Registration = () => {
                             Sign Up
                         </button>
                         <p className="text-sm font-light text-gray-500 dark:text-black">
-                            Already have an account ? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={handleSignin}>Log in </a>
+                            Already have an account ?<Link to="/login"> <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Log in </a></Link>
                         </p>
                     </form>
                 </div>
