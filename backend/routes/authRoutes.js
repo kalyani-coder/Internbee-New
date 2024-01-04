@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user"); 
+const User = require("../models/user");
 
 const router = express.Router();
 const jwtKey = "amar";
@@ -26,7 +26,6 @@ router.post("/signup", async (req, res) => {
       email: email,
       number: number,
       password: hashedPassword,
-    
     });
 
     const createdUser = await newUser.save();
@@ -61,10 +60,19 @@ router.post("/signin", async (req, res) => {
 
     // Include user data in the response with modified userId (_id)
     res.json({
-      userId: user._id, 
+      userId: user._id,
       email: user.email,
       Number: user.number,
     });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json(user);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }
