@@ -3,6 +3,17 @@ const router = express.Router();
 const newInterShipSchema = require("../models/postInternship");
 
 // Define a GET route
+
+router.get("/:id", async (req, res) => {
+  try {
+    const internshipId = req.params.id;
+    const internship = await newInterShipSchema.findById(internshipId);
+    res.json(internship);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 router.get("/", async (req, res) => {
   try {
     // Assuming you want to retrieve all internship posts from the database
@@ -112,43 +123,16 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.get("/userId/:id" , async (req,res) => {
-    
-    const id = req.params.id;
-try {
-    
-
+router.get("/userId/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
     const internship = await newInterShipSchema.find({ userId: id });
 
     res.json(internship);
-    
-} catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
-
-    
-}
-
-router.get("/:id" , async (req,res) => {  
-  const {id } = req.params;
-  try {
-    const internship = await newInterShipSchema.findById(id);
-    res.json(internship);
-    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
-    
-  
-    
   }
-})
-
-
-
-
-
-
-})
+});
 
 module.exports = router;
