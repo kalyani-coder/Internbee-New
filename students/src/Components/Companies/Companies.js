@@ -7,7 +7,9 @@ const Companies = () => {
   useEffect(() => {
     async function fetchCompanies() {
       try {
-        const response = await fetch("http://localhost:8000/api/empauth/");
+        const response = await fetch(
+          "http://localhost:8000/api/getallemployer/"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
