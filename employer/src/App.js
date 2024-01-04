@@ -19,6 +19,7 @@ import Registration from './Component/Signup/Signup';
 import LandingpageHome from './Component/Landingpage/LandingpageHome';
 import AboutUs from './Component/Aboutus/AboutUs';
 import FAQPage from './Component/FAQ/Faq';
+import ViewStudentProfile from './Jobs/ViewStudentProfile';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path='/Sidebar' element={<Jobs />} />
           <Route path='/message' element={<MessageComponent />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile/>}/>
         </Routes>
 
       </Router>

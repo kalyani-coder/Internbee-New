@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Component/Navbar/Navbar";
 import Sidebar from "../Component/Sidebar/Sidebar";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 Modal.setAppElement("#root"); // Set the root element for accessibility
 
@@ -176,37 +177,56 @@ const Jobs = () => {
                   )}
                 </div>
 
-                {expandedInternshipId === internship._id && appliedCandidates && Array.isArray(appliedCandidates) && (
-                  <div className="mt-2">
-                    {loadingCandidates && <p>Loading applied candidates...</p>}
-                    {!loadingCandidates && appliedCandidates.length > 0 && (
-                      <div>
-                        <h3 className="text-lg font-semibold mb-2">Applied Candidates:</h3>
-                        <ul className="divide-y divide-gray-200">
-                          {Array.isArray(appliedCandidates) && appliedCandidates.map((candidate) => (
-                            <li key={candidate.InternId} className="py-4">
-                              <div className="flex items-center space-x-4">
-                                <div className="flex-shrink-0">
-                                  {/* You can add an avatar or profile picture here if available */}
-
-                                </div>
-                                <div className='flex justify-between'>
-
-                                  <div>
-                                    <p className="text-lg font-semibold">{candidate.InternName}</p>
-                                    <p className="text-gray-500">{candidate.InternEmail}</p>
-                                    <p className="text-gray-500">{candidate.InternNumber}</p>
-                                    <p className="text-gray-500">Status: {candidate.status}</p>
-
+                {expandedInternshipId === internship._id &&
+                  appliedCandidates &&
+                  Array.isArray(appliedCandidates) && (
+                    <div className="mt-2">
+                      {loadingCandidates && (
+                        <p>Loading applied candidates...</p>
+                      )}
+                      {!loadingCandidates && appliedCandidates.length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Applied Candidates:
+                          </h3>
+                          <ul className="divide-y divide-gray-200">
+                            {Array.isArray(appliedCandidates) &&
+                              appliedCandidates.map((candidate) => (
+                                <li key={candidate.InternId} className="py-4">
+                                  <div className="flex items-center space-x-4">
+                                    <div className="flex-shrink-0">
+                                      {/* You can add an avatar or profile picture here if available */}
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <div>
+                                        <p className="text-lg font-semibold">
+                                          {candidate.InternName}
+                                        </p>
+                                        <p className="text-gray-500">
+                                          {candidate.InternEmail}
+                                        </p>
+                                        <p className="text-gray-500">
+                                          {candidate.InternNumber}
+                                        </p>
+                                        <p className="text-gray-500">
+                                          Status: {candidate.status}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-
-                                </div>
-                              </div>
-                              <div className='text-end'> <button className='bg-amber-300 text-black p-3'>View Profile</button>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
+                                  <div className="text-end">
+                                    {" "}
+                                    <Link
+                                      to={`/viewstudentprofile/${candidate.InternId}`}
+                                    >
+                                      <button className="bg-amber-300 text-black p-3">
+                                        View Profile
+                                      </button>
+                                    </Link>
+                                  </div>
+                                </li>
+                              ))}
+                          </ul>
 
                           {appliedCandidates.length > 3 && (
                             <button
