@@ -3,15 +3,19 @@ const EmployerAuth = require("../models/EmployerAuth");
 
 const router = express.Router();    
 
-
 router.get("/", async (req, res) => {
-    try {
-        const employerAuth = await EmployerAuth.find();
-        res.status(200).json(employerAuth);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
+  try {
+    const allEmpAuth = await EmployerAuth.find();
+    const formattedDetails = allEmpAuth.map((employer) => ({
+      empoyerName: employer.empName,
+      companyAddress: employer.companyAddress,
+      Description: employer.Description,
+    }));
+    res.json(formattedDetails);
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
-})
 
 module.exports = router;    
