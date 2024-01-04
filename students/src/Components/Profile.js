@@ -42,6 +42,8 @@ const Profile = () => {
     const [projectName , setProjectName] = useState('')
     const [projectSummary , setProjectSummary] = useState('')
 
+    // const [userId, setUserId] = useState(null);
+
     const handleKeySkills = (event) => {
         setKeySkills(event.target.value);
       
@@ -156,15 +158,7 @@ const Profile = () => {
         const handleCurrentCountryChange = (event) => {
             setCurrentCountry(event.target.value);
         }
-
-
-        // const [userId, setUserId] = useState(null);
-        // useEffect(() => {
-        //     // Retrieve the user ID from localStorage when the component mounts
-        //     const storedUserId = localStorage.getItem('userId');
-        //     setUserId(storedUserId);
-        //   }, []);
-        //   console.log(userId);
+        
 
       const handleUpload = (e) => {
         e.preventDefault();
@@ -198,7 +192,10 @@ const Profile = () => {
             formData.append('salaryExpectations', salaryExpectations)
             formData.append('projectName', projectName)
             formData.append('projectSummary', projectSummary)
-            // formData.append('userId', userId);
+            
+            const storedUserId = localStorage.getItem('userId');
+              formData.append('userId', storedUserId);
+              console.log(storedUserId);
         
         
          
@@ -207,17 +204,26 @@ const Profile = () => {
             method: 'POST',
             body: formData,
           })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log('Files uploaded successfully:', data);
-              alert('Files Uploaded Successfully', 'success');
-            })
-            .catch((error) => {
-              console.error('Error uploading files:', error);
-              alert('Error Uploading Files', 'error');
-            });
-        }
-      };
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log('Files uploaded successfully:', data);
+            alert('Profile Created Successfully', 'success');
+          })
+          .catch((error) => {
+            console.error('Error uploading files:', error);
+            if (error.message.includes('User already has a profile')) {
+              alert('User already has a profile', 'error');
+            } else {
+              alert('User already has a profile', 'error');
+            }
+          });
+      }
+    };
 
     const handleProfileIconClick = () => {
         setShowProfileDropdown(!showProfileDropdown);

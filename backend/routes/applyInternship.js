@@ -38,6 +38,15 @@ router.post("/", async (req, res) => {
     if (!existingPost) {
       return res.status(404).json({ message: "PostID not found" });
     }
+    const alreadyApplied = await appliedInternshipModel.findOne({
+      postId,
+      InternId,
+    });
+    if (alreadyApplied) {
+      return res
+        .status(400)
+        .json({ message: "You already applied to this internship" });
+    }
 
     const existingUser = await User.findById(InternId);
 
@@ -87,7 +96,6 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 router.patch("/:id", async (req, res) => {
   try {
