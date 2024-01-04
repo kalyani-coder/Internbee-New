@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Component/Navbar/Navbar";
 import Sidebar from "../Component/Sidebar/Sidebar";
 import Modal from "react-modal";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 
 Modal.setAppElement("#root"); // Set the root element for accessibility
 
@@ -132,11 +133,10 @@ const Jobs = () => {
                 <p className="text-gray-600">Skills: {internship.skills}</p>
 
                 <div
-                  className={`transition-all mt-2 overflow-hidden ${
-                    expandedInternshipId === internship._id
-                      ? "max-h-full"
-                      : "max-h-0"
-                  }`}
+                  className={`transition-all mt-2 overflow-hidden ${expandedInternshipId === internship._id
+                    ? "max-h-full"
+                    : "max-h-0"
+                    }`}
                 >
                   <p>Location: {internship.location}</p>
                   <p>Start Date: {internship.start_Date}</p>
@@ -210,19 +210,23 @@ const Jobs = () => {
                                         </p>
                                         <p className="text-gray-500">
                                           Status: {candidate.status}
+                                          
                                         </p>
                                       </div>
                                     </div>
                                   </div>
                                   <div className="text-end">
                                     {" "}
-                                    <Link
-                                      to={`/viewstudentprofile/${candidate.InternId}`}
-                                    >
-                                      <button className="bg-amber-300 text-black p-3">
-                                        View Profile
-                                      </button>
-                                    </Link>
+                                      <Link
+                                        to={{
+                                          pathname: `/viewstudentprofile/${candidate.InternId}`,
+                                          state: { id: candidate._id }
+                                        }}
+                                      >
+                                        <button className="bg-amber-300 text-black p-3">
+                                          View Profile
+                                        </button>
+                                      </Link>
                                   </div>
                                 </li>
                               ))}
