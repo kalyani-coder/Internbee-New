@@ -14,6 +14,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/internId/:InternId", async (req, res) => {
+  const { InternId } = req.params;
+
+  try {
+    const internApplied = await appliedInternshipModel.find({
+      InternId: InternId,
+    });
+
+    res.status(200).json(internApplied);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const { postId, InternId } = req.body;
@@ -25,13 +39,9 @@ router.post("/", async (req, res) => {
     });
     const existingUser = await User.findById(InternId);
 
-
-
     if (!existingPost) {
       return res.status(404).json({ message: "PostID not found" });
     }
-
-
 
     if (alreadyApplied) {
       return res

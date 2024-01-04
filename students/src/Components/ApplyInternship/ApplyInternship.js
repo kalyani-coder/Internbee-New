@@ -47,6 +47,7 @@ const ApplyInternship = () => {
      );
 
      console.log("Response:", response.data);
+     alert("Applied Successfully");
      // Perform further actions upon successful submission
      // For example, show a success message or redirect to a different page
 
