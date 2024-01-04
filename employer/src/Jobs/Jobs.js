@@ -176,50 +176,37 @@ const Jobs = () => {
                   )}
                 </div>
 
-                {expandedInternshipId === internship._id &&
-                  appliedCandidates &&
-                  Array.isArray(appliedCandidates) && (
-                    <div className="mt-2">
-                      {loadingCandidates && (
-                        <p>Loading applied candidates...</p>
-                      )}
-                      {!loadingCandidates && appliedCandidates.length > 0 && (
-                        <div>
-                          <h3 className="text-lg font-semibold mb-2">
-                            Applied Candidates:
-                          </h3>
-                          <ul className="divide-y divide-gray-200">
-                            {Array.isArray(appliedCandidates) &&
-                              appliedCandidates.map((candidate) => (
-                                <li key={candidate.InternId} className="py-4">
-                                  <div className="flex items-center space-x-4">
-                                    <div className="flex-shrink-0">
-                                      {/* You can add an avatar or profile picture here if available */}
-                                      <img
-                                        className="h-8 w-8 rounded-full object-cover"
-                                        src="https://placekitten.com/32/32" // Placeholder image, replace with an actual image URL
-                                        alt={`Profile of ${candidate.InternName}`}
-                                      />
-                                    </div>
-                                    <div>
-                                      <p className="text-lg font-semibold">
-                                        {candidate.InternName}
-                                      </p>
-                                      <p className="text-gray-500">
-                                        {candidate.InternEmail}
-                                      </p>
-                                      <p className="text-gray-500">
-                                        {candidate.InternNumber}
-                                      </p>
-                                      <p className="text-gray-500">
-                                        Status: {candidate.status}
-                                      </p>
-                                      {/* ... (other candidate information) */}
-                                    </div>
+                {expandedInternshipId === internship._id && appliedCandidates && Array.isArray(appliedCandidates) && (
+                  <div className="mt-2">
+                    {loadingCandidates && <p>Loading applied candidates...</p>}
+                    {!loadingCandidates && appliedCandidates.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Applied Candidates:</h3>
+                        <ul className="divide-y divide-gray-200">
+                          {Array.isArray(appliedCandidates) && appliedCandidates.map((candidate) => (
+                            <li key={candidate.InternId} className="py-4">
+                              <div className="flex items-center space-x-4">
+                                <div className="flex-shrink-0">
+                                  {/* You can add an avatar or profile picture here if available */}
+
+                                </div>
+                                <div className='flex justify-between'>
+
+                                  <div>
+                                    <p className="text-lg font-semibold">{candidate.InternName}</p>
+                                    <p className="text-gray-500">{candidate.InternEmail}</p>
+                                    <p className="text-gray-500">{candidate.InternNumber}</p>
+                                    <p className="text-gray-500">Status: {candidate.status}</p>
+
                                   </div>
-                                </li>
-                              ))}
-                          </ul>
+
+                                </div>
+                              </div>
+                              <div className='text-end'> <button className='bg-amber-300 text-black p-3'>View Profile</button>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
 
                           {appliedCandidates.length > 3 && (
                             <button
