@@ -105,6 +105,20 @@ const handleSubmit = async (e) => {
         message: "Form data submitted successfully",
       });
       setPosting(false);
+      
+       setFormData({
+         ...formData,
+         job_Title: "",
+         location: "",
+         company_Name: "",
+         start_Date: new Date(),
+         end_Date: new Date(),
+         job_Type: "Full-time",
+         skills: "",
+         position: "",
+         job_Description: "",
+         stipend: "",
+       });
       // Handle success, e.g., redirect or show a success message
     } else {
       setAlert({ type: "danger", message: "Failed to submit form data" });
