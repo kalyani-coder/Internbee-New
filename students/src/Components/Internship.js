@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
 import {
   FaUser,
-
   FaMoneyBill,
   FaMapMarkerAlt,
   FaRegClock,
@@ -133,8 +132,6 @@ const Internship = () => {
     setFilteredInternships(filtered);
   };
 
-
-
   // JSX structure for the Internship component
   return (
     <>
@@ -171,10 +168,16 @@ const Internship = () => {
           >
             Internships
           </Link>
+
+          <Link
+            to="/applied-internship"
+            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+          >
+            Applied Internship
+          </Link>
         </div>
 
         {/* Search Bar */}
-
 
         {/* Notifications and User Profile */}
         <div className="flex items-center space-x-4 relative">
@@ -373,7 +376,6 @@ const Internship = () => {
                     {internship.job_Description}
                   </p>
                   <div className="flex justify-between">
-
                     <p className="card-skills text-base text-gray-700">
                       Skills: {internship.skills}
                     </p>

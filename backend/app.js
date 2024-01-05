@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const newInterShipSchema = require('./models/postInternship')
+const ExpiredInternship = require('./models/ExpiredInternship')
 const cors = require("cors");
 apiRouter = express.Router();
 const app = express();
@@ -11,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const employerRoutes = require("./routes/employerRoutes");
 const postInternship = require('./routes/postInternship');
 const studentsDetails = require('./routes/StudentsDetails');
+const ExpiredInternshipRoute = require('./routes/ExpiredInternshipRoute');
 const Resume = require('./routes/Resume');
 const empAuthRoutes  = require('./routes/empAuthRoutes');
 const ImapgeUpload = require('./routes/UploadImagePdf')
@@ -69,8 +72,46 @@ apiRouter.use("/getallemployer" , getAllEmployer)
 apiRouter.use("/imageupload", ImapgeUpload)
 apiRouter.use("/applyInternship", applyInternship)
 apiRouter.use("/packages", packageSchemaNew)
+apiRouter.use("/expiredinternships", ExpiredInternshipRoute)
 
 app.use('/api', apiRouter)
+
+const handleExpiredInternships = async () => {
+  try {
+    const currentDate = new Date().toISOString().split("T")[0]; // Get current date
+
+    // Find internship posts where end_Date is less than the current date
+    const expiredInternships = await newInterShipSchema.find({
+      end_Date: { $lt: currentDate },
+    });
+
+   
+    expiredInternships.forEach(async (internship) => {
+      const saveInternship = new ExpiredInternship(internship);
+      await saveInternship.save();
+      await newInterShipSchema.findByIdAndDelete(internship._id);
+     
+    });
+
+    // Return the expired internships if needed
+    return expiredInternships;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to handle expired internships");
+  }
+};
+
+// Run handleExpiredInternships function every 12 hour
+setInterval(async () => {
+  try {
+    const expiredInternships = await handleExpiredInternships();
+    console.log("Expired internships handled:", expiredInternships);
+  } catch (error) {
+    console.error("Error handling expired internships:", error);
+  }
+}, 12*60*60*1000); //after 12 hours run the function again.
+
+// Start the server
 
 app.listen(8000, () => {
   console.log("Server is running on http://localhost:8000/");
