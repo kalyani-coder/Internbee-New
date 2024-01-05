@@ -7,7 +7,7 @@ import Partners from './Partners';
 // import Footer from './../Footer';
 import Footer from './../Footer/Footer';
 import Carousel from './Carousel';
-
+import hero from "../../Assets/home-hero.svg"
 
 const LandingPage = () => {
 
@@ -64,13 +64,10 @@ const LandingPage = () => {
                             <br className="hidden lg:inline-block" />Success Begins Here!!!
                         </h1>
 
-                        <div className="flex justify-center">
-                            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                        </div>
+
                     </div>
-                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                        <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" />
+                    <div className=" lg:w-full md:w-1/2 w-3/6">
+                        <img className="object-cover object-center rounded" alt="hero" src={hero} />
                     </div>
                 </div>
             </section>
