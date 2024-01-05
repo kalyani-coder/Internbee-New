@@ -49,7 +49,7 @@ const Sidebar = () => {
           <Link to="/candidates">
             <a className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faUser} className="w-6 h-6 mr-2 text-amber-300" />
-              Candidates
+              Shortlisted Candidates
             </a>
           </Link>
 
