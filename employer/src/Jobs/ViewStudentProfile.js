@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import Sidebar from "../Component/Sidebar/Sidebar";
 import Navbar from "../Component/Navbar/Navbar";
 import axios from "axios";
 
@@ -50,6 +51,9 @@ export default function ViewStudentProfile() {
     <>
       <div>
         <Navbar />
+      </div>
+      <div>
+        <Sidebar />
       </div>
       <div className="flex justify-center items-center mt-11">
         {studentData ? (
