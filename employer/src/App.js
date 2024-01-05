@@ -22,6 +22,7 @@ import FAQPage from './Component/FAQ/Faq';
 import ViewStudentProfile from './Jobs/ViewStudentProfile';
 import GetPackage from './Component/GetPackage/GetPackage';
 import GetPackageAnually from './Component/GetPackage/GetPackageAnually';
+import ListofShortlist from './Component/Candidates/ListofShortlist';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile />} />
           <Route path='/getpackage' element={<GetPackage />} />
           <Route path='getpackageanually' element={<GetPackageAnually />} />
+          <Route path='/shortlisted/:id' element={<ListofShortlist/>}/>
         </Routes>
 
       </Router>
