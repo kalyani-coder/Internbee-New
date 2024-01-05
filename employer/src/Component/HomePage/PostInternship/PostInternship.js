@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { enIN } from "date-fns/locale";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
@@ -101,7 +102,7 @@ const PostInternship = () => {
       if (!employerDetails || !employerDetails.userId) {
         setAlert({
           type: "danger",
-          message: "User details not found. Please log in to post an internship.",
+          message: "User package not found. Please get packages then post an internship.",
         });
         return;
       }
@@ -407,6 +408,17 @@ const PostInternship = () => {
           >
             Post Internship
           </button>
+
+        <Link to="/packages">
+
+          <button
+            type="submit"
+            
+            className="bg-black text-amber-300 py-2 px-4 rounded hover:bg-gray-800"
+          >
+            View Packages
+          </button>
+        </Link>
         </div>
       </form>
     </div>

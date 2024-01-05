@@ -90,7 +90,7 @@ router.get("/:userId", async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { cardNumber, accountHolderName, expiryDate, cvv , email,userId,empName,number ,payment_status} = req.body;
+  const {  accountHolderName, email,userId,empName,number ,payment_status} = req.body;
   try {
     const existingUser = await packageSchemaNew.findOne({ userId });
 
@@ -103,10 +103,10 @@ router.post('/', async (req, res) => {
   
   // Create a new package
   const newPackage = new packageSchemaNew({
-    cardNumber,
+    // cardNumber,
     accountHolderName,
-    expiryDate,
-    cvv,
+    // expiryDate,
+    // cvv,
     email,
     userId,
     empName,
