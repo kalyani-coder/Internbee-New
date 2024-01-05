@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { enIN } from "date-fns/locale";
+import { useNavigate } from 'react-router-dom';
 
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
   const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     job_Title: "",
     location: "",
@@ -50,6 +52,8 @@ const PostInternship = () => {
       end_Date: date,
     });
   };
+
+
    useEffect(() => {
      const userId = localStorage.getItem("userId");
      const email = localStorage.getItem("email");
@@ -74,64 +78,111 @@ const PostInternship = () => {
    }, []);
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  // Formatting dates to the desired format
-  const formattedStartDate = format(formData.start_Date, "dd/MM/yyyy", {
-    locale: enIN,
-  });
-  const formattedEndDate = format(formData.end_Date, "dd/MM/yyyy", {
-    locale: enIN,
-  });
-
-  try {
-    setPosting(true);
-    const response = await fetch("http://localhost:8000/api/postinternship", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...formData,
-        start_Date: formattedStartDate,
-        end_Date: formattedEndDate,
-      }),
-    });
-
-    if (response.ok) {
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Fetch employer details from the API
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
       setAlert({
-        type: "success",
-        message: "Form data submitted successfully",
+        type: "danger",
+        message: "User not logged in. Please log in to post an internship.",
       });
-      setPosting(false);
-      
-       setFormData({
-         ...formData,
-         job_Title: "",
-         location: "",
-         company_Name: "",
-         start_Date: new Date(),
-         end_Date: new Date(),
-         job_Type: "Full-time",
-         skills: "",
-         position: "",
-         job_Description: "",
-         stipend: "",
-       });
-      // Handle success, e.g., redirect or show a success message
-    } else {
-      setAlert({ type: "danger", message: "Failed to submit form data" });
-      setPosting(false);
-      // Handle errors, e.g., show an error message to the user
+      return;
     }
-  } catch (error) {
-    setAlert({ type: "danger", message: "Error during form submission" });
-    console.error("Error during form submission", error);
-    setPosting(false);
-    // Handle other types of errors, e.g., network issues
-  }
-};
+  
+    const apiUrl = `http://localhost:8000/api/packages/${userId}`;
+  
+    try {
+      const response = await fetch(apiUrl);
+      
+      const employerDetails = await response.json();
+      // Check if the userId exists
+      if (!employerDetails || !employerDetails.userId) {
+        setAlert({
+          type: "danger",
+          message: "User details not found. Please log in to post an internship.",
+        });
+        return;
+      }
+  
+      // Check payment_status
+      if (employerDetails.payment_status === "") {
+        setAlert({
+          type: "danger",
+          message: "Payment not accepted. Please complete the payment first.",
+        });
+        return; // Stop the submission if payment is not accepted
+      }
+      setTimeout(() => {
+        navigate('/packages');
+      }, 5000);
+        
+      // Check if payment_status is not "Accepted"
+      if (employerDetails.payment_status !== "Accepted") {
+        setAlert({
+          type: "danger",
+          message: "Payment not accepted. Please complete the payment first.",
+        });
+        return; // Stop the submission if payment_status is not "Accepted"
+      }
+  
+      // Formatting dates to the desired format
+      const formattedStartDate = format(formData.start_Date, "dd/MM/yyyy", {
+        locale: enIN,
+      });
+      const formattedEndDate = format(formData.end_Date, "dd/MM/yyyy", {
+        locale: enIN,
+      });
+  
+      setPosting(true);
+      const postResponse = await fetch("http://localhost:8000/api/postinternship", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          start_Date: formattedStartDate,
+          end_Date: formattedEndDate,
+        }),
+      });
+  
+      if (postResponse.ok) {
+        setAlert({
+          type: "success",
+          message: "Internship submitted successfully",
+        });
+        setPosting(false);
+  
+        setFormData({
+          ...formData,
+          job_Title: "",
+          location: "",
+          company_Name: "",
+          start_Date: new Date(),
+          end_Date: new Date(),
+          job_Type: "Full-time",
+          skills: "",
+          position: "",
+          job_Description: "",
+          stipend: "",
+        });
+        // Handle success, e.g., redirect or show a success message
+      } else {
+        setAlert({ type: "danger", message: "Failed to submit form data" });
+        setPosting(false);
+        // Handle errors, e.g., show an error message to the user
+      }
+    } catch (error) {
+      setAlert({ type: "danger", message: "Error during form submission" });
+      console.error("Error during form submission", error);
+      setPosting(false);
+      // Handle other types of errors, e.g., network issues
+    }
+  };
+  
+  
 
   return (
     <div className="max-w-3xl mx-auto mt-8 p-8 bg-amber-300 rounded shadow-md">
