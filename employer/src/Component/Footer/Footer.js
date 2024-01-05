@@ -33,7 +33,7 @@ const Footer = () => {
 
     ]
 
-   
+
     const socialIcons = [
         <FaFacebook key="facebook" />,
         <FaTwitter key="twitter" />,
@@ -52,8 +52,8 @@ const Footer = () => {
     const locationContent = ['New York', 'San Francisco', 'London', 'Tokyo'];
     return (
         <>
-            <footer className="h-500 text-black p-6 flex justify-evenly items-center"  style={{ backgroundColor: '#FFBD59' }}>
-                <div className="flex flex-col items-start space-y-4">
+            <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-center lg:hidden" style={{ backgroundColor: '#FFBD59' }}>
+                <div className="flex flex-col items-center lg:items-start space-y-4">
                     <div className="flex items-center space-x-4">
                         {/* <img src="" alt="Footer Logo" className="w-12 h-12" /> */}
                         <p className="text-xl font-bold">Interns Bee</p>
@@ -66,9 +66,8 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row space-x-20 ml-20 mt-20">
-                    <div className="flex flex-col items-start space-y-7">
-
+                <div className="flex flex-col lg:flex-row lg:space-x-20 mt-6 lg:mt-0">
+                    <div className="flex flex-col items-center lg:items-start space-y-7">
                         <h2 className="text-xl font-bold">Quick Links</h2>
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
@@ -77,19 +76,18 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
-
                     </div>
 
-                    <div className="flex flex-col items-start space-y-7">
+                    <div className="flex flex-col items-center lg:items-start space-y-7">
                         <h2 className="text-xl font-bold">Roles</h2>
-                        <ul className="text-xl  space-y-2">
+                        <ul className="text-xl space-y-2">
                             {rolesContent.map((role, index) => (
                                 <li key={index}>{role}</li>
                             ))}
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-start space-y-7">
+                    <div className="flex flex-col items-center lg:items-start space-y-7">
                         <h2 className="text-xl font-bold">Locations</h2>
                         <ul className="text-xl space-y-2">
                             {locationContent.map((location, index) => (
@@ -99,6 +97,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+
 
         </>
     )
