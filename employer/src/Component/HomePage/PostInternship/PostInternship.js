@@ -117,7 +117,7 @@ const PostInternship = () => {
       }
       setTimeout(() => {
         navigate('/packages');
-      }, 5000);
+      }, 3000);
         
       // Check if payment_status is not "Accepted"
       if (employerDetails.payment_status !== "Accepted") {
