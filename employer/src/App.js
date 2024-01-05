@@ -21,6 +21,7 @@ import AboutUs from './Component/Aboutus/AboutUs';
 import FAQPage from './Component/FAQ/Faq';
 import ViewStudentProfile from './Jobs/ViewStudentProfile';
 import GetPackage from './Component/GetPackage/GetPackage';
+import GetPackageAnually from './Component/GetPackage/GetPackageAnually';
 
 
 function App() {
@@ -50,8 +51,9 @@ function App() {
           <Route path='/Sidebar' element={<Jobs />} />
           <Route path='/message' element={<MessageComponent />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile/>}/>
-          <Route path='/getpackage' element={<GetPackage/>}/>
+          <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile />} />
+          <Route path='/getpackage' element={<GetPackage />} />
+          <Route path='getpackageanually' element={<GetPackageAnually />} />
         </Routes>
 
       </Router>
