@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
+
+import React from 'react';
+
+// Import FontAwesomeIcon and necessary icons from FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
+// Define the EmployerSidebar functional component
 const Sidebar = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
-
+  // Return the JSX structure of the component
   return (
-    <div className="flex h-full w-full">
-      {/* Hamburger Icon for Mobile */}
-      <div className="lg:hidden p-4">
-        <button onClick={toggleSidebar}>
-          <FontAwesomeIcon icon={faBars} className="text-black" />
-        </button>
-      </div>
+    // Outermost container with flex layout and black background
+    <div className="flex h-full w-64 bg-black">
 
       {/* Sidebar */}
-      <aside className={`w-64 bg-black h-screen shadow-md ${isSidebarOpen ? 'block' : 'hidden'} lg:block`}>
+      {/* Sidebar container with a width of 64, black background, and shadow effect */}
+      <aside className="w-64 bg-black h-screen shadow-md">
+
         {/* Sidebar Header */}
         {/* Uncomment the lines below if you want to add a header to the sidebar */}
         {/* <div className="flex items-center justify-center h-16 bg-blue-500 text-white">
@@ -28,32 +24,36 @@ const Sidebar = () => {
         </div> */}
 
         {/* Sidebar Content */}
+        {/* Navigation container with top margin */}
         <nav className="mt-4">
+
           <Link to={{
             pathname: '/PostInternship'
           }}>
-            <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+            <a className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faBriefcase} className="w-6 h-6 mr-2 text-amber-300" />
               Post Internship
             </a>
           </Link>
 
+          {/* Jobs link with blue icon */}
           <Link to={{
             pathname: '/jobs'
           }}>
-            <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+            <a className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faBriefcase} className="w-6 h-6 mr-2 text-amber-300" />
               Internship
             </a>
           </Link>
-
+          {/* Candidates link with green icon */}
           <Link to="/candidates">
-            <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+            <a className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faUser} className="w-6 h-6 mr-2 text-amber-300" />
-              Shortlisted Candidates
+              ShortlistedCandidates
             </a>
           </Link>
 
+          {/* Interviews link with purple icon */}
           <Link to={{ pathname: '/weeklycalender' }}>
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faComments} className="w-6 h-6 mr-2 text-amber-300" />
@@ -61,13 +61,14 @@ const Sidebar = () => {
             </a>
           </Link>
 
+          {/* Search CV link with yellow icon */}
           <Link to={{ pathname: '/searchcv' }}>
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faSearch} className="w-6 h-6 mr-2 text-amber-300" />
               Search CV
             </a>
           </Link>
-
+          {/* Messages link with orange icon */}
           <Link to={{ pathname: '/message' }}>
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faInbox} className="w-6 h-6 mr-2 text-amber-300" />
@@ -75,18 +76,27 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link to={{ pathname: '/faq' }}>
+          {/* FAQs link with pink icon */}
+
+          <Link to={{ pathname: "/faq" }}>
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faQuestion} className="w-6 h-6 mr-2 text-amber-300" />
               FAQs
             </a>
           </Link>
         </nav>
+
       </aside>
 
+      {/* Main Content */}
+      {/* Main content container with flex-1 (takes remaining space) and padding */}
+      <main className="flex-1 p-4">
+        {/* Your main content goes here */}
+      </main>
 
     </div>
   );
 };
 
+// Export the EmployerSidebar component as the default export
 export default Sidebar;
