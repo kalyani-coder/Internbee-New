@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import Footer from '../Footer/Footer';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Packages = () => {
   const [selectedInterval, setSelectedInterval] = useState('monthly');
@@ -48,7 +48,7 @@ const Packages = () => {
                       <span className="bg-black text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                       <h2 className="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
                       <h1 className="text-5xl text-black leading-none flex items-center pb-4 mb-4 border-b border-amber-300">
-                        <span>$38</span>
+                        <span>₹5500</span>
                         <span className="text-lg ml-1 font-normal text-black">/mo</span>
                       </h1>
                       <p className="flex items-center text-black mb-2">
@@ -56,35 +56,42 @@ const Packages = () => {
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Vexillologist pitchfork
+                        </span>15 Searches
                       </p>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Tumeric plaid portland
+                        </span>8 Internship Enquiry
                       </p>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Hexagon neutra unicorn
+                        </span>10 Verified Application
                       </p>
                       <p className="flex items-center text-gray-600 mb-6">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Mixtape chillwave tumeric
+                        </span>12 Resume View
+                      </p>
+                      <p className="flex items-center text-gray-600 mb-6">
+                        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
+                            <path d="M20 6L9 17l-5-5"></path>
+                          </svg>
+                        </span>Dedicated CRM
                       </p>
                       <Link to='/getpackage'>
-                      <button className="flex items-center mt-auto text-black bg-amber-300 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
-                          <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                      </button>
+                        <button className="flex items-center mt-auto text-black bg-amber-300 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
+                          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                          </svg>
+                        </button>
                       </Link>
                       <p className="text-xs text-black mt-3">Literally you probably haven't heard of them jean shorts.</p>
                     </div>
@@ -102,43 +109,43 @@ const Packages = () => {
                     <div className="h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
                       <h2 className="text-sm tracking-widest title-font mb-1 font-medium">BUSINESS</h2>
                       <h1 className="text-5xl text-gray-900 leading-none flex items-center pb-4 mb-4 border-b border-amber-300">
-                        <span>$56</span>
-                        <span className="text-lg ml-1 font-normal text-black">/mo</span>
+                        <span>₹8500</span>
+                        <span className="text-lg ml-1 font-normal text-black">/yr</span>
                       </h1>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Vexillologist pitchfork
+                        </span>30 searches
                       </p>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Tumeric plaid portland
+                        </span>18 Internship Enquiry
                       </p>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Hexagon neutra unicorn
+                        </span>30 Verified Application
                       </p>
                       <p className="flex items-center text-gray-600 mb-2">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Vexillologist pitchfork
+                        </span>50 Resume View
                       </p>
                       <p className="flex items-center text-gray-600 mb-6">
                         <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>Mixtape chillwave tumeric
+                        </span>Dedicated CRM
                       </p>
                       <button className="flex items-center mt-auto text-black bg-amber-300 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
