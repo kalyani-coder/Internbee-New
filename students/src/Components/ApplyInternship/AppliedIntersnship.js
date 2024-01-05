@@ -44,49 +44,61 @@ const AppliedInternship = () => {
 
     // Render the list of applied internships
     return (
+      <div>
         <div>
-            <div>
-                <Navbar />
-            </div>
-
-            <div className='mt-32'>
-                <div>
-                    <div className='flex justify-around'>
-                        <div>
-                            <h2 className="text-2xl font-bold mb-4 text-center">Applied Internships</h2>
-                        </div>
-                        <div className="mb-4">
-                            <label className="mr-2">Sort by Status:</label>
-                            <select onChange={handleStatusChange} value={selectedStatus} className="p-2">
-                                <option value="all">All</option>
-                                <option value="pending">Pending</option>
-                                <option value="accepted">Accepted</option>
-                                <option value="rejected">Rejected</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap -m-4">
-                        {filteredInternships.map(internship => (
-                            <div key={internship._id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4">
-                                <div className="border p-6 rounded-md">
-                                    <p className="text-lg mb-2 font-semibold">Job Title: {internship.job_Title}</p>
-                                    <p>Status: {internship.status}</p>
-                                    <p>End Date: {internship.end_Date}</p>
-                                    <p>Company: {internship.empName}</p>
-                                    <p>Location: {internship.location}</p>
-                                    <p>Job Description: {internship.job_Description}</p>
-                                    <p>Position: {internship.position}</p>
-                                    <p>Skills: {internship.skills}</p>
-                                    <p>Stipend: ${internship.stipend}</p>
-                                    <p>Applied Date: {internship.appliedDate}</p>
-                                    {/* Add more details as needed */}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+          <Navbar />
         </div>
+
+        <div className="mt-32">
+          <div>
+            <div className="flex justify-around">
+              <div>
+                <h2 className="text-2xl font-bold mb-4 text-center">
+                  Applied Internships
+                </h2>
+              </div>
+              <div className="mb-4">
+                <label className="mr-2">Sort by Status:</label>
+                <select
+                  onChange={handleStatusChange}
+                  value={selectedStatus}
+                  className="p-2"
+                >
+                  <option value="all">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="Shortlisted">Shortlisted</option>
+                  <option value="accepted">Accepted</option>
+                  <option value="rejected">Rejected</option>
+                </select>
+              </div>
+            </div>
+            <div className="flex flex-wrap -m-4">
+              {filteredInternships.map((internship) => (
+                <div
+                  key={internship._id}
+                  className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4"
+                >
+                  <div className="border p-6 rounded-md">
+                    <p className="text-lg mb-2 font-semibold">
+                      Job Title: {internship.job_Title}
+                    </p>
+                    <p>Status: {internship.status}</p>
+                    <p>End Date: {internship.end_Date}</p>
+                    <p>Company: {internship.empName}</p>
+                    <p>Location: {internship.location}</p>
+                    <p>Job Description: {internship.job_Description}</p>
+                    <p>Position: {internship.position}</p>
+                    <p>Skills: {internship.skills}</p>
+                    <p>Stipend: ${internship.stipend}</p>
+                    <p>Applied Date: {internship.appliedDate}</p>
+                    {/* Add more details as needed */}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     );
 };
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Navbar from "../Component/Navbar/Navbar";
+import axios from "axios";
 
 export default function ViewStudentProfile() {
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const candidateId = searchParams.get("candidateId");
@@ -25,6 +27,24 @@ export default function ViewStudentProfile() {
 
     fetchStudentData();
   }, [id]);
+
+  const handleShortlistConfirmation = () => {
+    try {
+      const res = axios.patch(
+        `http://localhost:8000/api/applyinternship/${candidateId}`,
+        {
+          status: "Shortlisted",
+        }
+      );
+      console.log(res);
+      alert("Shortlisted Successfully", res);
+    } catch (error) {
+      console.log(error);
+      alert("Error Shortlisting", error);
+    }
+
+    setShowConfirmation(false);
+  };
 
   return (
     <>
@@ -94,8 +114,7 @@ export default function ViewStudentProfile() {
                 rel="noopener noreferrer"
                 className="block underline"
               >
-                <button className=" bg-amber-300 text-black p-2 ">
-
+                <button className=" bg-amber-300 rounded-md text-black p-2 ">
                   View Resume
                 </button>
               </a>
@@ -105,26 +124,48 @@ export default function ViewStudentProfile() {
                 rel="noopener noreferrer"
                 className="block  underline"
               >
-                <button className=" bg-amber-300 text-black p-2 ">
+                <button className=" bg-amber-300 rounded-md text-black p-2 ">
                   View Student Certificates
                 </button>
               </a>
-              <a
 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block  underline"
+              <button
+                className="block underline bg-green-300 rounded-md text-black p-2"
+                onClick={() => setShowConfirmation(true)}
               >
-                <button className=" bg-amber-300 text-black p-2 ">
-                  Shortlist
-                </button>
-              </a>
-
-
+                Shortlist
+              </button>
             </div>
+            {/* Confirmation Dialog */}
+            {showConfirmation && (
+              <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+                <div className="bg-white p-5 rounded-md shadow-md">
+                  <p>
+                    Do you want to shortlist{" "}
+                    {`${studentData.firstName} ${studentData.lastName}`}
+                  </p>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      className="mr-4 px-3 py-1 bg-green-300 rounded-md text-black"
+                      onClick={handleShortlistConfirmation}
+                    >
+                      Confirm
+                    </button>
+                    <button
+                      className="px-3 py-1 bg-red-300 rounded-md text-black"
+                      onClick={() => setShowConfirmation(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         ) : (
-          <p>Loading...</p>
+          <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
+          </div>
         )}
       </div>
     </>
