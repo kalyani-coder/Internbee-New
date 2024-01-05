@@ -13,6 +13,18 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+router.get("/shortlisted/:id", async (req, res) => {
+  const postId = req.params.id;
+  try {
+    const foundShortlisted = await appliedInternshipModel.find({
+      postId: postId,
+      status: "Shortlisted",
+    });
+    res.status(200).json(foundShortlisted);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 router.get("/internId/:InternId", async (req, res) => {
   const { InternId } = req.params;
