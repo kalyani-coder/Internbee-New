@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // const EmployerAuth = require("../models/EmployerAuth");
-const EmployerAuth = require("../models/employer");
+const EmployerAuth = require("../models/employerAuth");
 
 const router = express.Router();
 const jwtKey = "amar";
