@@ -55,9 +55,14 @@ mongoose
 
 
 
-app.use("/auth", authRoutes); // Mount authentication routes
-app.use("/users", userRoutes); // Mount user-related routes
-app.use("/employers", employerRoutes); // Mount employer-related routes"
+// app.use("/auth", authRoutes); // Mount authentication routes
+// app.use("/users", userRoutes); // Mount user-related routes
+// app.use("/employers", employerRoutes); // Mount employer-related routes"
+
+apiRouter.use("/auth" , authRoutes)
+apiRouter.use("/users" , userRoutes)
+apiRouter.use("/employers" , employerRoutes)
+
 
 apiRouter.use("/postinternship" , postInternship)
 
