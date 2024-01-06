@@ -92,7 +92,7 @@ const PostInternship = () => {
       return;
     }
   
-    const apiUrl = `http://localhost:8000/api/packages/${userId}`;
+    const apiUrl = `https://internbee-backend-apis.onrender.com/api/packages/${userId}`;
   
     try {
       const response = await fetch(apiUrl);
@@ -137,7 +137,7 @@ const PostInternship = () => {
       });
   
       setPosting(true);
-      const postResponse = await fetch("http://localhost:8000/api/postinternship", {
+      const postResponse = await fetch("https://internbee-backend-apis.onrender.com/api/postinternship", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

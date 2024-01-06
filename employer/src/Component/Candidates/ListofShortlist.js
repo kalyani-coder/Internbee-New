@@ -12,7 +12,7 @@ export default function ListofShortlist() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/applyInternship/shortlisted/${id}`);
+        const res = await axios.get(`https://internbee-backend-apis.onrender.com/api/applyInternship/shortlisted/${id}`);
         setShortlistData(res.data);
       } catch (error) {
         console.log(error);

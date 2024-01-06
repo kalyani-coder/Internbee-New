@@ -30,7 +30,7 @@ const GetPackage = () => {
     const number = localStorage.getItem('number');
     const empName = localStorage.getItem('empName');
     const payment_status = " ";
-    const apiUrl = 'http://localhost:8000/api/packages';
+    const apiUrl = 'https://internbee-backend-apis.onrender.com/api/packages';
 
     const data = {
       // cardNumber,

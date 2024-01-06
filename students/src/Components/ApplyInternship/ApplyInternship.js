@@ -14,7 +14,7 @@ const ApplyInternship = () => {
     const fetchInternshipData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/postinternship/${internshipId}`
+          `https://internbee-backend-apis.onrender.com/api/postinternship/${internshipId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok.");
@@ -45,7 +45,7 @@ const handleConfirmation = async () => {
     };
 
     const response = await axios.post(
-      "http://localhost:8000/api/applyinternship/",
+      "https://internbee-backend-apis.onrender.com/api/applyinternship/",
       formData
     );
 

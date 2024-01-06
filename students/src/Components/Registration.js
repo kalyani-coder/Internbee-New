@@ -29,7 +29,7 @@ const Registration = () => {
     const { confirmPassword, ...postData } = data;
 
     try {
-      const response = await fetch("http://localhost:8000/auth/signup", {
+      const response = await fetch("https://internbee-backend-apis.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
