@@ -44,6 +44,20 @@ const Navbar = () => {
             }
         }
     };
+    // const HandleNavigate = () => {
+    //     window.location.href = 'https://internbee-students.vercel.app/login';
+    // }
+
+    const navigateToStudents = () => {
+        // Redirect to the specified URL
+        window.location.href = 'https://internbee-students.vercel.app/login';
+      };
+    
+      const navigateToStudentsregister = () => {
+        // Redirect to the specified URL
+        window.location.href = 'https://internbee-students.vercel.app/register';
+      };
+    
 
     return (
         <div className="mb-10">
@@ -70,7 +84,16 @@ const Navbar = () => {
                          </li><hr/>
                             <li>
                                 <Link>
-                                <a class="dropdown-item" > Students </a>
+                               
+                                    
+                                <a
+              className="dropdown-item"
+              onClick={navigateToStudents}
+              style={{ cursor: 'pointer' }}
+            >
+              Students
+            </a>
+                               
                                 </Link>
                                 
                             </li>
@@ -89,9 +112,14 @@ const Navbar = () => {
                                 </Link>
                             </li><hr/>
                             <li>
-                                 <Link>
-                                <a class="dropdown-item" > Students </a>
-                                </Link>
+                                 
+            <a
+              className="dropdown-item"
+              onClick={navigateToStudentsregister}
+              style={{ cursor: 'pointer' }}
+            >
+              Students
+            </a>
                                 
                             </li>
                         </ul>
