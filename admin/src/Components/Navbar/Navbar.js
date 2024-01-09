@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom/dist';
 
+
 const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -20,11 +21,11 @@ const Navbar = () => {
         />
       </div>
       <div className="flex items-center">
-        <input
+        {/* <input
           type="text"
           placeholder="Search internships"
           className="border border-gray-300 rounded-md px-4 py-2 mr-4"
-        />
+        /> */}
         <ul className="flex items-center space-x-4">
           <li>
           <Link to={{ pathname: "/admindashboard" }}>
@@ -34,14 +35,20 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-black">
+          <Link to={'/aboutus'}>
+
+            <a  className="text-white hover:text-black">
               About Us
             </a>
+          </Link>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-black">
+          <Link to={'/postinternship'}>
+
+            <a  className="text-white hover:text-black">
               Internships
             </a>
+            </Link>
           </li>
           <li>
           <Link to={{ pathname: "/blog" }}>
@@ -52,7 +59,7 @@ const Navbar = () => {
           </li>
           {/* Profile button with links */}
           <li className="relative group">
-            <Link to={{ pathname: "/createprofile" }}>
+            <Link to={'/viewprofile'}>
               <button className="text-white hover:text-black flex items-center h-12 w-12">
                 <svg
                   className="h-6 w-6 mr-2"
@@ -72,7 +79,7 @@ const Navbar = () => {
             </Link>
 
             <ul className="absolute hidden bg-black text-white p-2 space-y-2 rounded-md transition duration-300 ease-in-out group-hover:block w-48">
-              <Link to={{ pathname: "/view-profile-page" }}>
+              <Link to={{ pathname: "/viewprofile" }}>
                 <li>
                   <a href="#" className="flex items-center">
                     <span className="mr-2">👤</span> View Profile

@@ -16,14 +16,14 @@ import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
 import LowerContent from './Components/AdminDashboard/LowerContent';
 import ProtectedRoute from './Components/protectedRoute/ProtectedRoute';
 import AuthWrapper from './Components/protectedRoute/AuthWrapper';
-
-
+import AboutUs from './Components/AboutUs/AboutUs';
+import ViewInternship from './Components/ViewPostInternship/ViewInternship';
+import ViewProfile from './Components/ViewProfile/ViewProfile';
 
 
 
 
  const App = () => {
-
 
   return (
     <div>
@@ -42,6 +42,9 @@ import AuthWrapper from './Components/protectedRoute/AuthWrapper';
         <Route path='/viewjoblist' element={<JobList/>}/>
         <Route path='/subscription' element={<Subscription/>}/>
         <Route path='/sidebar' element={<Sidebar/>}/>
+        <Route path='/aboutus' element={<AboutUs/>}/>
+        <Route path='/postinternship' element={<ViewInternship/>}/>
+        <Route path='/viewprofile' element={<ViewProfile/>} />
         <Route path='/footer' element={<Footer/>}/>
 
         </Routes>

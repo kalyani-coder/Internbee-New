@@ -1,89 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import './Employer.css'
 
 const Employers = () => {
-  const [employers, setEmployers] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      location: "New York",
-      designation: "Software Engineer",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      location: "San Francisco",
-      designation: "UX Designer",
-    },
-    // Add more Employer data as needed
-  ]);
+  const [employers, setEmployers] = useState([]);
+  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [candidateToDelete, setCandidateToDelete] = useState(null);
+  
 
-  const Modal = ({ isOpen, closeModal, data }) => {
-    if (!isOpen || !data) return null;
 
-    return (
-      <div className="modal flex justify-center">
-        <div className="modal-content bg-white p-6 border rounded">
-          
-          <span
-            className="close cursor-pointer font-bold text-xl" // Adjust text-lg for font size
-            onClick={closeModal}
-          >
-            &times;
-          </span>
-          <h2 className="text-2xl font-bold mb-4">Edit Employer</h2>
-          <p className="my-2">
-            <strong>Employer Name: </strong> {data.name}
-          </p>
-          <p className="my-2">
-            <strong>Location:</strong> {data.location}
-          </p>
-          <p className="my-2">
-            <strong>Designation:</strong> {data.designation}
-          </p>
-          {/* Add other details you want to display */}
-          {/* <button
-            className="bg-black text-white hover:bg-gray-700 font-bold py-2 px-4 rounded mb-4 mr-4"
-            onClick={() => console.log("Update button clicked")}
-          >
-            Update
-          </button>
-          <button
-            className="bg-black text-white hover:bg-gray-700 font-bold py-2 px-4 rounded mb-4 mr-4"
-            onClick={() => console.log("Delete button clicked")}
-          >
-            Delete
-          </button> */}
-          
-        </div>
-      </div>
-    );
+    const fetchEmployers = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/empauth");
+        const data = await response.json();
+        setEmployers(data);
+      } catch (error) {
+        console.error("Error fetching employers:", error);
+      }
+    };
+
+  useEffect(() => {
+    // Call the fetchEmployers function
+    fetchEmployers();
+  
+  })
+
+  const handleViewMore = (candidate) => {
+    setSelectedCandidate(candidate);
   };
 
-  const [selectedEmployer, setSelectedEmployer] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAdd = () => {
-    // Handle add logic
-    console.log("Add button clicked");
+  const handleClosePopup = () => {
+    setSelectedCandidate(null);
   };
 
-  const handleUpdate = (Employer) => {
-    setSelectedEmployer(Employer);
-    setIsModalOpen(true);
+  // Function to handle delete confirmation
+  const handleDeleteClick = (candidate) => {
+    setCandidateToDelete(candidate);
+    setShowConfirmation(true);
   };
 
-  const handleDelete = (id) => {
-    // Handle delete logic
-    console.log(`Delete button clicked for Employer with ID: ${id}`);
+  // Function to handle cancel delete
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+    setCandidateToDelete(null);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedEmployer(null);
+  // Function to handle confirmed delete
+  const handleConfirmDelete = async () => {
+    try {
+      // Make the API call for deletion using candidateToDelete._id
+      const response = await fetch(`http://localhost:8000/api/empauth/${candidateToDelete._id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        // If deletion is successful, fetch updated data
+        await fetchEmployers();
+      } else {
+        console.error("Failed to delete shortlisted candidate");
+      }
+    } catch (error) {
+      console.error("Error deleting shortlisted candidate:", error);
+    }
+
+    // Reset states
+    setShowConfirmation(false);
+    setCandidateToDelete(null);
   };
 
   return (
@@ -91,13 +77,11 @@ const Employers = () => {
       <Navbar />
       <div className="flex h-screen">
         <Sidebar />
-
         <div className="ml-10 mt-4">
           <div className="max-w-full p-4">
             <h1 className="text-3xl font-bold mb-4 mt-8">
               View Employer Details
             </h1>
-
             <div className="flex gap-10">
               <div>
                 <table className="w-full bg-white border border-gray-300">
@@ -105,48 +89,33 @@ const Employers = () => {
                     <tr>
                       <th className="py-4 px-6 border-b font-bold text-lg">Sr No</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Employers Name</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Location</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Designation</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
+                      <th className="py-4 px-6 border-b font-bold text-lg">Email</th>
+                      <th className="py-4 px-6 border-b font-bold text-lg">Contact No.</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
+                      <th className="py-4 px-6 border-b font-bold text-lg">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {employers.map((Employer, index) => (
-                      <tr key={Employer.id}>
+                    {employers.map((employer, index) => (
+                      <tr key={employer._id}>
                         <td className="py-2 px-4 border-b text-lg">{index + 1}</td>
-                        <td className="py-2 px-4 border-b text-lg">{Employer.name}</td>
+                        <td className="py-2 px-4 border-b text-lg">{employer.empName}</td>
                         <td className="py-2 px-4 border-b text-lg">
-                          {Employer.location}
+                          {employer.email}
                         </td>
                         <td className="py-2 px-4 border-b text-lg">
-                          {Employer.designation}
+                          {employer.number}
                         </td>
                         <td className="py-2 px-4 border-b text-lg">
                           <button
                             className="text-blue-500 hover:text-blue-700 mr-2"
-                            onClick={() => handleUpdate(Employer)}
+                            onClick={() => handleViewMore(employer)}
                           >
                             View More
                           </button>
                         </td>
                         <td className="py-2 px-4 border-b">
-                          <button
-                            className="text-green-500 hover:text-green-700 mr-2"
-                            onClick={() => handleUpdate(Employer)}
-                          >
-                            <FaPlus />
-                          </button>
-                          <button
-                            className="text-blue-500 hover:text-blue-700 mr-2"
-                            onClick={() => handleUpdate(Employer)}
-                          >
-                            <FaEdit />
-                          </button>
-                          <button
-                            className="text-red-500 hover:text-red-700"
-                            onClick={() => handleDelete(Employer.id)}
-                          >
+                        <button onClick={() => handleDeleteClick(employer)}>
                             <FaTrash />
                           </button>
                         </td>
@@ -156,11 +125,44 @@ const Employers = () => {
                 </table>
               </div>
               <div>
-                <Modal
-                  isOpen={isModalOpen}
-                  closeModal={closeModal}
-                  data={selectedEmployer}
-                />
+                
+
+                   {/* Confirmation Modal */}
+        {showConfirmation && (
+        <div className="confirmation-modal">
+          <p>Are you sure you want to delete this Employer?</p>
+          <button onClick={handleConfirmDelete}>Yes</button>
+          <button className="not-delete" onClick={handleCancelDelete}>No</button>
+        </div>
+      )}
+
+
+              {selectedCandidate && (
+  <div className="modal-overlay">
+    <div className="modal">
+      <span className="close cursor-pointer" onClick={handleClosePopup}>
+        &times;
+      </span>
+      <div className="modal-content">
+        <h2 className="text-2xl font-bold mb-4">Employer Details</h2><hr />
+        <p>{`Name: ${selectedCandidate.empName}`}</p><hr />
+        <p>
+          Email:{" "}
+          <a href={`mailto:${selectedCandidate.email}`} target="_blank" rel="noopener noreferrer">
+            {selectedCandidate.email}
+          </a>
+        </p><hr />
+        <p>{`Number: ${selectedCandidate.number}`}</p><hr />
+        <p>{`Company Address: ${selectedCandidate.companyAddress}`}</p><hr />
+        <p>{`Description: ${selectedCandidate.Description}`}</p>
+        {/* Add other details you want to display */}
+      </div>
+    </div>
+  </div>
+)}
+
+
+
               </div>
             </div>
           </div>
