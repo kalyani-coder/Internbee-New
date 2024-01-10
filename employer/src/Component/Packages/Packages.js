@@ -166,10 +166,10 @@ const Packages = () => {
             </div>
           )}
         </div>
+      </section>
         <div>
           <Footer />
         </div>
-      </section>
 
     </>
   );
