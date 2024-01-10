@@ -40,43 +40,42 @@ const Blog = ({ blogs }) => {
 
   return (
     <>
-
-      <Navbar />
-      <div className="sticky top-0">
-        <Sidebar />
+      <div className="">
+        <Navbar />
       </div>
+      <div className="flex">
+        <div className="sticky top-0 h-screen">
+          {/* Set a height for the sticky sidebar */}
+          <Sidebar />
+        </div>
 
-      <div className="flex flex-col items-center justify-center ">
+        <div className="flex flex-col items-center justify-center w-full flex-1 overflow-y-auto">
+          <div className="container mx-auto mt-8 w-full max-w-screen-md">
+            <h1 className="text-3xl font-bold mb-4 text-center">Latest Blogs</h1>
 
-      
+            {Array.isArray(allBlogs) && allBlogs.length > 0 ? (
+              allBlogs.map((blog, index) => (
+                <div key={blog.id} className={`mb-8 ${index !== 0 ? 'border-t-2 pt-4' : ''} flex flex-col items-center `}>
+                  {/* Display blog image */}
+                  {blog.image && (
+                    <img src={blog.image} alt={blog.title} className="mb-4 rounded-lg" style={{ width: '100%', height: "300px" }} />
+                  )}
 
+                  <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
+                  <p className="text-gray-600 mb-2">{blog.description}</p>
 
-        <div className={`flex-1 container mx-auto mt-8 w-full max-w-screen-md`}>
-          <h1 className="text-3xl font-bold mb-4 text-center">Latest Blogs</h1>
-
-          {Array.isArray(allBlogs) && allBlogs.length > 0 ? (
-            allBlogs.map((blog, index) => (
-              <div key={blog.id} className={`mb-8 ${index !== 0 ? 'border-t-2 pt-4' : ''} flex flex-col items-center`}>
-                {/* Display blog image */}
-                {blog.image && (
-                  <img src={blog.image} alt={blog.title} className="mb-4 rounded-lg" style={{ width: '60%', height: "300px" }} />
-                )}
-
-                <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-                <p className="text-gray-600 mb-2">{blog.description}</p>
-
-                {/* View more button */}
-                <Link to={`/blog/${blog.id}`} className="text-blue-500 block text-center">
-                  View More
-                </Link>
-              </div>
-            ))
-          ) : (
-            <p>No blogs available.</p>
-          )}
+                  {/* View more button */}
+                  <Link to={`/blog/${blog.id}`} className="text-blue-500 block text-center">
+                    View More
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p>No blogs available.</p>
+            )}
+          </div>
         </div>
       </div>
-
       {/* <Footer /> */}
     </>
   );
