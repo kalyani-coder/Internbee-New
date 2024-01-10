@@ -1,13 +1,24 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 
 const CreateBlog = ({ onSave }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSave = () => {
     // Call onSave prop to save the data (you need to implement this function in the parent component)
-    onSave({ title, description });
+    onSave({ title, description, image });
   };
 
   return (
@@ -34,10 +45,22 @@ const CreateBlog = ({ onSave }) => {
         ></textarea>
       </div>
 
-      {/* Use a Link component for navigation */}
-      <Link to="/blog" className="bg-blue-500 text-white py-2 px-4 rounded-md" onClick={handleSave}>
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700">Image</label>
+        <input
+          type="file"
+          onChange={handleImageChange}
+          accept="image/*"
+          className="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+
+      <button
+        onClick={handleSave}
+        className="bg-blue-500 text-white py-2 px-4 rounded-md"
+      >
         Save Blog
-      </Link>
+      </button>
     </div>
   );
 };
