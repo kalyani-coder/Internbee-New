@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import './Home.css'
 
 const EmployerSection = () => {
   const [jobs, setJobs] = useState([]);
@@ -28,6 +29,8 @@ const EmployerSection = () => {
       .catch((error) => console.error("Error fetching data:", error));
   };
 
+  
+
   return (
     <>
       {" "}
@@ -39,7 +42,7 @@ const EmployerSection = () => {
 
         <div className="flex w-full">
           {/* Posted Jobs Card */}
-          <div className="w-1/2 p-4 border border-gray-300 shadow-md mr-4">
+          <div className="w-1/2 p-4 border border-gray-300 shadow-md mr-4 post-job-card-div">
             <h2 className="text-xl font-semibold mb-4">Posted Internship</h2>
             <div className="scrollable-jobs max-h-96 overflow-y-auto">
               {jobs.length === 0 ? (
@@ -51,27 +54,26 @@ const EmployerSection = () => {
               ) : (
                 <div>
                   {jobs.map((job) => (
-                    <div
-                      key={job._id}
-                      className="mb-8 p-4 rounded-md bg-amber-200"
-                    >
-                      <h3 className="text-xl font-semibold mb-2 ">
-                        {job.job_Title}
-                      </h3>
-                      <p>Location: {job.location}</p>
-                      <p>Company Name: {job.company_Name}</p>
-                      <p>Job Type: {job.job_Type}</p>
-                      <p>Number of Positions: {job.position}</p>
-                      <p>Skills: {job.skills}</p>
-                      <p>Application start Date: {job.start_Date}</p>
-                      <p>Application end Date: {job.end_Date}</p>
-                      <p>Job Description: {job.job_Description}</p>
-                      <p>Stipend: {job.stipend}</p>
-                      {/* Add more fields as needed */}
-                      {/* You can add a button for 'View More' if needed */}
+                    <div key={job._id} className="mb-8 card w-50 card-component-posted-internship">
+                      <div className="card-body p-4 rounded-md bg-amber-200">
+                        <h3 className="text-xl font-semibold mb-2">{job.job_Title}</h3>
+                        <p>Location: {job.location}</p>
+                        <p>Company Name: {job.company_Name}</p>
+                        <p>Job Type: {job.job_Type}</p>
+                        <p>Number of Positions: {job.position}</p>
+                        <p>Skills: {job.skills}</p>
+                        <p>Application start Date: {job.start_Date}</p>
+                        <p>Application end Date: {job.end_Date}</p>
+                        <p>Job Description: {job.job_Description}</p>
+                        <p>Stipend: {job.stipend}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
+
+
+
+
               )}
             </div>
           </div>

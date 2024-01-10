@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import logo from "../../Assets/Internsb.jpeg"
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -48,15 +49,15 @@ const Navbar = () => {
     return (
         <div className="mb-10">
             <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
-                <div className="flex items-center space-x-2">
-                    <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
-                    <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
+                <div className="flex items-center ">
+                    <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
+                    <h1 className="text-4xl font-bold heading-in-navbar">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
                 </div>
                 {/* <div className="items-center space-x-6">
                     <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
                    
                 </div> */}
-                <div className="flex items-center space-x-6 mr-10">
+                <div className="flex items-center gap-3 ">
 
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle bg-secondary fw-bold text-dark py-2 px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,14 +66,14 @@ const Navbar = () => {
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <Link to={'/login'}>
-                                <a class="dropdown-item" > Employers</a>
+                                    <a class="dropdown-item" > Employers</a>
                                 </Link>
-                         </li><hr/>
+                            </li><hr />
                             <li>
                                 <Link>
-                                <a class="dropdown-item" > Students </a>
+                                    <a class="dropdown-item" > Students </a>
                                 </Link>
-                                
+
                             </li>
                         </ul>
                     </div>
@@ -85,14 +86,14 @@ const Navbar = () => {
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <Link to={'/register'}>
-                                <a class="dropdown-item" > Employers </a>
+                                    <a class="dropdown-item" > Employers </a>
                                 </Link>
-                            </li><hr/>
+                            </li><hr />
                             <li>
-                                 <Link>
-                                <a class="dropdown-item" > Students </a>
+                                <Link>
+                                    <a class="dropdown-item" > Students </a>
                                 </Link>
-                                
+
                             </li>
                         </ul>
                     </div>

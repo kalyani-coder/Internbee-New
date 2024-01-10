@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import Footer from '../Footer/Footer';
+
 import { Link } from 'react-router-dom';
+
+import Footer from './../Footer/Footer';
 
 const Packages = () => {
   const [selectedInterval, setSelectedInterval] = useState('monthly');
@@ -164,11 +166,11 @@ const Packages = () => {
             </div>
           )}
         </div>
+        <div>
+          <Footer />
+        </div>
       </section>
 
-      <div>
-        <Footer />
-      </div>
     </>
   );
 }

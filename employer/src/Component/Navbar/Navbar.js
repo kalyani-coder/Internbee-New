@@ -3,34 +3,31 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav
-      className="flex items-center justify-between p-4"
-      style={{ backgroundColor: "#FFBD59" }}
-    >
+    <nav className="flex items-center justify-between p-4" style={{ backgroundColor: '#FFBD59' }}>
       <div className="flex items-center">
-        <Link to={"/home"}>
-          <img src="./Internsb.jpeg" alt="" className="h-16 w-auto" />
-        </Link>
+        <img
+          src="./Internsb.jpeg"
+          alt=""
+          className="h-16 w-auto"
+        />
       </div>
-
       <div className="flex items-center">
-       
 
         <ul className="flex items-center space-x-4">
           <li>
-            <Link to={"/home"}>
-              <a className="text-white hover:text-black">Home</a>
-            </Link>
+            <a href="/home" className="text-white hover:text-black">
+              Home
+            </a>
           </li>
           <li>
-            <Link to={"/aboutus"}>
-              <a className="text-white hover:text-black">About Us</a>
-            </Link>
+            <a href="/aboutus" className="text-white hover:text-black">
+              About Us
+            </a>
           </li>
           <li>
-            <Link to={"/jobs"}>
-              <a className="text-white hover:text-black">Internships</a>
-            </Link>
+            <a href="/postinternship" className="text-white hover:text-black">
+              Internships
+            </a>
           </li>
           {/* Profile button with links */}
           <li className="relative group">
@@ -44,7 +41,9 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2a3 3 0 0 1 6 0v2" />
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2a3 3 0 0 1 6 0v2"
+                />
               </svg>
               Profile
             </button>
@@ -52,13 +51,13 @@ const Navbar = () => {
             <ul className="absolute hidden bg-black text-white p-2 space-y-2 rounded-md transition duration-300 ease-in-out group-hover:block w-48">
               <Link to={{ pathname: "/view-profile-page" }}>
                 <li>
-                  <a href="#" className="flex items-center">
+                  <a href="/view-profile-page" className="flex items-center">
                     <span className="mr-2">👤</span> View Profile
                   </a>
                 </li>
               </Link>
               <li>
-                <Link to={{ pathname: "/accountsetting" }}>
+                <Link to={{ pathname: '/accountsetting' }}>
                   <a href="#" className="flex items-center">
                     <span className="mr-2">🔧</span> Settings
                   </a>
@@ -72,7 +71,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="flex items-center">
+                <a href="/faq" className="flex items-center">
                   <span className="mr-2">❓</span> Help
                 </a>
               </li>
@@ -80,13 +79,9 @@ const Navbar = () => {
           </li>
           {/* End of Profile button with links */}
           <li>
-            <Link to={"/"}>
-              <button
-                onClick={() => {
-                  localStorage.clear();
-                }}
-                className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110"
-              >
+            <Link to={'/'}>
+
+              <button className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110">
                 Log out
               </button>
             </Link>

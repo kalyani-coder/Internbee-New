@@ -1,0 +1,65 @@
+@media screen and (max-width: 768px) {
+    /* Hero Section */
+    .landingpage-hero-content {
+      padding: 4rem 0;
+    }
+    .landingpage-hero-content>.container{
+        padding: 1rem;
+        margin: 0;
+        padding-right: 0;
+    }
+  
+    .landingpage-title-font {
+      font-size: 1.8rem;
+      line-height: 1.3;
+    }
+  .landingpage-hero-image{
+    width: 100%;
+   
+  }
+    /* Latest Internships and Jobs Sections */
+    .landingpage-latest-internships,
+    .landingpage-latest-jobs {
+      padding: 1.5rem 0;
+    }
+  
+    .landingpage-heading {
+      font-size: 1.3rem;
+    }
+  
+    /* Top Companies Section */
+    .landingpage-top-companies {
+      padding: 1.5rem 0;
+    }
+  
+    .landingpage-text-2xl {
+      font-size: 1.3rem;
+    }
+  
+    /* Statistics Section */
+    .landingpage-statistics {
+      padding: 1.5rem 0;
+    }
+    .categories{
+        margin-left: 10px;
+        gap:2px;
+        display: none;
+    }
+
+
+
+    .carousel {
+        max-width: 100%;
+        margin: 0 auto;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        display: flex;
+    }
+    .heading-in-navbar{
+      display: none;
+
+    }
+  
+  }

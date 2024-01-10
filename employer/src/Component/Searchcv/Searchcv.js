@@ -85,24 +85,7 @@ const SearchCVPage = () => {
             </button>
           </div>
 
-          {/* Registration Message Box
-          {showRegistrationMessage && (
-            <div className="flex items-center justify-center bg-amber-200 bg-opacity-75 p-4 rounded-md mt-4 text-center w-2/4 h-64">
-              <div>
-                <p className="text-black mb-2">
-                  Complete your registration to access advanced features!
-                </p>
-                <Link to="/registration">
-                  <button
-                    onClick={handleRegistrationCompletion}
-                    className="bg-blue-500 text-white px-4 py-2"
-                  >
-                    Complete Registration
-                  </button>
-                </Link>
-              </div>
-            </div>
-          )} */}
+        
 
           {/* Student CV List Table View */}
           <table className="border-collapse w-2/3 mt-8">

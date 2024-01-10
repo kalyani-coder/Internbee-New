@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './LandingPage.css';
+import "../ResponsiveCss/ResponsiveCss.css"
 import Partners from './Partners';
 // import Footer from './Footer';
 // import Footer from './../Footer';
@@ -56,24 +57,25 @@ const LandingPage = () => {
 
         <div className="flex flex-col h-screen">
 
-            <section className="text-gray-600 body-font">
+            <section className="landingpage-hero-content text-gray-600 body-font">
                 <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-left" >
+                    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-2 md:mb-0 items-center text-center">
+                        <h1 className="landingpage-title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-left">
                             Your Journey to
                             <br className="hidden lg:inline-block" />Success Begins Here!!!
                         </h1>
 
 
                     </div>
-                    <div className=" lg:w-full md:w-1/2 w-3/6">
+                    <div className=" landingpage-hero-image lg:w-full md:w-1/2 w-3/6">
                         <img className="object-cover object-center rounded" alt="hero" src={hero} />
                     </div>
                 </div>
             </section>
 
             {/* Section 2: Latest Internships and Categories */}
-            <section section className="flex-1 p-20 " id="dream-career-section" >
+            <section className="landingpage-latest-internships flex-1 p-20" id="dream-career-section">
+
                 <h1 className="heading ">
                     Latest Internships on InternBee
                 </h1>
@@ -90,7 +92,7 @@ const LandingPage = () => {
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel" ref={carouselRef}>
-                        {/* Dummy Data for card-landing-page Carousel */}
+
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
 
@@ -156,14 +158,15 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Section 3: Another Section */}
 
 
             {/* section 4 */}
 
-            <section section className="flex-1" id="dream-career-section" >
+            <section className="landingpage-latest-jobs flex-1" id="dream-career-section">
+
                 <h1 className="heading">
                     Latest jobs on InternBee
                 </h1>
@@ -180,7 +183,7 @@ const LandingPage = () => {
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel h-96" ref={carouselRef}>
-                        {/* Dummy Data for card-landing-page Carousel */}
+
                         <div className="card-landing-page">
                             <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
 
@@ -245,19 +248,19 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* section 5 */}
 
 
-            <section section id="dream-career-section" >
+            <section className="landingpage-top-companies" id="dream-career-section">
                 <div className='text-center'>
                     <h1 className="text-2xl font-semibold mb-6 text-center">Top companies trust us</h1>
                 </div>
                 <Partners />
 
 
-                <section className="text-gray-600 body-font">
+                <section className="landingpage-statistics" id="dream-career-section">
                     <div className="container px-5 py-24 mx-auto">
                         <div className="flex flex-wrap -m-4 text-center">
                             <div className="p-4 sm:w-1/4 w-1/2">
@@ -280,17 +283,17 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-            </section >
+            </section>
 
 
 
             {/* section 4 */}
 
-            <div div >
+            <div className="landingpage-footer">
                 <Footer />
-            </div >
+            </div>
 
-        </div >
+        </div>
     );
 };
 

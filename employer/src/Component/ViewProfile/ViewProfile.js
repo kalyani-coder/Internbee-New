@@ -86,7 +86,7 @@ const ViewProfilePage = () => {
           <div className="mt-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-gray-600">Company Name</label>
+                <label className="block text-sm text-gray-600">Name</label>
                 <p>{profileData.empName}</p>
               </div>
               <div>
@@ -123,7 +123,7 @@ const ViewProfilePage = () => {
             <h2 className="text-lg font-semibold mb-4">Edit Profile</h2>
             <form>
               <div className="mb-4">
-                <label className="block text-sm text-gray-600">Company Name</label>
+                <label className="block text-sm text-gray-600">Name</label>
                 <input
                   type="text"
                   name="empName"

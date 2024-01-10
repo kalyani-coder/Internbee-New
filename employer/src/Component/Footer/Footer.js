@@ -35,15 +35,22 @@ const Footer = () => {
 
 
     const socialIcons = [
-        <FaFacebook key="facebook" />,
-        <FaTwitter key="twitter" />,
-        <FaLinkedin key="linkedin" />,
-        <FaInstagram key="instagram" />,
+        <a href="https://www.facebook.com/internsbee" target="_blank" rel="noopener noreferrer" key="facebook">
+            <FaFacebook />
+        </a>,
+
+        <a href="https://www.linkedin.com/company/82091479" target="_blank" rel="noopener noreferrer" key="linkedin">
+            <FaLinkedin />
+        </a>,
+
+        <a href="https://www.instagram.com/internsbee/" target="_blank" rel="noopener noreferrer" key="instagram">
+            <FaInstagram />
+        </a>,
     ];
 
     const navbarContent = [
-        { label: 'About Us', link: '/about-us' },
-        { label: 'Contact', link: '/contact' },
+        { label: 'About Us', link: '/aboutus' },
+        { label: 'Contact', link: '/aboutus' },
         { label: 'FAQ', link: '/faq' },
     ];
 
@@ -52,7 +59,7 @@ const Footer = () => {
     const locationContent = ['New York', 'San Francisco', 'London', 'Tokyo'];
     return (
         <>
-            <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-center lg:hidden" style={{ backgroundColor: '#FFBD59' }}>
+            <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-center lg:items-start space-y-4">
                     <div className="flex items-center space-x-4">
                         {/* <img src="" alt="Footer Logo" className="w-12 h-12" /> */}

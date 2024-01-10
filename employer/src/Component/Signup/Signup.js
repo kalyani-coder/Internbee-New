@@ -228,7 +228,7 @@ const Registration = () => {
                       required: "Full Name is required",
                     })}
                     className="px-2 mt-1 p-2 flex-grow border rounded"
-                    placeholder="Enter Your Copany Name"
+                    placeholder="Enter Your  Name"
                     style={{ width: "100%" }}
                   />
                 </div>
@@ -317,7 +317,7 @@ const Registration = () => {
               )}
             </div>
             {/* Company Address Input */}
-            <div className="flex flex-col mb-4">
+            {/* <div className="flex flex-col mb-4">
               <div className="flex items-center">
                 <div>
                   <FaMapMarkerAlt className="mr-2 inline-block" size={25} />
@@ -340,10 +340,10 @@ const Registration = () => {
               {errors && errors.companyAddress && (
                 <p className="text-red-500">{errors.companyAddress.message}</p>
               )}
-            </div>
+            </div> */}
 
             {/* Company Description Input */}
-            <div className="flex flex-col mb-4">
+            {/* <div className="flex flex-col mb-4">
               <div className="flex items-center">
                 <div>
                   <FaInfoCircle className="mr-2 inline-block" size={25} />
@@ -365,7 +365,7 @@ const Registration = () => {
               {errors && errors.Description && (
                 <p className="text-red-500">{errors.Description.message}</p>
               )}
-            </div>
+            </div> */}
 
             {/* Mobile OTP Input */}
             {/* ... (similar structure as other OTP inputs) */}

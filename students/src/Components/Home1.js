@@ -343,11 +343,11 @@ const Home1 = () => {
           </div>
         </div>
 
-        <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
+        {/* <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
           <h1>Search Your Dream Internship here</h1>
-        </div>
+        </div> */}
 
-        <div className="relative flex items-center gap-2">
+        {/* <div className="relative flex items-center gap-2">
           <input
             type="text"
             placeholder="Enter skills/designations/companies"
@@ -356,7 +356,7 @@ const Home1 = () => {
           <button className="absolute mr-32 right-0 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2">
             Search
           </button>
-        </div>
+        </div> */}
         <div ref={companiesRef}>
           <div className="mt-40 mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
@@ -374,9 +374,12 @@ const Home1 = () => {
                 />
                 <h2 className="text-xl font-bold">{company.name}</h2>
                 <p className="text-gray-600">{company.description}</p>
+
                 <button className="mt-4 bg-amber-300 hover:bg-yellow-300 text-black rounded-md px-4 py-2">
                   View Internship
                 </button>
+
+
               </div>
             ))}
           </Slider>
@@ -431,12 +434,14 @@ const Home1 = () => {
                   {internship.job_Description}
                 </p>
                 {/* Additional details here */}
-                <button
-                  className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
-                  onClick={() => handleInternshipClick(internship._id)}
-                >
-                  View Internship
-                </button>
+                <Link to={`/apply-internship/${internship._id}`}>
+                  <button
+                    className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
+                 
+                  >
+                    View Internship
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

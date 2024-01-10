@@ -1,0 +1,27 @@
+@media only screen and (max-width: 768px) {
+    .flex {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .p-4 {
+      padding: 2rem; /* Adjust padding for smaller screens */
+    }
+  
+    .max-h-96 {
+      max-height: none; /* Allow the card to expand in height on smaller screens */
+    }
+  
+    .scrollable-jobs {
+      overflow-y: auto; /* Enable vertical scrolling if needed on smaller screens */
+    }
+    .card-component-posted-internship{
+        width: 100%;
+    }
+    .post-job-card-div{
+        width: 100%;
+    }
+  
+    /* Add more specific styles or adjustments as needed for a better mobile experience */
+  }

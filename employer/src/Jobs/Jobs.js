@@ -3,6 +3,7 @@ import Navbar from "../Component/Navbar/Navbar";
 import Sidebar from "../Component/Sidebar/Sidebar";
 import Modal from "react-modal";
 import { Link, useLocation } from "react-router-dom";
+import Footer from "../Component/Footer/Footer";
 
 Modal.setAppElement("#root"); // Set the root element for accessibility
 
@@ -132,11 +133,10 @@ const Jobs = () => {
                 <p className="text-gray-600">Skills: {internship.skills}</p>
 
                 <div
-                  className={`transition-all mt-2 overflow-hidden ${
-                    expandedInternshipId === internship._id
-                      ? "max-h-full"
-                      : "max-h-0"
-                  }`}
+                  className={`transition-all mt-2 overflow-hidden ${expandedInternshipId === internship._id
+                    ? "max-h-full"
+                    : "max-h-0"
+                    }`}
                 >
                   <p>Location: {internship.location}</p>
                   <p>Start Date: {internship.start_Date}</p>
@@ -306,6 +306,11 @@ const Jobs = () => {
             </div>
           </Modal>
         </div>
+      </div>
+      <div>
+
+        <Footer />
+
       </div>
     </>
   );

@@ -33,14 +33,20 @@ const Footer = () => {
 
     ]
 
-   
-    const socialIcons = [
-        <FaFacebook key="facebook" />,
-        <FaTwitter key="twitter" />,
-        <FaLinkedin key="linkedin" />,
-        <FaInstagram key="instagram" />,
-    ];
 
+    const socialIcons = [
+        <a href="https://www.facebook.com/internsbee" target="_blank" rel="noopener noreferrer" key="facebook">
+            <FaFacebook />
+        </a>,
+
+        <a href="https://www.linkedin.com/company/82091479" target="_blank" rel="noopener noreferrer" key="linkedin">
+            <FaLinkedin />
+        </a>,
+
+        <a href="https://www.instagram.com/internsbee/" target="_blank" rel="noopener noreferrer" key="instagram">
+            <FaInstagram />
+        </a>,
+    ];
     const navbarContent = [
         { label: 'About Us', link: '/about-us' },
         { label: 'Contact', link: '/contact' },
