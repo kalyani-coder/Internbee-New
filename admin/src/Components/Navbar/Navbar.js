@@ -51,7 +51,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to={{ pathname: "/create-blog" }}>
+            <Link to={{ pathname: "/blog" }}>
               <a href="#" className="text-white hover:text-black">
                 Blog
               </a>

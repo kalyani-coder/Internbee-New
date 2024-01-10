@@ -1,54 +1,56 @@
 // BlogPage.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiSearch, FiTrash2, FiX } from "react-icons/fi"; // Import icons as needed
+import { FiSearch, FiTrash2, FiX } from "react-icons/fi";
+import axios from "axios";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
-// import Footer from "../Footer/Footer";
 
-const Blog = ({ blogs }) => {
+const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const blogArray = Array.isArray(blogs) ? blogs : [];
+  const [blogs, setBlogs] = useState([]);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
-  const staticBlogs = [
-    {
-      id: "1",
-      title: "Static Blog 1",
-      description: "Description of static blog 1.",
-      image: "https://via.placeholder.com/300", // Dummy image URL
-    },
-    {
-      id: "2",
-      title: "Static Blog 2",
-      description: "Description of static blog 2.",
-      image: "https://via.placeholder.com/300", // Dummy image URL
-    },
-    {
-      id: "3",
-      title: "Static Blog 3",
-      description: "Description of static blog 3.",
-      image: "https://via.placeholder.com/300", // Dummy image URL
-    },
-    {
-      id: "4",
-      title: "Static Blog 4",
-      description: "Description of static blog 4.",
-      image: "https://via.placeholder.com/300", // Dummy image URL
-    },
-  ];
 
-  const allBlogs = [...staticBlogs, ...blogArray];
+  useEffect(() => {
+    // Fetch data from the API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/adminblog");
+        setBlogs(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to fetch data only once when the component mounts
 
   // Filter blogs based on the search term
-  const filteredBlogs = allBlogs.filter(blog =>
+  const filteredBlogs = blogs.filter(blog =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const handleDeleteBlog = async (blogId) => {
+    // Ask for confirmation before deleting
+    const isConfirmed = window.confirm('Are you sure you want to delete this blog?');
 
-  // Function to handle deleting a blog (you need to implement the actual deletion logic)
-  const handleDeleteBlog = (blogId) => {
-    // Implement your blog deletion logic here
-    console.log(`Deleting blog with ID: ${blogId}`);
+    if (!isConfirmed) {
+      // If not confirmed, do nothing
+      return;
+    }
+
+    try {
+      // Make a DELETE request to your backend API to delete the blog
+      await axios.delete(`http://localhost:8000/api/adminblog/${blogId}`);
+
+      // After successful deletion, update the state to remove the deleted blog
+      setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== blogId));
+
+      console.log(`Blog with ID ${blogId} deleted successfully.`);
+    } catch (error) {
+      console.error(`Error deleting blog with ID ${blogId}:`, error);
+    }
   };
 
   return (
@@ -56,7 +58,6 @@ const Blog = ({ blogs }) => {
       <Navbar />
       <div className="flex">
         <div className="sticky top-0 h-screen">
-          {/* Set a height for the sticky sidebar */}
           <Sidebar />
         </div>
 
@@ -64,8 +65,8 @@ const Blog = ({ blogs }) => {
           <div className="container mx-auto mt-8 w-full max-w-screen-md">
             <div className="flex items-center justify-between mb-4">
               <h1 className="text-3xl font-bold">Latest Blogs</h1>
+
               <div className="flex items-center">
-                {/* Search input */}
                 <div className="relative mr-4">
                   <input
                     type="text"
@@ -83,31 +84,39 @@ const Blog = ({ blogs }) => {
                     </span>
                   )}
                 </div>
-                {/* Search icon */}
                 <FiSearch />
               </div>
+              <Link to="/create-blog">
+                <button className="bg-amber-300 text-black px-4 py-2 rounded-md">
+                  Create New Blog
+                </button>
+              </Link>
             </div>
 
             {filteredBlogs.length > 0 ? (
               filteredBlogs.map((blog, index) => (
-                <div key={blog.id} className={`mb-8 ${index !== 0 ? 'border-t-2 pt-4' : ''} flex flex-col relative`}>
-                  {/* Display blog image */}
-                  {blog.image && (
-                    <img src={blog.image} alt={blog.title} className="mb-4 rounded-lg" style={{ width: '100%', height: "300px" }} />
+                <div key={blog._id} className={`mb-8 ${index !== 0 ? 'border-t-2 pt-4' : ''} flex flex-col relative`}>
+                  {blog.blogimage && (
+                    <img src={blog.blogimage} alt={blog.title} className="mb-4 rounded-lg" style={{ width: '100%', height: "300px" }} />
                   )}
 
                   <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-                  <p className="text-gray-600 mb-2">{blog.description}</p>
+                  <p className="text-gray-600 mb-2">
+                    {showFullDescription ? blog.description : `${blog.description.slice(0, blog.description.length / 3)}...`}
+                  </p>
 
                   {/* View more button */}
-                  <Link to={`/blog/${blog.id}`} className="text-blue-500 block text-center">
-                    View More
-                  </Link>
+                  <button
+                    onClick={() => setShowFullDescription(!showFullDescription)}
+                    className="text-blue-500 block text-center"
+                  >
+                    {showFullDescription ? "View Less" : "View More"}
+                  </button>
 
-                  {/* Delete icon */}
+
                   <span
                     className="absolute bottom-0 right-0 p-2 cursor-pointer text-red-500"
-                    onClick={() => handleDeleteBlog(blog.id)}
+                    onClick={() => handleDeleteBlog(blog._id)}
                   >
                     <FiTrash2 />
                   </span>
@@ -119,7 +128,6 @@ const Blog = ({ blogs }) => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

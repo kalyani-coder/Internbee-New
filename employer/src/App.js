@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./Component/Login/Login"
 import EmployerRegistration from './Component/Signup/Signup';
-import Packages from './Component/Packages/Packages';
+import Packages from './Component/Packages/MonthlyPackages';
 import EmployerSection from './Component/HomePage/HomePage';
 import ViewProfilePage from './Component/ViewProfile/ViewProfile';
 import EmployerSidebar from './Component/Sidebar/Sidebar';
@@ -23,6 +23,8 @@ import ViewStudentProfile from './Jobs/ViewStudentProfile';
 import GetPackage from './Component/GetPackage/GetPackage';
 import GetPackageAnually from './Component/GetPackage/GetPackageAnually';
 import ListofShortlist from './Component/Candidates/ListofShortlist';
+import AnuallyPackages from './Component/Packages/AnuallyPackages';
+import MonthlyPackages from './Component/Packages/MonthlyPackages';
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
       <Router>
 
         <Routes>
-          <Route path="/" element={<LandingpageHome />} /> 
+          <Route path="/" element={<LandingpageHome />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Registration />} />
           <Route path="/home" element={<EmployerSection />} />
@@ -55,7 +57,9 @@ function App() {
           <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile />} />
           <Route path='/getpackage' element={<GetPackage />} />
           <Route path='getpackageanually' element={<GetPackageAnually />} />
-          <Route path='/shortlisted/:id' element={<ListofShortlist/>}/>
+          <Route path='/shortlisted/:id' element={<ListofShortlist />} />
+          <Route path='/anuallypackage' element={<AnuallyPackages />} />
+          <Route path='/monthlypackage' element={<MonthlyPackages />} />
         </Routes>
 
       </Router>
