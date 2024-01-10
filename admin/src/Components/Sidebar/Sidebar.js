@@ -76,7 +76,7 @@ const Sidebar = () => {
           </Link>
 
           {/* FAQs link with pink icon */}
-          <Link to={{pathname:'/subscription'}}>
+          <Link to={{pathname:'/subscriptionmonthly'}}>
           <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
           <FaStar className="mr-2 text-xl" />
             Subscription

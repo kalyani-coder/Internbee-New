@@ -22,6 +22,8 @@ const getAllEmployer = require('./routes/getAllEmployer');
 const packageSchemaNew = require("./routes/PackageRoute"); // Adjust the path accordingly
 const adminLoginRoute = require('./routes/adminloginRoute');
 const adminBlog = require('./routes/adminBlog');
+const adminMonthlyPackage = require('./routes/adminMonthlyPackage')
+const adminAnnuallyPackage = require('./routes/adminAnnuallyPackage')
 
 
 const bodyParser = require("body-parser");
@@ -82,6 +84,8 @@ apiRouter.use("/packages", packageSchemaNew)
 apiRouter.use("/expiredinternships", ExpiredInternshipRoute)
 apiRouter.use("/adminlogin", adminLoginRoute)
 apiRouter.use("/adminblog", adminBlog)
+apiRouter.use("/adminmonthlypackage", adminMonthlyPackage)
+apiRouter.use("/adminannuallypackage", adminAnnuallyPackage)
 
 app.use('/api', apiRouter)
 
