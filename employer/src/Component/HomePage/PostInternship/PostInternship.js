@@ -104,7 +104,7 @@ const PostInternship = () => {
       if (!employerDetails || !employerDetails.userId) {
         setAlert({
           type: "danger",
-          message: "User details not found. Please log in to post an internship.",
+          message: "User package not found. Please get packages then post an internship.",
         });
         return;
       }
@@ -139,7 +139,7 @@ const PostInternship = () => {
       });
 
       setPosting(true);
-      const postResponse = await fetch("http://localhost:8000/api/postinternship", {
+      const postResponse = await fetch("https://internbee-backend-apis.onrender.com/api/postinternship", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

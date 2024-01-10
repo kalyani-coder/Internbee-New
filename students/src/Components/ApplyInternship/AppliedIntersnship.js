@@ -15,18 +15,18 @@ const AppliedInternship = () => {
   // Get intern ID from local storage
   const internId = localStorage.getItem('userId');
 
-  // useEffect to fetch data when the component mounts
-  useEffect(() => {
-    // Make a GET request to the API endpoint with the intern ID as a query parameter
-    axios.get(`http://localhost:8000/api/applyInternship/InternId/${internId}`)
-      .then(response => {
-        // Update state with the fetched data
-        setAppliedInternships(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, [internId]); // Run effect whenever internId changes
+    // useEffect to fetch data when the component mounts
+    useEffect(() => {
+        // Make a GET request to the API endpoint with the intern ID as a query parameter
+        axios.get(`https://internbee-backend-apis.onrender.com/api/applyInternship/InternId/${internId}`)
+            .then(response => {
+                // Update state with the fetched data
+                setAppliedInternships(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, [internId]); // Run effect whenever internId changes
 
   // useEffect to update filteredInternships when selectedStatus changes
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -30,13 +30,13 @@ const GetPackage = () => {
     const number = localStorage.getItem('number');
     const empName = localStorage.getItem('empName');
     const payment_status = " ";
-    const apiUrl = 'http://localhost:8000/api/packages';
+    const apiUrl = 'https://internbee-backend-apis.onrender.com/api/packages';
 
     const data = {
-      cardNumber,
+      // cardNumber,
       accountHolderName: cardHolderName,
-      expiryDate,
-      cvv,
+      // expiryDate,
+      // cvv,
       email,
       userId,
       empName,
@@ -52,7 +52,7 @@ const GetPackage = () => {
         },
         body: JSON.stringify(data),
       });
-  
+
       if (response.ok) {
         // Handle success
         console.log('Payment successful');
@@ -93,65 +93,65 @@ const GetPackage = () => {
                 <div className="h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
                   <h2 className="text-sm tracking-widest title-font mb-1 font-medium">Payment Details</h2>
                   <div className="mb-4">
-                    <label htmlFor="cardNumber" className="text-sm text-gray-600">
+                    {/* <label htmlFor="cardNumber" className="text-sm text-gray-600">
                       Card Number
                     </label>
                     <input
-          type="text"
-          id="cardNumber"
-          className="w-full p-2 border border-gray-300 rounded mt-1"
-          placeholder="1234 5678 9101 1121"
-          value={cardNumber}
-          onChange={handleCardNumberChange}
-        />
+                      type="text"
+                      id="cardNumber"
+                      className="w-full p-2 border border-gray-300 rounded mt-1"
+                      placeholder="1234 5678 9101 1121"
+                      value={cardNumber}
+                      onChange={handleCardNumberChange}
+                    /> */}
                   </div>
                   <div className="mb-4">
                     <label htmlFor="cardHolderName" className="text-sm text-gray-600">
                       Card Holder Name
                     </label>
                     <input
-          type="text"
-          id="cardHolderName"
-          className="w-full p-2 border border-gray-300 rounded mt-1"
-          placeholder="John Doe"
-          value={cardHolderName}
-          onChange={handleCardHolderNameChange}
-        />
+                      type="text"
+                      id="cardHolderName"
+                      className="w-full p-2 border border-gray-300 rounded mt-1"
+                      placeholder="John Doe"
+                      value={cardHolderName}
+                      onChange={handleCardHolderNameChange}
+                    />
                   </div>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="mb-4 col-span-2">
-                      <label htmlFor="expiryDate" className="text-sm text-gray-600">
+                      {/* <label htmlFor="expiryDate" className="text-sm text-gray-600">
                         Expiry Date
                       </label>
                       <input
-            type="text"
-            id="expiryDate"
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            placeholder="MM/YY"
-            value={expiryDate}
-            onChange={handleExpiryDateChange}
-          />
+                        type="text"
+                        id="expiryDate"
+                        className="w-full p-2 border border-gray-300 rounded mt-1"
+                        placeholder="MM/YY"
+                        value={expiryDate}
+                        onChange={handleExpiryDateChange}
+                      /> */}
                     </div>
                     <div className="mb-4">
-                      <label htmlFor="cvv" className="text-sm text-gray-600">
+                      {/* <label htmlFor="cvv" className="text-sm text-gray-600">
                         CVV
                       </label>
                       <input
-            type="text"
-            id="cvv"
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            placeholder="123"
-            value={cvv}
-            onChange={handleCvvChange}
-          />
+                        type="text"
+                        id="cvv"
+                        className="w-full p-2 border border-gray-300 rounded mt-1"
+                        placeholder="123"
+                        value={cvv}
+                        onChange={handleCvvChange}
+                      /> */}
                     </div>
                   </div>
                   <button
-        className="bg-indigo-500 text-white py-2 px-6 mt-4 rounded hover:bg-indigo-600 focus:outline-none"
-        onClick={handlePayment}
-      >
-        Pay Now
-      </button>
+                    className="bg-indigo-500 text-white py-2 px-6 mt-4 rounded hover:bg-indigo-600 focus:outline-none"
+                    onClick={handlePayment}
+                  >
+                    Pay Now
+                  </button>
                 </div>
               </div>
             </div>

@@ -21,7 +21,7 @@ const ViewProfilePage = () => {
     const fetchProfileData = async () => {
       try {
         const userId = await localStorage.getItem("userId");
-        const response = await fetch(`http://localhost:8000/api/empauth/${userId}`);
+        const response = await fetch(`https://internbee-backend-apis.onrender.com/api/empauth/${userId}`);
         const data = await response.json();
         setProfileData(data);
         setEditedData(data);
@@ -52,7 +52,7 @@ const ViewProfilePage = () => {
   const saveEditedData = async () => {
     try {
       const userId = await localStorage.getItem("userId");
-      await fetch(`http://localhost:8000/api/empauth/${userId}`, {
+      await fetch(`https://internbee-backend-apis.onrender.com/api/empauth/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

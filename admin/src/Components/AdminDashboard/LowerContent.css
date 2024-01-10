@@ -1,0 +1,208 @@
+.mcLower{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.leftTable{
+    /* background: #ffffff; */
+    display: flex;
+    flex-direction: column;
+    min-width: 68%;
+    max-width: 68%;
+    
+}
+#recentapplicantHeading{
+    margin: 1em 0;
+}
+.upperTable,.bottomTable{
+    background: #ffffff;
+    padding: 1em;
+    margin-bottom: 1em;
+    overflow-x: scroll;
+}
+table {
+    /* border: 2px solid forestgreen; */
+    width: 100%;
+}
+.TableHeadings{
+    background-color: #f4f4f4;
+    color: gray;
+}
+th {
+    padding: .5em;
+    font-weight: 500;
+}
+.tLeft{
+    border-radius: .6em 0 0 .6em;
+} 
+.tRight{
+    border-radius: 0 .6em .6em 0;
+} 
+
+td {
+    text-align: center;
+}
+.cand{
+    min-width: 10em;
+    display: flex;
+    align-items: center;
+    margin: .6em 0 0 0;
+}
+
+.tableProfile{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0 1em;
+}
+.apCont{
+    display: flex;
+    flex-direction: column;
+}
+.applicantAdd{
+    color: green;
+    text-decoration: underline;
+    font-size: .7em;
+    display: flex;
+    justify-content: flex-start;
+}
+.statusBtnAcc{
+    cursor: pointer;
+    width: 7em;
+    border: none;
+    margin-left: 3em;
+    padding: 1px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #056d05;
+    background: #cfeecf;
+}
+.statusBtnPend{
+    cursor: pointer;
+    width: 7em;
+    border: none;
+    margin-left: 3em;
+    padding: 1px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #d5a300;
+    background: #ffeeb4;
+}
+.tableDate{
+    color: rgb(68, 68, 68);
+    font-weight: 500;
+}
+.tActions{
+    /* border: 1px solid black; */
+    width: 100%;
+    padding: .3em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+.tbleBtn{
+    background: #cfeecf;
+    color: #056d05;
+    border-radius: 5px;
+    padding: 1px;
+}
+#actDelete{
+    color: #ea2626;
+    background: #efdada;
+}
+
+
+
+/* Bottom Table */
+.tableApplication{
+    color: green;
+    text-decoration: underline;
+
+}
+
+/* --------------------------- */
+.rightList{
+    background: #fcfcfc;
+    min-width: 30%;
+    max-width: 30%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+#applicantHeading{
+    margin-left: 1em;
+}
+.listItems{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: .3em 0;
+}
+
+.applicantsProfile{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0 1em;
+}
+/* .applicantsName{
+
+} */
+.applicantsBtnAccepted, .applicantsBtnRejected{
+    cursor: pointer;
+    border: none;
+    margin-left: 3em;
+    padding: 1px 10px;
+    border-radius: 10px;
+
+    font-weight: 600;
+    color: #056d05;
+    background: #cfeecf;
+}
+.applicantsBtnRejected{
+    color: #ea2626;
+    background: #efdada;
+
+}
+
+.role{
+    display: inline;
+    color: green;
+}
+
+
+
+
+@media only screen and (max-width: 1000px){
+    .mcLower{
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .leftTable,.rightList{
+        margin: 0 auto;
+        min-width: 100%;
+    }
+    .leftTable{
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
+    .rightList{
+        border: 1px solid rgb(180, 179, 179);
+    }
+    
+}
+@media only screen and (max-width: 600px){
+    .rightList{
+        margin: 0 auto;
+        align-items: center;
+        border: 1px solid rgb(180, 179, 179);
+    }
+
+}

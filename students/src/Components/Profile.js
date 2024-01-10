@@ -200,7 +200,7 @@ const Profile = () => {
         
          
     
-          fetch('http://localhost:8000/api/studentsdetails', {
+          fetch('https://internbee-backend-apis.onrender.com/api/studentsdetails', {
             method: 'POST',
             body: formData,
           })

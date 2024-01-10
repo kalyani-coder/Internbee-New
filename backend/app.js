@@ -20,6 +20,7 @@ const ImapgeUpload = require('./routes/UploadImagePdf')
 const applyInternship = require('./routes/applyInternship');
 const getAllEmployer = require('./routes/getAllEmployer');
 const packageSchemaNew = require("./routes/PackageRoute"); // Adjust the path accordingly
+const adminLoginRoute = require('./routes/adminloginRoute');
 
 
 const bodyParser = require("body-parser");
@@ -55,9 +56,14 @@ mongoose
 
 
 
-app.use("/auth", authRoutes); // Mount authentication routes
-app.use("/users", userRoutes); // Mount user-related routes
-app.use("/employers", employerRoutes); // Mount employer-related routes"
+// app.use("/auth", authRoutes); // Mount authentication routes
+// app.use("/users", userRoutes); // Mount user-related routes
+// app.use("/employers", employerRoutes); // Mount employer-related routes"
+
+apiRouter.use("/auth" , authRoutes)
+apiRouter.use("/users" , userRoutes)
+apiRouter.use("/employers" , employerRoutes)
+
 
 apiRouter.use("/postinternship" , postInternship)
 
@@ -73,43 +79,44 @@ apiRouter.use("/imageupload", ImapgeUpload)
 apiRouter.use("/applyInternship", applyInternship)
 apiRouter.use("/packages", packageSchemaNew)
 apiRouter.use("/expiredinternships", ExpiredInternshipRoute)
+apiRouter.use("/adminlogin", adminLoginRoute)
 
 app.use('/api', apiRouter)
 
-const handleExpiredInternships = async () => {
-  try {
-    const currentDate = new Date().toISOString().split("T")[0]; // Get current date
+// const handleExpiredInternships = async () => {
+//   try {
+//     const currentDate = new Date().toISOString().split("T")[0]; // Get current date
 
-    // Find internship posts where end_Date is less than the current date
-    const expiredInternships = await newInterShipSchema.find({
-      end_Date: { $lt: currentDate },
-    });
+//     // Find internship posts where end_Date is less than the current date
+//     const expiredInternships = await newInterShipSchema.find({
+//       end_Date: { $lt: currentDate },
+//     });
 
    
-    expiredInternships.forEach(async (internship) => {
-      const saveInternship = new ExpiredInternship(internship);
-      await saveInternship.save();
-      await newInterShipSchema.findByIdAndDelete(internship._id);
+//     expiredInternships.forEach(async (internship) => {
+//       const saveInternship = new ExpiredInternship(internship);
+//       await saveInternship.save();
+//       await newInterShipSchema.findByIdAndDelete(internship._id);
      
-    });
+//     });
 
-    // Return the expired internships if needed
-    return expiredInternships;
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to handle expired internships");
-  }
-};
+//     // Return the expired internships if needed
+//     return expiredInternships;
+//   } catch (error) {
+//     console.error(error);
+//     throw new Error("Failed to handle expired internships");
+//   }
+// };
 
-// Run handleExpiredInternships function every 12 hour
-setInterval(async () => {
-  try {
-    const expiredInternships = await handleExpiredInternships();
-    console.log("Expired internships handled:", expiredInternships);
-  } catch (error) {
-    console.error("Error handling expired internships:", error);
-  }
-}, 12*60*60*1000); //after 12 hours run the function again.
+// // Run handleExpiredInternships function every 12 hour
+// setInterval(async () => {
+//   try {
+//     const expiredInternships = await handleExpiredInternships();
+//     console.log("Expired internships handled:", expiredInternships);
+//   } catch (error) {
+//     console.error("Error handling expired internships:", error);
+//   }
+// }, 12*60*60*1000); //after 12 hours run the function again.
 
 // Start the server
 
