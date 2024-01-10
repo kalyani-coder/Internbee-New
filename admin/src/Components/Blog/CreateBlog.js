@@ -2,26 +2,52 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 
-const CreateBlog = ({ onSave }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+const CreateBlog = () => {
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  }
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  }
+
+  const handleUpload = async () => {
+    try {
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+        formData.append('title', title);
+        formData.append('description', description);
+
+        const response = await fetch('http://localhost:8000/api/adminblog', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Image uploaded Successfully:');
+          alert("Blog Added Successfully", "success");
+        } else {
+          console.error('Error uploading image:', response.statusText);
+          alert("Error adding blog", "error");
+        }
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert("Error adding blog", "error");
     }
   };
 
-  const handleSave = () => {
-    // Call onSave prop to save the data (you need to implement this function in the parent component)
-    onSave({ title, description, image });
-  };
 
   return (
     <>
@@ -39,17 +65,20 @@ const CreateBlog = ({ onSave }) => {
             <label className="block text-sm font-medium text-gray-700">Title</label>
             <input
               type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
               className="mt-1 p-2 w-full border rounded-md"
+              required
+              onChange={handleTitleChange}
+
+
             />
           </div>
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">Description</label>
             <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              type="file"
+              required
+              onChange={handleDescriptionChange}
               className="mt-1 p-2 w-full border rounded-md"
               rows="4"
             ></textarea>
@@ -59,14 +88,16 @@ const CreateBlog = ({ onSave }) => {
             <label className="block text-sm font-medium text-gray-700">Image</label>
             <input
               type="file"
-              onChange={handleImageChange}
               accept="image/*"
+              required
+              onChange={handleFileChange}
+
               className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
 
           <button
-            onClick={handleSave}
+            onClick={handleUpload}
             className="bg-blue-500 text-white py-2 px-4 rounded-md"
           >
             Save Blog

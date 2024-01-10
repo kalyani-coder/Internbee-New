@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const adminSchema = require('../models/adminModel');
+
+
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 
@@ -105,6 +107,8 @@ router.patch('/:adminId', async (req, res) => {
       }
     }
   });
+  
+
 
 module.exports = router;
 
