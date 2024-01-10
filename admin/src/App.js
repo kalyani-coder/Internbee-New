@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -19,38 +19,42 @@ import AuthWrapper from './Components/protectedRoute/AuthWrapper';
 import AboutUs from './Components/AboutUs/AboutUs';
 import ViewInternship from './Components/ViewPostInternship/ViewInternship';
 import ViewProfile from './Components/ViewProfile/ViewProfile';
+import Blog from './Components/Blog/Blog';
+import CreateBlog from './Components/Blog/CreateBlog';
 
 
 
 
- const App = () => {
+const App = () => {
 
   return (
     <div>
-     
+
       <Router>
         <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path="/sidebar" element={<Sidebar />} />
-        <Route path="/navbar" element={<Navbar />} />
-        <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/candidates' element={<Candidates/>}/>
-        <Route path='/viewshortlistedcandidates' element={<ShortlistedCandidates/>}/>
-        <Route path='/employer' element={<Employer/>}/>
-        <Route path='/viewemployerpackages' element={<EmployerPackages/>}/>
-        <Route path='/viewjoblist' element={<JobList/>}/>
-        <Route path='/subscription' element={<Subscription/>}/>
-        <Route path='/sidebar' element={<Sidebar/>}/>
-        <Route path='/aboutus' element={<AboutUs/>}/>
-        <Route path='/postinternship' element={<ViewInternship/>}/>
-        <Route path='/viewprofile' element={<ViewProfile/>} />
-        <Route path='/footer' element={<Footer/>}/>
+          <Route path='/' element={<Login />} />
+          <Route path="/sidebar" element={<Sidebar />} />
+          <Route path="/navbar" element={<Navbar />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/candidates' element={<Candidates />} />
+          <Route path='/viewshortlistedcandidates' element={<ShortlistedCandidates />} />
+          <Route path='/employer' element={<Employer />} />
+          <Route path='/viewemployerpackages' element={<EmployerPackages />} />
+          <Route path='/viewjoblist' element={<JobList />} />
+          <Route path='/subscription' element={<Subscription />} />
+          <Route path='/sidebar' element={<Sidebar />} />
+          <Route path='/aboutus' element={<AboutUs />} />
+          <Route path='/postinternship' element={<ViewInternship />} />
+          <Route path='/viewprofile' element={<ViewProfile />} />
+          <Route path='/footer' element={<Footer />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/create-blog' element={<CreateBlog />} />
 
         </Routes>
       </Router>
 
-   
+
 
     </div>
   )

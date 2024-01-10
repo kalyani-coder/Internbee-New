@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4"  style={{ backgroundColor: '#FFBD59' }}>
+    <nav className="flex items-center justify-between p-4" style={{ backgroundColor: '#FFBD59' }}>
       <div className="flex items-center">
         <img
           src="./Internsb.jpeg"
@@ -28,33 +28,33 @@ const Navbar = () => {
         /> */}
         <ul className="flex items-center space-x-4">
           <li>
-          <Link to={{ pathname: "/admindashboard" }}>
-            <a href="#" className="text-white hover:text-black">
-              Home
-            </a>
+            <Link to={{ pathname: "/admindashboard" }}>
+              <a href="#" className="text-white hover:text-black">
+                Home
+              </a>
             </Link>
           </li>
           <li>
-          <Link to={'/aboutus'}>
+            <Link to={'/aboutus'}>
 
-            <a  className="text-white hover:text-black">
-              About Us
-            </a>
-          </Link>
-          </li>
-          <li>
-          <Link to={'/postinternship'}>
-
-            <a  className="text-white hover:text-black">
-              Internships
-            </a>
+              <a className="text-white hover:text-black">
+                About Us
+              </a>
             </Link>
           </li>
           <li>
-          <Link to={{ pathname: "/blog" }}>
-            <a href="#" className="text-white hover:text-black">
-              Blog
-            </a>
+            <Link to={'/postinternship'}>
+
+              <a className="text-white hover:text-black">
+                Internships
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link to={{ pathname: "/create-blog" }}>
+              <a href="#" className="text-white hover:text-black">
+                Blog
+              </a>
             </Link>
           </li>
           {/* Profile button with links */}
@@ -87,18 +87,18 @@ const Navbar = () => {
                 </li>
               </Link>
               <li>
-                
+
                 <a href="#" className="flex items-center">
                   <span className="mr-2">🔧</span> Settings
                 </a>
-                
+
               </li>
               <li>
-              
+
                 <a href="#" className="flex items-center">
                   <span className="mr-2">🔄</span> Subscriptions
                 </a>
-               
+
               </li>
               <li>
                 <a href="#" className="flex items-center">
@@ -110,10 +110,10 @@ const Navbar = () => {
           {/* End of Profile button with links */}
           <li>
             <Link to={'/'}>
-            
-            <button onClick={handleLogout} className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110">
-              Log out
-            </button>
+
+              <button onClick={handleLogout} className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110">
+                Log out
+              </button>
             </Link>
           </li>
         </ul>

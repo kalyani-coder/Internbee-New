@@ -1,21 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const CreateBlog = ({ onSave }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const history = useHistory();
-
   const handleSave = () => {
-    const newBlog = {
-      id: Date.now(), // Simple unique ID for demo purposes
-      title,
-      description,
-    };
-
-    onSave(newBlog);
-    history.push("/blogs"); // Redirect to the blogs page after saving
+    // Call onSave prop to save the data (you need to implement this function in the parent component)
+    onSave({ title, description });
   };
 
   return (
@@ -42,14 +34,12 @@ const CreateBlog = ({ onSave }) => {
         ></textarea>
       </div>
 
-      <button
-        onClick={handleSave}
-        className="bg-blue-500 text-white py-2 px-4 rounded-md"
-      >
+      {/* Use a Link component for navigation */}
+      <Link to="/blog" className="bg-blue-500 text-white py-2 px-4 rounded-md" onClick={handleSave}>
         Save Blog
-      </button>
+      </Link>
     </div>
   );
 };
 
-export default CreateBlog
+export default CreateBlog;
