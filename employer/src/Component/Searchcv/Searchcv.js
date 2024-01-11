@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
-import Sidebar from '../Sidebar/Sidebar';
-import Footer from '../Footer/Footer';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import Sidebar from "../Sidebar/Sidebar";
+import Footer from "../Footer/Footer";
+import StudentDetailsPopup from "./StudentDetailsPopup";
 
 const StudentCVItem = ({ student, handleView, handleDownload }) => (
-  <tr>
-    <td className="border px-4 py-2">{student.name}</td>
-    <td className="border px-4 py-2">{student.skills.join(', ')}</td>
+  <tr key={student._id}>
+    <td className="border px-4 py-2">{`${student.firstName} ${student.lastName}`}</td>
+    <td className="border px-4 py-2">{student.keySkills}</td>
     <td className="border px-4 py-2">
       <button
         className="bg-amber-300 text-black px-4 py-2 mr-2"
-        onClick={() => handleView(student.id)}
+        onClick={() => handleView(student)}
       >
         View
       </button>
@@ -19,7 +20,7 @@ const StudentCVItem = ({ student, handleView, handleDownload }) => (
     <td className="border px-4 py-2">
       <button
         className="bg-black text-white px-4 py-2 hover:bg-gray-800"
-        onClick={() => handleDownload(student.id)}
+        onClick={() => handleDownload(student)}
       >
         Download
       </button>
@@ -28,45 +29,51 @@ const StudentCVItem = ({ student, handleView, handleDownload }) => (
 );
 
 const SearchCVPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showRegistrationMessage, setShowRegistrationMessage] = useState(true);
-
-  const handleSearch = () => {
-    console.log('Searching...', searchQuery);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [studentCVs, setStudentCVs] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const handleSearch = async () => {
+    try {
+      // Fetch data from your API using axios
+      const response = await axios.post("http://localhost:8000/api/search", {
+        skill: searchQuery,
+      });
+      setStudentCVs(response.data.results);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
-  const handleRegistrationCompletion = () => {
-    setShowRegistrationMessage(false);
+  useEffect(() => {
+    // Initial data fetch, you can remove this if not needed on component mount
+    handleSearch();
+  }, []); // Empty dependency array ensures it runs only once on mount
+
+  const handleView = (student) => {
+    setSelectedStudent(student);
+  };
+  const closePopup = () => {
+    setSelectedStudent(null);
   };
 
-  const handleView = (studentId) => {
-    console.log(`Viewing CV for student with ID ${studentId}`);
-    // Implement your view logic
-  };
+ const handleDownload = (student) => {
+   // Assuming student_PDF is a valid URL or file path
+   const url = student.student_PDF;
 
-  const handleDownload = (studentId) => {
-    console.log(`Downloading CV for student with ID ${studentId}`);
-    // Implement your download logic
-  };
-
-  const studentCVs = [
-    { id: 1, name: 'John Doe', skills: ['JavaScript', 'React', 'Node.js'] },
-    { id: 2, name: 'Jane Smith', skills: ['HTML', 'CSS', 'React'] },
-    { id: 3, name: 'Bob Johnson', skills: ['Python', 'Django', 'Flask'] },
-    { id: 4, name: 'Alice Brown', skills: ['Java', 'Spring', 'Hibernate'] },
-    { id: 5, name: 'Charlie Wilson', skills: ['C#', 'ASP.NET', 'MVC'] },
-    { id: 6, name: 'Emma White', skills: ['Ruby', 'Rails', 'PostgreSQL'] },
-    { id: 7, name: 'Frank Black', skills: ['Swift', 'iOS Development'] },
-    { id: 8, name: 'Grace Miller', skills: ['Angular', 'TypeScript'] },
-    { id: 9, name: 'Henry Davis', skills: ['PHP', 'Laravel'] },
-    // Add more student CVs as needed
-  ];
+   // Trigger a download using browser functionality
+   const link = document.createElement("a");
+   link.href = url;
+   link.download = "student_file.pdf"; // Optional filename for download
+   document.body.appendChild(link);
+   link.click();
+   document.body.removeChild(link);
+ };
 
   return (
     <>
-      <div><Navbar/></div>
+      <Navbar />
       <div className="flex">
-        <div><Sidebar/></div>
+        <Sidebar />
         <div className="flex flex-col items-center w-full mb-3">
           {/* Search Inputs */}
           <div className="flex items-center mb-8 mt-5">
@@ -85,8 +92,6 @@ const SearchCVPage = () => {
             </button>
           </div>
 
-        
-
           {/* Student CV List Table View */}
           <table className="border-collapse w-2/3 mt-8">
             <thead>
@@ -100,7 +105,7 @@ const SearchCVPage = () => {
             <tbody>
               {studentCVs.map((student) => (
                 <StudentCVItem
-                  key={student.id}
+                  key={student._id}
                   student={student}
                   handleView={handleView}
                   handleDownload={handleDownload}
@@ -108,12 +113,17 @@ const SearchCVPage = () => {
               ))}
             </tbody>
           </table>
+          {selectedStudent && (
+            <StudentDetailsPopup
+              student={selectedStudent}
+              onClose={closePopup}
+            />
+          )}
         </div>
       </div>
-      <div><Footer/></div>
+      <Footer />
     </>
   );
 };
 
 export default SearchCVPage;
-
