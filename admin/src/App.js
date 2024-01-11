@@ -5,7 +5,7 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import Navbar from './Components/Navbar/Navbar';
 import Signup from './Components/Signup/Signup';
 import Login from './Components/Login/Login';
-import Subscription from './Components/Subscription/Subscription';
+import SubscriptionMonthly from './Components/Subscription/SubscriptionMonthly';
 import Footer from './Components/Footer/Footer';
 import ShortlistedCandidates from './Components/ShortlistedCandidates/ShortlistedCandidates';
 import EmployerPackages from './Components/EmployerPackege/ViewEmployerPackage';
@@ -21,6 +21,7 @@ import ViewInternship from './Components/ViewPostInternship/ViewInternship';
 import ViewProfile from './Components/ViewProfile/ViewProfile';
 import Blog from './Components/Blog/Blog';
 import CreateBlog from './Components/Blog/CreateBlog';
+import SubscriptionAnnually from './Components/Subscription/SubscriptionAnnually';
 
 
 
@@ -42,7 +43,7 @@ const App = () => {
           <Route path='/employer' element={<Employer />} />
           <Route path='/viewemployerpackages' element={<EmployerPackages />} />
           <Route path='/viewjoblist' element={<JobList />} />
-          <Route path='/subscription' element={<Subscription />} />
+          <Route path='/subscriptionmonthly' element={<SubscriptionMonthly />} />
           <Route path='/sidebar' element={<Sidebar />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/postinternship' element={<ViewInternship />} />
@@ -50,6 +51,7 @@ const App = () => {
           <Route path='/footer' element={<Footer />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/create-blog' element={<CreateBlog />} />
+          <Route path="/subscriptionannually" element={<SubscriptionAnnually/>}/>
 
         </Routes>
       </Router>

@@ -14,3 +14,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
+  .edit-button button{
+    margin-left: 300px;
+    border-radius: 20px;
+  }
