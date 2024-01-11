@@ -246,15 +246,15 @@ const Internship = () => {
         <div className="w-1/4 bg-gray-100 p-6 ml-10 h-1/3">
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <h3 className="text-md font-semibold mb-2">Profile</h3>
             <select className="w-full p-2 border rounded">
               <option value="">All</option>
               <option value="">Web development</option>
               <option value="">Mobile Development</option>
-              {/* Add more options as needed */}
+          
             </select>
-          </div>
+          </div> */}
           {/* Location filter */}
           <div className="mb-4">
             <h3 className="text-md font-semibold mb-2">Location</h3>

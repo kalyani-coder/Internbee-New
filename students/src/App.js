@@ -18,6 +18,8 @@ import ViewProfile from './Components/ViewProfile/ViewProfile';
 import UploadImagePdf from './Components/UploadImagePdf/UploadImage';
 import ApplyInternship from './Components/ApplyInternship/ApplyInternship';
 import AppliedIntersnship from './Components/ApplyInternship/AppliedIntersnship';
+import FreePlan from './Components/StudentPackages/FreePlan';
+import MonthlyPlan from './Components/StudentPackages/MonthlyPlan';
 
 
 
@@ -70,6 +72,8 @@ function App() {
         <Route path="/uploadimage" element={<UploadImagePdf />} />
         <Route path="/apply-internship/:internshipId" element={<ApplyInternship />} />
         <Route path="/applied-internship" element={<AppliedIntersnship />} />
+        <Route path="/freeplan" element={<FreePlan />} />
+        <Route path="/monthlyplan" element={<MonthlyPlan />} />
 
 
 
