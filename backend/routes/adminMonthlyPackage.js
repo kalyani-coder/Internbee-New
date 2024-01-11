@@ -21,4 +21,20 @@ router.post('/', (req, res) => {
     }
 })
 
+router.patch("/:id", async (req, res) => {
+    const packageId = req.params.id;
+    try {
+      const updatedService = await adminMonthlyPackage.findByIdAndUpdate(
+        packageId,
+        req.body,
+        {
+          new: true,
+        }
+      );
+      res.json(updatedService);
+    } catch (error) {
+      res.status(404).json({ message: "Service not found" });
+    }
+  });
+
 module.exports = router;
