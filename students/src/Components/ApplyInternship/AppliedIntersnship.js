@@ -11,7 +11,7 @@ const AppliedInternship = () => {
   const [appliedInternships, setAppliedInternships] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState("all"); // Default to 'all'
   const [filteredInternships, setFilteredInternships] = useState([]); // State to hold the filtered internships
-
+  const [enquiryValues, setEnquiryValues] = useState({});
   // Get intern ID from local storage
   const internId = localStorage.getItem("userId");
 
@@ -49,16 +49,34 @@ const AppliedInternship = () => {
     setSelectedStatus(event.target.value);
   };
 
-  const handleEnquiry = (internship) => {
-    // const enquiryData = {
-    //   StudentName: internship.InternName,
-    //   StudentId : internship.InternId,
-
-    // };
-    console.log(internship);
-
-
-  }
+  const handleEnquiry = async (internship) => {
+    try {
+      const enquiryData = {
+        StudentName: internship.InternName,
+        StudentId: internship.InternId,
+        StudentEmail: internship.InternEmail,
+        EmployerId: internship.empId,
+        postId: internship.postId,
+        Enquiry: enquiryValues[internship._id] || "",
+        EnquiryStatus: "pending",
+        EnquiryReply: "",
+        StudentPhone: internship.InternNumber,
+      };
+      const res = await axios.post(
+        "http://localhost:8000/api/enquiry/",
+        enquiryData
+      );
+      console.log(res.data);
+      alert("Enquiry sent successfully");
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        // Handle the case where an existing enquiry is found
+        console.error("Enquiry already exists:", error.response.data.message);
+      } else {
+        console.log(error);
+      }
+    }
+  };
 
   // Render the list of applied internships
   return (
@@ -109,13 +127,32 @@ const AppliedInternship = () => {
                   <p>Applied Date: {internship.appliedDate}</p>
                   <hr className="my-4" />
                   {internship.status == "Shortlisted" && (
-                    <div className="flex justify-end">
-                      <button onClick={handleEnquiry(internship)} className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                        Enquiry
-                      </button>
+                    <div>
+                      <div>
+                        <textarea
+                          name={`Enquiry_${internship._id}`}
+                          value={enquiryValues[internship._id] || ""}
+                          onChange={(e) => {
+                            setEnquiryValues({
+                              ...enquiryValues,
+                              [internship._id]: e.target.value,
+                            });
+                          }}
+                          placeholder="Enter your enquiry reply here..."
+                          rows="4"
+                          className="w-full p-2 border rounded-md"
+                        ></textarea>
+                      </div>
+                      <div className="flex justify-end">
+                        <button
+                          onClick={() => handleEnquiry(internship)}
+                          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                        >
+                          Send Enquiry
+                        </button>
+                      </div>
                     </div>
                   )}
-                  {/* Add more details as needed */}
                 </div>
               </div>
             ))}

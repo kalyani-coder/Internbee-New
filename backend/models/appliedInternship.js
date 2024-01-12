@@ -29,6 +29,11 @@ const appliedInternship = new mongoose.Schema({
     type: String,
     required: true,
   },
+  empId: {
+    type: String,
+    required: true,
+  },
+
   empName: {
     type: String,
     required: true,
@@ -51,10 +56,10 @@ const appliedInternship = new mongoose.Schema({
   job_Title: {
     type: String,
   },
-  appliedDate:{
-    type:String,
-    required:true,
-  }
+  appliedDate: {
+    type: String,
+    required: true,
+  },
 });
 
 const appliedInternshipModel = mongoose.model(

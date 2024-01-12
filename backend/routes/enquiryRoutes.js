@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
       StudentName,
       StudentEmail,
       StudentId,
+      StudentPhone,
       EmployerId,
       postId,
       Enquiry,
@@ -27,11 +28,23 @@ router.post("/", async (req, res) => {
 
     const formattedCurDate = moment().format("DD/MM/YYYY");
 
+    const existingEnquiry = await EnquirySchema.findOne({
+      StudentId: StudentId,
+      postId: postId,
+      EmployerId: EmployerId,
+    });
+    if (existingEnquiry) {
+      return res
+        .status(409)
+        .json({ message: "You have already sent an enquiry." });
+    }
+
     const NewEnquiry = {
       StudentName,
       StudentEmail,
       StudentId,
       EmployerId,
+      StudentPhone,
       postId,
       Enquiry,
       EnquiryStatus,

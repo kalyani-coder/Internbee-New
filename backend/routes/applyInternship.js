@@ -107,6 +107,7 @@ router.post("/", async (req, res) => {
       InternEmail: existingUser.email,
       InternNumber: existingUser.number,
       empName: existingPost.company_Name,
+      empId: existingPost.userId,
       location: existingPost.location,
       job_Description: existingPost.job_Description,
       position: existingPost.position,

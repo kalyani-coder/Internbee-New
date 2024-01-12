@@ -10,6 +10,9 @@ const EnquirySchema_student = new mongoose.Schema({
   StudentId: {
     type: String,
   },
+  StudentPhone:{
+    type:String,
+  },
   EmployerId: {
     type: String,
   },

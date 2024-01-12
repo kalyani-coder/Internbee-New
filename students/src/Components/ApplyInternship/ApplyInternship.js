@@ -46,7 +46,7 @@ const ApplyInternship = () => {
       };
 
     const response = await axios.post(
-      "https://internbee-backend-apis.onrender.com/api/applyinternship/",
+      "http://localhost:8000/api/applyinternship/",
       formData
     );
 
