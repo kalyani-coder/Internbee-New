@@ -8,10 +8,19 @@ import "./Candidates.css"
 
 const Candidates = () => {
   const [candidates, setCandidates] = useState([]);
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [candidateDetails, setCandidateDetails] = useState(null);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+   
+};
+
+const closeModal = () => {
+    setIsModalOpen(false);
+};
   
     const fetchData = async () => {
       try {
@@ -30,13 +39,8 @@ const Candidates = () => {
 
   
 
-  const handleViewMore = (candidate) => {
-    setSelectedCandidate(candidate);
-  };
-
-  const handleClosePopup = () => {
-    setSelectedCandidate(null);
-  };
+  
+ 
 
    // Function to handle delete confirmation
    const handleDeleteClick = (candidate) => {
@@ -72,7 +76,11 @@ const Candidates = () => {
     setShowConfirmation(false);
     setCandidateToDelete(null);
   };
-
+  const handleViewMoreClick = (candidate) => {
+    openModal();
+    // Set detailed information for the modal
+    setCandidateDetails(candidate);
+  };
   return (
     <>
       <Navbar />
@@ -119,12 +127,7 @@ const Candidates = () => {
                           {candidate.stream}
                         </td>
                         <td className="py-2 px-4 border-b">
-                          {/* <button
-                            className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
-                            onClick={() => handleViewMore(candidate)}
-                          >
-                            View More
-                          </button> */}
+                        
                           {candidate.profile_pic && (
                             <img
                               src={candidate.profile_pic}
@@ -137,12 +140,12 @@ const Candidates = () => {
                         <td className="py-2 px-4 border-b">
                           <div className="actions">
 
-                            <button
-                              className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
-                              onClick={() => handleViewMore(candidate)}
-                            >
-                              View More
-                            </button>
+                          <button
+                className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
+                onClick={() => handleViewMoreClick(candidate)}
+              >
+                View More
+              </button>
 
                           </div>
                         </td>
@@ -174,38 +177,47 @@ const Candidates = () => {
 
 
 
-      {/* Modal */}
-      {selectedCandidate && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <span className="close cursor-pointer" onClick={handleClosePopup}>
-              &times;
-            </span>
-            <div className="modal-content">
-              <h2 className="text-2xl font-bold mb-4">Candidate Details</h2><hr />
-              <p>{`Name: ${selectedCandidate.firstName} ${selectedCandidate.lastName}`}</p><hr />
-              <p>
-                Email:{" "}
-                <a href={`mailto:${selectedCandidate.email}`} target="_blank" rel="noopener noreferrer">
-                  {selectedCandidate.email}
-                </a>
-              </p><hr />
-              <p>{`Institute Name: ${selectedCandidate.instituteName}`}</p><hr />
-              <p>{`Stream: ${selectedCandidate.stream}`}</p><hr />
-              <p>{`Pass Out Year: ${selectedCandidate.passOutYear}`}</p><hr />
-              <p>{`Key Skills: ${selectedCandidate.keySkills}`}</p><hr />
-              <p>{`Languages: ${selectedCandidate.languages}`}</p><hr />
-              <p>{`Experience: ${selectedCandidate.experience}`}</p><hr />
-              <p>{`Salary Expectations: ${selectedCandidate.salaryExpectations} Rs.`}</p><hr />
-              <p>{`City: ${selectedCandidate.city}`}</p><hr />
-              <p>{`District: ${selectedCandidate.district}`}</p><hr />
-              <p>{`Country: ${selectedCandidate.country}`}</p><hr />
-              <p>{`Current Address: ${selectedCandidate.currentaddress}`}</p>
-              {/* Add other details you want to display */}
-            </div>
-          </div>
-        </div>
-      )}
+      
+      {isModalOpen && (
+  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white p-8 max-w-md w-full rounded-md">
+      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+      {/* Display detailed information here */}
+      <div>
+        <label className="block mb-2">First Name: {candidateDetails.firstName} {candidateDetails.lastName}</label><hr/>
+        <label>Email: {candidateDetails.email}</label><hr/>
+        <label>Birthdate: {candidateDetails.birthdate}</label><hr/>
+        <label>Permanent Address: {candidateDetails.permanentaddress}</label><hr/>
+        <label>City: {candidateDetails.city}</label><hr/>
+        <label>District: {candidateDetails.district}</label><hr/>
+        <label>Country: {candidateDetails.country}</label><hr/>
+        <label>Current Address: {candidateDetails.currentaddress}</label><hr/>
+        <label>Current District: {candidateDetails.currentdistrict}</label><hr/>
+        <label>Current Country: {candidateDetails.currentcountry}</label><hr/>
+        <label>Education: {candidateDetails.education}</label><hr/>
+        <label>Institute Name: {candidateDetails.instituteName}</label><hr/>
+        <label>Stream: {candidateDetails.stream}</label><hr/>
+        <label>Pass Out Year: {candidateDetails.passOutYear}</label><hr/>
+        <label>Key Skills: {candidateDetails.keySkills}</label><hr/>
+        <label>Languages: {candidateDetails.languages}</label><hr/>
+        <label>Experience: {candidateDetails.experience}</label><hr/>
+        <label>Salary Expectations: {candidateDetails.salaryExpectations}</label><hr/>
+        <label>Project Name: {candidateDetails.projectName}</label><hr/>
+        {/* Add more labels for additional fields */}
+      </div>
+      <div className="flex justify-between mt-3">
+        <button
+          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+          onClick={closeModal}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+    
 
     </>
   );

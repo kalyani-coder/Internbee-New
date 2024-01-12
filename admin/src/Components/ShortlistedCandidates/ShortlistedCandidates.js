@@ -10,8 +10,24 @@ const ShortlistedCandidates = () => {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [candidateDetails, setCandidateDetails] = useState(null);
 
-  
+
+
+  const openModal = () => {
+    setIsModalOpen(true);
+   
+};
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+const handleViewMoreClick = (candidate) => {
+  openModal();
+  // Set detailed information for the modal
+  setCandidateDetails(candidate);
+};
     const fetchShortlistedCandidates = async () => {
       try {
         const response = await fetch("http://localhost:8000/api/applyInternship/shortlisted");
@@ -108,7 +124,7 @@ const ShortlistedCandidates = () => {
                         <td className="py-2 px-4 border-b text-lg">
                           <button
                             className="text-blue-500 hover:text-blue-700 mr-2"
-                            onClick={() => handleViewMore(candidate)}
+                            onClick={() => handleViewMoreClick(candidate)}
                           >
                             View More
                           </button>
@@ -137,49 +153,36 @@ const ShortlistedCandidates = () => {
         </div>
       )}
 
-      {selectedCandidate && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <span className="close cursor-pointer" onClick={handleClosePopup}>
-              &times;
-            </span>
-            <div className="modal-content">
-              <h2 className="text-2xl font-bold mb-4">Candidate Details</h2>
-              <table className="w-full">
-                <tbody>
-                  <tr>
-                    <td><strong>Name:</strong></td>
-                    <td>{selectedCandidate.InternName}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Email:</strong></td>
-                    <td>
-                      <a href={`mailto:${selectedCandidate.InternEmail}`} target="_blank" rel="noopener noreferrer">
-                        {selectedCandidate.InternEmail}
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Employer Name:</strong></td>
-                    <td>{selectedCandidate.empName}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Passout Year:</strong></td>
-                    <td>{selectedCandidate.end_Date}</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Key Skills:</strong></td>
-                    <td>{selectedCandidate.skills}</td>
-                  </tr>
-                  {/* Add other details you want to display */}
-                </tbody>
-              </table>
-              <hr className="my-4 border-yellow-500" /> {/* Horizontal line */}
-              <hr className="w-0.5 h-full bg-yellow-500 mx-4" /> {/* Vertical line */}
-            </div>
-          </div>
-        </div>
-      )}
+      {isModalOpen && (
+  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white p-8 max-w-md w-full rounded-md">
+      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+      {/* Display detailed information here */}
+      <div>
+        <label className="block mb-2">Intern Name: {candidateDetails.InternName}</label><hr/>
+        <label>Intern Email: {candidateDetails.InternEmail}</label><hr/>
+        <label>Intern Number: {candidateDetails.InternNumber}</label><hr/>
+        <label>Skills: {candidateDetails.skills}</label><hr/>
+        <label>location: {candidateDetails.location}</label><hr/>
+        <label>empName: {candidateDetails.empName}</label><hr/>
+        <label>position: {candidateDetails.position}</label><hr/>
+        <label>stipend : {candidateDetails.stipend}</label><hr/>
+        <label>job_Title: {candidateDetails.job_Title}</label><hr/>
+        <label>end_Date: {candidateDetails.end_Date}</label><hr/>
+       
+        {/* Add more labels for additional fields */}
+      </div>
+      <div className="flex justify-between mt-3">
+        <button
+          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+          onClick={closeModal}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       <Footer />
     </>

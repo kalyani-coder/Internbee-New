@@ -1,6 +1,6 @@
 // AdminDashboard.js
 
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {
   FaUser,
   FaList,
@@ -100,6 +100,34 @@ const creditData = {
 };
 
 const AdminDashboard = () => {
+
+  const [totalJobs, setTotalJobs] = useState(0);
+  console.log(totalJobs)
+
+  useEffect(() => {
+    // Fetch total jobs count from the API
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/postinternship");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+  
+        // Log the entire data object to the console for debugging
+        console.log("API response data:", data);
+  
+        // Set totalJobs to the length of the array
+        setTotalJobs(data.length);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -108,22 +136,21 @@ const AdminDashboard = () => {
         <div className="w-full p-8">
           {/* Job Stats in One Row */}
           <div className="flex items-center justify-between space-x-4 mb-4">
+
       {/* Total Jobs */}
       <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4">
-        <Link to="/viewjoblist">
+        <Link to="/postinternship">
           <div className="bg-white p-6 rounded shadow-md">
             <LightningBoltIcon className="h-8 w-8 text-blue-500 mb-2" />
-            <h2 className="text-xl font-semibold mb-2">Total Jobs</h2>
-            <p className="text-3xl font-bold text-blue-500">
-              {creditData.totalJobs}
-            </p>
+            <h2 className="text-xl font-semibold mb-2">Total Internships</h2>
+            <p className="text-3xl font-bold text-blue-500">{totalJobs}</p>
           </div>
         </Link>
       </div>
 
       {/* Applied Candidates */}
       <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4">
-        <Link to="/applied-candidates">
+        <Link to="/newjoblist">
           <div className="bg-white p-6 rounded shadow-md">
             <UserGroupIcon className="h-8 w-8 text-green-500 mb-2" />
             <h2 className="text-xl font-semibold mb-2">Applied Candidates</h2>

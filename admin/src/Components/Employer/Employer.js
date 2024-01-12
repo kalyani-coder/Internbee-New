@@ -10,7 +10,23 @@ const Employers = () => {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [candidateDetails, setCandidateDetails] = useState(null);
+
+
+   const openModal = () => {
+    setIsModalOpen(true);
+   
+};
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+const handleViewMoreClick = (candidate) => {
+  openModal();
+  // Set detailed information for the modal
+  setCandidateDetails(candidate);
+};
 
 
     const fetchEmployers = async () => {
@@ -109,7 +125,7 @@ const Employers = () => {
                         <td className="py-2 px-4 border-b text-lg">
                           <button
                             className="text-blue-500 hover:text-blue-700 mr-2"
-                            onClick={() => handleViewMore(employer)}
+                            onClick={() => handleViewMoreClick(employer)}
                           >
                             View More
                           </button>
@@ -137,25 +153,28 @@ const Employers = () => {
       )}
 
 
-              {selectedCandidate && (
-  <div className="modal-overlay">
-    <div className="modal">
-      <span className="close cursor-pointer" onClick={handleClosePopup}>
-        &times;
-      </span>
-      <div className="modal-content">
-        <h2 className="text-2xl font-bold mb-4">Employer Details</h2><hr />
-        <p>{`Name: ${selectedCandidate.empName}`}</p><hr />
-        <p>
-          Email:{" "}
-          <a href={`mailto:${selectedCandidate.email}`} target="_blank" rel="noopener noreferrer">
-            {selectedCandidate.email}
-          </a>
-        </p><hr />
-        <p>{`Number: ${selectedCandidate.number}`}</p><hr />
-        <p>{`Company Address: ${selectedCandidate.companyAddress}`}</p><hr />
-        <p>{`Description: ${selectedCandidate.Description}`}</p>
-        {/* Add other details you want to display */}
+      {isModalOpen && (
+  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white p-8 max-w-md w-full rounded-md">
+      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+      {/* Display detailed information here */}
+      <div>
+        <label className="block mb-2">Employer Name: {candidateDetails.empName}</label><hr/>
+        <label>Email: {candidateDetails.email}</label><hr/>
+        <label>Contact Number: {candidateDetails.number}</label><hr/>
+        <label>Company Address: {candidateDetails.companyAddress}</label><hr/>
+        <label>Description: {candidateDetails.Description}</label><hr/>
+       
+       
+        {/* Add more labels for additional fields */}
+      </div>
+      <div className="flex justify-between mt-3">
+        <button
+          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+          onClick={closeModal}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </div>
