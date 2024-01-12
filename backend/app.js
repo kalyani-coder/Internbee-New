@@ -25,6 +25,7 @@ const adminBlog = require("./routes/adminBlog");
 const adminMonthlyPackage = require("./routes/adminMonthlyPackage");
 const adminAnnuallyPackage = require("./routes/adminAnnuallyPackage");
 const SearchRoute = require("./routes/searchRoute");
+const EnquiryRoute = require("./routes/enquiryRoutes");
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
@@ -80,6 +81,7 @@ apiRouter.use("/adminblog", adminBlog);
 apiRouter.use("/adminmonthlypackage", adminMonthlyPackage);
 apiRouter.use("/adminannuallypackage", adminAnnuallyPackage);
 apiRouter.use("/search", SearchRoute);
+apiRouter.use("/enquiry", EnquiryRoute);
 
 app.use("/api", apiRouter);
 
