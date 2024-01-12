@@ -92,7 +92,7 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link to={{ pathname: '/studentmonthlysubcription' }}>
+          <Link to={{ pathname: '/studentfreesubcription' }}>
             <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FaStar className="mr-2 text-xl" />
               Subscription Students

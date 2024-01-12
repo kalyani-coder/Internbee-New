@@ -14,6 +14,7 @@ const StudentsMonthlyPackage = mongoose.model('studentsMonthlyPackage', students
 
 // Schema for studentsFreePackage
 const studentsFreePackageSchema = new mongoose.Schema({
+    freePackagePrice : String,
     searches: String,
     verified_application: String,
     dedicated_crm: String,

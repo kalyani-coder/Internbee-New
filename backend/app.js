@@ -83,7 +83,7 @@ apiRouter.use("/adminmonthlypackage", adminMonthlyPackage);
 apiRouter.use("/adminannuallypackage", adminAnnuallyPackage);
 apiRouter.use("/search", SearchRoute);
 apiRouter.use("/enquiry", EnquiryRoute);
-apiRouter.use("/students", studentPackages)
+apiRouter.use("/students", studentPackages);
 
 app.use("/api", apiRouter);
 
