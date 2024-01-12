@@ -1,6 +1,7 @@
 const express = require("express");
 const moment = require("moment");
 const EnquirySchema = require("../models/Enquiry");
+const postInternship = require("../models/postInternship");
 
 const router = express.Router();
 router.get("/", async (req, res) => {
@@ -74,4 +75,21 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
+router.get("/employerId/:id", async (req, res) => {
+  try {
+    const foundEnquiry = await EnquirySchema.find({
+      EmployerId: req.params.id,
+    });
+
+    
+
+    if (!foundEnquiry) {
+      res.status(404).json({ message: "No enquiry found" });
+    }
+    res.status(200).json(foundEnquiry);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
 module.exports = router;
