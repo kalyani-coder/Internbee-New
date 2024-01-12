@@ -12,11 +12,13 @@ const AppliedInternship = () => {
   const [selectedStatus, setSelectedStatus] = useState("all"); // Default to 'all'
   const [filteredInternships, setFilteredInternships] = useState([]); // State to hold the filtered internships
   const [enquiryValues, setEnquiryValues] = useState({});
+  const [Loading, setLoading] = useState(false);
   // Get intern ID from local storage
   const internId = localStorage.getItem("userId");
 
   // useEffect to fetch data when the component mounts
   useEffect(() => {
+    setLoading(true);
     // Make a GET request to the API endpoint with the intern ID as a query parameter
     axios
       .get(
@@ -25,9 +27,11 @@ const AppliedInternship = () => {
       .then((response) => {
         // Update state with the fetched data
         setAppliedInternships(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false);
       });
   }, [internId]); // Run effect whenever internId changes
 
@@ -71,6 +75,7 @@ const AppliedInternship = () => {
     } catch (error) {
       if (error.response && error.response.status === 409) {
         // Handle the case where an existing enquiry is found
+        alert("Enquiry Already Exist");
         console.error("Enquiry already exists:", error.response.data.message);
       } else {
         console.log(error);
@@ -85,11 +90,22 @@ const AppliedInternship = () => {
 
       <div className="mt-32">
         <div>
-          <div className="flex justify-around">
+          <div className="flex justify-around mt-5">
+            {Loading && (
+              <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
+              </div>
+            )}
+
             <div>
               <h2 className="text-2xl font-bold mb-4 text-center">
                 Applied Internships
               </h2>
+            </div>
+            <div>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                View Enquriy
+              </button>
             </div>
             <div className="mb-4">
               <label className="mr-2">Sort by Status:</label>
