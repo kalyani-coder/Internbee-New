@@ -88,7 +88,7 @@ const savePackage = async () => {
         <div><Sidebar /></div>
         <div className="container px-5 py-5 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
-            <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">Packages</h1>
+            <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">Monthly Packages</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p>
             <div className="flex mx-auto border-2 border-amber-300 rounded overflow-hidden mt-6">
               <Link to={'/subscriptionmonthly'}>

@@ -4,7 +4,7 @@ import React from 'react';
 
 // Import FontAwesomeIcon and necessary icons from FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FaUser, FaList, FaBuilding, FaCog, FaLayerGroup, FaStar, FaBriefcase,FaEye,FaPencilAlt,FaTrash ,FaHome} from 'react-icons/fa';
+import { FaUser, FaList, FaBuilding, FaCog, FaLayerGroup, FaStar, FaBriefcase, FaEye, FaPencilAlt, FaTrash, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 // Define the EmployerSidebar functional component
@@ -29,63 +29,89 @@ const Sidebar = () => {
         {/* Navigation container with top margin */}
         <nav className="mt-4">
 
-        <Link to={{
-            pathname: '/admindashboard' }}>
-          <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
-          <FaHome className="mr-2 text-xl" />
-            DashBoard
-          </a>
+          <Link to={{
+            pathname: '/admindashboard'
+          }}>
+            <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
+              <FaHome className="mr-2 text-xl" />
+              DashBoard
+            </a>
           </Link>
           {/* Jobs link with blue icon */}
           <Link to={{
-            pathname: '/candidates' }}>
-          <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
-          <FaUser className="mr-2 text-xl" />
-            Candidates
-          </a>
+            pathname: '/candidates'
+          }}>
+            <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
+              <FaUser className="mr-2 text-xl" />
+              Candidates
+            </a>
           </Link>
           {/* Candidates link with green icon */}
           <Link to="/viewshortlistedcandidates">
-          <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
-          <FaList className="mr-2 text-xl" />
-            Shortlisted Candidates
-          </a>
+            <a href="#" className="flex items-center px-4 py-3 text-white  hover:text-white text-bold hover:bg-gray-800">
+              <FaList className="mr-2 text-xl" />
+              Shortlisted Candidates
+            </a>
           </Link>
 
           {/* Interviews link with purple icon */}
-          <Link to={{pathname:'/employer'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
-          <FaBuilding className="mr-2 text-xl" />
-            Employers
-          </a>
+          <Link to={{ pathname: '/employer' }}>
+            <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <FaBuilding className="mr-2 text-xl" />
+              Employers
+            </a>
           </Link>
 
           {/* Search CV link with yellow icon */}
-          <Link to={{pathname:'/viewemployerpackages'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
-          <FaLayerGroup className="mr-2 text-xl" />
-            View Employers by Package
-          </a>
+          <Link to={{ pathname: '/viewemployerpackages' }}>
+            <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <FaLayerGroup className="mr-2 text-xl" />
+              View Employers by Package
+            </a>
           </Link>
           {/* Messages link with orange icon */}
-          <Link to={{pathname:'/viewjoblist'}}>
+          {/* <Link to={{pathname:'/viewjoblist'}}>
           <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
           <FaBriefcase className="mr-2 text-xl" />
             Job List
           </a>
+          </Link> */}
+
+          <Link to={{ pathname: '/newJobList' }}>
+            <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <FaBriefcase className="mr-2 text-xl" />
+              Job List
+            </a>
           </Link>
 
           {/* FAQs link with pink icon */}
-          <Link to={{pathname:'/subscriptionmonthly'}}>
-          <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
-          <FaStar className="mr-2 text-xl" />
-            Subscription
-          </a>
+          <Link to={{ pathname: '/subscriptionmonthly' }}>
+            <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <FaStar className="mr-2 text-xl" />
+              Subscription Employers
+            </a>
           </Link>
-         
+
+          <Link to={{ pathname: '/studentmonthlysubcription' }}>
+            <a  className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <FaStar className="mr-2 text-xl" />
+              Subscription Students
+            </a>
+          </Link>
+
+          {/* <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Subscription
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item">Employers</a></li><hr/>
+              <li><a class="dropdown-item">Students</a></li>
+            </ul>
+          </div> */}
+
           <Link to="/settings">
             <a href="#" className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
-            <FaCog className="mr-2 text-xl" />
+              <FaCog className="mr-2 text-xl" />
               Settings
             </a>
           </Link>
@@ -99,9 +125,9 @@ const Sidebar = () => {
       <main className="flex-1 p-4">
         {/* Your main content goes here */}
       </main>
-<div></div>
+      <div></div>
     </div>
-    
+
   );
 };
 

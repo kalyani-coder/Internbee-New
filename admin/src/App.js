@@ -22,7 +22,9 @@ import ViewProfile from './Components/ViewProfile/ViewProfile';
 import Blog from './Components/Blog/Blog';
 import CreateBlog from './Components/Blog/CreateBlog';
 import SubscriptionAnnually from './Components/Subscription/SubscriptionAnnually';
-
+import NewJobList from './Components/JobList/NewJobList';
+import StudentSubscriptionMonthly from './Components/Subscription/StudentSubscriptionMonthly';
+import StudentSubscriptionFree from './Components/Subscription/StudentSubscriptionFree';
 
 
 
@@ -52,6 +54,9 @@ const App = () => {
           <Route path='/blog' element={<Blog />} />
           <Route path='/create-blog' element={<CreateBlog />} />
           <Route path="/subscriptionannually" element={<SubscriptionAnnually/>}/>
+          <Route path="/newjoblist" element={<NewJobList/>}/>
+          <Route path="/studentmonthlysubcription" element={<StudentSubscriptionMonthly/>}/>
+          <Route path="/studentfreesubcription" element={<StudentSubscriptionFree/>}/>
 
         </Routes>
       </Router>

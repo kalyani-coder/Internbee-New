@@ -1,41 +1,46 @@
 // Import necessary dependencies
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
-import Internal_Navbar from '../Internal_Navbar';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
+import Internal_Navbar from "../Internal_Navbar";
 
 // Define your component
 const AppliedInternship = () => {
   // State to hold the list of applied internships
   const [appliedInternships, setAppliedInternships] = useState([]);
-  const [selectedStatus, setSelectedStatus] = useState('all'); // Default to 'all'
+  const [selectedStatus, setSelectedStatus] = useState("all"); // Default to 'all'
   const [filteredInternships, setFilteredInternships] = useState([]); // State to hold the filtered internships
 
   // Get intern ID from local storage
-  const internId = localStorage.getItem('userId');
+  const internId = localStorage.getItem("userId");
 
-    // useEffect to fetch data when the component mounts
-    useEffect(() => {
-        // Make a GET request to the API endpoint with the intern ID as a query parameter
-        axios.get(`https://internbee-backend-apis.onrender.com/api/applyInternship/InternId/${internId}`)
-            .then(response => {
-                // Update state with the fetched data
-                setAppliedInternships(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }, [internId]); // Run effect whenever internId changes
+  // useEffect to fetch data when the component mounts
+  useEffect(() => {
+    // Make a GET request to the API endpoint with the intern ID as a query parameter
+    axios
+      .get(
+        `https://internbee-backend-apis.onrender.com/api/applyInternship/InternId/${internId}`
+      )
+      .then((response) => {
+        // Update state with the fetched data
+        setAppliedInternships(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [internId]); // Run effect whenever internId changes
 
   // useEffect to update filteredInternships when selectedStatus changes
   useEffect(() => {
-    if (selectedStatus === 'all') {
+    if (selectedStatus === "all") {
       // If 'all' is selected, show all internships
       setFilteredInternships(appliedInternships);
     } else {
       // Filter internships based on the selected status
-      const filtered = appliedInternships.filter(internship => internship.status === selectedStatus);
+      const filtered = appliedInternships.filter(
+        (internship) => internship.status === selectedStatus
+      );
       setFilteredInternships(filtered);
     }
   }, [selectedStatus, appliedInternships]);
@@ -44,12 +49,21 @@ const AppliedInternship = () => {
     setSelectedStatus(event.target.value);
   };
 
+  const handleEnquiry = (internship) => {
+    // const enquiryData = {
+    //   StudentName: internship.InternName,
+    //   StudentId : internship.InternId,
+
+    // };
+    console.log(internship);
+
+
+  }
+
   // Render the list of applied internships
   return (
     <div>
-      
-        <Internal_Navbar />
-      
+      <Internal_Navbar />
 
       <div className="mt-32">
         <div>
@@ -93,6 +107,14 @@ const AppliedInternship = () => {
                   <p>Skills: {internship.skills}</p>
                   <p>Stipend: ${internship.stipend}</p>
                   <p>Applied Date: {internship.appliedDate}</p>
+                  <hr className="my-4" />
+                  {internship.status == "Shortlisted" && (
+                    <div className="flex justify-end">
+                      <button onClick={handleEnquiry(internship)} className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                        Enquiry
+                      </button>
+                    </div>
+                  )}
                   {/* Add more details as needed */}
                 </div>
               </div>
@@ -100,10 +122,9 @@ const AppliedInternship = () => {
           </div>
         </div>
       </div>
-      <div className='mt-12'>
+      <div className="mt-12">
         <Footer />
       </div>
-
     </div>
   );
 };
