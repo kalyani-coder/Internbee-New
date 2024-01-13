@@ -25,6 +25,7 @@ import GetPackageAnually from './Component/GetPackage/GetPackageAnually';
 import ListofShortlist from './Component/Candidates/ListofShortlist';
 import AnuallyPackages from './Component/Packages/AnuallyPackages';
 import MonthlyPackages from './Component/Packages/MonthlyPackages';
+import ResolveMessage from './Component/Message/ResolveMessage';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path='/shortlisted/:id' element={<ListofShortlist />} />
           <Route path='/anuallypackage' element={<AnuallyPackages />} />
           <Route path='/monthlypackage' element={<MonthlyPackages />} />
+          <Route path='/resolve/:id' element={<ResolveMessage/>}/>
         </Routes>
 
       </Router>

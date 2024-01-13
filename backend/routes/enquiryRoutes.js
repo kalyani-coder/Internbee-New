@@ -77,11 +77,11 @@ router.patch("/:id", async (req, res) => {
 
 router.get("/employerId/:id", async (req, res) => {
   try {
+    const status = req.query.status || "pending"; // Default status is "pending"
     const foundEnquiry = await EnquirySchema.find({
       EmployerId: req.params.id,
+      EnquiryStatus: status,
     });
-
-    
 
     if (!foundEnquiry) {
       res.status(404).json({ message: "No enquiry found" });
@@ -92,4 +92,29 @@ router.get("/employerId/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.get("/StudentId/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.query;
+
+    let query = { StudentId: id };
+
+    if (status) {
+      query.EnquiryStatus = status;
+    }
+
+    const foundEnquiry = await EnquirySchema.find(query);
+
+    if (!foundEnquiry || foundEnquiry.length === 0) {
+      return res.status(404).json({ message: "No enquiries found" });
+    }
+
+    res.status(200).json(foundEnquiry);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

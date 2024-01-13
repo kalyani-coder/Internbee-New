@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Message = () => {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [filter, setFilter] = useState("pending"); // Default filter for "New Enquiry"
 
   const fetchEnquiries = async () => {
     setLoading(true);
@@ -13,9 +15,8 @@ const Message = () => {
     try {
       const userId = localStorage.getItem("userId");
       const res = await axios.get(
-        `http://localhost:8000/api/enquiry/employerId/${userId}`
+        `http://localhost:8000/api/enquiry/employerId/${userId}?status=${filter}`
       );
-      console.log(res.data);
       setEnquiries(res.data);
     } catch (error) {
       console.error("Error fetching enquiries:", error);
@@ -23,6 +24,10 @@ const Message = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchEnquiries();
+  }, [filter]);
 
   const fetchPostInfo = async (postId) => {
     try {
@@ -34,10 +39,6 @@ const Message = () => {
       console.error("Error fetching post info:", error);
     }
   };
-
-  useEffect(() => {
-    fetchEnquiries();
-  }, []);
 
   const handleViewPost = (postId) => {
     fetchPostInfo(postId);
@@ -58,12 +59,23 @@ const Message = () => {
         )}
         <h1 className="text-2xl font-bold mb-4">Helpdesk</h1>
         <div className="mb-4">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+          <button
+            className={`${
+              filter === "pending"
+                ? "bg-blue-700 text-white"
+                : "bg-blue-500 hover:bg-blue-700 text-white"
+            } font-bold py-2 px-4 rounded mr-2`}
+            onClick={() => setFilter("pending")}
+          >
             New Enquiry
           </button>
           <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => console.log("Resolved Enquiry clicked")}
+            className={`${
+              filter === "resolved"
+                ? "bg-green-700 text-white"
+                : "bg-green-500 hover:bg-green-700 text-white"
+            } font-bold py-2 px-4 rounded`}
+            onClick={() => setFilter("resolved")}
           >
             Resolved Enquiry
           </button>
@@ -76,32 +88,40 @@ const Message = () => {
               className="bg-white border border-gray-300 p-4 m-2 rounded-md w-3/4 mx-auto flex flex-col"
             >
               <h3 className="text-left mb-2 font-bold text-lg">
-                {enquiry.Enquiry}
+                student Enquiry: {enquiry.Enquiry}
               </h3>
+              <h2 className="text-left mb-2 font-bold text-lg">
+                Reply : {enquiry.EnquiryReply || "Resolve this "}
+              </h2>
               <p className="text-left mb-2">Student: {enquiry.StudentName}</p>
               <p className="text-left mb-2">Email: {enquiry.StudentEmail}</p>
               <p className="text-left mb-2">Phone: {enquiry.StudentPhone}</p>
               <p className="text-left mb-2">
                 Enquiry Date: {enquiry.EnquiryDate}
               </p>
+              <p className="text-left mb-2">status : {enquiry.EnquiryStatus}</p>
               <div className="flex justify-end mb-2">
-                {/* Added flex and justify-end */}
                 <button
                   className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
                   onClick={() => handleViewPost(enquiry.postId)}
                 >
                   View Post
                 </button>
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                  Resolve
-                </button>
+                <Link
+                  to={{
+                    pathname: `/resolve/${enquiry._id}`,
+                  }}
+                >
+                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                    Resolve
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Popup/Modal for Post Information */}
       {selectedPost && (
         <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
           <div className="bg-white p-4 m-2 rounded-md">

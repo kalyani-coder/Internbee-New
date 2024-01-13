@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import Internal_Navbar from "../Internal_Navbar";
+import { Link } from "react-router-dom";
 
 // Define your component
 const AppliedInternship = () => {
@@ -103,9 +104,11 @@ const AppliedInternship = () => {
               </h2>
             </div>
             <div>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                View Enquriy
-              </button>
+              <Link to={"/studentEnquiry"}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  View Enquriy
+                </button>
+              </Link>
             </div>
             <div className="mb-4">
               <label className="mr-2">Sort by Status:</label>
