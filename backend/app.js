@@ -81,7 +81,7 @@ apiRouter.use("/adminlogin", adminLoginRoute);
 apiRouter.use("/adminblog", adminBlog);
 apiRouter.use("/adminmonthlypackage", adminMonthlyPackage);
 apiRouter.use("/adminannuallypackage", adminAnnuallyPackage);
-apiRouter.use("/search", SearchRoute);
+apiRouter.use("/search", SearchRoute); 
 apiRouter.use("/enquiry", EnquiryRoute);
 apiRouter.use("/students", studentPackages);
 

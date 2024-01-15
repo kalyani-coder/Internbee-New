@@ -111,7 +111,7 @@ function EnquiryPage() {
                 className="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 onClick={() => openInternshipPopup(enquiry.postId)}
               >
-                About Which Internship
+                About Internship
               </button>
             </div>
           ))}

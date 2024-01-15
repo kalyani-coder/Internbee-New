@@ -71,7 +71,7 @@ td {
     cursor: pointer;
     width: 7em;
     border: none;
-    margin-left: 3em;
+    margin-left: -1em;
     padding: 1px 10px;
     border-radius: 10px;
     font-weight: 600;
@@ -82,7 +82,7 @@ td {
     cursor: pointer;
     width: 7em;
     border: none;
-    margin-left: 3em;
+    margin-left: -1em;
     padding: 1px 10px;
     border-radius: 10px;
     font-weight: 600;
@@ -102,6 +102,10 @@ td {
     align-items: center;
     justify-content: center;
     justify-content: space-evenly;
+   
+}
+.tActions:hover{
+    cursor: pointer;
 }
 .tbleBtn{
     background: #cfeecf;
@@ -206,3 +210,9 @@ td {
     }
 
 }
+
+.scrollableContainer {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc; /* Optional: Add border for better appearance */
+  }
