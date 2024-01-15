@@ -59,7 +59,7 @@ const CandidatePage = () => {
             />
           </div>
 
-          <div className="overflow-y-auto max-h-screen">
+          <div className="overflow-y-auto" style={{ height: "60vh" }}>
             {filteredCandidates.length === 0 ? (
               <div className="flex flex-col items-center">
                 <p>No candidates available.</p>

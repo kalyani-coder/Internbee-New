@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
-import Footer from './../Footer/Footer';
+import Footer from './../Footer/Footer'; 
 import { FaTrash } from "react-icons/fa";
 import './ShorlistedCandidates.css'
 
