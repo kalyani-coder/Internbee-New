@@ -7,7 +7,7 @@ const Message = () => {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [filter, setFilter] = useState("pending"); // Default filter for "New Enquiry"
+  const [filter, setFilter] = useState("pending"); 
 
   const fetchEnquiries = async () => {
     setLoading(true);
