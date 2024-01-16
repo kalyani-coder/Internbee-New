@@ -15,7 +15,7 @@ const postInternship = require("./routes/postInternship");
 const studentsDetails = require("./routes/StudentsDetails");
 const ExpiredInternshipRoute = require("./routes/ExpiredInternshipRoute");
 const Resume = require("./routes/Resume");
-const empAuthRoutes = require("./routes/empAuthRoutes");
+const empAuthROutes = require("./routes/empAuthRoutes")
 const ImapgeUpload = require("./routes/UploadImagePdf");
 const applyInternship = require("./routes/applyInternship");
 const getAllEmployer = require("./routes/getAllEmployer");
@@ -27,6 +27,7 @@ const adminAnnuallyPackage = require("./routes/adminAnnuallyPackage");
 const SearchRoute = require("./routes/searchRoute");
 const EnquiryRoute = require("./routes/enquiryRoutes");
 const studentPackages = require("./routes/studentsMonthlyPackage")
+
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
@@ -70,7 +71,7 @@ apiRouter.use("/studentsdetails", studentsDetails);
 
 apiRouter.use("/resume", Resume);
 
-apiRouter.use("/empauth", empAuthRoutes);
+apiRouter.use('/employer' , empAuthROutes)
 apiRouter.use("/getallemployer", getAllEmployer);
 
 apiRouter.use("/imageupload", ImapgeUpload);

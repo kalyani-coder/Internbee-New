@@ -22,7 +22,7 @@ const Login = () => {
   }, [navigate]);
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://internbee-backend-apis.onrender.com/api/empauth/signin", {
+      const response = await fetch("http://localhost:8000/api/employer/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

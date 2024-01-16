@@ -2,7 +2,8 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // const EmployerAuth = require("../models/EmployerAuth");
-const EmployerAuth = require("../models/employerAuth");
+// const EmployerAuth = require("../models/employerAuth");
+const EmployerAuth = require('../models/employerAuth')
 
 const router = express.Router();
 const jwtKey = "amar";
@@ -36,7 +37,7 @@ router.post("/signup", async (req, res) => {
     });
 
     const createdEmpAuth = await newEmpAuth.save();
-    const token = jwt.sign({ email: createdEmpAuth.email }, jwtKey);
+    // const token = jwt.sign({ email: createdEmpAuth.email }, jwtKey);
 
     // Return the token and created user's ID in the response
     res.json({

@@ -1,4 +1,3 @@
-const { compare } = require("bcrypt");
 const mongoose = require("mongoose");
 
 const EmpAuthSchema = new mongoose.Schema({
