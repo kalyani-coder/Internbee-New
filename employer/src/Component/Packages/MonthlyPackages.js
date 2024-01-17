@@ -48,13 +48,14 @@ const MonthlyPackages = () => {
                   Monthly
                 </button>
               </Link>
-              <Link to={'/subscriptionannual'}>
-                <button
-                  className={`py-1 px-4 text-black focus:outline-none  'border-b-2 border-indigo-600'`}
-                >
-                  Annually
-                </button>
-              </Link>
+              <Link to={'/packages'}>
+  <button
+    className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
+    title="This functionality is under development"
+  >
+    Annually
+  </button>
+</Link>
             </div>
           </div>
 
