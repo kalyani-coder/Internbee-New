@@ -10,6 +10,16 @@ const Registration = () => {
     number: "",
     companyAddress: "",
     Description: "",
+    paymentStatus: "",
+    accountHolderName: "",
+    packagePrice: "",
+    purchacepackageEndDate: "",
+    purchacepackageDate: "",
+    searches: "",
+    internshipEnquiry: "",
+    verifiedApplication: "",
+    ResumeView: "",
+    dedicatedCRM: "",
   });
 
   const handleChange = (e) => {
@@ -33,9 +43,9 @@ const Registration = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       const responseData = await response.json();
-  
+
       if (response.ok) {
         console.log("Registration successful");
         alert('Successful Signin');
@@ -47,11 +57,11 @@ const Registration = () => {
           alert("User already exists")
           // Handle UI logic for user conflict
         } if (!validateEmail(formData.email)) {
-        console.error("Invalid email format");
-        alert("Invalid email format");
-        // Handle UI logic for invalid email format
-        return;
-      } else if (error === "Number already exists") {
+          console.error("Invalid email format");
+          alert("Invalid email format");
+          // Handle UI logic for invalid email format
+          return;
+        } else if (error === "Number already exists") {
           console.error("Number already exists");
           alert("Number already exists")
           // Handle UI logic for number conflict
@@ -72,7 +82,7 @@ const Registration = () => {
       // Handle UI logic for general error
     }
   };
-  
+
 
   return (
     <div className="flex h-screen items-center justify-between">
@@ -97,8 +107,8 @@ const Registration = () => {
             />
           </div>
 
-            {/* Email Input */}
-            <div className="flex flex-col mb-4">
+          {/* Email Input */}
+          <div className="flex flex-col mb-4">
             <input
               type="email"
               id="email"
@@ -123,7 +133,7 @@ const Registration = () => {
             />
           </div>
 
-        
+
 
           {/* Mobile Input */}
           <div className="flex flex-col mb-4">

@@ -1,3 +1,4 @@
+// const mongoose = require("mongoose");
 const mongoose = require("mongoose");
 
 const EmpAuthSchema = new mongoose.Schema({
@@ -43,7 +44,25 @@ const EmpAuthSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  purchacepackageDate : String,
+  purchacepackageEndDate : String,
+  packagePrice : String,
+  accountHolderName : String,
+  paymentStatus : String,
+  searches : String,
+  internshipEnquiry : Number,
+  verifiedApplication : String,
+  ResumeView : String,
+  dedicatedCRM : String,
+  internshipCounter :Number,
+
+
 });
 
 const EmployerAuth = mongoose.model("EmpAuth", EmpAuthSchema);
 module.exports = EmployerAuth;
+
+
+
+
+

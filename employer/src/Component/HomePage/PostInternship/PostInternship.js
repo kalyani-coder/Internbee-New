@@ -83,7 +83,7 @@ const PostInternship = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Fetch employer details from the API
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -93,43 +93,49 @@ const PostInternship = () => {
       });
       return;
     }
-
-    const apiUrl = `http://localhost:8000/api/packages/${userId}`;
-
+  
+    const employerDetailsApiUrl = `http://localhost:8000/api/employer/${userId}`;
+    const postInternshipApiUrl = "http://localhost:8000/api/postinternship";
+  
     try {
-      const response = await fetch(apiUrl);
-
-      const employerDetails = await response.json();
-      // Check if the userId exists
-      if (!employerDetails || !employerDetails.userId) {
-        setAlert({
-          type: "danger",
-          message: "User package not found. Please get packages then post an internship.",
-        });
-        return;
-      }
-
-      // Check payment_status
-      if (employerDetails.payment_status === "") {
+      // Fetch employer details
+      const employerResponse = await fetch(employerDetailsApiUrl);
+      const employerDetails = await employerResponse.json();
+  
+      console.log("Employer Details:", employerDetails);
+  
+      // Check paymentStatus
+      if (employerDetails.paymentStatus === "") {
+        console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
           type: "danger",
           message: "Payment not accepted. Please complete the payment first.",
         });
         return; // Stop the submission if payment is not accepted
       }
-      setTimeout(() => {
-        navigate('/packages');
-      }, 5000);
-
-      // Check if payment_status is not "Accepted"
-      if (employerDetails.payment_status !== "Accepted") {
+  
+      // Check if paymentStatus is not "Accepted"
+      if (employerDetails.paymentStatus !== "Accepted") {
+        console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
           type: "danger",
           message: "Payment not accepted. Please complete the payment first.",
         });
-        return; // Stop the submission if payment_status is not "Accepted"
+        return; // Stop the submission if paymentStatus is not "Accepted"
       }
-
+  
+      // Check if the employer has available internship slots
+      if (employerDetails.internshipEnquiry <= 0) {
+        console.log('Employer has reached the internship posting limit');
+        setAlert({
+          type: "danger",
+          message: "Employer has reached the internship posting limit",
+        });
+        return;
+      }
+  
+      console.log("Payment Accepted. Proceeding to post internship.");
+  
       // Formatting dates to the desired format
       const formattedStartDate = format(formData.start_Date, "dd/MM/yyyy", {
         locale: enIN,
@@ -137,9 +143,9 @@ const PostInternship = () => {
       const formattedEndDate = format(formData.end_Date, "dd/MM/yyyy", {
         locale: enIN,
       });
-
+  
       setPosting(true);
-      const postResponse = await fetch("https://internbee-backend-apis.onrender.com/api/postinternship", {
+      const postResponse = await fetch(postInternshipApiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,14 +156,38 @@ const PostInternship = () => {
           end_Date: formattedEndDate,
         }),
       });
-
+  
       if (postResponse.ok) {
+        // Increment the internshipCounter in the employer's details
+        const updatedEmployerDetails = {
+          ...employerDetails,
+          internshipCounter: (employerDetails.internshipCounter || 0) + 1,
+          internshipEnquiry: employerDetails.internshipEnquiry - 1, // Decrease available slots
+        };
+  
+        // Update employer details with the incremented internshipCounter
+        const updateResponse = await fetch(employerDetailsApiUrl, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedEmployerDetails),
+        });
+  
+        if (updateResponse.ok) {
+          console.log("Employer internshipCounter updated successfully");
+        } else {
+          console.error("Error updating employer internshipCounter");
+          // Handle the error as needed
+        }
+  
+        // Set other state or perform additional actions as needed
+  
         setAlert({
           type: "success",
           message: "Internship submitted successfully",
         });
         setPosting(false);
-
         setFormData({
           ...formData,
           job_Title: "",
@@ -171,19 +201,22 @@ const PostInternship = () => {
           job_Description: "",
           stipend: "",
         });
-        // Handle success, e.g., redirect or show a success message
       } else {
         setAlert({ type: "danger", message: "Failed to submit form data" });
         setPosting(false);
         // Handle errors, e.g., show an error message to the user
       }
     } catch (error) {
-      setAlert({ type: "danger", message: "Error during form submission" });
-      console.error("Error during form submission", error);
+      console.error("Error during form submission:", error);
+      setAlert({
+        type: "danger",
+        message: "Error during form submission. Please try again later.",
+      });
       setPosting(false);
-      // Handle other types of errors, e.g., network issues
     }
   };
+  
+
 
 
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const adminMonthlyPackageSchema = new mongoose.Schema({
 
     monthlyPackage_Price : Number,
-    internship_enquiry : String,
+    internship_enquiry : Number,
     searches : String,
     verified_appication : String,
     resume_view : String,

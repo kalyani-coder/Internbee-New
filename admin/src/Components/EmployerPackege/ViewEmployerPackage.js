@@ -5,62 +5,59 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 const ViewEmployerPackages = () => {
-
-  const [packages, setPackages] = useState([]);
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const [selectedEmployer, setSelectedEmployer] = useState(null);
+  const [employers, setEmployers] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
-    const fetchData = async () => {
+    // Fetch employer data from the API
+    const fetchEmployers = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/packages");
+        const response = await fetch("http://localhost:8000/api/employer");
         const data = await response.json();
-        setPackages(data);
+        setEmployers(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching employer data:", error);
       }
     };
 
-    fetchData();
+    fetchEmployers();
   }, []);
 
+  const handlePendingClick = async (employerId) => {
+    // Confirm with the admin
+    const isConfirmed = window.confirm('Are you sure you want to accept this request?');
 
+    if (!isConfirmed) {
+      return; // If not confirmed, do nothing
+    }
 
-  const handleAccept = async (packageId) => {
+    // Make a PATCH request to update paymentStatus to "Accepted"
+    const apiUrl = `http://localhost:8000/api/employer/${employerId}`;
+    const data = { paymentStatus: 'Accepted' };
+
     try {
-      const response = await fetch(`http://localhost:8000/api/packages/${packageId}`, {
-        method: "PATCH",
+      const response = await fetch(apiUrl, {
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          payment_status: "Accepted",
-        }),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        alert('Status Updated Sucessfull')
+        // Successfully updated paymentStatus, perform any other necessary actions
+        console.log('PaymentStatus updated to Accepted');
+
+        // You can force a re-render or update the state to immediately reflect the change
+        // For example, if employers is the state containing the employer data:
+        // setEmployers(updatedEmployers);
 
       } else {
-        console.error("Failed to update payment status");
+        console.error('Failed to update paymentStatus');
+        // Handle the error as needed
       }
     } catch (error) {
-      console.error("Error during patch request:", error);
-    }
-  };
-
-  const handleViewMore = async (packageId, userId) => {
-    try {
-      const packageResponse = await fetch(`http://localhost:8000/api/packages/${packageId}`);
-      const employerResponse = await fetch(`http://localhost:8000/api/empauth/${userId}`);
-      const packageData = await packageResponse.json();
-      const employerData = await employerResponse.json();
-
-      setSelectedPackage(packageData);
-      setSelectedEmployer(employerData);
-    } catch (error) {
-      console.error("Error fetching package details:", error);
+      console.error('Error during PATCH request:', error);
+      // Handle the error as needed
     }
   };
   return (
@@ -83,13 +80,10 @@ const ViewEmployerPackages = () => {
                 type="text"
                 id="search"
                 placeholder="Search by package"
-
-
                 className="border rounded py-2 px-3 mr-2"
               />
               <button
                 className="bg-black text-white py-2 px-4 rounded"
-
               >
                 Search
               </button>
@@ -103,69 +97,53 @@ const ViewEmployerPackages = () => {
                       <th className="py-4 px-6 border-b font-bold text-lg">Employer Name</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Package</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
-                     
                       <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {packages.map((pkg) => (
-                      <tr key={pkg._id}>
-                        <td className="py-2 px-4 border-b text-lg">{pkg.email}</td>
-                        <td className="py-2 px-4 border-b text-lg">{pkg.empName}</td>
-                        <td className="py-2 px-4 border-b text-lg">{pkg.package}</td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          <button
-                            className="text-blue-500 hover:text-blue-700 mr-2"
-                            onClick={() => handleViewMore(pkg._id, pkg.userId)}
-                          >
-                            View More
-                          </button>
-                        </td>
-                       
-
-                        <td>
-                          <button
-                            className={pkg.payment_status === "Accepted" ? "bg-green-500 p-2 rounded-lg text-white" : (pkg.payment_status === " " ? "bg-red-500 p-2 rounded-lg text-white" : "bg-amber-300 p-2 rounded-lg")}
-                            onClick={() => handleAccept(pkg._id)}
-                          >
-                            {pkg.payment_status === "Accepted" ? "Accepted" : "Pending"}
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                 
+                  {employers
+  .filter(
+    (employer) =>
+      employer.purchacepackageDate && employer.purchacepackageDate.trim() !== "" // Check if purchacepackageDate is not empty
+  )
+  .map((employer) => (
+  <tr key={employer._id}>
+    <td className="py-2 px-4 border-b text-lg">{employer.email}</td>
+    <td className="py-2 px-4 border-b text-lg">{employer.empName}</td>
+    <td className="py-2 px-4 border-b text-lg">{/* Display package details */}</td>
+    <td className="py-2 px-4 border-b text-lg">
+      <button className="text-blue-500 hover:text-blue-700 mr-2">
+        View More
+      </button>
+    </td>
+    <td>
+    <button
+            onClick={() => handlePendingClick(employer._id)}
+            className={`${
+              employer.paymentStatus === 'Accepted'
+                ? "bg-green-500"
+                : employer.paymentStatus === 'Pending'
+                  ? "bg-red-500"
+                  : "bg-gray-500" // Default color if status is neither Accepted nor Pending
+            } p-2 rounded-lg text-white`}
+          >
+            {employer.paymentStatus ? employer.paymentStatus : "Pending"}
+          </button>
+    </td>
+  </tr>
+))}
                   </tbody>
                 </table>
               </div>
 
               <div className="flex justify-center">
-
+                {/* Additional content */}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-   
-
-
-      {selectedEmployer && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <span className="close cursor-pointer" onClick={() => setSelectedEmployer(null)}>
-              &times;
-            </span>
-            <div className="modal-content">
-              <h2 className="text-2xl font-bold mb-4">Employer Details</h2><hr />
-              {/* Display details from selectedEmployer */}
-              <p>{`Employer Name: ${selectedEmployer.empName}`}</p><hr />
-              <p>{`Email: ${selectedEmployer.email}`}</p><hr />
-              <p>{`Number: ${selectedEmployer.number}`}</p><hr />
-              <p>{`Company Address: ${selectedEmployer.companyAddress}`}</p><hr />
-              <p>{`Description: ${selectedEmployer.Description}`}</p>
-            </div>
-          </div>
-        </div>
-      )}
 
       <Footer />
     </>

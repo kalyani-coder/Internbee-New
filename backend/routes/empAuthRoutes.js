@@ -9,7 +9,14 @@ const router = express.Router();
 const jwtKey = "amar";
 
 router.post("/signup", async (req, res) => {
-  const { empName, email, number, password, companyAddress, Description } =
+  const { empName, email, number, password, companyAddress, Description, 
+    paymentStatus, accountHolderName, packagePrice, purchacepackageEndDate, 
+    purchacepackageDate,searches,
+    internshipEnquiry,
+    verifiedApplication,
+    ResumeView,
+    dedicatedCRM ,
+    internshipCounter} =
     req.body;
 
   try {
@@ -34,6 +41,17 @@ router.post("/signup", async (req, res) => {
       password: hashedPassword,
       companyAddress: companyAddress,
       Description: Description,
+      paymentStatus: paymentStatus,
+      accountHolderName: accountHolderName,
+      packagePrice: packagePrice,
+      purchacepackageEndDate: purchacepackageEndDate,
+      purchacepackageDate: purchacepackageDate,
+      searches: searches,
+      internshipEnquiry: internshipEnquiry,
+      verifiedApplication: verifiedApplication,
+      ResumeView: ResumeView,
+      dedicatedCRM: dedicatedCRM,
+      internshipCounter : internshipCounter,
     });
 
     const createdEmpAuth = await newEmpAuth.save();
@@ -99,6 +117,16 @@ router.patch("/:id", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const empAuth = await EmployerAuth.findByIdAndDelete(id);
+    res.status(200).json({ message: "Employer Delete Successfully" });
+
+  } catch (e) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+})
 
 router.get("/", async (req, res) => {
   try {
@@ -114,3 +142,9 @@ router.get("/", async (req, res) => {
 
 
 module.exports = router;
+
+
+
+
+
+

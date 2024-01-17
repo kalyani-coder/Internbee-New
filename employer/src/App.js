@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./Component/Login/Login"
 import EmployerRegistration from './Component/Signup/Signup';
@@ -29,6 +29,23 @@ import ResolveMessage from './Component/Message/ResolveMessage';
 
 
 function App() {
+
+  const [monthlyPackage, setMonthlyPackage] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/adminmonthlypackage');
+        const data = await response.json();
+        setMonthlyPackage(data[0]); // Assuming the response is an array with a single object
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
 
@@ -56,7 +73,7 @@ function App() {
           <Route path='/message' element={<MessageComponent />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path='/viewstudentprofile/:id' element={<ViewStudentProfile />} />
-          <Route path='/getpackage' element={<GetPackage />} />
+          <Route path='/getpackage' element={<GetPackage monthlyPackage={monthlyPackage}/>} />
           <Route path='getpackageanually' element={<GetPackageAnually />} />
           <Route path='/shortlisted/:id' element={<ListofShortlist />} />
           <Route path='/anuallypackage' element={<AnuallyPackages />} />
@@ -73,3 +90,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
+

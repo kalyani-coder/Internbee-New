@@ -1,85 +1,138 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
+import { useLocation } from 'react-router-dom';
 
 const GetPackage = () => {
+  const location = useLocation();
+  const { state } = location;
+  const { monthlyPackage } = state || {};
+  const [accountHolderName, setAccountHolderName] = useState('');
 
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardHolderName, setCardHolderName] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
+  useEffect(() => {
+    // Set initial values from monthlyPackage when it's available
+    if (monthlyPackage) {
+      setAccountHolderName(accountHolderName);
+    }
+  }, [monthlyPackage]);
 
-  const handleCardNumberChange = (e) => {
-    setCardNumber(e.target.value);
+  const handleAccountHolderNameChange = (e) => {
+    setAccountHolderName(e.target.value);
   };
 
-  const handleCardHolderNameChange = (e) => {
-    setCardHolderName(e.target.value);
-  };
 
-  const handleExpiryDateChange = (e) => {
-    setExpiryDate(e.target.value);
-  };
-
-  const handleCvvChange = (e) => {
-    setCvv(e.target.value);
-  };
+  
   const handlePayment = async () => {
-    const email = localStorage.getItem('email');
-    const userId = localStorage.getItem('userId');
-    const number = localStorage.getItem('number');
-    const empName = localStorage.getItem('empName');
-    const payment_status = " ";
-    const apiUrl = 'https://internbee-backend-apis.onrender.com/api/packages';
-
+    console.log('accountHolderName:', accountHolderName);
+  
+    if (!monthlyPackage) {
+      console.error('Monthly package data not available');
+      return;
+    }
+  
+    const { empName, email, number, companyAddress, Description, internshipEnquiry } = monthlyPackage;
+  
+    const emploerId = localStorage.getItem('userId');
+  
+    // Check if the user has already reached the limit for internshipEnquiry
+    if (internshipEnquiry > 0 && internshipEnquiry <= 8) {
+      console.error('Already reached the limit for internshipEnquiry. Cannot purchase another package.');
+      alert('Already reached the limit for internshipEnquiry. Cannot purchase another package.');
+      return;
+    }
+  
+    // Check if the accountHolderName matches the correct key
+    if (accountHolderName !== 'qwertyuiopasdfghjkl') {
+      console.error('Incorrect accountHolderName. Please enter the correct key.');
+      alert('Incorrect accountHolderName. Please enter the correct key.');
+      return;
+    }
+  
+    const currentDate = new Date();
+    const dd = String(currentDate.getDate()).padStart(2, '0');
+    const mm = String(currentDate.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = currentDate.getFullYear();
+  
+    const formattedDate = `${dd}/${mm}/${yyyy}`;
+  
+    const nextMonthDate = new Date(currentDate);
+    nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
+    const nextMonth_dd = String(nextMonthDate.getDate()).padStart(2, '0');
+    const nextMonth_mm = String(nextMonthDate.getMonth() + 1).padStart(2, '0');
+    const nextMonth_yyyy = nextMonthDate.getFullYear();
+  
+    const purchacepackageEndDate = `${nextMonth_dd}/${nextMonth_mm}/${nextMonth_yyyy}`;
+    const internshipEnquiryAsNumber = monthlyPackage.internship_enquiry !== null ? parseInt(monthlyPackage.internship_enquiry, 10) : null;
+  
+    const apiUrl = `http://localhost:8000/api/employer/${emploerId}`;
+  
     const data = {
-      // cardNumber,
-      accountHolderName: cardHolderName,
-      // expiryDate,
-      // cvv,
-      email,
-      userId,
       empName,
+      email,
       number,
-      payment_status,
+      companyAddress,
+      Description,
+      purchacepackageDate: formattedDate,
+      purchacepackageEndDate: purchacepackageEndDate,
+      paymentStatus: '', // Assuming the payment is accepted for a new package
+      accountHolderName: accountHolderName,
+      packagePrice: monthlyPackage.monthlyPackage_Price,
+      searches: monthlyPackage.searches,
+      internshipEnquiry: internshipEnquiryAsNumber,
+      verifiedApplication: monthlyPackage.verified_appication,
+      ResumeView: monthlyPackage.resume_view,
+      dedicatedCRM: monthlyPackage.dedicated_crm,
     };
-
+  
+    console.log('data to be sent:', data);
     try {
       const response = await fetch(apiUrl, {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
-
+  
       if (response.ok) {
-        // Handle success
-        console.log('Payment successful');
-        alert('Payment Successful');
-      } else {
-        // Check for specific conditions (e.g., user already exists)
-        if (response.status === 400) {
-          const responseData = await response.json();
-          if (responseData.error === 'User already subscribed') {
-            alert('User already subscribed');
+        console.log('Employer data updated successfully');
+        
+        // If the user is purchasing a new package, update the internshipCounter
+        if (internshipEnquiryAsNumber > 0) {
+          const updatedEmployerDetails = {
+            ...monthlyPackage,
+            internshipCounter: monthlyPackage.internshipCounter + 1,
+          };
+    
+          // Update employer details with the incremented internshipCounter
+          const updateResponse = await fetch(apiUrl, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedEmployerDetails),
+          });
+    
+          if (updateResponse.ok) {
+            console.log('Employer internshipCounter updated successfully');
           } else {
-            // Handle other errors
-            console.error('Payment failed');
-            alert('Payment Failed');
+            console.error('Error updating employer internshipCounter');
+            // Handle the error as needed
           }
-        } else {
-          // Handle other errors
-          console.error('Payment failed');
-          alert('Payment Failed');
         }
+  
+        alert('Payment Successful');
+        // Add any other handling or redirection logic here
+      } else {
+        console.error('Error updating employer data');
+        alert('Payment Failed');
       }
     } catch (error) {
       console.error('Error during payment:', error);
       alert('Error during payment');
     }
   };
-
+  
 
   return (
     <div>
@@ -93,58 +146,17 @@ const GetPackage = () => {
                 <div className="h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
                   <h2 className="text-sm tracking-widest title-font mb-1 font-medium">Payment Details</h2>
                   <div className="mb-4">
-                    {/* <label htmlFor="cardNumber" className="text-sm text-gray-600">
-                      Card Number
+                    <label htmlFor="accountHolderName" className="text-sm text-gray-600">
+                      Account Holder Name
                     </label>
                     <input
                       type="text"
-                      id="cardNumber"
-                      className="w-full p-2 border border-gray-300 rounded mt-1"
-                      placeholder="1234 5678 9101 1121"
-                      value={cardNumber}
-                      onChange={handleCardNumberChange}
-                    /> */}
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="cardHolderName" className="text-sm text-gray-600">
-                      Card Holder Name
-                    </label>
-                    <input
-                      type="text"
-                      id="cardHolderName"
+                      id="accountHolderName"
                       className="w-full p-2 border border-gray-300 rounded mt-1"
                       placeholder="John Doe"
-                      value={cardHolderName}
-                      onChange={handleCardHolderNameChange}
+                      value={accountHolderName}
+                      onChange={handleAccountHolderNameChange}
                     />
-                  </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="mb-4 col-span-2">
-                      {/* <label htmlFor="expiryDate" className="text-sm text-gray-600">
-                        Expiry Date
-                      </label>
-                      <input
-                        type="text"
-                        id="expiryDate"
-                        className="w-full p-2 border border-gray-300 rounded mt-1"
-                        placeholder="MM/YY"
-                        value={expiryDate}
-                        onChange={handleExpiryDateChange}
-                      /> */}
-                    </div>
-                    <div className="mb-4">
-                      {/* <label htmlFor="cvv" className="text-sm text-gray-600">
-                        CVV
-                      </label>
-                      <input
-                        type="text"
-                        id="cvv"
-                        className="w-full p-2 border border-gray-300 rounded mt-1"
-                        placeholder="123"
-                        value={cvv}
-                        onChange={handleCvvChange}
-                      /> */}
-                    </div>
                   </div>
                   <button
                     className="bg-indigo-500 text-white py-2 px-6 mt-4 rounded hover:bg-indigo-600 focus:outline-none"
@@ -163,3 +175,10 @@ const GetPackage = () => {
 };
 
 export default GetPackage;
+
+
+
+
+
+
+
