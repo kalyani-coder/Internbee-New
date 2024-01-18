@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate =  useNavigate()
+  
+  const emploeLoggedOut = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
   return (
     <nav className="flex items-center justify-between p-4" style={{ backgroundColor: '#FFBD59' }}>
       <div className="flex items-center">
@@ -81,7 +87,8 @@ const Navbar = () => {
           <li>
             <Link to={'/'}>
 
-              <button className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110">
+              <button onClick={emploeLoggedOut}
+               className="bg-amber-300 text-white bg-black rounded-md px-4 py-2 hover:text-amber-300 max-w-xs transition duration-300 ease-in-out hover:scale-110">
                 Log out
               </button>
             </Link>

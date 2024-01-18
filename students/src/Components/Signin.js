@@ -16,7 +16,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('https://internbee-backend-apis.onrender.com/api/auth/signin', {
+      const response = await fetch('http://localhost:8000/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const Login = () => {
           localStorage.setItem('fullName', responseData.fullName);
           localStorage.setItem('userEmail', responseData.email);
           localStorage.setItem('number', responseData.number);
-          navigate('/home');
+          navigate('/privacypolicy');
         } else {
           // Handle the case where userId is missing in the response
           setError('email', {

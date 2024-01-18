@@ -40,7 +40,7 @@ const Login = () => {
 
         navigate(`/view-profile-page`);
 
-        navigate("/Home");
+        navigate("/privacypolicy");
       } else {
         if (response.status === 404) {
           setError("email", {

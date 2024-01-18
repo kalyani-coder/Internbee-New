@@ -29,7 +29,7 @@ const Registration = () => {
     const { confirmPassword, ...postData } = data;
 
     try {
-      const response = await fetch("https://internbee-backend-apis.onrender.com/api/auth/signup", {
+      const response = await fetch("http://localhost:8000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const Registration = () => {
         const result = await response.json();
         console.log(result);
         // Reset form and show success message
-        navigate("/Signin");
+        navigate("/login");
       } else {
         const errorResponse = await response.json();
         if (response.status === 409) {

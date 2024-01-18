@@ -16,7 +16,8 @@ router.post("/signup", async (req, res) => {
     verifiedApplication,
     ResumeView,
     dedicatedCRM ,
-    internshipCounter} =
+    internshipCounter,
+    Privacy_policy,} =
     req.body;
 
   try {
@@ -52,6 +53,7 @@ router.post("/signup", async (req, res) => {
       ResumeView: ResumeView,
       dedicatedCRM: dedicatedCRM,
       internshipCounter : internshipCounter,
+      Privacy_policy : Privacy_policy,
     });
 
     const createdEmpAuth = await newEmpAuth.save();

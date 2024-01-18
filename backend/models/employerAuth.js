@@ -55,6 +55,7 @@ const EmpAuthSchema = new mongoose.Schema({
   ResumeView : String,
   dedicatedCRM : String,
   internshipCounter :Number,
+  Privacy_policy : Boolean,
 
 
 });

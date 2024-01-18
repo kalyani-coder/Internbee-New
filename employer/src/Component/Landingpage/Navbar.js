@@ -52,13 +52,13 @@ const Navbar = () => {
     const navigateToStudents = () => {
         // Redirect to the specified URL
         window.location.href = 'https://internbee-students.vercel.app/login';
-      };
-    
-      const navigateToStudentsregister = () => {
+    };
+
+    const navigateToStudentsregister = () => {
         // Redirect to the specified URL
         window.location.href = 'https://internbee-students.vercel.app/register';
-      };
-    
+    };
+
 
     return (
         <div className="mb-10">
@@ -73,8 +73,13 @@ const Navbar = () => {
                 </div> */}
                 <div className="flex items-center gap-3 ">
 
+                <div className="flex items-center space-x-6">
+
+                        <Link to={'/blogs'} className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
+                    </div>
+
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle bg-secondary fw-bold text-dark py-2 px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Login
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -85,16 +90,16 @@ const Navbar = () => {
                             </li><hr />
                             <li>
                                 <Link>
-                               
-                                    
-                                <a
-              className="dropdown-item"
-              onClick={navigateToStudents}
-              style={{ cursor: 'pointer' }}
-            >
-              Students
-            </a>
-                               
+
+
+                                    <a
+                                        className="dropdown-item"
+                                        onClick={navigateToStudents}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Students
+                                    </a>
+
                                 </Link>
 
                             </li>
@@ -103,7 +108,7 @@ const Navbar = () => {
 
 
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle bg-secondary fw-bold text-dark py-2 px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Register
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -113,15 +118,15 @@ const Navbar = () => {
                                 </Link>
                             </li><hr />
                             <li>
-                                 
-            <a
-              className="dropdown-item"
-              onClick={navigateToStudentsregister}
-              style={{ cursor: 'pointer' }}
-            >
-              Students
-            </a>
-                                
+
+                                <a
+                                    className="dropdown-item"
+                                    onClick={navigateToStudentsregister}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Students
+                                </a>
+
                             </li>
                         </ul>
                     </div>
