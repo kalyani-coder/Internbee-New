@@ -4,9 +4,11 @@ const newInterShipSchema = require("./models/postInternship");
 const ExpiredInternship = require("./models/ExpiredInternship");
 const cors = require("cors");
 apiRouter = express.Router();
+require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+const port = process.env.PORT || 8000;
 
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -47,9 +49,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 mongoose
-  .connect(
-    "mongodb+srv://amardippadghan2:admin123@cluster0.5avn1xf.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -124,6 +124,7 @@ app.use("/api", apiRouter);
 
 // Start the server
 
-app.listen(8000, () => {
-  console.log("Server is running on http://localhost:8000/");
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
