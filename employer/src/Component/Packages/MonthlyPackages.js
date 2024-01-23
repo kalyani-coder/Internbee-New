@@ -76,7 +76,7 @@ const MonthlyPackages = () => {
                           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
-                        </span>{monthlyPackage.searches}
+                        </span>{monthlyPackage.searches} Searches
                       </p>
 
                       <p className="flex items-center text-gray-600 mb-2">
