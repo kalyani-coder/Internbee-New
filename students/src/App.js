@@ -22,6 +22,8 @@ import FreePlan from "./Components/StudentPackages/FreePlan";
 import MonthlyPlan from "./Components/StudentPackages/MonthlyPlan";
 import EnquiryPage from "./Components/ApplyInternship/EnquiryPage";
 import PolicyTermsCondition from "./Components/PrivacyPolicy/PolicyTermsCondition";
+import MonthlyPackages from "./Components/StudentPackages/MonthlyPlan";
+import SubscribePackage from "./Components/StudentPackages/SubscribePackage";
 
 function App() {
   // useEffect(() => {
@@ -71,7 +73,8 @@ function App() {
         />
         <Route path="/applied-internship" element={<AppliedIntersnship />} />
         <Route path="/freeplan" element={<FreePlan />} />
-        <Route path="/monthlyplan" element={<MonthlyPlan />} />
+        <Route path="/monthlyplan" element={<MonthlyPackages />} />
+        <Route path="/subscribepackage" element={<SubscribePackage />} />
         <Route path="/studentEnquiry" element={<EnquiryPage />} />
         <Route path="/privacypolicy" element={<PolicyTermsCondition />} />
       </Routes>

@@ -21,7 +21,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="w-96 h-screen  p-4 border shadow-xl flex flex-col fixed top-0 left-0">
+        <div className="w-96 h-screen  p-4 border shadow-xl flex flex-col ">
             {/* User information */}
             <div className="mb-6 pb-2 border-b shadow-lm">
                 <FaUser className="mr-4  text-6xl" />

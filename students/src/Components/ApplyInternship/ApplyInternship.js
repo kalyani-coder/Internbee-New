@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaRegClock, FaMoneyBill, FaMapMarkerAlt } from "react-icons/fa";
-import Navbar from "../Navbar";
 import axios from "axios";
 import Internal_Navbar from "../Internal_Navbar";
 
@@ -11,6 +10,8 @@ const ApplyInternship = () => {
   const [internship, setInternship] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [applicationCounter, setApplicationCounter] = useState(0);
+
   useEffect(() => {
     const fetchInternshipData = async () => {
       try {
@@ -21,9 +22,13 @@ const ApplyInternship = () => {
           throw new Error("Network response was not ok.");
         }
         const data = await response.json();
-        // console.log("Fetched Internship Data:", data);
-
         setInternship(data);
+
+        // Fetch the application count from the backend
+        const applicationCountResponse = await axios.get(
+          `http://localhost:8000/api/applicationcount/${internshipId}`
+        );
+        setApplicationCounter(applicationCountResponse.data.count);
       } catch (error) {
         console.error("Error fetching internship data:", error);
       }
@@ -32,55 +37,46 @@ const ApplyInternship = () => {
     fetchInternshipData();
   }, [internshipId]);
 
-  // If internship data is still being fetched, you can show a loading indicator
-  if (!internship) {
-    return <p>Loading...</p>;
-  }
   const handleConfirmation = async () => {
-    setIsSubmitting(true); // Set submission state to true when starting the request
+    setIsSubmitting(true);
 
     try {
-      const formData = {
-        postId: internshipId,
-        InternId: localStorage.getItem("userId"),
-      };
+      if (isValidPackage()) {
+        const formData = {
+          postId: internshipId,
+          InternId: localStorage.getItem("userId"),
+        };
 
-    const response = await axios.post(
-      "http://localhost:8000/api/applyinternship/",
-      formData
-    );
+        const response = await axios.post(
+          "http://localhost:8000/api/applyinternship/",
+          formData
+        );
 
-      console.log("Response:", response.data);
-      alert("Applied Successfully");
+        console.log("Response:", response.data);
 
-      // Perform further actions upon successful submission
-      // For example, show a success message or redirect to a different page
+        if (response.data.success) {
+          setApplicationCounter(applicationCounter + 1);
+          alert("Applied Successfully");
+        } else {
+          alert(response.data.message || "Application Failed");
+        }
 
-      setShowConfirmation(false); // Close the confirmation popup upon successful submission
-    } catch (error) {
-      // Handle errors from the API
-      if (error.response) {
-        const errorMessage = error.response.data.message || "Server Error";
-        console.error("Server Error:", errorMessage);
-        alert(errorMessage);
-        setShowConfirmation(false);
-      } else if (error.request) {
-        console.error("Request Error:", error.request);
-        alert("Request Error");
         setShowConfirmation(false);
       } else {
-        console.error("Error:", error.message);
-        alert("An error occurred");
-        setShowConfirmation(false);
+        alert("You do not have a valid package.");
       }
+    } catch (error) {
+      console.error("Error submitting application:", error);
     } finally {
       setIsSubmitting(false);
-      setShowConfirmation(false);
-      // Reset submission state regardless of success or failure
     }
   };
 
-
+  const isValidPackage = () => {
+    // Placeholder logic, replace with your own logic
+    // For example, check if the user has a monthly package
+    return true;
+  };
 
   return (
     <>
@@ -88,10 +84,8 @@ const ApplyInternship = () => {
         <Internal_Navbar />
       </div>
       <div className="mx-auto w-full max-w-2xl p-6">
-
-        <div className="flex-grow  w-full  mt-32 
-           ">
-          {isSubmitting && ( // Display loading spinner if isSubmitting is true
+        <div className="flex-grow w-full mt-32">
+          {isSubmitting && (
             <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
               <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
             </div>
@@ -153,7 +147,11 @@ const ApplyInternship = () => {
               Apply Now
             </button>
           </div>
-
+          <div className="flex justify-end">
+            <p className="mr-4">
+              Applications Successfully Applied: {applicationCounter}
+            </p>
+          </div>
           {showConfirmation && (
             <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
               <div className="bg-white p-6 rounded-md">
@@ -161,15 +159,14 @@ const ApplyInternship = () => {
                 <div className="flex justify-end mt-4">
                   <button
                     onClick={() => setShowConfirmation(false)}
-                    disabled={isSubmitting} // Disable the button while submitting
+                    disabled={isSubmitting}
                     className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
-
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleConfirmation}
-                    disabled={isSubmitting} // Disable the button while submitting
+                    disabled={isSubmitting}
                     className="bg-green-500 text-white px-4 py-2 rounded-md"
                   >
                     Confirm
@@ -180,7 +177,6 @@ const ApplyInternship = () => {
           )}
         </div>
       </div>
-
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HomeNav from '../HomeNav/HomeNav';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ViewProfile = () => {
 
@@ -31,23 +32,31 @@ const ViewProfile = () => {
 
             <div className="container mx-auto p-4 bg-gray-100 mt-24">
                 {/* Profile Picture and Name Section */}
-                <section className="mb-8  flex items-center bg-white shadow-lg p-6 rounded-lg gap-16">
-                    {/* Display Profile Picture */}
-                    <img
-                        src={userDetails && userDetails.profile_pic ? userDetails.profile_pic : "/dummy-profile-image.jpg"}
-                        alt="Profile"
-                        className="rounded-full w-20 h-20 mr-4 border-4 border-yellow-500"
-                    />
-                    {/* Display Name and Contact Details */}
-                    <div className=''>
-                        <h2 className="text-2xl font-bold mb-2 text-gray-800">
-                            {userDetails && `${userDetails.firstName} ${userDetails.lastName}`}
-                        </h2>
-                        <p className="text-gray-600">{userDetails && userDetails.currentaddress}</p>
-                        <p className="text-gray-600">Contact: {userDetails && userDetails.contactNumber}</p>
+                <div className='flex justify-between mb-8 align-middle bg-white shadow-lg  rounded-lg '>
+                    <div>
+                        <section className="mb-8  flex items-center gap-16">
+                            {/* Display Profile Picture */}
+                            <img
+                                src={userDetails && userDetails.profile_pic ? userDetails.profile_pic : "/dummy-profile-image.jpg"}
+                                alt="Profile"
+                                className="rounded-full w-20 h-20 mr-4 border-4 border-yellow-500"
+                            />
+                            {/* Display Name and Contact Details */}
+                            <div className=''>
+                                <h2 className="text-2xl font-bold mb-2 text-gray-800">
+                                    {userDetails && `${userDetails.firstName} ${userDetails.lastName}`}
+                                </h2>
+                                <p className="text-gray-600">{userDetails && userDetails.currentaddress}</p>
+                                <p className="text-gray-600">Contact: {userDetails && userDetails.contactNumber}</p>
+                            </div>
+                        </section>
                     </div>
-                </section>
-
+                    <div className='items-center flex'>
+                        <Link to="/freeplan">
+                            <button className='border p-2  bg-amber-300 '>Get Package</button>
+                        </Link>
+                    </div>
+                </div>
                 {/* Resume Section */}
                 <section className="mb-8  bg-white shadow-lg p-6 rounded-lg">
                     <h2 className="text-2xl font-bold mb-4 text-left text-gray-800">Resume</h2>
@@ -143,7 +152,7 @@ const ViewProfile = () => {
                             <p>Currentaddress: {userDetails.currentaddress}</p>
                             <p>City: {userDetails.city}</p>
                             <p>District: {userDetails.district}</p>
-                           
+
 
                         </>
                     ) : (
