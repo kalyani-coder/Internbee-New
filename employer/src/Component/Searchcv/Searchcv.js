@@ -56,18 +56,51 @@ const SearchCVPage = () => {
     setSelectedStudent(null);
   };
 
- const handleDownload = (student) => {
-   // Assuming student_PDF is a valid URL or file path
-   const url = student.student_PDF;
 
-   // Trigger a download using browser functionality
-   const link = document.createElement("a");
-   link.href = url;
-   link.download = "student_file.pdf"; // Optional filename for download
-   document.body.appendChild(link);
-   link.click();
-   document.body.removeChild(link);
- };
+  const handleDownload = async (student) => {
+  try {
+    // Fetch employer details
+    const employerId = localStorage.getItem("userId");
+    const employerDetailsApiUrl = `http://localhost:8000/api/employer/${employerId}`;
+    const employerResponse = await axios.get(employerDetailsApiUrl);
+    const employerDetails = employerResponse.data;
+
+    // Get the current number of clicks and dynamic searches limit
+    const resumeDownloadCounter = employerDetails.resumeDownloadCounter || 0;
+    const remainingSearches = employerDetails.searches || 0;
+
+    // Check if the download limit is reached
+    if (resumeDownloadCounter >= remainingSearches) {
+      alert("Download limit reached. You cannot download more files.");
+      return;
+    }
+
+    // Trigger a download using browser functionality
+    const url = student.student_PDF;
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "student_file.pdf"; // Optional filename for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Update employer data
+    const response = await axios.patch(`http://localhost:8000/api/employer/${employerId}`, {
+      resumeDownloadCounter: resumeDownloadCounter + 1,
+      searches: remainingSearches - 1,
+    });
+
+    // Update local storage with the new employer data and increment resumeDownloadCounter
+    localStorage.setItem("employerData", JSON.stringify(response.data));
+  } catch (error) {
+    console.error("Error downloading file or updating employer data:", error);
+  }
+};
+
+  
+  
+
+
 
   return (
     <>
@@ -92,7 +125,6 @@ const SearchCVPage = () => {
             </button>
           </div>
 
-          {/* Student CV List Table View */}
           <table className="border-collapse w-2/3 mt-8">
             <thead>
               <tr>

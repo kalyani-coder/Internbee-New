@@ -17,7 +17,8 @@ router.post("/signup", async (req, res) => {
     ResumeView,
     dedicatedCRM ,
     internshipCounter,
-    Privacy_policy,} =
+    Privacy_policy,
+    resumeDownloadCounter,} =
     req.body;
 
   try {
@@ -54,6 +55,7 @@ router.post("/signup", async (req, res) => {
       dedicatedCRM: dedicatedCRM,
       internshipCounter : internshipCounter,
       Privacy_policy : Privacy_policy,
+      resumeDownloadCounter : resumeDownloadCounter,
     });
 
     const createdEmpAuth = await newEmpAuth.save();
@@ -138,6 +140,9 @@ router.get("/", async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 });
+
+
+
 
 
 

@@ -63,6 +63,8 @@ const GetPackage = () => {
   
     const purchacepackageEndDate = `${nextMonth_dd}/${nextMonth_mm}/${nextMonth_yyyy}`;
     const internshipEnquiryAsNumber = monthlyPackage.internship_enquiry !== null ? parseInt(monthlyPackage.internship_enquiry, 10) : null;
+
+    const searchesAsNumber = monthlyPackage.searches !== null ? parseInt(monthlyPackage.searches, 10) : null;
   
     const apiUrl = `http://localhost:8000/api/employer/${emploerId}`;
   
@@ -77,7 +79,7 @@ const GetPackage = () => {
       paymentStatus: '', // Assuming the payment is accepted for a new package
       accountHolderName: accountHolderName,
       packagePrice: monthlyPackage.monthlyPackage_Price,
-      searches: monthlyPackage.searches,
+      searches:searchesAsNumber,
       internshipEnquiry: internshipEnquiryAsNumber,
       verifiedApplication: monthlyPackage.verified_appication,
       ResumeView: monthlyPackage.resume_view,

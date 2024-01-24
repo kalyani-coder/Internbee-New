@@ -49,13 +49,14 @@ const EmpAuthSchema = new mongoose.Schema({
   packagePrice : String,
   accountHolderName : String,
   paymentStatus : String,
-  searches : String,
+  searches : Number,
   internshipEnquiry : Number,
   verifiedApplication : String,
   ResumeView : String,
   dedicatedCRM : String,
   internshipCounter :Number,
   Privacy_policy : Boolean,
+  resumeDownloadCounter : Number,
 
 
 });
