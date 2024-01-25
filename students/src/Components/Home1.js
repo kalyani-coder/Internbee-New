@@ -89,7 +89,7 @@ const Home1 = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/api/postinternship/"
+          "https://internbee-backend-apis.onrender.com/api/postinternship/"
         );
         if (response.ok) {
           const data = await response.json();
@@ -105,9 +105,9 @@ const Home1 = () => {
     fetchData();
   }, []);
 
-  const handleInternshipClick = (id) => {
-    navigate(`/internship/${id}`);
-  };
+  // const handleInternshipClick = (id) => {
+  //   navigate(`/internship/${id}`);
+  // };
 
   const handleCreateProfile = () => {
     navigate("/Profile");
@@ -184,29 +184,6 @@ const Home1 = () => {
     // Add more companies as needed
   ];
 
-  // const internships = [
-  //     {
-  //         id: 1,
-  //         companyName: 'Accenture',
-  //         reviews: 4.5,
-  //         experienceRequired: 2,
-  //         stipend: 'Rs. 15,000 per month',
-  //         location: 'Bangalore',
-  //         skillsRequired: ['React', 'Node.js', 'MongoDB'],
-  //         deadline: '2023-12-31',
-  //     },
-  //     {
-  //         id: 2,
-  //         companyName: 'Tata Consultancy Service',
-  //         reviews: 4.2,
-  //         experienceRequired: 1,
-  //         stipend: 'Rs. 12,000 per month',
-  //         location: 'Mumbai',
-  //         skillsRequired: ['Java', 'Spring Boot', 'Hibernate'],
-  //         deadline: '2023-12-20',
-  //     },
-  //     // Add more internships as needed
-  // ];
   const yourCardArray = [
     {
       icons: FaMobile,
@@ -343,11 +320,11 @@ const Home1 = () => {
           </div>
         </div>
 
-        {/* <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
+        <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
           <h1>Search Your Dream Internship here</h1>
-        </div> */}
+        </div>
 
-        {/* <div className="relative flex items-center gap-2">
+        <div className="relative flex items-center gap-2">
           <input
             type="text"
             placeholder="Enter skills/designations/companies"
@@ -356,7 +333,7 @@ const Home1 = () => {
           <button className="absolute mr-32 right-0 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2">
             Search
           </button>
-        </div> */}
+        </div>
         <div ref={companiesRef}>
           <div className="mt-40 mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
@@ -374,12 +351,9 @@ const Home1 = () => {
                 />
                 <h2 className="text-xl font-bold">{company.name}</h2>
                 <p className="text-gray-600">{company.description}</p>
-
                 <button className="mt-4 bg-amber-300 hover:bg-yellow-300 text-black rounded-md px-4 py-2">
                   View Internship
                 </button>
-
-
               </div>
             ))}
           </Slider>
@@ -434,13 +408,14 @@ const Home1 = () => {
                   {internship.job_Description}
                 </p>
                 {/* Additional details here */}
-                <Link to={`/apply-internship/${internship._id}`}>
-                  <button
-                    className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
-                 
-                  >
-                    View Internship
-                  </button>
+                <Link to='/internship'>
+
+                <button
+                  className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
+                  // onClick={() => handleInternshipClick(internship._id)}
+                >
+                  View Internship
+                </button>
                 </Link>
               </div>
             </div>

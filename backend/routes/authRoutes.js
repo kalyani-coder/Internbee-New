@@ -7,7 +7,11 @@ const router = express.Router();
 const jwtKey = "amar";
 
 router.post("/signup", async (req, res) => {
-  const { fullName, email, number, password } = req.body;
+  const { fullName, email, number, password, freePackagePrice, searches,
+    verified_application,
+    dedicated_crm,
+    opportunities,
+    opportunities_Counter, } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -26,6 +30,13 @@ router.post("/signup", async (req, res) => {
       email: email,
       number: number,
       password: hashedPassword,
+      freePackagePrice: freePackagePrice,
+      searches: searches,
+      verified_application: verified_application,
+      dedicated_crm: dedicated_crm,
+      opportunities: opportunities,
+      opportunities_Counter : opportunities_Counter
+
     });
 
     const createdUser = await newUser.save();
@@ -39,6 +50,21 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedEmpAuth = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedEmpAuth);
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
@@ -82,6 +108,16 @@ router.get("/", async (req, res) => {
   try {
     const allUsers = await User.find();
     res.json(allUsers);
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const studentId = req.params.id;
+  try {
+    const user = await User.findByIdAndDelete(studentId);
+    res.json(user);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }

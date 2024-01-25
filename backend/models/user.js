@@ -23,6 +23,30 @@ const userSchema = new mongoose.Schema({
 
   },
  
+  freePackagePrice: {
+    type: String,
+    default: "", 
+  },
+  searches: {
+    type: Number,
+    default: "", 
+  },
+  verified_application: {
+    type: String,
+    default: "", 
+  },
+  dedicated_crm: {
+    type: String,
+    default: "", 
+  },
+  opportunities: {
+    type: Number,
+    default: "", 
+  },
+  opportunities_Counter : {
+    type: Number,
+    
+  },
  
 });
 
