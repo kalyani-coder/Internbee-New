@@ -45,9 +45,41 @@ const userSchema = new mongoose.Schema({
   },
   opportunities_Counter : {
     type: Number,
-    
   },
- 
+
+
+
+  monthlyPackage: {
+    package_type: {
+      type: String,
+      default: "monthly",
+    },
+    monthlyPackage_Price: {
+      type: Number,
+      default: "",
+    },
+    searches: {
+      type: Number,
+      default: "",
+    },
+    verified_application: {
+      type: String,
+      default: "",
+    },
+    dedicated_crm: {
+      type: String,
+      default: "",
+    },
+    monthlyOpportunities: {
+      type: Number,
+      default: "",
+      
+    },
+    accountHolderName : {
+      type : String,
+      default : "",
+    }
+  },
 });
 
 const User = mongoose.model("User", userSchema);

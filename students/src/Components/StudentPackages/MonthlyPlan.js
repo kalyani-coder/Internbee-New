@@ -15,9 +15,8 @@ const MonthlyPackages = () => {
 
 
     const handleSubscribe = () => {
-        // navigate('/getpackage', { state: { monthlyPackage } });
-        // alert('Are you sure you want to subscribe');
-    };
+        navigate('/subscribepackage', { state: { monthlyPackage } });
+      };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -97,14 +96,6 @@ const MonthlyPackages = () => {
                                             </p>
 
 
-                                            {/* <p className="flex items-center text-gray-600 mb-6">
-                                                <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
-                                                    <path d="M20 6L9 17l-5-5"></path>
-                                                </svg>
-                                                </span>{monthlyPackage.resume_view}
-                                            </p> */}
-
-
                                             <p className="flex items-center text-gray-600 mb-6">
                                                 <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                                                     <path d="M20 6L9 17l-5-5"></path>
@@ -113,13 +104,8 @@ const MonthlyPackages = () => {
                                             </p>
 
 
-                                            {/* <button  className="flex items-center mt-auto text-black bg-amber-300 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Edit Package
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
-                          <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                      </button> */}
 
-                                            <Link to="/subscribepackage">
+                                            {/* <Link to="/subscribepackage"> */}
 
                                                 <button onClick={handleSubscribe} className="flex items-center mt-auto text-black bg-amber-300 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
                                                     Subscribe
@@ -128,7 +114,7 @@ const MonthlyPackages = () => {
                                                     </svg>
                                                 </button>
 
-                                            </Link>
+                                            {/* </Link> */}
 
                                             <p className="text-xs text-black mt-3">Literally you probably haven't heard of them jean shorts.</p>
                                         </div>
