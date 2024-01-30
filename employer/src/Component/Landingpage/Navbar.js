@@ -49,15 +49,15 @@ const Navbar = () => {
     //     window.location.href = 'https://internbee-students.vercel.app/login';
     // }
 
-    const navigateToStudents = () => {
-        // Redirect to the specified URL
-        window.location.href = 'https://internbee-students.vercel.app/login';
-    };
+    // const navigateToStudents = () => {
+    //     // Redirect to the specified URL
+    //     window.location.href = 'https://internbee-students.vercel.app/login';
+    // };
 
-    const navigateToStudentsregister = () => {
-        // Redirect to the specified URL
-        window.location.href = 'https://internbee-students.vercel.app/register';
-    };
+    // const navigateToStudentsregister = () => {
+    //     // Redirect to the specified URL
+    //     window.location.href = 'https://internbee-students.vercel.app/register';
+    // };
 
 
     return (
@@ -88,7 +88,8 @@ const Navbar = () => {
                                     <a class="dropdown-item" > Employers</a>
                                 </Link>
                             </li><hr />
-                            <li>
+
+                            {/* <li>
                                 <Link>
 
 
@@ -102,7 +103,7 @@ const Navbar = () => {
 
                                 </Link>
 
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 
@@ -117,7 +118,7 @@ const Navbar = () => {
                                     <a class="dropdown-item" > Employers </a>
                                 </Link>
                             </li><hr />
-                            <li>
+                            {/* <li>
 
                                 <a
                                     className="dropdown-item"
@@ -127,7 +128,7 @@ const Navbar = () => {
                                     Students
                                 </a>
 
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 

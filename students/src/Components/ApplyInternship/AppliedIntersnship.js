@@ -68,7 +68,7 @@ const AppliedInternship = () => {
         StudentPhone: internship.InternNumber,
       };
       const res = await axios.post(
-        "http://localhost:8000/api/enquiry/",
+        "https://internbee-backend-apis.onrender.com/api/enquiry/",
         enquiryData
       );
       console.log(res.data);

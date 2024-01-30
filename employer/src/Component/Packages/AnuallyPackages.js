@@ -32,7 +32,7 @@ function AnuallyPackages() {
                                     className={`py-1 px-4 text-black focus:outline-none `}
 
                                 >
-                                    Annually
+                                    Monthly
                                 </button>
                             </Link>
                         </div>

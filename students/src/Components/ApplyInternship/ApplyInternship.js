@@ -92,7 +92,7 @@ const ApplyInternship = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:8000/api/applyinternship/",
+        "https://internbee-backend-apis.onrender.com/api/applyinternship/",
         formData
       );
 
@@ -105,7 +105,7 @@ const ApplyInternship = () => {
         };
 
         // Update user details with the incremented opportunities_Counter
-        await axios.patch(`http://localhost:8000/api/auth/${userId}`, updatedUserData);
+        await axios.patch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, updatedUserData);
 
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission

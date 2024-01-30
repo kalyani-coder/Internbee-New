@@ -15,7 +15,7 @@ const Message = () => {
     try {
       const userId = localStorage.getItem("userId");
       const res = await axios.get(
-        `http://localhost:8000/api/enquiry/employerId/${userId}?status=${filter}`
+        `https://internbee-backend-apis.onrender.com/api/enquiry/employerId/${userId}?status=${filter}`
       );
       setEnquiries(res.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Message = () => {
   const fetchPostInfo = async (postId) => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/postinternship/${postId}`
+        `https://internbee-backend-apis.onrender.com/api/postinternship/${postId}`
       );
       setSelectedPost(res.data);
     } catch (error) {

@@ -52,7 +52,7 @@ const ViewProfilePage = () => {
   const saveEditedData = async () => {
     try {
       const userId = await localStorage.getItem("userId");
-      await fetch(`http://localhost:8000/api/employer/${userId}`, {
+      await fetch(`https://internbee-backend-apis.onrender.com/api/employer/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ function ResolveMessage() {
   const handlePatch = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/api/enquiry/${Id}`,
+        `https://internbee-backend-apis.onrender.com/api/enquiry/${Id}`,
         {
           EnquiryStatus: "resolved",
           EnquiryReply: reply,

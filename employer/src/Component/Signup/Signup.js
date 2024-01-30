@@ -36,7 +36,7 @@ const Registration = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/employer/signup", {
+      const response = await fetch("https://internbee-backend-apis.onrender.com/api/employer/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

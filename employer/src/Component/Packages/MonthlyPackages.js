@@ -19,7 +19,7 @@ const MonthlyPackages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/adminmonthlypackage');
+        const response = await fetch('https://internbee-backend-apis.onrender.com/api/adminmonthlypackage');
         const data = await response.json();
         setMonthlyPackage(data[0]); // Assuming the response is an array with a single object
       } catch (error) {
@@ -53,7 +53,7 @@ const MonthlyPackages = () => {
     className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
     title="This functionality is under development"
   >
-    Annually
+    Monthly
   </button>
 </Link>
             </div>

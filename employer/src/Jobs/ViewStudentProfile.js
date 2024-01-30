@@ -18,7 +18,7 @@ export default function ViewStudentProfile() {
     const fetchStudentData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/studentsdetails/userId/${id}`
+          `https://internbee-backend-apis.onrender.com/api/studentsdetails/userId/${id}`
         );
         const data = await response.json();
         setStudentData(data);

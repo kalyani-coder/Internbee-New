@@ -29,7 +29,7 @@ const Registration = () => {
     const { confirmPassword, ...postData } = data;
 
     try {
-      const response = await fetch("http://localhost:8000/api/auth/signup", {
+      const response = await fetch("https://internbee-backend-apis.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,10 +98,11 @@ const Registration = () => {
                     <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" >Internships</a>
                 </div>
 
-                <div className="flex items-center space-x-6 mr-10">
+                {/* <div className="flex items-center space-x-6 mr-10">
                     <a href="#" className="px-6 py-2  text-xl font-bold border rounded-md bg-yellow-300">Login</a>
                     <a href="#" className="px-6 py-2  text-xl font-bold border rounded-md bg-yellow-300">Signup</a>
-                </div>
+                </div> */}
+                
             </div>
 
             <div className="flex justify-center items-center mt-10">

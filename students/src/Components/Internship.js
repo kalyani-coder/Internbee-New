@@ -27,7 +27,7 @@ const Internship = () => {
 
   const fetchInternshipData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/postinternship/");
+      const response = await fetch("https://internbee-backend-apis.onrender.com/api/postinternship/");
       if (!response.ok) {
         throw new Error("Network response was not ok.");
       }

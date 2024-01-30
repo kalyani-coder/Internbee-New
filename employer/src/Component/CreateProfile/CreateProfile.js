@@ -28,7 +28,7 @@ const ProfilePage = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:8000/api/employers/userId/${userId}`
+        `https://internbee-backend-apis.onrender.com/api/employers/userId/${userId}`
       );
       if (response.ok) {
         const responseData = await response.json();

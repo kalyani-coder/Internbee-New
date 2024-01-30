@@ -16,7 +16,7 @@ const MonthlyPackages = () => {
     
         try {
             // Perform the patch request to update user's data
-            const response = await fetch(`http://localhost:8000/api/auth/${userId}`, {
+            const response = await fetch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

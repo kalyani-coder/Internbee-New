@@ -66,7 +66,7 @@ const GetPackage = () => {
 
     const searchesAsNumber = monthlyPackage.searches !== null ? parseInt(monthlyPackage.searches, 10) : null;
   
-    const apiUrl = `http://localhost:8000/api/employer/${emploerId}`;
+    const apiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${emploerId}`;
   
     const data = {
       empName,

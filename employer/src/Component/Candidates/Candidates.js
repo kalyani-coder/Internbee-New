@@ -11,7 +11,7 @@ const CandidatePage = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    fetch(`http://localhost:8000/api/postinternship/userId/${userId}`) // Replace with localStorage.getItem('userId')
+    fetch(`https://internbee-backend-apis.onrender.com/api/postinternship/userId/${userId}`) // Replace with localStorage.getItem('userId')
       .then((response) => response.json())
       .then((data) => setCandidates(data))
       .catch((error) =>

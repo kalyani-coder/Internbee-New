@@ -20,7 +20,7 @@ const MonthlyPackages = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/students/students-monthly-package');
+                const response = await fetch('https://internbee-backend-apis.onrender.com/api/students/students-monthly-package');
                 const data = await response.json();
                 setMonthlyPackage(data[0]); // Assuming the response is an array with a single object
             } catch (error) {

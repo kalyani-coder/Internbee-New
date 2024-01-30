@@ -25,7 +25,7 @@ const UploadImage = () => {
       if (selectedPDF) formData.append('pdf', selectedPDF);
       formData.append('serviceName', serviceName);
 
-      fetch('http://localhost:8000/api/imageupload', {
+      fetch('https://internbee-backend-apis.onrender.com/api/imageupload', {
         method: 'POST',
         body: formData,
       })
@@ -48,7 +48,7 @@ const UploadImage = () => {
   }, []);
 
   const fetchCandidates = () => {
-    fetch('http://localhost:8000/api/imageupload')
+    fetch('https://internbee-backend-apis.onrender.com/api/imageupload')
       .then((response) => response.json())
       .then((data) => setCandidates(data))
       .catch((error) => console.error('Error fetching candidates:', error));
