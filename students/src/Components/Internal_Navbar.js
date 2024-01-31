@@ -1,13 +1,15 @@
 // Internal_Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../Assets/Internsb.png";
+
 
 const Internal_Navbar = () => {
   return (
     <div className="bg-amber-300 Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border">
       {/* Logo and brand */}
       <div className="flex items-center space-x-2">
-        <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
+        <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
         <h1 className="text-4xl font-bold">
           Interns{" "}
           <span className="text-4xl font-bold text-amber-300">Bee</span>

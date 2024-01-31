@@ -57,14 +57,14 @@ const Footer = () => {
 
     const rolesContent = yourCardArray.map(card => card.role);
 
-    const locationContent = ['New York', 'San Francisco', 'London', 'Tokyo'];
+    const locationContent = ['Pune'];
     return (
         <>
             <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-center lg:items-start space-y-4">
                     <div className="flex items-center space-x-4">
                         {/* <img src="" alt="Footer Logo" className="w-12 h-12" /> */}
-                        <p className="text-xl font-bold">Interns Bee</p>
+                        <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p>
                     </div>
 
                     <div className="text-2xl flex items-center space-x-4">

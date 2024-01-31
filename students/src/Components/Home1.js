@@ -234,14 +234,14 @@ const Home1 = () => {
       <div className="mb-10 ">
         <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-amber-300 shadow-md p-4 flex items-center justify-between border">
           <div className="flex items-center space-x-2">
-            <img
+            {/* <img
               src="./logo.png"
               alt="Logo"
               className="w-14 h-14 rounded-full"
-            />
+            /> */}
             <h1 className="text-4xl font-bold">
               Interns{" "}
-              <span className="text-4xl font-bold text-amber-300">Bee</span>
+              <span className="text-4xl font-bold text-white">Bee</span>
             </h1>
           </div>
           <div className="flex items-center space-x-6">
@@ -320,22 +320,25 @@ const Home1 = () => {
           </div>
         </div>
 
-        <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
+        <div className="mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
           <h1>Search Your Dream Internship here</h1>
         </div>
 
-        <div className="relative flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Enter skills/designations/companies"
-            className="h-24 w-full mx-20 rounded-full border border-gray-800 border-radius-2 pl-8 pr-16"
-          />
-          <button className="absolute mr-32 right-0 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2">
-            Search
-          </button>
+        <div className="flex items-center justify-center my-10 mt-5">
+          <div className="relative flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Enter skills/designations/companies"
+              className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
+              style={{ width: "540px" }}
+            />
+            <button className="absolute right-0 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4  mr-3 py-2">
+              Search
+            </button>
+          </div>
         </div>
         <div ref={companiesRef}>
-          <div className="mt-40 mb-10 text-4xl font-bold flex flex-col items-center ">
+          <div className=" mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
           </div>
           <Slider {...settings}>
@@ -410,12 +413,12 @@ const Home1 = () => {
                 {/* Additional details here */}
                 <Link to='/internship'>
 
-                <button
-                  className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
+                  <button
+                    className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
                   // onClick={() => handleInternshipClick(internship._id)}
-                >
-                  View Internship
-                </button>
+                  >
+                    View Internship
+                  </button>
                 </Link>
               </div>
             </div>

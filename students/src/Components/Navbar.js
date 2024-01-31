@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-const logo = require("../Assets/Internsb.jpeg")
+import logo from '../Assets/Internsb.png';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -52,7 +51,7 @@ const Navbar = () => {
     };
 
     const navigateToStudentsregister = () => {
-        
+
         window.location.href = 'http://employer.internsbee.com';
     };
 
@@ -61,7 +60,10 @@ const Navbar = () => {
         <div className="mb-10">
             <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
                 <div className="flex items-center space-x-2">
-                    <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
+                    <div className='w-20 h-20'>
+
+                        <img src={logo} alt="Logo" className="rounded-full" />
+                    </div>
                     <h1 className="text-4xl font-bold ">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
                 </div>
                 {/* <div className="items-center space-x-6">
@@ -75,7 +77,7 @@ const Navbar = () => {
                     </div>
 
 
-                   
+
                     <div class="dropdown">
                         <button class="bg-yellow-300 text-black fw-bold px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Login
@@ -83,17 +85,17 @@ const Navbar = () => {
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <Link>
-                                    <a  onClick={navigateToStudents} class="dropdown-item" > Employers</a>
-                                    
+                                    <a onClick={navigateToStudents} class="dropdown-item" > Employers</a>
+
                                 </Link>
                             </li><hr />
                             <li>
-                                <Link  to={'/login'}>
+                                <Link to={'/login'}>
 
 
                                     <a
                                         className="dropdown-item"
-                                       
+
                                         style={{ cursor: 'pointer' }}
                                     >
                                         Students
@@ -120,13 +122,13 @@ const Navbar = () => {
                             <li>
                                 <Link to={'/register'}>
 
-                                <a
-                                    className="dropdown-item"
-                                    
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    Students
-                                </a>
+                                    <a
+                                        className="dropdown-item"
+
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Students
+                                    </a>
                                 </Link>
 
                             </li>
@@ -135,8 +137,8 @@ const Navbar = () => {
 
 
 
-                    
-                   
+
+
                 </div>
             </div>
         </div>

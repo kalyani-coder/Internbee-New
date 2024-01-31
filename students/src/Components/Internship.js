@@ -9,6 +9,7 @@ import {
   FaRegClock,
 } from "react-icons/fa";
 import Footer from "../Components/Footer";
+import logo from "../Assets/Internsb.png";
 
 // Define the Internship component
 const Internship = () => {
@@ -139,7 +140,7 @@ const Internship = () => {
       <div className="bg-amber-300 navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border">
         {/* Logo and brand */}
         <div className="flex items-center space-x-2">
-          <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
+          <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
           <h1 className="text-4xl font-bold">
             Interns{" "}
             <span className="text-4xl font-bold text-amber-300">Bee</span>
@@ -236,7 +237,7 @@ const Internship = () => {
             className="absolute right-0 mr-96 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2 mb-20"
             onClick={handleMainSearch}
           >
-            Main Search
+            Search
           </button>
         </div>
       </div>
