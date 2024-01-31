@@ -202,7 +202,7 @@ const Home1 = () => {
     },
     {
       icons: FaUsers,
-      role: "Human Resource Management",
+      role: "Human Resource ",
       jobs: 150,
     },
     {

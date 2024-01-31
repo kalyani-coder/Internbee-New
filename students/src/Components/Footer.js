@@ -3,7 +3,7 @@ import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
-import logo from '../Assets/Internsb.png';
+import logo from '../Assets/Interns_bee-removebg-preview.png'
 const Footer = () => {
     const yourCardArray = [
         {
@@ -62,8 +62,8 @@ const Footer = () => {
             <footer className="h-600 bg-amber-300 text-black p-6 flex justify-evenly items-center">
                 <div className="flex flex-col items-start space-y-4">
                     <div className="flex items-center">
-                        <img src={logo} alt="Footer Logo" className="w-12 h-12" />
-                        <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p>
+                        <img src={logo} alt="Footer Logo" className="" />
+                        {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
 
                     <div className="text-2xl flex items-center gap-4 justify-around">

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Alert from './Alert/Aleart';
 import { Link } from "react-router-dom";
-import logo from '../../src/Assets/Internsb.png'
+import logo from '../../src/Assets/Interns_bee_combination-removebg-preview.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -116,8 +116,8 @@ const Login = () => {
       <div className="">
         <div className="bg-slate-50 p-4 flex items-center justify-between border shadow-xl">
           <div className="flex items-center space-x-2">
-            <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
-            <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
+            <img src={logo} alt="Logo" className="w-11 rounded-full" />
+            {/* <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
           </div>
 
           <div className="items-center space-x-6">
