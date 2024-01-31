@@ -46,8 +46,8 @@ const ViewProfile = () => {
                                 <h2 className="text-2xl font-bold mb-2 text-gray-800">
                                     {userDetails && `${userDetails.firstName} ${userDetails.lastName}`}
                                 </h2>
-                                <p className="text-gray-600">{userDetails && userDetails.currentaddress}</p>
-                                <p className="text-gray-600">Contact: {userDetails && userDetails.contactNumber}</p>
+                                <p className="text-gray-600">Address : {userDetails && userDetails.currentaddress}</p>
+                                <p className="text-gray-600">Contact: {userDetails && userDetails.contact}</p>
                             </div>
                         </section>
                     </div>
@@ -73,10 +73,10 @@ const ViewProfile = () => {
                         </div>
                         {/* Add the file upload button here */}
 
-                        <div>
+                        {/* <div>
                             <p>Upload New Resume</p>
                             <input type="file" className="ml-4" />
-                        </div>
+                        </div> */}
                     </div>
                 </section>
 
@@ -110,11 +110,12 @@ const ViewProfile = () => {
                         )}
                     </div>
                 </section>
+
+
                 {/* Education Details Section */}
-                <section className="mb-8 bg-white shadow-lg p-6 rounded-lg">
+                {/* <section className="mb-8 bg-white shadow-lg p-6 rounded-lg">
                     <h2 className="text-2xl font-bold mb-4 text-left text-gray-800">Education Details</h2>
                     <div className="text-gray-700">
-                        {/* Display the education details */}
                         {userDetails && userDetails.education ? (
                             <>
                                 <p>Education Level: {userDetails.education}</p>
@@ -125,8 +126,67 @@ const ViewProfile = () => {
                         ) : (
                             <p>No education details available</p>
                         )}
+
+                        
+                    </div>
+                </section> */}
+
+
+                <section className="mb-8 bg-white shadow-lg p-6 rounded-lg">
+                    <h2 className="text-2xl font-bold mb-4 text-left text-gray-800">Education Details</h2>
+                    <div className="text-gray-700 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Graduation details */}
+                        <div>
+                            <h3 className="text-lg font-bold mb-2">Graduation Details</h3>
+                            {userDetails && userDetails.education ? (
+                                <>
+                                    <p>Education Level: {userDetails.education}</p>
+                                    <p>Institute Name: {userDetails.instituteName}</p>
+                                    <p>Stream: {userDetails.stream}</p>
+                                    <p>Pass Out Year: {userDetails.passOutYear}</p>
+                                    <p>Percentage/CGPA: {userDetails.percentage}</p>
+                                </>
+                            ) : (
+                                <p>No education details available</p>
+                            )}
+                        </div>
+
+                        {/* 12th details */}
+                        <div>
+                            <h3 className="text-lg font-bold mb-2">12th Details</h3>
+                            {userDetails && userDetails.education ? (
+                                <>
+                                    <p>Education Level: {userDetails.education_12}</p>
+                                    <p>Institute Name: {userDetails.instituteName_12}</p>
+                                    <p>Stream: {userDetails.stream_12}</p>
+                                    <p>Pass Out Year: {userDetails.passOutYear_12}</p>
+                                    <p>Percentage: {userDetails.percentage_12}</p>
+
+                                </>
+                            ) : (
+                                <p>No education details available</p>
+                            )}
+                        </div>
+
+                        {/* 10th details */}
+                        <div>
+                            <h3 className="text-lg font-bold mb-2">10th Details</h3>
+                            {userDetails && userDetails.education ? (
+                                <>
+                                    <p>Education Level: {userDetails.education_10}</p>
+                                    <p>Institute Name: {userDetails.instituteName_10}</p>
+                                    <p>Stream: {userDetails.stream_10}</p>
+                                    <p>Pass Out Year: {userDetails.passOutYear_10}</p>
+                                    <p>Percentage: {userDetails.percentage_10}</p>
+
+                                </>
+                            ) : (
+                                <p>No education details available</p>
+                            )}
+                        </div>
                     </div>
                 </section>
+
 
 
 

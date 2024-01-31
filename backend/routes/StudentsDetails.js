@@ -107,7 +107,7 @@ router.get("/userId/:id", async (req, res) => {
 
 
 // image upload route 
-router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 } ,{name : 'pdf2' , maxCount : 1}]), async (req, res) => {
+router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }, { name: 'pdf2', maxCount: 1 }]), async (req, res) => {
   try {
 
     const existingProfile = await StudentDetailsModel.findOne({ userId: req.body.userId });
@@ -131,30 +131,44 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
         certificatePath: req.files.pdf2[0].path,
         profile_pic: publicImageUrl,
         student_PDF: publicPdfUrl,
-        student_certificate : publicPdfUrl2,
-        firstName : req.body.firstName,
-        lastName : req.body.lastName,
-        email : req.body.email,
-        birthdate : req.body.birthdate,
-        permanentaddress : req.body.permanentaddress,
-        city : req.body.city, 
-        district : req.body.district,
-        country : req.body.country,
-        currentaddress : req.body.currentaddress,
-        currentcity : req.body.currentcity,
-        currentdistrict : req.body.currentdistrict,
-        currentcountry : req.body.currentcountry,
-        passOutYear : req.body.passOutYear,
+        student_certificate: publicPdfUrl2,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        birthdate: req.body.birthdate,
+        permanentaddress: req.body.permanentaddress,
+        city: req.body.city,
+        district: req.body.district,
+        country: req.body.country,
+        currentaddress: req.body.currentaddress,
+        currentcity: req.body.currentcity,
+        currentdistrict: req.body.currentdistrict,
+        currentcountry: req.body.currentcountry,
+        passOutYear: req.body.passOutYear,
+        percentage: req.body.percentage,
         stream: req.body.stream,
         instituteName: req.body.instituteName,
         education: req.body.education,
-        keySkills : req.body.keySkills,
-        languages : req.body.languages,
-        experience : req.body.experience,
-        salaryExpectations : req.body.salaryExpectations,
-        projectName : req.body.projectName,
+        keySkills: req.body.keySkills,
+        languages: req.body.languages,
+        experience: req.body.experience,
+        salaryExpectations: req.body.salaryExpectations,
+        projectName: req.body.projectName,
         projectSummary: req.body.projectSummary,
         userId: req.body.userId,
+        contact : req.body.contact,
+
+        education_12: req.body.education_12,
+        instituteName_12: req.body.instituteName_12,
+        stream_12: req.body.stream_12,
+        passOutYear_12: req.body.passOutYear_12,
+        percentage_12: req.body.percentage_12,
+
+        education_10: req.body.education_10,
+        instituteName_10: req.body.instituteName_10,
+        stream_10: req.body.stream_10,
+        passOutYear_10: req.body.passOutYear_10,
+        percentage_10: req.body.percentage_10,
 
 
       });
