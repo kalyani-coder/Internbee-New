@@ -9,7 +9,7 @@ import {
   FaRegClock,
 } from "react-icons/fa";
 import Footer from "../Components/Footer";
-import logo from "../Assets/Internsb.png";
+import logo from "../Assets/Interns_bee-removebg-preview.png"; 
 
 // Define the Internship component
 const Internship = () => {
@@ -68,11 +68,11 @@ const Internship = () => {
   };
 
   // Function to scroll to the companies section
-  const handleCompaniesClick = () => {
-    if (companiesRef.current) {
-      companiesRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleCompaniesClick = () => {
+  //   if (companiesRef.current) {
+  //     companiesRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   const filterByStipendRange = (minStipend, maxStipend) => {
     const filtered = allInternships.filter((internship) => {
@@ -137,15 +137,17 @@ const Internship = () => {
   return (
     <>
       {/* Navbar */}
-      <div className="bg-amber-300 navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border">
+      <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
         {/* Logo and brand */}
+        <Link to={'/home'}>
         <div className="flex items-center space-x-2">
           <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
-          <h1 className="text-4xl font-bold">
+          {/* <h1 className="text-4xl font-bold">
             Interns{" "}
             <span className="text-4xl font-bold text-amber-300">Bee</span>
-          </h1>
+          </h1> */}
         </div>
+        </Link>
 
         {/* Navigation links */}
         <div className="flex items-center space-x-6">
@@ -155,13 +157,13 @@ const Internship = () => {
           >
             Home
           </Link>
-          <Link
+          {/* <Link
             to="/companies"
             className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
             onClick={handleCompaniesClick}
           >
             Companies
-          </Link>
+          </Link> */}
           <Link
             to="/internship"
             className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
@@ -220,7 +222,7 @@ const Internship = () => {
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
-        <div className="ml-20 mb-10 text-2xl font-bold flex flex-col">
+        <div className="ml-20 mb-10 text-2xl font-bold flex flex-col" >
           <h1 className="mt-20">Search Your Dream Internship here</h1>
         </div>
         <div className="relative flex items-center gap-2 mb-20">
@@ -383,7 +385,7 @@ const Internship = () => {
 
                     <div>
                       <Link to={`/apply-internship/${internship._id}`}>
-                        <button className="bg-amber-300 text-black p-2 rounded-lg">
+                        <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
                           Apply
                         </button>
                       </Link>

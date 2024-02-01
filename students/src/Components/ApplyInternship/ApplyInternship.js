@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { FaRegClock, FaMoneyBill, FaMapMarkerAlt } from "react-icons/fa";
 import Navbar from "../Navbar";
 import axios from "axios";
+import Internal_Navbar from "../Internal_Navbar";
 
 const ApplyInternship = () => {
   const { internshipId } = useParams();
@@ -131,7 +132,7 @@ const ApplyInternship = () => {
   return (
     <>
       <div>
-        <Navbar />
+        <Internal_Navbar />
       </div>
       <div className="mx-auto max-w-2xl p-6">
         <div className="card w-full m-6 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden mt-10">

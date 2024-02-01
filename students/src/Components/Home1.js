@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Sidebar from "./Sidebar";
-
+import logo from "../Assets/Interns_bee-removebg-preview.png"
 import { IoNotificationsOutline } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -232,17 +232,13 @@ const Home1 = () => {
   return (
     <>
       <div className="mb-10 ">
-        <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-amber-300 shadow-md p-4 flex items-center justify-between border">
-          <div className="flex items-center space-x-2">
-            {/* <img
-              src="./logo.png"
-              alt="Logo"
-              className="w-14 h-14 rounded-full"
-            /> */}
-            <h1 className="text-4xl font-bold">
+        <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+          <div className="flex items-center space-x-2 ">
+             <img src={logo} alt="Logo"className=" h-14 max-w-15rem rounded-full" style={{width: '15rem'}} /> 
+            {/* <h1 className="text-4xl font-bold">
               Interns{" "}
               <span className="text-4xl font-bold text-white">Bee</span>
-            </h1>
+            </h1> */}
           </div>
           <div className="flex items-center space-x-6">
             <Link
@@ -251,13 +247,13 @@ const Home1 = () => {
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               to="/companies"
               className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
               onClick={handleCompaniesClick}
             >
               Companies
-            </Link>
+            </Link> */}
             <Link
               to="/internship"
               className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
@@ -321,7 +317,7 @@ const Home1 = () => {
         </div>
 
         <div className="mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
-          <h1>Search Your Dream Internship here</h1>
+          <h1>Search Your Dream Internship Here</h1>
         </div>
 
         <div className="flex items-center justify-center my-10 mt-5">
@@ -332,7 +328,7 @@ const Home1 = () => {
               className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
               style={{ width: "540px" }}
             />
-            <button className="absolute right-0 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4  mr-3 py-2">
+            <button className="absolute right-0 bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 mr-1 py-2" >
               Search
             </button>
           </div>
@@ -354,7 +350,7 @@ const Home1 = () => {
                 />
                 <h2 className="text-xl font-bold">{company.name}</h2>
                 <p className="text-gray-600">{company.description}</p>
-                <button className="mt-4 bg-amber-300 hover:bg-yellow-300 text-black rounded-md px-4 py-2">
+                <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
                   View Internship
                 </button>
               </div>
@@ -414,7 +410,7 @@ const Home1 = () => {
                 <Link to='/internship'>
 
                   <button
-                    className="mt-4 bg-blue-700 hover:bg-yellow-300 text-black rounded-md px-4 py-2"
+                    className="mt-4 hover:bg-yellow-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
                   // onClick={() => handleInternshipClick(internship._id)}
                   >
                     View Internship
@@ -427,7 +423,7 @@ const Home1 = () => {
 
         <div className="mt-10 flex justify-center">
           <button
-            className="bg-blue-500 w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3"
+            className=" w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
             onClick={Internshipp}
           >
             View All

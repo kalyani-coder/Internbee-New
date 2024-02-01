@@ -53,7 +53,7 @@ const ViewProfile = () => {
                     </div>
                     <div className='items-center flex'>
                         <Link to="/freeplan">
-                            <button className='border p-2  bg-amber-300 '>Get Package</button>
+                            <button className='border p-2'style={{ backgroundColor: '#FFBD59' }}>Get Package</button>
                         </Link>
                     </div>
                 </div>

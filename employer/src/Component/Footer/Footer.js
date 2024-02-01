@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from'../../Assets/Interns_bee-removebg-preview.png'
 import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
@@ -53,6 +54,7 @@ const Footer = () => {
         { label: 'Contact', link: '/aboutus' },
         { label: 'FAQ', link: '/faq' },
         { label: 'Privacy Policy', link: '/privacypolicy' },
+        { label: 'Blog', link: '/blogs' },
     ];
 
     const rolesContent = yourCardArray.map(card => card.role);
@@ -62,11 +64,12 @@ const Footer = () => {
         <>
             <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-center lg:items-start space-y-4">
+                
                     <div className="flex items-center space-x-4">
-                        {/* <img src="" alt="Footer Logo" className="w-12 h-12" /> */}
-                        <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p>
+                        <img src={logo} alt="Logo" className="" style={{width:'15rem'}}/>
+                        {/* <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p> */}
                     </div>
-
+        
                     <div className="text-2xl flex items-center space-x-4">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>

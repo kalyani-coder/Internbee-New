@@ -6,7 +6,7 @@ import { IoNotificationsOutline } from 'react-icons/io5';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import logo from'../Assets/Interns_bee-removebg-preview.png'
 
 
 const Profile = () => {
@@ -15,7 +15,7 @@ const Profile = () => {
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedPDF, setSelectedPDF] = useState(null);
-    const [selectedPDF2, setSelectedPDF2] = useState(null);
+    // const [selectedPDF2, setSelectedPDF2] = useState(null);
     const [firstName , setFirstName] = useState('')
     const [lastName , setLastName] = useState('')
     const [email , setEmail] = useState('')
@@ -100,9 +100,9 @@ const Profile = () => {
         setSelectedPDF(event.target.files[0]);
       };
 
-      const handlePDFChange2 = (event) => {
-        setSelectedPDF2(event.target.files[0]);
-      };
+    //   const handlePDFChange2 = (event) => {
+    //     setSelectedPDF2(event.target.files[0]);
+    //   };
 
       const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -166,7 +166,7 @@ const Profile = () => {
           const formData = new FormData();
           if (selectedImage) formData.append('image', selectedImage);
           if (selectedPDF) formData.append('pdf', selectedPDF);
-          if (selectedPDF) formData.append('pdf2', selectedPDF2);
+        //   if (selectedPDF) formData.append('pdf2', selectedPDF2);
             formData.append('firstName' , firstName)
             formData.append('lastName' , lastName)
             formData.append('email', email)
@@ -267,17 +267,17 @@ const Profile = () => {
          
             <div className="">
 
-                <div className="bg-amber-300 p-6 flex items-center justify-between border shadow-xl">
+                <div className="p-6 flex items-center justify-between border shadow-xl" style={{ backgroundColor: '#FFBD59' }}>
 
-                    <div className="flex items-center space-x-2">
-                        <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
-                        <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
-                    </div>
+                     <div className="flex items-center space-x-2"> 
+                         <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" style={{width:'15rem'}}/> 
+                        {/* <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
+                 </div> 
 
 
                     <div className="flex items-center space-x-6">
                         <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
-                        <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link>
+                        {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
                         <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</Link>
                     </div>
 
@@ -531,7 +531,7 @@ const Profile = () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                         <div className="form-group">
                             <label htmlFor="education" className="block text-large font-medium">
-                                Education
+                                Education Graduation
                             </label>
                            <input 
                                 type="text"
@@ -576,6 +576,22 @@ const Profile = () => {
                         </div>
 
                         <div className="form-group">
+                            <label htmlFor="stream" className="block text-large font-medium">
+                                Marks
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="stream"
+                                name="stream"
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
+                            />
+                        </div>
+
+                        <div className="form-group">
                             <label htmlFor="passoutyear" className="block text-large font-medium">
                                 Pass-out Year
                             </label>
@@ -590,6 +606,174 @@ const Profile = () => {
                             />
                         </div>
                     </div>
+
+                    <div className="mt-6 text-2xl font-bold">
+                        <h6>Educational Details</h6>
+                    </div>
+
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                        <div className="form-group">
+                            <label htmlFor="education" className="block text-large font-medium">
+                                Education 12th or Diploma
+                            </label>
+                           <input 
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="education"
+                                name="education"
+                                value={education}
+                                onChange={handleEducationChange}
+                           />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="institutename" className="block text-large font-medium">
+                                School/Institute Name
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="instituteName"
+                                name="instituteName"
+                                value={instituteName}
+                                onChange={handleInstituteNameChange}
+
+                              
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="stream" className="block text-large font-medium">
+                                Stream
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="stream"
+                                name="stream"
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="stream" className="block text-large font-medium">
+                                Marks
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="stream"
+                                name="stream"
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="passoutyear" className="block text-large font-medium">
+                                Pass-out Year
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="passOutYear"
+                                name="passOutYear"
+                                value={passOutYear}
+                                onChange={handlePassOutYearChange}
+                              
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-6 text-2xl font-bold">
+                        <h6> Educational Details</h6>
+                    </div>
+
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                        <div className="form-group">
+                            <label htmlFor="education" className="block text-large font-medium">
+                                Education 10th
+                            </label>
+                           <input 
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="education"
+                                name="education"
+                                value={education}
+                                onChange={handleEducationChange}
+                           />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="institutename" className="block text-large font-medium">
+                                School/Institute Name
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="instituteName"
+                                name="instituteName"
+                                value={instituteName}
+                                onChange={handleInstituteNameChange}
+
+                              
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="stream" className="block text-large font-medium">
+                                Stream
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="stream"
+                                name="stream"
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="stream" className="block text-large font-medium">
+                                Marks
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="stream"
+                                name="stream"
+                                value={stream}
+                                onChange={handleStreamChange}
+
+                            
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="passoutyear" className="block text-large font-medium">
+                                Pass-out Year
+                            </label>
+                            <input
+                                type="text"
+                                className="mt-1 p-2 w-full border rounded-md text-large"
+                                id="passOutYear"
+                                name="passOutYear"
+                                value={passOutYear}
+                                onChange={handlePassOutYearChange}
+                              
+                            />
+                        </div>
+                    </div>
+
 
 
 
@@ -644,7 +828,7 @@ const Profile = () => {
                                 name="experience"
                                 value={experience}
                                 onChange={handleExperience}
-                              
+                                placeholder='Freshers to 1 year'
                             />
                         </div>
 
@@ -725,7 +909,7 @@ const Profile = () => {
                             <span className="block text-xl font-large">OR</span>
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="certification" className="block text-xl font-medium mt-10">
                                 Certification
                             </label>
@@ -736,7 +920,7 @@ const Profile = () => {
                                 className="mt-1 p-2 w-full border rounded-md text-xl"
 
                             />
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <label htmlFor="profilePicture" className="block text-xl font-medium mt-10">
@@ -768,7 +952,7 @@ const Profile = () => {
                     <div>
                         <button  onClick={handleUpload}
                             style={{ marginLeft: "1300px", marginTop: "-100px" }}
-                            className=' p-2 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application'
+                            className=' p-2 text-xl text-dark border rounded-md submit-your-application'
                         >   Save Details
 
                         </button>

@@ -52,6 +52,8 @@ const Footer = () => {
         { label: 'About Us', link: '/about-us' },
         { label: 'Contact', link: '/contact' },
         { label: 'FAQ', link: '/faq' },
+        { label: 'Blog', link: '/blogs' },
+        { label: 'Privacy Policy', link: '/policytermscondition' },
     ];
 
     const rolesContent = yourCardArray.map(card => card.role);
@@ -59,10 +61,10 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="h-600 bg-amber-300 text-black p-6 flex justify-evenly items-center">
+            <footer className="h-600 text-black p-6 flex justify-evenly items-center"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-start space-y-4">
                     <div className="flex items-center">
-                        <img src={logo} alt="Footer Logo" className="" />
+                        <img src={logo} alt="Footer Logo" className="" style={{width: '15rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
 

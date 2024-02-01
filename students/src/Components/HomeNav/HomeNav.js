@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./HomeNav"
+import logo from '../../Assets/Interns_bee_combination-removebg-preview.png'
 
 const HomeNav = () => {
     const navigate = useNavigate();
@@ -97,10 +98,12 @@ const HomeNav = () => {
     return (
         <div className="mb-10">
             <div className="HomeNav-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
+               <Link to={'/home'}>
                 <div className="flex items-center space-x-2">
-                    <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
-                    <h1 className="text-4xl font-bold homenav-responsive">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
+                    <img src={logo} alt="Logo" className="h-14 rounded-full" style={{width:'15rem'}}/>
+                    {/* <h1 className="text-4xl font-bold homenav-responsive">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
                 </div>
+                </Link>
                 {/* <div className="items-center space-x-6">
                     <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
                    
@@ -108,7 +111,7 @@ const HomeNav = () => {
                 <div className="flex items-center space-x-6 mr-10">
                     <div className="flex items-center space-x-6">
                         <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
-                        <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link>
+                        {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
                         <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</Link>
                         <Link to="/blogs" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
                     </div>
@@ -122,7 +125,7 @@ const HomeNav = () => {
                         Login
                     </button>
                     <button
-                        className="px-6 py-2 text-xl font-bold border rounded-md bg-yellow-300 focus:outline-none"
+                        className="px-6 py-2 text-xl font-bold border rounded-md focus:outline-none"
                         onClick={handleRegisterClick}
                     >
                         Register
