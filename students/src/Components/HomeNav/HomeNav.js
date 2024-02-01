@@ -110,10 +110,10 @@ const HomeNav = () => {
                 </div> */}
                 <div className="flex items-center space-x-6 mr-10">
                     <div className="flex items-center space-x-6">
-                        <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
+                        <Link to="/home" className="text-2xl font-bold focus:text-amber-300 focus:border-amber-300 focus:border-b-4 hover:text-amber-300">Home</Link>
                         {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
-                        <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</Link>
-                        <Link to="/blogs" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
+                        <Link to="/internship" className="text-2xl font-bold focus:text-amber-300 focus:border-yellow-300 focus:border-b-4 hover:text-amber-300">Internships</Link>
+                        <Link to="/blogs" className="text-2xl font-bold focus:text-amber-300 focus:border-amber-300 focus:border-b-4 hover:text-amber-300">Blogs</Link>
                     </div>
 
 

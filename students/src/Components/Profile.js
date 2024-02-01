@@ -358,9 +358,9 @@ const Profile = () => {
 
 
                     <div className="flex items-center space-x-6">
-                        <Link to="/home" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</Link>
+                        <Link to="/home" className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white">Home</Link>
                         {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
-                        <Link to="/internship" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Internships</Link>
+                        <Link to="/internship" className="text-2xl font-bold focus:texwhite focus:border-white focus:border-b-4 hover:text-white">Internships</Link>
                     </div>
 
                     {/* Search Bar */}

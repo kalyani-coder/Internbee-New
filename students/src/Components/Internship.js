@@ -153,7 +153,7 @@ const Internship = () => {
         <div className="flex items-center space-x-6">
           <Link
             to="/home"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
           >
             Home
           </Link>
@@ -166,7 +166,7 @@ const Internship = () => {
           </Link> */}
           <Link
             to="/internship"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
             onClick={Internship}
           >
             Internships
@@ -174,7 +174,7 @@ const Internship = () => {
 
           <Link
             to="/applied-internship"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
           >
             Applied Internship
           </Link>

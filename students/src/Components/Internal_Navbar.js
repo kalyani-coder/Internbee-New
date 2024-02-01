@@ -22,7 +22,7 @@ const Internal_Navbar = () => {
       <div className="flex items-center space-x-6">
         <Link
           to="/home"
-          className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+          className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
         >
           Home
         </Link>
@@ -34,13 +34,13 @@ const Internal_Navbar = () => {
         </Link> */}
         <Link
           to="/internship"
-          className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+          className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
         >
           Internships
         </Link>
         <Link
           to="/applied-internship"
-          className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
+          className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
         >
           Applied Internship
         </Link>
