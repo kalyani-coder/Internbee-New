@@ -109,7 +109,7 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 3 months</p>
                                         </div>
 
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                        <button className="  text-black px-4 py-2 rounded-md focus:outline-none" style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 4 months</p>
                                         </div>
 
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@ const LandingPage = () => {
                                                 <p className="text-gray-600">Duration: 5 months</p>
                                             </div>
 
-                                            <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                            <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 3 months</p>
                                         </div>
 
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                        <button className= "text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +219,7 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 4 months</p>
                                         </div>
 
-                                        <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@ const LandingPage = () => {
                                                 <p className="text-gray-600">Duration: 5 months</p>
                                             </div>
 
-                                            <button className=" bg-yellow-300 text-black px-4 py-2 rounded-md focus:outline-none">Apply Now</button>
+                                            <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
                                         </div>
                                     </div>
                                 </div>
