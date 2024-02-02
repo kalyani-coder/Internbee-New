@@ -279,7 +279,7 @@ const Profile = () => {
             formData.append('userId', storedUserId);
             console.log(storedUserId);
 
-            //   https://internbee-backend-apis.onrender.com/api/studentsdetails
+            //  https://internbee-backend-apis.onrender.com/api/studentsdetails
 
 
             fetch('https://internbee-backend-apis.onrender.com/api/studentsdetails', {
