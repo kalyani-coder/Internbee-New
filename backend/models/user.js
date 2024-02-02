@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
 
   },
  
+ freePackage : {
+  package_type: {
+    type: String,
+    default: "free",
+  },
   freePackagePrice: {
     type: String,
     default: "", 
@@ -46,6 +51,7 @@ const userSchema = new mongoose.Schema({
   opportunities_Counter : {
     type: Number,
   },
+ },
 
 
 

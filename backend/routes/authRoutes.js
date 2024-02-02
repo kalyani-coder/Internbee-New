@@ -38,12 +38,17 @@ router.post("/signup", async (req, res) => {
       email: email,
       number: number,
       password: hashedPassword,
-      freePackagePrice: freePackagePrice,
-      searches: searches,
-      verified_application: verified_application,
-      dedicated_crm: dedicated_crm,
-      opportunities: opportunities,
-      opportunities_Counter : opportunities_Counter,
+
+
+      freePackage: {
+        package_type: 'free',
+        freePackagePrice: freePackagePrice,
+        searches: searches,
+        verified_application: verified_application,
+        dedicated_crm: dedicated_crm,
+        opportunities: opportunities,
+        opportunities_Counter: opportunities_Counter,
+      },
 
       monthlyPackage: {
         package_type: 'monthly',
@@ -52,7 +57,7 @@ router.post("/signup", async (req, res) => {
         verified_application: monthlyVerifiedApplication,
         dedicated_crm: monthlyDedicatedCRM,
         monthlyOpportunities: monthlyOpportunities,
-        accountHolderName : accountHolderName
+        accountHolderName: accountHolderName
       },
 
     });
@@ -84,10 +89,40 @@ router.post("/signup", async (req, res) => {
 // });
 
 
+// router.patch("/:id", async (req, res) => {
+//   try {
+//     // Step 1: Validate and sanitize input
+//     const allowedFields = ["monthlyPackage"];
+//     const updates = Object.keys(req.body).filter((field) =>
+//       allowedFields.includes(field)
+//     );
+
+//     // Step 2: Check if the document with the provided ID exists
+//     const existingUser = await User.findById(req.params.id);
+//     if (!existingUser) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     // Step 3: Perform the update
+//     const updatedUser = await User.findByIdAndUpdate(
+//       req.params.id,
+//       { $set: _.pick(req.body, updates) },
+//       { new: true }
+//     );
+
+//     // Step 4: Respond with the updated user
+//     res.status(200).json(updatedUser);
+//   } catch (error) {
+//     // Step 5: Handle errors
+//     console.error("Error during user update:", error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
 router.patch("/:id", async (req, res) => {
   try {
     // Step 1: Validate and sanitize input
-    const allowedFields = ["monthlyPackage"];
+    const allowedFields = ["monthlyPackage", "freePackage"];
     const updates = Object.keys(req.body).filter((field) =>
       allowedFields.includes(field)
     );
@@ -113,6 +148,7 @@ router.patch("/:id", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
 
 
 router.post("/signin", async (req, res) => {

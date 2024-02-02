@@ -8,40 +8,54 @@ const MonthlyPackages = () => {
     const navigate = useNavigate();
     const [monthlyPackage, setMonthlyPackage] = useState(null);
     console.log(monthlyPackage);
-    const handleSubscribe = async () => {
-        const userId = localStorage.getItem('userId');
-    
-        if (!window.confirm('Are you sure you want to subscribe?')) {
-            return;
+
+
+   const handleSubscribe = async () => {
+    const userId = localStorage.getItem('userId');
+
+    if (!window.confirm('Are you sure you want to subscribe?')) {
+        return;
+    }
+
+    try {
+        // Fetch the user data first
+        const userResponse = await fetch(`http://localhost:8000/api/auth/${userId}`);
+        const userData = await userResponse.json();
+
+        // Update the freePackage object
+        const updatedUserData = {
+            ...userData,
+            freePackage: {
+                package_type: 'free',
+                freePackagePrice: monthlyPackage.freePackagePrice,
+                searches: monthlyPackage.searches,
+                verified_application: monthlyPackage.verified_application,
+                dedicated_crm: monthlyPackage.dedicated_crm,
+                opportunities: monthlyPackage.opportunities,
+            },
+        };
+
+        // Perform the patch request to update user's data
+        const response = await fetch(`http://localhost:8000/api/auth/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedUserData),
+        });
+
+        if (response.ok) {
+            alert('Subscription successful!');
+            // You may want to fetch and update the user data again after the subscription
+            // For example: fetchData();
+        } else {
+            console.error('Failed to subscribe:', response.statusText);
         }
-    
-        try {
-            // Perform the patch request to update user's data
-            const response = await fetch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    freePackagePrice: monthlyPackage.freePackagePrice || '',
-                    searches: monthlyPackage.searches || '',
-                    verified_application: monthlyPackage.verified_application || '',
-                    dedicated_crm: monthlyPackage.dedicated_crm || '',
-                    opportunities: monthlyPackage.opportunities || '',
-                }),
-            });
-    
-            if (response.ok) {
-                alert('Subscription successful!');
-                // You may want to fetch and update the user data again after the subscription
-                // For example: fetchData();
-            } else {
-                console.error('Failed to subscribe:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error during subscription:', error);
-        }
-    };
+    } catch (error) {
+        console.error('Error during subscription:', error);
+    }
+};
+
     
 
     useEffect(() => {

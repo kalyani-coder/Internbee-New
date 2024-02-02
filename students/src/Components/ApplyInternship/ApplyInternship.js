@@ -37,77 +37,77 @@ const ApplyInternship = () => {
     return <p>Loading...</p>;
   }
 
-
-
   const handleConfirmation = async () => {
     setIsSubmitting(true);
-
+  
     try {
       const userId = localStorage.getItem("userId");
-
+  
       // Fetch user data from the API
       const userResponse = await axios.get(`http://localhost:8000/api/auth/${userId}`);
       const userData = userResponse.data;
-
+  
       console.log("User Data:", userData); // Log user data
-
+  
+      // Determine the type of package (free or monthly)
+      const packageType = userData.freePackage ? "freePackage" : "monthlyPackage";
+  
       const opportunities_Counter = userData.opportunities_Counter || 0;
-      const opportunities = userData.opportunities || 0;
-
+      const opportunities = userData[packageType].opportunities || 0;
+  
       console.log("Opportunities_Counter:", opportunities_Counter);
       console.log("Opportunities:", opportunities);
-
-      // ... rest of your code
+  
       // Check if any of the required fields is empty or null
       if (
-        userData.freePackagePrice === "" ||
-        userData.searches === null ||
-        userData.verified_application === "" ||
-        userData.dedicated_crm === "" ||
-        userData.opportunities === null
+        userData[packageType].freePackagePrice === "" ||
+        userData[packageType].searches === null ||
+        userData[packageType].verified_application === "" ||
+        userData[packageType].dedicated_crm === "" ||
+        userData[packageType].opportunities === null
       ) {
         console.log("Empty or null field detected:", userData);
         alert("You need to subscribe first. Please update your subscription.");
         return;
       }
-
+  
       console.log("Before opportunities check:", opportunities_Counter, opportunities);
-
+  
       console.log("User Data:", userData);
       console.log("Opportunities_Counter:", opportunities_Counter);
       console.log("Opportunities:", opportunities);
-
+  
       if (opportunities_Counter >= opportunities) {
-        alert("Apply limit reached. You can't apply more jobs.");
+        alert("Apply limit reached. You can't apply for more jobs.");
         return;
       }
-
+  
       console.log("After opportunities check. Proceeding with the application.");
-
-
-
-
+  
       const formData = {
         postId: internshipId,
         InternId: userId,
       };
-
+  
       const response = await axios.post(
-        "https://internbee-backend-apis.onrender.com/api/applyinternship/",
+        "http://localhost:8000/api/applyinternship/",
         formData
       );
-
+  
       if (response.data) {
-        // Increment the opportunities_Counter and decrease available slots
+        // Increment the internship_counter
         const updatedUserData = {
           ...userData,
-          opportunities_Counter: (userData.opportunities_Counter || 0) + 1,
-          opportunities: userData.opportunities - 1,
+          freePackage: {
+            ...userData.freePackage,
+            opportunities_Counter: (userData.freePackage.opportunities_Counter || 0) + 1,
+            opportunities: userData[packageType].opportunities - 1,
+          },
         };
-
+  
         // Update user details with the incremented opportunities_Counter
-        await axios.patch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, updatedUserData);
-
+        await axios.patch(`http://localhost:8000/api/auth/${userId}`, updatedUserData);
+  
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission
       } else {
@@ -117,11 +117,13 @@ const ApplyInternship = () => {
     } catch (error) {
       // Handle errors from the API
       console.error("Error:", error.message);
+      console.log("Error details:", error.response.data); // Log the response details
       alert("An error occurred");
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
 
 
