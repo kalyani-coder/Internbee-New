@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
+import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
 import {
   FaUser,
   FaMoneyBill,
@@ -9,7 +10,6 @@ import {
   FaRegClock,
 } from "react-icons/fa";
 import Footer from "../Components/Footer";
-import logo from "../Assets/Interns_bee-removebg-preview.png"; 
 
 // Define the Internship component
 const Internship = () => {
@@ -139,9 +139,9 @@ const Internship = () => {
       {/* Navbar */}
       <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
         {/* Logo and brand */}
-        <Link to={'/home'}>
+        <Link to={'/'}>
         <div className="flex items-center space-x-2">
-          <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
+          <img src={logo} alt="Logo" className="home1-logo h-14 max-w-15rem rounded-full" />
           {/* <h1 className="text-4xl font-bold">
             Interns{" "}
             <span className="text-4xl font-bold text-amber-300">Bee</span>
@@ -236,7 +236,7 @@ const Internship = () => {
           />
           {/* Main Search button */}
           <button
-            className="absolute right-0 mr-96 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2 mb-20"
+            className=" mr-96 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2 mb-20"
             onClick={handleMainSearch}
           >
             Search

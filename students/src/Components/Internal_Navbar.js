@@ -8,9 +8,9 @@ const Internal_Navbar = () => {
   return (
     <div className=" Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
       {/* Logo and brand */}
-      <Link to={'/home'}>
+      <Link to={'/'}>
       <div className="flex items-center space-x-2">
-        <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" />
+        <img src={logo} alt="Logo" className="w-48 h-14 rounded-full" />
         {/* <h1 className="text-4xl font-bold">
           Interns{" "}
           <span className="text-4xl font-bold text-amber-300">Bee</span>

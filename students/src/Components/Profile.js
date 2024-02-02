@@ -350,12 +350,12 @@ const Profile = () => {
             <div className="">
 
                 <div className="p-6 flex items-center justify-between border shadow-xl" style={{ backgroundColor: '#FFBD59' }}>
-
+                      <Link to={'/'}>
                      <div className="flex items-center space-x-2"> 
                          <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" style={{width:'15rem'}}/> 
                         {/* <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
                  </div> 
-
+                 </Link>
 
                     <div className="flex items-center space-x-6">
                         <Link to="/home" className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white">Home</Link>
@@ -925,7 +925,7 @@ const Profile = () => {
                             name="experience"
                             value={experience}
                             onChange={handleExperience}
-
+                            placeholder='fresher or 1 year'
                         />
                     </div>
 

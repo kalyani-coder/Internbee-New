@@ -55,7 +55,7 @@ const EmployerSection = () => {
                 <div>
                   {jobs.map((job) => (
                     <div key={job._id} className="mb-8 card w-50 card-component-posted-internship">
-                      <div className="card-body p-4 rounded-md bg-amber-200">
+                      <div className="card-body p-4 rounded-md " style={{ backgroundColor: '#FFBD59' }}>
                         <h3 className="text-xl font-semibold mb-2">{job.job_Title}</h3>
                         <p>Location: {job.location}</p>
                         <p>Company Name: {job.company_Name}</p>

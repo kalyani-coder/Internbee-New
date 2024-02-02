@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Sidebar from "./Sidebar";
-import logo from "../Assets/Interns_bee-removebg-preview.png"
+import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
 import { IoNotificationsOutline } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -233,13 +233,17 @@ const Home1 = () => {
     <>
       <div className="mb-10 ">
         <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+
+             <Link to={'/'}>
           <div className="flex items-center space-x-2 ">
-             <img src={logo} alt="Logo"className=" h-14 max-w-15rem rounded-full" style={{width: '15rem'}} /> 
+             <img src={logo} alt="Logo"className="home1-logo h-14 max-w-15rem rounded-full" /> 
             {/* <h1 className="text-4xl font-bold">
               Interns{" "}
               <span className="text-4xl font-bold text-white">Bee</span>
             </h1> */}
           </div>
+          </Link>
+
           <div className="flex items-center space-x-6">
             <Link
               to="/home"
@@ -321,14 +325,14 @@ const Home1 = () => {
         </div>
 
         <div className="flex items-center justify-center my-10 mt-5">
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex items-center gap-8">
             <input
               type="text"
               placeholder="Enter skills/designations/companies"
               className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
               style={{ width: "540px" }}
             />
-            <button className="absolute right-0 bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 mr-1 py-2" >
+            <button className=" bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 mr-1 py-2" >
               Search
             </button>
           </div>

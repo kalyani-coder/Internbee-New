@@ -4,6 +4,7 @@ import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const Footer = () => {
     const yourCardArray = [
         {
@@ -64,12 +65,13 @@ const Footer = () => {
         <>
             <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-center lg:items-start space-y-4">
-                
                     <div className="flex items-center space-x-4">
+                    <Link to={'/'}>
                         <img src={logo} alt="Logo" className="" style={{width:'15rem'}}/>
+                    </Link>
                         {/* <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p> */}
                     </div>
-        
+                    
                     <div className="text-2xl flex items-center space-x-4">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
@@ -83,7 +85,7 @@ const Footer = () => {
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
                                 <li key={index}>
-                                    <a href={item.link}>{item.label}</a>
+                                    <a className='hover:text-white' href={item.link}>{item.label}</a>
                                 </li>
                             ))}
                         </ul>

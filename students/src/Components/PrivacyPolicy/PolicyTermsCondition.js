@@ -185,7 +185,7 @@ const PolicyTermsCondition = () => {
 
                 {/* all contente here  */}
                 <div className="button-container">
-                  <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore}>
+                  <button className="view-less-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }}  onClick={toggleShowMore}>
                     View Less
                   </button>
 
@@ -214,7 +214,7 @@ const PolicyTermsCondition = () => {
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
                 {/* show first two paragraphs */}
-                <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
+                <button className="view-more-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore}>
                   View More
                 </button>
               </>
@@ -294,7 +294,7 @@ const PolicyTermsCondition = () => {
                   Privacy Policy
                   {/* ... */}
                   <div className="button-container">
-                    <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
+                    <button className="view-less-button fw-bold text-white px-4 py-2 rounded" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                       View Less
                     </button>
 
@@ -328,7 +328,7 @@ const PolicyTermsCondition = () => {
                   like Google+ share or SMS share, we may collect and process information about the
                   contacts associated with your Google account.
                   {/* ... */}
-                  <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
+                  <button className="view-more-button fw-bold text-white px-4 py-2 rounded " style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                     View More
                   </button>
                 </>

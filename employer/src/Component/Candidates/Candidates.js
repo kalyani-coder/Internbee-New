@@ -69,7 +69,8 @@ const CandidatePage = () => {
                 {filteredCandidates.map((candidate) => (
                   <div
                     key={candidate._id}
-                    className="mb-8 p-4 rounded-md bg-amber-200"
+                    className="mb-8 p-4 rounded-md"
+                    style={{ backgroundColor: '#FFBD59' }}
                   >
                     <h3 className="text-xl font-semibold mb-2">
                       Job Title : {candidate.job_Title}

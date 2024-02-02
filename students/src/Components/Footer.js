@@ -3,7 +3,8 @@ import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
-import logo from '../Assets/Interns_bee-removebg-preview.png'
+import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
+import { Link } from 'react-router-dom';
 const Footer = () => {
     const yourCardArray = [
         {
@@ -53,7 +54,7 @@ const Footer = () => {
         { label: 'Contact', link: '/contact' },
         { label: 'FAQ', link: '/faq' },
         { label: 'Blog', link: '/blogs' },
-        { label: 'Privacy Policy', link: '/policytermscondition' },
+        { label: 'Privacy Policy', link: '/privacypolicy' },
     ];
 
     const rolesContent = yourCardArray.map(card => card.role);
@@ -62,13 +63,14 @@ const Footer = () => {
     return (
         <>
             <footer className="h-600 text-black p-6 flex justify-evenly items-center"style={{ backgroundColor: '#FFBD59' }}>
-                <div className="flex flex-col items-start space-y-4">
-                    <div className="flex items-center">
+                <div className="grid gap-4 items-start space-y-4">
+                    <Link to={'/'}>
+                    <div className="items-center">
                         <img src={logo} alt="Footer Logo" className="" style={{width: '15rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
-
-                    <div className="text-2xl flex items-center gap-4 justify-around">
+                    </Link>
+                    <div className="text-2xl flex items-center gap-4 justify-center">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
                         ))}
@@ -82,11 +84,10 @@ const Footer = () => {
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
                                 <li key={index}>
-                                    <a href={item.link}>{item.label}</a>
+                                    <a className='hover:text-white' href={item.link}>{item.label}</a>
                                 </li>
                             ))}
                         </ul>
-
                     </div>
 
                     <div className="flex flex-col items-start space-y-7">

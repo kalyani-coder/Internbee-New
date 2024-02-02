@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from'../../Assets/Interns_bee-removebg-preview.png'
+// import logo from'../../Assets/Interns_bee-removebg-preview.png'
+import logo from "../../Assets/Interns_beeeeeeeee-log.png"
+
 const Navbar = () => {
   const navigate =  useNavigate()
   
@@ -10,7 +12,7 @@ const Navbar = () => {
   };
   return (
     <nav className="flex items-center justify-between p-4" style={{ backgroundColor: '#FFBD59' }}>
-     <Link to={'/home'}>
+     <Link to={'/'}>
       <div className="flex items-center">
         <img
           src={logo} alt="Logo"className="h-14" style={{width:'15rem'}}/>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HomeNav from '../HomeNav/HomeNav';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Internal_Navbar from '../Internal_Navbar';
 
 const ViewProfile = () => {
 
@@ -27,7 +28,8 @@ const ViewProfile = () => {
     return (
         <>
             <div>
-                <HomeNav />
+                {/* <HomeNav /> */}
+                <Internal_Navbar/>
             </div>
 
             <div className="container mx-auto p-4 bg-gray-100 mt-24">

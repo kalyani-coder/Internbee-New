@@ -62,10 +62,9 @@ const Navbar = () => {
         <div className="mb-10">
             <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
                 <div className="flex items-center space-x-2">
-                    <Link to={'/home'}>
-                    <div className='w-20 h-20'>
-
-                        <img src={logo} alt="Logo" className="rounded-full" />
+                    <Link to={'/'}>
+                    <div className='w-15 h-14'>
+                        <img src={logo} alt="Logo" className="h-14 w-15 rounded-full"/>
                     </div>
                     </Link>
                     {/* <h1 className="text-4xl font-bold ">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
@@ -77,7 +76,7 @@ const Navbar = () => {
                 <div className="flex items-center space-x-6 mr-10">
                     <div className="flex items-center space-x-6">
 
-                        <Link to="/blogs" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
+                        <Link to="/blogs" className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-amber-300">Blogs</Link>
                     </div>
 
 
