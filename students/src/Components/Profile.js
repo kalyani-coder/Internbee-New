@@ -794,8 +794,6 @@ const Profile = () => {
                 <div className="mt-6 text-2xl font-bold">
                     <h6> Educational Details 10th</h6>
                 </div>
-
-
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                     <div className="form-group">
                         <label htmlFor="education_10" className="block text-large font-medium">

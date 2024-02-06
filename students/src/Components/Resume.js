@@ -317,7 +317,7 @@ const Resume = () => {
               </div>
             )}
           </div>
-
+          <div>
           <h1 className="text-2xl font-bold m-4 ">Education</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-4">
             <div className="form-group">
@@ -358,6 +358,20 @@ const Resume = () => {
               />
             </div>
             <div className="form-group">
+                        <label htmlFor="percentage" className="block text-large font-medium">
+                            Percentage / CGPA
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="percentage"
+                            name="percentage"
+                            // value={percentage}
+                            // onChange={handlePercentageChange}
+
+                        />
+                    </div>
+            <div className="form-group">
               <label
                 htmlFor="passoutyear"
                 className="block text-xl font-medium"
@@ -371,6 +385,240 @@ const Resume = () => {
                 className="mt-1 p-2 w-full border rounded-md text-xl"
               />
             </div>
+            </div>
+
+            <h1 className="text-2xl font-bold m-4 ">Education</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-4">
+            <div className="form-group">
+              <label htmlFor="Name" className="block text-xl font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md text-xl"
+                id="Name"
+                {...register("Name", { required: "This field is required" })}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="Degree" className="block text-xl font-medium">
+                Degree
+              </label>
+              <input
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md text-xl"
+                id="Degree"
+                {...register("Degree", { required: "This field is required" })}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="Institute" className="block text-xl font-medium">
+                Institute
+              </label>
+              <input
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md text-xl"
+                id="Institute"
+                {...register("Institute", {
+                  required: "This field is required",
+                })}
+              />
+            </div>
+            <div className="form-group">
+                        <label htmlFor="percentage" className="block text-large font-medium">
+                            Percentage / CGPA
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="percentage"
+                            name="percentage"
+                            // value={percentage}
+                            // onChange={handlePercentageChange}
+
+                        />
+                    </div>
+            <div className="form-group">
+              <label
+                htmlFor="passoutyear"
+                className="block text-xl font-medium"
+              >
+                Pass-out Year
+              </label>
+              <DatePicker
+                selected={birthdate}
+                onChange={handleBirthdateChange}
+                dateFormat="MM/dd/yyyy"
+                className="mt-1 p-2 w-full border rounded-md text-xl"
+              />
+            </div>
+            </div>
+            <div className="mt-6 text-2xl font-bold">
+                    <h6> Educational Details 12th</h6>
+                </div>
+
+
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                    <div className="form-group">
+                        <label htmlFor="education_12" className="block text-large font-medium">
+                            Education 12th
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="education_12"
+                            name="education_12"
+                            // value={education_12}
+                            // onChange={handleEducation_12Change}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="instituteName_12" className="block text-large font-medium">
+                            School/Institute Name
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="instituteName_12"
+                            name="instituteName_12"
+                            // value={instituteName_12}
+                            // onChange={handleInstitute_12Change}
+
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="stream_12" className="block text-large font-medium">
+                            Stream
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="stream_12"
+                            name="stream_12"
+                            // value={stream_12}
+                            // onChange={handleStream_12Change}
+
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="passOutYear_12" className="block text-large font-medium">
+                            Pass-out Year
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="passOutYear_12"
+                            name="passOutYear_12"
+                            // value={passOutYear_12}
+                            // onChange={handlePassOutYear_12Change}
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="percentage_12" className="block text-large font-medium">
+                            Percentage
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="percentage_12"
+                            name="percentage_12"
+                            // value={percentage_12}
+                            // onChange={handlePercentage_12Change}
+
+                        />
+                    </div>
+                </div>
+                
+                <div className="mt-6 text-2xl font-bold">
+                    <h6> Educational Details 10th</h6>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                    <div className="form-group">
+                        <label htmlFor="education_10" className="block text-large font-medium">
+                            Education 10th
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="education_10"
+                            name="education_10"
+                            // value={education_10}
+                            // onChange={handleEducation_10Change}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="instituteName_10" className="block text-large font-medium">
+                            School/Institute Name
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="instituteName_10"
+                            name="instituteName_10"
+                            // value={instituteName_10}
+                            // onChange={handleInstitute_10Change}
+
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="stream_10" className="block text-large font-medium">
+                            Stream
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="stream_10"
+                            name="stream_10"
+                            // value={stream_10}
+                            // onChange={handleStream_10Change}
+
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="passOutYear_10" className="block text-large font-medium">
+                            Pass-out Year
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="passOutYear_10"
+                            name="passOutYear_10"
+                            // value={passOutYear_10}
+                            // onChange={handlePassOutYear_10Change}
+
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="percentage_10" className="block text-large font-medium">
+                            Percentage
+                        </label>
+                        <input
+                            type="text"
+                            className="mt-1 p-2 w-full border rounded-md text-large"
+                            id="percentage_10"
+                            name="percentage_10"
+                            // value={percentage_10}
+                            // onChange={handlePercentage_10Change}
+
+                        />
+                    </div>
+                </div>
+            
             <div className=" from-group text-xl flex ">
               <button
                 type="button"
