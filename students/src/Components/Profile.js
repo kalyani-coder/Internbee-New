@@ -3,7 +3,7 @@ import { FaUser } from 'react-icons/fa';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from'../Assets/Interns_bee-removebg-preview.png'
+import logo from'../Assets/yellow_header1.png'
 
 
 const Profile = () => {

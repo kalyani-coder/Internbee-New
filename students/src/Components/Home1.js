@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Sidebar from "./Sidebar";
-import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
+import logo from "../Assets/yellow_header1.png"
 import { IoNotificationsOutline } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

@@ -1,7 +1,7 @@
 // Internal_Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../Assets/Interns_bee-removebg-preview.png";
+import logo from "../Assets/yellow_header1.png";
 
 
 const Internal_Navbar = () => {

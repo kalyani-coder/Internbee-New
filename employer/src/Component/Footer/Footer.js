@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from'../../Assets/Interns_bee-removebg-preview.png'
+import logo from'../../Assets/yellow_header1.png'
 import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
@@ -65,18 +65,21 @@ const Footer = () => {
         <>
             <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
                 <div className="flex flex-col items-center lg:items-start space-y-4">
-                    <div className="flex items-center space-x-4">
+                    <div className="grid gap-4 items-start space-y-4">
                     <Link to={'/'}>
                         <img src={logo} alt="Logo" className="" style={{width:'15rem'}}/>
                     </Link>
                         {/* <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p> */}
                     </div>
                     
-                    <div className="text-2xl flex items-center space-x-4">
+                    <div className="text-2xl flex items-center gap-4 justify-center ml-14">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
                         ))}
                     </div>
+                    <div>
+                <p className=" flex items-center gap-4 justify-center mt-12 pt-2">2024 Internsbee.All Right Reserved.</p>
+                </div>
                 </div>
 
                 <div className="flex flex-col lg:flex-row lg:space-x-20 mt-6 lg:mt-0">

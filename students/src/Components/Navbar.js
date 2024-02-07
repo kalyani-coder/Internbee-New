@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../Assets/Interns_bee_combination-removebg-preview.png';
+import logo from '../Assets/white_header1.png';
 import Home from './Home';
 
 const Navbar = () => {

@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
-import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
+import logo from "../Assets/yellow_header1.png"
 import {
   FaUser,
   FaMoneyBill,

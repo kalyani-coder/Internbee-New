@@ -3,7 +3,7 @@ import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
-import logo from "../Assets/Interns_beeeeeeeee-logoo.png"
+import logo from "../Assets/yellow_header1.png"
 import { Link } from 'react-router-dom';
 const Footer = () => {
     const yourCardArray = [
@@ -62,7 +62,7 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="h-600 text-black p-6 flex justify-evenly items-center"style={{ backgroundColor: '#FFBD59' }}>
+            <footer className="h-400 text-black p-6 flex justify-evenly items-center"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="grid gap-4 items-start space-y-4">
                     <Link to={'/'}>
                     <div className="items-center">
@@ -75,7 +75,11 @@ const Footer = () => {
                             <div key={index}>{icon}</div>
                         ))}
                     </div>
+                    <div>
+                <p className=" flex items-center gap-4 justify-center mt-12 pt-2">2024 Internsbee.All Right Reserved.</p>
                 </div>
+                </div>
+               
 
                 <div className="flex flex-row space-x-20 ml-20 mt-20">
                     <div className="flex flex-col items-start space-y-7">
