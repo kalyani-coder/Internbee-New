@@ -68,7 +68,7 @@ const handleViewMoreClick = (candidate) => {
   const handleConfirmDelete = async () => {
     try {
       // Make the API call for deletion using candidateToDelete._id
-      const response = await fetch(`http://localhost:8000/api/applyInternship/shortlisted/${candidateToDelete._id}`, {
+      const response = await fetch(`https://backend.internsbee.com/api/applyInternship/shortlisted/${candidateToDelete._id}`, {
         method: "DELETE",
       });
 

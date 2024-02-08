@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
     maxLength : 10,
 
   },
+  verified : {
+    type : String,
+    default : "",
+    
+  },
  
  freePackage : {
   package_type: {

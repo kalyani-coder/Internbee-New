@@ -28,7 +28,7 @@ const onSubmit = async (data) => {
   const { confirmPassword, ...postData } = data;
 
   try {
-    const response = await fetch("http://localhost:8000/auth/signup", {
+    const response = await fetch("https://backend.internsbee.com/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

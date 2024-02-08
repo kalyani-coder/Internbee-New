@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/adminlogin/login', {
+      const response = await axios.post('https://backend.internsbee.com/api/adminlogin/login', {
         email: email,
         password: password,
       });

@@ -31,7 +31,7 @@ const handleViewMoreClick = (candidate) => {
 
     const fetchEmployers = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/empauth");
+        const response = await fetch("https://backend.internsbee.com/api/empauth");
         const data = await response.json();
         setEmployers(data);
       } catch (error) {

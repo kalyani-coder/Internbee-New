@@ -24,6 +24,7 @@ import EnquiryPage from "./Components/ApplyInternship/EnquiryPage";
 import PolicyTermsCondition from "./Components/PrivacyPolicy/PolicyTermsCondition";
 import MonthlyPackages from "./Components/StudentPackages/MonthlyPlan";
 import SubscribePackage from "./Components/StudentPackages/SubscribePackage";
+import EnterOtpPage from "./Components/EnterOtpPage/EnterOtpPage";
 
 function App() {
   // useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/enterotp" element={<EnterOtpPage/>}/>
 
         <Route path="/home" element={<Home1 />} />
         <Route path="/blogs" element={<Blogs />} />

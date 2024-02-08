@@ -27,7 +27,7 @@ const handleViewMoreClick = (candidate) => {
   useEffect(() => {
     const fetchEmployers = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/employer");
+        const response = await fetch("https://backend.internsbee.com/api/employer");
         const data = await response.json();
         setEmployers(data);
       } catch (error) {
@@ -45,7 +45,7 @@ const handleViewMoreClick = (candidate) => {
       return;
     }
 
-    const apiUrl = `http://localhost:8000/api/employer/${employerId}`;
+    const apiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
     const data = { paymentStatus: 'Accepted' };
 
     try {

@@ -24,7 +24,7 @@ const closeModal = () => {
   
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/studentsdetails");
+        const response = await fetch("https://backend.internsbee.com/api/studentsdetails");
         const data = await response.json();
         setCandidates(data);
       } catch (error) {

@@ -14,7 +14,7 @@ const NewJobList = () => {
   
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/applyInternship");
+        const response = await fetch("https://backend.internsbee.com/api/applyInternship");
         const data = await response.json();
         setCandidates(data);
       } catch (error) {
@@ -53,7 +53,7 @@ const NewJobList = () => {
   const handleConfirmDelete = async () => {
     try {
       // Make the API call for deletion using candidateToDelete._id
-      const response = await fetch(`http://localhost:8000/api/applyInternship/${candidateToDelete._id}`, {
+      const response = await fetch(`https://backend.internsbee.com/api/applyInternship/${candidateToDelete._id}`, {
         method: "DELETE",
       });
 

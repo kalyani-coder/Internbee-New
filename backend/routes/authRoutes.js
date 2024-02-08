@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const _ = require('underscore');
+const nodemailer = require('nodemailer');
 
 
 const router = express.Router();
@@ -19,7 +20,8 @@ router.post("/signup", async (req, res) => {
     monthlyVerifiedApplication,
     monthlyDedicatedCRM,
     monthlyOpportunities,
-    accountHolderName, } = req.body;
+    accountHolderName,
+    verified, } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -38,6 +40,7 @@ router.post("/signup", async (req, res) => {
       email: email,
       number: number,
       password: hashedPassword,
+      verified : verified,
 
 
       freePackage: {
@@ -75,51 +78,7 @@ router.post("/signup", async (req, res) => {
 });
 
 
-// router.patch("/:id", async (req, res) => {
-//   try {
-//     const updatedEmpAuth = await User.findByIdAndUpdate(
-//       req.params.id,
-//       req.body,
-//       { new: true }
-//     );
-//     res.status(200).json(updatedEmpAuth);
-//   } catch (error) {
-//     res.status(500).json({ error: "Something went wrong" });
-//   }
-// });
-
-
-// router.patch("/:id", async (req, res) => {
-//   try {
-//     // Step 1: Validate and sanitize input
-//     const allowedFields = ["monthlyPackage"];
-//     const updates = Object.keys(req.body).filter((field) =>
-//       allowedFields.includes(field)
-//     );
-
-//     // Step 2: Check if the document with the provided ID exists
-//     const existingUser = await User.findById(req.params.id);
-//     if (!existingUser) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-
-//     // Step 3: Perform the update
-//     const updatedUser = await User.findByIdAndUpdate(
-//       req.params.id,
-//       { $set: _.pick(req.body, updates) },
-//       { new: true }
-//     );
-
-//     // Step 4: Respond with the updated user
-//     res.status(200).json(updatedUser);
-//   } catch (error) {
-//     // Step 5: Handle errors
-//     console.error("Error during user update:", error);
-//     res.status(500).json({ error: "Something went wrong" });
-//   }
-// });
-
-router.patch("/:id", async (req, res) => {
+router.patch("/:id/verifeid", async (req, res) => {
   try {
     // Step 1: Validate and sanitize input
     const allowedFields = ["monthlyPackage", "freePackage"];
@@ -151,34 +110,112 @@ router.patch("/:id", async (req, res) => {
 
 
 
-router.post("/signin", async (req, res) => {
-  const { email, password } = req.body;
-
+router.patch("/:id", async (req, res) => {
   try {
-    const user = await User.findOne({ email });
+    const userId = req.params.id;
+    const { verified } = req.body;
+
+    // Validate the incoming data
+   
+    // Find the user by ID and update the "verified" field
+    const user = await User.findByIdAndUpdate(userId, { verified }, { new: true });
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
-
-    if (!passwordMatch) {
-      return res.status(401).json({ error: "Invalid password" });
-    }
-
-    const token = jwt.sign({ email }, jwtKey);
-
-    // Include user data in the response with modified userId (_id)
-    res.json({
-      userId: user._id,
-      email: user.email,
-      Number: user.number,
-    });
+    res.json(user);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+
+
+// router.post("/signin", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const user = await User.findOne({ email });
+
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     const passwordMatch = await bcrypt.compare(password, user.password);
+
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: "Invalid password" });
+//     }
+
+//     const token = jwt.sign({ email }, jwtKey);
+
+//     // Include user data in the response with modified userId (_id)
+//     res.json({
+//       userId: user._id,
+//       email: user.email,
+//       number: user.number,
+//       verified : user.verified,
+//       fullName: user.fullName,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
+
+router.post("/signin", async (req, res) => {
+  const { email } = req.body;
+  console.log('Received sign-in request for email:', email);
+
+  try {
+    const user = await User.findOne({ email });
+    console.log('User found in the database:', user);
+
+    if (!user) {
+      console.log('User not found');
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000); // Generates a random 6-digit OTP
+    console.log('Generated OTP:', otp);
+
+    // Send OTP to user's email
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.elasticemail.com',
+      port: 2525,
+      auth: {
+          user: 'vedantassignment05@gmail.com',
+          pass: '133ED6AC7F70E024CFEBF22C9E6085034EF8'
+      }
+  });
+
+    const mailOptions = {
+      from: '<vedantassignment05@gmail.com>',
+      to: email,
+      subject: 'Verification Code for Sign In',
+      text: `Your verification code is: ${otp}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        return res.status(500).json({ error: "Failed to send OTP" });
+      } else {
+        console.log('Email sent:', info.response);
+        // Redirect to OTP page with the email and OTP data
+        res.json({ email, otp });
+      }
+    });
+  } catch (error) {
+    console.error('Error signing in:', error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+
+
 
 router.get("/:id", async (req, res) => {
   try {
@@ -209,3 +246,20 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

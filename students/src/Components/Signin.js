@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Alert from './Alert/Aleart';
 import { Link } from "react-router-dom";
-import logo from '../../src/Assets/Interns_bee_combination-removebg-preview.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,52 +14,10 @@ const Login = () => {
   } = useForm();
   const [apiError, setApiError] = useState(null);
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await fetch('https://internbee-backend-apis.onrender.com/api/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-
-        // Assuming the response contains the userId
-        if (responseData.userId) {
-          // The credentials are correct, navigate to the home page
-          localStorage.setItem('userId', responseData.userId);
-          localStorage.setItem('fullName', responseData.fullName);
-          localStorage.setItem('userEmail', responseData.email);
-          localStorage.setItem('number', responseData.number);
-          navigate('/privacypolicy');
-        } else {
-          // Handle the case where userId is missing in the response
-          setError('email', {
-            type: 'manual',
-            message: 'Invalid credentials',
-          });
-        }
-      } else {
-        // The credentials are incorrect, handle the error (e.g., show an error message)
-        const errorData = await response.json();
-        setApiError(errorData.error);
-        setError('email', {
-          type: 'manual',
-          message: errorData.error || 'User Not Found. Please Sign up',
-        });
-        console.error('Invalid credentials');
-      }
-    } catch (error) {
-      console.error('Error signing in:', error);
-    }
-  };
 
   // const onSubmit = async (data) => {
   //   try {
-  //     const response = await fetch('http://localhost:8000/auth/signin', {
+  //     const response = await fetch('https://backend.internsbee.com/api/auth/signin', {
   //       method: 'POST',
   //       headers: {
   //         'Content-Type': 'application/json',
@@ -71,15 +28,33 @@ const Login = () => {
   //     if (response.ok) {
   //       const responseData = await response.json();
 
-  //       // Assuming the response contains the userId, name, and email
-  //       if (responseData._id && responseData.fullName && responseData.email) {
-  //         // The credentials are correct, navigate to the home page
-  //         localStorage.setItem('userId', responseData._id);
-  //         localStorage.setItem('userName', responseData.fullName);
-  //         localStorage.setItem('userEmail', responseData.email);
-  //         navigate('/Home1');
-  //       } else {
-  //         // Handle the case where userId, name, or email is missing in the response
+  //       // Assuming the response contains the userId
+  //       // if (responseData.userId) {
+  //       //   // The credentials are correct, navigate to the home page
+  //       //   localStorage.setItem('userId', responseData.userId);
+  //       //   navigate('/privacypolicy');
+  //       // }
+  //       if (responseData.userId) {
+  //         localStorage.setItem('userId', responseData.userId);
+  //       }
+  //       if (responseData.fullName) {
+  //         localStorage.setItem('fullName', responseData.fullName);
+  //       }
+  //       if(responseData.email){
+  //         localStorage.setItem("email" ,responseData.email)
+  //       }
+  //       if(responseData.verified){
+  //         localStorage.setItem("verified" ,responseData.verified)
+  //       }
+
+  //       if(responseData.verified){
+  //         localStorage.setItem("number" ,responseData.number)
+  //         navigate('/privacypolicy');
+  //       }
+        
+  //       else {
+        
+  //         // Handle the case where userId is missing in the response
   //         setError('email', {
   //           type: 'manual',
   //           message: 'Invalid credentials',
@@ -101,15 +76,54 @@ const Login = () => {
   // };
 
 
-  const handleregistration = () => {
-    navigate('/Registration');
+
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        if (responseData.userId) {
+          localStorage.setItem('userId', responseData.userId);
+        }
+        if (responseData.fullName) {
+          localStorage.setItem('fullName', responseData.fullName);
+        }
+        if (responseData.email) {
+          localStorage.setItem('email', responseData.email);
+        }
+       
+        if (responseData.verified === 'false') {
+          localStorage.setItem('verified', responseData.verified);
+          navigate('/enterotp'); // Navigate to OTP page only if verified is 'false'
+        } else {
+          localStorage.setItem('verified', responseData.verified);
+          navigate('/home'); // Navigate to home page for verified users
+        }
+      } else {
+        // The credentials are incorrect, handle the error (e.g., show an error message)
+        const errorData = await response.json();
+        setApiError(errorData.error);
+        setError('email', {
+          type: 'manual',
+          message: errorData.error || 'User Not Found. Please Sign up',
+        });
+        console.error('Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Error signing in:', error);
+    }
   };
-  const handleHome1 = () => {
-    navigate('/Home1');
-  };
-  const handleHome = () => {
-    navigate('/Home');
-  };
+  
+  
 
   return (
     <>

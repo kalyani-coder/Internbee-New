@@ -26,7 +26,7 @@ const LowerContent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('http://localhost:8000/api/applyInternship')
+    fetch('https://backend.internsbee.com/api/applyInternship')
       .then(response => response.json())
       .then(apiData => setData(apiData))
       .catch(error => console.error('Error fetching data:', error));
@@ -37,7 +37,7 @@ const LowerContent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('http://localhost:8000/api/postinternship/')
+    fetch('https://backend.internsbee.com/api/postinternship/')
       .then(response => response.json())
       .then(apiData => {
         // Filter jobs posted within the last 3 days
@@ -58,7 +58,7 @@ const LowerContent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('http://localhost:8000/api/studentsdetails')
+    fetch('https://backend.internsbee.com/api/studentsdetails')
       .then(response => response.json())
       .then(apiData => {
         const currentDate = new Date();
