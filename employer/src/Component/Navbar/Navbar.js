@@ -36,6 +36,11 @@ const Navbar = () => {
               Internships
             </a>
           </li>
+          <li>
+            <a href="/packages" className="text-white hover:text-black">
+              Subscribe
+            </a>
+          </li>
           {/* Profile button with links */}
           <li className="relative group">
             <button className="text-white hover:text-black flex items-center h-12 w-12">

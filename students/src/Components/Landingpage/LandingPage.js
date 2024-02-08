@@ -77,7 +77,7 @@ const LandingPage = () => {
             <section className="landingpage-latest-internships flex-1 p-20" id="dream-career-section">
 
                 <h1 className="heading ">
-                    Latest Internships on InternBee
+                    Latest Internships on InternsBee
                 </h1>
 
                 {/* Popular Categories */}
@@ -168,7 +168,7 @@ const LandingPage = () => {
             <section className="landingpage-latest-jobs flex-1" id="dream-career-section">
 
                 <h1 className="heading">
-                    Latest jobs on InternBee
+                    Latest jobs on InternsBee
                 </h1>
 
                 {/* Popular Categories */}

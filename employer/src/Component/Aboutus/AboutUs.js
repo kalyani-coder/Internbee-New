@@ -36,13 +36,13 @@ Discover, connect, and thrive with Internbee!</p><button className='btn btn-warn
                 className="mb-4 w-full h-96 object-contain"
               />
               <p className="text-black text-center">
-                Best Platform to Search Your Dream Jobs!
+                Best Platform to Search Your Dream Internships!
               </p>
             </div>
             <div className="flex justify-center mt-4">
               <Link to={'/jobs'} >
                 <button className="px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-amber-300">
-                  View Jobs
+                  View Internship
                 </button>
               </Link>
             </div>

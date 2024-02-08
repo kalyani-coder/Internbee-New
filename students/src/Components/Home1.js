@@ -328,7 +328,7 @@ const Home1 = () => {
           <div className="relative flex items-center gap-8">
             <input
               type="text"
-              placeholder="Enter skills/designations/companies"
+              placeholder="Enter skills/designations"
               className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
               style={{ width: "540px" }}
             />

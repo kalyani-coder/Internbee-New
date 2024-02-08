@@ -364,13 +364,13 @@ const Profile = () => {
                     </div>
 
                     {/* Search Bar */}
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <input
                             type="text"
                             placeholder="Search..."
                             className="p-2 rounded-md mr-2 border"
                         />
-                    </div>
+                    </div> */}
 
 
                     <div className="flex items-center space-x-4">

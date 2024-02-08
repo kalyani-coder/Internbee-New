@@ -354,7 +354,7 @@ const PostInternship = () => {
                 htmlFor="job_Type"
                 className="block text-sm font-medium text-black"
               >
-                Job Type:
+                Internship Type:
               </label>
               <select
                 id="job_Type"

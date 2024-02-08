@@ -229,7 +229,7 @@ const Internship = () => {
           {/* Input for main search query */}
           <input
             type="text"
-            placeholder="Enter skills/designations/companies/Location/Position"
+            placeholder="Enter skills/designations/companies"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
             className="h-16 w-1/2 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"

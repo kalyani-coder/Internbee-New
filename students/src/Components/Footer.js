@@ -48,6 +48,10 @@ const Footer = () => {
         <a href="https://www.instagram.com/internsbee/" target="_blank" rel="noopener noreferrer" key="instagram">
             <FaInstagram />
         </a>,
+
+         <a href="https://www.twitter.com/internsbee/" target="_blank" rel="noopener noreferrer" key="twitter">
+         <FaTwitter />
+     </a>,
     ];
     const navbarContent = [
         { label: 'About Us', link: '/about-us' },

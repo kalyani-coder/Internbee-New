@@ -9,27 +9,27 @@ const Footer = () => {
     const yourCardArray = [
         {
             icons: FaMobile,
-            role: 'Mobile development',
+            role: 'Finance',
             jobs: 200
         },
         {
             icons: FaCode,
-            role: 'Web development',
+            role: 'IT',
             jobs: 50
         },
         {
             icons: FaPalette,
-            role: 'Graphics Design',
+            role: 'Marketing',
             jobs: 100
         },
         {
             icons: FaUsers,
-            role: 'Human Resource Management',
+            role: 'Sales',
             jobs: 150
         },
         {
             icons: FaChartBar,
-            role: 'Business Development',
+            role: 'HR',
             jobs: 40
         },
 
@@ -48,6 +48,10 @@ const Footer = () => {
         <a href="https://www.instagram.com/internsbee/" target="_blank" rel="noopener noreferrer" key="instagram">
             <FaInstagram />
         </a>,
+
+<a href="https://www.twitter.com/internsbee/" target="_blank" rel="noopener noreferrer" key="twitter">
+<FaTwitter />
+</a>,
     ];
 
     const navbarContent = [
