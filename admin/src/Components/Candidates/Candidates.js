@@ -58,7 +58,7 @@ const closeModal = () => {
   const handleConfirmDelete = async () => {
     try {
       // Make the API call for deletion using candidateToDelete._id
-      const response = await fetch(`http://localhost:8000/api/studentsdetails/${candidateToDelete._id}`, {
+      const response = await fetch(`https://backend.internsbee.com/api/studentsdetails/${candidateToDelete._id}`, {
         method: "DELETE",
       });
 

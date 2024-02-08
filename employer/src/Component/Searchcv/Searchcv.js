@@ -35,7 +35,7 @@ const SearchCVPage = () => {
   const handleSearch = async () => {
     try {
       // Fetch data from your API using axios
-      const response = await axios.post("http://localhost:8000/api/search", {
+      const response = await axios.post("https://backend.internsbee.com/api/search", {
         skill: searchQuery,
       });
       setStudentCVs(response.data.results);

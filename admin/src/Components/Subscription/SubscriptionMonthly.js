@@ -52,7 +52,7 @@ const handleInputChange = (e) => {
 
 const savePackage = async () => {
     try {
-        const response = await fetch(`http://localhost:8000/api/adminmonthlypackage/${monthlyPackage._id}`, {
+        const response = await fetch(`https://backend.internsbee.com/api/adminmonthlypackage/${monthlyPackage._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

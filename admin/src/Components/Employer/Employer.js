@@ -69,7 +69,7 @@ const handleViewMoreClick = (candidate) => {
   const handleConfirmDelete = async () => {
     try {
       // Make the API call for deletion using candidateToDelete._id
-      const response = await fetch(`http://localhost:8000/api/empauth/${candidateToDelete._id}`, {
+      const response = await fetch(`https://backend.internsbee.com/api/empauth/${candidateToDelete._id}`, {
         method: "DELETE",
       });
 

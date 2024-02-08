@@ -55,7 +55,7 @@ const UploadImage = () => {
   };
 
   const handleDownloadPDF = (pdfPath) => {
-    window.open(`http://localhost:8000/${pdfPath}`, '_blank');
+    window.open(`https://backend.internsbee.com/${pdfPath}`, '_blank');
   };
   return (
     <div>

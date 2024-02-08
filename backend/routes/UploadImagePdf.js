@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 // router.post('/', upload.single('image'), async (req, res) => {
 //     try {
 //       if (req.file) {
-//         const publicUrl = `http://localhost:8000/public/uploads/${req.file.originalname}`;
+//         const publicUrl = `https://backend.internsbee.com/public/uploads/${req.file.originalname}`;
          
 //         const imageData = new UploadImage({
 //           filename: req.file.originalname,
@@ -52,8 +52,8 @@ router.get("/", async (req, res) => {
 router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', maxCount: 1 }]), async (req, res) => {
     try {
       if (req.files && req.files.image && req.files.pdf) {
-        const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
-        const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
+        const publicImageUrl = `https://backend.internsbee.com/public/uploads/${req.files.image[0].filename}`;
+        const publicPdfUrl = `https://backend.internsbee.com/public/uploads/${req.files.pdf[0].filename}`;
   
         const fileData = new UploadFile({
           filename: req.files.image[0].originalname, // Assuming image is required for every entry

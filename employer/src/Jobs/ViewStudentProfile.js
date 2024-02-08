@@ -33,7 +33,7 @@ export default function ViewStudentProfile() {
   const handleShortlistConfirmation = () => {
     try {
       const res = axios.patch(
-        `http://localhost:8000/api/applyinternship/${candidateId}`,
+        `https://backend.internsbee.com/api/applyinternship/${candidateId}`,
         {
           status: "Shortlisted",
         }

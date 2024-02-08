@@ -30,7 +30,7 @@ const handleViewMoreClick = (candidate) => {
 };
     const fetchShortlistedCandidates = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/applyInternship/shortlisted");
+        const response = await fetch("https://backend.internsbee.com/api/applyInternship/shortlisted");
         const data = await response.json();
         setShortlistedCandidates(data);
       } catch (error) {
