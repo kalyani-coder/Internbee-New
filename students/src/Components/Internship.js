@@ -346,10 +346,10 @@ const Internship = () => {
                   <p className="card-company text-xl text-gray-700">
                     Company Name : {internship.company_Name}
                   </p>
-                  <div className="flex justify-between items-center my-4">
+                  <div className="flex justify-between items-center my-4 gap-3 ">
                     <div className="flex items-center">
                       <FaRegClock className="mr-2" />
-                      <p className="card-company text-xl text-gray-700">
+                      <p className="card-company text-xl text-gray-700 ">
                         Start Date : {internship.start_Date}
                       </p>
                     </div>
@@ -373,7 +373,7 @@ const Internship = () => {
                     </div>
                   </div>
                   <p className="card-description text-base text-gray-700 my-4">
-                    Job Type : {internship.job_Type}
+                    Internship Type : {internship.job_Type}
                   </p>
                   <p className="card-description text-base text-gray-700 my-4">
                     {internship.job_Description}

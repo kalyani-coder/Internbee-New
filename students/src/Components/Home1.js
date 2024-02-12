@@ -149,37 +149,37 @@ const Home1 = () => {
   const companies = [
     {
       id: 1,
-      name: "Accenture",
-      logo: "Accenture-logo.jpg",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: "SlideUP Lift",
+      // Job Title: "",
+      description: "Social Media Marketing Intern ",
     },
     {
       id: 2,
-      name: "Tata Consultancy Service",
-      logo: "tata.jpg",
+      name: "Parallel Minds",
+      // logo: "tata.jpg",
       description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Business Development Intern",
     },
     {
       id: 3,
-      name: "Tata Consultancy Service",
-      logo: "tata.jpg",
+      name: "Ecozen Solutions",
+      // logo: "tata.jpg",
       description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Market Research Intern",
     },
     {
       id: 4,
-      name: "Tata Consultancy Service",
-      logo: "tata.jpg",
+      name: "Tifants Ingress",
+      // logo: "tata.jpg",
       description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Software Development Intern",
     },
     {
       id: 5,
-      name: "Tata Consultancy Service",
-      logo: "tata.jpg",
+      name: "Ally Digital Media",
+      // logo: "tata.jpg",
       description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Search Engine Optimization (SEO) Intern",
     },
     // Add more companies as needed
   ];
@@ -347,16 +347,16 @@ const Home1 = () => {
                 key={company.id}
                 className="m-4 p-4 bg-white rounded-lg shadow-md max-w-sm"
               >
-                <img
+                {/* <img
                   src={`./${company.logo}`}
                   alt={`Logo of ${company.name}`}
                   className="w-16 h-16 mx-auto mb-4"
-                />
+                /> */}
                 <h2 className="text-xl font-bold">{company.name}</h2>
                 <p className="text-gray-600">{company.description}</p>
                 <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
                   View Internship
-                </button>
+                </button> 
               </div>
             ))}
           </Slider>
@@ -379,8 +379,8 @@ const Home1 = () => {
                   {internship.company_Name}
                 </p>
 
-                <div className="flex justify-between items-center my-4">
-                  <div className="flex items-center">
+                <div className="flex justify-between items-center my-4 gap-3">
+                  <div className="flex items-center ">
                     <FaCalendar className="mr-2" />
                     <p className="card-company text-xl text-gray-700">
                       {internship.start_Date}
