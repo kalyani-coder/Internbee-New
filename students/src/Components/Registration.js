@@ -29,7 +29,7 @@ const Registration = () => {
     const { confirmPassword, ...postData } = data;
 
     try {
-      const response = await fetch("https://backend.internsbee.com/api/auth/signup", {
+      const response = await fetch("http://localhost:8000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,6 +46,8 @@ const Registration = () => {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        localStorage.setItem('userId', result.userId);
+        localStorage.setItem('email', postData.email);
         // Reset form and show success message
         navigate("/login");
       } else {

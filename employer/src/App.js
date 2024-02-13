@@ -27,7 +27,9 @@ import AnuallyPackages from './Component/Packages/AnuallyPackages';
 import MonthlyPackages from './Component/Packages/MonthlyPackages';
 import ResolveMessage from './Component/Message/ResolveMessage';
 import PolicyTermsCondition from './Component/TermsAndConditions/PolicyTermsCondition';
-import Blog from "./Component/Blogs/Blog"
+import Blog from "./Component/Blogs/Blog";
+import Otp from './Component/OTP/Otp';
+
 
 
 function App() {
@@ -83,6 +85,7 @@ function App() {
           <Route path='/resolve/:id' element={<ResolveMessage/>}/>
           <Route path='/privacypolicy' element={<PolicyTermsCondition/>}/>
           <Route path='/blogs' element={<Blog/>}/>
+          <Route path='/otp' element={<Otp/>}/>
         </Routes>
 
       </Router>

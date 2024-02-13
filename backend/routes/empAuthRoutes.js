@@ -7,22 +7,97 @@ const EmployerAuth = require('../models/employerAuth')
 
 const router = express.Router();
 const jwtKey = "amar";
+const nodemailer = require('nodemailer');
 
+// router.post("/signup", async (req, res) => {
+//   const { empName, email, number, password, companyAddress, Description, 
+//     paymentStatus, accountHolderName, packagePrice, purchacepackageEndDate, 
+//     purchacepackageDate,searches,
+//     internshipEnquiry,
+//     verifiedApplication,
+//     ResumeView,
+//     dedicatedCRM ,
+//     internshipCounter,
+//     Privacy_policy,
+//     resumeDownloadCounter,} =
+//     req.body;
+
+//   try {
+//     const existingempName = await EmployerAuth.findOne({ empName });
+//     const existingUser = await EmployerAuth.findOne({ email });
+//     const existingNumber = await EmployerAuth.findOne({ number });
+
+//     if (existingUser) {
+//       return res.status(409).json({ error: "User already exists" });
+//     } else if (existingNumber) {
+//       return res.status(409).json({ error: "Number already exists" });
+//     } else if (existingempName) {
+//       return res.status(409).json({ error: "Comapany Name already exists" });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     const newEmpAuth = new EmployerAuth({
+//       empName: empName,
+//       email: email,
+//       number: number,
+//       password: hashedPassword,
+//       companyAddress: companyAddress,
+//       Description: Description,
+//       paymentStatus: paymentStatus,
+//       accountHolderName: accountHolderName,
+//       packagePrice: packagePrice,
+//       purchacepackageEndDate: purchacepackageEndDate,
+//       purchacepackageDate: purchacepackageDate,
+//       searches: searches,
+//       internshipEnquiry: internshipEnquiry,
+//       verifiedApplication: verifiedApplication,
+//       ResumeView: ResumeView,
+//       dedicatedCRM: dedicatedCRM,
+//       internshipCounter : internshipCounter,
+//       Privacy_policy : Privacy_policy,
+//       resumeDownloadCounter : resumeDownloadCounter,
+//     });
+
+//     const createdEmpAuth = await newEmpAuth.save();
+//     // const token = jwt.sign({ email: createdEmpAuth.email }, jwtKey);
+
+//     // Return the token and created user's ID in the response
+//     res.json({
+//       userId: createdEmpAuth._id,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
+
+// sending email to employer for registration 
 router.post("/signup", async (req, res) => {
-  const { empName, email, number, password, companyAddress, Description, 
-    paymentStatus, accountHolderName, packagePrice, purchacepackageEndDate, 
-    purchacepackageDate,searches,
+  const {
+    empName,
+    email,
+    number,
+    password,
+    companyAddress,
+    Description,
+    paymentStatus,
+    accountHolderName,
+    packagePrice,
+    purchacepackageEndDate,
+    purchacepackageDate,
+    searches,
     internshipEnquiry,
     verifiedApplication,
     ResumeView,
-    dedicatedCRM ,
+    dedicatedCRM,
     internshipCounter,
     Privacy_policy,
-    resumeDownloadCounter,} =
-    req.body;
+    resumeDownloadCounter,
+  } = req.body;
 
   try {
-    const existingempName = await EmployerAuth.findOne({ empName });
+    const existingEmpName = await EmployerAuth.findOne({ empName });
     const existingUser = await EmployerAuth.findOne({ email });
     const existingNumber = await EmployerAuth.findOne({ number });
 
@@ -30,8 +105,8 @@ router.post("/signup", async (req, res) => {
       return res.status(409).json({ error: "User already exists" });
     } else if (existingNumber) {
       return res.status(409).json({ error: "Number already exists" });
-    } else if (existingempName) {
-      return res.status(409).json({ error: "Comapany Name already exists" });
+    } else if (existingEmpName) {
+      return res.status(409).json({ error: "Company Name already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -53,25 +128,128 @@ router.post("/signup", async (req, res) => {
       verifiedApplication: verifiedApplication,
       ResumeView: ResumeView,
       dedicatedCRM: dedicatedCRM,
-      internshipCounter : internshipCounter,
-      Privacy_policy : Privacy_policy,
-      resumeDownloadCounter : resumeDownloadCounter,
+      internshipCounter: internshipCounter,
+      Privacy_policy: Privacy_policy,
+      resumeDownloadCounter: resumeDownloadCounter,
     });
 
     const createdEmpAuth = await newEmpAuth.save();
-    // const token = jwt.sign({ email: createdEmpAuth.email }, jwtKey);
 
-    // Return the token and created user's ID in the response
+    // Send welcome email to the registered employer
+    const transporter = nodemailer.createTransport({
+      host: "bulk.smtp.mailtrap.io",
+      port: 587,
+      auth: {
+        user: "api",
+        pass: "3654cc89cd6851318ac5989aaac06799"
+      }
+    });
+
+    const mailOptions = {
+      from: '<mailtrap@internsbee.com>',
+      to: email,
+      subject: 'Welcome to Internsbee - Registration Successful',
+      text: `Dear ${empName},
+    
+      Welcome to Internsbee! Your registration was successful. We're excited to have you on board. At Internsbee, we strive to connect employers like you with talented individuals seeking opportunities.
+      
+      Thank you for choosing Internsbee. We look forward to helping you find the perfect candidates for your company's needs.
+      
+      Best Regards,
+      Internsbee Team`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Welcome email sent to', email);
+
+    // Return the registered employer's ID in the response
     res.json({
       userId: createdEmpAuth._id,
     });
   } catch (error) {
+    console.error('Error signing up employer:', error);
     res.status(500).json({ error: "Something went wrong" });
   }
 });
 
+
+// router.post("/signin", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const empAuth = await EmployerAuth.findOne({ email });
+
+//     if (!empAuth) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     const passwordMatch = await bcrypt.compare(password, empAuth.password);
+
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: "Invalid password" });
+//     }
+
+//     const token = jwt.sign({ email }, jwtKey);
+
+//     res.json({
+//       userId: empAuth._id,
+//       empName: empAuth.empName,
+//       email: empAuth.email,
+//       number: empAuth.number,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
+// working email for otp 
+
+// router.post("/signin", async (req, res) => {
+//   const { email } = req.body;
+
+//   try {
+//     const empAuth = await EmployerAuth.findOne({ email });
+
+//     if (!empAuth) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     // Generate OTP
+//     const otp = Math.floor(100000 + Math.random() * 900000); 
+
+//     // Send OTP via email
+//     const transporter = nodemailer.createTransport({
+//       host: "bulk.smtp.mailtrap.io",
+//       port: 587,
+//       auth: {
+//         user: "api",
+//         pass: "3654cc89cd6851318ac5989aaac06799"
+//       }
+//     });
+
+//     const mailOptions = {
+//       from: '<mailtrap@internsbee.com>',
+//       to: email,
+//       subject: 'Verification Code for Sign In',
+//       text: `Your verification code is: ${otp}`
+//     };
+
+//     await transporter.sendMail(mailOptions);
+//     console.log('Email sent successfully');
+
+//     // Update the employer's OTP in the database
+//     await EmployerAuth.findOneAndUpdate({ email }, { otp });
+
+//     res.json({ userId: empAuth._id, email });
+
+//   } catch (error) {
+//     console.error('Error signing in:', error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
 router.post("/signin", async (req, res) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
 
   try {
     const empAuth = await EmployerAuth.findOne({ email });
@@ -80,24 +258,66 @@ router.post("/signin", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const passwordMatch = await bcrypt.compare(password, empAuth.password);
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000); 
 
-    if (!passwordMatch) {
-      return res.status(401).json({ error: "Invalid password" });
-    }
-
-    const token = jwt.sign({ email }, jwtKey);
-
-    res.json({
-      userId: empAuth._id,
-      empName: empAuth.empName,
-      email: empAuth.email,
-      number: empAuth.number,
+    // Send OTP via email
+    const transporter = nodemailer.createTransport({
+      host: "bulk.smtp.mailtrap.io",
+      port: 587,
+      auth: {
+        user: "api",
+        pass: "3654cc89cd6851318ac5989aaac06799"
+      }
     });
+
+    const mailOptions = {
+      from: '<mailtrap@internsbee.com>',
+      to: email,
+      subject: 'Verification Code for Sign In',
+      text: `Your verification code is: ${otp}`
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+
+    // Update the employer's OTP in the database
+    await EmployerAuth.findOneAndUpdate({ email }, { otp });
+
+    // Respond with the user ID and email
+    res.json({ userId: empAuth._id, email });
+
   } catch (error) {
+    console.error('Error signing in:', error);
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+
+router.patch("/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const { otp } = req.body;
+
+  try {
+    // Find the employer by userId
+    const employer = await EmployerAuth.findById(userId);
+
+    if (!employer) {
+      return res.status(404).json({ error: 'Employer not found' });
+    }
+
+    // Update the employer's OTP
+    employer.otp = otp;
+    await employer.save();
+
+    res.json({ message: 'OTP updated successfully', employer });
+
+  } catch (error) {
+    console.error('Error updating OTP:', error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;

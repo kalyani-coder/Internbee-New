@@ -28,7 +28,7 @@ const Internship = () => {
 
   const fetchInternshipData = async () => {
     try {
-      const response = await fetch("https://internbee-backend-apis.onrender.com/api/postinternship/");
+      const response = await fetch("https://backend.internsbee.com/api/postinternship/");
       if (!response.ok) {
         throw new Error("Network response was not ok.");
       }
@@ -64,7 +64,7 @@ const Internship = () => {
   };
   // Function to handle user logout
   const handleLogout = () => {
-    navigate("/Signin");
+    navigate("/login");
   };
 
   // Function to scroll to the companies section
