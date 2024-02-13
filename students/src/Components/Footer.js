@@ -9,27 +9,27 @@ const Footer = () => {
     const yourCardArray = [
         {
             icons: FaMobile,
-            role: 'Mobile development',
+            role: 'Finance',
             jobs: 200
         },
         {
             icons: FaCode,
-            role: 'Web development',
+            role: 'IT',
             jobs: 50
         },
         {
             icons: FaPalette,
-            role: 'Graphics Design',
+            role: 'Marketing',
             jobs: 100
         },
         {
             icons: FaUsers,
-            role: 'Human Resource Management',
+            role: 'Sales',
             jobs: 150
         },
         {
             icons: FaChartBar,
-            role: 'Business Development',
+            role: 'HR',
             jobs: 40
         },
 
@@ -54,11 +54,11 @@ const Footer = () => {
      </a>,
     ];
     const navbarContent = [
-        { label: 'About Us', link: '/about-us' },
-        { label: 'Contact', link: '/contact' },
-        { label: 'FAQ', link: '/faq' },
-        { label: 'Blog', link: '/blogs' },
+        { label: 'About Us', link: '/aboutus' },
+        { label: 'Contact', link: '/aboutus' },
+        { label: 'FAQ', link: '/faqs' },
         { label: 'Privacy Policy', link: '/privacypolicy' },
+        { label: 'Blog', link: '/blogs' },
     ];
 
     const rolesContent = yourCardArray.map(card => card.role);

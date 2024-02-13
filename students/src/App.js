@@ -25,7 +25,8 @@ import PolicyTermsCondition from "./Components/PrivacyPolicy/PolicyTermsConditio
 import MonthlyPackages from "./Components/StudentPackages/MonthlyPlan";
 import SubscribePackage from "./Components/StudentPackages/SubscribePackage";
 import EnterOtpPage from "./Components/EnterOtpPage/EnterOtpPage";
-
+import FAQPage from "./Components/Faqs/Faqs";
+import AboutUs from "./Components/AboutUs/AboutUs";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -79,6 +80,8 @@ function App() {
         <Route path="/subscribepackage" element={<SubscribePackage />} />
         <Route path="/studentEnquiry" element={<EnquiryPage />} />
         <Route path="/privacypolicy" element={<PolicyTermsCondition />} />
+        <Route path="/faqs" element={<FAQPage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
     </Router>
 
