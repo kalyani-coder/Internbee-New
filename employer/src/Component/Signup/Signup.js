@@ -1,8 +1,11 @@
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import {useNavigate} from 'react-router-dom'
 const Registration = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     empName: "",
     password: "",
@@ -36,7 +39,7 @@ const Registration = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("https://backend.internsbee.com//api/employer/signup", {
+      const response = await fetch("https://backend.internsbee.com/api/employer/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +51,8 @@ const Registration = () => {
 
       if (response.ok) {
         console.log("Registration successful");
-        alert('Successful Signin');
+        // alert('Successful Signin');
+        navigate('/login')
       } else if (response.status === 409) {
         // Handle conflicts based on the error messages from the backend
         const { error } = responseData;

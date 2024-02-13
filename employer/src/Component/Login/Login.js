@@ -20,9 +20,11 @@ const Login = () => {
       navigate("/Home");
     }
   }, [navigate]);
+
+
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://backend.internsbee.com//api/employer/signin", {
+      const response = await fetch("https://backend.internsbee.com/api/employer/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,9 +40,9 @@ const Login = () => {
         localStorage.setItem("email", responseData.email);
         localStorage.setItem("number", responseData.number);
 
-        navigate(`/view-profile-page`);
+        // navigate(`/view-profile-page`);
 
-        navigate("/privacypolicy");
+        navigate("/otp");
       } else {
         if (response.status === 404) {
           setError("email", {

@@ -44,6 +44,14 @@ const EmpAuthSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  otp : {
+    type : String,
+    default : ""
+  },
+  verified: {
+    type: Boolean,
+    default: false, 
+  },
   purchacepackageDate : String,
   purchacepackageEndDate : String,
   packagePrice : String,

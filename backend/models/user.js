@@ -22,11 +22,12 @@ const userSchema = new mongoose.Schema({
     maxLength : 10,
 
   },
-  verified : {
+ 
+  otp : {
     type : String,
-    default : "",
-    
+    default : ""
   },
+  verified: { type: Boolean, default: false },
  
  freePackage : {
   package_type: {

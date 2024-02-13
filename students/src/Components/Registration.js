@@ -46,6 +46,8 @@ const Registration = () => {
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        localStorage.setItem('userId', result.userId);
+        localStorage.setItem('email', postData.email);
         // Reset form and show success message
         navigate("/login");
       } else {

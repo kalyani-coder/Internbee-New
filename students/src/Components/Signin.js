@@ -77,7 +77,6 @@ const Login = () => {
 
 
 
-
   const onSubmit = async (data) => {
     try {
       const response = await fetch('https://backend.internsbee.com/api/auth/signin', {
@@ -94,20 +93,13 @@ const Login = () => {
         if (responseData.userId) {
           localStorage.setItem('userId', responseData.userId);
         }
-        if (responseData.fullName) {
-          localStorage.setItem('fullName', responseData.fullName);
-        }
+   
         if (responseData.email) {
           localStorage.setItem('email', responseData.email);
         }
+        navigate('/enterotp'); 
        
-        if (responseData.verified === 'false') {
-          localStorage.setItem('verified', responseData.verified);
-          navigate('/enterotp'); // Navigate to OTP page only if verified is 'false'
-        } else {
-          localStorage.setItem('verified', responseData.verified);
-          navigate('/home'); // Navigate to home page for verified users
-        }
+       
       } else {
         // The credentials are incorrect, handle the error (e.g., show an error message)
         const errorData = await response.json();
