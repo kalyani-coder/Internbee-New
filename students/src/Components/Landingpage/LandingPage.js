@@ -268,7 +268,7 @@ const LandingPage = () => {
                                 <p className="leading-relaxed">Companies hiring</p>
                             </div>
                             <div className="p-4 sm:w-1/4 w-1/2">
-                                <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">200K+</h2>
+                                <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">200+</h2>
                                 <p className="leading-relaxed">New openings everyday</p>
                             </div>
                             <div className="p-4 sm:w-1/4 w-1/2">
