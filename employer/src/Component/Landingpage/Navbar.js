@@ -73,10 +73,10 @@ const Navbar = () => {
                 </div> */}
                 <div className="flex items-center gap-3 ">
 
-                <div className="flex items-center space-x-6">
+                {/* <div className="flex items-center space-x-6">
 
                         <Link to={'/blogs'} className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
-                    </div>
+                    </div> */}
 
                     <div class="dropdown">
                         <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,7 +84,7 @@ const Navbar = () => {
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
-                                <Link to={'/login'}>
+                                <Link to="/login">
                                     <a class="dropdown-item" > Employers</a>
                                 </Link>
                             </li><hr />

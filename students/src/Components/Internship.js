@@ -336,11 +336,11 @@ const Internship = () => {
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="ml-40 card w-full m-6 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+                className="ml-40 card w-full m-6 rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
               >
-                <div className="flex-grow px-6 py-4">
+                <div className="flex-grow px-32 py-4 ">
                   {/* Internship details */}
-                  <h2 className="card-title text-2xl font-semibold text-gray-800">
+                  <h2 className="card-title text-2xl font-semibold text-gray-800 ">
                     {internship.job_Title}
                   </h2>
                   <p className="card-company text-xl text-gray-700">

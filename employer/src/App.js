@@ -29,8 +29,9 @@ import ResolveMessage from './Component/Message/ResolveMessage';
 import PolicyTermsCondition from './Component/TermsAndConditions/PolicyTermsCondition';
 import Blog from "./Component/Blogs/Blog";
 import Otp from './Component/OTP/Otp';
-
-
+import Contact from './Component/Contact/Contact';
+import AboutUsEmp from './Component/Aboutus/Aboutusemp';
+import NavbarEmp from './Component/Aboutus/NavbarEmp';
 
 function App() {
 
@@ -86,6 +87,9 @@ function App() {
           <Route path='/privacypolicy' element={<PolicyTermsCondition/>}/>
           <Route path='/blogs' element={<Blog/>}/>
           <Route path='/otp' element={<Otp/>}/>
+          <Route path='/contact'element={<Contact/>}/>
+          <Route path='/aboutusemp'element={<AboutUsEmp/>}/>
+          <Route path='/navbaremp'element={<NavbarEmp/>}/>
         </Routes>
 
       </Router>

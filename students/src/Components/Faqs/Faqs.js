@@ -1,7 +1,7 @@
 // src/components/FAQPage.js
 import React from 'react';
 import Footer from "../Footer";
-import Internal_Navbar from '../Internal_Navbar';
+import Internal_Navbar from '../InternalNavbar';
 const FAQPage = () => {
     const faqData = [
         {

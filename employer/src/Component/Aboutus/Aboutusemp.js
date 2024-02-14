@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Internal_Navbar from '../InternalNavbar'
-import Footer from '../Footer'
+import Footer from '../Footer/Footer'
+import NavbarEmp from './NavbarEmp'
 
-
-const AboutUs = () => {
+const AboutUsEmp = () => {
   return (
     <>
     
     
     <div className='abc'>
-    <Internal_Navbar/>
+    <NavbarEmp />
     </div>
     <div className='d-flex'>
+    
     <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md mr-4">
             <h2 className="text-xl font-semibold mb-4">About Intern Bee </h2>
             <p><span className='text-dark fw-bold fs-4'>Welcome to Internbee</span> – Your Gateway to Opportunities!
@@ -37,6 +37,13 @@ Discover, connect, and thrive with Internbee!</p><button className='btn btn-warn
                 Best Platform to Search Your Dream Internships!
               </p>
             </div>
+            {/* <div className="flex justify-center mt-4">
+              <Link to={'/jobs'} >
+                <button className="px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-amber-300">
+                  View Internship
+                </button>
+              </Link>
+            </div> */}
             </div>
             </div>
             <div>
@@ -47,5 +54,4 @@ Discover, connect, and thrive with Internbee!</p><button className='btn btn-warn
   )
 }
 
-export default AboutUs
-
+export default AboutUsEmp

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import Internal_Navbar from "../Internal_Navbar";
+import Internal_Navbar from "../InternalNavbar";
 import { Link } from "react-router-dom";
 
 // Define your component

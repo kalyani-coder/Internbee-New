@@ -55,8 +55,8 @@ const Footer = () => {
     ];
 
     const navbarContent = [
-        { label: 'About Us', link: '/aboutus' },
-        { label: 'Contact', link: '/aboutus' },
+        { label: 'About Us', link: '/aboutusemp' },
+        { label: 'Contact', link: '/contact'},
         { label: 'FAQ', link: '/faq' },
         { label: 'Privacy Policy', link: '/privacypolicy' },
         { label: 'Blog', link: '/blogs' },

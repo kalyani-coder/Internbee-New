@@ -187,27 +187,27 @@ const Home1 = () => {
   const yourCardArray = [
     {
       icons: FaMobile,
-      role: "Mobile development",
+      role: "Finance",
       jobs: 200,
     },
     {
       icons: FaCode,
-      role: "Web development",
+      role: "IT",
       jobs: 50,
     },
     {
       icons: FaPalette,
-      role: "Graphics Design",
+      role: "Marketing",
       jobs: 100,
     },
     {
       icons: FaUsers,
-      role: "Human Resource ",
+      role: "Sales ",
       jobs: 150,
     },
     {
       icons: FaChartBar,
-      role: "Business Development",
+      role: "HR",
       jobs: 40,
     },
   ];
@@ -275,7 +275,7 @@ const Home1 = () => {
               Applied Internship
             </Link>
           </div>
-
+          
           {/* <div className="flex items-center">
                         <input
                             type="text"
@@ -354,9 +354,11 @@ const Home1 = () => {
                 /> */}
                 <h2 className="text-xl font-bold">{company.name}</h2>
                 <p className="text-gray-600">{company.description}</p>
+                <Link to={'/internship'}>
                 <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
                   View Internship
                 </button> 
+                </Link>
               </div>
             ))}
           </Slider>
@@ -369,7 +371,7 @@ const Home1 = () => {
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
-              className="card w-3/4 m-6  rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+              className="card w-3/4 m-6  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
             >
               <div className="flex-grow px-6 py-4 pr-20 pl-20">
                 <h2 className="card-title text-2xl font-semibold text-gray-800">
@@ -379,7 +381,7 @@ const Home1 = () => {
                   {internship.company_Name}
                 </p>
 
-                <div className="flex justify-between items-center my-4 gap-3">
+                <div className="flex justify-between items-center my-4 ">
                   <div className="flex items-center ">
                     <FaCalendar className="mr-2" />
                     <p className="card-company text-xl text-gray-700">
@@ -414,7 +416,7 @@ const Home1 = () => {
                 <Link to='/internship'>
 
                   <button
-                    className="mt-4 hover:bg-yellow-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
+                    className="mt-4 hover:bg-amber-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
                   // onClick={() => handleInternshipClick(internship._id)}
                   >
                     View Internship
@@ -437,12 +439,13 @@ const Home1 = () => {
           <div className="mt-20 mb-10 text-4xl font-bold flex flex-col items-center">
             <h1 className="my-10">Explore Various Types of Internships</h1>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 ">
+           
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 hover:text-black">
             {yourCardArray.map((card) => (
+              <Link to={'/internship'}>
               <div
                 key={card.id}
-                className="h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5"
+                className="h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5 hover:text-black"
               >
                 {/* Your card content goes here */}
                 {card.icons &&
@@ -455,8 +458,10 @@ const Home1 = () => {
                   <FaGreaterThan />
                 </div>
               </div>
+              </Link>
             ))}
           </div>
+          
         </div>
       </div>
       <Footer />

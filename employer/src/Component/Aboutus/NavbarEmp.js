@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import logo from'../../Assets/Interns_bee-removebg-preview.png'
 import logo from "../../Assets/yellow_header1.png"
 
-const Navbar = () => {
+const NavbarEmp = () => {
   const navigate =  useNavigate()
   
   const emploeLoggedOut = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
 
         <ul className="flex items-center space-x-4">
           <li>
-            <a href="/home" className="text-white hover:text-black">
+            <a  className="text-white hover:text-black">
               Home
             </a>
           </li>
@@ -32,18 +32,17 @@ const Navbar = () => {
             </a>
           </li> */}
           <li>
-            <a href="/jobs" className="text-white hover:text-black">
+            <a  className="text-white hover:text-black">
               Internships
             </a>
           </li>
-          
           <li>
-  <a href="/packages" className="text-red hover:text-black text-bold">
-    &#128081; Subscribe
-  </a>
-</li>
+            <a  className="text-white hover:text-black">
+              Subscribe
+            </a>
+          </li>
           {/* Profile button with links */}
-          <li className="relative group">
+          {/* <li className="relative group">
             <button className="text-white hover:text-black flex items-center h-12 w-12">
               <svg
                 className="h-6 w-6 mr-2"
@@ -89,9 +88,9 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-          </li>
+          </li> */}
           {/* End of Profile button with links */}
-          <li>
+          {/* <li>
             <Link to={'/'}>
 
               <button onClick={emploeLoggedOut}
@@ -99,11 +98,11 @@ const Navbar = () => {
                 Log out
               </button>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarEmp;

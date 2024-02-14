@@ -48,12 +48,12 @@ const Navbar = () => {
     };
 
     const navigateToStudents = () => {
-        window.location.href = 'http://employer.internsbee.com';
+        window.location.href = 'http://employer.internsbee.com/login';
     };
 
     const navigateToStudentsregister = () => {
 
-        window.location.href = 'http://employer.internsbee.com';
+        window.location.href = 'http://employer.internsbee.com/register';
     };
 
 
@@ -74,13 +74,7 @@ const Navbar = () => {
                    
                 </div> */}
                 <div className="flex items-center space-x-6 mr-10">
-                    <div className="flex items-center space-x-6">
-
-                        <Link to="/blogs" className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-amber-300">Blogs</Link>
-                    </div>
-
-
-
+                    
                     <div class="dropdown">
                         <button class=" text-black fw-bold px-4 py-2 rounded  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
                             Login

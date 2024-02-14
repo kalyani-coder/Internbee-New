@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import {Link} from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import './LandingPage.css';
@@ -9,9 +10,8 @@ import Partners from './Partners';
 import Footer from "../Footer";
 import Carousel from './Carousel';
 import hero from "../../Assets/home-hero.svg"
-
+import Registration from '../Registration';
 const LandingPage = () => {
-
     const images = [
         'https://dummyimage.com/500x500/000/fff',
         'https://dummyimage.com/600x400/555/eee',
@@ -52,7 +52,7 @@ const LandingPage = () => {
         }
 
     };
-
+    
     return (
 
         <div className="flex flex-col h-screen">
@@ -81,13 +81,13 @@ const LandingPage = () => {
                 </h1>
 
                 {/* Popular Categories */}
-                <div className="categories flex gap-10 ml-80">
+                {/* <div className="categories flex gap-10 ml-80">
                     <p>Popular Categories:</p>
                     <ul className='flex gap-5'>
                         <li>Work from Home</li>
                         <li>Part-Time</li>
                     </ul>
-                </div>
+                </div> */}
 
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
@@ -108,9 +108,11 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Stipend: -</p>
                                             <p className="text-gray-600">Duration: 6 months</p>
                                         </div>
-
-                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                        <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                     </div>
+                                
                                 </div>
                             </div>
                         </div>
@@ -129,7 +131,9 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 6 months</p>
                                         </div>
 
-                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                        <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +154,9 @@ const LandingPage = () => {
                                                 <p className="text-gray-600">Duration: 3 months</p>
                                             </div>
 
-                                            <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                            <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -172,13 +178,13 @@ const LandingPage = () => {
                 </h1>
 
                 {/* Popular Categories */}
-                <div className="categories flex gap-10 ml-80">
+                {/* <div className="categories flex gap-10 ml-80">
                     <p>Popular Categories:</p>
                     <ul className='flex gap-5'>
                         <li>Work from Home</li>
                         <li>Part-Time</li>
                     </ul>
-                </div>
+                </div> */}
 
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
@@ -199,7 +205,9 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 3 months</p>
                                         </div>
 
-                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                        <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +217,7 @@ const LandingPage = () => {
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Software Testing Intern(Part-Time)</h2>
-                                    <p className="text-gray-700 mb-2">Company Name 2</p>
+                                    <p className="text-gray-700 mb-2">Scoopen</p>
                                     <hr className="my-2" />
 
                                     <div className="flex items-center justify-between mt-2">
@@ -219,7 +227,9 @@ const LandingPage = () => {
                                             <p className="text-gray-600">Duration: 2 months</p>
                                         </div>
 
-                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                        <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +250,9 @@ const LandingPage = () => {
                                                 <p className="text-gray-600">Duration: 6 months</p>
                                             </div>
 
-                                            <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }}>Apply Now</button>
+                                            <Link to={'/register'}>
+                                        <button className=" text-black px-4 py-2 rounded-md focus:outline-none"style={{ backgroundColor: '#FFBD59' }} >Apply Now</button>
+                                        </Link>
                                         </div>
                                     </div>
                                 </div>

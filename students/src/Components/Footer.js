@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Footer.css"
 import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
@@ -55,7 +56,7 @@ const Footer = () => {
     ];
     const navbarContent = [
         { label: 'About Us', link: '/aboutus' },
-        { label: 'Contact', link: '/aboutus' },
+        { label: 'Contact', link: '/contactus' },
         { label: 'FAQ', link: '/faqs' },
         { label: 'Privacy Policy', link: '/privacypolicy' },
         { label: 'Blog', link: '/blogs' },
@@ -66,7 +67,7 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="h-400 text-black p-6 flex justify-evenly items-center"style={{ backgroundColor: '#FFBD59' }}>
+            <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="grid gap-4 items-start space-y-4">
                     <Link to={'/'}>
                     <div className="items-center">
@@ -74,7 +75,7 @@ const Footer = () => {
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     </Link>
-                    <div className="text-2xl flex items-center gap-4 justify-center">
+                    <div className="text-2xl flex items-center gap-4 justify-center ">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
                         ))}
@@ -85,10 +86,9 @@ const Footer = () => {
                 </div>
                
 
-                <div className="flex flex-row space-x-20 ml-20 mt-20">
+                <div className="flex flex-row lg:space-x-20 mt-6 lg:mt-0 footer-content">
                     <div className="flex flex-col items-start space-y-7">
-
-                        <h2 className="text-xl font-bold">Quick Links</h2>
+                     <h2 className="text-xl font-bold">Quick Links</h2>
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
                                 <li key={index}>
@@ -98,8 +98,8 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-start space-y-7">
-                        <h2 className="text-xl font-bold">Roles</h2>
+                    <div className="flex flex-col items-start mt-0  ">
+                        <h2 className="text-xl font-bold mb-3">Roles</h2>
                         <ul className="text-xl  space-y-2">
                             {rolesContent.map((role, index) => (
                                 <li key={index}>{role}</li>
@@ -107,7 +107,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-start space-y-7">
+                    <div className="flex flex-col items-start space-y-7 mt-0">
                         <h2 className="text-xl font-bold">Locations</h2>
                         <ul className="text-xl space-y-2">
                             {locationContent.map((location, index) => (
@@ -117,8 +117,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-
-        </>
+           </>
     )
 }
 export default Footer;

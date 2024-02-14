@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { FaRegClock, FaMoneyBill, FaMapMarkerAlt } from "react-icons/fa";
 import Navbar from "../Navbar";
 import axios from "axios";
-import Internal_Navbar from "../Internal_Navbar";
+import Internal_Navbar from "../InternalNavbar";
 
 const ApplyInternship = () => {
   const { internshipId } = useParams();

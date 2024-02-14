@@ -174,9 +174,9 @@ const Login = () => {
                   </div>
                   <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                 </div>
-                {apiError && (
-                  <Alert type="danger">{apiError}</Alert>
-                )}
+                {/* {apiError && (
+                  <Alert type="">{apiError}</Alert>
+                )} */}
                 <button type="submit" className="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
                 <p className="text-sm font-light text-gray-500 dark:text-black">
                   Don’t have an account yet? <Link to="/register"> <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a></Link>

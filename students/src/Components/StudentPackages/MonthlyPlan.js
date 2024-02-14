@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 // import Footer from '../Footer/Footer';
 import Footer from './../Footer';
-import Internal_Navbar from '../Internal_Navbar';
+import Internal_Navbar from '../InternalNavbar';
 
 const MonthlyPackages = () => {
     const navigate = useNavigate();
@@ -41,11 +41,11 @@ const MonthlyPackages = () => {
                 <div className="container px-5 py-5 mx-auto">
                     <div className="flex flex-col text-center w-full mt-20">
                         <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">Monthly Packages</h1>
-                        <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p>
+                        {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p> */}
                         <div className="flex mx-auto border-2 border-amber-300 rounded overflow-hidden mt-6">
                             <Link to={'/freeplan'}>
                                 <button
-                                    className={`py-1 px-4 bg-amber-300 text-black focus:outline-none`}
+                                    className={`py-1 px-4 text-black focus:outline-none`}
                                 >
                                     Freemium
                                 </button>
@@ -55,7 +55,7 @@ const MonthlyPackages = () => {
                                     className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
                                     title="This functionality is under development"
                                 >
-                                    Monthly
+                                    Premium
                                 </button>
                             </Link>
                         </div>
@@ -81,15 +81,16 @@ const MonthlyPackages = () => {
                                                 </span>{monthlyPackage.searches} Searches
                                             </p>
 
-                                            <p className="flex items-center text-gray-600 mb-2">
-                                                <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                            <p className="flex items-center text-black mb-2">
+                                                <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-amber-300 text-white rounded-full flex-shrink-0">
                                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                                                         <path d="M20 6L9 17l-5-5"></path>
                                                     </svg>
                                                 </span>{monthlyPackage.opportunities} Opportunities
                                             </p>
 
-                                            <p className="flex items-center text-gray-600 mb-2">                   <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                                            <p className="flex items-center text-black mb-2">
+                                            <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-black text-white rounded-full flex-shrink-0">
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                                                     <path d="M20 6L9 17l-5-5"></path>
                                                 </svg>
@@ -97,8 +98,8 @@ const MonthlyPackages = () => {
                                             </p>
 
 
-                                            <p className="flex items-center text-gray-600 mb-6">
-                                                <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
+                                            <p className="flex items-center text-black mb-6">
+                                                <span className="w-4 h-4 mr-2 inline-flex items-center justify-center  text-white rounded-full flex-shrink-0"style={{ backgroundColor: '#FFBD59' }}>                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" className="w-3 h-3" viewBox="0 0 24 24">
                                                     <path d="M20 6L9 17l-5-5"></path>
                                                 </svg>
                                                 </span>{monthlyPackage.dedicated_crm}

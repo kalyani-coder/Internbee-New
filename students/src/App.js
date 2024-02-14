@@ -27,6 +27,10 @@ import SubscribePackage from "./Components/StudentPackages/SubscribePackage";
 import EnterOtpPage from "./Components/EnterOtpPage/EnterOtpPage";
 import FAQPage from "./Components/Faqs/Faqs";
 import AboutUs from "./Components/AboutUs/AboutUs";
+import ContactUs from "./Components/Contact/Contactus";
+import Navbar from "./Components/Navbar";
+import Internal_Navbar from "./Components/InternalNavbar";
+
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -67,7 +71,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/internship" element={<Internship />} />
         <Route path="/footer" element={<Footer />} />
-        {/* <Route path="/companies" element={<Companies />} /> */}
+        <Route path="/nav" element={<Internal_Navbar />} />
         <Route path="/viewprofile" element={<ViewProfile />} />
         <Route path="/uploadimage" element={<UploadImagePdf />} />
         <Route
@@ -82,6 +86,7 @@ function App() {
         <Route path="/privacypolicy" element={<PolicyTermsCondition />} />
         <Route path="/faqs" element={<FAQPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs/>}/>
       </Routes>
     </Router>
 

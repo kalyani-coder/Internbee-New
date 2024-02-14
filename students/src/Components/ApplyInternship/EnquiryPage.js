@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Internal_Navbar from "../Internal_Navbar";
+import Internal_Navbar from "../InternalNavbar";
 
 function EnquiryPage() {
   const [enquiries, setEnquiries] = useState([]);

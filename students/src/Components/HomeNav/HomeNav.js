@@ -113,7 +113,7 @@ const HomeNav = () => {
                         <Link to="/home" className="text-2xl font-bold focus:text-amber-300 focus:border-amber-300 focus:border-b-4 hover:text-amber-300">Home</Link>
                         {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
                         <Link to="/internship" className="text-2xl font-bold focus:text-amber-300 focus:border-yellow-300 focus:border-b-4 hover:text-amber-300">Internships</Link>
-                        <Link to="/blogs" className="text-2xl font-bold focus:text-amber-300 focus:border-amber-300 focus:border-b-4 hover:text-amber-300">Blogs</Link>
+                        {/* <Link to="/blogs" className="text-2xl font-bold focus:text-amber-300 focus:border-amber-300 focus:border-b-4 hover:text-amber-300">Blogs</Link> */}
                     </div>
 
 

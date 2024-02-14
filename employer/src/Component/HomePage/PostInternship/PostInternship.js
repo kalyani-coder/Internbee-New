@@ -202,14 +202,14 @@ const PostInternship = () => {
           stipend: "",
         });
       } else {
-        setAlert({ type: "danger", message: "Failed to submit form data" });
+        setAlert({ type: "", message: "Failed to submit form data" });
         setPosting(false);
         // Handle errors, e.g., show an error message to the user
       }
     } catch (error) {
       console.error("Error during form submission:", error);
       setAlert({
-        type: "danger",
+        type: "",
         message: "Error during form submission. Please try again later.",
       });
       setPosting(false);

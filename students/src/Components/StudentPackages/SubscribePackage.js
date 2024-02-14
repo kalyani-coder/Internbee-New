@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import Internal_Navbar from '../Internal_Navbar';
+import Internal_Navbar from '../InternalNavbar';
 
 
 const SubscribePackage = () => {
