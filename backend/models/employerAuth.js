@@ -48,6 +48,10 @@ const EmpAuthSchema = new mongoose.Schema({
     type : String,
     default : ""
   },
+  signupotp : {
+    type : String,
+    default : ""
+  },
   verified: {
     type: Boolean,
     default: false, 

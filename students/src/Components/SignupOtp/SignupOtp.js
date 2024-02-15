@@ -1,81 +1,66 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Otp = () => {
+const SignupOtp = () => {
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
-  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Fetch employer data from local storage
+      // Fetch student data from local storage
       const userId = localStorage.getItem('userId');
-  
-      // Fetch employer data from the API
-      const response = await fetch(`https://backend.internsbee.com/api/employer/${userId}`);
-      const employerData = await response.json();
-  
+
+      // Fetch student data from the API
+      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const studentData = await response.json();
+
       // Check if the entered OTP matches the OTP stored in the API
-      if (employerData.otp && employerData.otp.toString() === otp) {
-        // Update verified status to true and reset OTP
-        const patchResponse = await fetch(`https://backend.internsbee.com/api/employer/${userId}`, {
-          method: 'PATCH',
+      if (studentData.signupotp && studentData.signupotp.toString() === otp) {
+        // Send thanking email
+        const thankingResponse = await fetch('https://backend.internsbee.com/api/auth/registrationemailstudent', {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            verified: true,
-            
+            email: studentData.email,
+            fullName: studentData.fullName,
           }),
         });
-        if (patchResponse.ok) {
+        if (thankingResponse.ok) {
           setSuccessMessage('Verification successful ✔');
           setTimeout(() => {
-            navigate('/privacypolicy'); // Navigate to the privacy policy page on successful verification
-          }, 3000);
+            navigate('/login'); 
+          }, 2000);
         } else {
-          setError('Something went wrong while updating the verified status');
+          setError('Something went wrong while sending the thanking email');
         }
       } else {
-        // Update verified status to false
-        const patchResponse = await fetch(`https://backend.internsbee.com/api/employer/${userId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            verified: false,
-          }),
-        });
-        if (!patchResponse.ok) {
-          setError('Something went wrong while updating the verified status');
-        }
         setError('Invalid OTP');
-        setTimeout(() => {
-          setError(null);
-        }, 2000);
       }
     } catch (error) {
       console.error('Error verifying OTP:', error);
       setError('Something went wrong');
-      setTimeout(() => {
-        setError(null);
-      }, 2000);
     }
   };
-  
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen border-3">
-        <div className="w-full max-w-md">
-          <div className="w-full bg-white rounded-lg shadow dark:border dark:border-black">
-            <div className="p-6 space-y-4">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-black">
-                Enter Your OTP
+      <div className="">
+        <div className="flex justify-center items-center mt-10"></div>
+
+        <div className="flex items-center justify-between px-6 py-8 mr-40 ">
+          <img src="./design.jpg" alt="design" className="" />
+
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
+                Verify your email account
               </h1>
+
               <form onSubmit={handleSubmit} className="space-y-4">
                 {successMessage && (
                   <div style={{ color: 'green' }}>{successMessage}</div>
@@ -96,7 +81,7 @@ const Otp = () => {
                   type="submit"
                   className="w-full text-black font-bold bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 text-center"
                 >
-                  Submit
+                  Verify
                 </button>
               </form>
             </div>
@@ -107,4 +92,4 @@ const Otp = () => {
   );
 };
 
-export default Otp;
+export default SignupOtp;

@@ -49,7 +49,7 @@ const Registration = () => {
         localStorage.setItem('userId', result.userId);
         localStorage.setItem('email', postData.email);
         // Reset form and show success message
-        navigate("/login");
+        navigate("/signupotp");
       } else {
         const errorResponse = await response.json();
         if (response.status === 409) {
@@ -87,26 +87,17 @@ const Registration = () => {
 
 
     return (
-        <div className="">
-            <div className="flex justify-center items-center mt-10">
-                <h1 className="text-4xl font-bold">Register and Apply for the Internship</h1>
-            </div>
-
-            <div className="h-screen w-full flex items-center justify-between">
-                <img src="./design.jpg" alt="design" className="" />
-
-                <div
-                    className=" p-8 rounded shadow-md w-full bg-slate-50 mr-10"
-                    style={{ width: "40rem" }}
-                >
-                        {/* <Alert type="danger" message={errors.email && errors.email.message} />
-            <Alert type="success" message="Registration successful!" /> */}
-
-                    <h1 className="text-2xl font-semibold mb-4 text-center">
-                        Student Registration
-                    </h1>
-
-                    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
+        <div class="flex flex-col items-center justify-center mt-10">
+            <h1 class="text-4xl font-bold text-center">Register and Apply for the Internship</h1>
+        </div>
+    
+        <div class="flex flex-col lg:flex-row items-center justify-between mt-8">
+            <img src="./design.jpg" alt="design" class="w-full lg:w-1/2 xl:w-2/3" />
+    
+            <div class="p-8 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-1/3 mt-8 lg:mt-0">
+                <h1 class="text-2xl font-semibold mb-4 text-center">Student Registration</h1>
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         {/* Full Name Input */}
                         <div className="flex flex-col mb-4">
                             <div className="flex items-center">
@@ -152,13 +143,13 @@ const Registration = () => {
                                         style={{ width: "100%" }}
                                     />
                                 </div>
-                                <button
+                                {/* <button
                                     type="button"
                                     onClick={sendEmailOTP}
                                     className="px-2 ml-2 bg-black text-white py-2 rounded hover:bg-black"
                                 >
                                     Send OTP
-                                </button>
+                                </button> */}
                             </div>
                            
                             {errors && errors.email && <p className="text-red-500">{errors.email.message}</p>}
@@ -189,13 +180,13 @@ const Registration = () => {
                                         style={{ width: "100%" }}
                                     />
                                 </div>
-                                <button
+                                {/* <button
                                     type="button"
                                     onClick={sendMobileOTP}
                                     className="px-2 ml-2 bg-black text-white py-2 rounded hover:bg-black"
                                 >
                                     Send OTP
-                                </button>
+                                </button> */}
                             </div>
                         
                       
@@ -274,9 +265,11 @@ const Registration = () => {
                             Already have an account ?<Link to="/login"> <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Log in </a></Link>
                         </p>
                     </form>
-                </div>
             </div>
         </div>
+    </div>
+    
+    
     );
 };
 

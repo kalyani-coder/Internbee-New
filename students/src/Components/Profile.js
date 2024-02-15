@@ -282,7 +282,7 @@ const Profile = () => {
             //  https://internbee-backend-apis.onrender.com/api/studentsdetails
 
 
-            fetch('https://internbee-backend-apis.onrender.com/api/studentsdetails', {
+            fetch('https://backend.internsbee.com/api/studentsdetails', {
                 method: 'POST',
                 body: formData,
             })

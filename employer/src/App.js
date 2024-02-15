@@ -32,7 +32,7 @@ import Otp from './Component/OTP/Otp';
 import Contact from './Component/Contact/Contact';
 import AboutUsEmp from './Component/Aboutus/Aboutusemp';
 import NavbarEmp from './Component/Aboutus/NavbarEmp';
-
+import SignupOtp from './Component/SignupOtp/SignupOtp';
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);
@@ -90,6 +90,7 @@ function App() {
           <Route path='/contact'element={<Contact/>}/>
           <Route path='/aboutusemp'element={<AboutUsEmp/>}/>
           <Route path='/navbaremp'element={<NavbarEmp/>}/>
+          <Route path='/signupotp'element={<SignupOtp/>}/>
         </Routes>
 
       </Router>

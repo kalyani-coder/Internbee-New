@@ -23,7 +23,7 @@ const SubscribePackage = () => {
       const studentId = localStorage.getItem('userId');
   
       // Step 2: Construct the API endpoint
-      const apiUrl = `https://internbee-backend-apis.onrender.com/api/auth/${studentId}`;
+      const apiUrl = `https://backend.internsbee.com/api/auth/${studentId}`;
   
       // Step 3: Construct the data object
       const dataToUpdate = {

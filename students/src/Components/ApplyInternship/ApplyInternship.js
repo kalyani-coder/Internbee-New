@@ -15,7 +15,7 @@ const ApplyInternship = () => {
     const fetchInternshipData = async () => {
       try {
         const response = await fetch(
-          `https://internbee-backend-apis.onrender.com/api/postinternship/${internshipId}`
+          `https://backend.internsbee.com/api/postinternship/${internshipId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok.");
@@ -44,7 +44,7 @@ const ApplyInternship = () => {
       const userId = localStorage.getItem("userId");
   
       // Fetch user data from the API
-      const userResponse = await axios.get(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`);
+      const userResponse = await axios.get(`https://backend.internsbee.com/api/auth/${userId}`);
       const userData = userResponse.data;
   
       console.log("User Data:", userData); // Log user data
@@ -90,7 +90,7 @@ const ApplyInternship = () => {
       };
   
       const response = await axios.post(
-        "https://internbee-backend-apis.onrender.com/api/applyinternship/",
+        "https://backend.internsbee.com/api/applyinternship/",
         formData
       );
   
@@ -106,7 +106,7 @@ const ApplyInternship = () => {
         };
   
         // Update user details with the incremented opportunities_Counter
-        await axios.patch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, updatedUserData);
+        await axios.patch(`https://backend.internsbee.com/api/auth/${userId}`, updatedUserData);
   
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission

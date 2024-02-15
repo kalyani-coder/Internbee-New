@@ -61,7 +61,7 @@ const SearchCVPage = () => {
   try {
     // Fetch employer details
     const employerId = localStorage.getItem("userId");
-    const employerDetailsApiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${employerId}`;
+    const employerDetailsApiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
     const employerResponse = await axios.get(employerDetailsApiUrl);
     const employerDetails = employerResponse.data;
 
@@ -85,7 +85,7 @@ const SearchCVPage = () => {
     document.body.removeChild(link);
 
     // Update employer data
-    const response = await axios.patch(`https://internbee-backend-apis.onrender.com/api/employer/${employerId}`, {
+    const response = await axios.patch(`https://backend.internsbee.com/api/employer/${employerId}`, {
       resumeDownloadCounter: resumeDownloadCounter + 1,
       searches: remainingSearches - 1,
     });

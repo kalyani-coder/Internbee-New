@@ -23,7 +23,7 @@ const GetPackageAnually = () => {
     const handleGetPackage = async () => {
         try {
             // Send a POST request to the /api/packages endpoint with the entered values
-            const response = await fetch('https://internbee-backend-apis.onrender.com/api/packages', {
+            const response = await fetch('https://backend.internsbee.com/api/packages', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

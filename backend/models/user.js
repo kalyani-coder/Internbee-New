@@ -23,11 +23,11 @@ const userSchema = new mongoose.Schema({
 
   },
  
-  otp : {
+  signupotp : {
     type : String,
     default : ""
   },
-  verified: { type: Boolean, default: false },
+  verified: { type: Boolean, default: false},
  
  freePackage : {
   package_type: {

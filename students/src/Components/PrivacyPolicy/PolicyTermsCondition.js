@@ -183,7 +183,7 @@ const PolicyTermsCondition = () => {
                  <h1 className='privacy-heading-middle'>Jurisdiction</h1>
                  All license agreements, use, or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to the exclusive jurisdiction of courts in Maharashtra.
 
-                {/* all contente here  */}
+                {/* all contente here  */}<br></br>
                 <div className="button-container">
                   <button className="view-less-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }}  onClick={toggleShowMore}>
                     View Less
@@ -213,7 +213,7 @@ const PolicyTermsCondition = () => {
                 (f) Accept all risks of unauthorized access to the Registration Data and any other information you provide to Interns Bee.
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
-                {/* show first two paragraphs */}
+                {/* show first two paragraphs */}<br></br>
                 <button className="view-more-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore}>
                   View More
                 </button>
@@ -292,7 +292,7 @@ const PolicyTermsCondition = () => {
                   Changes to this Privacy Policy:Changes to this policy will be communicated through
                   prominent announcements on our Services or by email. Refer to this page for the latest
                   Privacy Policy
-                  {/* ... */}
+                  {/* ... */}<br></br>
                   <div className="button-container">
                     <button className="view-less-button fw-bold text-white px-4 py-2 rounded" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                       View Less
@@ -327,7 +327,7 @@ const PolicyTermsCondition = () => {
                   3. Information About Your Contacts: When you share content on Interns Bee using features
                   like Google+ share or SMS share, we may collect and process information about the
                   contacts associated with your Google account.
-                  {/* ... */}
+                  {/* ... */}<br></br>
                   <button className="view-more-button fw-bold text-white px-4 py-2 rounded " style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                     View More
                   </button>

@@ -17,7 +17,7 @@ const EmployerSection = () => {
   const fetchData = () => {
     const userId = localStorage.getItem("userId");
 
-    fetch(`https://internbee-backend-apis.onrender.com/api/postinternship/userId/${userId}`)
+    fetch(`https://backend.internsbee.com/api/postinternship/userId/${userId}`)
       .then((response) => response.json())
       .then((data) => {
         // Sort jobs array based on posting date in descending order

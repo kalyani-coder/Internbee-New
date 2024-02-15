@@ -50,9 +50,11 @@ const Registration = () => {
       const responseData = await response.json();
 
       if (response.ok) {
+        localStorage.setItem("userId", responseData.userId);
+        localStorage.setItem("userEmail", formData.email);
         console.log("Registration successful");
         // alert('Successful Signin');
-        navigate('/login')
+        navigate('/signupotp')
       } else if (response.status === 409) {
         // Handle conflicts based on the error messages from the backend
         const { error } = responseData;
@@ -188,7 +190,7 @@ const Registration = () => {
             Already have an account ?{" "}
             <Link to={"/login"}>
               <a
-                href="#"
+                
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
               >
                 Log in

@@ -14,7 +14,7 @@ const ViewProfile = () => {
 
         if (userId) {
             // Fetch user details from the API based on the user ID
-            axios.get(`https://internbee-backend-apis.onrender.com/api/studentsdetails/userId/${userId}`)
+            axios.get(`https://backend.internsbee.com/api/studentsdetails/userId/${userId}`)
                 .then(response => {
                     setUserDetails(response.data);
                 })

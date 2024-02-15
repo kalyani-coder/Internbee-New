@@ -45,15 +45,15 @@ const MonthlyPackages = () => {
                 <button
                   className={`py-1 px-4 bg-amber-300 text-black focus:outline-none`}
                 >
-                  Monthly
+                  Monthly/Pro
                 </button>
               </Link>
-              <Link to={'/packages'}>
+              <Link to={'/anuallypackage'}>
   <button
     className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
     title="This functionality is under development"
   >
-    Monthly
+    Monthly/Business
   </button>
 </Link>
             </div>

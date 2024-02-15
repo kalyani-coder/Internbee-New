@@ -19,7 +19,7 @@ const MonthlyPackages = () => {
 
     try {
         // Fetch the user data first
-        const userResponse = await fetch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`);
+        const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
         const userData = await userResponse.json();
 
         // Update the freePackage object
@@ -36,7 +36,7 @@ const MonthlyPackages = () => {
         };
 
         // Perform the patch request to update user's data
-        const response = await fetch(`https://internbee-backend-apis.onrender.com/api/auth/${userId}`, {
+        const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const MonthlyPackages = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://internbee-backend-apis.onrender.com/api/students/students-free-package');
+                const response = await fetch('https://backend.internsbee.com/api/students/students-free-package');
                 const data = await response.json();
                 setMonthlyPackage(data[0]);
             } catch (error) {

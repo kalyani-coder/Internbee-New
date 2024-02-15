@@ -10,7 +10,7 @@ const Companies = () => {
     async function fetchCompanies() {
       try {
         const response = await fetch(
-          "https://internbee-backend-apis.onrender.com/api/getallemployer/"
+          "https://backend.internsbee.com/api/getallemployer/"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

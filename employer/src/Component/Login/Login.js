@@ -10,16 +10,18 @@ const Login = () => {
     setError,
     formState: { errors },
   } = useForm();
-  useEffect(() => {
-    const storedData = localStorage.getItem("userId");
-    const email = localStorage.getItem("email");
-    const empName = localStorage.getItem("empName");
-    const number = localStorage.getItem("number");
 
-    if (storedData && email && empName && number) {
-      navigate("/Home");
-    }
-  }, [navigate]);
+  // direct navigate to home page if data save in localstorage
+  // useEffect(() => {
+  //   const storedData = localStorage.getItem("userId");
+  //   const email = localStorage.getItem("email");
+  //   const empName = localStorage.getItem("empName");
+  //   const number = localStorage.getItem("number");
+
+  //   if (storedData && email && empName && number) {
+  //     navigate("/Home");
+  //   }
+  // }, [navigate]);
 
 
   const onSubmit = async (data) => {
@@ -42,7 +44,7 @@ const Login = () => {
 
         // navigate(`/view-profile-page`);
 
-        navigate("/otp");
+        navigate("/home");
       } else {
         if (response.status === 404) {
           setError("email", {

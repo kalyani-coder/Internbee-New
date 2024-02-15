@@ -23,7 +23,7 @@ const AppliedInternship = () => {
     // Make a GET request to the API endpoint with the intern ID as a query parameter
     axios
       .get(
-        `https://internbee-backend-apis.onrender.com/api/applyInternship/InternId/${internId}`
+        `https://backend.internsbee.com/api/applyInternship/InternId/${internId}`
       )
       .then((response) => {
         // Update state with the fetched data
@@ -68,7 +68,7 @@ const AppliedInternship = () => {
         StudentPhone: internship.InternNumber,
       };
       const res = await axios.post(
-        "https://internbee-backend-apis.onrender.com/api/enquiry/",
+        "https://backend.internsbee.com/api/enquiry/",
         enquiryData
       );
       console.log(res.data);

@@ -120,9 +120,9 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
 
 
     if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
-      const publicImageUrl = `https://backend.internsbee.com/public/uploads/${req.files.image[0].filename}`;
-      const publicPdfUrl = `https://backend.internsbee.com/public/uploads/${req.files.pdf[0].filename}`;
-      const publicPdfUrl2 = `https://backend.internsbee.com/public/uploads/${req.files.pdf2[0].filename}`;
+      const publicImageUrl = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.image[0].filename}`;
+      const publicPdfUrl = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.pdf[0].filename}`;
+      const publicPdfUrl2 = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.pdf2[0].filename}`;
 
       const fileData = new StudentDetailsModel({
         filename: req.files.image[0].originalname, // Assuming image is required for every entry

@@ -30,6 +30,7 @@ import AboutUs from "./Components/AboutUs/AboutUs";
 import ContactUs from "./Components/Contact/Contactus";
 import Navbar from "./Components/Navbar";
 import Internal_Navbar from "./Components/InternalNavbar";
+import SignupOtp from "./Components/SignupOtp/SignupOtp";
 
 function App() {
   // useEffect(() => {
@@ -62,7 +63,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/enterotp" element={<EnterOtpPage/>}/>
+        <Route path="/enterotp" element={<EnterOtpPage />} />
 
         <Route path="/home" element={<Home1 />} />
         <Route path="/blogs" element={<Blogs />} />
@@ -86,7 +87,8 @@ function App() {
         <Route path="/privacypolicy" element={<PolicyTermsCondition />} />
         <Route path="/faqs" element={<FAQPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/contactus" element={<ContactUs/>}/>
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/signupotp" element={<SignupOtp />} />
       </Routes>
     </Router>
 
