@@ -422,7 +422,7 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
 
                     <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
+                        <label htmlFor="firstName">First Name<span className="text-red-500">*</span></label>
                         <input
                             className="mt-1 p-2 w-full border rounded-md text-large"
                             type="text"
@@ -436,7 +436,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
+                        <label htmlFor="lastName">Last Name<span className="text-red-500">*</span></label>
                         <input
                             className="mt-1 p-2 w-full border rounded-md text-large"
                             type="text"
@@ -450,7 +450,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email<span className="text-red-500">*</span></label>
                         <input
                             className="mt-1 p-2 w-full border rounded-md text-large"
                             type="email"
@@ -463,7 +463,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="birthdate">Birthdate</label>
+                        <label htmlFor="birthdate">Birthdate<span className="text-red-500">*</span></label>
                         <input
                             className="mt-1 p-2 w-full border rounded-md text-large"
                             type="text"
@@ -477,7 +477,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="permanentaddress" className="block text-large font-medium">
-                            Permanent Address
+                            Permanent Address<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -492,7 +492,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="city" className="block text-large font-medium">City</label>
+                        <label htmlFor="city" className="block text-large font-medium">City<span className="text-red-500">*</span></label>
                         <input
                             type="text"
                             className="mt-1 p-2 w-full border rounded-md text-large"
@@ -508,7 +508,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="district" className="block text-large font-medium">District</label>
+                        <label htmlFor="district" className="block text-large font-medium">District<span className="text-red-500">*</span></label>
                         <input
                             type="text"
                             className="mt-1 p-2 w-full border rounded-md text-large"
@@ -523,7 +523,7 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="country" className="block text-large font-medium">Country</label>
+                        <label htmlFor="country" className="block text-large font-medium">Country<span className="text-red-500">*</span></label>
                         <input
                             type="text"
                             className="mt-1 p-2 w-full border rounded-md text-large"
@@ -539,7 +539,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="current_address" className="block text-large font-medium">
-                            Current Address
+                            Current Address<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -555,7 +555,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="current_city" className="block text-large font-medium">
-                            Current City
+                            Current City<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -571,7 +571,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="currentdistrict" className="block text-large font-medium">
-                            Current District
+                            Current District<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -587,7 +587,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="currentcountry" className="block text-large font-medium">
-                            Current Country
+                            Current Country<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -603,7 +603,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="contact" className="block text-large font-medium">
-                            Contact Number 
+                            Contact Number <span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -629,7 +629,7 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                     <div className="form-group">
                         <label htmlFor="education" className="block text-large font-medium">
-                            Education
+                            Education<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -643,7 +643,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="institutename" className="block text-large font-medium">
-                            Collage Name
+                            Collage Name<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -659,7 +659,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="stream" className="block text-large font-medium">
-                            Stream
+                            Stream<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -675,7 +675,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="passoutyear" className="block text-large font-medium">
-                            Pass-out Year
+                            Pass-out Year<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -690,7 +690,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="percentage" className="block text-large font-medium">
-                            Percentage / CGPA
+                            Percentage / CGPA<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -715,7 +715,7 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                     <div className="form-group">
                         <label htmlFor="education_12" className="block text-large font-medium">
-                            Education 12th
+                            Education 12th<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -729,7 +729,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="instituteName_12" className="block text-large font-medium">
-                            School/Institute Name
+                            School/Institute Name<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -745,7 +745,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="stream_12" className="block text-large font-medium">
-                            Stream
+                            Stream<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -761,7 +761,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="passOutYear_12" className="block text-large font-medium">
-                            Pass-out Year
+                            Pass-out Year<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -776,7 +776,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="percentage_12" className="block text-large font-medium">
-                            Percentage
+                            Percentage<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -797,7 +797,7 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                     <div className="form-group">
                         <label htmlFor="education_10" className="block text-large font-medium">
-                            Education 10th
+                            Education 10th<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -811,7 +811,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="instituteName_10" className="block text-large font-medium">
-                            School/Institute Name
+                            School/Institute Name<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -827,7 +827,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="stream_10" className="block text-large font-medium">
-                            Stream
+                            Stream<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -843,7 +843,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="passOutYear_10" className="block text-large font-medium">
-                            Pass-out Year
+                            Pass-out Year<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -858,7 +858,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="percentage_10" className="block text-large font-medium">
-                            Percentage
+                            Percentage<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -885,7 +885,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="keyskills" className="block text-large font-medium">
-                            Key Skills
+                            Key Skills<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -899,7 +899,7 @@ const Profile = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="languages" className="block text-xl font-medium">
-                            Languages
+                            Languages<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -914,7 +914,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="experience" className="block text-xl font-medium">
-                            Experience(if any)
+                            Experience(if any)<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -930,7 +930,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="salaryexpectations" className="block text-xl font-medium">
-                            Salary Expectations
+                            Salary Expectations<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -945,7 +945,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="projectname" className="block text-xl font-medium">
-                            Project Name
+                            Project Name<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -959,7 +959,7 @@ const Profile = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="projectsummary" className="block text-xl font-medium">
-                            Project Summary
+                            Project Summary<span className="text-red-500">*</span>
                         </label>
                         <textarea
                             id="projectsummary"
@@ -989,7 +989,7 @@ const Profile = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div className="form-group">
                         <label htmlFor="resume" className="block text-xl font-medium">
-                            Resume
+                            Resume<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="file"
@@ -1001,12 +1001,12 @@ const Profile = () => {
                     </div>
 
                     <div className="form-group col-span-3 md:col-span-1 mt-10">
-                        <span className="block text-xl font-large">OR</span>
+                        {/* <span className="block text-xl font-large">OR</span> */}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="certification" className="block text-xl font-medium mt-10">
-                            Certification
+                            Certification<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="file"
@@ -1019,7 +1019,7 @@ const Profile = () => {
 
                     <div className="form-group">
                         <label htmlFor="profilePicture" className="block text-xl font-medium mt-10">
-                            Profile Picture
+                            Profile Picture<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="file"

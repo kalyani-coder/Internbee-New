@@ -10,7 +10,7 @@ const Alert = ({ type, children }) => {
       alertClasses = "bg-green-500 text-white";
       alertTextColor = "text-green-700";
       break;
-    case "danger":
+    case "error":
       alertClasses = "bg-red-500 text-white";
       alertTextColor = "text-red-700";
       break;
@@ -25,8 +25,8 @@ const Alert = ({ type, children }) => {
       <div className={`${alertClasses} font-bold rounded-t px-4 py-2`}>
         {type === "success"
           ? "Success"
-          : type === "danger"
-          ? "Danger"
+          : type === "erroe"
+          ? "Error"
           : "Alert"}
       </div>
       <div

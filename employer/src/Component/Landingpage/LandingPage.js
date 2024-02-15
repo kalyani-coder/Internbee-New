@@ -209,7 +209,7 @@ const LandingPage = () => {
 
                                 <div className="p-4">
                                     <h2 className="text-xl font-semibold mb-2">Software Testing Intern(Part-Time)</h2>
-                                    <p className="text-gray-700 mb-2">Company Name 2</p>
+                                    <p className="text-gray-700 mb-2">Scoopen</p>
                                     <hr className="my-2" />
 
                                     <div className="flex items-center justify-between mt-2">

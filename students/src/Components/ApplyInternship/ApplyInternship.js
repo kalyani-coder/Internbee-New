@@ -190,7 +190,7 @@ const ApplyInternship = () => {
 
               <button
                 onClick={() => setShowConfirmation(true)}
-                className="bg-amber-300 text-black p-2 rounded-lg"
+                className="bg-amber-300 text-black p-2 rounded-lg w-24"
               >
                 Apply Now
               </button>

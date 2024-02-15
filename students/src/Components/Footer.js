@@ -86,7 +86,7 @@ const Footer = () => {
                 </div>
                
 
-                <div className="flex flex-row  ml-20 mt-20 footer-content">
+                <div className="flex flex-row gap-14  ml-20  footer-content">
                     <div className="flex flex-col items-start space-y-7">
 
                         <h2 className="text-xl font-bold">Quick Links</h2>
@@ -99,7 +99,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-start mt-10  ">
+                    <div className="flex flex-col items-start  ">
                         <h2 className="text-xl font-bold mb-3">Roles</h2>
                         <ul className="text-xl  space-y-2">
                             {rolesContent.map((role, index) => (
@@ -108,7 +108,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-start space-y-7 mt-10">
+                    <div className="flex flex-col items-start space-y-7 ">
                         <h2 className="text-xl font-bold">Locations</h2>
                         <ul className="text-xl space-y-2">
                             {locationContent.map((location, index) => (

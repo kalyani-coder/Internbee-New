@@ -246,7 +246,7 @@ const Internship = () => {
 
       {/* Filters Section */}
       <div className="flex">
-        <div className="w-1/4 bg-gray-100 p-6 ml-10 h-1/3">
+        <div className="w-3/4 bg-gray-100 p-6 ml-10 h-1/3">
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -330,13 +330,13 @@ const Internship = () => {
         </div>
 
         {/* Display Internships Section */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ml-39">
           {/* Map through the filtered internships (or all internships if not filtered) */}
           {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="ml-40 card w-full m-6 rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
+                className="ml-40 card w-98 m-6 rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
               >
                 <div className="flex-grow px-32 py-4 ">
                   {/* Internship details */}

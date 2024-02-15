@@ -74,7 +74,7 @@ const PostInternship = () => {
     } else {
       console.error("Error fetching employer details from localStorage");
       setAlert({
-        type: "danger",
+        type: "error",
         message: "Error fetching employer details from localStorage",
       });
     }
@@ -88,7 +88,7 @@ const PostInternship = () => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
       setAlert({
-        type: "danger",
+        type: "error",
         message: "User not logged in. Please log in to post an internship.",
       });
       return;
@@ -108,7 +108,7 @@ const PostInternship = () => {
       if (employerDetails.paymentStatus === "") {
         console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
-          type: "danger",
+          type: "error",
           message: "Payment not accepted. Please complete the payment first.",
         });
         return; // Stop the submission if payment is not accepted
@@ -118,7 +118,7 @@ const PostInternship = () => {
       if (employerDetails.paymentStatus !== "Accepted") {
         console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
-          type: "",
+          type: "error",
           message: "Payment not accepted. Please complete the payment first.",
         });
         return; // Stop the submission if paymentStatus is not "Accepted"
@@ -128,7 +128,7 @@ const PostInternship = () => {
       if (employerDetails.internshipEnquiry <= 0) {
         console.log('Employer has reached the internship posting limit');
         setAlert({
-          type: "",
+          type: "error",
           message: "Employer has reached the internship posting limit",
         });
         return;
@@ -202,14 +202,14 @@ const PostInternship = () => {
           stipend: "",
         });
       } else {
-        setAlert({ type: "", message: "Failed to submit form data" });
+        setAlert({ type: "error", message: "Failed to submit form data" });
         setPosting(false);
         // Handle errors, e.g., show an error message to the user
       }
     } catch (error) {
       console.error("Error during form submission:", error);
       setAlert({
-        type: "",
+        type: "error",
         message: "Error during form submission. Please try again later.",
       });
       setPosting(false);

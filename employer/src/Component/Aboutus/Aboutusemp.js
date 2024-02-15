@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer'
-import NavbarEmp from './NavbarEmp'
+import Navbar from '../Navbar/Navbar'
+
 
 const AboutUsEmp = () => {
   return (
@@ -9,7 +10,7 @@ const AboutUsEmp = () => {
     
     
     <div className='abc'>
-    <NavbarEmp />
+    <Navbar/>
     </div>
     <div className='d-flex'>
     
