@@ -375,6 +375,12 @@ const Internship = () => {
                   <p className="card-description text-base text-gray-700 my-4">
                     Internship Type : {internship.job_Type}
                   </p>
+                  <div className="flex items-center">
+                      <FaRegClock className="mr-2" />
+                      <p className="card-duration text-xl text-gray-700">
+                        Duration : {internship.position}
+                      </p>
+                    </div>
                   <p className="card-description text-base text-gray-700 my-4">
                     {internship.job_Description}
                   </p>

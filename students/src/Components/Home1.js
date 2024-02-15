@@ -408,10 +408,12 @@ const Home1 = () => {
                     </p>
                   </div>
                 </div>
-
+                <div className="flex items-center">
+                <FaRegClock className="mr-2" />
                 <p className="card-description text-base text-gray-700 my-4">
-                  {internship.job_Description}
+                  {internship.position}
                 </p>
+                </div>
                 {/* Additional details here */}
                 <Link to='/internship'>
 

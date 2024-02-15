@@ -118,7 +118,7 @@ const PostInternship = () => {
       if (employerDetails.paymentStatus !== "Accepted") {
         console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
-          type: "danger",
+          type: "",
           message: "Payment not accepted. Please complete the payment first.",
         });
         return; // Stop the submission if paymentStatus is not "Accepted"
@@ -128,7 +128,7 @@ const PostInternship = () => {
       if (employerDetails.internshipEnquiry <= 0) {
         console.log('Employer has reached the internship posting limit');
         setAlert({
-          type: "danger",
+          type: "",
           message: "Employer has reached the internship posting limit",
         });
         return;
@@ -394,7 +394,7 @@ const PostInternship = () => {
                 htmlFor="position"
                 className="block text-sm font-medium text-black"
               >
-                Position:
+                Duration:
               </label>
               <input
                 type="text"
