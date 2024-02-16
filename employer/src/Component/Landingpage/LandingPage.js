@@ -80,15 +80,6 @@ const LandingPage = () => {
                     Latest Internships on InternsBee
                 </h1>
 
-                {/* Popular Categories */}
-                {/* <div className="categories flex gap-10 ml-80">
-                    <p>Popular Categories:</p>
-                    <ul className='flex gap-5'>
-                        <li>Work from Home</li>
-                        <li>Part-Time</li>
-                    </ul>
-                </div> */}
-
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">
                     <div className="carousel" ref={carouselRef}>
@@ -170,15 +161,6 @@ const LandingPage = () => {
                 <h1 className="heading">
                     Latest jobs on InternsBee
                 </h1>
-
-                {/* Popular Categories */}
-                {/* <div className="categories flex gap-10 ml-80">
-                    <p>Popular Categories:</p>
-                    <ul className='flex gap-5'>
-                        <li>Work from Home</li>
-                        <li>Part-Time</li>
-                    </ul>
-                </div> */}
 
                 {/* card-landing-page Carousel */}
                 <div className="carousel-container mt-5 overflow-hidden">

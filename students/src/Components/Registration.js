@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {Link} from "react-router-dom";
 import Alert from "./Alert/Aleart"; // Import the Alert component
+import logo from "../Assets/white_header1.png";
 
 const Registration = () => {
   const [showEmailOtpInput, setShowEmailOtpInput] = useState(false);
@@ -87,16 +88,22 @@ const Registration = () => {
 
 
     return (
-        <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
-        <div class="flex flex-col items-center justify-center mt-10">
-            <h1 class="text-4xl font-bold text-center">Register and Apply for the Internship</h1>
+        <div>
+        <Link to={'/'}>
+        <div className="flex justify-item-left ">
+      <img src={logo} alt=""  className='w-94 my-1'/>
+    </div>
+    </Link>
+        <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 ">
+        <div class="flex flex-col items-center justify-center mt-1">
+            <h1 class="text-2xl font-bold text-center">Register and Apply for the Internship</h1>
         </div>
     
-        <div class="flex flex-col lg:flex-row items-center justify-between mt-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between mt-0">
             <img src="./design.jpg" alt="design" class="w-full lg:w-1/2 xl:w-2/3" />
     
-            <div class="p-8 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-1/3 mt-8 lg:mt-0">
-                <h1 class="text-2xl font-semibold mb-4 text-center">Student Registration</h1>
+            <div class="p-5 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-1/3 mt-8 lg:mt-0">
+                <h1 class="text-3xl font-semibold mb-4 text-center">Student Registration</h1>
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         {/* Full Name Input */}
                         <div className="flex flex-col mb-4">
@@ -268,7 +275,7 @@ const Registration = () => {
             </div>
         </div>
     </div>
-    
+    </div>
     
     );
 };

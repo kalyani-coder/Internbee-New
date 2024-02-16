@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Alert from './Alert/Aleart';
 import { Link } from "react-router-dom";
+import logo from "../Assets/white_header1.png"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,69 +14,6 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const [apiError, setApiError] = useState(null);
-
-
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const response = await fetch('https://backend.internsbee.com/api/auth/signin', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-
-  //       // Assuming the response contains the userId
-  //       // if (responseData.userId) {
-  //       //   // The credentials are correct, navigate to the home page
-  //       //   localStorage.setItem('userId', responseData.userId);
-  //       //   navigate('/privacypolicy');
-  //       // }
-  //       if (responseData.userId) {
-  //         localStorage.setItem('userId', responseData.userId);
-  //       }
-  //       if (responseData.fullName) {
-  //         localStorage.setItem('fullName', responseData.fullName);
-  //       }
-  //       if(responseData.email){
-  //         localStorage.setItem("email" ,responseData.email)
-  //       }
-  //       if(responseData.verified){
-  //         localStorage.setItem("verified" ,responseData.verified)
-  //       }
-
-  //       if(responseData.verified){
-  //         localStorage.setItem("number" ,responseData.number)
-  //         navigate('/privacypolicy');
-  //       }
-        
-  //       else {
-        
-  //         // Handle the case where userId is missing in the response
-  //         setError('email', {
-  //           type: 'manual',
-  //           message: 'Invalid credentials',
-  //         });
-  //       }
-  //     } else {
-  //       // The credentials are incorrect, handle the error (e.g., show an error message)
-  //       const errorData = await response.json();
-  //       setApiError(errorData.error);
-  //       setError('email', {
-  //         type: 'manual',
-  //         message: errorData.error || 'User Not Found. Please Sign up',
-  //       });
-  //       console.error('Invalid credentials');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error signing in:', error);
-  //   }
-  // };
-
-
 
   const onSubmit = async (data) => {
     try {
@@ -120,8 +58,13 @@ const Login = () => {
   return (
     <>
     <div className="">
+    <Link to={'/'}>
+    <div className="flex justify-item-left ">
+      <img src={logo} alt=""  className='w-94 my-2'/>
+    </div>
+    </Link>
       <div className="flex justify-center items-center mt-10">
-        <h1 className="text-4xl font-bold">Login and Apply for the Internship</h1>
+        <h1 className="text-3xl font-bold">Login and Apply for the Internship</h1>
       </div>
   
       <div className="flex flex-col items-center px-6 py-8 md:flex-row md:justify-center md:px-0">
@@ -129,7 +72,7 @@ const Login = () => {
   
         <div className="w-auto bg-white rounded-lg shadow-md mt-8 md:mt-0 md:ml-8 xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
+            <h1 className="text-lg font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
               Sign in to your account
             </h1>
             <form

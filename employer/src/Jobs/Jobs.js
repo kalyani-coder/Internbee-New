@@ -50,7 +50,7 @@ const Jobs = () => {
     try {
       setLoadingCandidates(true);
       const response = await fetch(
-        `https://backend.internsbee.com/api/applyInternship/postId/${postId}`
+        `http://localhost:3000/api/applyInternship/postId/${postId}`
       );
       const data = await response.json();
       setAppliedCandidates(data);

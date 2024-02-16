@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import logo from "../../Assets/white_header1.png";
 const Login = () => {
   const navigate = useNavigate();
   const {
@@ -75,7 +75,12 @@ const Login = () => {
 
   return (
     <>
-      <div className="">
+      <div className=" my-0">
+      <Link to={'/'}>
+        <div className="flex justify-item-left ">
+      <img src={logo} alt=""  className='w-94 my-1'/>
+    </div>
+    </Link>
         {/* <div className="bg-slate-50 p-4 flex items-center justify-between border shadow-xl">
           <div className="flex items-center space-x-2">
             <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
@@ -93,15 +98,15 @@ const Login = () => {
             <a href="#" className="px-6 py-2  text-xl font-bold border rounded-md bg-yellow-300">Signup</a>
           </div>
         </div> */}
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center">
           {/* <h1 className="text-4xl font-bold">Login to your Account</h1> */}
         </div>
 
-        <div className="flex items-center justify-between px-6 py-8 mr-40 ">
-          <img src="./login.jpg" alt="design" className="" />
+        <div className="flex items-center justify-between px-6 py-0 mr-10 " >
+          <img src="./login.jpg" alt="design" className="" style={{height:'600px'}}/>
 
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black mt-0">
+            <div className="p-6 space-y-4 md:space-y-0 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
                 Sign in to your account
               </h1>
