@@ -1,0 +1,16 @@
+@media screen and (max-width:768px) {
+    .footer-resopnsive{
+        display: block;
+        width: 100%;
+
+    }
+    .footer-content{
+        display: block;
+    }
+    .footer-content>li{
+        margin-left: 0;
+    }
+   .footer-div{
+    margin-bottom: 20px;
+   }
+}

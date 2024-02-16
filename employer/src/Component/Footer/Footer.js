@@ -1,9 +1,10 @@
 import React from 'react'
-import logo from'../../Assets/yellow_header1.png'
+import "./Footer.css"
 import {
     FaCalendar, FaMoneyBill, FaMapMarkerAlt, FaRegClock, FaMobile, FaPalette, FaCode, FaChartBar,
     FaUsers, FaGreaterThan, FaFacebook, FaTwitter, FaLinkedin, FaInstagram
 } from 'react-icons/fa';
+import logo from "../../Assets/yellow_header1.png"
 import { Link } from 'react-router-dom';
 const Footer = () => {
     const yourCardArray = [
@@ -49,15 +50,14 @@ const Footer = () => {
             <FaInstagram />
         </a>,
 
-<a href="https://www.twitter.com/internsbee/" target="_blank" rel="noopener noreferrer" key="twitter">
-<FaTwitter />
-</a>,
+         <a href="https://www.twitter.com/internsbee/" target="_blank" rel="noopener noreferrer" key="twitter">
+         <FaTwitter />
+     </a>,
     ];
-
     const navbarContent = [
-        { label: 'About Us', link: '/aboutusemp' },
-        { label: 'Contact', link: '/contact'},
-        { label: 'FAQ', link: '/faq' },
+        { label: 'About Us', link: '/aboutus' },
+        { label: 'Contact', link: '/contactus' },
+        { label: 'FAQ', link: '/faqs' },
         { label: 'Privacy Policy', link: '/privacypolicy' },
         { label: 'Blog', link: '/blogs' },
     ];
@@ -67,16 +67,15 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="text-black p-6 flex flex-col lg:flex-row justify-evenly items-centr" style={{ backgroundColor: '#FFBD59' }}>
-                <div className="flex flex-col items-center lg:items-start space-y-4">
-                    <div className="grid gap-4 items-start space-y-4">
+            <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive"style={{ backgroundColor: '#FFBD59' }}>
+                <div className="grid gap-4 items-start space-y-4">
                     <Link to={'/'}>
-                        <img src={logo} alt="Logo" className="" style={{width:'15rem'}}/>
-                    </Link>
-                        {/* <p className="text-xl font-bold ">Interns <span className='text-white'>Bee</span></p> */}
+                    <div className="items-center">
+                        <img src={logo} alt="Footer Logo" className="" style={{width: '15rem'}}/>
+                        {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
-                    
-                    <div className="text-2xl flex items-center gap-4 justify-center ml-14">
+                    </Link>
+                    <div className="text-2xl flex items-center gap-4 justify-center ">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
                         ))}
@@ -85,9 +84,11 @@ const Footer = () => {
                 <p className=" flex items-center gap-4 justify-center mt-12 pt-2">2024 Internsbee.All Right Reserved.</p>
                 </div>
                 </div>
+               
 
-                <div className="flex flex-col lg:flex-row lg:space-x-20 mt-6 lg:mt-0">
-                    <div className="flex flex-col items-center lg:items-start space-y-7">
+                <div className="flex gap-14  flex-row  ml-20 footer-content">
+                    <div className="flex flex-col items-start space-y-7">
+
                         <h2 className="text-xl font-bold">Quick Links</h2>
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
@@ -98,16 +99,16 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-center lg:items-start space-y-7">
-                        <h2 className="text-xl font-bold">Roles</h2>
-                        <ul className="text-xl space-y-2">
+                    <div className="flex flex-col items-start ">
+                        <h2 className="text-xl font-bold mb-3">Roles</h2>
+                        <ul className="text-xl  space-y-2">
                             {rolesContent.map((role, index) => (
                                 <li key={index}>{role}</li>
                             ))}
                         </ul>
                     </div>
 
-                    <div className="flex flex-col items-center lg:items-start space-y-7">
+                    <div className="flex flex-col items-start space-y-7">
                         <h2 className="text-xl font-bold">Locations</h2>
                         <ul className="text-xl space-y-2">
                             {locationContent.map((location, index) => (
@@ -118,9 +119,7 @@ const Footer = () => {
                 </div>
             </footer>
 
-
         </>
     )
 }
 export default Footer;
-

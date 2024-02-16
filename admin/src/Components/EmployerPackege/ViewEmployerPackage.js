@@ -45,7 +45,7 @@ const handleViewMoreClick = (candidate) => {
       return;
     }
 
-    const apiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
+    const apiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${employerId}`;
     const data = { paymentStatus: 'Accepted' };
 
     try {

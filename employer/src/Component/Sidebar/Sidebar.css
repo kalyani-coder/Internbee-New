@@ -1,0 +1,40 @@
+@media (min-width: 768px) {
+    .lg\:block {
+      display: block;
+    }
+    .lg\:hidden {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 768px) {
+  .IconBtnSideBar{
+
+    height: 33px;
+    border-radius: 0px !important;
+    /* margin-top: 33px; */
+    margin-top: 0px;
+    /* margin-left: 68px; */
+
+    /* margin-left: 82px; */
+  }
+  .MainSideBar{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+  }
+  .close-icon {
+    margin-top: -181%;
+    position: absolute;
+    margin-left: 137px;
+    background-color: white;
+    size: 103px;
+}
+.open-icon {
+    margin-right: 347px;
+    size: 103px;
+}
+.hamburger {
+    margin-left: 276px;
+    margin-top: -54px;
+}
+}

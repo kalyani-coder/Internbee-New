@@ -1,0 +1,70 @@
+/* CSS for the hamburger icon and mobile menu */
+.nav-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+}
+
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav-items {
+  display: inline;
+}
+
+.nav-items.open {
+  display: block !important ;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .nav-items {
+    position: absolute;
+    /* top: 67px; */
+    top: 92px;
+    left: 0;
+    width: 100%;
+    background-color: #FFBD59;
+    padding: 20px;
+    z-index: 999;
+    display: inline;
+    display: none;
+  }
+
+  .nav-items ul {
+    flex-direction: column;
+  }
+
+  .nav-items li {
+    margin-bottom: 10px;
+  }
+
+  .nav-items li:last-child {
+    margin-bottom: 0;
+  }
+ 
+}
