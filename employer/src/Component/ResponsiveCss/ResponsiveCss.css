@@ -63,3 +63,246 @@
     }
   
   }
+
+
+  @media screen and (max-width: 768px) {
+    /* Hero Section */
+    .landingpage-hero-content {
+      padding: 4rem 0;
+    }
+    .landingpage-hero-content>.container{
+        padding: 1rem;
+        margin: 0;
+        padding-right: 0;
+    }
+  
+    .landingpage-title-font {
+      font-size: 1.8rem;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+  .landingpage-hero-image{
+    width: 100%;
+   
+  }
+    /* Latest Internships and Jobs Sections */
+    .landingpage-latest-internships,
+    .landingpage-latest-jobs {
+      padding: 1.5rem 0;
+      
+    }
+  
+    #dream-career-section {
+      text-align: center;
+      padding: 80px 0;
+      padding: 36px;
+  }
+    .landingpage-heading {
+      font-size: 1.3rem;
+    }
+  
+    /* Top Companies Section */
+    .landingpage-top-companies {
+      padding: 1.5rem 0;
+    }
+  
+    .landingpage-text-2xl {
+      font-size: 1.3rem;
+    }
+  
+    /* Statistics Section */
+    .landingpage-statistics {
+      padding: 1.5rem 0;
+    }
+    .categories{
+
+        /* background-color: aquamarine; */
+        /* margin-left: 0px; */
+        /* margin-left: 0rem; */
+        /* background-color: aquamarine;  */
+    margin-left: 0px !important;
+    display: flex;
+    margin-left: 0rem;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .carousel {
+        max-width: 100%;
+        margin: 0 auto;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        display: flex;
+    }
+    .heading-in-navbar{
+      display: none;
+
+    }
+
+
+    /* Login */
+
+  .LoginMainDiv{
+    margin-right: 0;
+    display:contents !important;
+    /* background-color: red; */
+  }
+  /* LandingPageNavBar */
+  .navbar-container{
+
+padding: 9px !important; 
+  }
+.LandingNavBtnsflex{
+
+  margin-right: 204px;
+  /* display: flex; */
+}
+.LandBTn{
+  width: 83%;
+}
+.LatestJob_Categories{
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+}
+/* .InternCardLandingPage{
+  width: 53%;
+} */
+.container{
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
+.NavImgLogo{
+
+  height: 2.5rem !important;
+}
+.BlogNavbar{font-size: 20px;}
+
+.SideBarNHome{
+  display: block !important;
+}
+#SideBarNHome{
+  display: flex;
+  justify-content: space-between;
+}
+.PostJobCard{
+  display: block !important;
+    justify-content: center;
+    align-items: center;
+}
+.MainJobCardDiv{
+
+  width: 100% !important ;
+}
+.PostInternshipCard{
+
+  width: 100% !important;
+}
+.AboutUsMainDiva{
+  display: block;
+}
+.SideAboutus{
+  display: block !important;
+}
+.AboutusCard{
+
+  width: 100% !important;
+}
+.SideNPostInternship{
+
+  display: block !important;
+}
+.PostInternshipBody{
+  margin-top: 0px !important;
+}
+
+.MainSignup{
+  display: block !important;
+  width: fit-content;
+}
+.SignupForm{
+  width: auto !important;
+}
+.JobSideBar{
+  display: block !important;
+}
+.MainCandidate{
+
+  display: block !important;
+}
+.CandidatesPage{
+  display: grid !important;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  width: 100% !important;
+}
+.SearchcvInput{
+
+  width: 12rem !important;
+}
+/* .SearchcvMain{
+
+  width: 81% !important;
+} */
+.MainSearchDiv{
+
+  display: block !important;
+}
+.MonthlyPackageMain{
+  display: block !important;
+}
+.displayblock{
+  display: block !important;
+}
+.containers {
+  width: 96%;
+}
+.containerFaq {
+  width: 88%;
+}
+.ViewStudentBtn{
+
+  font-size: 80%;
+}
+.MainGetPackageMain{
+
+  gap: 0 !important;
+  display: block !important;
+}
+.policy-popup{
+
+  width: 94%;
+}
+.BlogSearch{
+
+  display: flex;
+      flex-direction: column;
+}
+.mainBlogs{
+
+  margin: 20px;
+}
+.HeadingBlog{
+
+  margin-top: 14px;
+}
+.CalenderSilderNPage{
+  display: block !important;
+  height: auto !important;
+}
+.rbc-calendar{
+  width: 97%;
+}
+.containerTable{
+
+  width: 100%;
+  overflow-x: auto;
+}
+
+}
+  

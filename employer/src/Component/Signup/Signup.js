@@ -2,6 +2,9 @@ import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import {useNavigate} from 'react-router-dom'
+import '../ResponsiveCss/ResponsiveCss.css';
+
+
 const Registration = () => {
 
   const navigate = useNavigate();
@@ -91,10 +94,13 @@ const Registration = () => {
 
 
   return (
-    <div className="flex h-screen items-center justify-between">
+    <>
+
+
+<div className="MainSignup flex h-screen items-center justify-between">
       <img src="./signup.jpg" alt="design" className="" />
 
-      <div className="p-8 rounded shadow-md w-full bg-slate-50" style={{ width: "40rem" }}>
+      <div className=" SignupForm p-8 rounded shadow-md w-full bg-slate-50" style={{ width: "40rem" }}>
         <h1 className="text-2xl font-semibold mb-4 text-center">
           Employer Registration
         </h1>
@@ -198,8 +204,14 @@ const Registration = () => {
             </Link>
           </p>
         </form>
+
+
       </div>
     </div>
+
+
+
+    </>
   );
 };
 

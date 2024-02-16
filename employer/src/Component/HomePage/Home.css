@@ -25,3 +25,8 @@
   
     /* Add more specific styles or adjustments as needed for a better mobile experience */
   }
+  @media (max-width: 768px) {
+    .card {
+      width: 90% !important; /* Set width to auto for screens less than or equal to 768px */
+    }
+  }

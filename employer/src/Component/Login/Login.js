@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Login = () => {
 
         // navigate(`/view-profile-page`);
 
-        navigate("/home");
+        navigate("/privacypolicy");
       } else {
         if (response.status === 404) {
           setError("email", {
@@ -97,7 +98,7 @@ const Login = () => {
           {/* <h1 className="text-4xl font-bold">Login to your Account</h1> */}
         </div>
 
-        <div className="flex items-center justify-between px-6 py-8 mr-40 ">
+        <div className="LoginMainDiv flex items-center justify-between px-6 py-8 mr-40 ">
           <img src="./login.jpg" alt="design" className="" />
 
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">

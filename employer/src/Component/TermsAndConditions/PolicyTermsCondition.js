@@ -37,7 +37,7 @@ const PolicyTermsCondition = () => {
         .then(data => {
           // Handle the response as needed
           console.log('Privacy policy accepted:');
-          navigate("/Home");
+          navigate("/home");
         })
         .catch(error => {
           // Handle errors

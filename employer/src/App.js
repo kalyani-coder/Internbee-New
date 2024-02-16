@@ -33,6 +33,7 @@ import Contact from './Component/Contact/Contact';
 import AboutUsEmp from './Component/Aboutus/Aboutusemp';
 import NavbarEmp from './Component/Aboutus/NavbarEmp';
 import SignupOtp from './Component/SignupOtp/SignupOtp';
+
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);
@@ -58,7 +59,7 @@ function App() {
       <Router>
 
         <Routes>
-          <Route path="/" element={<LandingpageHome />} />
+          <Route path="/" element={<Navbar />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Registration />} />
           <Route path="/home" element={<EmployerSection />} />
@@ -91,6 +92,7 @@ function App() {
           <Route path='/aboutusemp'element={<AboutUsEmp/>}/>
           <Route path='/navbaremp'element={<NavbarEmp/>}/>
           <Route path='/signupotp'element={<SignupOtp/>}/>
+          <Route path='/navbar'element={<Navbar/>}/>
         </Routes>
 
       </Router>
