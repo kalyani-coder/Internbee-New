@@ -3,6 +3,8 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import './Joblist.css'
+import '../ResponsiveCss/Responsive.css';
+
 
 const NewJobList = () => {
   const [candidates, setCandidates] = useState([]);
@@ -72,13 +74,13 @@ const NewJobList = () => {
     setCandidateToDelete(null);
   };
     return (
-        <>
+      <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="displaycontent flex h-screen">
         <Sidebar />
-        <div className="flex">
+        <div className=" MainNewJob flex">
           <div>
-            <h1 className="text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            <h1 className=" HeadingNewJobList text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
              Job List
             </h1>
             

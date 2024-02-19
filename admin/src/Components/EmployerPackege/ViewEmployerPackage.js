@@ -3,6 +3,8 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import '../ResponsiveCss/Responsive.css';
+
 
 const ViewEmployerPackages = () => {
   const [employers, setEmployers] = useState([]);
@@ -70,12 +72,12 @@ const handleViewMoreClick = (candidate) => {
   return (
     <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="displaycontent flex h-screen">
         <Sidebar />
 
         <div className="ml-10 mt-4">
           <div className="max-w-full p-4">
-            <h1 className="text-3xl font-bold mb-4 mt-8">
+            <h1 className="ViewEmployeeHeading text-3xl font-bold mb-4 mt-8">
               View Employer Packages
             </h1>
 
@@ -90,21 +92,21 @@ const handleViewMoreClick = (candidate) => {
                 className="border rounded py-2 px-3 mr-2"
               />
               <button
-                className="bg-black text-white py-2 px-4 rounded"
+                className="ViewEmpBtn bg-black text-white py-2 px-4 rounded"
               >
                 Search
               </button>
             </div>
             <div className="flex gap-10">
-              <div>
+              <div className="ViewEmployerSlider ">
                 <table className="table-candidates w-full bg-white border border-gray-300">
                   <thead>
                     <tr>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Emp Email</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Employer Name</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Package</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Emp Email</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Employer Name</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Package</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Profile</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Status</th>
                     </tr>
                   </thead>
                   <tbody>

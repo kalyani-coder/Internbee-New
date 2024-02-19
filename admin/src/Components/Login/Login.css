@@ -1,0 +1,11 @@
+@media (min-width:320px) and (max-width: 425px){
+    .MainLoginDiv{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .ForgetPasswordHeading{
+        font-size: 12px;
+    }
+    
+}

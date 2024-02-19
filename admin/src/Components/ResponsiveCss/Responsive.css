@@ -1,0 +1,123 @@
+@media screen and (max-width: 768px) {
+    .AdminDashBoardContent{
+
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+.displaycontent{
+
+    display: contents;
+}
+
+.AppliedCandidatesCard{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 3px;
+}
+.adminRegister{
+
+   
+    width: 24rem !important;
+}
+.Signup{
+
+    display: block;
+}
+
+.CandidateSlider{
+
+    width: 93%;
+        overflow-x: scroll;
+}
+.CandidateMain{
+
+    width: -webkit-fill-available;
+}
+.candidatepadding{
+
+    padding: 14px;
+}
+.tabless-container{
+
+    overflow-x: scroll;
+    width: 90%;
+    /* width: 51%; */
+}
+.EmployerHeading{
+
+    font-size: 25px;
+}
+.EmployerScroll{
+
+    overflow-x: scroll;
+    width: 90%;
+}
+.shortlistdiv{
+
+    width: -webkit-fill-available;
+}
+.ViewEmployerSlider{
+
+    overflow-x: scroll;
+    /* width: 100%; */
+    width: 90% !important;
+    overflow-y: scroll;
+}
+.TableHeading{
+
+    font-size: 13px;
+    line-height: 17px;
+}
+.ViewEmployeeHeading{
+    font-size: 24px;
+}
+.ViewEmpBtn{
+
+    padding: 4px !important;
+}
+.JobListTable{
+    overflow-x: scroll;
+    /* width: 100%; */
+    width: 90% !important;
+    overflow-y: scroll;
+}
+.JobListOptions{
+
+    display: inline-grid;
+}
+.mainAboutusTwoDivs{
+
+    display: block;
+}
+.DivAboutusContent{
+
+    width: 100%;
+}
+.Heading{
+
+    font-size: 25px;
+}
+
+.BlogMainDiv{
+    display: flex;
+    gap: 26px;
+    flex-direction: column;
+}
+.DisplayBlock {
+    display: block;
+}
+.table-container{
+overflow-x: scroll;
+width: 62%;
+}
+
+.HeadingNewJobList{
+
+    width: auto;
+}
+.MainNewJob{
+    padding: 9px;
+}  
+    
+}

@@ -4,6 +4,8 @@ import Navbar from "../Navbar/Navbar";
 import Footer from './../Footer/Footer'; 
 import { FaTrash } from "react-icons/fa";
 import './ShorlistedCandidates.css'
+import '../ResponsiveCss/Responsive.css';
+
 
 const ShortlistedCandidates = () => {
   const [shortlistedCandidates, setShortlistedCandidates] = useState([]);
@@ -90,28 +92,28 @@ const handleViewMoreClick = (candidate) => {
   return (
     <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="displaycontent flex h-screen">
         <div>
           <Sidebar />
         </div>
 
         <div className="flex mt-5">
-          <div className="p-10 flex">
-            <div className="">
-              <h1 className="text-3xl font-bold mb-4 mt-8">
+          <div className=" shortlistdiv p-10 flex">
+            <div className="shortlistdiv">
+              <h1 className="EmployerHeading text-3xl font-bold mb-4 mt-8">
                 Shortlisted Candidates
               </h1>
 
-              <div className="table-container overflow-x-auto">
+              <div className="tabless-container overflow-x-auto">
                 <table className="w-full bg-white border border-gray-300">
                   <thead>
                     <tr>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Sr No</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Name</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Company Name</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Location</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Delete</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Sr No</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Name</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Company Name</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Location</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Actions</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
