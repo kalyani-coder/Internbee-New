@@ -24,9 +24,12 @@ import {
   FaTwitter,
   FaLinkedin,
   FaInstagram,
+  FaUser
 } from "react-icons/fa";
-
+import { NavLink } from "react-router-dom";
+import '../Components/ResponsiveCss/ResponsiveCss.css';
 import Footer from "../Components/Footer";
+import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 
 const RightArrow = ({ onClick }) => (
   <div
@@ -79,6 +82,7 @@ const Home1 = () => {
   const internshipsRef = useRef(null);
   const navigate = useNavigate();
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleProfileIconClick = () => {
     setShowProfileDropdown(!showProfileDropdown);
@@ -230,8 +234,10 @@ const Home1 = () => {
 
   return (
     <>
+      
+    {/* /////////////////////////////////////////////////////////// */}
       <div className="mb-10 ">
-        <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+        {/* <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
 
              <Link to={'/'}>
           <div className="flex items-center space-x-2 ">
@@ -265,13 +271,7 @@ const Home1 = () => {
             </Link>
           </div>
           
-          {/* <div className="flex items-center">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="p-2 rounded-md mr-2 border"
-                        />
-                    </div> */}
+        
           <div className="flex items-center space-x-4 relative">
             <div className="">
               <IoNotificationsOutline className="mr-4  text-4xl" />
@@ -306,20 +306,24 @@ const Home1 = () => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
+<Internal_Navbar/>
 
-        <div className="mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
+
+{/* /////////////////////////////////////////////////////////////////////// */}
+        <div className="Homehead mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
           <h1>Search Your Dream Internship Here</h1>
         </div>
 
-        <div className="flex items-center justify-center my-10 mt-5">
-          <div className="relative flex items-center gap-8">
+        <div className="inpimp flex items-center justify-center my-10 mt-5">
+          <div className=" inputhomess relative flex items-center gap-8">
             <input
               type="text"
               placeholder="Enter skills/designations"
-              className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
+              className="iii h-20 rounded-full border border-gray-800 pl-8 pr-16"
               style={{ width: "540px" }}
+              
             />
             <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2" >
               Search
@@ -327,7 +331,7 @@ const Home1 = () => {
           </div>
         </div>
         <div ref={companiesRef}>
-          <div className=" mb-10 text-4xl font-bold flex flex-col items-center ">
+          <div className=" Homehead mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
           </div>
           <Slider {...settings}>
@@ -429,14 +433,14 @@ const Home1 = () => {
           </Slider>
         </div>
         <div className="flex flex-col items-center ">
-          <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
+          <div className="Homehead mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
             <h1>Dream Internship here</h1>
           </div>
 
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
-              className="card w-1/2 my-3  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'30%'}}
+              className="cardMain w-1/2 my-3  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'30%'}}
             >
               <div className="flex-grow px-5 py-5 pr-20 pl-20">
                 <h2 className="card-title text-xl font-semibold text-gray-800">
@@ -496,7 +500,7 @@ const Home1 = () => {
 
         <div className="mt-10 flex justify-center">
           <button
-            className=" w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
+            className="ViewAll w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
             onClick={Internshipp}
           >
             View All
@@ -504,15 +508,15 @@ const Home1 = () => {
         </div>
         <div className="bg-slate-100">
           <div className="mt-20 mb-10 text-4xl font-bold flex flex-col items-center">
-            <h1 className="my-10">Explore Various Types of Internships</h1>
+            <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
           </div>
            
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 hover:text-black">
+          <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 hover:text-black">
             {yourCardArray.map((card) => (
               <Link to={'/internship'}>
               <div
                 key={card.id}
-                className="h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5 hover:text-black"
+                className="AlignHome h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5 hover:text-black"
               >
                 {/* Your card content goes here */}
                 {card.icons &&

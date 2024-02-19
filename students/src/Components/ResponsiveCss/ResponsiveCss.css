@@ -63,5 +63,46 @@
       display: none;
 
     }
-  
+    .inputhomess{
+
+      display: contents;
+      width: 100%;
+    }
+
+    .Homecardsdivs{
+      display: block;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+.cardMain{
+
+  width: 94%;
+}
+.card-title {
+
+  font-size: 17px;
+}
+.inpimp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.iii{
+  width: auto !important;
+}
+
+.ViewAll{
+  padding-left: 0px;
+     padding-right: 0px
+}
+.Homehead{
+
+  font-size: 18px;
+}
+.AlignHome{
+
+  margin-left: 10%;
+}
   }
