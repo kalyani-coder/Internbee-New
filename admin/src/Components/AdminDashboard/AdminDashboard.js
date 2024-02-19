@@ -33,7 +33,7 @@ import {
 } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import LowerContent from "./LowerContent";
-import "./ResponsiveCss/Responsive.css"
+import "../ResponsiveCss/Responsive.css"
 
 const AdminDashboard = () => {
 
