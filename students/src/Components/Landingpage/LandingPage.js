@@ -274,7 +274,7 @@ const LandingPage = () => {
 
                 <section className="landingpage-statistics" id="dream-career-section">
                     <div className="container px-5 py-24 mx-auto">
-                        <div className="flex flex-wrap -m-4 text-center ml-64">
+                        <div className="flex flex-wrap -m-4 text-center flex justify-center">
                             <div className="p-4 sm:w-1/4 w-1/2">
                                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">500+</h2>
                                 <p className="leading-relaxed">Companies hiring</p>
@@ -287,10 +287,7 @@ const LandingPage = () => {
                                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">2000+</h2>
                                 <p className="leading-relaxed">active students</p>
                             </div>
-                            {/* <div className="p-4 sm:w-1/4 w-1/2">
-                                <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">600K+</h2>
-                                <p className="leading-relaxed">learners</p>
-                            </div> */}
+                          
                         </div>
                     </div>
                 </section>
