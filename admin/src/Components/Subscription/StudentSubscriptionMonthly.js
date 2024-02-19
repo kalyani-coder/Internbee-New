@@ -87,7 +87,8 @@ const StudentSubscriptionMonthly = () => {
         <>
         <div><Navbar /></div>
   
-        <section className="text-gray-600 body-font flex flex-wrap">
+        {/* <section className="text-gray-600 body-font flex flex-wrap"> */}
+        <section className="text-gray-600 body-font flex flex-col md:flex-row">
   <div><Sidebar /></div>
   <div className="container px-5 py-5 mx-auto">
     <div className="flex flex-col text-center w-full mb-20">
