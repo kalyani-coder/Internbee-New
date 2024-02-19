@@ -88,7 +88,7 @@ const Home1 = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://internbee-backend-apis.onrender.com/api/postinternship/"
+          "https://backend.internsbee.com/api/postinternship/"
         );
         if (response.ok) {
           const data = await response.json();
