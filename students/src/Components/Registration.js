@@ -102,7 +102,7 @@ const Registration = () => {
         <div class="flex flex-col lg:flex-row items-center justify-between mt-0">
             <img src="./design.jpg" alt="design" class="w-full lg:w-1/2 xl:w-2/3" />
     
-            <div class="p-5 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-1/3 mt-8 lg:mt-0">
+            <div class="p-3 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-2/3 mt-8 lg:mt-0">
                 <h1 class="text-3xl font-semibold mb-4 text-center">Student Registration</h1>
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                         {/* Full Name Input */}

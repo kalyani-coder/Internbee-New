@@ -4,7 +4,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
-
+import { FiUser } from "react-icons/fi";
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -298,7 +298,7 @@ const Profile = () => {
     <div className=" ">
       <div className="">
         <div
-          className="p-6 flex items-center justify-between border shadow-xl"
+          className="p-6 flex items-center justify-between border shadow-xl w-full"
           style={{ backgroundColor: "#FFBD59" }}
         >
           <Link to={"/"}>
@@ -316,14 +316,14 @@ const Profile = () => {
           <div className="flex items-center space-x-6">
             <Link
               to="/home"
-              className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
             >
-              Home
+              Students
             </Link>
             {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
             <Link
               to="/internship"
-              className="text-2xl font-bold focus:texwhite focus:border-white focus:border-b-4 hover:text-white"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
             >
               Internships
             </Link>
@@ -347,7 +347,7 @@ const Profile = () => {
               onMouseEnter={() => setShowProfileDropdown(true)}
               onClick={handleProfileIconClick}
             >
-              <FaUser className="mr-4  text-4xl" />
+              <FiUser className="mr-4  text-4xl" />
               {showProfileDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
                   <div
@@ -407,6 +407,7 @@ const Profile = () => {
                   name="lastName"
                   value={lastName}
                   onChange={handleLastNameChange}
+                  required
                 />
               </div>
 
@@ -454,6 +455,7 @@ const Profile = () => {
                   name="permanentaddress"
                   value={permanentaddress}
                   onChange={handlePermanentAddressChange}
+                  required
                 />
               </div>
 
@@ -468,6 +470,7 @@ const Profile = () => {
                   name="city"
                   value={city}
                   onChange={handleCityChange}
+                  required
                 />
               </div>
 
@@ -485,6 +488,7 @@ const Profile = () => {
                   name="district"
                   value={district}
                   onChange={handleDistrictChange}
+                  required
                 />
               </div>
 
@@ -502,6 +506,7 @@ const Profile = () => {
                   name="country"
                   value={country}
                   onChange={handleCountryChange}
+                  required
                 />
               </div>
 
@@ -519,6 +524,7 @@ const Profile = () => {
                   name="currentaddress"
                   value={currentaddress}
                   onChange={handleCurrentAddressChange}
+                  required
                 />
               </div>
 
@@ -536,6 +542,7 @@ const Profile = () => {
                   name="currentcity"
                   value={currentcity}
                   onChange={handleCurrentCityChange}
+                  required
                 />
               </div>
 
@@ -553,6 +560,7 @@ const Profile = () => {
                   name="currentdistrict"
                   value={currentdistrict}
                   onChange={handleCurrentDistrictChange}
+                  required
                 />
               </div>
 
@@ -570,6 +578,7 @@ const Profile = () => {
                   name="currentcountry"
                   value={currentcountry}
                   onChange={handleCurrentCountryChange}
+                  required
                 />
               </div>
 
@@ -587,6 +596,7 @@ const Profile = () => {
                   name="contact"
                   value={contact}
                   onChange={handleContactChange}
+                  required
                 />
               </div>
             </div>
@@ -611,6 +621,7 @@ const Profile = () => {
                   name="education"
                   value={education}
                   onChange={handleEducationChange}
+                  required
                 />
               </div>
 
@@ -628,6 +639,7 @@ const Profile = () => {
                   name="instituteName"
                   value={instituteName}
                   onChange={handleInstituteNameChange}
+                  required
                 />
               </div>
 
@@ -645,6 +657,7 @@ const Profile = () => {
                   name="stream"
                   value={stream}
                   onChange={handleStreamChange}
+                  required
                 />
               </div>
 
@@ -662,6 +675,7 @@ const Profile = () => {
                   name="passOutYear"
                   value={passOutYear}
                   onChange={handlePassOutYearChange}
+                  required
                 />
               </div>
 
@@ -679,6 +693,7 @@ const Profile = () => {
                   name="percentage"
                   value={percentage}
                   onChange={handlePercentageChange}
+                  required
                 />
               </div>
             </div>
@@ -703,6 +718,7 @@ const Profile = () => {
                   name="education_12"
                   value={education_12}
                   onChange={handleEducation_12Change}
+                  required
                 />
               </div>
 
@@ -720,6 +736,7 @@ const Profile = () => {
                   name="instituteName_12"
                   value={instituteName_12}
                   onChange={handleInstitute_12Change}
+                  required
                 />
               </div>
 
@@ -737,6 +754,7 @@ const Profile = () => {
                   name="stream_12"
                   value={stream_12}
                   onChange={handleStream_12Change}
+                  required
                 />
               </div>
 
@@ -754,6 +772,7 @@ const Profile = () => {
                   name="passOutYear_12"
                   value={passOutYear_12}
                   onChange={handlePassOutYear_12Change}
+                  required
                 />
               </div>
 
@@ -771,6 +790,7 @@ const Profile = () => {
                   name="percentage_12"
                   value={percentage_12}
                   onChange={handlePercentage_12Change}
+                  required
                 />
               </div>
             </div>
@@ -794,6 +814,7 @@ const Profile = () => {
                   name="education_10"
                   value={education_10}
                   onChange={handleEducation_10Change}
+                  required
                 />
               </div>
 
@@ -811,6 +832,7 @@ const Profile = () => {
                   name="instituteName_10"
                   value={instituteName_10}
                   onChange={handleInstitute_10Change}
+                  required
                 />
               </div>
 
@@ -819,7 +841,7 @@ const Profile = () => {
                   htmlFor="stream_10"
                   className="block text-large font-medium"
                 >
-                  Stream<span className="text-red-500">*</span>
+                  Stream
                 </label>
                 <input
                   type="text"
@@ -845,6 +867,7 @@ const Profile = () => {
                   name="passOutYear_10"
                   value={passOutYear_10}
                   onChange={handlePassOutYear_10Change}
+                  required
                 />
               </div>
 
@@ -862,6 +885,7 @@ const Profile = () => {
                   name="percentage_10"
                   value={percentage_10}
                   onChange={handlePercentage_10Change}
+                  required
                 />
               </div>
             </div>
@@ -885,6 +909,7 @@ const Profile = () => {
                   name="keySkills"
                   value={keySkills}
                   onChange={handleKeySkills}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -901,6 +926,7 @@ const Profile = () => {
                   name="languages"
                   value={languages}
                   onChange={handleLanguages}
+                  required
                 />
               </div>
 
@@ -918,6 +944,7 @@ const Profile = () => {
                   name="experience"
                   value={experience}
                   onChange={handleExperience}
+                  required
                   placeholder="fresher or 1 year"
                 />
               </div>
@@ -936,6 +963,7 @@ const Profile = () => {
                   name="salaryExpectations"
                   value={salaryExpectations}
                   onChange={handleSalaryExpectations}
+                  required
                 />
               </div>
 
@@ -953,6 +981,7 @@ const Profile = () => {
                   name="projectName"
                   value={projectName}
                   onChange={handleProjectName}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -969,6 +998,7 @@ const Profile = () => {
                   name="projectSummary"
                   value={projectSummary}
                   onChange={handleProjectSummary}
+                  required
                 />
               </div>
             </div>
@@ -990,6 +1020,7 @@ const Profile = () => {
                   type="file"
                   accept="application/pdf"
                   onChange={handlePDFChange}
+                  required
                   className="mt-1 p-2 w-full border rounded-md text-xl"
                 />
               </div>
@@ -1003,7 +1034,7 @@ const Profile = () => {
                   htmlFor="certification"
                   className="block text-xl font-medium mt-10"
                 >
-                  Certification<span className="text-red-500">*</span>
+                  Certification
                 </label>
                 <input
                   type="file"
@@ -1024,6 +1055,7 @@ const Profile = () => {
                   type="file"
                   accept="image/*"
                   onChange={handleImageChange}
+                  required
                   className="mt-1 p-2 w-full border rounded-md text-xl"
                 />
               </div>
@@ -1042,7 +1074,7 @@ const Profile = () => {
                     onClick={handleUpload}
                     style={{ }}
                     className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
-                  > save Details</button>
+                  > Submit</button>
             </div>  
 
             

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import './Newnavbar.css';
 import logo from '../../Assets/yellow_header1.png';
-
+import { FaCrown } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
@@ -37,23 +37,27 @@ const Navbar = () => {
         <div className={`nav-items ${isOpen ? "open" : ""}`}>
           <ul className="flex items-center space-x-4">
             <li>
-              <Link to="/home" className="text-white hover:text-black">
-                Home
+              <Link to="/home" className="text-black hover:text-black text-lg">
+                Employers
               </Link>
             </li>
-            {/* <li>
-              <Link to="/aboutus" className="text-white hover:text-black">
-                About Us
-              </Link>
-            </li> */}
+            
             <li>
-              <Link to="/postinternship" className="text-white hover:text-black">
+              <Link to="/postinternship" className="text-black hover:text-black text-lg">
                 Internships
               </Link>
             </li>
+            <div  className='mb-3'>
+            <li >
+            <FaCrown />
+              <Link to="/packages" className="text-black hover:text-black text-lg ">
+                Plans & Pricing
+              </Link>
+            </li>
+            </div>
             <li>
               <div className="relative group">
-                <button className="text-white hover:text-black flex items-center h-12 w-12">
+                <button className="text-black hover:text-black flex items-center h-12 w-12 text-lg">
                   <svg
                     className="h-6 w-6 mr-2"
                     fill="none"

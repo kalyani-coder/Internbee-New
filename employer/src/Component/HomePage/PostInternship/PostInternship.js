@@ -234,8 +234,8 @@ const PostInternship = () => {
           <Sidebar />
         </div>
 
-        <div className="max-w-3xl mx-auto mt-8 mb-10 p-8 rounded shadow-md"style={{ backgroundColor: '#FFBD59' }} >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="max-w-3xl mx-auto mt-8 mb-10 p-8 rounded bg-gray-90 shadow-lg" >
+          <h2 className="text-3xl md:text-lg lg:text-3xl font-bold mb-4">
             Post Internship
           </h2>
           {alert && (

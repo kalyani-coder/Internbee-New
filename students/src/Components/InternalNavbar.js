@@ -44,19 +44,19 @@ const Internal_Navbar = () => {
           <div className="absolute z-10 right-0   bg-white">
             <Link
               to="/home"
-              className="block text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white p-2"
+              className="block text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black p-2"
             >
-              Home
+              Students
             </Link>
             <Link
               to="/internship"
-              className="block text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white p-2"
+              className="block text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black p-2"
             >
               Internships
             </Link>
             <Link
               to="/applied-internship"
-              className="block text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white p-2"
+              className="block text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black p-2"
             >
               Applied Internship
             </Link>

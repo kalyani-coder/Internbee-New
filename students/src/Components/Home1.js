@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FiUser } from "react-icons/fi";
 import {
   FaCalendar,
   FaMoneyBill,
@@ -18,13 +19,11 @@ import {
   FaPalette,
   FaCode,
   FaChartBar,
-  FaUsers,
   FaGreaterThan,
   FaFacebook,
   FaTwitter,
   FaLinkedin,
   FaInstagram,
-  FaUser,
 } from "react-icons/fa";
 
 import Footer from "../Components/Footer";
@@ -75,7 +74,7 @@ const LeftArrow = ({ onClick }) => (
 
 const Home1 = () => {
   const [internships, setInternships] = useState([]);
-
+  const [filteredInternships, setFilteredInternships] = useState([]);
   const companiesRef = useRef(null);
   const internshipsRef = useRef(null);
   const navigate = useNavigate();
@@ -148,38 +147,38 @@ const Home1 = () => {
 
   const companies = [
     {
-      id: 1,
-      name: "SlideUP Lift",
-      // Job Title: "",
-      description: "Social Media Marketing Intern ",
+      // id: 1,
+      // name: "SlideUP Lift",
+      // // Job Title: "",
+      // description: "Social Media Marketing Intern ",
     },
     {
-      id: 2,
-      name: "Parallel Minds",
-      // logo: "tata.jpg",
-      description:
-        "Business Development Intern",
+      // id: 2,
+      // name: "Parallel Minds",
+      // // logo: "tata.jpg",
+      // description:
+      //   "Business Development Intern",
     },
     {
-      id: 3,
-      name: "Ecozen Solutions",
-      // logo: "tata.jpg",
-      description:
-        "Market Research Intern",
+      // id: 3,
+      // name: "Ecozen Solutions",
+      // // logo: "tata.jpg",
+      // description:
+      //   "Market Research Intern",
     },
     {
-      id: 4,
-      name: "Tifants Ingress",
-      // logo: "tata.jpg",
-      description:
-        "Software Development Intern",
+      // id: 4,
+      // name: "Tifants Ingress",
+      // // logo: "tata.jpg",
+      // description:
+      //   "Software Development Intern",
     },
     {
-      id: 5,
-      name: "Ally Digital Media",
-      // logo: "tata.jpg",
-      description:
-        "Search Engine Optimization (SEO) Intern",
+      // id: 5,
+      // name: "Ally Digital Media",
+      // // logo: "tata.jpg",
+      // description:
+      //   "Search Engine Optimization (SEO) Intern",
     },
     // Add more companies as needed
   ];
@@ -193,22 +192,22 @@ const Home1 = () => {
     {
       icons: FaCode,
       role: "IT",
-      jobs: 50,
+      
     },
     {
       icons: FaPalette,
       role: "Marketing",
-      jobs: 100,
+      
     },
     {
-      icons: FaUsers,
+      icons: FiUser,
       role: "Sales ",
-      jobs: 150,
+      
     },
     {
       icons: FaChartBar,
       role: "HR",
-      jobs: 40,
+      
     },
   ];
 
@@ -237,30 +236,20 @@ const Home1 = () => {
              <Link to={'/'}>
           <div className="flex items-center space-x-2 ">
              <img src={logo} alt="Logo"className="home1-logo h-14 max-w-15rem rounded-full" /> 
-            {/* <h1 className="text-4xl font-bold">
-              Interns{" "}
-              <span className="text-4xl font-bold text-white">Bee</span>
-            </h1> */}
-          </div>
+           </div>
           </Link>
 
           <div className="flex items-center space-x-6">
             <Link
               to="/home"
-              className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
             >
-              Home
+              Students
             </Link>
-            {/* <Link
-              to="/companies"
-              className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
-              onClick={handleCompaniesClick}
-            >
-              Companies
-            </Link> */}
+           
             <Link
               to="/internship"
-              className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
               onClick={Internship}
             >
               Internships
@@ -269,7 +258,7 @@ const Home1 = () => {
 
             <Link
               to="/applied-internship"
-              className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
 
             >
               Applied Internship
@@ -293,7 +282,7 @@ const Home1 = () => {
               // onMouseLeave={() => setShowProfileDropdown(false)}
               onClick={handleProfileIconClick}
             >
-              <FaUser className="mr-4  text-4xl" />
+             <FiUser className="mr-4 text-4xl" />
               {showProfileDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
                   <div
@@ -332,7 +321,7 @@ const Home1 = () => {
               className="h-20 rounded-full border border-gray-800 pl-8 pr-16"
               style={{ width: "540px" }}
             />
-            <button className=" bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 mr-1 py-2" >
+            <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2" >
               Search
             </button>
           </div>
@@ -342,25 +331,101 @@ const Home1 = () => {
             <h1>Top Companies hiring now</h1>
           </div>
           <Slider {...settings}>
-            {companies.map((company) => (
+            {/* {companies.map((company) => ( */}
+              {/* <div
+                {filteredInternships.length > 0 ? (
+            filteredInternships.map((internship) => (
               <div
-                key={company.id}
-                className="m-4 p-4 bg-white rounded-lg shadow-md max-w-sm"
+                key={internship.id}
+                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
               >
-                {/* <img
-                  src={`./${company.logo}`}
-                  alt={`Logo of ${company.name}`}
-                  className="w-16 h-16 mx-auto mb-4"
-                /> */}
-                <h2 className="text-xl font-bold">{company.name}</h2>
-                <p className="text-gray-600">{company.description}</p>
-                <Link to={'/internship'}>
+                < className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
+                  {/* Internship details */}
+                  {filteredInternships.length > 0 ? (
+            filteredInternships.map((internship) => (
+              <div
+                key={internship.id}
+                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+              >
+                <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
+                  {/* Internship details */}
+                  <h2 className="card-title text-2xl font-semibold text-gray-800 ">
+                    {internship.job_Title}
+                  </h2>
+                  <p className="card-company text-xl text-gray-700">
+                    Company Name : {internship.company_Name}
+                  </p>
+                  {/* <div className="flex justify-between items-center my-2 gap-3 "> */}
+                    {/* <div className="flex items-center">
+                      <FaRegClock className="mr-2 text-xl" />
+                      <p className="card-company text-sm text-gray-700 ">
+                        Start Date : {internship.start_Date}
+                      </p>
+                    </div> */}
+                    {/* <div className="flex items-center">
+                      <FaMoneyBill className="mr-2 text-lg" />
+                      <p className="card-location text-sm text-gray-700">
+                        &#x20B9;{internship.stipend}
+                      </p>
+                    </div> */}
+                    {/* <div className="flex items-center">
+                      <FaMapMarkerAlt className="mr-2 text-sm" />
+                      <p className="card-duration text-sm text-gray-700">
+                        {internship.location}
+                      </p>
+                    </div> */}
+                    {/* <div className="flex items-center">
+                      <FaRegClock className="mr-2 text-xl" />
+                      <p className="card-duration text-sm text-gray-700">
+                        End Date : {internship.end_Date}
+                      </p>
+                    </div> */}
+                  {/* </div> */}
+                  {/* <p className="card-description text-sm text-gray-700 my-2">
+                    Internship Type : {internship.job_Type}
+                  </p> */}
+                  {/* <div>
+                  <p className="card-skills text-sm text-gray-700 my-2">
+                      Skills: {internship.skills}
+                    </p>
+                    </div> */}
+                  {/* <div className="flex items-center">
+                      <FaRegClock className="mr-2 text-" />
+                      <p className="card-duration text-sm text-gray-700">
+                        Duration : {internship.position}
+                      </p>
+                    </div> */}
+                  {/* <p className="card-description text-sm text-gray-700 my-4">
+                    {internship.job_Description}
+                  </p> */}
+                  {/* <div className="flex justify-between"> */}
+                    
+
+                    {/* <div>
+                      <Link to={`/apply-internship/${internship._id}`}>
+                        <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
+                          Apply
+                        </button>
+                      </Link>
+                    </div> */}
+                  {/* </div> */}
+                </div>
+              </div>
+            ))
+          ) : (
+            // Display a message if no internships are found
+            <p></p>
+          )}
+                 
+                {/* <h2 className="text-xl font-bold">{company.name}</h2> */}
+                {/* <p className="text-gray-600">{company.description}</p> */}
+                <Link to={`/apply-internship/${Internship._id}`}>
                 <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
                   View Internship
                 </button> 
                 </Link>
-              </div>
-            ))}
+            
+          
           </Slider>
         </div>
         <div className="flex flex-col items-center ">
@@ -371,52 +436,52 @@ const Home1 = () => {
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
-              className="card w-3/4 m-6  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
+              className="card w-1/2 my-3  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'30%'}}
             >
-              <div className="flex-grow px-6 py-4 pr-20 pl-20">
-                <h2 className="card-title text-2xl font-semibold text-gray-800">
+              <div className="flex-grow px-5 py-5 pr-20 pl-20">
+                <h2 className="card-title text-xl font-semibold text-gray-800">
                   {internship.job_Title}
                 </h2>
-                <p className="card-company text-xl text-gray-700">
+                <p className="card-company text-lg text-gray-700">
                   {internship.company_Name}
                 </p>
 
                 <div className="flex justify-between items-center my-4 ">
                   <div className="flex items-center ">
-                    <FaCalendar className="mr-2" />
-                    <p className="card-company text-xl text-gray-700">
+                    <FaCalendar className="mr-0" />
+                    <p className="card-company text-sm text-gray-700 px-4">
                       {internship.start_Date}
                     </p>
                   </div>
                   {/* Other details here */}
                   <div className="flex items-center">
-                    <FaMoneyBill className="mr-2" />
-                    <p className="card-location text-xl text-gray-700">
+                    <FaMoneyBill className="mr-0 text-xl" />
+                    <p className="card-location text-sm text-gray-700 px-3">
                       &#x20B9;{internship.stipend}
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <FaMapMarkerAlt className="mr-2" />
-                    <p className="card-duration text-xl text-gray-700">
+                    <FaMapMarkerAlt className="mr-0" />
+                    <p className="card-duration text-sm text-gray-700 px-3">
                       {internship.location}
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <FaRegClock className="mr-2" />
-                    <p className="card-duration text-xl text-gray-700">
+                    <FaRegClock className="me-0" />
+                    <p className="card-duration text-sm text-gray-700 px-3">
                       {internship.end_Date}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                <FaRegClock className="mr-2" />
-                <p className="card-description text-base text-gray-700 my-4">
+                <FaRegClock className="mr-1 text-lg" />
+                <p className="card-description text-sm text-gray-700 ">
                   {internship.position}
                 </p>
                 </div>
                 {/* Additional details here */}
-                <Link to='/internship'>
-
+                
+                <Link to={`/apply-internship/${internship._id}`}>
                   <button
                     className="mt-4 hover:bg-amber-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
                   // onClick={() => handleInternshipClick(internship._id)}

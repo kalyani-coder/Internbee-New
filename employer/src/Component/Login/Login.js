@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import '../ResponsiveCss/ResponsiveCss.css';
-
+import logo from "../../Assets/white_header1.png";
 const Login = () => {
   const navigate = useNavigate();
   const {
@@ -104,7 +104,7 @@ const Login = () => {
         </div>
 
         <div className="LoginMainDiv flex items-center justify-between px-6 py-8 mr-40 ">
-          <img src="./login.jpg" alt="design" className="" />
+          <img src="./login.jpg" alt="design" className="" style={{height:500}}/>
 
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black mt-0">
             <div className="p-6 space-y-4 md:space-y-0 sm:p-8">

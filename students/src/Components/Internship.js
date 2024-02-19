@@ -3,8 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
 import logo from "../Assets/yellow_header1.png"
+import { FiUser } from "react-icons/fi";
 import {
-  FaUser,
   FaMoneyBill,
   FaMapMarkerAlt,
   FaRegClock,
@@ -153,20 +153,14 @@ const Internship = () => {
         <div className="flex items-center space-x-6">
           <Link
             to="/home"
-            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
           >
-            Home
+            Students
           </Link>
-          {/* <Link
-            to="/companies"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4"
-            onClick={handleCompaniesClick}
-          >
-            Companies
-          </Link> */}
+          
           <Link
             to="/internship"
-            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
             onClick={Internship}
           >
             Internships
@@ -174,7 +168,7 @@ const Internship = () => {
 
           <Link
             to="/applied-internship"
-            className="text-2xl font-bold focus:text-white focus:border-white focus:border-b-4 hover:text-white"
+            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
           >
             Applied Internship
           </Link>
@@ -192,7 +186,7 @@ const Internship = () => {
             onMouseEnter={() => setShowProfileDropdown(true)}
             onClick={handleProfileIconClick}
           >
-            <FaUser className="mr-4 text-4xl" />
+            <FiUser className="mr-4 text-4xl" />
             {/* Profile dropdown */}
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
@@ -236,7 +230,7 @@ const Internship = () => {
           />
           {/* Main Search button */}
           <button
-            className=" mr-96 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2 mb-20"
+            className=" mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
             onClick={handleMainSearch}
           >
             Search
@@ -245,8 +239,8 @@ const Internship = () => {
       </div>
 
       {/* Filters Section */}
-      <div className="flex">
-        <div className="w-3/4 bg-gray-100 p-6 ml-10 h-1/3">
+      <div className="flex w-96 mx-60" style={{width:'70%',}}>
+        <div className="w-1/5 bg-gray-100 p-2 ml-2 h-1/5 mt-2" style={{width:'250%'}}>
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -330,64 +324,67 @@ const Internship = () => {
         </div>
 
         {/* Display Internships Section */}
-        <div className="flex flex-col items-center ml-39">
+        <div className="flex flex-col items-center ml-39 ">
           {/* Map through the filtered internships (or all internships if not filtered) */}
           {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="ml-40 card w-98 m-6 rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden"
+                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
               >
-                <div className="flex-grow px-32 py-4 ">
+                <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
-                  <h2 className="card-title text-2xl font-semibold text-gray-800 ">
+                  <h2 className="card-title text-xl font-semibold text-gray-800 ">
                     {internship.job_Title}
                   </h2>
-                  <p className="card-company text-xl text-gray-700">
+                  <p className="card-company text-lg text-gray-700">
                     Company Name : {internship.company_Name}
                   </p>
-                  <div className="flex justify-between items-center my-4 gap-3 ">
+                  <div className="flex justify-between items-center my-2 gap-3 ">
                     <div className="flex items-center">
-                      <FaRegClock className="mr-2" />
-                      <p className="card-company text-xl text-gray-700 ">
+                      <FaRegClock className="mr-2 text-xl" />
+                      <p className="card-company text-sm text-gray-700 ">
                         Start Date : {internship.start_Date}
                       </p>
                     </div>
                     <div className="flex items-center">
-                      <FaMoneyBill className="mr-2" />
-                      <p className="card-location text-xl text-gray-700">
+                      <FaMoneyBill className="mr-2 text-lg" />
+                      <p className="card-location text-sm text-gray-700">
                         &#x20B9;{internship.stipend}
                       </p>
                     </div>
                     <div className="flex items-center">
-                      <FaMapMarkerAlt className="mr-2" />
-                      <p className="card-duration text-xl text-gray-700">
+                      <FaMapMarkerAlt className="mr-2 text-sm" />
+                      <p className="card-duration text-sm text-gray-700">
                         {internship.location}
                       </p>
                     </div>
                     <div className="flex items-center">
-                      <FaRegClock className="mr-2" />
-                      <p className="card-duration text-xl text-gray-700">
+                      <FaRegClock className="mr-2 text-xl" />
+                      <p className="card-duration text-sm text-gray-700">
                         End Date : {internship.end_Date}
                       </p>
                     </div>
                   </div>
-                  <p className="card-description text-base text-gray-700 my-4">
+                  <p className="card-description text-sm text-gray-700 my-2">
                     Internship Type : {internship.job_Type}
                   </p>
+                  <div>
+                  <p className="card-skills text-sm text-gray-700 my-2">
+                      Skills: {internship.skills}
+                    </p>
+                    </div>
                   <div className="flex items-center">
-                      <FaRegClock className="mr-2" />
-                      <p className="card-duration text-xl text-gray-700">
+                      <FaRegClock className="mr-2 text-" />
+                      <p className="card-duration text-sm text-gray-700">
                         Duration : {internship.position}
                       </p>
                     </div>
-                  <p className="card-description text-base text-gray-700 my-4">
+                  <p className="card-description text-sm text-gray-700 my-4">
                     {internship.job_Description}
                   </p>
                   <div className="flex justify-between">
-                    <p className="card-skills text-base text-gray-700">
-                      Skills: {internship.skills}
-                    </p>
+                    
 
                     <div>
                       <Link to={`/apply-internship/${internship._id}`}>

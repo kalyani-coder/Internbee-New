@@ -25,7 +25,7 @@ const Carousel = ({ images }) => {
     return (
         <div className="w-5/6  flex items-center justify-center relative" style={{ height: "450px" }}>
             <button
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-gray-700 font-bold py-2 px-4 border border-gray-400 rounded-full focus:outline-none"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-black font-bold py-2 px-4 border border-gray-400 rounded-full focus:outline-none"
                 onClick={prevImage}
             >
                 {'<'}

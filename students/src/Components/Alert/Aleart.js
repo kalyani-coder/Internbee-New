@@ -7,15 +7,15 @@ const Alert = ({ type, children }) => {
   // Set classes and text color based on the type of alert
   switch (type) {
     case "success":
-      alertClasses = "bg-green-500 text-white";
+      alertClasses = " text-white";
       alertTextColor = "text-green-700";
       break;
     case "error":
-      alertClasses = "bg-red-500 text-white";
+      alertClasses = " text-white";
       alertTextColor = "text-red-700";
       break;
     default:
-      alertClasses = "bg-gray-500 text-white";
+      alertClasses = " text-white";
       alertTextColor = "text-gray-700";
       break;
   }
@@ -25,7 +25,7 @@ const Alert = ({ type, children }) => {
       <div className={`${alertClasses} font-bold rounded-t px-4 py-2`}>
         {type === "success"
           ? "Success"
-          : type === "erroe"
+          : type === "error"
           ? "Error"
           : "Alert"}
       </div>
