@@ -8,10 +8,13 @@ import '../ResponsiveCss/Responsive.css';
 
 const NewJobList = () => {
   const [candidates, setCandidates] = useState([]);
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+
+  const [jobList , setJobList] = useState()
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   
     const fetchData = async () => {
@@ -31,13 +34,6 @@ const NewJobList = () => {
 
   
 
-  const handleViewMore = (candidate) => {
-    setSelectedCandidate(candidate);
-  };
-
-  const handleClosePopup = () => {
-    setSelectedCandidate(null);
-  };
 
    // Function to handle delete confirmation
    const handleDeleteClick = (candidate) => {
@@ -73,6 +69,20 @@ const NewJobList = () => {
     setShowConfirmation(false);
     setCandidateToDelete(null);
   };
+  const openModal = () => {
+    setIsModalOpen(true);
+   
+};
+
+const closeModal = () => {
+    setIsModalOpen(false);
+};
+
+const handleViewMoreClick = (candidate) => {
+  openModal();
+  // Set detailed information for the modal
+  setJobList(candidate);
+};
     return (
       <>
       <Navbar />
@@ -142,12 +152,19 @@ const NewJobList = () => {
                         <td className="py-2 px-4 border-b">
                           <div className="actions">
 
-                            <button
+                            {/* <button
                               className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
                               onClick={() => handleViewMore(candidate)}
                             >
                               View More
-                            </button>
+                            </button> */}
+
+                            <button
+                className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
+                onClick={() => handleViewMoreClick(candidate)}
+              >
+                View More
+              </button>
 
                           </div>
                         </td>
@@ -178,38 +195,39 @@ const NewJobList = () => {
       )}
 
 
+      {isModalOpen && (
+  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white p-8 max-w-md w-full rounded-md">
+      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+      {/* Display detailed information here */}
+      <div>
+        <label className="block mb-2">Applicant Name: {jobList.InternName}</label><hr/>
+        <label>Email: {jobList.InternEmail}</label><hr/>
+        <label>InternNumber: {jobList.InternNumber}</label><hr/>
+        <label>location: {jobList.location}</label><hr/>
+        <label>empName: {jobList.empName}</label><hr/>
+        <label>job_Description: {jobList.job_Description}</label><hr/>
+        <label>position: {jobList.position}</label><hr/>
+        <label>skills: {jobList.skills}</label><hr/>
+        <label>stipend: {jobList.stipend}</label><hr/>
+        <label>job_Title: {jobList.job_Title}</label><hr/>
+        <label>appliedDate: {jobList.appliedDate}</label><hr/>
+        
+        {/* Add more labels for additional fields */}
+      </div>
+      <div className="flex justify-between mt-3">
+        <button
+          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+          onClick={closeModal}
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
-      {/* Modal */}
-      {selectedCandidate && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <span className="close cursor-pointer" onClick={handleClosePopup}>
-              &times;
-            </span>
-            <div className="modal-content">
-              <h2 className="text-2xl font-bold mb-4">Candidate Details</h2><hr />
-              <p>{`Job Title: ${selectedCandidate.job_Title}`}</p><hr />
-              <p>
-                Intern Email:{" "}
-                <a href={`mailto:${selectedCandidate.InternEmail}`} target="_blank" rel="noopener noreferrer">
-                  {selectedCandidate.InternEmail}
-                </a>
-              </p><hr />
-              <p>{`InternNumber: ${selectedCandidate.InternNumber}`}</p><hr />
-              <p>{`Employer Name: ${selectedCandidate.empName}`}</p><hr />
-              <p>{`skills: ${selectedCandidate.skills}`}</p><hr />
-              <p>{`position: ${selectedCandidate.position}`}</p><hr />
-              <p>{`status: ${selectedCandidate.status}`}</p><hr />
-              <p>{`location: ${selectedCandidate.location}`}</p><hr />
-              <p>{`job_Description: ${selectedCandidate.job_Description}`}</p><hr />
-              <p>{`stipend: ${selectedCandidate.stipend}`}</p><hr />
-              <p>{`Applied Date: ${selectedCandidate.appliedDate}`}</p><hr />
-             
-              {/* Add other details you want to display */}
-            </div>
-          </div>
-        </div>
-      )}
+     
 
     </>
     )

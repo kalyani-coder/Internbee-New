@@ -16,12 +16,57 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import * as XLSX from 'xlsx';
 const LowerContent = () => {
+
+
   
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [candidates, setCandidates] = useState([]);
+
+  const generateExcel = () => {
+    // Filter data to include only the required fields
+    const filteredData = data.map(item => ({
+      'Recent Applicant Students': 'Recent Applicant Students', // Added static heading for the first column
+      'Applied Date': item.appliedDate,
+      'Candidate Name': item.InternName,
+      'Email Address': item.InternEmail,
+      'Contact Number': item.InternNumber,
+      'EMP Name': item.empName,
+      Location: item.location,
+      Stipend: item.stipend,
+      'Job Title': item.job_Title,
+    }));
+
+    // Create a new workbook
+    const wb = XLSX.utils.book_new();
+
+    // Convert filtered data to worksheet
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+
+
+    const columnWidths = [
+      { wch: 25 }, // Recent Applicant Students column
+      { wch: 25 }, // Applied Date column
+      { wch: 25 }, // Candidate Name column
+      { wch: 25 }, // Email Address column
+      { wch: 25 }, // Contact Number column
+      { wch: 25 }, // EMP Name column
+      { wch: 25 }, // Location column
+      { wch: 25 }, // Stipend column
+      { wch: 25 }, // Job Title column
+    ];
+    ws['!cols'] = columnWidths;
+
+    // Add the worksheet to the workbook
+    XLSX.utils.book_append_sheet(wb, ws, "RecentApplicants");
+
+    // Generate the XLSX file and trigger the download
+    XLSX.writeFile(wb, "RecentApplicants.xlsx");
+  };
+
+
 
 
   useEffect(() => {
@@ -37,7 +82,7 @@ const LowerContent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('https://backend.internsbee.com/api/postinternship/')
+    fetch('https://internbee-backend-apis.onrender.com/api/postinternship/')
       .then(response => response.json())
       .then(apiData => {
         // Filter jobs posted within the last 3 days
@@ -58,7 +103,7 @@ const LowerContent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('https://backend.internsbee.com/api/studentsdetails')
+    fetch('https://internbee-backend-apis.onrender.com/api/studentsdetails')
       .then(response => response.json())
       .then(apiData => {
         const currentDate = new Date();
@@ -73,6 +118,7 @@ const LowerContent = () => {
   }, []);
 
   return (
+    <>
     <div className='mcLower'>
       {/* tables */}
       <div className='leftTable'>
@@ -165,7 +211,7 @@ const LowerContent = () => {
 
       </div>
 
-      <div className='rightList'>
+      {/* <div className='rightList'>
       <h2 className="text-2xl font-bold mb-4">New Candidates</h2>
       <br />
 
@@ -178,13 +224,17 @@ const LowerContent = () => {
               <p className='role'>{candidate.experience}</p>
             </p>
           </h6>
-          {/* You can add your logic here to determine ACCEPT or REJECT button */}
-          {/* <button className='applicantsBtnAccepted'>ACCEPT</button> */}
         </div>
       ))}
-    </div>
+    </div> */}
+          {/* <button className='applicantsBtnAccepted'>ACCEPT</button> */}
+          {/* You can add your logic here to determine ACCEPT or REJECT button */}
+
 
     </div>
+    <button className='btn btn-danger mb-5' onClick={generateExcel}>Generate Reports</button>   
+    
+    </>
   )
 }
 
