@@ -25,6 +25,7 @@ import SubscriptionAnnually from './Components/Subscription/SubscriptionAnnually
 import NewJobList from './Components/JobList/NewJobList';
 import StudentSubscriptionMonthly from './Components/Subscription/StudentSubscriptionMonthly';
 import StudentSubscriptionFree from './Components/Subscription/StudentSubscriptionFree';
+import GenerateReport from './Components/Generate Report/GenerateReport';
 
 
 
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/newjoblist" element={<NewJobList/>}/>
           <Route path="/studentmonthlysubcription" element={<StudentSubscriptionMonthly/>}/>
           <Route path="/studentfreesubcription" element={<StudentSubscriptionFree/>}/>
+          <Route path="/generatereport" element={<GenerateReport/>}/>
 
         </Routes>
       </Router>
