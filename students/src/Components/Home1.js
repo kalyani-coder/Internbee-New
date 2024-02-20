@@ -306,7 +306,7 @@ const Home1 = () => {
                 </div>
               )}
             </div>
-          </div> */}
+          </div> 
         {/* </div> */}
 <Internal_Navbar/>
 
@@ -534,7 +534,7 @@ const Home1 = () => {
           </div>
           
         </div>
-      </div>
+      {/* </div> */}
       <Footer />
     </>
   );

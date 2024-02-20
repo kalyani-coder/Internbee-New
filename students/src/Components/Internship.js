@@ -179,7 +179,7 @@ const Internship = () => {
           {/* <div>
             <IoNotificationsOutline className="mr-4 text-4xl" />
           </div> */}
-          <div
+          {/* <div
             className="cursor-pointer"
             onMouseEnter={() => setShowProfileDropdown(true)}
             onClick={handleProfileIconClick}
@@ -210,8 +210,8 @@ const Internship = () => {
             )}
           </div>
         </div>
-      </div> */}
-    
+      </div> 
+     */}
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
