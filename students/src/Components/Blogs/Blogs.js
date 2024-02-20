@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch, FiTrash2, FiX } from "react-icons/fi";
 import axios from "axios";
-
+import '../ResponsiveCss/ResponsiveCss.css';
 import Navbar from "../Navbar";
 
 const Blog = () => {
@@ -37,7 +37,7 @@ const Blog = () => {
 
                 <div className="flex flex-col items-center justify-center w-full flex-1 overflow-y-auto mt-12">
                     <div className="container mx-auto mt-8 w-full max-w-screen-md">
-                        <div className="flex items-center justify-between mb-4">
+                        <div className=" blogh flex items-center justify-between mb-4">
                             <h1 className="text-3xl font-bold">Latest Blogs</h1>
                             <div className="flex items-center">
                                 <div className="relative mr-4">

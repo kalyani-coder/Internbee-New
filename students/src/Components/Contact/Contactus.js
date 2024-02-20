@@ -3,11 +3,13 @@
 import React from 'react';
 import Footer from "../Footer";
 import Internal_Navbar from "../InternalNavbar";
-
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 const ContactUs = () => {
   return (
     <> 
-    <Internal_Navbar/>
+    {/* <Internal_Navbar/> */}
+    <Applied_Intern_Internal_Navbar/>
     <div className="container flex flex-col mx-auto bg-white">
       <div className="w-full draggable">
         <div className="container flex flex-col items-center gap-16 mx-auto my-32">

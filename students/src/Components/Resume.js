@@ -767,7 +767,7 @@ const Resume = () => {
               )}
             </div>
             <h1 className="text-2xl font-bold m-4 ">Portfolio</h1>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+            <div className="ResponsiveResume grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
               <div className="form-group">
                 <label
                   htmlFor="Expectation"

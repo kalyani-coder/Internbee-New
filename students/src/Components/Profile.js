@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
+import Profile_Navbar from './ProfileNavBar/Profile_Navbar';
+import './ResponsiveCss/ResponsiveCss.css';
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -281,7 +283,7 @@ const Profile = () => {
     navigate("/Resume");
   };
 
-  // new code start here
+
 
   const handleCreateProfile = () => {
     navigate("/Profile");
@@ -297,7 +299,7 @@ const Profile = () => {
   return (
     <div className=" ">
       <div className="">
-        <div
+        {/* <div
           className="p-6 flex items-center justify-between border shadow-xl w-full"
           style={{ backgroundColor: "#FFBD59" }}
         >
@@ -308,8 +310,7 @@ const Profile = () => {
                 alt="Logo"
                 className="w-14 h-14 rounded-full"
                 style={{ width: "15rem" }}
-              />
-              {/* <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
+              />       
             </div>
           </Link>
 
@@ -320,7 +321,7 @@ const Profile = () => {
             >
               Students
             </Link>
-            {/* <Link to="/companies" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Companies</Link> */}
+      
             <Link
               to="/internship"
               className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
@@ -329,19 +330,10 @@ const Profile = () => {
             </Link>
           </div>
 
-          {/* Search Bar */}
-          {/* <div className="flex items-center">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="p-2 rounded-md mr-2 border"
-                        />
-                    </div> */}
+        
 
           <div className="flex items-center space-x-4">
-            <div className="">
-              <IoNotificationsOutline className="mr-4  text-4xl" />
-            </div>
+       
             <div
               className="cursor-pointer"
               onMouseEnter={() => setShowProfileDropdown(true)}
@@ -372,10 +364,13 @@ const Profile = () => {
               )}
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-center ">
-          <div className="w-2/3 border border-black p-2 my-3 bg-gray-50 shadow-lg">
+<Profile_Navbar/>
+
+{/* ///////////////////////////////////////////////////////// */}
+        <div className="mainProfile flex justify-center ">
+          <div className="CardSizeProfile w-2/3 border border-black p-2  bg-gray-50 shadow-lg mt-[113px]">
             <div className="mt-6 text-2xl font-bold">
               <h6>1.Personal Details</h6>
             </div>
@@ -1011,7 +1006,7 @@ const Profile = () => {
               <h6>4.Upload Documents</h6>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="UploadResume grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="form-group">
                 <label htmlFor="resume" className="block text-xl font-medium">
                   Resume<span className="text-red-500">*</span>

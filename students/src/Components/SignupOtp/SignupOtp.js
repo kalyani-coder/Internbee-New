@@ -52,7 +52,7 @@ const SignupOtp = () => {
       <div className="">
         <div className="flex justify-center items-center mt-10"></div>
 
-        <div className="flex items-center justify-between px-6 py-8 mr-40 ">
+        <div className="SignupOtp flex items-center justify-between px-6 py-8 mr-40 ">
           <img src="./design.jpg" alt="design" className="" />
 
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">

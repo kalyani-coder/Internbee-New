@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Internal_Navbar from '../InternalNavbar'
 import Footer from '../Footer'
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 
 const AboutUs = () => {
@@ -10,7 +12,8 @@ const AboutUs = () => {
     
     
     <div className='abc'>
-    <Internal_Navbar/>
+    {/* <Internal_Navbar/> */}
+    <Applied_Intern_Internal_Navbar/>
     </div>
     {/* <div className='d-flex'>
     <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md mr-4">

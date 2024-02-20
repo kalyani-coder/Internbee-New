@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Internal_Navbar from "../InternalNavbar";
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 function EnquiryPage() {
   const [enquiries, setEnquiries] = useState([]);
@@ -55,7 +57,8 @@ function EnquiryPage() {
   return (
     <div className="flex flex-col items-center justify-center space-y-8">
       <div className="mb-20">
-        <Internal_Navbar />
+        {/* <Internal_Navbar /> */}
+        <Applied_Intern_Internal_Navbar/>
       </div>
       <div className="container mx-auto">
         <div className="mb-4 flex justify-center">

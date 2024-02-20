@@ -105,4 +105,68 @@
 
   margin-left: 10%;
 }
+.ViewProfileCard{
+
+  display: block;
+}
+.cardsection{
+
+  gap: 1rem;
+}
+.mainProfile{
+
+  margin-top: 91px;
+}
+.CardSizeProfile{
+
+  width: 83%;
+  margin-top: 13px;
+}
+.UploadResume{
+
+  display: block;
+}
+.poputHomeOne{
+
+  width: min-content;
+}
+
+.HomeNavMainBtns{
+  margin-right: 0px;
+  padding-left: 0%;
+  padding-right: 0%;
+  font-size: 9px;
+}
+.Navbtns{
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+.blogh{
+
+  display: block;
+}
+.ResponsiveResume{
+
+  display: block;
+}
+.Freecard{
+  padding: 0% !important;
+}
+.Freecards{
+  padding: 1% ;
+}
+.preeHeading{
+
+  font-size: 30px;
+}
+.MainFaqs{
+
+  margin-top: 96px;
+}
+.SignupOtp{
+
+  width: 100%;
+  display: block;
+}
+
   }
