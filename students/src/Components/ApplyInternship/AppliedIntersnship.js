@@ -103,18 +103,18 @@ const AppliedInternship = () => {
             )}
 
             <div>
-              <h2 className="text-2xl font-bold mb-4 text-center">
+              <h2 className="AppliedHead text-2xl font-bold mb-4 text-center">
                 Applied Internships
               </h2>
             </div>
             <div>
               <Link to={"/studentEnquiry"}>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className=" viewEnq bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   View Enquriy
                 </button>
               </Link>
             </div>
-            <div className="mb-4">
+            <div className=" sort mb-4">
               <label className="mr-2">Sort by Status:</label>
               <select
                 onChange={handleStatusChange}

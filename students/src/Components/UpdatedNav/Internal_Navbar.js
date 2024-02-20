@@ -40,7 +40,10 @@ const Internal_Navbar = () => {
     <div className=" Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-2 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
       {/* Logo and brand */}
       <div className="flex items-center space-x-2">
+        <Link to={'/'}>
         <img src={logo} alt="Logo" className="w-14 h-14 rounded-full"  style={{width:'15rem',height:'5rem'}}/>
+       </Link>
+       
         {/* <h1 className="text-4xl font-bold">
           Interns{" "}
           <span className="text-4xl font-bold text-amber-300">Bee</span>
