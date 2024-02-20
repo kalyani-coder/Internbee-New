@@ -57,9 +57,9 @@ const Navbar = () => {
             </div>
             <li>
               <div className="relative group">
-                <button className="text-black hover:text-black flex items-center h-12 w-12 text-lg">
+                <button className="text-black hover:text-black flex items-center h-12 w-12 text-lg ">
                   <svg
-                    className="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-0"
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"

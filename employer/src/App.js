@@ -33,6 +33,7 @@ import Contact from './Component/Contact/Contact';
 import AboutUsEmp from './Component/Aboutus/Aboutusemp';
 import NavbarEmp from './Component/Aboutus/NavbarEmp';
 import SignupOtp from './Component/SignupOtp/SignupOtp';
+import AppliedCandidates from './Component/AppliedCandidates/AppliedCandidates';
 
 function App() {
 
@@ -93,6 +94,7 @@ function App() {
           <Route path='/navbaremp'element={<NavbarEmp/>}/>
           <Route path='/signupotp'element={<SignupOtp/>}/>
           <Route path='/navbar'element={<Navbar/>}/>
+          <Route path='/appliedcandidates'element={<AppliedCandidates/>}/>
         </Routes>
 
       </Router>

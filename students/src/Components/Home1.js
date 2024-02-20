@@ -273,9 +273,9 @@ const Home1 = () => {
                         />
                     </div> */}
           <div className="flex items-center space-x-4 relative">
-            <div className="">
+            {/* <div className="">
               <IoNotificationsOutline className="mr-4  text-4xl" />
-            </div>
+            </div> */}
             <div
               className="cursor-pointer"
               onMouseEnter={() => setShowProfileDropdown(true)}
@@ -310,7 +310,7 @@ const Home1 = () => {
         </div>
 
         <div className="mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
-          <h1>Search Your Dream Internship Here</h1>
+          <h1>Search Your Internships</h1>
         </div>
 
         <div className="flex items-center justify-center my-10 mt-5">
@@ -326,108 +326,7 @@ const Home1 = () => {
             </button>
           </div>
         </div>
-        <div ref={companiesRef}>
-          <div className=" mb-10 text-4xl font-bold flex flex-col items-center ">
-            <h1>Top Companies hiring now</h1>
-          </div>
-          <Slider {...settings}>
-            {/* {companies.map((company) => ( */}
-              {/* <div
-                {filteredInternships.length > 0 ? (
-            filteredInternships.map((internship) => (
-              <div
-                key={internship.id}
-                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
-              >
-                < className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
-                  {/* Internship details */}
-                  {filteredInternships.length > 0 ? (
-            filteredInternships.map((internship) => (
-              <div
-                key={internship.id}
-                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
-              >
-                <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
-                  {/* Internship details */}
-                  <h2 className="card-title text-2xl font-semibold text-gray-800 ">
-                    {internship.job_Title}
-                  </h2>
-                  <p className="card-company text-xl text-gray-700">
-                    Company Name : {internship.company_Name}
-                  </p>
-                  {/* <div className="flex justify-between items-center my-2 gap-3 "> */}
-                    {/* <div className="flex items-center">
-                      <FaRegClock className="mr-2 text-xl" />
-                      <p className="card-company text-sm text-gray-700 ">
-                        Start Date : {internship.start_Date}
-                      </p>
-                    </div> */}
-                    {/* <div className="flex items-center">
-                      <FaMoneyBill className="mr-2 text-lg" />
-                      <p className="card-location text-sm text-gray-700">
-                        &#x20B9;{internship.stipend}
-                      </p>
-                    </div> */}
-                    {/* <div className="flex items-center">
-                      <FaMapMarkerAlt className="mr-2 text-sm" />
-                      <p className="card-duration text-sm text-gray-700">
-                        {internship.location}
-                      </p>
-                    </div> */}
-                    {/* <div className="flex items-center">
-                      <FaRegClock className="mr-2 text-xl" />
-                      <p className="card-duration text-sm text-gray-700">
-                        End Date : {internship.end_Date}
-                      </p>
-                    </div> */}
-                  {/* </div> */}
-                  {/* <p className="card-description text-sm text-gray-700 my-2">
-                    Internship Type : {internship.job_Type}
-                  </p> */}
-                  {/* <div>
-                  <p className="card-skills text-sm text-gray-700 my-2">
-                      Skills: {internship.skills}
-                    </p>
-                    </div> */}
-                  {/* <div className="flex items-center">
-                      <FaRegClock className="mr-2 text-" />
-                      <p className="card-duration text-sm text-gray-700">
-                        Duration : {internship.position}
-                      </p>
-                    </div> */}
-                  {/* <p className="card-description text-sm text-gray-700 my-4">
-                    {internship.job_Description}
-                  </p> */}
-                  {/* <div className="flex justify-between"> */}
-                    
-
-                    {/* <div>
-                      <Link to={`/apply-internship/${internship._id}`}>
-                        <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
-                          Apply
-                        </button>
-                      </Link>
-                    </div> */}
-                  {/* </div> */}
-                </div>
-              </div>
-            ))
-          ) : (
-            // Display a message if no internships are found
-            <p></p>
-          )}
-                 
-                {/* <h2 className="text-xl font-bold">{company.name}</h2> */}
-                {/* <p className="text-gray-600">{company.description}</p> */}
-                <Link to={`/apply-internship/${Internship._id}`}>
-                <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
-                  View Internship
-                </button> 
-                </Link>
-            
-          
-          </Slider>
-        </div>
+    
         <div className="flex flex-col items-center ">
           <div className="mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
             <h1>Dream Internship here</h1>
@@ -507,7 +406,7 @@ const Home1 = () => {
             <h1 className="my-10">Explore Various Types of Internships</h1>
           </div>
            
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 hover:text-black">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-44 hover:text-black">
             {yourCardArray.map((card) => (
               <Link to={'/internship'}>
               <div

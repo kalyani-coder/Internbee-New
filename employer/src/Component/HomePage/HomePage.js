@@ -84,7 +84,7 @@ const EmployerSection = () => {
           <h2 className="text-xl font-semibold mb-4">Post Internships</h2>
           <div>
             <img
-              src="https://www.debt.org/wp-content/uploads/2013/04/Student-Internship.jpg" // Replace with your image URL
+              src="https://img.freepik.com/free-vector/internship-job-illustration_52683-49386.jpg?w=996&t=st=1659567001~exp=1659567601~hmac=86bb01b16a2dc99d4210425816e62bbac016dc26243b5d6d754fdbde45cc1593" // Replace with your image URL
               alt="Post Internship"
               className="mb-4 w-full h-96 object-contain"
             />

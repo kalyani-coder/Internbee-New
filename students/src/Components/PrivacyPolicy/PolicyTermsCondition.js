@@ -42,7 +42,7 @@ const PolicyTermsCondition = () => {
 
         {showMore ? (
           <>
-            <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1>
+            <h1 className='privacy-heading-main text-center'>Terms And Conditions Privacy Policy</h1>
 
             <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 

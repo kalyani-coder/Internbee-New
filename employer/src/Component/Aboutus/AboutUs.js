@@ -12,42 +12,44 @@ const AboutUs = () => {
     <div className='abc'>
     <Navbar />
     </div>
-    <div className='d-flex'>
-    <Sidebar />
-    
-    <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md mr-4">
-            <h2 className="text-xl font-semibold mb-4">About Intern Bee </h2>
-            <p><span className='text-dark fw-bold fs-4'>Welcome to Internbee</span> – Your Gateway to Opportunities!
-
-At Internbee, we are passionate about connecting aspiring talents with exciting opportunities. Our platform serves as a bridge between students, recent graduates, and employers, creating a space where skills meet possibilities.
-
-We understand the importance of gaining practical experience in today's competitive world. Internbee is committed to providing a dynamic environment where individuals can explore internships, projects, and collaborations that align with their career goals.
-
-Whether you're a student eager to kickstart your career journey or an employer seeking fresh talent, Internbee is the place to be. Join our vibrant community and embark on a journey of growth, learning, and success.
-
-Discover, connect, and thrive with Internbee!</p><button className='btn btn-warning'>Learn More <span>→</span></button>
-            </div>
-    <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md">
-            <h2 className="text-xl font-semibold mb-4">About Us</h2>
-            <div>
-              <img
-                src="https://img.freepik.com/free-photo/document-marketing-strategy-business-concept_53876-124269.jpg" // Replace with your image URL
-                alt="Post Internship"
-                className="mb-4 w-full h-96 object-contain"
-              />
-              <p className="text-black text-center">
-                Best Platform to Search Your Dream Internships!
-              </p>
-            </div>
-            <div className="flex justify-center mt-4">
-              <Link to={'/jobs'} >
-                <button className="px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-amber-300">
-                  View Internship
-                </button>
-              </Link>
-            </div>
-            </div>
-            </div>
+    <div className="py-14 bg-white mt-1 text-center"> 
+    <h2 className="text-2xl text-gray-900 font-bold md:text-4xl mx-8">About Us</h2>
+    <p className="mt-6 text-gray-600 mx-32">InternsBee is a Pune-based online platform that connects students with internship opportunities. It was founded in 2022 by a team of passionate and experienced professionals who wanted to bridge the gap between academia and industry. Our vision is to create a vibrant and dynamic ecosystem of internships in Pune, where students can learn from the best and grow their careers. </p>
+    <p className="mt-4 text-gray-600 mx-32">InternsBee is more than just a website. It is a community of like-minded students who share their experiences, insights, and tips with each other. It is also a network of mentors who guide and inspire our students to achieve their goals. It is also a platform for institutions and companies who want to hire interns in bulk and benefit from their talent and enthusiasm.</p>
+    <p className="mt-4 text-gray-600 mx-32">InternsBee offers a wide range of internships in various fields such as engineering, management, design, arts, social work, education, media, and more. We also provide guidance and support to our students throughout their internship journey. We help them prepare their resumes, write cover letters, ace interviews, and get feedback from their mentors. We also organize events and workshops to enhance their skills and knowledge.</p>
+   </div>
+    <div className="py-14 bg-white ">  
+      <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+        <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+          <div className="md:w-5/12 lg:w-5/12">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.hwETvQ43zgDcL6CmvHVluwHaEh&pid=Api&P=0&h=180" alt="image" loading="lazy" className="w-full h-auto" />
+          </div>
+          <div className="md:w-7/12 lg:w-6/12">
+            <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">Our Vision</h2>
+            <p className="mt-6 text-gray-600">"Our vision is to create the biggest and largest students network that </p>
+            <p className="mt-1 text-gray-600">would help students and enable employers to search for the right candidate</p>
+            <p className="mt-1 text-gray-600">for the opportunities and students benifits dor education and placements </p>
+            <p className="mt-1 text-gray-600">and otheractivities as well." </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="py-14 bg-white mt-2">  
+      <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+        <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+          <div className="md:w-5/12 lg:w-5/12">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.mOlAhpaItpIBK13So2E3XQHaCp&pid=Api&P=0&h=180" alt="image" loading="lazy" className="w-full h-auto" />
+          </div>
+          <div className="md:w-7/12 lg:w-6/12">
+            <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">Our Mission</h2>
+            <p className="mt-6 text-gray-600">"Our mission is to empowerlesser-known colleges and their</p>
+            <p className="mt-1 text-gray-600">talented but often overlooked students. We aspire to offer a platform </p>
+            <p className="mt-1 text-gray-600">Where student seeking to learn and enhance their skills can thrive </p>
+            <p className="mt-1 text-gray-600">ans flourish." </p>
+          </div>
+        </div>
+      </div>
+    </div>
             <div>
                 <Footer/>
             </div>
@@ -55,5 +57,6 @@ Discover, connect, and thrive with Internbee!</p><button className='btn btn-warn
     </>
   )
 }
+
 
 export default AboutUs

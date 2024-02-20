@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion ,faTimes,faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-
+import { MdPeopleAlt } from "react-icons/md";
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -29,7 +29,12 @@ const Sidebar = () => {
               Internship
             </a>
           </Link>
-        
+          <Link to="/appliedcandidates">
+            <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
+              <MdPeopleAlt icon={faUser} className="w-7 h-7 mr-2 text-amber-300" />
+              Applied Candidates
+            </a>
+          </Link>
           <Link to="/candidates">
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faUser} className="w-6 h-6 mr-2 text-amber-300" />

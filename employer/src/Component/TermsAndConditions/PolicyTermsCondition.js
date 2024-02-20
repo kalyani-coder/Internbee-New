@@ -346,6 +346,119 @@ const PolicyTermsCondition = () => {
                   </button>
                 </>
               )}
+
+
+
+
+              {showMore2 ? (
+                <>
+                  <h1 className='privacy-heading-main text-center'>Privacy Policy</h1>
+
+               
+                  This Privacy Policy pertains to the online services provided by Interns Bee at
+                  InternsBee.com, its subdomains, and Interns Bee's app on Google Play Store, collectively
+                  referred to as "Services."
+                  <h1 className='privacy-heading-middle'>Overview:</h1>
+                  We value your privacy and are committed to delivering a secure user experience. This
+                  privacy statement outlines our online data collection and usage policies. By utilizing our
+                  services, you agree to the policies and practices described herein. Your data will be stored
+                  and processed on our servers, which may be located inside or outside India. Your usage of
+                  the Services implies consent to the transfer of your data. Our Services may contain links to
+                  external websites, over which we have no control, and we are not responsible for their
+                  privacy policies.<br></br>
+                  <h1 className='privacy-heading-middle'>Collection of Information:</h1>
+                  1. Personal Information Provided by You: In certain sections of our Services, we may
+                  request personal information such as your name, address, email, telephone number, billing
+                  details, education, workplace details, etc.
+                  2. Information Collected When Using Third-Party Services: To enhance your experience, we
+                  may collect personally identifiable information, including usernames, directly or indirectly. We
+                  use third-party services with specific privacy policies, including Google Sign-In, YouTube,
+                  and Facebook.
+                  3. Information About Your Contacts: When you share content on Interns Bee using features
+                  like Google+ share or SMS share, we may collect and process information about the
+                  contacts associated with your Google account.
+                  <h1 className='privacy-heading-middle'>Retention of Information::</h1>
+                  In our commitment to lifelong career management, we retain all gathered information
+                  indefinitely. You have the option to correct or update your account profile, and you may
+                  choose to delete your account, after which we will delete or de-identify the data.
+                  <h1 className='privacy-heading-middle'>Sharing of Information:</h1>
+                  1.Employers' internship/job listings are published online and may be viewed by anyone on
+                  Interns Bee and search engines.
+                  2. Personal information may be shared with students applying to internships/jobs through
+                  Interns Bee.
+                  3. Information may be shared with third parties providing services on our behalf or in
+                  partnership with us.
+                  4. Interns Bee reserves the right to publish internship/job listings on various platforms to
+                  increase visibility.
+                  <h1 className='privacy-heading-middle'>Editing Information:</h1>
+                  Students and employers can edit personal information through their respective sections.
+                  Certain data, such as applications or postings, cannot be edited.
+                  Downloading Information:
+                  For assistance in downloading information, contact privacy@InternsBee.com.
+                  <h1 className='privacy-heading-middle'>Communication Policy:</h1>
+                  1. Opt-In: Users must verify their email address to receive newsletters or marketing
+                  communications.
+                  2. Opt-Out: Newsletters contain an 'Unsubscribe' link for opting out of future
+                  communications.
+                  Cookies and Pixel Tags:
+                  We and partners use cookies, web beacons, and pixel tags to collect information for
+                  analytics and personalization. Users can disable cookies, but it may affect site functionality.
+                  Children:
+                  Interns Bee is not intended for children under 13. Parental guidance is required for users
+                  under 13.
+                  <h1 className='privacy-heading-middle'>Security of Information:</h1>
+                  Industry-standard security measures are implemented. We are not liable for information
+                  disclosure beyond our control.
+                  GDPR Entitlement:
+                  EU residents have rights under GDPR. Requests related to these rights can be made to
+                  <h1 className='fw-bold text-yellow-500'>privacy@InternsBee.com.</h1>
+                  <h1 className='privacy-heading-middle'>No Guarantees:</h1>
+                  While we aim to maintain data standards, factors beyond our control may impact data
+                  disclosure. We disclaim any warranties or representations regarding data maintenance.
+                  Changes to this Privacy Policy:Changes to this policy will be communicated through
+                  prominent announcements on our Services or by email. Refer to this page for the latest
+                  Privacy Policy
+                  {/* ... */}
+                  <div className="button-container">
+                    <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
+                      View Less
+                    </button>
+
+                  </div>
+                </>
+              ) : (
+                <>
+                <h1 className='privacy-heading-main text-center'>Privacy Policy</h1><br/>
+
+               
+                  This Privacy Policy pertains to the online services provided by Interns Bee at
+                  InternsBee.com, its subdomains, and Interns Bee's app on Google Play Store, collectively
+                  referred to as "Services."
+                  <h1 className='privacy-heading-middle'>Overview:</h1>
+                  We value your privacy and are committed to delivering a secure user experience. This
+                  privacy statement outlines our online data collection and usage policies. By utilizing our
+                  services, you agree to the policies and practices described herein. Your data will be stored
+                  and processed on our servers, which may be located inside or outside India. Your usage of
+                  the Services implies consent to the transfer of your data. Our Services may contain links to
+                  external websites, over which we have no control, and we are not responsible for their
+                  privacy policies.<br></br>
+                  <h1 className='privacy-heading-middle'>Collection of Information:</h1>
+                  1. Personal Information Provided by You: In certain sections of our Services, we may
+                  request personal information such as your name, address, email, telephone number, billing
+                  details, education, workplace details, etc.
+                  2. Information Collected When Using Third-Party Services: To enhance your experience, we
+                  may collect personally identifiable information, including usernames, directly or indirectly. We
+                  use third-party services with specific privacy policies, including Google Sign-In, YouTube,
+                  and Facebook.
+                  3. Information About Your Contacts: When you share content on Interns Bee using features
+                  like Google+ share or SMS share, we may collect and process information about the
+                  contacts associated with your Google account.
+                  {/* ... */}
+                  <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
+                    View More
+                  </button>
+                </>
+              )}
               <div>
         <label>
           <input

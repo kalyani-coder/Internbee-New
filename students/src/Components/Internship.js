@@ -178,9 +178,9 @@ const Internship = () => {
 
         {/* Notifications and User Profile */}
         <div className="flex items-center space-x-4 relative">
-          <div>
+          {/* <div>
             <IoNotificationsOutline className="mr-4 text-4xl" />
-          </div>
+          </div> */}
           <div
             className="cursor-pointer"
             onMouseEnter={() => setShowProfileDropdown(true)}
