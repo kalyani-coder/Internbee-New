@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 // import Navbar from '../Navbar/Navbar';
 // import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
-
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 import { Link } from 'react-router-dom';
 
 // import Footer from '../Footer/Footer';
@@ -34,7 +35,8 @@ const MonthlyPackages = () => {
 
     return (
         <>
-             <div><Internal_Navbar/></div>
+             {/* <div><Internal_Navbar/></div> */}
+             <Applied_Intern_Internal_Navbar />
 
             <section className="text-gray-600 body-font flex">
                 {/* <div><Sidebar /></div> */}
@@ -64,9 +66,9 @@ const MonthlyPackages = () => {
                     {monthlyPackage && (
                         <div className="w-full md:w-1/2 mx-auto">
                             <div className="p-4 xl:w-full md:w-1/2 w-full">
-                                <div className="h-full p-6 rounded-lg flex flex-col relative overflow-hidden">
-                                    <div className="p-4 w-full">
-                                        <div className="h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
+                                <div className="Freecards h-full p-6 rounded-lg flex flex-col relative overflow-hidden">
+                                    <div className="Freecard p-4 w-full">
+                                        <div className="Freecard h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
                                             <span className="bg-black text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                                             <h2 className="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>
                                             <h1 className="text-5xl text-black leading-none flex items-center pb-4 mb-4 border-b border-amber-300">

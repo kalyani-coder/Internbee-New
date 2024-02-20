@@ -5,6 +5,8 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import "./Candidates.css"
+import "../ResponsiveCss/Responsive.css"
+
 
 const Candidates = () => {
   const [candidates, setCandidates] = useState([]);
@@ -83,15 +85,16 @@ const closeModal = () => {
   };
   return (
     <>
+    <div></div>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="displaycontent flex h-screen">
         <Sidebar />
-        <div className="flex">
-          <div>
+        <div className="candidatepadding flex">
+          <div className="CandidateMain">
             <h1 className="text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
               View Candidate Details
             </h1>
-            <div className="flex gap-10">
+            <div className="CandidateSlider flex gap-10">
               <div className="table-container">
                 <table className="table">
                   <thead>

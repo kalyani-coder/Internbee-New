@@ -1,0 +1,48 @@
+
+@media screen and (max-width: 768px) {
+
+.FilterSectionMain{
+    margin-left: 0%;
+    display: block;
+    margin-right: 0%;
+}
+.filter{
+    width: 100% !important;
+}
+.InternCard{
+    /* margin: 0px; */
+    width: 100%;
+    margin-left: 0px;
+}
+.inputinternship{
+    justify-content: center;
+    align-items: center;
+    
+    display: grid;
+}
+.btnintern{
+    margin-right: 0px;
+    /* width: 30%; */
+    margin-left: 4%;
+    width: 92%;
+}
+.input{
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 6%;
+}
+
+.head{
+
+    margin-left: 3rem;
+}
+.blockcard{
+    display: block;
+}
+.FilterSectionMain{
+
+    /* width: -webkit-fill-available ; */
+    width: 100% !important;
+}
+}

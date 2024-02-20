@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import HomeNav from '../HomeNav/HomeNav';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Internal_Navbar from '../InternalNavbar';
+// import Internal_Navbar from '../InternalNavbar';
+import '../UpdatedNav/Internal_Navbar';
+import Internal_Navbar from '../UpdatedNav/Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const ViewProfile = () => {
 
@@ -29,14 +32,15 @@ const ViewProfile = () => {
         <>
             <div>
                 {/* <HomeNav /> */}
-                <Internal_Navbar/>
+               <Internal_Navbar/>
+
             </div>
 
             <div className="container mx-auto p-4 bg-gray-100 mt-24">
                 {/* Profile Picture and Name Section */}
-                <div className='flex justify-between mb-8 align-middle bg-white shadow-lg  rounded-lg '>
+                <div className='ViewProfileCard flex justify-between mb-8 align-middle bg-white shadow-lg  rounded-lg '>
                     <div>
-                        <section className="mb-8  flex items-center gap-16">
+                        <section className=" cardsection mb-8  flex items-center gap-16">
                             {/* Display Profile Picture */}
                             <img
                                 src={userDetails && userDetails.profile_pic ? userDetails.profile_pic : "/dummy-profile-image.jpg"}

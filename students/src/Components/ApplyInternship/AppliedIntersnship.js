@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import Internal_Navbar from "../InternalNavbar";
+// import Internal_Navbar from "../InternalNavbar";
+import Internal_Navbar from '../UpdatedNav/Internal_Navbar';
 import { Link } from "react-router-dom";
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
 
 // Define your component
 const AppliedInternship = () => {
@@ -87,7 +89,9 @@ const AppliedInternship = () => {
   // Render the list of applied internships
   return (
     <div>
-      <Internal_Navbar />
+  {/* <Internal_Navbar/> */}
+
+  <Applied_Intern_Internal_Navbar/>
 
       <div className="mt-32">
         <div>

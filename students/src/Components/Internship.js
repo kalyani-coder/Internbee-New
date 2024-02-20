@@ -10,7 +10,10 @@ import {
   FaRegClock,
 } from "react-icons/fa";
 import Footer from "../Components/Footer";
-
+// import '../Components/UpdatedNav/Internal_Navbar.js';
+import '../Components/UpdatedNav/Internal_Navbar';
+import Internal_Navbar from "../Components/UpdatedNav/Internal_Navbar";
+import '../Components/Internship.css';
 // Define the Internship component
 const Internship = () => {
   // Refs for scrolling
@@ -136,20 +139,17 @@ const Internship = () => {
   // JSX structure for the Internship component
   return (
     <>
-      {/* Navbar */}
-      <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
-        {/* Logo and brand */}
+     <Internal_Navbar/>
+      {/* <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+     
         <Link to={'/'}>
         <div className="flex items-center space-x-2">
           <img src={logo} alt="Logo" className="home1-logo h-14 max-w-15rem rounded-full" />
-          {/* <h1 className="text-4xl font-bold">
-            Interns{" "}
-            <span className="text-4xl font-bold text-amber-300">Bee</span>
-          </h1> */}
+          
         </div>
         </Link>
 
-        {/* Navigation links */}
+    
         <div className="flex items-center space-x-6">
           <Link
             to="/home"
@@ -174,9 +174,7 @@ const Internship = () => {
           </Link>
         </div>
 
-        {/* Search Bar */}
-
-        {/* Notifications and User Profile */}
+     
         <div className="flex items-center space-x-4 relative">
           {/* <div>
             <IoNotificationsOutline className="mr-4 text-4xl" />
@@ -187,7 +185,7 @@ const Internship = () => {
             onClick={handleProfileIconClick}
           >
             <FiUser className="mr-4 text-4xl" />
-            {/* Profile dropdown */}
+           
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
                 <div
@@ -212,35 +210,41 @@ const Internship = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
+    
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
-        <div className="ml-20 mb-10 text-2xl font-bold flex flex-col" >
+        <div className=" head ml-20 mb-10 text-2xl font-bold flex flex-col" >
           <h1 className="mt-20">Search Your Dream Internship here</h1>
         </div>
-        <div className="relative flex items-center gap-2 mb-20">
+        <div className="inputinternship relative flex items-center gap-2 mb-20">
           {/* Input for main search query */}
+          <div>
           <input
             type="text"
             placeholder="Enter skills/designations/companies"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
-            className="h-16 w-1/2 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
+            className="input h-16 w-1/2 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
           />
+          </div>
           {/* Main Search button */}
+          <div>
           <button
-            className=" mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+            className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
             onClick={handleMainSearch}
           >
             Search
           </button>
+          </div>
+
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="flex w-96 mx-60" style={{width:'70%',}}>
-        <div className="w-1/5 bg-gray-100 p-2 ml-2 h-1/5 mt-2" style={{width:'250%'}}>
+      <div className="FilterSectionMain flex w-96 mx-60" style={{width:'70%',}}>
+        <div className="filter w-1/5 bg-gray-100 p-2 ml-2 h-1/5 mt-2" style={{width:'250%'}}>
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -330,7 +334,7 @@ const Internship = () => {
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
               >
                 <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
@@ -340,7 +344,7 @@ const Internship = () => {
                   <p className="card-company text-lg text-gray-700">
                     Company Name : {internship.company_Name}
                   </p>
-                  <div className="flex justify-between items-center my-2 gap-3 ">
+                  <div className="blockcard flex justify-between items-center my-2 gap-3 ">
                     <div className="flex items-center">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-company text-sm text-gray-700 ">

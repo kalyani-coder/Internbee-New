@@ -1,0 +1,25 @@
+@media (min-width: 1024px) {
+    .lg\:block {
+      display: block;
+    }
+    .lg\:hidden {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 768px) {
+  .IconBtnSideBar{
+
+    height: 33px;
+    border-radius: 0px !important;
+    /* margin-top: 33px; */
+    margin-top: 0px;
+    /* margin-left: 68px; */
+
+    /* margin-left: 82px; */
+  }
+  .MainSideBar{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+  }
+}

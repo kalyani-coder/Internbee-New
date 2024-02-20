@@ -7,6 +7,8 @@
         padding: 1rem;
         margin: 0;
         padding-right: 0;
+        display: flex;
+        justify-content: center;
     }
   
     .landingpage-title-font {
@@ -61,5 +63,110 @@
       display: none;
 
     }
-  
+    .inputhomess{
+
+      display: contents;
+      width: 100%;
+    }
+
+    .Homecardsdivs{
+      display: block;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+.cardMain{
+
+  width: 94%;
+}
+.card-title {
+
+  font-size: 17px;
+}
+.inpimp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.iii{
+  width: auto !important;
+}
+
+.ViewAll{
+  padding-left: 0px;
+     padding-right: 0px
+}
+.Homehead{
+
+  font-size: 18px;
+}
+.AlignHome{
+
+  margin-left: 10%;
+}
+.ViewProfileCard{
+
+  display: block;
+}
+.cardsection{
+
+  gap: 1rem;
+}
+.mainProfile{
+
+  margin-top: 91px;
+}
+.CardSizeProfile{
+
+  width: 83%;
+  margin-top: 13px;
+}
+.UploadResume{
+
+  display: block;
+}
+.poputHomeOne{
+
+  width: min-content;
+}
+
+.HomeNavMainBtns{
+  margin-right: 0px;
+  padding-left: 0%;
+  padding-right: 0%;
+  font-size: 9px;
+}
+.Navbtns{
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+.blogh{
+
+  display: block;
+}
+.ResponsiveResume{
+
+  display: block;
+}
+.Freecard{
+  padding: 0% !important;
+}
+.Freecards{
+  padding: 1% ;
+}
+.preeHeading{
+
+  font-size: 30px;
+}
+.MainFaqs{
+
+  margin-top: 96px;
+}
+.SignupOtp{
+
+  width: 100%;
+  display: block;
+}
+
   }

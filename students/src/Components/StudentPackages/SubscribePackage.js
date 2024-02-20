@@ -3,6 +3,8 @@ import Navbar from '../Navbar';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Internal_Navbar from '../InternalNavbar';
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 
 const SubscribePackage = () => {
@@ -60,7 +62,8 @@ const SubscribePackage = () => {
   return (
     <div>
       <div>
-        <Internal_Navbar />
+        {/* <Internal_Navbar /> */}
+        <Applied_Intern_Internal_Navbar/>
       </div>
       <div className="flex gap-10 mt-20">
         <div className="w-full md:w-1/2 mx-auto">

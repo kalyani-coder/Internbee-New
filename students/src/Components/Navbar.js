@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../Assets/white_header1.png';
 import Home from './Home';
+import './ResponsiveCss/ResponsiveCss.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -73,10 +74,10 @@ const Navbar = () => {
                     <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
                    
                 </div> */}
-                <div className="flex items-center space-x-6 mr-10">
+                <div className="HomeNavMainBtns flex items-center space-x-6 mr-10">
                     
                     <div class="dropdown">
-                        <button class=" text-black fw-bold px-4 py-2 rounded  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
+                        <button class=" Navbtns text-black fw-bold px-4 py-2 rounded  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
                             Login
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -107,7 +108,7 @@ const Navbar = () => {
 
 
                     <div class="dropdown">
-                        <button class=" text-black fw-bold px-4 py-2 rounded dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
+                        <button class=" Navbtns text-black fw-bold px-4 py-2 rounded dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
                             Register
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

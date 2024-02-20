@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "./Login.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-6 py-8 mr-40">
+    <div className="MainLoginDiv flex items-center justify-between px-6 py-8 mr-40">
     <img src="./adminsign-up.jpg" alt="design" className="" />
 
     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">
@@ -102,7 +103,7 @@ const Login = () => {
               </label>
             </div>
           </div>
-          <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+          <a href="#" className="ForgetPasswordHeading text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
             Forgot password?
           </a>
         </div>

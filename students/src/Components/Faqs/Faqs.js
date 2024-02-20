@@ -2,6 +2,8 @@
 import React from 'react';
 import Footer from "../Footer";
 import Internal_Navbar from '../InternalNavbar';
+import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 const FAQPage = () => {
     const faqData = [
         {
@@ -48,9 +50,10 @@ const FAQPage = () => {
 
     return (
         <>
-            <Internal_Navbar />
+            {/* <Internal_Navbar /> */}
+            <Applied_Intern_Internal_Navbar/>
 
-            <div className="container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md mb-5">
+            <div className="MainFaqs container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
 
                 <div className="space-y-6">
