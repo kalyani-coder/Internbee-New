@@ -50,7 +50,8 @@ section {
 }
 
 .carousel {
-  max-width: 1000px;
+  /* max-width: 1000px; */
+  max-width: 1243px;
   margin: 0 auto;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;

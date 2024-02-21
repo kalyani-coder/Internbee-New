@@ -58,7 +58,6 @@ function App() {
 
 
       <Router>
-
         <Routes>
           <Route path="/" element={<LandingpageHome />} />
           <Route path='/login' element={<Login />} />
@@ -96,11 +95,8 @@ function App() {
           <Route path='/navbar'element={<Navbar/>}/>
           <Route path='/appliedcandidates'element={<AppliedCandidates/>}/>
         </Routes>
-
       </Router>
-
-
-
+      
     </>
   );
 }
