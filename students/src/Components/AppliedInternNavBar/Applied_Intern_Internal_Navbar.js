@@ -55,28 +55,22 @@ const  Applied_Intern_Internal_Navbar= () => {
         <div className={`Navlist nav-items ${isOpen && "open"}`}>
           <NavLink
             to="/home"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
+            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
           </NavLink>
-          {/* <NavLink
-            to="/companies"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
-            onClick={() => setIsOpen(false)}
-          >
-            Companies
-          </NavLink> */}
+         
           <NavLink
             to="/internship"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
+            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Internships
           </NavLink>
           <NavLink
             to="/applied-internship"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
+            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Applied Internship

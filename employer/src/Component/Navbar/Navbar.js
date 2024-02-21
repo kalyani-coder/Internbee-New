@@ -18,9 +18,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4" style={{ backgroundColor: '#FFBD59' }}>
+    <nav className="flex items-center justify-between p-4 h-20 w-auto" style={{ backgroundColor: '#FFBD59' }} >
       <div className="flex items-center">
-      <img src={logo} alt="Logo" className="w-14 h-14 rounded-full" style={{width:'15rem',height:'5rem'}} />
+      <img src={logo} alt="Logo" className="w-14 rounded-full" style={{width:'15rem',height:'6rem'}} />
       </div>
       <div className="flex items-center">
         <button

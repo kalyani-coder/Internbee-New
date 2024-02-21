@@ -182,7 +182,7 @@ const AppliedInternship = () => {
           </div>
         </div>
       </div>
-      <div className="mt-12">
+      <div className="mt-52">
         <Footer />
       </div>
     </div>

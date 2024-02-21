@@ -492,6 +492,25 @@ const Profile = () => {
                   htmlFor="country"
                   className="block text-large font-medium"
                 >
+                  State<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="state"
+                  name="state"
+                  value={country}
+                  onChange={handleCountryChange}
+                  required
+                />
+              </div>
+
+
+              <div className="form-group">
+                <label
+                  htmlFor="country"
+                  className="block text-large font-medium"
+                >
                   Country<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -504,8 +523,83 @@ const Profile = () => {
                   required
                 />
               </div>
-
+              
               <div className="form-group">
+        <label htmlFor="currentaddress" className="block text-large font-medium">
+          Current Address<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          className="mt-1 p-2 w-full border rounded-md text-large"
+          id="currentaddress"
+          name="currentaddress"
+          value={currentaddress}
+          onChange={handleCurrentAddressChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="currentcity" className="block text-large font-medium">
+          Current City<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          className="mt-1 p-2 w-full border rounded-md text-large"
+          id="currentcity"
+          name="currentcity"
+          value={currentcity}
+          onChange={handleCurrentCityChange}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="currentdistrict" className="block text-large font-medium">
+          Current District<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          className="mt-1 p-2 w-full border rounded-md text-large"
+          id="currentdistrict"
+          name="currentdistrict"
+          value={currentdistrict}
+          onChange={handleCurrentDistrictChange}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="currentstate" className="block text-large font-medium">
+          Current State<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          className="mt-1 p-2 w-full border rounded-md text-large"
+          id="currentstate"
+          name="currentstate"
+          // value={currentstate}
+          // onChange={handleCurrentStateChange}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="currentcountry" className="block text-large font-medium">
+          Current Country<span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          className="mt-1 p-2 w-full border rounded-md text-large"
+          id="currentcountry"
+          name="currentcountry"
+          // value={currentcountry}
+          // onChange={handleCurrentCountryChange}
+          required
+        />
+      </div>
+
+
+              {/* <div className="form-group">
                 <label
                   htmlFor="current_address"
                   className="block text-large font-medium"
@@ -575,7 +669,7 @@ const Profile = () => {
                   onChange={handleCurrentCountryChange}
                   required
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <label
@@ -594,7 +688,29 @@ const Profile = () => {
                   required
                 />
               </div>
+              <div className="form-group">
+                <label
+                  htmlFor="contact"
+                  className="block text-large font-medium"
+                >
+                  Gender <span className="text-red-500">*</span>
+                </label>
+                <select
+    id="currentstate"
+    name="currentstate"
+    // value={currentstate}
+    // onChange={handleCurrentStateChange}
+    required
+    className="mt-1 p-2 w-full border rounded-md text-large"
+  >
+    <option value="">Select Gender</option>
+    <option value="state1">Male</option>
+    <option value="state2">Female</option>
+    {/* Add more options as needed */}
+  </select>
+              </div>
             </div>
+            
             <hr />
 
             <div className="mt-6 text-2xl font-bold">
@@ -1068,6 +1184,20 @@ const Profile = () => {
                     <button
                     onClick={handleUpload}
                     style={{ }}
+                    className=" px-4 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
+                  > Back</button>
+
+<button
+                    onClick={handleUpload}
+                    style={{ }}
+                    className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
+                  > Cancel</button>
+
+
+
+                    <button
+                    onClick={handleUpload}
+                    style={{ }}
                     className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Submit</button>
             </div>  
@@ -1077,7 +1207,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </div>
+      // </div>
    
   );
 };

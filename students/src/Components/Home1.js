@@ -236,7 +236,7 @@ const Home1 = () => {
     <>
       
     {/* /////////////////////////////////////////////////////////// */}
-      <div className="mb-10 ">
+      {/* <div className="mb-10 "> */}
         {/* <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
 
              <Link to={'/'}>
@@ -276,7 +276,7 @@ const Home1 = () => {
             {/* <div className="">
               <IoNotificationsOutline className="mr-4  text-4xl" />
             </div> */}
-            <div
+            {/* <div
               className="cursor-pointer"
               onMouseEnter={() => setShowProfileDropdown(true)}
               // onMouseLeave={() => setShowProfileDropdown(false)}
@@ -305,15 +305,14 @@ const Home1 = () => {
                   </div>
                 </div>
               )}
-            </div>
-          </div> 
+            </div> */}
+          {/* </div>  */}
         {/* </div> */}
 <Internal_Navbar/>
 
-
 {/* /////////////////////////////////////////////////////////////////////// */}
         <div className="Homehead mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
-          <h1>Search Your Dream Internship Here</h1>
+          <h1>Search Your Internships Here</h1>
         </div>
 
         <div className="inpimp flex items-center justify-center my-10 mt-5">
@@ -330,11 +329,11 @@ const Home1 = () => {
             </button>
           </div>
         </div>
-        <div ref={companiesRef}>
-          <div className=" Homehead mb-10 text-4xl font-bold flex flex-col items-center ">
+        {/* <div ref={companiesRef}>
+          {/* <div className=" Homehead mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
-          </div>
-          <Slider {...settings}>
+          </div> */}
+          {/* <Slider {...settings}> */}
             {/* {companies.map((company) => ( */}
               {/* <div
                 {filteredInternships.length > 0 ? (
@@ -345,7 +344,7 @@ const Home1 = () => {
               >
                 < className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
-                  {filteredInternships.length > 0 ? (
+                  {/* {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
@@ -353,12 +352,12 @@ const Home1 = () => {
               >
                 <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
-                  <h2 className="card-title text-2xl font-semibold text-gray-800 ">
+                  {/* <h2 className="card-title text-2xl font-semibold text-gray-800 ">
                     {internship.job_Title}
                   </h2>
                   <p className="card-company text-xl text-gray-700">
                     Company Name : {internship.company_Name}
-                  </p>
+                  </p> */}
                   {/* <div className="flex justify-between items-center my-2 gap-3 "> */}
                     {/* <div className="flex items-center">
                       <FaRegClock className="mr-2 text-xl" />
@@ -413,28 +412,28 @@ const Home1 = () => {
                       </Link>
                     </div> */}
                   {/* </div> */}
-                </div>
-              </div>
-            ))
-          ) : (
-            // Display a message if no internships are found
-            <p></p>
-          )}
+                {/* </div> */}
+              {/* </div> */}
+            {/* )) */}
+          {/* ) : ( */}
+  
+            {/* <p></p> */}
+          {/* )}  */}
                  
                 {/* <h2 className="text-xl font-bold">{company.name}</h2> */}
                 {/* <p className="text-gray-600">{company.description}</p> */}
-                <Link to={`/apply-internship/${Internship._id}`}>
-                <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}>
-                  View Internship
-                </button> 
-                </Link>
+                {/* <Link to={`/apply-internship/${Internship._id}`}> */}
+                {/* <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}> */}
+                  {/* View Internship */}
+                {/* </button>  */}
+                {/* </Link> */}
             
           
-          </Slider>
-        </div>
+          {/* </Slider> */}
+        {/* </div>  */}
         <div className="flex flex-col items-center ">
           <div className="Homehead mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
-            <h1>Dream Internship here</h1>
+            <h1>Dream Internships here</h1>
           </div>
 
           {internships.slice(0, 3).map((internship) => (
@@ -511,7 +510,7 @@ const Home1 = () => {
             <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
           </div>
            
-          <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-60 hover:text-black">
+          <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-44 hover:text-black">
             {yourCardArray.map((card) => (
               <Link to={'/internship'}>
               <div

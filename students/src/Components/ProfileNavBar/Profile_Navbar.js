@@ -55,7 +55,7 @@ const Profile_Navbar= () => {
         <div className={`Navlist nav-items ${isOpen && "open"}`}>
           <NavLink
             to="/home"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
+            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-52"
             onClick={() => setIsOpen(false)}
           >
             Students
@@ -91,12 +91,12 @@ const Profile_Navbar= () => {
       {/* </div> */}
       <div>  
           <div
-                className="MainHomeOneCursorPointerDiv cursor-pointer"
+                className="MainHomeOneCursorPointerDiv cursor-pointer pl-56"
                 onMouseEnter={() => setShowProfileDropdown(true)}
                 // onMouseLeave={() => setShowProfileDropdown(false)}
                 onClick={handleProfileIconClick}
               >
-                <FiUser className="HomeHeaderHeading mr-4  text-4xl" />
+                <FiUser className="HomeHeaderHeading mr-1  text-4xl" />
                 {showProfileDropdown && (
                   <div className=" poputHomeOne absolute mt-2 w-48 bg-white border rounded-md shadow-md">
                     <div

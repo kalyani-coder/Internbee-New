@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Alert from "../../Alert/Aleart";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
@@ -11,7 +10,7 @@ import Footer from "../../Footer/Footer";
 
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
-  const [alert, setAlert] = useState(null);
+  // const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     job_Title: "",
@@ -73,10 +72,10 @@ const PostInternship = () => {
       });
     } else {
       console.error("Error fetching employer details from localStorage");
-      setAlert({
-        type: "error",
-        message: "Error fetching employer details from localStorage",
-      });
+      // setAlert({
+      //   type: "error",
+      //   message: "Error fetching employer details from localStorage",
+      // });
     }
   }, []);
 
@@ -87,10 +86,10 @@ const PostInternship = () => {
     // Fetch employer details from the API
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      setAlert({
-        type: "error",
-        message: "User not logged in. Please log in to post an internship.",
-      });
+      // setAlert({
+      //   type: "error",
+      //   message: "User not logged in. Please log in to post an internship.",
+      // });
       return;
     }
   
@@ -107,30 +106,30 @@ const PostInternship = () => {
       // Check paymentStatus
       if (employerDetails.paymentStatus === "") {
         console.log("Payment not accepted. Please complete the payment first.");
-        setAlert({
-          type: "error",
-          message: "Payment not accepted. Please complete the payment first.",
-        });
+        // setAlert({
+        //   type: "error",
+        //   message: "Payment not accepted. Please complete the payment first.",
+        // });
         return; // Stop the submission if payment is not accepted
       }
   
       // Check if paymentStatus is not "Accepted"
       if (employerDetails.paymentStatus !== "Accepted") {
         console.log("Payment not accepted. Please complete the payment first.");
-        setAlert({
-          type: "error",
-          message: "Payment not accepted. Please complete the payment first.",
-        });
+        // setAlert({
+        //   type: "error",
+        //   message: "Payment not accepted. Please complete the payment first.",
+        // });
         return; // Stop the submission if paymentStatus is not "Accepted"
       }
   
       // Check if the employer has available internship slots
       if (employerDetails.internshipEnquiry <= 0) {
         console.log('Employer has reached the internship posting limit');
-        setAlert({
-          type: "error",
-          message: "Employer has reached the internship posting limit",
-        });
+        // setAlert({
+        //   type: "error",
+        //   message: "Employer has reached the internship posting limit",
+        // });
         return;
       }
   
@@ -183,10 +182,10 @@ const PostInternship = () => {
   
         // Set other state or perform additional actions as needed
   
-        setAlert({
-          type: "success",
-          message: "Internship submitted successfully",
-        });
+        // setAlert({
+        //   type: "success",
+        //   message: "Internship submitted successfully",
+        // });
         setPosting(false);
         setFormData({
           ...formData,
@@ -202,16 +201,16 @@ const PostInternship = () => {
           stipend: "",
         });
       } else {
-        setAlert({ type: "error", message: "Failed to submit form data" });
+        // setAlert({ type: "error", message: "Failed to submit form data" });
         setPosting(false);
         // Handle errors, e.g., show an error message to the user
       }
     } catch (error) {
       console.error("Error during form submission:", error);
-      setAlert({
-        type: "error",
-        message: "Error during form submission. Please try again later.",
-      });
+      // setAlert({
+      //   type: "error",
+      //   message: "Error during form submission. Please try again later.",
+      // });
       setPosting(false);
     }
   };
@@ -238,14 +237,14 @@ const PostInternship = () => {
           <h2 className="text-3xl md:text-lg lg:text-3xl font-bold mb-4">
             Post Internship
           </h2>
-          {alert && (
+          {/* {alert && (
             <Alert type={alert.type}>
               <p className="font-bold">
                 {alert.type === "success" ? "Success" : "Error"}
               </p>
               <p>{alert.message}</p>
             </Alert>
-          )}
+          )} */}
 
           <form
             onSubmit={handleSubmit}

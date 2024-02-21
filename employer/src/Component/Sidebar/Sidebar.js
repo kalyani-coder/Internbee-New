@@ -5,6 +5,7 @@ import { faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion ,faTimes
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { MdPeopleAlt } from "react-icons/md";
+
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 

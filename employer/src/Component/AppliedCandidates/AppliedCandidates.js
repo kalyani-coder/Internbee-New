@@ -5,7 +5,7 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import "./AppliedCandidates.css"
-
+import Footer from "../Footer/Footer";
 const AppliedCandidates = () => {
   const [candidates, setCandidates] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -108,7 +108,7 @@ const closeModal = () => {
                       <th className="py-4 px-6 border-b font-bold text-lg">
                         Designation
                       </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
+                      {/* <th className="py-4 px-6 border-b font-bold text-lg">Profile</th> */}
                       <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Delete</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
@@ -218,7 +218,9 @@ const closeModal = () => {
   </div>
 )}
 
-    
+    <div>
+      <Footer/>
+    </div>
 
     </>
   );
