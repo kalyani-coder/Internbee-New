@@ -37,6 +37,7 @@ const  Applied_Intern_Internal_Navbar= () => {
 
 
   return (
+ 
     <div className=" Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-2 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
       {/* Logo and brand */}
       <div>
@@ -52,11 +53,13 @@ const  Applied_Intern_Internal_Navbar= () => {
       {/* /////////////////////////////////////////////////////////////// */}
 
      
-        <div className={`Navlist nav-items ${isOpen && "open"}`}>
+        <div className={`Navlist nav-items ${isOpen && "open"} `}>
     
+ 
+ 
           <NavLink
             to="/home"
-            className="text-xl font-bold focus:text-black pl-6 ml-96 hover:text-black"
+            className="text-xl font-bold focus:text-black  hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
@@ -64,27 +67,29 @@ const  Applied_Intern_Internal_Navbar= () => {
     
          
       
-        
+       
+  
           <NavLink
             to="/internship"
-            className="text-xl font-bold focus:text-black  pl-6 hover:text-black"
+            className="text-xl font-bold focus:text-black   hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Internships
           </NavLink>
         
-         
+    
      
+       
 
           <NavLink
             to="/applied-internship"
-            className="text-xl font-bold focus:text-black pl-6 hover:text-black"
+            className="text-xl font-bold focus:text-black hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Applied Internship  
         
           </NavLink>
-         
+    
           </div>
        
 
@@ -137,6 +142,7 @@ const  Applied_Intern_Internal_Navbar= () => {
         </div>
 
     </div>
+  
   );
 };
 

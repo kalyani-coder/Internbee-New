@@ -35,6 +35,7 @@ import Alert from "./Components/Alert/Alert";
 import Privacy from "./Components/Privacy/Privacy" ;
 import Terms from "./Components/Terms/Terms";
 import Refund from "./Components/Refund/Refund";
+import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Internal_Navbar";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -94,6 +95,9 @@ function App() {
         <Route path="/privacy"element={<Privacy/>}/>
         <Route path="/terms"element={<Terms/>}/>
         <Route path="/refund"element={<Refund/>}/>
+        <Route path="/Test"element={<Applied_Intern_Internal_Navbar/>}/>
+
+        {/* <Route path="/Test" element={<Applied_Intern_Internal_Navbar/>} */}
       </Routes>
     </Router>
 
