@@ -71,7 +71,7 @@ const Footer = () => {
         <>
             <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive shadow-md"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="grid gap-4 items-start space-y-4">
-                    <Link to={'/'}>
+                    <Link to={'https://internsbee.com'}>
                     <div className="items-center">
                         <img src={logo} alt="Footer Logo" className="" style={{width: '15rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}

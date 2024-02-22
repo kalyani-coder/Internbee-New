@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
 
     <nav className="flex items-center justify-between p-4 h-20 w-auto" style={{ backgroundColor: '#FFBD59' }} >
-      <Link to={'/'}>
+      <Link to={'https://internsbee.com'}>
       <div className="flex items-center">
      <img src={logo} alt="Logo" className="w-14 rounded-none" style={{width:'13rem',height:'5rem'}} />
       </div>

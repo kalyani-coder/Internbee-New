@@ -50,7 +50,170 @@ section {
 }
 
 .carousel {
-  max-width: 1000px;
+  /* max-width: 1000px; */
+  max-width: 1243px;
+  margin: 0 auto;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.card-landing-page {
+  flex: 0 0 auto;
+  width: 400px;
+  height: 300px;
+  margin-right: 20px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 10px; /* Add border-radius to each card */
+  position: relative;
+}
+
+.card-landing-page-info {
+  padding: 20px;
+}
+
+.card-landing-page-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.categories {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.categories p {
+  font-weight: bold;
+}
+
+.categories ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories li {
+  margin-bottom: 10px;
+}
+
+.bottom-navigation {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.bottom-navigation a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.bottom-navigation a:hover {
+  color: #000;
+}
+/* Add the following styles to your CSS file or style block */
+.card-landing-page-info {
+  position: relative;
+  padding-bottom: 15px; /* Add padding at the bottom */
+}
+
+.border-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 50px; /* Adjust the width as needed */
+  background-color: #000; /* Adjust the color as needed */
+}
+
+.internship-bg {
+  background-color: #FFBD59;    /* Adjust the color as needed */
+  padding: 5px; /* Adjust the padding as needed */
+  display: inline-block;
+}
+
+.view-details-btn {
+  background-color: #4CAF50; /* Green color for the button */
+  color: #fff; /* White text color */
+  padding: 10px 15px; /* Add padding to the button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.view-details-btn:hover {
+  background-color: #45a049; /* Darker green color on hover */
+}
+/* LandingPage.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 
+section {
+  text-align: center;
+  padding: 50px 0;
+} */
+#dream-career-section{
+   text-align: center;
+  /* padding: 80px 0; */
+}
+.heading {
+  font-size: 36px;
+  position: relative;
+  text-align: center;
+}
+
+.heading::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100px;
+  background-color: #000;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sub-heading {
+  font-size: 24px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-heading span {
+  margin-right: 10px;
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.carousel {
+  /* max-width: 1000px; */
+  max-width: 1243px;
   margin: 0 auto;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;

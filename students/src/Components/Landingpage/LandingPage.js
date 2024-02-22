@@ -189,7 +189,7 @@ const handleNextSlide = () => {
                       <p className="text-gray-600">Stipend: -</p>
                       <p className="text-gray-600">Duration: 6 months</p>
                     </div>
-                    <Link to={"/register"}>
+                    <Link to={"/login"}>
                       <button
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
@@ -219,7 +219,7 @@ const handleNextSlide = () => {
                       <p className="text-gray-600">Duration: 6 months</p>
                     </div>
 
-                    <Link to={"/register"}>
+                    <Link to={"/login"}>
                       <button
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
@@ -248,7 +248,7 @@ const handleNextSlide = () => {
                         <p className="text-gray-600">Duration: 3 months</p>
                       </div>
 
-                      <Link to={"/register"}>
+                      <Link to={"/login"}>
                         <button
                           className=" text-black px-4 py-2 rounded-md focus:outline-none"
                           style={{ backgroundColor: "#FFBD59" }}
@@ -266,19 +266,19 @@ const handleNextSlide = () => {
                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                   <div className="p-4">
                     <h2 className="text-xl font-semibold mb-2">
-                      Market Research Intern
+                      Software Testing Intern (Part Time)
                     </h2>
-                    <p className="text-gray-700 mb-2">Ecozen Solutions</p>
+                    <p className="text-gray-700 mb-2">Scoopen</p>
                     <hr className="my-2" />
 
                     <div className="flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
-                        <p className="text-gray-600">Stipend: -</p>
-                        <p className="text-gray-600">Duration: 3 months</p>
+                        <p className="text-gray-600">Stipend: Performance based</p>
+                        <p className="text-gray-600">Duration: 2 months</p>
                       </div>
 
-                      <Link to={"/register"}>
+                      <Link to={"/login"}>
                         <button
                           className=" text-black px-4 py-2 rounded-md focus:outline-none"
                           style={{ backgroundColor: "#FFBD59" }}
@@ -333,7 +333,7 @@ const handleNextSlide = () => {
                       <p className="text-gray-600">Duration: 3 months</p>
                     </div>
 
-                    <Link to={"/register"}>
+                    <Link to={"/login"}>
                       <button
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
@@ -363,7 +363,7 @@ const handleNextSlide = () => {
                       <p className="text-gray-600">Duration: 2 months</p>
                     </div>
 
-                    <Link to={"/register"}>
+                    <Link to={"/login"}>
                       <button
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
@@ -392,7 +392,40 @@ const handleNextSlide = () => {
                         <p className="text-gray-600">Duration: 6 months</p>
                       </div>
 
-                      <Link to={"/register"}>
+                      <Link to={"/login"}>
+                        <button
+                          className=" text-black px-4 py-2 rounded-md focus:outline-none"
+                          style={{ backgroundColor: "#FFBD59" }}
+                        >
+                          Apply Now
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+              </div>
+              
+            </div>
+            <div className="card-landing-page">
+              <div className="card-landing-page">
+                <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
+                  <div className="p-4">
+                    <h2 className="text-xl font-semibold mb-2">
+                      Software Development Intern
+                    </h2>
+                    <p className="text-gray-700 mb-2">Parallel Minds</p>
+                    <hr className="my-2" />
+
+                    <div className="flex items-center justify-between mt-2">
+                      <div>
+                        <p className="text-gray-600">Location: Pune</p>
+                        <p className="text-gray-600">Stipend: -</p>
+                        <p className="text-gray-600">Duration: 6 months</p>
+                      </div>
+
+                      <Link to={"/login"}>
                         <button
                           className=" text-black px-4 py-2 rounded-md focus:outline-none"
                           style={{ backgroundColor: "#FFBD59" }}
