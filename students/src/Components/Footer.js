@@ -62,6 +62,8 @@ const Footer = () => {
         { label: 'Terms & Conditions', link: '/terms' },
         { label: 'Refund Policy', link: '/refund' },
         { label: 'Blog', link: '/blogs' },
+        { label: 'Plans & Pricing', link: '/monthlyplan' },
+       
        
     ];
 

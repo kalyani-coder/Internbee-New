@@ -25,7 +25,7 @@ const Registration = () => {
     internshipEnquiry: "",
     verifiedApplication: "",
     ResumeView: "",
-    dedicatedCRM: "",
+    dedicatedCIM: "",
   });
 
   const handleChange = (e) => {
@@ -215,9 +215,9 @@ const Registration = () => {
 <div className="flex flex-col mb-0">
   <input
     type="text"
-    id="crnNumber"
-    name="crnNumber"
-    placeholder="Enter CRN Number"
+    id="cinNumber"
+    name="cinNumber"
+    placeholder="Enter CIN Number"
     className="mt-1 p-1 flex-grow border rounded"
     onChange={handleChange}
     // value={formData.crnNumber}
