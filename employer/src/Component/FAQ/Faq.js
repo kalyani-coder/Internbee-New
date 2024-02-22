@@ -51,7 +51,7 @@ const FAQPage = () => {
         <>
             <Navbar />
 
-            <div className="container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md mb-5">
+            <div className="container mx-auto mt-8 p-6 pt-20 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
 
                 <div className="space-y-6">
