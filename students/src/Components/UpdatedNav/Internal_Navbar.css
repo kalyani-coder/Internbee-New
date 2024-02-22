@@ -1,5 +1,5 @@
 /* ResponsiveCss.css */
-@media screen and (max-width: 764px) {
+@media screen and (max-width: 1428px) {
     .Navlist {
       display: none;
       position: absolute;
@@ -50,5 +50,6 @@
     .nav-toggle.open .bar:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
+    
   }
   

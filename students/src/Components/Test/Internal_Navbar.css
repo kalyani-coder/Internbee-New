@@ -1,7 +1,5 @@
 /* ResponsiveCss.css */
 @media screen and (max-width: 764px)  {
-
-
     .Navlist {
       display: none;
       position: absolute;
@@ -54,7 +52,10 @@
     }
   }
 /* .Navlist{
-  display: contents;
+  gap: 18%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 } */
 
   
