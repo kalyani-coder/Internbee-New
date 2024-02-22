@@ -54,12 +54,12 @@ const FAQPage = () => {
             <Applied_Intern_Internal_Navbar/>
 
             <div className="MainFaqs container mx-auto mt-8 p-6 pt-20 bg-white rounded-xl shadow-md mb-5">
-                <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+                <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
 
                 <div className="space-y-6">
                     {faqData.map((faq, index) => (
                         <div key={index}>
-                            <h3 className="text-xl font-semibold">{faq.question}</h3>
+                            <h3 className="text-l font-semibold">{faq.question}</h3>
                             <p className="text-gray-600">{faq.answer}</p>
                         </div>
                     ))}
