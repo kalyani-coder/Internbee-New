@@ -48,7 +48,7 @@ const EmployerSection = () => {
           <div className="scrollable-jobs max-h-96 overflow-y-auto">
             {jobs.length === 0 ? (
               <div>
-                <p className="text-black text-center">
+                <p className="text-black text-center text-sm">
                   No Internship posted yet.
                 </p>
               </div>
@@ -88,7 +88,7 @@ const EmployerSection = () => {
               alt="Post Internship"
               className="mb-4 w-full h-96 object-contain"
             />
-            <p className="text-black text-center">
+            <p className="text-black text-center text-sm">
               Post a new internship opportunity today!
             </p>
           </div>

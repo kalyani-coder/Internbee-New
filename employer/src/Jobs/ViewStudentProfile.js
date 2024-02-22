@@ -68,14 +68,14 @@ export default function ViewStudentProfile() {
                   src={studentData.profile_pic}
                   alt=""
                 />
-                <h1 className="text-xl font-bold text-gray-800">
+                <h1 className="text-lg font-bold text-gray-800">
                   {`${studentData.firstName} ${studentData.lastName}`}
                 </h1>
               </div>
 
               {/* Education Details Section */}
               <div className="bg-white shadow-md mb-8 p-6 rounded-lg">
-                <h1 className="mb-2 text-xl font-bold text-gray-800">
+                <h1 className="mb-2 text-lg font-bold text-gray-800">
                   Education Details
                 </h1>
                 <p>Education: {studentData.education}</p>
@@ -86,7 +86,7 @@ export default function ViewStudentProfile() {
 
               {/* Projects and Experience Section */}
               <div className="bg-white shadow-md mb-8 p-6 rounded-lg">
-                <h1 className="mb-2 text-xl font-bold text-gray-800">
+                <h1 className="mb-2 text-lg font-bold text-gray-800">
                   Projects and Experience
                 </h1>
                 <p>Key Skills: {studentData.keySkills}</p>
@@ -99,7 +99,7 @@ export default function ViewStudentProfile() {
 
               {/* Additional Details Section */}
               <div className="bg-white shadow-md p-6 rounded-lg">
-                <h1 className="mb-2 text-xl font-bold text-gray-800">
+                <h1 className="mb-2 text-lg font-bold text-gray-800">
                   Additional Details
                 </h1>
                 <p>Email: {studentData.email}</p>

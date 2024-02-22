@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './PolicyTermsCondition.css'; // Import your CSS file
-import './PolicyTermsCondition.css'
+import './Privacy.css'; // Import your CSS file
+import './Privacy.css'
 import { useNavigate } from "react-router-dom";
 
 
-const PolicyTermsCondition = () => {
+const Privacy = () => {
   const navigate = useNavigate();
 
   const [showMore, setShowMore] = useState(false);
@@ -21,31 +21,31 @@ const PolicyTermsCondition = () => {
 
   const handleAccept = () => {
     // Assuming you have a logged-in user and their ID is available
-    const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
+    // const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
 
     // Check if a user is logged in and has accepted terms
-    if (loggedInUserId && acceptTerms) {
-      // Make a PATCH request to the API
-      fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response as needed
-          console.log('Privacy policy accepted:');
-          navigate("/home");
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Error accepting privacy policy:', error);
-        });
-    } else {
-      console.error('User not logged in or terms not accepted');
-    }
+    // if (loggedInUserId && acceptTerms) {
+    //   // Make a PATCH request to the API
+    //   fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
+    //     method: 'PATCH',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       // Handle the response as needed
+    //       console.log('Privacy policy accepted:');
+    //       navigate("/home");
+    //     })
+    //     .catch(error => {
+    //       // Handle errors
+    //       console.error('Error accepting privacy policy:', error);
+    //     });
+    // } else {
+    //   console.error('User not logged in or terms not accepted');
+    // }
   };
   return (
     <>
@@ -53,7 +53,7 @@ const PolicyTermsCondition = () => {
 
        {/* Terms And Conditions section  */}
 
-        {showMore ? (
+        {/* {showMore ? (
           <>
             <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1>
 
@@ -197,7 +197,7 @@ const PolicyTermsCondition = () => {
                  All license agreements, use, or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to the exclusive jurisdiction of courts in Maharashtra.
 
                 {/* all contente here  */}
-                <div className="button-container">
+                {/* <div className="button-container">
                   <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore}>
                     View Less
                   </button>
@@ -227,12 +227,12 @@ const PolicyTermsCondition = () => {
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
                 {/* show first two paragraphs */}
-                <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
+                {/* <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
                   View More
-                </button>
-              </>
-        )}
-             
+                </button> */}
+              {/* </> */}
+        {/* )}  */}
+            
 
                   {/* Privacy policy section  */}
 
@@ -240,6 +240,9 @@ const PolicyTermsCondition = () => {
               {showMore2 ? (
                 <>
                   <h1 className='privacy-heading-main text-center'>Privacy Policy</h1>
+                  {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+
+<h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
                
                   This Privacy Policy pertains to the online services provided by Interns Bee at
@@ -316,6 +319,9 @@ const PolicyTermsCondition = () => {
               ) : (
                 <>
                 <h1 className='privacy-heading-main text-center'>Privacy Policy</h1><br/>
+                {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+
+            <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
                
                   This Privacy Policy pertains to the online services provided by Interns Bee at
@@ -351,7 +357,7 @@ const PolicyTermsCondition = () => {
 
 
             
-              <div>
+              {/* <div>
         <label>
           <input
             type="checkbox"
@@ -361,22 +367,22 @@ const PolicyTermsCondition = () => {
           />
           I agree to the terms and conditions
         </label>
-      </div>
+      </div> */}
        
 
               {/* Submit button */}
-              <div className="submit-button-container">
+              {/* <div className="submit-button-container">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
           onClick={handleAccept}
         >
           Accept
         </button>
-      </div>
+      </div> */}
 
             </div>
           </>
         );
 }
 
-        export default PolicyTermsCondition;
+        export default Privacy;

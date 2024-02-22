@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import Alert from './Alert/Aleart';
+import Alert from './Alert/Alert';
 import { Link } from "react-router-dom";
 import logo from "../Assets/white_header1.png"
 

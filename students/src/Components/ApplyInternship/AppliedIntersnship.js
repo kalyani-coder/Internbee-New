@@ -109,12 +109,12 @@ const AppliedInternship = () => {
             </div>
             <div>
               <Link to={"/studentEnquiry"}>
-                <button className=" viewEnq bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button className=" viewEnq bg-black hover:bg-black text-white font-bold py-2 px-4 rounded">
                   View Enquriy
                 </button>
               </Link>
             </div>
-            <div className=" sort mb-4">
+            {/* <div className=" sort mb-4">
               <label className="mr-2">Sort by Status:</label>
               <select
                 onChange={handleStatusChange}
@@ -127,7 +127,7 @@ const AppliedInternship = () => {
                 <option value="accepted">Accepted</option>
                 <option value="rejected">Rejected</option>
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-wrap -m-4">
             {filteredInternships.map((internship) => (
@@ -182,7 +182,7 @@ const AppliedInternship = () => {
           </div>
         </div>
       </div>
-      <div className="mt-52">
+      <div className="mt-60">
         <Footer />
       </div>
     </div>

@@ -97,10 +97,10 @@ const HomeNav = () => {
 
     return (
         <div className="mb-10">
-            <div className="HomeNav-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
-               <Link to={'/home'}>
+            <div className="HomeNav-container flex justify-between p-4 h-20 w-auto">
+               <Link to={'/'}>
                 <div className="flex items-center space-x-2">
-                    <img src={logo} alt="Logo" className="h-14 rounded-full" style={{width:'15rem'}}/>
+                <img src={logo} alt="Logo" className="w-14 rounded-none" style={{width:'13rem',height:'5rem'}} />
                     {/* <h1 className="text-4xl font-bold homenav-responsive">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
                 </div>
                 </Link>

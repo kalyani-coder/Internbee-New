@@ -47,7 +47,7 @@ const CandidatePage = () => {
 
         <div className="w-3/4 p-8">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-3xl font-bold">Shortlisted Candidate</h1>
+            <h1 className="text-xl font-bold">Shortlisted Candidates</h1>
           </div>
           <div className="mb-5">
             <input
@@ -72,7 +72,7 @@ const CandidatePage = () => {
                     className="mb-8 p-4 rounded-md"
                     style={{ backgroundColor: '#FFBD59' }}
                   >
-                    <h3 className="text-xl font-semibold mb-2">
+                    <h3 className="text-l font-semibold mb-2">
                       Job Title : {candidate.job_Title}
                     </h3>
                     <p>Postion : {candidate.position}</p>

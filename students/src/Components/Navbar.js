@@ -65,7 +65,7 @@ const Navbar = () => {
                 <div className="flex items-center space-x-2">
                     <Link to={'/'}>
                     <div className='w-15 h-14'>
-                        <img src={logo} alt="Logo" className="h-14 w-15 rounded-full"/>
+                        <img src={logo} alt="Logo" className="w-14 rounded-full"style={{width:'14rem',height:'4rem'}}/>
                     </div>
                     </Link>
                     {/* <h1 className="text-4xl font-bold ">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}

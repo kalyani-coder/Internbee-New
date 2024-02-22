@@ -40,7 +40,7 @@ const Profile_Navbar= () => {
     <div className=" Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-2 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
       {/* Logo and brand */}
       <div className="flex items-center space-x-2">
-        <img src={logo} alt="Logo" className="w-14 h-14 rounded-full"  style={{width:'15rem',height:'5rem'}}/>
+        <img src={logo} alt="Logo" className="w-14 rounded-full"  style={{width:'14rem',height:'4rem'}}/>
         {/* <h1 className="text-4xl font-bold">
           Interns{" "}
           <span className="text-4xl font-bold text-amber-300">Bee</span>
@@ -55,7 +55,7 @@ const Profile_Navbar= () => {
         <div className={`Navlist nav-items ${isOpen && "open"}`}>
           <NavLink
             to="/home"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-52"
+            className="text-xl font-bold text-black  pl-96 ml-96 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
@@ -69,7 +69,7 @@ const Profile_Navbar= () => {
           </NavLink> */}
           <NavLink
             to="/internship"
-            className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"
+            className="text-xl font-bold text-black pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Internships
@@ -91,12 +91,12 @@ const Profile_Navbar= () => {
       {/* </div> */}
       <div>  
           <div
-                className="MainHomeOneCursorPointerDiv cursor-pointer pl-56"
+                className="MainHomeOneCursorPointerDiv cursor-pointer"
                 onMouseEnter={() => setShowProfileDropdown(true)}
                 // onMouseLeave={() => setShowProfileDropdown(false)}
                 onClick={handleProfileIconClick}
               >
-                <FiUser className="HomeHeaderHeading mr-1  text-4xl" />
+                <FiUser className="HomeHeaderHeading mr-0  text-4xl" />
                 {showProfileDropdown && (
                   <div className=" poputHomeOne absolute mt-2 w-48 bg-white border rounded-md shadow-md">
                     <div

@@ -88,7 +88,7 @@ const closeModal = () => {
         <Sidebar />
         <div className="flex">
           <div>
-            <h1 className="text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            <h1 className="text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
               View Applied Candidate Details
             </h1>
             <div className="flex gap-10">
@@ -96,22 +96,22 @@ const closeModal = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
-                        Sr No
+                      <th className="py-4 px-6 border-b  text-l">
+                        Sr.No.
                       </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
+                      <th className="py-4 px-6 border-b text-l">
                         Candidates Name
                       </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
+                      <th className="py-4 px-6 border-b text-l">
                         Location
                       </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
+                      <th className="py-4 px-6 border-b font-bold text-l">
                         Designation
                       </th>
                       {/* <th className="py-4 px-6 border-b font-bold text-lg">Profile</th> */}
-                      <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Delete</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
+                      <th className="py-4 px-6 border-b font-bold text-l">Actions</th>
+                      <th className="py-4 px-6 border-b font-bold text-l">Delete</th>
+                      <th className="py-4 px-6 border-b font-bold text-l">Status</th>
                     </tr>
                   </thead>
                   {/* <tbody>

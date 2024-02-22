@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaMobile, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {Link} from "react-router-dom";
-import Alert from "./Alert/Aleart"; // Import the Alert component
+import {Link} from "react-router-dom"; // Import the Alert component
 import logo from "../Assets/white_header1.png";
-
+import Alert from "./Alert/Alert";
 const Registration = () => {
   const [showEmailOtpInput, setShowEmailOtpInput] = useState(false);
   const [emailOtp, setEmailOtp] = useState("");

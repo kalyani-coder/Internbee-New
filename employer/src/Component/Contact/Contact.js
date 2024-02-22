@@ -9,11 +9,9 @@ const Contact = () => {
     <> 
     <Navbar/>
     <div className="container flex flex-col mx-auto bg-white">
-    <div>
-    <h2 className="text-2xl text-gray-900 font-bold md:text-4xl mx-8 text-center">Contact Us</h2>
-    </div>
       <div className="w-full draggable">
-        <div className="container flex flex-col items-center gap-16 mx-auto my-32">
+        <div className="container flex flex-col items-center gap-16 mx-auto my-3">
+        <h2 className="text-2xl text-gray-900 font-bold md:text-4xl mx-8 text-center">Contact Us</h2>
           <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
               <span>
@@ -46,7 +44,7 @@ const Contact = () => {
               </span>
               <p className="text-2xl font-extrabold text-dark-grey-900">Location</p>
               <p className="text-base leading-7 text-dark-grey-600">Find us at our office</p>
-              <a className="text-lg font-bold text-purple-blue-500" target="_blank" href="">Pune </a>
+              <a className="text-lg font-bold text-purple-blue-500 ml-12" target="_blank" href="">Shop No 2 Dhan Residency, <br></br>Near Noble Bakery, Wanowrie, 411040. </a>
             </div>
           </div>
         </div>

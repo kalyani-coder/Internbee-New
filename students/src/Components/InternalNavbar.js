@@ -12,11 +12,11 @@ const Internal_Navbar = () => {
   };
 
   return (
-    <div className="Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+    <div className="Navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-0 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
       {/* Logo and brand */}
       <Link to={'/'}>
         <div className="flex items-center space-x-2">
-          <img src={logo} alt="Logo" className="w-48 h-14 rounded-full" />
+          <img src={logo} alt="Logo" className=" w-13 rounded-full" style={{width:'14rem',height:'4rem'}}/>
         </div>
       </Link>
 
@@ -41,7 +41,7 @@ const Internal_Navbar = () => {
         {/* Navigation links */}
         
         {isMobileMenuOpen && (
-          <div className="absolute z-10 right-0   bg-white">
+          <div className="absolute z-10 right-0 bg-white">
             <Link
               to="/home"
               className="block text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black p-2"

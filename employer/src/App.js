@@ -34,7 +34,9 @@ import AboutUsEmp from './Component/Aboutus/Aboutusemp';
 import NavbarEmp from './Component/Aboutus/NavbarEmp';
 import SignupOtp from './Component/SignupOtp/SignupOtp';
 import AppliedCandidates from './Component/AppliedCandidates/AppliedCandidates';
-
+import Privacy from './Component/Privacy/Privacy';
+import Terms from './Component/Terms/Terms';
+import Refund from './Component/Refund/Refund';
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);
@@ -94,6 +96,10 @@ function App() {
           <Route path='/signupotp'element={<SignupOtp/>}/>
           <Route path='/navbar'element={<Navbar/>}/>
           <Route path='/appliedcandidates'element={<AppliedCandidates/>}/>
+           <Route path='/privacy'element={<Privacy/>}/>
+           <Route path='/terms'element={<Terms/>}/>
+           <Route path='/refund'element={<Refund/>}/>
+    
         </Routes>
       </Router>
       

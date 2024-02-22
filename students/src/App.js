@@ -31,7 +31,10 @@ import ContactUs from "./Components/Contact/Contactus";
 import Navbar from "./Components/Navbar";
 import Internal_Navbar from "./Components/InternalNavbar";
 import SignupOtp from "./Components/SignupOtp/SignupOtp";
-
+import Alert from "./Components/Alert/Alert";
+import Privacy from "./Components/Privacy/Privacy" ;
+import Terms from "./Components/Terms/Terms";
+import Refund from "./Components/Refund/Refund";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -64,7 +67,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/enterotp" element={<EnterOtpPage />} />
-
         <Route path="/home" element={<Home1 />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/resume" element={<Resume />} />
@@ -89,6 +91,9 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/signupotp" element={<SignupOtp />} />
+        <Route path="/privacy"element={<Privacy/>}/>
+        <Route path="/terms"element={<Terms/>}/>
+        <Route path="/refund"element={<Refund/>}/>
       </Routes>
     </Router>
 

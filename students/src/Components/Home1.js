@@ -191,7 +191,7 @@ const Home1 = () => {
     {
       icons: FaMobile,
       role: "Finance",
-      jobs: 200,
+  
     },
     {
       icons: FaCode,
@@ -311,7 +311,7 @@ const Home1 = () => {
 <Internal_Navbar/>
 
 {/* /////////////////////////////////////////////////////////////////////// */}
-        <div className="Homehead mt-10 mb-10 text-4xl font-bold flex flex-col items-center mt-36">
+        <div className="Homehead mt-10 mb-10 text-2xl font-bold flex flex-col items-center mt-36">
           <h1>Search Your Internships Here</h1>
         </div>
 
@@ -432,7 +432,7 @@ const Home1 = () => {
           {/* </Slider> */}
         {/* </div>  */}
         <div className="flex flex-col items-center ">
-          <div className="Homehead mt-5 mb-10 text-4xl font-bold flex flex-col items-center">
+          <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center">
             <h1>Dream Internships here</h1>
           </div>
 
@@ -506,7 +506,7 @@ const Home1 = () => {
           </button>
         </div>
         <div className="bg-slate-100">
-          <div className="mt-20 mb-10 text-4xl font-bold flex flex-col items-center">
+          <div className="mt-20 mb-10 text-2xl font-bold flex flex-col items-center">
             <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
           </div>
            

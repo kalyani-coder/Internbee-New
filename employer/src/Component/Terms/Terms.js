@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './PolicyTermsCondition.css'; // Import your CSS file
-import './PolicyTermsCondition.css'
+import './Terms.css'; // Import your CSS file
+import './Terms.css'
 import { useNavigate } from "react-router-dom";
 
 
-const PolicyTermsCondition = () => {
+const Terms = () => {
   const navigate = useNavigate();
 
   const [showMore, setShowMore] = useState(false);
@@ -21,31 +21,31 @@ const PolicyTermsCondition = () => {
 
   const handleAccept = () => {
     // Assuming you have a logged-in user and their ID is available
-    const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
+    // const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
 
     // Check if a user is logged in and has accepted terms
-    if (loggedInUserId && acceptTerms) {
-      // Make a PATCH request to the API
-      fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response as needed
-          console.log('Privacy policy accepted:');
-          navigate("/home");
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Error accepting privacy policy:', error);
-        });
-    } else {
-      console.error('User not logged in or terms not accepted');
-    }
+    // if (loggedInUserId && acceptTerms) {
+    //   // Make a PATCH request to the API
+    //   fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
+    //     method: 'PATCH',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       // Handle the response as needed
+    //       console.log('Privacy policy accepted:');
+    //       navigate("/home");
+    //     })
+    //     .catch(error => {
+    //       // Handle errors
+    //       console.error('Error accepting privacy policy:', error);
+    //     });
+    // } else {
+    //   console.error('User not logged in or terms not accepted');
+    // }
   };
   return (
     <>
@@ -237,7 +237,7 @@ const PolicyTermsCondition = () => {
                   {/* Privacy policy section  */}
 
 
-              {showMore2 ? (
+              {/* {showMore2 ? (
                 <>
                   <h1 className='privacy-heading-main text-center'>Privacy Policy</h1>
 
@@ -306,16 +306,16 @@ const PolicyTermsCondition = () => {
                   prominent announcements on our Services or by email. Refer to this page for the latest
                   Privacy Policy
                   {/* ... */}
-                  <div className="button-container">
+                  {/* <div className="button-container">
                     <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
                       View Less
                     </button>
 
                   </div>
-                </>
-              ) : (
-                <>
-                <h1 className='privacy-heading-main text-center'>Privacy Policy</h1><br/>
+                </> */}
+              {/* ) : ( */}
+                {/* <> */}
+                {/* <h1 className='privacy-heading-main text-center'>Privacy Policy</h1><br/>
 
                
                   This Privacy Policy pertains to the online services provided by Interns Bee at
@@ -341,17 +341,17 @@ const PolicyTermsCondition = () => {
                   like Google+ share or SMS share, we may collect and process information about the
                   contacts associated with your Google account.
                   {/* ... */}
-                  <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
+                  {/* <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
                     View More
                   </button>
-                </>
-              )}
+                </> */}
+              {/* )}  */}
 
 
 
 
             
-              <div>
+              {/* <div>
         <label>
           <input
             type="checkbox"
@@ -365,18 +365,18 @@ const PolicyTermsCondition = () => {
        
 
               {/* Submit button */}
-              <div className="submit-button-container">
+              {/* <div className="submit-button-container">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
           onClick={handleAccept}
         >
           Accept
         </button>
-      </div>
+      </div>  */}
 
             </div>
           </>
         );
 }
 
-        export default PolicyTermsCondition;
+        export default Terms;

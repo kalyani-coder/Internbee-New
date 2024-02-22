@@ -57,8 +57,10 @@ const Footer = () => {
     const navbarContent = [
         { label: 'About Us', link: '/aboutus' },
         { label: 'Contact', link: '/contact' },
-        { label: 'FAQ', link: '/faqs' },
-        { label: 'Privacy Policy', link: '/privacypolicy' },
+        { label: 'FAQ', link: '/faq' },
+        { label: 'Privacy Policy', link: '/privacy' },
+        { label: 'Terms & Conditions', link: '/terms' },
+        { label: 'Refund Policy', link: '/refund' },
         { label: 'Blog', link: '/blogs' },
     ];
 
@@ -67,7 +69,7 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive"style={{ backgroundColor: '#FFBD59' }}>
+            <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive shadow-md"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="grid gap-4 items-start space-y-4">
                     <Link to={'/'}>
                     <div className="items-center">
@@ -75,7 +77,7 @@ const Footer = () => {
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     </Link>
-                    <div className="text-2xl flex items-center gap-4 justify-center ">
+                    <div className="text-xl flex items-center gap-4 justify-center ">
                         {socialIcons.map((icon, index) => (
                             <div key={index}>{icon}</div>
                         ))}
@@ -93,15 +95,15 @@ const Footer = () => {
                         <ul className="text-xl space-y-2">
                             {navbarContent.map((item, index) => (
                                 <li key={index}>
-                                    <a className='hover:text-white' href={item.link}>{item.label}</a>
+                                    <a className='hover:text-white text-lg' href={item.link}>{item.label}</a>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
                     <div className="flex flex-col items-start ">
-                        <h2 className="text-xl font-bold mb-3">Roles</h2>
-                        <ul className="text-xl  space-y-2">
+                        <h2 className="text-xl font-bold mb-4">Roles</h2>
+                        <ul className="text-lg  space-y-2">
                             {rolesContent.map((role, index) => (
                                 <li key={index}>{role}</li>
                             ))}
@@ -110,7 +112,7 @@ const Footer = () => {
 
                     <div className="flex flex-col items-start space-y-7">
                         <h2 className="text-xl font-bold">Locations</h2>
-                        <ul className="text-xl space-y-2">
+                        <ul className="text-lg space-y-2">
                             {locationContent.map((location, index) => (
                                 <li key={index}>{location}</li>
                             ))}

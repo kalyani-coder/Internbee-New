@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import './PolicyTermsCondition.css'; // Import your CSS file
-import './PolicyTermsCondition.css'
+import './Terms.css'; // Import your CSS file
+import './Terms.css'
 import { useNavigate } from "react-router-dom";
 
 
-const PolicyTermsCondition = () => {
+const Terms = () => {
   const navigate = useNavigate();
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  
 
   const [showMore, setShowMore] = useState(false);
   const [showMore2, setShowMore2] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
@@ -19,34 +20,20 @@ const PolicyTermsCondition = () => {
     setShowMore2(!showMore2);
   };
 
-  const handleAccept = () => {
-    // Assuming you have a logged-in user and their ID is available
-    const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
 
-    // Check if a user is logged in and has accepted terms
-    if (loggedInUserId && acceptTerms) {
-      // Make a PATCH request to the API
-      fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response as needed
-          console.log('Privacy policy accepted:');
-          navigate("/home");
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Error accepting privacy policy:', error);
-        });
+  const handleCheckboxChange = (event) => {
+    setAcceptTerms(event.target.checked);
+  };
+
+  const handleSubmit = () => {
+    if (acceptTerms) {
+      navigate('/home');
     } else {
-      console.error('User not logged in or terms not accepted');
+      console.log('Please agree to the terms and conditions.');
     }
   };
+
+  
   return (
     <>
       <div className="policy-popup">
@@ -55,7 +42,7 @@ const PolicyTermsCondition = () => {
 
         {showMore ? (
           <>
-            <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1>
+            <h1 className='privacy-heading-main text-center'>Terms And Conditions Privacy Policy</h1>
 
             <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
@@ -196,9 +183,9 @@ const PolicyTermsCondition = () => {
                  <h1 className='privacy-heading-middle'>Jurisdiction</h1>
                  All license agreements, use, or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to the exclusive jurisdiction of courts in Maharashtra.
 
-                {/* all contente here  */}
+                {/* all contente here  */}<br></br>
                 <div className="button-container">
-                  <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore}>
+                  <button className="view-less-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }}  onClick={toggleShowMore}>
                     View Less
                   </button>
 
@@ -226,8 +213,8 @@ const PolicyTermsCondition = () => {
                 (f) Accept all risks of unauthorized access to the Registration Data and any other information you provide to Interns Bee.
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
-                {/* show first two paragraphs */}
-                <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
+                {/* show first two paragraphs */}<br></br>
+                <button className="view-more-button fw-bold px-4 py-2 rounded text-white" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore}>
                   View More
                 </button>
               </>
@@ -237,7 +224,7 @@ const PolicyTermsCondition = () => {
                   {/* Privacy policy section  */}
 
 
-              {showMore2 ? (
+              {/* {showMore2 ? (
                 <>
                   <h1 className='privacy-heading-main text-center'>Privacy Policy</h1>
 
@@ -305,9 +292,9 @@ const PolicyTermsCondition = () => {
                   Changes to this Privacy Policy:Changes to this policy will be communicated through
                   prominent announcements on our Services or by email. Refer to this page for the latest
                   Privacy Policy
-                  {/* ... */}
+                  ...<br></br>
                   <div className="button-container">
-                    <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
+                    <button className="view-less-button fw-bold text-white px-4 py-2 rounded" style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                       View Less
                     </button>
 
@@ -340,43 +327,39 @@ const PolicyTermsCondition = () => {
                   3. Information About Your Contacts: When you share content on Interns Bee using features
                   like Google+ share or SMS share, we may collect and process information about the
                   contacts associated with your Google account.
-                  {/* ... */}
-                  <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
+                  ...<br></br>
+                  <button className="view-more-button fw-bold text-white px-4 py-2 rounded " style={{ backgroundColor: '#FFBD59' }} onClick={toggleShowMore2}>
                     View More
                   </button>
                 </>
               )}
-
-
-
-
-            
               <div>
-        <label>
-          <input
-            type="checkbox"
-            name="acceptTerms"
-            checked={acceptTerms}
-            onChange={() => setAcceptTerms(!acceptTerms)}
-          />
-          I agree to the terms and conditions
-        </label>
+              <label>
+        <input
+          type="checkbox"
+          name="acceptTerms"
+          checked={acceptTerms}
+          onChange={handleCheckboxChange}
+        />
+        I agree to the terms and conditions
+      </label>
       </div>
        
 
               {/* Submit button */}
-              <div className="submit-button-container">
+              {/* <div
+              className="submit-button-container">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-          onClick={handleAccept}
+          onClick={handleSubmit}
         >
           Accept
         </button>
-      </div>
+      </div> */}
 
             </div>
           </>
         );
 }
 
-        export default PolicyTermsCondition;
+        export default Terms;

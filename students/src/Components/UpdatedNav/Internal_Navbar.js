@@ -41,7 +41,7 @@ const Internal_Navbar = () => {
       {/* Logo and brand */}
       <div className="flex items-center space-x-2">
         <Link to={'/'}>
-        <img src={logo} alt="Logo" className="w-14 h-14 rounded-full"  style={{width:'15rem',height:'5rem'}}/>
+        <img src={logo} alt="Logo" className="w-14 rounded-full"  style={{width:'14rem',height:'4rem'}}/>
        </Link>
        
         {/* <h1 className="text-4xl font-bold">
@@ -58,7 +58,7 @@ const Internal_Navbar = () => {
         <div className={`Navlist nav-items ${isOpen && "open"}`}>
         <NavLink
             to="/home"
-            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-24 hover:text-black"
+            className="text-xl font-bold focus:text-black pl-96 ml-80 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
@@ -72,14 +72,14 @@ const Internal_Navbar = () => {
           </NavLink> */}
           <NavLink
             to="/internship"
-            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-6 hover:text-black"
+            className="text-xl font-bold focus:text-black pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Internships
           </NavLink>
           <NavLink
             to="/applied-internship"
-            className="text-2xl font-bold focus:text-black focus:border-black focus:border-b-4 pl-6 hover:text-black"
+            className="text-xl font-bold focus:text-black pl-6 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Applied Internship
@@ -94,12 +94,12 @@ const Internal_Navbar = () => {
       {/* </div> */}
       <div>  
           <div
-                 className="MainHomeOneCursorPointerDiv cursor-pointer ml-56"
+                 className="MainHomeOneCursorPointerDiv cursor-pointer"
                 onMouseEnter={() => setShowProfileDropdown(true)}
                 // onMouseLeave={() => setShowProfileDropdown(false)}
                 onClick={handleProfileIconClick}
               >
-                <FiUser className="HomeHeaderHeading text-4xl" />
+                <FiUser className="HomeHeaderHeading text-4xl"/>
                 {showProfileDropdown && (
 
                   <div className=" poputHomeOne absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">

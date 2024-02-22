@@ -52,12 +52,12 @@ const FAQPage = () => {
             <Navbar />
 
             <div className="container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md mb-5">
-                <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+                <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
 
                 <div className="space-y-6">
                     {faqData.map((faq, index) => (
                         <div key={index}>
-                            <h3 className="text-xl font-semibold">{faq.question}</h3>
+                            <h3 className="text-l font-semibold">{faq.question}</h3>
                             <p className="text-gray-600">{faq.answer}</p>
                         </div>
                     ))}

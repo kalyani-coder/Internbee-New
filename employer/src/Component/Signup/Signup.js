@@ -96,35 +96,35 @@ const Registration = () => {
   return (
     <>
 <Link to={'/'}>
-        <div className="flex justify-item-left ">
-      <img src={logo} alt=""  className='w-94 my-1'/>
+        <div className="flex justify-item-left">
+      <img src={logo} alt=""  className='w-94 my-0'/>
     </div>
     </Link>
 
 <div className="MainSignup flex h-screen items-center justify-between ">
       <img src="./signup.jpg" alt="design" className=" " />
 
-      <div className=" SignupForm p-8 rounded shadow-md w-full bg-slate-50" style={{width:'40rem'}}>
-        <h1 className="text-2xl font-semibold mb-4 text-center">
+      <div className=" SignupForm px-5 py-1 rounded shadow-md w-full bg-slate-50 mb-44 " style={{width:'40rem'}}>
+        <h1 className="text-xl font-semibold mb-1 text-center">
           Employer Registration
         </h1>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-3" onSubmit={handleSubmit}>
           {/* Full Name Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <input
               type="text"
               id="empName"
               name="empName"
               placeholder="Enter Your Name"
-              className="px-2 mt-1 p-2 flex-grow border rounded"
+              className="px-2 mt-0 p-1 flex-grow border rounded"
               onChange={handleChange}
               value={formData.empName}
             />
           </div>
 
           {/* Email Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <input
               type="email"
               id="email"
@@ -137,57 +137,110 @@ const Registration = () => {
           </div>
 
           {/* Password Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
-              className="px-2 mt-1 p-2 flex-grow border rounded"
+              className="px-2 mt-1 p-1 flex-grow border rounded"
               onChange={handleChange}
               value={formData.password}
             />
           </div>
 
-
-
           {/* Mobile Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <input
               type="text"
               id="number"
               name="number"
               placeholder="Enter Mobile No"
-              className="mt-1 p-2 flex-grow border rounded"
+              className="mt-1 p-1 flex-grow border rounded"
               onChange={handleChange}
               value={formData.number}
             />
           </div>
 
           {/* Company Address Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <input
               type="text"
               id="companyAddress"
               name="companyAddress"
               placeholder="Enter Company Address"
-              className="mt-1 p-2 flex-grow border rounded"
+              className="mt-1 p-1 flex-grow border rounded"
               onChange={handleChange}
               value={formData.companyAddress}
             />
           </div>
 
           {/* Description Input */}
-          <div className="flex flex-col mb-4">
+          <div className="flex flex-col mb-0">
             <textarea
               id="Description"
               name="Description"
-              placeholder="Enter Company Description"
-              className="mt-1 p-2 flex-grow border rounded"
+              placeholder="Enter Organization Details"
+              className="mt-1 p-1 flex-grow border rounded"
               onChange={handleChange}
               value={formData.Description}
             />
           </div>
+        {/* Company Logo Input */}
+          <div className="flex flex-col mb-0">
+  <label htmlFor="companyLogoFile" className="mb-0 text-l">Upload Company Logo</label>
+  <input
+    type="file"
+    id="companyLogoFile"
+    name="companyLogoFile"
+    accept="image/*"
+    // onChange={handleFileChange}
+    className="mt-1 p-1 border rounded"
+  />
+</div>
+
+{/* Company Website Input */}
+<div className="flex flex-col mb-0">
+  <input
+    type="text"
+    id="companyWebsite"
+    name="companyWebsite"
+    placeholder="Enter Company Website URL"
+    className="mt-1 p-1 flex-grow border rounded"
+    onChange={handleChange}
+    value={formData.companyWebsite}
+  />
+</div>
+{/* CRN Number Input */}
+<div className="flex flex-col mb-0">
+  <input
+    type="text"
+    id="crnNumber"
+    name="crnNumber"
+    placeholder="Enter CRN Number"
+    className="mt-1 p-1 flex-grow border rounded"
+    onChange={handleChange}
+    // value={formData.crnNumber}
+  />
+</div>
+<div className="flex items-center h-5">
+                      <input
+                        id="remember"
+                        aria-describedby="remember"
+                        type="checkbox"
+                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                        required=""
+                      />
+                      
+                      <a 
+                className="font-medium text-primary-600 hover:underline dark:text-primary-500 ml-2"
+              >
+                Terms & Conditions Privacy Policy
+              </a>
+                    </div>
+
+
+
 
           <button
             type="button"

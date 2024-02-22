@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
-import Profile_Navbar from './ProfileNavBar/Profile_Navbar';
+import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import './ResponsiveCss/ResponsiveCss.css';
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -366,7 +366,7 @@ const Profile = () => {
           </div>
         </div> */}
 
-<Profile_Navbar/>
+<Internal_Navbar/>
 
 {/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
@@ -1182,13 +1182,13 @@ const Profile = () => {
                     create resume</button>
 
                     <button
-                    onClick={handleUpload}
+                    // onClick={handleUpload}
                     style={{ }}
                     className=" px-4 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Back</button>
 
 <button
-                    onClick={handleUpload}
+                    // onClick={handleUpload}
                     style={{ }}
                     className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Cancel</button>

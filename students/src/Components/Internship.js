@@ -226,7 +226,7 @@ const Internship = () => {
             placeholder="Enter skills/designations/companies"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
-            className="input h-16 w-1/2 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
+            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
           />
           </div>
           {/* Main Search button */}
@@ -393,7 +393,7 @@ const Internship = () => {
                     <div>
                       <Link to={`/apply-internship/${internship._id}`}>
                         <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
-                          Apply
+                          View
                         </button>
                       </Link>
                     </div>

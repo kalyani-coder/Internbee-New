@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './PolicyTermsCondition.css'; // Import your CSS file
-import './PolicyTermsCondition.css'
+import './Refund.css'; // Import your CSS file
+import './Refund.css'
 import { useNavigate } from "react-router-dom";
 
 
-const PolicyTermsCondition = () => {
+const Refund = () => {
   const navigate = useNavigate();
 
   const [showMore, setShowMore] = useState(false);
@@ -21,31 +21,31 @@ const PolicyTermsCondition = () => {
 
   const handleAccept = () => {
     // Assuming you have a logged-in user and their ID is available
-    const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
+    // const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
 
     // Check if a user is logged in and has accepted terms
-    if (loggedInUserId && acceptTerms) {
-      // Make a PATCH request to the API
-      fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response as needed
-          console.log('Privacy policy accepted:');
-          navigate("/home");
-        })
-        .catch(error => {
-          // Handle errors
-          console.error('Error accepting privacy policy:', error);
-        });
-    } else {
-      console.error('User not logged in or terms not accepted');
-    }
+//     if (loggedInUserId && acceptTerms) {
+//       // Make a PATCH request to the API
+//       fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
+//         method: 'PATCH',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
+//       })
+//         .then(response => response.json())
+//         .then(data => {
+//           // Handle the response as needed
+//           console.log('Privacy policy accepted:');
+//           navigate("/home");
+//         })
+//         .catch(error => {
+//           // Handle errors
+//           console.error('Error accepting privacy policy:', error);
+//         });
+//     } else {
+//       console.error('User not logged in or terms not accepted');
+//     }
   };
   return (
     <>
@@ -53,7 +53,7 @@ const PolicyTermsCondition = () => {
 
        {/* Terms And Conditions section  */}
 
-        {showMore ? (
+        {/* {showMore ? (
           <>
             <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1>
 
@@ -197,7 +197,7 @@ const PolicyTermsCondition = () => {
                  All license agreements, use, or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to the exclusive jurisdiction of courts in Maharashtra.
 
                 {/* all contente here  */}
-                <div className="button-container">
+                {/* <div className="button-container">
                   <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore}>
                     View Less
                   </button>
@@ -227,84 +227,60 @@ const PolicyTermsCondition = () => {
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
                 {/* show first two paragraphs */}
-                <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
+                {/* <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
                   View More
-                </button>
-              </>
-        )}
-             
+                </button> */}
+              {/* </> */}
+        {/* )}  */}
+            
 
                   {/* Privacy policy section  */}
 
 
               {showMore2 ? (
                 <>
-                  <h1 className='privacy-heading-main text-center'>Privacy Policy</h1>
+                  <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1>
+                  {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+
+<h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
                
-                  This Privacy Policy pertains to the online services provided by Interns Bee at
-                  InternsBee.com, its subdomains, and Interns Bee's app on Google Play Store, collectively
-                  referred to as "Services."
-                  <h1 className='privacy-heading-middle'>Overview:</h1>
-                  We value your privacy and are committed to delivering a secure user experience. This
-                  privacy statement outlines our online data collection and usage policies. By utilizing our
-                  services, you agree to the policies and practices described herein. Your data will be stored
-                  and processed on our servers, which may be located inside or outside India. Your usage of
-                  the Services implies consent to the transfer of your data. Our Services may contain links to
-                  external websites, over which we have no control, and we are not responsible for their
-                  privacy policies.<br></br>
-                  <h1 className='privacy-heading-middle'>Collection of Information:</h1>
-                  1. Personal Information Provided by You: In certain sections of our Services, we may
-                  request personal information such as your name, address, email, telephone number, billing
-                  details, education, workplace details, etc.
-                  2. Information Collected When Using Third-Party Services: To enhance your experience, we
-                  may collect personally identifiable information, including usernames, directly or indirectly. We
-                  use third-party services with specific privacy policies, including Google Sign-In, YouTube,
-                  and Facebook.
-                  3. Information About Your Contacts: When you share content on Interns Bee using features
-                  like Google+ share or SMS share, we may collect and process information about the
-                  contacts associated with your Google account.
-                  <h1 className='privacy-heading-middle'>Retention of Information::</h1>
-                  In our commitment to lifelong career management, we retain all gathered information
-                  indefinitely. You have the option to correct or update your account profile, and you may
-                  choose to delete your account, after which we will delete or de-identify the data.
-                  <h1 className='privacy-heading-middle'>Sharing of Information:</h1>
-                  1.Employers' internship/job listings are published online and may be viewed by anyone on
-                  Interns Bee and search engines.
-                  2. Personal information may be shared with students applying to internships/jobs through
-                  Interns Bee.
-                  3. Information may be shared with third parties providing services on our behalf or in
-                  partnership with us.
-                  4. Interns Bee reserves the right to publish internship/job listings on various platforms to
-                  increase visibility.
-                  <h1 className='privacy-heading-middle'>Editing Information:</h1>
-                  Students and employers can edit personal information through their respective sections.
-                  Certain data, such as applications or postings, cannot be edited.
-                  Downloading Information:
-                  For assistance in downloading information, contact privacy@InternsBee.com.
-                  <h1 className='privacy-heading-middle'>Communication Policy:</h1>
-                  1. Opt-In: Users must verify their email address to receive newsletters or marketing
-                  communications.
-                  2. Opt-Out: Newsletters contain an 'Unsubscribe' link for opting out of future
-                  communications.
-                  Cookies and Pixel Tags:
-                  We and partners use cookies, web beacons, and pixel tags to collect information for
-                  analytics and personalization. Users can disable cookies, but it may affect site functionality.
-                  Children:
-                  Interns Bee is not intended for children under 13. Parental guidance is required for users
-                  under 13.
-                  <h1 className='privacy-heading-middle'>Security of Information:</h1>
-                  Industry-standard security measures are implemented. We are not liable for information
-                  disclosure beyond our control.
-                  GDPR Entitlement:
-                  EU residents have rights under GDPR. Requests related to these rights can be made to
-                  <h1 className='fw-bold text-yellow-500'>privacy@InternsBee.com.</h1>
-                  <h1 className='privacy-heading-middle'>No Guarantees:</h1>
-                  While we aim to maintain data standards, factors beyond our control may impact data
-                  disclosure. We disclaim any warranties or representations regarding data maintenance.
-                  Changes to this Privacy Policy:Changes to this policy will be communicated through
-                  prominent announcements on our Services or by email. Refer to this page for the latest
-                  Privacy Policy
+                Thank you for choosing Interns Bee. We appreciate your commitment to utilizing 
+               our services for your internship needs. Please take a moment to review our No Refund
+                Policy, specifically regarding subscription payments.
+                  <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
+                  Upon subscribing to Interns Bee, users gain access to a range of features 
+                  and opportunities designed to enhance their internship experience. Subscription 
+                  fees are non-refundable, regardless of whether the subscription is cancelled during 
+                  its term.
+                  <br></br>
+                  <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
+                   We do not provide refunds for partially used subscription periods. 
+                   Once a subscription fee is processed, it is deemed fully earned, and no 
+                   reimbursements will be issued for any unused portion of the subscription.
+                 
+                  <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
+                   Users have the option to cancel their subscription at any time.
+                    However, the cancellation will not result in a refund for the remaining 
+                    duration of the subscription term.
+                  
+                  <h1 className='privacy-heading-middle'>No Refunds for Inactivity:</h1>
+                  Refunds will not be granted based on a user's lack of activity or engagement
+                   on the platform. The subscription fee is charged to grant continuous access to our 
+                   services, and the level of user participation does not affect the refund eligibility.
+                 
+                  <h1 className='privacy-heading-middle'>Modification or Termination of Services:</h1>
+                  Interns Bee reserves the right to modify, suspend, 
+                  or terminate its services at any time without prior notice. In such cases, 
+                  no refunds will be issued for subscription fees paid.
+                  <h1 className='privacy-heading-middle'>Contact Us:</h1>
+                  If you have any questions or concerns regarding our No Refund Policy, 
+                  please feel free to contact our customer support at hellointerns@internsbee.com. 
+                  We are here to assist you and provide clarification on any queries you may have.
+                  <br></br>
+                  By subscribing to Interns Bee, you acknowledge and agree to abide by the terms 
+                  outlined in this No Refund Policy. We appreciate your understanding and look forward 
+                  to supporting you in your internship endeavours.
                   {/* ... */}
                   <div className="button-container">
                     <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
@@ -315,33 +291,34 @@ const PolicyTermsCondition = () => {
                 </>
               ) : (
                 <>
-                <h1 className='privacy-heading-main text-center'>Privacy Policy</h1><br/>
+                <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1><br/>
+                {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
 
-               
-                  This Privacy Policy pertains to the online services provided by Interns Bee at
-                  InternsBee.com, its subdomains, and Interns Bee's app on Google Play Store, collectively
-                  referred to as "Services."
-                  <h1 className='privacy-heading-middle'>Overview:</h1>
-                  We value your privacy and are committed to delivering a secure user experience. This
-                  privacy statement outlines our online data collection and usage policies. By utilizing our
-                  services, you agree to the policies and practices described herein. Your data will be stored
-                  and processed on our servers, which may be located inside or outside India. Your usage of
-                  the Services implies consent to the transfer of your data. Our Services may contain links to
-                  external websites, over which we have no control, and we are not responsible for their
-                  privacy policies.<br></br>
-                  <h1 className='privacy-heading-middle'>Collection of Information:</h1>
-                  1. Personal Information Provided by You: In certain sections of our Services, we may
-                  request personal information such as your name, address, email, telephone number, billing
-                  details, education, workplace details, etc.
-                  2. Information Collected When Using Third-Party Services: To enhance your experience, we
-                  may collect personally identifiable information, including usernames, directly or indirectly. We
-                  use third-party services with specific privacy policies, including Google Sign-In, YouTube,
-                  and Facebook.
-                  3. Information About Your Contacts: When you share content on Interns Bee using features
-                  like Google+ share or SMS share, we may collect and process information about the
-                  contacts associated with your Google account.
+            <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
+
+            Thank you for choosing Interns Bee. We appreciate your commitment to utilizing 
+               our services for your internship needs. Please take a moment to review our No Refund
+                Policy, specifically regarding subscription payments.
+                  <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
+                  Upon subscribing to Interns Bee, users gain access to a range of features 
+                  and opportunities designed to enhance their internship experience. Subscription 
+                  fees are non-refundable, regardless of whether the subscription is cancelled during 
+                  its term.
+                  <br></br>
+                  <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
+                   We do not provide refunds for partially used subscription periods. 
+                   Once a subscription fee is processed, it is deemed fully earned, and no 
+                   reimbursements will be issued for any unused portion of the subscription.
+                 
+                  <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
+                   Users have the option to cancel their subscription at any time.
+                    However, the cancellation will not result in a refund for the remaining 
+                    duration of the subscription term.
+                  
+                 
+                 
                   {/* ... */}
-                  <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore2}>
+                  <button className="view-more-button  text-white px-4 py-2 rounded " onClick={toggleShowMore2}>
                     View More
                   </button>
                 </>
@@ -351,7 +328,7 @@ const PolicyTermsCondition = () => {
 
 
             
-              <div>
+              {/* <div>
         <label>
           <input
             type="checkbox"
@@ -361,22 +338,22 @@ const PolicyTermsCondition = () => {
           />
           I agree to the terms and conditions
         </label>
-      </div>
+      </div> */}
        
 
               {/* Submit button */}
-              <div className="submit-button-container">
+              {/* <div className="submit-button-container">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
-          onClick={handleAccept}
+        //   onClick={handleAccept}
         >
-          Accept
+          
         </button>
-      </div>
+      </div> */}
 
             </div>
           </>
         );
 }
 
-        export default PolicyTermsCondition;
+        export default Refund;

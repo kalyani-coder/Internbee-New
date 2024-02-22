@@ -114,7 +114,7 @@ const Jobs = () => {
                 </button>
                 </div>
                 </Link>
-          <h1 className="text-2xl font-bold mb-4">Internship List</h1>
+          <h1 className="text-xl font-bold mb-4">Internship List</h1>
           <input
             type="text"
             placeholder="Search by company, job title, or skills"
@@ -278,7 +278,7 @@ const Jobs = () => {
               </button>
             </div>
             <div className="mt-4">
-              <h2 className="text-xl font-semibold mb-2">
+              <h2 className="text-lg font-semibold mb-2">
                 All Applied Candidates:
               </h2>
               <ul className="divide-y divide-gray-200">

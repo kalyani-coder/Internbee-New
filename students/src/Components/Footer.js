@@ -58,8 +58,11 @@ const Footer = () => {
         { label: 'About Us', link: '/aboutus' },
         { label: 'Contact', link: '/contactus' },
         { label: 'FAQ', link: '/faqs' },
-        { label: 'Privacy Policy', link: '/privacypolicy' },
+        { label: 'Privacy Policy', link: '/privacy' },
+        { label: 'Terms & Conditions', link: '/terms' },
+        { label: 'Refund Policy', link: '/refund' },
         { label: 'Blog', link: '/blogs' },
+       
     ];
 
     const rolesContent = yourCardArray.map(card => card.role);

@@ -6,7 +6,7 @@ const StudentDetailsPopup = ({ student, onClose }) => {
     <div className="fixed m-10 inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded shadow-md max-w-full w-full">
         {/* Display student details here */}
-        <h2 className="text-2xl font-bold mb-4">{`${student.firstName} ${student.lastName}`}</h2>
+        <h2 className="text-xl font-bold mb-4">{`${student.firstName} ${student.lastName}`}</h2>
         {/* <p className="text-gray-600 mb-2">Email: {student.email}</p> */}
         <p className="text-gray-600 mb-2">Birthdate: {student.birthdate}</p>
         <p className="text-gray-600 mb-2">
