@@ -27,7 +27,7 @@ const PolicyTermsCondition = () => {
 
   const handleSubmit = () => {
     if (acceptTerms) {
-      navigate('/home');
+      navigate('/login');
     } else {
       console.log('Please agree to the terms and conditions.');
     }

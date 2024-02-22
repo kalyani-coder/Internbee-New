@@ -34,7 +34,7 @@ const SignupOtp = () => {
         if (thankingResponse.ok) {
           setSuccessMessage('Verification successful ✔');
           setTimeout(() => {
-            navigate('/login'); // Navigate to the login page on successful verification
+            navigate('/privacypolicy'); // Navigate to the privacypolicy page on successful verification
           }, 2000);
         } else {
           setError('Something went wrong while sending the thanking email');

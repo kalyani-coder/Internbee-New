@@ -35,7 +35,7 @@ const Login = () => {
         if (responseData.email) {
           localStorage.setItem('email', responseData.email);
         }
-        navigate('/privacypolicy'); 
+        navigate('/home'); 
        
        
       } else {

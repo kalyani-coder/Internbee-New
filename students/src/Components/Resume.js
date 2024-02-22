@@ -786,7 +786,7 @@ const Resume = () => {
                       {`${portfolio.projectName} - ${portfolio.startDate} to ${portfolio.endDate}`}
                       {/* Include other details as needed */}
                     </li>
-                  ))}
+                  ))}  
                 </ul>
               </div>
             )}
