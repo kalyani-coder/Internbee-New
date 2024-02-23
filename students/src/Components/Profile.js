@@ -1177,20 +1177,20 @@ const Profile = () => {
                 <button
                  type="button"
                  style={{  }}
-                 className="mt-8 p-2 text-xl text-white border rounded-md bg-stone-700"
+                 className="btms mt-8 p-2 text-xl text-white border rounded-md bg-stone-700"
                  onClick={handleResume}>
                     create resume</button>
 
                     <button
                     // onClick={handleUpload}
                     style={{ }}
-                    className=" px-4 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
+                    className="btms px-4 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Back</button>
 
 <button
                     // onClick={handleUpload}
                     style={{ }}
-                    className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
+                    className="btms p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Cancel</button>
 
 
@@ -1198,7 +1198,7 @@ const Profile = () => {
                     <button
                     onClick={handleUpload}
                     style={{ }}
-                    className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
+                    className="btms p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
                   > Submit</button>
             </div>  
 
