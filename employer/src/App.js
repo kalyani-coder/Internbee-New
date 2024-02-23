@@ -37,6 +37,7 @@ import AppliedCandidates from './Component/AppliedCandidates/AppliedCandidates';
 import Privacy from './Component/Privacy/Privacy';
 import Terms from './Component/Terms/Terms';
 import Refund from './Component/Refund/Refund';
+import Alert from './Component/Alert/Alert';
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);

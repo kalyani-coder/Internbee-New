@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Alert from "../../Alert/Alert";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
@@ -7,10 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from "../../Navbar/Navbar";
 import Sidebar from "../../Sidebar/Sidebar";
 import Footer from "../../Footer/Footer";
+import '../../ResponsiveCss/ResponsiveCss.css';
 
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
-  // const [alert, setAlert] = useState(null);
+  const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     job_Title: "",
@@ -72,10 +74,10 @@ const PostInternship = () => {
       });
     } else {
       console.error("Error fetching employer details from localStorage");
-      // setAlert({
-      //   type: "error",
-      //   message: "Error fetching employer details from localStorage",
-      // });
+      setAlert({
+        type: " alert",
+        // message: "Error fetching employer details from localStorage",
+      });
     }
   }, []);
 
@@ -86,10 +88,10 @@ const PostInternship = () => {
     // Fetch employer details from the API
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      // setAlert({
-      //   type: "error",
-      //   message: "User not logged in. Please log in to post an internship.",
-      // });
+      setAlert({
+        type: " alert",
+        message: "User not logged in. Please log in to post an internship.",
+      });
       return;
     }
   
@@ -106,30 +108,30 @@ const PostInternship = () => {
       // Check paymentStatus
       if (employerDetails.paymentStatus === "") {
         console.log("Payment not accepted. Please complete the payment first.");
-        // setAlert({
-        //   type: "error",
-        //   message: "Payment not accepted. Please complete the payment first.",
-        // });
+        setAlert({
+          type: "alert ",
+          message: "Payment not accepted. Please complete the payment first.",
+        });
         return; // Stop the submission if payment is not accepted
       }
   
       // Check if paymentStatus is not "Accepted"
       if (employerDetails.paymentStatus !== "Accepted") {
         console.log("Payment not accepted. Please complete the payment first.");
-        // setAlert({
-        //   type: "error",
-        //   message: "Payment not accepted. Please complete the payment first.",
-        // });
+        setAlert({
+          type: "alert ",
+          message: "Payment not accepted. Please complete the payment first.",
+        });
         return; // Stop the submission if paymentStatus is not "Accepted"
       }
   
       // Check if the employer has available internship slots
       if (employerDetails.internshipEnquiry <= 0) {
         console.log('Employer has reached the internship posting limit');
-        // setAlert({
-        //   type: "error",
-        //   message: "Employer has reached the internship posting limit",
-        // });
+        setAlert({
+          type: "alert ",
+          message: "Employer has reached the internship posting limit",
+        });
         return;
       }
   
@@ -182,10 +184,10 @@ const PostInternship = () => {
   
         // Set other state or perform additional actions as needed
   
-        // setAlert({
-        //   type: "success",
-        //   message: "Internship submitted successfully",
-        // });
+        setAlert({
+          type: "success",
+          message: "Internship submitted successfully",
+        });
         setPosting(false);
         setFormData({
           ...formData,
@@ -201,16 +203,16 @@ const PostInternship = () => {
           stipend: "",
         });
       } else {
-        // setAlert({ type: "error", message: "Failed to submit form data" });
+        setAlert({ type: "alert", message: "Failed to submit form data" });
         setPosting(false);
         // Handle errors, e.g., show an error message to the user
       }
     } catch (error) {
       console.error("Error during form submission:", error);
-      // setAlert({
-      //   type: "error",
-      //   message: "Error during form submission. Please try again later.",
-      // });
+      setAlert({
+        type: "alert ",
+        message: "Error during form submission. Please try again later.",
+      });
       setPosting(false);
     }
   };
@@ -228,23 +230,23 @@ const PostInternship = () => {
 
       </div>
 
-      <div className="flex">
+      <div className="SideNPostInternship flex">
         <div>
           <Sidebar />
         </div>
 
-        <div className="max-w-3xl mx-auto mt-8 mb-10 p-8 rounded bg-gray-90 shadow-lg" >
-          <h2 className="text-3xl md:text-lg lg:text-3xl font-bold mb-4">
+        <div className="PostInternshipBody max-w-3xl mx-auto mt-3 mb-10 p-8 bg-gray-90 rounded shadow-lg ">
+          <h2 className="text-3xl md:text-2xl lg:text-2xl font-bold mb-0">
             Post Internship
           </h2>
-          {/* {alert && (
+          {alert && (
             <Alert type={alert.type}>
-              <p className="font-bold">
-                {alert.type === "success" ? "Success" : "Error"}
+              <p className=" ">
+                {alert.type === "success" ? "Success" : " "}
               </p>
               <p>{alert.message}</p>
             </Alert>
-          )} */}
+          )}
 
           <form
             onSubmit={handleSubmit}
@@ -353,7 +355,7 @@ const PostInternship = () => {
                 htmlFor="job_Type"
                 className="block text-sm font-medium text-black"
               >
-                Internship Type:
+                Job Type:
               </label>
               <select
                 id="job_Type"
@@ -393,7 +395,7 @@ const PostInternship = () => {
                 htmlFor="position"
                 className="block text-sm font-medium text-black"
               >
-                Duration:
+                Position:
               </label>
               <input
                 type="text"
