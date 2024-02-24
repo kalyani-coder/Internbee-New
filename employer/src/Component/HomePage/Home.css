@@ -1,20 +1,20 @@
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .flex {
-      flex-direction: column; /* Stack items vertically on smaller screens */
+      flex-direction: column; 
     }
 }
 
 @media only screen and (max-width: 480px) {
     .p-4 {
-      padding: 2rem; /* Adjust padding for smaller screens */
+      padding: 2rem;
     }
   
     .max-h-96 {
-      max-height: none; /* Allow the card to expand in height on smaller screens */
+      max-height: none; 
     }
   
     .scrollable-jobs {
-      overflow-y: auto; /* Enable vertical scrolling if needed on smaller screens */
+      overflow-y: auto; 
     }
     .card-component-posted-internship{
         width: 100%;
@@ -23,10 +23,10 @@
         width: 100%;
     }
   
-    /* Add more specific styles or adjustments as needed for a better mobile experience */
+
   }
   @media (max-width: 768px) {
     .card {
-      width: 90% !important; /* Set width to auto for screens less than or equal to 768px */
+      width: 90% !important; 
     }
-  }
+  } */

@@ -4,6 +4,7 @@ import Sidebar from "../Component/Sidebar/Sidebar";
 import Modal from "react-modal";
 import { Link, useLocation } from "react-router-dom";
 import Footer from "../Component/Footer/Footer";
+import '../../src/Component/ResponsiveCss/ResponsiveCss.css';
 
 Modal.setAppElement("#root"); // Set the root element for accessibility
 
@@ -101,7 +102,7 @@ const Jobs = () => {
         <Navbar />
       </div>
 
-      <div className="flex">
+      <div className=" displayBlock flex">
         <div>
           <Sidebar />
         </div>

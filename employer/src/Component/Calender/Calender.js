@@ -8,6 +8,7 @@ import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const localizer = momentLocalizer(moment);
 
@@ -58,11 +59,12 @@ const WeeklyCalendar = () => {
     return ( 
     
         <>      <div><Navbar/></div>
-        <div className="flex h-screen">
+        <div className="displayBlock flex max-h-">
            
         <div><Sidebar/></div>  
+        <div className='NavAndContent'>
             {/* Availability Section (Left Side) */}
-            <div className="flex-none pr-4 w-1/4 ml-4 mb-5">
+            <div className=" Uppercontent flex-none pr-4 w-1/4 ml-4 mb-5">
                 {/* Adjusted width using 'w-1/4' */}
                 <h2 className="text-lg font-semibold mb-4">Select Availability</h2>
                 <div className="flex items-center mb-2">
@@ -130,6 +132,7 @@ const WeeklyCalendar = () => {
                 {/* Display the selected day and time range */}
 
             </div>
+        </div>
         </div>
         <div>
             <Footer/>

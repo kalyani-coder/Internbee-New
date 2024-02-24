@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
-
+import '../ResponsiveCss/ResponsiveCss.css';
 import { Link } from 'react-router-dom';
 
 import Footer from '../Footer/Footer';
@@ -34,10 +34,10 @@ const MonthlyPackages = () => {
     <>
       <div><Navbar /></div>
 
-      <section className="text-gray-600 body-font flex">
+      <section className="displayBlock text-gray-600 body-font flex">
         <div><Sidebar /></div>
         <div className="container px-5 py-5 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
+          <div className=" flex flex-col text-center w-full mb-20">
             <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">Monthly Packages</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p>
             <div className="flex mx-auto border-2 border-amber-300 rounded overflow-hidden mt-6">
@@ -60,10 +60,10 @@ const MonthlyPackages = () => {
           </div>
 
           {monthlyPackage && (
-            <div className="w-full md:w-1/2 mx-auto">
-              <div className="p-4 xl:w-full md:w-1/2 w-full">
+            <div className="cardsiz w-full md:w-1/2 mx-auto" id='cc'>
+              <div className="cardsizs p-4 xl:w-full md:w-1/2 w-full">
                 <div className="h-full p-6 rounded-lg flex flex-col relative overflow-hidden">
-                  <div className="p-4 w-full">
+                  <div className="MonthlyPad p-4 w-full">
                     <div className="h-full p-6 rounded-lg border-2 border-amber-300 flex flex-col relative overflow-hidden">
                       <span className="bg-black text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                       <h2 className="text-sm tracking-widest title-font mb-1 font-medium">PRO</h2>

@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 function AnuallyPackages() {
     return (
         <>
             <div>
                 <div><Navbar /></div>
-                <div className='flex'>
+                <div className=' displayBlock flex'>
 
                     <div>
                         <Sidebar />
@@ -37,7 +38,7 @@ function AnuallyPackages() {
                             </Link>
                         </div>
 
-                        <div className="w-full md:w-1/2 mx-auto">
+                        <div className="Anually w-full md:w-1/2 mx-auto">
                             <div className="p-4 xl:w-full md:w-1/2 w-full">
                                 <div className="h-full p-6 rounded-lg  flex flex-col relative overflow-hidden">
                                     <div className="p-4  w-full">

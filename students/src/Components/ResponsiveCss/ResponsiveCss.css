@@ -191,6 +191,11 @@
   width: 100%;
   display: block;
 }
+.btms{
+
+  font-size: 12px;
+  line-height: normal;
+}
 
 .navbar-logo-for-internsbeestudent{
   height: 2.7em;

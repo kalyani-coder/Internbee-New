@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import Footer from '../Footer/Footer'
-
+import '../ResponsiveCss/ResponsiveCss.css'
 const AboutUs = () => {
   return (
     <>

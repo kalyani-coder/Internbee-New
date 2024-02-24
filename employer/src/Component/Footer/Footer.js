@@ -70,7 +70,7 @@ const Footer = () => {
     const locationContent = ['Pune'];
     return (
         <>
-            <footer className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive shadow-md"style={{ backgroundColor: '#FFBD59' }}>
+            <footer className="MainFooter h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive shadow-md"style={{ backgroundColor: '#FFBD59' }}>
                 <div className="grid gap-4 items-start space-y-4">
                     <Link to={'https://internsbee.com'}>
                     <div className="items-center">

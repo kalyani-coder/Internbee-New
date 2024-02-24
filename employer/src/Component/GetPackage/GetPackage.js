@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { useLocation } from 'react-router-dom';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const GetPackage = () => {
   const location = useLocation();
@@ -139,7 +140,7 @@ const GetPackage = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex gap-10">
+      <div className="displayBlock flex gap-10">
         <Sidebar />
         <div className="w-full md:w-1/2 mx-auto">
           <div className="p-4 xl:w-full md:w-1/2 w-full">

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from './../Navbar/Navbar';
 import Footer from './../Footer/Footer';
 import Sidebar from "../Sidebar/Sidebar";
+import '../ResponsiveCss/ResponsiveCss.css';
 
 export default function ListofShortlist() {
   const { id } = useParams();
@@ -25,14 +26,15 @@ export default function ListofShortlist() {
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="displayBlock flex">
         <div>
           <Sidebar />
         </div>
-        <div className="container mx-auto p-4">
+        <div className=" container mx-auto p-4">
           <h2 className="flex justify-center text-xl font-bold mb-3">Shortlisted Candidates</h2>
+          <div className="tableList">
           {shortlistData ? (
-            <table className="table-auto w-full">
+            <table className=" table-auto w-full">
               <thead>
                 <tr>
                   <th className="border px-4 py-2">Intern Name</th>
@@ -71,6 +73,7 @@ export default function ListofShortlist() {
           ) : (
             <p className="text-center">Loading...</p>
           )}
+          </div>
         </div>
       </div>
       <Footer />

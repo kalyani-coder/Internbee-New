@@ -57,7 +57,7 @@ const GetPackageAnually = () => {
     return (
         <div>
             <Navbar />
-            <div className="flex gap-10">
+            <div className="displayBlock flex gap-10">
                 <Sidebar />
                 <div className="w-full md:w-1/2 mx-auto">
                     <div className="p-4 xl:w-full md:w-1/2 w-full">
