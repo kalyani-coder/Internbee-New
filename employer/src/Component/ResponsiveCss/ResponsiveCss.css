@@ -402,6 +402,47 @@ padding-right: 2px !important;
   width: 92% !important;
 
 }
+.blogmain{
+
+  flex-direction: column;
+  display: flex;
 }
+.blogpadding{
+
+  padding: 16px;
+}
+.paracon{
+
+  padding: 18px;
+}
+.mainabout{
+
+  width: 100% !important;
+}
+.d-flex{
+
+  display: flex!important;
+  flex-direction: column;
+  width: 100% !important;
+
+}
+.signup{
+
+  display: contents !important;
+}
+.displaycontent{
+  display: contents !important;
+}
+.appliedscroll{
+
+  width: 90%;
+  overflow-x: scroll;
+}
+.abc{
+
+  width: -webkit-fill-available !important;
+}
+}
+
 
   

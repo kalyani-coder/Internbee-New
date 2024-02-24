@@ -78,10 +78,10 @@ const QuickNavbar = () => {
 
                         <Link to={'/blogs'} className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
                     </div> */}
-                    <li>
+                    {/* <li> */}
               <Link to="https://internsbee.com" className="text-black hover:text-black text-lg font-bold">Home
               </Link>
-            </li>
+            {/* </li> */}
                     <div class="dropdown">
                         <button class="btnshome bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Login

@@ -52,7 +52,7 @@ const Contact = () => {
       </div>
       <div className="flex flex-wrap -mx-3 my-5">
         <div className="w-full max-w-full sm:w-3/4 mx-auto text-center">
-          <p className="text-sm text-slate-500 py-1">
+          <p className="paracon text-sm text-slate-500 py-1">
           If you have any questions or queries about InternsBee, feel free to contact us anytime. We would love to hear from you and assist you in any way possible.
           </p>
         </div>

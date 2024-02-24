@@ -33,12 +33,12 @@ const Blog = () => {
     return (
         <>
            <QuickNavbar/>
-            <div className="flex">
+            <div className=" blogpadding flex">
 
 
                 <div className="flex flex-col items-center justify-center w-full flex-1 overflow-y-auto mt-12">
                     <div className="container mx-auto mt-8 w-full max-w-screen-md">
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="blogmain flex items-center justify-between mb-4">
                             <h1 className="text-3xl font-bold">Latest Blogs</h1>
                             <div className="flex items-center">
                                 <div className="relative mr-4">

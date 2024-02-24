@@ -6,6 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import "./AppliedCandidates.css"
 import Footer from "../Footer/Footer";
+import '../ResponsiveCss/ResponsiveCss.css';
 const AppliedCandidates = () => {
   const [candidates, setCandidates] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -84,14 +85,14 @@ const closeModal = () => {
   return (
     <>
       <Navbar />
-      <div className="flex h-screen">
+      <div className="displaycontent flex h-screen">
         <Sidebar />
-        <div className="flex">
-          <div>
-            <h1 className="text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <div className=" flex">
+          <div className="abc">
+            <h1 className=" text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
               View Applied Candidate Details
             </h1>
-            <div className="flex gap-10">
+            <div className="appliedscroll flex gap-10">
               <div className="table-container">
                 <table className="table">
                   <thead>

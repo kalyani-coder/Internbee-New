@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
+import '../ResponsiveCss/ResponsiveCss.css';
 
 
 const AboutUsEmp = () => {
@@ -14,7 +15,7 @@ const AboutUsEmp = () => {
     </div>
     <div className='d-flex'>
     
-    <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md mr-4">
+    <div className="mainabout w-1/2 bg-white p-4 border border-gray-300 shadow-md mr-4">
             <h2 className="text-xl font-semibold mb-4">About Intern Bee </h2>
             <p><span className='text-dark fw-bold fs-4'>Welcome to Internbee</span> – Your Gateway to Opportunities!
 
@@ -26,7 +27,7 @@ Whether you're a student eager to kickstart your career journey or an employer s
 
 Discover, connect, and thrive with Internbee!</p><button className='btn btn-warning'>Learn More <span>→</span></button>
             </div>
-    <div className="w-1/2 bg-white p-4 border border-gray-300 shadow-md">
+    <div className="d-flex w-1/2 bg-white p-4 border border-gray-300 shadow-md">
             <h2 className="text-xl font-semibold mb-4">About Us</h2>
             <div>
               <img
