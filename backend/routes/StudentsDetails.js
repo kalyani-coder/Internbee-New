@@ -125,7 +125,7 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
       const publicPdfUrl2 = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.pdf2[0].filename}`;
 
       const fileData = new StudentDetailsModel({
-        filename: req.files.image[0].originalname, // Assuming image is required for every entry
+        filename: req.files.image[0].originalname,
         path: req.files.image[0].path,
         pdfPath: req.files.pdf[0].path,
         certificatePath: req.files.pdf2[0].path,
@@ -156,7 +156,10 @@ router.post('/', upload.fields([{ name: 'image', maxCount: 1 }, { name: 'pdf', m
         projectName: req.body.projectName,
         projectSummary: req.body.projectSummary,
         userId: req.body.userId,
-        contact : req.body.contact,
+        contact: req.body.contact,
+        currentstate: req.body.currentstate,
+        currentcountry: req.body.currentcountry,
+        gender: req.body.gender,
 
         education_12: req.body.education_12,
         instituteName_12: req.body.instituteName_12,
