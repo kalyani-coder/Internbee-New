@@ -297,73 +297,7 @@ const Profile = () => {
   return (
     <div className=" ">
       <div className="">
-        {/* <div
-          className="p-6 flex items-center justify-between border shadow-xl w-full"
-          style={{ backgroundColor: "#FFBD59" }}
-        >
-          <Link to={"/"}>
-            <div className="flex items-center space-x-2">
-              <img
-                src={logo}
-                alt="Logo"
-                className="w-14 h-14 rounded-full"
-                style={{ width: "15rem" }}
-              />       
-            </div>
-          </Link>
-
-          <div className="flex items-center space-x-6">
-            <Link
-              to="/home"
-              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-            >
-              Students
-            </Link>
-      
-            <Link
-              to="/internship"
-              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-            >
-              Internships
-            </Link>
-          </div>
-
-        
-
-          <div className="flex items-center space-x-4">
        
-            <div
-              className="cursor-pointer"
-              onMouseEnter={() => setShowProfileDropdown(true)}
-              onClick={handleProfileIconClick}
-            >
-              <FiUser className="mr-4  text-4xl" />
-              {showProfileDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleCreateProfile}
-                  >
-                    Create Profile
-                  </div>
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleViewProfile}
-                  >
-                    View Profile
-                  </div>
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleLogout}
-                  >
-                    Log Out
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div> */}
-
         <Internal_Navbar />
 
         {/* ///////////////////////////////////////////////////////// */}
@@ -520,9 +454,16 @@ const Profile = () => {
                   required
                 />
               </div>
-              
-                  
-                  <br></br>
+          
+            </div>
+
+            <br></br>
+
+            <div className="mt-6 text-2xl font-bold pl-4">
+              {/* <h6>1.Personal Details</h6> */}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
               <div className="form-group">
                 <label
                   htmlFor="currentaddress"
@@ -611,79 +552,6 @@ const Profile = () => {
                   required
                 />
               </div>
-
-              {/* <div className="form-group">
-                <label
-                  htmlFor="current_address"
-                  className="block text-large font-medium"
-                >
-                  Current Address<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentaddress"
-                  name="currentaddress"
-                  value={currentaddress}
-                  onChange={handleCurrentAddressChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="current_city"
-                  className="block text-large font-medium"
-                >
-                  Current City<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentcity"
-                  name="currentcity"
-                  value={currentcity}
-                  onChange={handleCurrentCityChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="currentdistrict"
-                  className="block text-large font-medium"
-                >
-                  Current District<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentdistrict"
-                  name="currentdistrict"
-                  value={currentdistrict}
-                  onChange={handleCurrentDistrictChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="currentcountry"
-                  className="block text-large font-medium"
-                >
-                  Current Country<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentcountry"
-                  name="currentcountry"
-                  value={currentcountry}
-                  onChange={handleCurrentCountryChange}
-                  required
-                />
-              </div> */}
-
               <div className="form-group">
                 <label
                   htmlFor="contact"
@@ -725,6 +593,14 @@ const Profile = () => {
             </div>
 
             <hr />
+
+
+
+
+
+
+
+
 
             <div className="mt-6 text-2xl font-bold pl-4">
               <h6>2. Educational Details Graduation</h6>
