@@ -17,6 +17,9 @@ const StudentDetailsSchema = new mongoose.Schema({
   currentaddress: String,
   currentcity: String,
   currentdistrict: String,
+  currentstate : String,
+  currentcountry : String,
+  gender : String,
   currentcountry: String,
   contact : String,
 

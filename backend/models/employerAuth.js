@@ -67,8 +67,15 @@ const EmpAuthSchema = new mongoose.Schema({
   ResumeView : String,
   dedicatedCRM : String,
   internshipCounter :Number,
-  Privacy_policy : Boolean,
+  Privacy_policy : String,
   resumeDownloadCounter : Number,
+  company_Website_URL : String,
+  enter_CIN_Number : String,
+  filename: String,
+  path: String,
+  emp_image : String,
+
+
 
 
 });
