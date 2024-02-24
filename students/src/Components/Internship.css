@@ -1,51 +1,56 @@
-
 @media screen and (max-width: 768px) {
-
-.FilterSectionMain{
+  .FilterSectionMain {
     margin-left: 0%;
     display: block;
     margin-right: 0%;
-}
-.filter{
+  }
+  .filter {
     width: 100% !important;
-}
-.InternCard{
+  }
+  .InternCard {
     /* margin: 0px; */
     width: 100%;
     margin-left: 0px;
-}
-.inputinternship{
+  }
+  .inputinternship {
     justify-content: center;
     align-items: center;
     margin-left: 1rem;
     display: grid;
-}
-.btnintern{
+  }
+  .btnintern {
     margin-right: 0px;
     /* width: 30%; */
     margin-left: 4%;
     width: 92%;
-}
-.input{
+  }
+  .input {
     width: 100%;
     margin-right: 0px;
     margin-left: 0px;
     margin-bottom: 6%;
-}
+  }
 
-.head{
-
+  .head {
     margin-left: 3rem;
-}
-.blockcard{
+  }
+  .blockcard {
     display: block;
-}
-.FilterSectionMain{
-
+  }
+  .FilterSectionMain {
     /* width: -webkit-fill-available ; */
     width: 100% !important;
-}
-.Internships-card{
+  }
+  .Internships-card {
     margin: 1rem;
+  }
 }
+@media (min-width: 320px) and (max-width: 420px) {
+  .intern-card-all-the-information-abtt {
+    margin: 0;
+    width: auto;
+    height: auto;
+    display: grid;
+    gap: 1em;
+  }
 }
