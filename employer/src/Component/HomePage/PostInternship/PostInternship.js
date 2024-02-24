@@ -109,7 +109,7 @@ const PostInternship = () => {
       if (employerDetails.paymentStatus === "") {
         console.log("Payment not accepted. Please complete the payment first.");
         setAlert({
-          type: "alert ",
+          type: "alert",
           message: "Payment not accepted. Please complete the payment first.",
         });
         return; // Stop the submission if payment is not accepted
@@ -176,11 +176,20 @@ const PostInternship = () => {
         });
   
         if (updateResponse.ok) {
+
           console.log("Employer internshipCounter updated successfully");
+          setAlert({
+            type: "success",
+            message: "Internship submitted successfully",
+          });
         } else {
           console.error("Error updating employer internshipCounter");
-          // Handle the error as needed
+          setAlert({
+            type: "danger",
+            message: "Error updating employer internshipCounter",
+          });
         }
+
   
         // Set other state or perform additional actions as needed
   
@@ -241,8 +250,8 @@ const PostInternship = () => {
           </h2>
           {alert && (
             <Alert type={alert.type}>
-              <p className=" ">
-                {alert.type === "success" ? "Success" : " "}
+              <p className="">
+                {alert.type === "success" ? "Success" : "alert "}
               </p>
               <p>{alert.message}</p>
             </Alert>
@@ -395,7 +404,7 @@ const PostInternship = () => {
                 htmlFor="position"
                 className="block text-sm font-medium text-black"
               >
-                Position:
+                Duration:
               </label>
               <input
                 type="text"
