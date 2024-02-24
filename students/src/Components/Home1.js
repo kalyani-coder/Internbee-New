@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Sidebar from "./Sidebar";
-import logo from "../Assets/yellow_header1.png"
+import logo from "../Assets/yellow_header1.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,10 +25,10 @@ import {
   FaTwitter,
   FaLinkedin,
   FaInstagram,
-  FaUser
+  FaUser,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import '../Components/ResponsiveCss/ResponsiveCss.css';
+import "../Components/ResponsiveCss/ResponsiveCss.css";
 import Footer from "../Components/Footer";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 
@@ -192,27 +192,22 @@ const Home1 = () => {
     {
       icons: FaMobile,
       role: "Finance",
-
     },
     {
       icons: FaCode,
       role: "IT",
-
     },
     {
       icons: FaPalette,
       role: "Marketing",
-
     },
     {
       icons: FiUser,
       role: "Sales ",
-
     },
     {
       icons: FaChartBar,
       role: "HR",
-
     },
   ];
 
@@ -235,7 +230,6 @@ const Home1 = () => {
 
   return (
     <>
-
       {/* /////////////////////////////////////////////////////////// */}
       {/* <div className="mb-10 "> */}
       {/* <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
@@ -322,9 +316,8 @@ const Home1 = () => {
             type="text"
             placeholder="Enter skills/designations"
             className="iii-input-box-for-the-student-section-internsbee h-20 rounded-full border border-gray-800 pl-8 pr-16"
-
           />
-          <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2" >
+          <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2">
             Search
           </button>
         </div>
@@ -403,7 +396,6 @@ const Home1 = () => {
                   </p> */}
       {/* <div className="flex justify-between"> */}
 
-
       {/* <div>
                       <Link to={`/apply-internship/${internship._id}`}>
                         <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
@@ -428,7 +420,6 @@ const Home1 = () => {
       {/* </button>  */}
       {/* </Link> */}
 
-
       {/* </Slider> */}
       {/* </div>  */}
       <div className="flex flex-col items-center ">
@@ -436,7 +427,7 @@ const Home1 = () => {
           <h1>Latest Internships</h1>
         </div>
 
-        <div className="flex all-the-content-for-the-page-contains-home1.js-file flex-row justify-center items-center flex-wrap gap-4">
+        <div className="flex all-the-content-for-the-page-contains-home flex-row justify-center items-center flex-wrap gap-4">
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
@@ -477,7 +468,7 @@ const Home1 = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex justify-center items-center">
                   <FaRegClock className="mr-1 text-lg" />
                   <p className="card-description text-sm text-gray-700">
                     {internship.position}
@@ -501,7 +492,8 @@ const Home1 = () => {
 
       <div className="mt-10 flex justify-center">
         <button
-          className="ViewAll w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
+          className="ViewAll w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3"
+          style={{ backgroundColor: "#FFBD59" }}
           onClick={Internshipp}
         >
           View All
@@ -509,12 +501,14 @@ const Home1 = () => {
       </div>
       <div className="bg-slate-100">
         <div className="mt-20 mb-10 text-2xl font-bold flex flex-col items-center">
-          <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
+          <h1 className=" Homehead my-10">
+            Explore Various Types of Internships
+          </h1>
         </div>
 
         <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-44 hover:text-black">
           {yourCardArray.map((card) => (
-            <Link to={'/internship'}>
+            <Link to={"/internship"}>
               <div
                 key={card.id}
                 className="AlignHome h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5 hover:text-black"
@@ -533,7 +527,6 @@ const Home1 = () => {
             </Link>
           ))}
         </div>
-
       </div>
       {/* </div> */}
       <Footer />
