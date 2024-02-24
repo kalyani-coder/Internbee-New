@@ -45,11 +45,11 @@ const Navbar = () => {
               </Link>
             </li>
             
-            <li>
+            {/* <li>
               <Link to="/postinternship" className="text-black hover:text-black text-lg font-bold">
                 Internships
               </Link>
-            </li>
+            </li> */}
             <div  className=''>
             <li >
             {/* <FaCrown /> */}

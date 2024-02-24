@@ -38,6 +38,7 @@ import Privacy from './Component/Privacy/Privacy';
 import Terms from './Component/Terms/Terms';
 import Refund from './Component/Refund/Refund';
 import Alert from './Component/Alert/Alert';
+import QuickNavbar from './Component/QuickNav/QuickNav';
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);
@@ -88,7 +89,7 @@ function App() {
           <Route path='getpackageanually' element={<GetPackageAnually />} />
           <Route path='/shortlisted/:id' element={<ListofShortlist />} />
           <Route path='/anuallypackage' element={<AnuallyPackages />} />
-
+          <Route path='/quicknavbar'element={<QuickNavbar/>}/>
 
 
           <Route path='/monthlypackage' element={<MonthlyPackages />} />

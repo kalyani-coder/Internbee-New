@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from './../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import QuickNavbar from '../QuickNav/QuickNav';
 
 const FAQPage = () => {
     const faqData = [
@@ -49,9 +50,9 @@ const FAQPage = () => {
 
     return (
         <>
-            <Navbar />
+            <QuickNavbar />
 
-            <div className="container mx-auto mt-8 p-6 pt-2 bg-white rounded-xl shadow-md mb-5">
+            <div className="container mx-auto mt-8 p-6 pt-12 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
 
                 <div className="FaqsAlign space-y-6">

@@ -4,18 +4,19 @@ import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import Footer from '../Footer/Footer'
 import '../ResponsiveCss/ResponsiveCss.css'
+import QuickNavbar from '../QuickNav/QuickNav'
 const AboutUs = () => {
   return (
     <>
     <div className="abc">
       {/* <Internal_Navbar/> */}
-      <Navbar />
+      <QuickNavbar/>
     </div>
     <div className="py-14 bg-white mt-24 text-center all-about-section-content-for-the-abt-us-page">
       <h2 className="text-2xl text-gray-900 font-bold md:text-4xl mx-8">
         About Us
       </h2>
-      <p className="mt-6 text-gray-600 ">
+      <p className="mt-6 text-gray-600 mx-44">
         InternsBee is a Pune-based online platform that connects students with
         internship opportunities. It was founded in 2022 by a team of
         passionate and experienced professionals who wanted to bridge the gap
@@ -23,7 +24,7 @@ const AboutUs = () => {
         dynamic ecosystem of internships in Pune, where students can learn
         from the best and grow their careers.{" "}
       </p>
-      <p className="mt-4 text-gray-600 ">
+      <p className="mt-4 text-gray-600 mx-44">
         InternsBee is more than just a website. It is a community of
         like-minded students who share their experiences, insights, and tips
         with each other. It is also a network of mentors who guide and inspire
@@ -31,7 +32,7 @@ const AboutUs = () => {
         institutions and companies who want to hire interns in bulk and
         benefit from their talent and enthusiasm.
       </p>
-      <p className="mt-4 text-gray-600 ">
+      <p className="mt-4 text-gray-600 mx-44">
         InternsBee offers a wide range of internships in various fields such
         as engineering, management, design, arts, social work, education,
         media, and more. We also provide guidance and support to our students
@@ -115,3 +116,4 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+

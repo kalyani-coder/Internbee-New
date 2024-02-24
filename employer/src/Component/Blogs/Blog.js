@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch, FiTrash2, FiX } from "react-icons/fi";
 import axios from "axios";
-import Navbar from "../Landingpage/Navbar"
-
+// import Navbar from "../Landingpage/Navbar"
+import QuickNavbar from "../QuickNav/QuickNav";
 
 
 const Blog = () => {
@@ -32,7 +32,7 @@ const Blog = () => {
 
     return (
         <>
-           <Navbar/>
+           <QuickNavbar/>
             <div className="flex">
 
 

@@ -3,11 +3,12 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import QuickNavbar from '../QuickNav/QuickNav';
 
 const Contact = () => {
   return (
     <> 
-    <Navbar/>
+    <QuickNavbar/>
     <div className="container flex flex-col mx-auto bg-white">
       <div className="w-full draggable">
         <div className="container flex flex-col items-center gap-16 mx-auto my-32">
