@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import logo from "../../Assets/Interns_bee_combination-removebg-preview.png"
 import { Link, useNavigate } from 'react-router-dom';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -62,7 +63,7 @@ const Navbar = () => {
 
     return (
         <div className="mb-10">
-            <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
+            <div className="navbar-containers fixed top-0 left-0 w-full z-50 bg-white shadow-md p-4 flex items-center justify-between border">
                 <div className="flex items-center ">
                     <img src={logo} alt="Logo" className="w-15 h-14 rounded-full" />
                     {/* <h1 className="text-4xl font-bold heading-in-navbar">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
@@ -79,7 +80,7 @@ const Navbar = () => {
                     </div> */}
 
                     <div class="dropdown">
-                        <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btnshome bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Login
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -89,27 +90,13 @@ const Navbar = () => {
                                 </Link>
                             </li><hr />
 
-                            {/* <li>
-                                <Link>
-
-
-                                    <a
-                                        className="dropdown-item"
-                                        onClick={navigateToStudents}
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        Students
-                                    </a>
-
-                                </Link>
-
-                            </li> */}
+                          
                         </ul>
                     </div>
 
 
                     <div class="dropdown">
-                        <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btnshome bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Register
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -118,17 +105,7 @@ const Navbar = () => {
                                     <a class="dropdown-item" > Employers </a>
                                 </Link>
                             </li><hr />
-                            {/* <li>
-
-                                <a
-                                    className="dropdown-item"
-                                    onClick={navigateToStudentsregister}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    Students
-                                </a>
-
-                            </li> */}
+                          
                         </ul>
                     </div>
 

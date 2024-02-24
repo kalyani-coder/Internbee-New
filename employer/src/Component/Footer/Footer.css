@@ -13,4 +13,11 @@
    .footer-div{
     margin-bottom: 20px;
    }
+   .MainFooter{
+    display: block !important;
+   }
+   .footer-content {
+    display: block !important;
+}
+
 }

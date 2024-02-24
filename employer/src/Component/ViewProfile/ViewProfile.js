@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Footer from '../Footer/Footer';
 import Navbar from './../Navbar/Navbar';
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const ViewProfilePage = () => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -71,7 +72,7 @@ const ViewProfilePage = () => {
     <>
       <Navbar />
 
-      <div className='flex gap-10'>
+      <div className='displayBlock flex gap-10'>
         <Sidebar />
 
         <div className="container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md">

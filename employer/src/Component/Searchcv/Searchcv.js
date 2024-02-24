@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Footer from "../Footer/Footer";
 import StudentDetailsPopup from "./StudentDetailsPopup";
+import '../ResponsiveCss/ResponsiveCss.css';
 
 const StudentCVItem = ({ student, handleView, handleDownload }) => (
   <tr key={student._id}>
@@ -105,17 +106,18 @@ const SearchCVPage = () => {
   return (
     <>
       <Navbar />
-      <div className="flex">
+    
+      <div className="displayBlock flex">
         <Sidebar />
         <div className="flex flex-col items-center w-full mb-3">
           {/* Search Inputs */}
-          <div className="flex items-center mb-8 mt-5">
+          <div className="InputSearch flex items-center mb-8 mt-5">
             <input
               type="text"
               placeholder="Job title, skill, company"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="border border-gray-300 p-2 w-96"
+              className="tpSearch border border-gray-300 p-2 w-96"
             />
             <button
               onClick={handleSearch}
@@ -128,10 +130,10 @@ const SearchCVPage = () => {
           <table className="border-collapse w-2/3 mt-8">
             <thead>
               <tr>
-                <th className="border px-4 py-2">Name</th>
-                <th className="border px-4 py-2">Skills</th>
-                <th className="border px-4 py-2">View</th>
-                <th className="border px-4 py-2">Download</th>
+                <th className="SearchTable border px-4 py-2">Name</th>
+                <th className="SearchTable border px-4 py-2">Skills</th>
+                <th className="SearchTable border px-4 py-2">View</th>
+                <th className="SearchTable border px-4 py-2">Download</th>
               </tr>
             </thead>
             <tbody>
@@ -153,6 +155,7 @@ const SearchCVPage = () => {
           )}
         </div>
       </div>
+      
       <Footer />
     </>
   );

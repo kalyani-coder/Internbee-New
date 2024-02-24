@@ -54,7 +54,7 @@ const FAQPage = () => {
             <div className="container mx-auto mt-8 p-6 pt-2 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
 
-                <div className="space-y-6">
+                <div className="FaqsAlign space-y-6">
                     {faqData.map((faq, index) => (
                         <div key={index}>
                             <h3 className="text-l font-semibold">{faq.question}</h3>

@@ -34,6 +34,7 @@ const EmployerSection = () => {
   return (
     <>
     {" "}
+    <div className="AllHomeMain">
     <div>
       {/* <NewNavBar/> */}
       <Navbar />
@@ -104,6 +105,7 @@ const EmployerSection = () => {
     </div>
     <div>
       <Footer />
+    </div>
     </div>
   </>
   );

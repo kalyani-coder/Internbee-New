@@ -164,7 +164,7 @@ const handleNextSlide = () => {
         className="landingpage-latest-internships flex-1 p-20"
         id="dream-career-section"
       >
-        <h1 className="heading ">Latest Internships on InternsBee</h1>
+        <h1 className=" heading ">Latest Internships on InternsBee</h1>
 
         {/* Popular Categories */}
       
@@ -174,14 +174,14 @@ const handleNextSlide = () => {
           <div className="carousel" ref={carouselsRef}>
             <div className="card-landing-page">
               <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
+                <div className="cardpadd p-4">
                   <h2 className="text-xl font-semibold mb-2">
                     Social Media Marketing Intern
                   </h2>
                   <p className="text-gray-700 mb-2">SlideUpLift</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="cardlowercont flex items-center justify-between mt-2">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">Stipend: -</p>
@@ -201,14 +201,14 @@ const handleNextSlide = () => {
             </div>
             <div className="card-landing-page">
               <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
+                <div className="cardpadd p-4">
                   <h2 className="text-xl font-semibold mb-2">
                     Business Development Intern
                   </h2>
                   <p className="text-gray-700 mb-2">Parallel Minds</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="cardlowercont flex items-center justify-between mt-2">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">
@@ -232,14 +232,14 @@ const handleNextSlide = () => {
             <div className="card-landing-page">
               <div className="card-landing-page">
                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                  <div className="p-4">
+                  <div className="cardpadd p-4">
                     <h2 className="text-xl font-semibold mb-2">
                       Market Research Intern
                     </h2>
                     <p className="text-gray-700 mb-2">Ecozen Solutions</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="cardlowercont flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: -</p>
@@ -262,14 +262,14 @@ const handleNextSlide = () => {
             <div className="card-landing-page">
               <div className="card-landing-page">
                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                  <div className="p-4">
+                  <div className="cardpadd p-4">
                     <h2 className="text-xl font-semibold mb-2">
                       Software Testing Intern (Part Time)
                     </h2>
                     <p className="text-gray-700 mb-2">Scoopen</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="cardlowercont flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: Performance based</p>
@@ -317,14 +317,14 @@ const handleNextSlide = () => {
           <div className="carousel " ref={carouselRef}>
             <div className="card-landing-page">
               <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
+                <div className="cardpadd p-4">
                   <h2 className="text-xl font-semibold mb-2">
                     Software Development Intern
                   </h2>
                   <p className="text-gray-700 mb-2">Tifants Ingress</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="cardlowercont flex items-center justify-between mt-2">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">Stipend: 5000</p>
@@ -345,14 +345,14 @@ const handleNextSlide = () => {
             </div>
             <div className="card-landing-page">
               <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
+                <div className="cardpadd p-4">
                   <h2 className="text-xl font-semibold mb-2">
                     Software Testing Intern(Part-Time)
                   </h2>
                   <p className="text-gray-700 mb-2">Scoopen</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="cardlowercont flex items-center justify-between mt-2">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">
@@ -376,14 +376,14 @@ const handleNextSlide = () => {
             <div className="card-landing-page">
               <div className="card-landing-page">
                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                  <div className="p-4">
+                  <div className="cardpadd p-4">
                     <h2 className="text-xl font-semibold mb-2">
                       Social Media Marketing Intern
                     </h2>
                     <p className="text-gray-700 mb-2">SlideUpLift</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="cardlowercont flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: -</p>
@@ -409,14 +409,14 @@ const handleNextSlide = () => {
             <div className="card-landing-page">
               <div className="card-landing-page">
                 <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
-                  <div className="p-4">
+                  <div className="cardpadd p-4">
                     <h2 className="text-xl font-semibold mb-2">
                       Software Development Intern
                     </h2>
                     <p className="text-gray-700 mb-2">Parallel Minds</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="cardlowercont flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: -</p>

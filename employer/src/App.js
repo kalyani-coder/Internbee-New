@@ -73,6 +73,8 @@ function App() {
           <Route path="/jobs" element={<Jobs />} />
           <Route path='/postinternship' element={<PostInternship />} />
           <Route path='/weeklycalender' element={<WeeklyCalendar />} />
+
+
           <Route path="/candidates" element={<CandidatePage />} />
           <Route path='/accountsetting' element={<AccountSettings />} />
           <Route path='/searchcv' element={<SearchCVPage />} />
@@ -86,9 +88,16 @@ function App() {
           <Route path='getpackageanually' element={<GetPackageAnually />} />
           <Route path='/shortlisted/:id' element={<ListofShortlist />} />
           <Route path='/anuallypackage' element={<AnuallyPackages />} />
+
+
+
           <Route path='/monthlypackage' element={<MonthlyPackages />} />
+
           <Route path='/resolve/:id' element={<ResolveMessage/>}/>
           <Route path='/privacypolicy' element={<PolicyTermsCondition/>}/>
+
+
+          {/* //////////////////////////////////// */}
           <Route path='/blogs' element={<Blog/>}/>
           <Route path='/otp' element={<Otp/>}/>
           <Route path='/contact'element={<Contact/>}/>
@@ -100,6 +109,8 @@ function App() {
            <Route path='/privacy'element={<Privacy/>}/>
            <Route path='/terms'element={<Terms/>}/>
            <Route path='/refund'element={<Refund/>}/>
+           {/* <Route path='/HomeNav'element={<Navbar/>}/> */}
+
     
         </Routes>
       </Router>

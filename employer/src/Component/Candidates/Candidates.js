@@ -40,20 +40,20 @@ const CandidatePage = () => {
       <div>
         <Navbar />
       </div>
-      <div className="flex h-screen bg-white">
+      <div className="displayBlock flex h-screen bg-white">
         <div className="bg-white">
           <Sidebar />
         </div>
 
-        <div className="w-3/4 p-8">
-          <div className="flex items-center justify-between mb-8">
+        <div className=" w-3/4 p-8">
+          <div className=" flex items-center justify-between mb-8">
             <h1 className="text-xl font-bold">Shortlisted Candidates</h1>
           </div>
           <div className="mb-5">
             <input
               type="text"
-              placeholder="Search by Job Title"
-              className="border p-2 rounded w-full"
+              placeholder="inputCandi Search by Job Title"
+              className=" inputCandi border p-2 rounded w-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

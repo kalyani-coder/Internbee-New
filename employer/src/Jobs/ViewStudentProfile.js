@@ -4,6 +4,7 @@ import Sidebar from "../Component/Sidebar/Sidebar";
 import Navbar from "../Component/Navbar/Navbar";
 import axios from "axios";
 import Footer from './../Component/Footer/Footer';
+import '../Component/ResponsiveCss/ResponsiveCss.css';
 
 export default function ViewStudentProfile() {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -54,7 +55,7 @@ export default function ViewStudentProfile() {
         <Navbar />
       </div>
 
-      <div className="flex">
+      <div className="displayBlock flex">
         <div>
           <Sidebar />
         </div>
@@ -114,7 +115,7 @@ export default function ViewStudentProfile() {
               </div>
 
               {/* PDF and Certificate Links */}
-              <div className="mb-4 mt-3 bg-white shadow-md p-6 rounded-lg flex justify-around">
+              <div className="btnsview mb-4 mt-3 bg-white shadow-md p-6 rounded-lg flex justify-around">
                 <a
                   href={studentData.student_PDF}
                   target="_blank"
