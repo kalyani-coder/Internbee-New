@@ -192,27 +192,27 @@ const Home1 = () => {
     {
       icons: FaMobile,
       role: "Finance",
-  
+
     },
     {
       icons: FaCode,
       role: "IT",
-      
+
     },
     {
       icons: FaPalette,
       role: "Marketing",
-      
+
     },
     {
       icons: FiUser,
       role: "Sales ",
-      
+
     },
     {
       icons: FaChartBar,
       role: "HR",
-      
+
     },
   ];
 
@@ -235,14 +235,14 @@ const Home1 = () => {
 
   return (
     <>
-      
-    {/* /////////////////////////////////////////////////////////// */}
+
+      {/* /////////////////////////////////////////////////////////// */}
       {/* <div className="mb-10 "> */}
-        {/* <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
+      {/* <div className="navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
 
              <Link to={'/'}>
           <div className="flex items-center space-x-2 ">
-             <img src={logo} alt="Logo"className="home1-logo h-14 max-w-15rem rounded-full" /> 
+             <img src={logo} alt="Logo"className="home1-logo h-14 max-w-15rem rounded-full" />
            </div>
           </Link>
 
@@ -253,7 +253,7 @@ const Home1 = () => {
             >
               Students
             </Link>
-           
+
             <Link
               to="/internship"
               className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
@@ -271,13 +271,13 @@ const Home1 = () => {
               Applied Internship
             </Link>
           </div>
-          
-        
+
+
           <div className="flex items-center space-x-4 relative">
             {/* <div className="">
               <IoNotificationsOutline className="mr-4  text-4xl" />
             </div> */}
-            {/* <div
+      {/* <div
               className="cursor-pointer"
               onMouseEnter={() => setShowProfileDropdown(true)}
               // onMouseLeave={() => setShowProfileDropdown(false)}
@@ -307,36 +307,35 @@ const Home1 = () => {
                 </div>
               )}
             </div> */}
-          {/* </div>  */}
-        {/* </div> */}
-<Internal_Navbar/>
+      {/* </div>  */}
+      {/* </div> */}
+      <Internal_Navbar />
 
-{/* /////////////////////////////////////////////////////////////////////// */}
-        <div className="Homehead mt-10 mb-10 text-2xl font-bold flex flex-col items-center mt-36">
-          <h1>Search Your Internships Here</h1>
-        </div>
+      {/* /////////////////////////////////////////////////////////////////////// */}
+      <div className="Homehead mb-10 text-2xl font-bold flex flex-col items-center mt-36">
+        <h1>Search Your Internships Here</h1>
+      </div>
 
-        <div className="inpimp flex items-center justify-center my-10 mt-5">
-          <div className=" inputhomess relative flex items-center gap-8">
-            <input
-              type="text"
-              placeholder="Enter skills/designations"
-              className="iii h-20 rounded-full border border-gray-800 pl-8 pr-16"
-              style={{ width: "540px" }}
-              
-            />
-            <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2" >
-              Search
-            </button>
-          </div>
+      <div className="inpimp flex items-center justify-center my-10 mt-5">
+        <div className=" inputhomess relative flex items-center gap-8">
+          <input
+            type="text"
+            placeholder="Enter skills/designations"
+            className="iii-input-box-for-the-student-section-internsbee h-20 rounded-full border border-gray-800 pl-8 pr-16"
+
+          />
+          <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2" >
+            Search
+          </button>
         </div>
-        {/* <div ref={companiesRef}>
+      </div>
+      {/* <div ref={companiesRef}>
           {/* <div className=" Homehead mb-10 text-4xl font-bold flex flex-col items-center ">
             <h1>Top Companies hiring now</h1>
           </div> */}
-          {/* <Slider {...settings}> */}
-            {/* {companies.map((company) => ( */}
-              {/* <div
+      {/* <Slider {...settings}> */}
+      {/* {companies.map((company) => ( */}
+      {/* <div
                 {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
@@ -345,7 +344,7 @@ const Home1 = () => {
               >
                 < className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
-                  {/* {filteredInternships.length > 0 ? (
+      {/* {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
@@ -353,94 +352,95 @@ const Home1 = () => {
               >
                 <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
                   {/* Internship details */}
-                  {/* <h2 className="card-title text-2xl font-semibold text-gray-800 ">
+      {/* <h2 className="card-title text-2xl font-semibold text-gray-800 ">
                     {internship.job_Title}
                   </h2>
                   <p className="card-company text-xl text-gray-700">
                     Company Name : {internship.company_Name}
                   </p> */}
-                  {/* <div className="flex justify-between items-center my-2 gap-3 "> */}
-                    {/* <div className="flex items-center">
+      {/* <div className="flex justify-between items-center my-2 gap-3 "> */}
+      {/* <div className="flex items-center">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-company text-sm text-gray-700 ">
                         Start Date : {internship.start_Date}
                       </p>
                     </div> */}
-                    {/* <div className="flex items-center">
+      {/* <div className="flex items-center">
                       <FaMoneyBill className="mr-2 text-lg" />
                       <p className="card-location text-sm text-gray-700">
                         &#x20B9;{internship.stipend}
                       </p>
                     </div> */}
-                    {/* <div className="flex items-center">
+      {/* <div className="flex items-center">
                       <FaMapMarkerAlt className="mr-2 text-sm" />
                       <p className="card-duration text-sm text-gray-700">
                         {internship.location}
                       </p>
                     </div> */}
-                    {/* <div className="flex items-center">
+      {/* <div className="flex items-center">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-duration text-sm text-gray-700">
                         End Date : {internship.end_Date}
                       </p>
                     </div> */}
-                  {/* </div> */}
-                  {/* <p className="card-description text-sm text-gray-700 my-2">
+      {/* </div> */}
+      {/* <p className="card-description text-sm text-gray-700 my-2">
                     Internship Type : {internship.job_Type}
                   </p> */}
-                  {/* <div>
+      {/* <div>
                   <p className="card-skills text-sm text-gray-700 my-2">
                       Skills: {internship.skills}
                     </p>
                     </div> */}
-                  {/* <div className="flex items-center">
+      {/* <div className="flex items-center">
                       <FaRegClock className="mr-2 text-" />
                       <p className="card-duration text-sm text-gray-700">
                         Duration : {internship.position}
                       </p>
                     </div> */}
-                  {/* <p className="card-description text-sm text-gray-700 my-4">
+      {/* <p className="card-description text-sm text-gray-700 my-4">
                     {internship.job_Description}
                   </p> */}
-                  {/* <div className="flex justify-between"> */}
-                    
+      {/* <div className="flex justify-between"> */}
 
-                    {/* <div>
+
+      {/* <div>
                       <Link to={`/apply-internship/${internship._id}`}>
                         <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
                           Apply
                         </button>
                       </Link>
                     </div> */}
-                  {/* </div> */}
-                {/* </div> */}
-              {/* </div> */}
-            {/* )) */}
-          {/* ) : ( */}
-  
-            {/* <p></p> */}
-          {/* )}  */}
-                 
-                {/* <h2 className="text-xl font-bold">{company.name}</h2> */}
-                {/* <p className="text-gray-600">{company.description}</p> */}
-                {/* <Link to={`/apply-internship/${Internship._id}`}> */}
-                {/* <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}> */}
-                  {/* View Internship */}
-                {/* </button>  */}
-                {/* </Link> */}
-            
-          
-          {/* </Slider> */}
-        {/* </div>  */}
-        <div className="flex flex-col items-center ">
-          <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center ">
-            <h1>Latest Internships</h1>
-          </div>
-           <div className="flex flex-row justify-center items-center space-y-4 flex-wrap space-x-3">
+      {/* </div> */}
+      {/* </div> */}
+      {/* </div> */}
+      {/* )) */}
+      {/* ) : ( */}
+
+      {/* <p></p> */}
+      {/* )}  */}
+
+      {/* <h2 className="text-xl font-bold">{company.name}</h2> */}
+      {/* <p className="text-gray-600">{company.description}</p> */}
+      {/* <Link to={`/apply-internship/${Internship._id}`}> */}
+      {/* <button className="mt-4 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}> */}
+      {/* View Internship */}
+      {/* </button>  */}
+      {/* </Link> */}
+
+
+      {/* </Slider> */}
+      {/* </div>  */}
+      <div className="flex flex-col items-center ">
+        <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center ">
+          <h1>Latest Internships</h1>
+        </div>
+
+        <div className="flex all-the-content-for-the-page-contains-home1.js-file flex-row justify-center items-center flex-wrap gap-4">
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
-              className="cardMain w-1/3 my-3 h-1/2  rounded-md flex flex-col justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'40%'}}
+              className="cardMain h-1/2  rounded-md flex flex-col justify-between items-left bg-white shadow-md overflow-hidden "
             >
               <div className="flex-grow px-5 py-5 pr-20 pl-20">
                 <h2 className="card-title text-xl font-semibold text-gray-800">
@@ -450,8 +450,8 @@ const Home1 = () => {
                   {internship.company_Name}
                 </p>
 
-                <div className="flex justify-between items-center my-4  ">
-                  <div className="flex items-center ">
+                <div className="flex justify-between items-center my-4  date-and-all-text-in-the-card-section-for-student">
+                  <div className="flex items-center">
                     <FaCalendar className="mr-0" />
                     <p className="card-company text-sm text-gray-700 px-3">
                       {internship.start_Date}
@@ -478,13 +478,13 @@ const Home1 = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                <FaRegClock className="mr-1 text-lg" />
-                <p className="card-description text-sm text-gray-700 ">
-                  {internship.position}
-                </p>
+                  <FaRegClock className="mr-1 text-lg" />
+                  <p className="card-description text-sm text-gray-700">
+                    {internship.position}
+                  </p>
                 </div>
                 {/* Additional details here */}
-                
+
                 {/* <Link to={`/apply-internship/${internship._id}`}>
                   <button
                     className="mt-4 hover:bg-amber-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
@@ -497,24 +497,24 @@ const Home1 = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <button
+          className="ViewAll w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
+          onClick={Internshipp}
+        >
+          View All
+        </button>
+      </div>
+      <div className="bg-slate-100">
+        <div className="mt-20 mb-10 text-2xl font-bold flex flex-col items-center">
+          <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <button
-            className="ViewAll w-1/6 hover:bg-blue-700 text-white rounded-md px-6 py-3" style={{ backgroundColor: '#FFBD59' }}
-            onClick={Internshipp}
-          >
-            View All
-          </button>
-        </div>
-        <div className="bg-slate-100">
-          <div className="mt-20 mb-10 text-2xl font-bold flex flex-col items-center">
-            <h1 className=" Homehead my-10">Explore Various Types of Internships</h1>
-          </div>
-           
-          <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-44 hover:text-black">
-            {yourCardArray.map((card) => (
-              <Link to={'/internship'}>
+        <div className="Homecardsdivs grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mx-44 hover:text-black">
+          {yourCardArray.map((card) => (
+            <Link to={'/internship'}>
               <div
                 key={card.id}
                 className="AlignHome h-36 w-64 bg-white rounded-md shadow-md overflow-hidden p-4 mb-5 hover:text-black"
@@ -530,11 +530,11 @@ const Home1 = () => {
                   <FaGreaterThan />
                 </div>
               </div>
-              </Link>
-            ))}
-          </div>
-          
+            </Link>
+          ))}
         </div>
+
+      </div>
       {/* </div> */}
       <Footer />
     </>

@@ -139,17 +139,17 @@ const Internship = () => {
   // JSX structure for the Internship component
   return (
     <>
-     <Internal_Navbar/>
+      <Internal_Navbar />
       {/* <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
-     
+
         <Link to={'/'}>
         <div className="flex items-center space-x-2">
           <img src={logo} alt="Logo" className="home1-logo h-14 max-w-15rem rounded-full" />
-          
+
         </div>
         </Link>
 
-    
+
         <div className="flex items-center space-x-6">
           <Link
             to="/home"
@@ -157,7 +157,7 @@ const Internship = () => {
           >
             Students
           </Link>
-          
+
           <Link
             to="/internship"
             className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
@@ -174,18 +174,18 @@ const Internship = () => {
           </Link>
         </div>
 
-     
+
         <div className="flex items-center space-x-4 relative">
           {/* <div>
             <IoNotificationsOutline className="mr-4 text-4xl" />
           </div> */}
-          {/* <div
+      {/* <div
             className="cursor-pointer"
             onMouseEnter={() => setShowProfileDropdown(true)}
             onClick={handleProfileIconClick}
           >
             <FiUser className="mr-4 text-4xl" />
-           
+
             {showProfileDropdown && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
                 <div
@@ -210,7 +210,7 @@ const Internship = () => {
             )}
           </div>
         </div>
-      </div> 
+      </div>
      */}
 
       {/* Search Section */}
@@ -221,30 +221,30 @@ const Internship = () => {
         <div className="inputinternship relative flex items-center gap-2 mb-20 ml-80 justify-center ">
           {/* Input for main search query */}
           <div>
-          <input
-            type="text"
-            placeholder="Enter skills/designations/companies"
-            value={mainSearchQuery}
-            onChange={(e) => setMainSearchQuery(e.target.value)}
-            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
-          />
+            <input
+              type="text"
+              placeholder="Enter skills/designations/companies"
+              value={mainSearchQuery}
+              onChange={(e) => setMainSearchQuery(e.target.value)}
+              className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+            />
           </div>
           {/* Main Search button */}
           <div>
-          <button
-            className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
-            onClick={handleMainSearch}
-          >
-            Search
-          </button>
+            <button
+              className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+              onClick={handleMainSearch}
+            >
+              Search
+            </button>
           </div>
 
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="FilterSectionMain flex w-96 mx-60" style={{width:'70%',}}>
-        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{width:'250%'}}>
+      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '70%', }}>
+        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '250%' }}>
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -253,7 +253,7 @@ const Internship = () => {
               <option value="">All</option>
               <option value="">Web development</option>
               <option value="">Mobile Development</option>
-          
+
             </select>
           </div> */}
           {/* Location filter */}
@@ -336,7 +336,7 @@ const Internship = () => {
                 key={internship.id}
                 className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
               >
-                <div className="flex-grow pl-4 pr-0 py-4 " style={{width:'80%',height:'70%'}}>
+                <div className="intern-card-all-the-information-abtt flex-grow pl-4 pr-0 py-4 " >
                   {/* Internship details */}
                   <h2 className="card-title text-xl font-semibold text-gray-800 ">
                     {internship.job_Title}
@@ -374,25 +374,25 @@ const Internship = () => {
                     Internship Type : {internship.job_Type}
                   </p>
                   <div>
-                  <p className="card-skills text-sm text-gray-700 my-2">
+                    <p className="card-skills text-sm text-gray-700 my-2">
                       Skills: {internship.skills}
                     </p>
-                    </div>
+                  </div>
                   <div className="flex items-center">
-                      <FaRegClock className="mr-2 text-" />
-                      <p className="card-duration text-sm text-gray-700">
-                        Duration : {internship.position}
-                      </p>
-                    </div>
+                    <FaRegClock className="mr-2 text-" />
+                    <p className="card-duration text-sm text-gray-700">
+                      Duration : {internship.position}
+                    </p>
+                  </div>
                   <p className="card-description text-sm text-gray-700 my-4">
                     {internship.job_Description}
                   </p>
                   <div className="flex justify-between">
-                    
+
 
                     <div>
                       <Link to={`/apply-internship/${internship._id}`}>
-                        <button className= "text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
+                        <button className="text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
                           View
                         </button>
                       </Link>

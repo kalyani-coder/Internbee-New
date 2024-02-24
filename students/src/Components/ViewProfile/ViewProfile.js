@@ -32,15 +32,15 @@ const ViewProfile = () => {
         <>
             <div>
                 {/* <HomeNav /> */}
-               <Internal_Navbar/>
+                <Internal_Navbar />
 
             </div>
 
             <div className="container mx-auto p-4 bg-gray-100 mt-24">
                 {/* Profile Picture and Name Section */}
-                <div className='ViewProfileCard flex justify-between mb-8 align-middle bg-white shadow-lg  rounded-lg '>
+                <div className='ViewProfileCard flex justify-between mb-8 align-middle bg-white shadow-lg rounded-lg '>
                     <div>
-                        <section className=" cardsection mb-8  flex items-center gap-16">
+                        <section className="cardsection flex items-center gap-16">
                             {/* Display Profile Picture */}
                             <img
                                 src={userDetails && userDetails.profile_pic ? userDetails.profile_pic : "/dummy-profile-image.jpg"}
@@ -57,9 +57,9 @@ const ViewProfile = () => {
                             </div>
                         </section>
                     </div>
-                    <div className='items-center flex'>
+                    <div className='items-center flex subscribe-btn-for-the-view-profile-button-div-section'>
                         <Link to="/freeplan">
-                            <button className='border p-2'style={{ backgroundColor: '#FFBD59' }}>Subscribe</button>
+                            <button className='border p-2 subscribe-btn-for-the-view-profile-button' style={{ backgroundColor: '#FFBD59' }}>Subscribe</button>
                         </Link>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ const ViewProfile = () => {
                             <p>No education details available</p>
                         )}
 
-                        
+
                     </div>
                 </section> */}
 
