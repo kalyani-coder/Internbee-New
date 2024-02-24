@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Alert from './Alert/Alert';
 import { Link } from "react-router-dom";
 import logo from "../Assets/white_header1.png"
-
+import './SignIn.css'
 const Login = () => {
   const navigate = useNavigate();
   const {
@@ -60,11 +60,11 @@ const Login = () => {
     <div className="">
     <Link to={'/'}>
     <div className="flex justify-item-left ">
-      <img src={logo} alt=""  className='w-94 my-2'/>
+      <img src={logo} alt=""  className='w-94 my-2 logo-for-sign-in-page-width-set' />
     </div>
     </Link>
       <div className="flex justify-center items-center mt-10">
-        <h1 className="text-3xl font-bold">Login and Apply for the Internship</h1>
+        <h1 className="text-3xl font-bold Login-and-Apply-for-the-Internship-text">Login and Apply for the Internship</h1>
       </div>
   
       <div className="flex flex-col items-center px-6 py-8 md:flex-row md:justify-center md:px-0">
@@ -106,12 +106,12 @@ const Login = () => {
                   />
                   {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-start">
+                <div className=" items-center justify-between signin-rememberme">
+                  <div className="flex items-center">
                     <div className="flex items-center h-5">
                       <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
                     </div>
-                    <div className="ml-3 text-sm">
+                    <div className="ml-3 text-sm card-remember">
                       <label for="remember" className="text-black dark:text-black">Remember me</label>
                     </div>
                   </div>

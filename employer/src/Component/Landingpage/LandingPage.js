@@ -173,7 +173,7 @@ const handleNextSlide = () => {
         <div className="carousel-container mt-5 overflow-hidden">
           <div className="carousel" ref={carouselsRef}>
             <div className="card-landing-page">
-              <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
+              <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg width-for-each-card-scrollable">
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">
                     Social Media Marketing Intern

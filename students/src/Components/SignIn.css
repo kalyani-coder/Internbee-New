@@ -1,0 +1,20 @@
+@media screen and (max-width: 767px) {
+  .Login-and-Apply-for-the-Internship-text {
+    text-align: center;
+    font-size: 22px;
+  }
+
+}
+.logo-for-sign-in-page-width-set {
+    width: 14rem;
+    height: 4.5rem;
+  }
+
+  @media (min-width: 100px) and (max-width: 425px) {
+    .logo-for-sign-in-page-width-set {
+        width: 10rem;
+        height: 3rem;
+      }
+
+
+  }

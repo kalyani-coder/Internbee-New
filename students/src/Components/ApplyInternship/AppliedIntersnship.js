@@ -91,7 +91,7 @@ const AppliedInternship = () => {
     <div>
   {/* <Internal_Navbar/> */}
 
-  <Applied_Intern_Internal_Navbar/>
+  <Internal_Navbar/>
 
       <div className="mt-32">
         <div>

@@ -15,11 +15,11 @@ const Partners = () => {
 
                     <div className="logo-for-partners" >
                     <div className="items-center">
-                        <img src={logo1} alt="Footer Logo" className="" style={{ height:'14rem'}}/>
+                        <img src={logo1} alt="Footer Logo" className="" style={{ height:'8rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
-                        <img src={logo2} alt="Footer Logo" className="" style={{ height:'14rem'}}/>
+                        <img src={logo2} alt="Footer Logo" className="" style={{ height:'8rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
@@ -27,7 +27,7 @@ const Partners = () => {
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
-                        <img src={logo4} alt="Footer Logo" className="" style={{ height:'14rem'}}/>
+                        <img src={logo4} alt="Footer Logo" className="" style={{ height:'8rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
@@ -35,11 +35,11 @@ const Partners = () => {
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
-                        <img src={logo6} alt="Footer Logo" className="" style={{ height:'12rem'}}/>
+                        <img src={logo6} alt="Footer Logo" className="" style={{ height:'8rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     <div className="items-center">
-                        <img src={logo7} alt="Footer Logo" className="" style={{ height:'12rem'}}/>
+                        <img src={logo7} alt="Footer Logo" className="" style={{ height:'8rem'}}/>
                         {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
                     </div>
                     </div>

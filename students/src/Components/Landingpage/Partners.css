@@ -46,9 +46,34 @@
   } */
   
 
-@media (min-width: 320px) and (max-width: 425px) {
+  /* @media screen and (max-width: 767px) { */
+  @media (min-width: 100px) and (max-width: 425px) {
+
   .wid-fr-partners {
     width: 100%;
     padding: 1em;
   }
+  .logo-for-partners {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    /* overflow: hidden; */
+    overflow-x: scroll;
+
+    /* animation: scroll 60s linear infinite; */
+    /* width: 800%; Set a width large enough to accommodate all images */
+  }
+  
+
+}
+@media screen and (max-width: 767px) {
+  .all-partners {
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+  }.wid-fr-partners {
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+}
 }

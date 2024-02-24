@@ -4,7 +4,7 @@ import logo from '../Assets/white_header1.png';
 import Home from './Home';
 import './ResponsiveCss/ResponsiveCss.css';
 
-const Navbar = () => {
+const QuickNav = () => {
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedUserType, setSelectedUserType] = useState(null);
@@ -75,7 +75,7 @@ const Navbar = () => {
                    
                 </div> */}
                 <div className="HomeNavMainBtns flex items-center space-x-6 mr-10">
-                    
+                <Link to="/" className="text-xl font-bold focus:text-black hover:text-black">Home</Link>
                     <div class="dropdown">
                         <button class=" Navbtns text-black fw-bold px-4 py-2 rounded  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: '#FFBD59' }}>
                             Login
@@ -133,15 +133,11 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-
-
-
-
                 </div>
             </div>
         </div>
     );
 };
 
-export default Navbar;
+export default QuickNav;
 

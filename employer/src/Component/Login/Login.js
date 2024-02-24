@@ -78,7 +78,7 @@ const Login = () => {
   return (
     <>
       <div className=" my-0">
-      <Link to={'/'}>
+      <Link to={'https://internsbee.com'}>
         <div className="flex justify-item-left ">
       <img src={logo} alt=""  className='w-94 my-1'/>
     </div>

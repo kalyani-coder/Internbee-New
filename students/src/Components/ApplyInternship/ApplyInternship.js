@@ -137,14 +137,14 @@ const ApplyInternship = () => {
       <div>
         <Internal_Navbar />
       </div>
-      <div className=" mainApplyCard mx-auto max-w-2xl p-6">
-        <div className="card w-full m-6 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden mt-20">
+      <div className=" apply-card mx-auto max-w-2xl p-6">
+        <div className="card w-full m-6 rounded-md flex flex-grow justify-between items-center justify-center bg-white shadow-md overflow-hidden mt-20">
           <div className="flex-grow px-6 py-4">
-            {isSubmitting && ( // Display loading spinner if isSubmitting is true
+            {/* {isSubmitting && ( // Display loading spinner if isSubmitting is true
               <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
                 <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
               </div>
-            )}
+            )} */}
             <h2 className="card-title text-2xl font-semibold text-gray-800">
               {internship.job_Title}
             </h2>
@@ -184,14 +184,14 @@ const ApplyInternship = () => {
             <p className="card-description text-base text-gray-700 my-4">
               {internship.job_Description}
             </p>
-            <div className="flex justify-between items-center">
+            <div className=" justify-between items-center">
               <p className="card-skills text-base text-gray-700">
                 Skills: {internship.skills}
               </p>
 
-              <button
+              <button 
                 onClick={() => setShowConfirmation(true)}
-                className="bg-amber-300 text-black p-2 rounded-lg w-24"
+                className="bg-amber-300 text-black p-2 rounded-lg w-24 mt-4 mx-auto"
               >
                 Apply Now
               </button>

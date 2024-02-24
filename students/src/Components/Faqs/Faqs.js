@@ -1,9 +1,11 @@
 // src/components/FAQPage.js
 import React from 'react';
 import Footer from "../Footer";
-import Internal_Navbar from '../InternalNavbar';
-import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
+// import Internal_Navbar from '../InternalNavbar';
+// import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
 import '../ResponsiveCss/ResponsiveCss.css';
+import '../QuickNav';
+import QuickNav from '../QuickNav';
 const FAQPage = () => {
     const faqData = [
         {
@@ -51,7 +53,7 @@ const FAQPage = () => {
     return (
         <>
             {/* <Internal_Navbar /> */}
-            <Applied_Intern_Internal_Navbar/>
+            <QuickNav/>
 
             <div className="MainFaqs container mx-auto mt-8 p-6 pt-20 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>

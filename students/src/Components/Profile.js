@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
-import './ResponsiveCss/ResponsiveCss.css';
+import "./ResponsiveCss/ResponsiveCss.css";
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -283,8 +283,6 @@ const Profile = () => {
     navigate("/Resume");
   };
 
-
-
   const handleCreateProfile = () => {
     navigate("/Profile");
   };
@@ -366,12 +364,12 @@ const Profile = () => {
           </div>
         </div> */}
 
-<Internal_Navbar/>
+        <Internal_Navbar />
 
-{/* ///////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
           <div className="CardSizeProfile w-2/3 border border-black p-2  bg-gray-50 shadow-lg mt-[113px]">
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl font-bold pl-4">
               <h6>1.Personal Details</h6>
             </div>
 
@@ -505,7 +503,6 @@ const Profile = () => {
                 />
               </div>
 
-
               <div className="form-group">
                 <label
                   htmlFor="country"
@@ -524,80 +521,96 @@ const Profile = () => {
                 />
               </div>
               
+                  
+                  <br></br>
               <div className="form-group">
-        <label htmlFor="currentaddress" className="block text-large font-medium">
-          Current Address<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          className="mt-1 p-2 w-full border rounded-md text-large"
-          id="currentaddress"
-          name="currentaddress"
-          value={currentaddress}
-          onChange={handleCurrentAddressChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="currentcity" className="block text-large font-medium">
-          Current City<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          className="mt-1 p-2 w-full border rounded-md text-large"
-          id="currentcity"
-          name="currentcity"
-          value={currentcity}
-          onChange={handleCurrentCityChange}
-          required
-        />
-      </div>
+                <label
+                  htmlFor="currentaddress"
+                  className="block text-large font-medium"
+                >
+                  Current Address<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="currentaddress"
+                  name="currentaddress"
+                  value={currentaddress}
+                  onChange={handleCurrentAddressChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label
+                  htmlFor="currentcity"
+                  className="block text-large font-medium"
+                >
+                  Current City<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="currentcity"
+                  name="currentcity"
+                  value={currentcity}
+                  onChange={handleCurrentCityChange}
+                  required
+                />
+              </div>
 
-      <div className="form-group">
-        <label htmlFor="currentdistrict" className="block text-large font-medium">
-          Current District<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          className="mt-1 p-2 w-full border rounded-md text-large"
-          id="currentdistrict"
-          name="currentdistrict"
-          value={currentdistrict}
-          onChange={handleCurrentDistrictChange}
-          required
-        />
-      </div>
+              <div className="form-group">
+                <label
+                  htmlFor="currentdistrict"
+                  className="block text-large font-medium"
+                >
+                  Current District<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="currentdistrict"
+                  name="currentdistrict"
+                  value={currentdistrict}
+                  onChange={handleCurrentDistrictChange}
+                  required
+                />
+              </div>
 
-      <div className="form-group">
-        <label htmlFor="currentstate" className="block text-large font-medium">
-          Current State<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          className="mt-1 p-2 w-full border rounded-md text-large"
-          id="currentstate"
-          name="currentstate"
-          // value={currentstate}
-          // onChange={handleCurrentStateChange}
-          required
-        />
-      </div>
+              <div className="form-group">
+                <label
+                  htmlFor="currentstate"
+                  className="block text-large font-medium"
+                >
+                  Current State<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="currentstate"
+                  name="currentstate"
+                  // value={currentstate}
+                  // onChange={handleCurrentStateChange}
+                  required
+                />
+              </div>
 
-      <div className="form-group">
-        <label htmlFor="currentcountry" className="block text-large font-medium">
-          Current Country<span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          className="mt-1 p-2 w-full border rounded-md text-large"
-          id="currentcountry"
-          name="currentcountry"
-          // value={currentcountry}
-          // onChange={handleCurrentCountryChange}
-          required
-        />
-      </div>
-
+              <div className="form-group">
+                <label
+                  htmlFor="currentcountry"
+                  className="block text-large font-medium"
+                >
+                  Current Country<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  id="currentcountry"
+                  name="currentcountry"
+                  // value={currentcountry}
+                  // onChange={handleCurrentCountryChange}
+                  required
+                />
+              </div>
 
               {/* <div className="form-group">
                 <label
@@ -696,24 +709,24 @@ const Profile = () => {
                   Gender <span className="text-red-500">*</span>
                 </label>
                 <select
-    id="currentstate"
-    name="currentstate"
-    // value={currentstate}
-    // onChange={handleCurrentStateChange}
-    required
-    className="mt-1 p-2 w-full border rounded-md text-large"
-  >
-    <option value="">Select Gender</option>
-    <option value="state1">Male</option>
-    <option value="state2">Female</option>
-    {/* Add more options as needed */}
-  </select>
+                  id="currentstate"
+                  name="currentstate"
+                  // value={currentstate}
+                  // onChange={handleCurrentStateChange}
+                  required
+                  className="mt-1 p-2 w-full border rounded-md text-large"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="state1">Male</option>
+                  <option value="state2">Female</option>
+                  {/* Add more options as needed */}
+                </select>
               </div>
             </div>
-            
+
             <hr />
 
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl font-bold pl-4">
               <h6>2. Educational Details Graduation</h6>
             </div>
 
@@ -907,7 +920,7 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl font-bold pl-4">
               <h6> Educational Details 10th</h6>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
@@ -1001,7 +1014,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl font-bold pl-4">
               <h6>3.Technical Details</h6>
             </div>
 
@@ -1026,13 +1039,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="languages"
-                  className="block text-xl font-medium"
+                  className="block  font-medium"
                 >
                   Languages<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                   id="languages"
                   name="languages"
                   value={languages}
@@ -1044,13 +1057,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="experience"
-                  className="block text-xl font-medium"
+                  className="block  font-medium"
                 >
                   Experience(if any)<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                   id="experience"
                   name="experience"
                   value={experience}
@@ -1063,13 +1076,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="salaryexpectations"
-                  className="block text-xl font-medium"
+                  className="block  font-medium"
                 >
                   Salary Expectations<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                   id="salaryexpectations"
                   name="salaryExpectations"
                   value={salaryExpectations}
@@ -1081,13 +1094,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="projectname"
-                  className="block text-xl font-medium"
+                  className="block  font-medium"
                 >
                   Project Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                   id="projectname"
                   name="projectName"
                   value={projectName}
@@ -1098,13 +1111,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="projectsummary"
-                  className="block text-xl font-medium"
+                  className="block  font-medium"
                 >
                   Project Summary<span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="projectsummary"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                   rows="4"
                   name="projectSummary"
                   value={projectSummary}
@@ -1118,13 +1131,13 @@ const Profile = () => {
 
             <hr />
 
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl font-bold pl-4">
               <h6>4.Upload Documents</h6>
             </div>
 
             <div className="UploadResume grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="form-group">
-                <label htmlFor="resume" className="block text-xl font-medium">
+                <label htmlFor="resume" className="block  font-medium">
                   Resume<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -1132,18 +1145,18 @@ const Profile = () => {
                   accept="application/pdf"
                   onChange={handlePDFChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                 />
               </div>
 
               <div className="form-group col-span-3 md:col-span-1 mt-10">
-                {/* <span className="block text-xl font-large">OR</span> */}
+                {/* <span className="block  font-large">OR</span> */}
               </div>
 
               <div className="form-group">
                 <label
                   htmlFor="certification"
-                  className="block text-xl font-medium mt-10"
+                  className="block  font-medium mt-10"
                 >
                   Certification
                 </label>
@@ -1151,14 +1164,14 @@ const Profile = () => {
                   type="file"
                   accept="application/pdf"
                   onChange={handlePDFChange2}
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                 />
               </div>
 
               <div className="form-group">
                 <label
                   htmlFor="profilePicture"
-                  className="block text-xl font-medium mt-10"
+                  className="block  font-medium mt-10"
                 >
                   Profile Picture<span className="text-red-500">*</span>
                 </label>
@@ -1167,48 +1180,54 @@ const Profile = () => {
                   accept="image/*"
                   onChange={handleImageChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border rounded-md "
                 />
               </div>
             </div>
             <hr />
 
-            <div className="flex justify-between pb-3">
-                <button
-                 type="button"
-                 style={{  }}
-                 className="mt-8 p-2 text-xl text-white border rounded-md bg-stone-700"
-                 onClick={handleResume}>
-                    create resume</button>
+            <div className="flex justify-center gap-8 pb-3 bottom-section-of-the-profile-resume-section">
+              <button
+                type="button"
+                style={{}}
+                className="mt-8 p-2  text-white border rounded-md bg-black"
+                onClick={handleResume}
+              >
+                create resume
+              </button>
 
-                    <button
-                    // onClick={handleUpload}
-                    style={{ }}
-                    className=" px-4 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
-                  > Back</button>
+              <button
+                // onClick={handleUpload}
+                style={{}}
+                className=" px-4 mt-8  text-white border rounded-md  bg-black submit-your-application"
+              >
+                {" "}
+                Back
+              </button>
 
-<button
-                    // onClick={handleUpload}
-                    style={{ }}
-                    className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
-                  > Cancel</button>
+              <button
+                // onClick={handleUpload}
+                style={{}}
+                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+              >
+                {" "}
+                Cancel
+              </button>
 
-
-
-                    <button
-                    onClick={handleUpload}
-                    style={{ }}
-                    className=" p-2 mt-8 text-xl text-dark border rounded-md  bg-amber-400 submit-your-application"
-                  > Submit</button>
-            </div>  
-
-            
-            
+              <button
+                onClick={handleUpload}
+                style={{}}
+                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+              >
+                {" "}
+                Submit
+              </button>
             </div>
           </div>
         </div>
-      // </div>
-   
+      </div>
+      //{" "}
+    </div>
   );
 };
 

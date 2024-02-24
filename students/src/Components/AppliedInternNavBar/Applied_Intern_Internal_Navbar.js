@@ -56,7 +56,7 @@ const  Applied_Intern_Internal_Navbar= () => {
     
           <NavLink
             to="/home"
-            className="text-xl font-bold focus:text-black pl-6 ml-96 hover:text-black"
+            className="text-xl font-bold focus:text-black pl-80 ml-96 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students

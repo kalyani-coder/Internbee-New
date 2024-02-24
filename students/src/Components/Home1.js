@@ -433,14 +433,14 @@ const Home1 = () => {
           {/* </Slider> */}
         {/* </div>  */}
         <div className="flex flex-col items-center ">
-          <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center">
-            <h1>Dream Internships here</h1>
+          <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center ">
+            <h1>Latest Internships</h1>
           </div>
-
+           <div className="flex flex-row justify-center items-center space-y-4 flex-wrap space-x-3">
           {internships.slice(0, 3).map((internship) => (
             <div
               key={internship._id}
-              className="cardMain w-1/2 my-3  rounded-md flex flex-grow justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'30%'}}
+              className="cardMain w-1/3 my-3 h-1/2  rounded-md flex flex-col justify-between items-left bg-white shadow-md overflow-hidden " style={{height:'40%'}}
             >
               <div className="flex-grow px-5 py-5 pr-20 pl-20">
                 <h2 className="card-title text-xl font-semibold text-gray-800">
@@ -450,10 +450,10 @@ const Home1 = () => {
                   {internship.company_Name}
                 </p>
 
-                <div className="flex justify-between items-center my-4 ">
+                <div className="flex justify-between items-center my-4  ">
                   <div className="flex items-center ">
                     <FaCalendar className="mr-0" />
-                    <p className="card-company text-sm text-gray-700 px-4">
+                    <p className="card-company text-sm text-gray-700 px-3">
                       {internship.start_Date}
                     </p>
                   </div>
@@ -485,17 +485,18 @@ const Home1 = () => {
                 </div>
                 {/* Additional details here */}
                 
-                <Link to={`/apply-internship/${internship._id}`}>
+                {/* <Link to={`/apply-internship/${internship._id}`}>
                   <button
                     className="mt-4 hover:bg-amber-300 text-black rounded-md px-4 py-2" style={{ backgroundColor: '#FFBD59' }}
                   // onClick={() => handleInternshipClick(internship._id)}
                   >
                     View Internship
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           ))}
+        </div>
         </div>
 
         <div className="mt-10 flex justify-center">

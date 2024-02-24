@@ -58,11 +58,20 @@ const Internal_Navbar = () => {
         <div className={`Navlist nav-items ${isOpen && "open"}`}>
         <NavLink
             to="/home"
-            className="text-xl font-bold focus:text-black pl-96 ml-80 hover:text-black"
+            className="text-xl font-bold focus:text-black pl-72 ml-80 hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
           </NavLink>
+
+          <NavLink
+            to="/freeplan"
+            className="text-xl font-bold focus:text-black pl-6 hover:text-black"
+            onClick={() => setIsOpen(false)}
+          >
+            Plans & Pricing
+          </NavLink>
+          
           {/* <NavLink
             to="/companies"
             className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4 pl-6"

@@ -6,6 +6,12 @@
     }
     .footer-content{
         display: block;
+        margin: auto;
+        text-align: center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     .footer-content>li{
         margin-left: 0;

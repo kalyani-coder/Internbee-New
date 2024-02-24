@@ -36,6 +36,7 @@ import Privacy from "./Components/Privacy/Privacy" ;
 import Terms from "./Components/Terms/Terms";
 import Refund from "./Components/Refund/Refund";
 import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Internal_Navbar";
+import QuickNav from "./Components/QuickNav";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -64,7 +65,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Profile" element={<Profile />} />
-
+         <Route path="/quicknav"element={<QuickNav/>} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/enterotp" element={<EnterOtpPage />} />

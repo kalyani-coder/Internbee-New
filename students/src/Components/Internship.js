@@ -215,10 +215,10 @@ const Internship = () => {
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
-        <div className=" head ml-20 mb-10 text-2xl font-bold flex flex-col" >
+        <div className=" head  mb-10 text-2xl font-bold flex flex-col items-center justify-center" >
           <h1 className="mt-20">Search Your Dream Internship here</h1>
         </div>
-        <div className="inputinternship relative flex items-center gap-2 mb-20">
+        <div className="inputinternship relative flex items-center gap-2 mb-20 ml-80 justify-center ">
           {/* Input for main search query */}
           <div>
           <input
@@ -226,7 +226,7 @@ const Internship = () => {
             placeholder="Enter skills/designations/companies"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
-            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-8 pr-16 mb-20"
+            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
           />
           </div>
           {/* Main Search button */}
@@ -244,7 +244,7 @@ const Internship = () => {
 
       {/* Filters Section */}
       <div className="FilterSectionMain flex w-96 mx-60" style={{width:'70%',}}>
-        <div className="filter w-1/5 bg-gray-100 p-2 ml-2 h-1/5 mt-2" style={{width:'250%'}}>
+        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{width:'250%'}}>
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -328,7 +328,7 @@ const Internship = () => {
         </div>
 
         {/* Display Internships Section */}
-        <div className="flex flex-col items-center ml-39 ">
+        <div className="flex flex-col items-center ml-8 Internships-card ">
           {/* Map through the filtered internships (or all internships if not filtered) */}
           {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (

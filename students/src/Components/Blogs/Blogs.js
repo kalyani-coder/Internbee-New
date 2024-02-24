@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { FiSearch, FiTrash2, FiX } from "react-icons/fi";
 import axios from "axios";
 import '../ResponsiveCss/ResponsiveCss.css';
-import Navbar from "../Navbar";
-
+// import Navbar from "../Navbar";
+import QuickNav from '../QuickNav';
 const Blog = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [blogs, setBlogs] = useState([]);
@@ -31,7 +31,7 @@ const Blog = () => {
 
     return (
         <>
-            <Navbar />
+            <QuickNav/>
             <div className="flex">
 
 
