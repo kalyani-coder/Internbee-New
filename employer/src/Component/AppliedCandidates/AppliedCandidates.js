@@ -85,10 +85,19 @@ const closeModal = () => {
   return (
     <>
       <Navbar />
-      <div className="displaycontent flex h-screen">
+      <div className="displaycontent flex h-screen ">
         <Sidebar />
-        <div className=" flex">
+        <div className=" flex ml-12">
           <div className="abc">
+        
+          <input
+            type="text"
+            placeholder="Search by Internship title" 
+            // value={searchTerm}
+            // onChange={(e) => setSearchTerm(e.target.value)}
+            // onKeyUp={filterInternships}
+            className="w-full p-2 border rounded mb-4 mt-8"
+          />
             <h1 className=" text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Arial, sans-serif' }}>
               View Applied Candidate Details
             </h1>
@@ -112,7 +121,7 @@ const closeModal = () => {
                       {/* <th className="py-4 px-6 border-b font-bold text-lg">Profile</th> */}
                       <th className="py-4 px-6 border-b font-bold text-l">Actions</th>
                       <th className="py-4 px-6 border-b font-bold text-l">Delete</th>
-                      <th className="py-4 px-6 border-b font-bold text-l">Status</th>
+                      <th className="py-4 px-6 border-b font-bold text-l">Internship Tiltle</th>
                     </tr>
                   </thead>
                   {/* <tbody>
