@@ -32,7 +32,7 @@ import Navbar from "./Components/Navbar";
 import Internal_Navbar from "./Components/InternalNavbar";
 import SignupOtp from "./Components/SignupOtp/SignupOtp";
 import Alert from "./Components/Alert/Alert";
-import Privacy from "./Components/Privacy/Privacy" ;
+import Privacy from "./Components/Privacy/Privacy";
 import Terms from "./Components/Terms/Terms";
 import Refund from "./Components/Refund/Refund";
 import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Internal_Navbar";
@@ -65,7 +65,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Profile" element={<Profile />} />
-         <Route path="/quicknav"element={<QuickNav/>} />
+        <Route path="/quicknav" element={<QuickNav />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/enterotp" element={<EnterOtpPage />} />
@@ -93,10 +93,10 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/signupotp" element={<SignupOtp />} />
-        <Route path="/privacy"element={<Privacy/>}/>
-        <Route path="/terms"element={<Terms/>}/>
-        <Route path="/refund"element={<Refund/>}/>
-        <Route path="/Test"element={<Applied_Intern_Internal_Navbar/>}/>
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/refund" element={<Refund />} />
+        <Route path="/Test" element={<Applied_Intern_Internal_Navbar />} />
 
         {/* <Route path="/Test" element={<Applied_Intern_Internal_Navbar/>} */}
       </Routes>

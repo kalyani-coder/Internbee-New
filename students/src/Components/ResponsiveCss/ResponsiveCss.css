@@ -1,219 +1,255 @@
-
-.navbar-logo-for-internsbeestudent{
- width: 14rem;
- height: 4rem;
-
+.navbar-logo-for-internsbeestudent {
+  width: 14rem;
+  height: 4rem;
 }
-.all-about-section-content-for-the-abt-us-page{
-
+/* .Homecardsdivs {
+  display: grid;
+  margin-left: 0px;
+  margin-right: 0px;
+} */
+.iii-input-box-for-the-student-section-internsbee {
+  width: 540px;
+  height: 3.5em;
+}
+.all-about-section-content-for-the-abt-us-page {
   display: grid;
   padding-top: 10em;
   justify-content: center;
   margin: 0 10em;
 }
-.width-set-for-the-premium-or-freemium-packages{
+.width-set-for-the-premium-or-freemium-packages {
   width: 50em;
 }
+.ViewProfileCard {
+  height: 7rem;
+  padding: 0 1em;
+  align-items: center;
+}
+.contains-all-the-left-side-section-of-the-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.navlist-for-the-student-navbar-header-pages {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+.cardMain {
+  width: 33em;
+  height: 16em;
+}
 @media screen and (max-width: 768px) {
-
-  
-  .all-about-section-content-for-the-abt-us-page{
+  .date-and-all-text-in-the-card-section-for-student {
+    display: grid;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+    height: auto;
+  }
+  .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
-    /* Hero Section */
-    .landingpage-hero-content {
-      padding: 4rem 0;
-    }
-    .landingpage-hero-content>.container{
-        padding: 1rem;
-        margin: 0;
-        padding-right: 0;
-        display: flex;
-        justify-content: center;
-    }
-  
-    .landingpage-title-font {
-      font-size: 1.8rem;
-      line-height: 1.3;
-    }
-  .landingpage-hero-image{
-    width: 100%;
-   
+  .Homecardsdivs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-    /* Latest Internships and Jobs Sections */
-    .landingpage-latest-internships,
-    .landingpage-latest-jobs {
-      padding: 1.5rem 0;
-    }
-  
-    .landingpage-heading {
-      font-size: 1.3rem;
-    }
-  
-    /* Top Companies Section */
-    .landingpage-top-companies {
-      padding: 1.5rem 0;
-    }
-  
-    .landingpage-text-2xl {
-      font-size: 1.3rem;
-    }
-  
-    /* Statistics Section */
-    .landingpage-statistics {
-      padding: 1.5rem 0;
-    }
-    .categories{
-        margin-left: 10px;
-        gap:2px;
-        display: none;
-    }
+  .all-the-content-for-the-page-contains-home {
+    margin: 1em;
+  }
+  /* Hero Section */
+  .landingpage-hero-content {
+    padding: 4rem 0;
+  }
+  .landingpage-hero-content > .container {
+    padding: 1rem;
+    margin: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .ViewAll {
+    background-color: rgb(255, 189, 89);
+    width: 9em;
+    height: 2em;
+    font-size: 13px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .landingpage-title-font {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+  .landingpage-hero-image {
+    width: 100%;
+  }
+  /* Latest Internships and Jobs Sections */
+  .landingpage-latest-internships,
+  .landingpage-latest-jobs {
+    padding: 1.5rem 0;
+  }
 
+  .landingpage-heading {
+    font-size: 1.3rem;
+  }
 
+  /* Top Companies Section */
+  .landingpage-top-companies {
+    padding: 1.5rem 0;
+  }
 
-    .carousel {
-        max-width: 100%;
-        margin: 0 auto;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        display: flex;
-    }
-    .heading-in-navbar{
-      display: none;
+  .landingpage-text-2xl {
+    font-size: 1.3rem;
+  }
 
-    }
-    .inputhomess{
+  /* Statistics Section */
+  .landingpage-statistics {
+    padding: 1.5rem 0;
+  }
+  .categories {
+    margin-left: 10px;
+    gap: 2px;
+    display: none;
+  }
 
-      display: contents;
-      width: 100%;
-    }
+  .carousel {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    display: flex;
+  }
+  .heading-in-navbar {
+    display: none;
+  }
+  .inputhomess {
+    display: contents;
+    width: 100%;
+  }
 
-    .Homecardsdivs{
-      display: block;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-.cardMain{
+  .cardMain {
+    width: 33em;
+    display: grid;
+    justify-content: center;
+    height: auto;
+    text-align: center;
+  }
+  .card-title {
+    font-size: 17px;
+  }
+  .inpimp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-  width: 94%;
-}
-.card-title {
+  .iii-input-box-for-the-student-section-internsbee {
+    /* width: auto !important; */
+    width: auto;
+    height: 3em;
+    margin: 1em 0;
+  }
 
-  font-size: 17px;
-}
-.inpimp{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .ViewAll {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .Homehead {
+    font-size: 18px;
+  }
+  .AlignHome {
+    margin-left: 10%;
+  }
+  .ViewProfileCard {
+    display: flex;
+  }
+  .cardsection {
+    gap: 1rem;
+  }
+  .mainProfile {
+    margin-top: 91px;
+  }
+  .CardSizeProfile {
+    width: 83%;
+    margin-top: 13px;
+  }
+  .UploadResume {
+    display: block;
+  }
+  .poputHomeOne {
+    width: auto;
+  }
 
-.iii{
-  width: auto !important;
-}
-
-.ViewAll{
-  padding-left: 0px;
-     padding-right: 0px
-}
-.Homehead{
-
-  font-size: 18px;
-}
-.AlignHome{
-
-  margin-left: 10%;
-}
-.ViewProfileCard{
-
-  display: block;
-}
-.cardsection{
-
-  gap: 1rem;
-}
-.mainProfile{
-
-  margin-top: 91px;
-}
-.CardSizeProfile{
-
-  width: 83%;
-  margin-top: 13px;
-}
-.UploadResume{
-
-  display: block;
-}
-.poputHomeOne{
-
-  width: min-content;
-}
-
-.HomeNavMainBtns{
-  margin-right: 1em;
-  /* padding-left: 0%;
+  .HomeNavMainBtns {
+    margin-right: 1em;
+    /* padding-left: 0%;
   padding-right: 0%;
   font-size: 9px; */
-  padding: 0 1rem;
-  font-size: 1rem;
-}
-.Navbtns{
-  padding-left: 3px !important;
-  padding-right: 3px !important;
-}
-.blogh{
-
-  display: block;
-}
-.ResponsiveResume{
-
-  display: block;
-}
-.Freecard{
-  padding: 0% !important;
-}
-.Freecards{
-  padding: 1em ;
-}
-.preeHeading{
-
-  font-size: 30px;
-}
-.MainFaqs{
-
-  margin-top: 96px;
-}
-.SignupOtp{
-
-  width: 100%;
-  display: block;
-}
-.btms{
-
-  font-size: 12px;
-  line-height: normal;
-}
-
-.navbar-logo-for-internsbeestudent{
-  height: 2.7em;
-  width: 9em;
-}
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+  .Navbtns {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+  }
+  .blogh {
+    display: block;
+  }
+  .ResponsiveResume {
+    display: block;
+  }
+  .Freecard {
+    padding: 0% !important;
+  }
+  .Freecards {
+    padding: 1em;
+  }
+  .preeHeading {
+    font-size: 30px;
+  }
+  .MainFaqs {
+    margin-top: 96px;
+  }
+  .SignupOtp {
+    width: 100%;
+    display: block;
+  }
+  .btms {
+    font-size: 12px;
+    line-height: normal;
   }
 
-  /* Add this CSS to your existing ResponsiveCss.css file or create a new one */
+  .navbar-logo-for-internsbeestudent {
+    height: 2.7em;
+    width: 9em;
+  }
+}
+
+/* Add this CSS to your existing ResponsiveCss.css file or create a new one */
 
 /* For screens smaller than 640px */
 @media (max-width: 640px) {
-  .width-set-for-the-premium-or-freemium-packages{
+  /* .cardMain {
+    display: grid;
+    justify-content: center;
+    width: auto;
+    height: auto;
+  } */
+
+  .width-set-for-the-premium-or-freemium-packages {
     width: auto;
   }
-  .all-about-section-content-for-the-abt-us-page{
+  .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
-  .navbar-logo-for-internsbeestudent{
+  .navbar-logo-for-internsbeestudent {
     height: 2.7em;
   }
   .navbar-container {
@@ -231,15 +267,21 @@
 
 /* For screens between 641px and 1024px */
 @media (min-width: 641px) and (max-width: 1024px) {
-  .all-about-section-content-for-the-abt-us-page{
+  .cardMain {
+    display: grid;
+    justify-content: center;
+    /* width: 33em; */
+    height: auto;
+  }
+  .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
-  .width-set-for-the-premium-or-freemium-packages{
+  .width-set-for-the-premium-or-freemium-packages {
     width: auto;
   }
-  .navbar-logo-for-internsbeestudent{
-    height: 2.7em;    width: 10rem;
-
+  .navbar-logo-for-internsbeestudent {
+    height: 2.7em;
+    width: 10rem;
   }
   .navbar-container {
     padding: 2.5rem; /* Adjust padding for medium-sized screens */
@@ -249,10 +291,6 @@
     width: 12rem; /* Adjust the width of the logo for medium-sized screens */
   }
 }
-
-
-
-
 
 /* Add this CSS to your existing ResponsiveCss.css file or create a new one */
 
@@ -264,7 +302,31 @@
 
 /* For screens smaller than 640px (commonly used for mobile devices) */
 @media (max-width: 320px) {
-  .all-about-section-content-for-the-abt-us-page{
+  .cardMain {
+    width: auto;
+    height: auto;
+  }
+  .subscribe-btn-for-the-view-profile-button-div-section {
+    display: flex;
+    justify-content: center;
+  }
+  .subscribe-btn-for-the-view-profile-button {
+    width: 6em;
+    height: 2em;
+    text-align: center;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+  .ViewProfileCard {
+    display: grid;
+    height: 17em;
+    justify-content: center;
+    align-items: center;
+  }
+  .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
   .navbar-container {
@@ -274,30 +336,81 @@
   .w-15 {
     width: rem; /* Adjust the width of the logo for smaller screens */
   }
-  .width-set-for-the-premium-or-freemium-packages{
+  .width-set-for-the-premium-or-freemium-packages {
     width: auto;
   }
 }
 
 @media (min-width: 320px) and (max-width: 420px) {
+  .iii-input-box-for-the-student-section-internsbee {
+    /* width: auto !important; */
+    width: auto;
+    height: 3em;
+    margin: 1em 0;
+  }
+  .poputHomeOne {
+    width: auto;
+  }
+  .Homecardsdivs {
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+  }
+  .cardMain {
+    display: grid;
+    justify-content: center;
+    width: auto;
+    height: auto;
+  }
+
+  .date-and-all-text-in-the-card-section-for-student {
+    display: grid;
+    gap: 1em;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .cardsection {
+    display: grid;
+  }
   .bottom-section-of-the-profile-resume-section {
     display: grid;
     justify-content: center;
   }
-  .width-set-for-the-premium-or-freemium-packages{
+  .width-set-for-the-premium-or-freemium-packages {
     width: auto;
   }
-  .all-about-section-content-for-the-abt-us-page{
+  .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
-  .navbar-logo-for-internsbeestudent{
+  .navbar-logo-for-internsbeestudent {
     width: 9rem;
     height: 2.7em;
   }
   .navbar-container {
     padding: 0.5rem; /* Adjust padding for screens between 320px and 420px */
   }
-
+  .ViewProfileCard {
+    display: grid;
+    height: 17em;
+    justify-content: center;
+    align-items: center;
+  }
+  .subscribe-btn-for-the-view-profile-button-div-section {
+    display: flex;
+    justify-content: center;
+  }
+  .subscribe-btn-for-the-view-profile-button {
+    width: 6em;
+    height: 2em;
+    text-align: center;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  }
   .w-15 {
     max-width: 100%; /* Ensure the logo does not exceed the width of the screen */
     width: 80%; /* Adjust the width of the logo for screens between 320px and 420px */
@@ -310,4 +423,14 @@
   }
 }
 
+/* Styles for screens between 426px and 615px */
+@media screen and (min-width: 426px) and (max-width: 615px) {
+  /* Your CSS rules for screens between 426px and 615px */
 
+  .cardMain {
+    display: grid;
+    justify-content: center;
+    width: 33em;
+    height: auto;
+  }
+}

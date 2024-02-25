@@ -6,7 +6,7 @@ import { FaCrown } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
- 
+
   const handleToggle = () => {
     setIsOpen(!isOpen); // Toggle the isOpen state
   };
@@ -21,9 +21,9 @@ const Navbar = () => {
 
     <nav className="flex items-center justify-between p-4 h-20 w-auto" style={{ backgroundColor: '#FFBD59' }} >
       <Link to={'https://internsbee.com'}>
-      <div className="flex items-center">
-     <img src={logo} alt="Logo" className="w-14 rounded-none" style={{width:'13rem',height:'5rem'}} />
-      </div>
+        <div className="flex items-center">
+          <img src={logo} alt="Logo" className="w-14 rounded-none" style={{ width: '13rem', height: '5rem' }} />
+        </div>
       </Link>
       <div className="flex items-center">
         <button
@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className="bar"></div>
           </div>
         </button>
-        
+
         <div className={`nav-items ${isOpen ? "open" : ""}`}>
           <ul className="flex items-center space-x-4">
             <li>
@@ -44,19 +44,19 @@ const Navbar = () => {
                 Employers
               </Link>
             </li>
-            
+
             {/* <li>
               <Link to="/postinternship" className="text-black hover:text-black text-lg font-bold">
                 Internships
               </Link>
             </li> */}
-            <div  className=''>
-            <li >
-            {/* <FaCrown /> */}
-              <Link to="/packages" className="text-black hover:text-black text-lg font-bold ">
-                Plans & Pricing
-              </Link>
-            </li>
+            <div className=''>
+              <li >
+                {/* <FaCrown /> */}
+                <Link to="/packages" className="text-black hover:text-black text-lg font-bold ">
+                  Plans & Pricing
+                </Link>
+              </li>
             </div>
             <li>
               <div className="relative group">
