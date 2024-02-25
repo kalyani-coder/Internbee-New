@@ -140,7 +140,7 @@ const Internship = () => {
   return (
     <>
       <Internal_Navbar />
-     
+    
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
@@ -172,7 +172,7 @@ const Internship = () => {
       </div>
 
       {/* Filters Section */}
-      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '70%', }}>
+      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}>
         <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '250%' }}>
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}

@@ -121,6 +121,12 @@ const Footer = () => {
               <div key={index}>{icon}</div>
             ))}
           </div>
+          <div className="Internsbee-All-Right-Reserved">
+        {/* <p className="flex items-center gap-4 justify-center p-8">
+          2024 Internsbee.All Right Reserved.
+        </p> */}
+        <p className=" flex items-center gap-4 justify-center mt-36 pt-2">2024 Internsbee.All Right Reserved.</p>
+      </div>
         </div>
 
         <div className="flex flex-row gap-14 footer-content">
@@ -156,11 +162,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="Internsbee-All-Right-Reserved">
-        <p className="flex items-center gap-4 justify-center p-8">
-          2024 Internsbee.All Right Reserved.
-        </p>
-      </div>
+      
     </>
   );
 };

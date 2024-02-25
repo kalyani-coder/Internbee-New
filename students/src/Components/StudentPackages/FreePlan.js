@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Footer from "./../Footer";
-import Internal_Navbar from "../InternalNavbar";
-import AppliedInternNavBar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
-import Applied_Intern_Internal_Navbar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
+// import Internal_Navbar from "../InternalNavbar";
+// import AppliedInternNavBar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
+// import Applied_Intern_Internal_Navbar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
 import "../ResponsiveCss/ResponsiveCss.css";
+import Internal_Navbar from "../UpdatedNav/Internal_Navbar";
 
 const MonthlyPackages = () => {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ const MonthlyPackages = () => {
   return (
     <>
       {/* <div><Internal_Navbar/></div>  */}
-      <Applied_Intern_Internal_Navbar />
+      <Internal_Navbar />
 
       <section className="text-black body-font flex">
         {/* <div><Sidebar /></div> */}

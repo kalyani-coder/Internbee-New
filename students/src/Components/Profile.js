@@ -296,27 +296,7 @@ const Profile = () => {
     }
   };
 
-  const handleProfileIconClick = () => {
-    setShowProfileDropdown(!showProfileDropdown);
-  };
-
-  const navigate = useNavigate();
-
-  const handleResume = () => {
-    navigate("/Resume");
-  };
-
-  const handleCreateProfile = () => {
-    navigate("/Profile");
-  };
-  const handleViewProfile = () => {
-    navigate("/viewprofile");
-  };
-
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
+  
   return (
     <div className=" ">
       <div className="">
@@ -594,24 +574,20 @@ const Profile = () => {
               </div>
               <div className="form-group">
                 <label
-                  htmlFor="contact"
+                  htmlFor="gender"
                   className="block text-large font-medium"
                 >
-                  Gender <span className="text-red-500">*</span>
+                  gender <span className="text-red-500">*</span>
                 </label>
-                <select
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-large"
                   id="gender"
                   name="gender"
                   value={gender}
                   onChange={handlGenderChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                >
-                  <option value="">Select Gender</option>
-                  <option value="state1">Male</option>
-                  <option value="state2">Female</option>
-                  {/* Add more options as needed */}
-                </select>
+                />
               </div>
             </div>
 
@@ -864,7 +840,7 @@ const Profile = () => {
                   htmlFor="stream_10"
                   className="block text-large font-medium"
                 >
-                  Stream
+                  Stream<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -873,6 +849,7 @@ const Profile = () => {
                   name="stream_10"
                   value={stream_10}
                   onChange={handleStream_10Change}
+                  required
                 />
               </div>
 
@@ -1085,20 +1062,20 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="flex justify-center gap-8 pb-3 bottom-section-of-the-profile-resume-section">
-              <button
+            <div className="flex justify-center gap-2 pb-3 bottom-section-of-the-profile-resume-section">
+              {/* <button
                 type="button"
                 style={{}}
                 className="mt-8 p-2  text-white border rounded-md bg-black"
                 onClick={handleResume}
               >
                 Create Resume
-              </button>
+              </button> */}
 
               <button
                 // onClick={handleUpload}
                 style={{}}
-                className=" px-4 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Back
@@ -1107,7 +1084,7 @@ const Profile = () => {
               <button
                 // onClick={handleUpload}
                 style={{}}
-                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Cancel
@@ -1116,7 +1093,7 @@ const Profile = () => {
               <button
                 onClick={handleUpload}
                 style={{}}
-                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-2 mt-8  text-white border border-black rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Submit
