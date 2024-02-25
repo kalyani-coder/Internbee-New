@@ -1,18 +1,18 @@
 /* LandingPage.css */
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* 
+/*
 section {
   text-align: center;
   padding: 50px 0;
 } */
-#dream-career-section{
-   text-align: center;
+#dream-career-section {
+  text-align: center;
   /* padding: 80px 0; */
 }
 .heading {
@@ -22,7 +22,7 @@ section {
 }
 
 .heading::after {
-  content: '';
+  content: "";
   display: block;
   height: 2px;
   width: 100px;
@@ -142,13 +142,13 @@ section {
 }
 
 .internship-bg {
-  background-color: #FFBD59; /* Adjust the color as needed */
+  background-color: #ffbd59; /* Adjust the color as needed */
   padding: 5px; /* Adjust the padding as needed */
   display: inline-block;
 }
 
 .view-details-btn {
-  background-color: #4CAF50; /* Green color for the button */
+  background-color: #4caf50; /* Green color for the button */
   color: #fff; /* White text color */
   padding: 10px 15px; /* Add padding to the button */
   border: none;
@@ -161,10 +161,20 @@ section {
   background-color: #45a049; /* Darker green color on hover */
 }
 @media screen and (max-width: 767px) {
-
-  .width-for-each-card-scrollable{
-    width: 21em;
-    font-size: 13px;
-    height: 16em;
+  .width-for-each-card-scrollable {
+    width: 25em;
+    font-size: 12px;
+    height: 20em;
+  }
+}
+@media (min-width: 320px) and (max-width: 420px) {
+  .locations-stipend-duration-and-btn-for-landing-page-card {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+  .card-landing-page {
+    margin-right: 4px;
   }
 }

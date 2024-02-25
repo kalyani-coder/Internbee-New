@@ -24,7 +24,6 @@ const LandingPage = () => {
   const carouselRef = useRef(null);
   const carouselsRef = useRef(null);
 
-
   const handleTrackerHover = () => {
     setTrackerWidth(100);
   };
@@ -55,35 +54,35 @@ const LandingPage = () => {
       });
     }
   };
-//   const handleNextSlide = () => {
-//     const carousel = carouselRef.current;
-//     if (carousel) {
-//       const scrollWidth = carousel.scrollWidth;
-//       const scrollLeft = carousel.scrollLeft;
-//       const clientWidth = carousel.clientWidth;
-//       const maxScrollLeft = scrollWidth - clientWidth;
-//       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
+  //   const handleNextSlide = () => {
+  //     const carousel = carouselRef.current;
+  //     if (carousel) {
+  //       const scrollWidth = carousel.scrollWidth;
+  //       const scrollLeft = carousel.scrollLeft;
+  //       const clientWidth = carousel.clientWidth;
+  //       const maxScrollLeft = scrollWidth - clientWidth;
+  //       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
 
-//       carousel.scrollTo({
-//         left: newScrollLeft,
-//         behavior: "smooth",
-//       });
-//     }
-//   };
+  //       carousel.scrollTo({
+  //         left: newScrollLeft,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
 
-//   const handlePreviousSlide = () => {
-//     const carousel = carouselRef.current;
-//     if (carousel) {
-//       const scrollLeft = carousel.scrollLeft;
-//       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
+  //   const handlePreviousSlide = () => {
+  //     const carousel = carouselRef.current;
+  //     if (carousel) {
+  //       const scrollLeft = carousel.scrollLeft;
+  //       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
 
-//       carousel.scrollTo({
-//         left: newScrollLeft,
-//         behavior: "smooth",
-//       });
-//     }
-//   };
-const handleNextSlide = () => {
+  //       carousel.scrollTo({
+  //         left: newScrollLeft,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
+  const handleNextSlide = () => {
     const carousel = carouselRef.current;
     if (carousel) {
       const scrollWidth = carousel.scrollWidth;
@@ -91,20 +90,20 @@ const handleNextSlide = () => {
       const clientWidth = carousel.clientWidth;
       const maxScrollLeft = scrollWidth - clientWidth;
       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
-  
+
       carousel.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
       });
     }
   };
-  
+
   const handlePreviousSlide = () => {
     const carousel = carouselRef.current;
     if (carousel) {
       const scrollLeft = carousel.scrollLeft;
       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
-  
+
       carousel.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
@@ -169,7 +168,6 @@ const handleNextSlide = () => {
         <h1 className="heading ">Latest Internships on InternsBee</h1>
 
         {/* Popular Categories */}
-      
 
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
@@ -183,7 +181,7 @@ const handleNextSlide = () => {
                   <p className="text-gray-700 mb-2">SlideUpLift</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">Stipend: -</p>
@@ -210,7 +208,7 @@ const handleNextSlide = () => {
                   <p className="text-gray-700 mb-2">Parallel Minds</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">
@@ -241,10 +239,12 @@ const handleNextSlide = () => {
                     <p className="text-gray-700 mb-2">Ecozen Solutions</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
-                        <p className="text-gray-600">Stipend: performance Based</p>
+                        <p className="text-gray-600">
+                          Stipend: performance Based
+                        </p>
                         <p className="text-gray-600">Duration: 3 months</p>
                       </div>
 
@@ -271,10 +271,12 @@ const handleNextSlide = () => {
                     <p className="text-gray-700 mb-2">Scoopen</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
-                        <p className="text-gray-600">Stipend: Performance based</p>
+                        <p className="text-gray-600">
+                          Stipend: Performance based
+                        </p>
                         <p className="text-gray-600">Duration: 2 months</p>
                       </div>
 
@@ -293,12 +295,12 @@ const handleNextSlide = () => {
             </div>
           </div>
           <div className="upperSectionbtnslider text-3xl flex items-center justify-center gap-12 mb-20">
-          <button onClick={handlePreviousCarouselSlide}>
-            <GrPrevious />
-          </button>
-          <button onClick={handleNextCarouselSlide}>
-            <GrNext />
-          </button>
+            <button onClick={handlePreviousCarouselSlide}>
+              <GrPrevious />
+            </button>
+            <button onClick={handleNextCarouselSlide}>
+              <GrNext />
+            </button>
           </div>
         </div>
       </section>
@@ -326,7 +328,7 @@ const handleNextSlide = () => {
                   <p className="text-gray-700 mb-2">Tifants Ingress</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">Stipend: 5000</p>
@@ -354,7 +356,7 @@ const handleNextSlide = () => {
                   <p className="text-gray-700 mb-2">Scoopen</p>
                   <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                     <div>
                       <p className="text-gray-600">Location: Pune</p>
                       <p className="text-gray-600">
@@ -385,7 +387,7 @@ const handleNextSlide = () => {
                     <p className="text-gray-700 mb-2">SlideUpLift</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: -</p>
@@ -402,11 +404,8 @@ const handleNextSlide = () => {
                       </Link>
                     </div>
                   </div>
-                  
                 </div>
-                
               </div>
-              
             </div>
             <div className="card-landing-page">
               <div className="card-landing-page">
@@ -418,7 +417,7 @@ const handleNextSlide = () => {
                     <p className="text-gray-700 mb-2">Parallel Minds</p>
                     <hr className="my-2" />
 
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
                         <p className="text-gray-600">Stipend: -</p>
@@ -435,15 +434,12 @@ const handleNextSlide = () => {
                       </Link>
                     </div>
                   </div>
-                  
                 </div>
-                
               </div>
-              
             </div>
           </div>
           <div className="NextPriv text-3xl flex items-center justify-center gap-12 mb-20">
-          <button onClick={handlePreviousSlide}>
+            <button onClick={handlePreviousSlide}>
               <GrPrevious />
             </button>
 
@@ -452,12 +448,9 @@ const handleNextSlide = () => {
             </button>
           </div>
         </div>
-
       </section>
-     
 
-
-     {/* /////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////// */}
 
       {/* section 5 */}
 
@@ -471,7 +464,7 @@ const handleNextSlide = () => {
 
         <section className="landingpage-statistics" id="dream-career-section">
           <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-wrap -m-4 text-center flex justify-center">
+            <div className="flex flex-wrap -m-4 text-center justify-center">
               <div className="p-4 sm:w-1/4 w-1/2">
                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">
                   500+

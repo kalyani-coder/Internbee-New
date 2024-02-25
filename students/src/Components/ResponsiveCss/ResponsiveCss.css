@@ -41,6 +41,18 @@
   height: 16em;
 }
 @media screen and (max-width: 768px) {
+  .locations-stipend-duration-and-btn-for-landing-page-card {
+    display: grid;
+    justify-content: center;
+  }
+  .logo-for-partners {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    /* overflow: hidden; */
+    overflow-x: scroll;
+    /* animation: scroll 60s linear infinite; */
+  }
   .date-and-all-text-in-the-card-section-for-student {
     display: grid;
     justify-content: center;
@@ -188,12 +200,12 @@
   }
 
   .HomeNavMainBtns {
-    margin-right: 1em;
+    margin-right: 0;
     /* padding-left: 0%;
   padding-right: 0%;
   font-size: 9px; */
-    padding: 0 1rem;
-    font-size: 1rem;
+    padding: 0;
+    /* font-size: 1rem; */
   }
   .Navbtns {
     padding-left: 3px !important;
@@ -260,8 +272,8 @@
     width: 10rem; /* Adjust the width of the logo for smaller screens */
   }
   .HomeNavMainBtns .Navbtns {
-    padding: 0.8rem 1.5rem; /* Adjust padding for smaller screens */
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    /* padding: 0.8rem 1.5rem; Adjust padding for smaller screens */
+    /* font-size: 0.9rem; Adjust font size for smaller screens */
   }
 }
 
@@ -348,6 +360,14 @@
     height: 3em;
     margin: 1em 0;
   }
+
+  .HomeNavMainBtns .Navbtns {
+    width: 5em;
+    font-size: 12px;
+    /* margin-right: 1em; */
+    padding: 0; /* Adjust padding for screens between 320px and 420px */
+    /*  Adjust font size for screens between 320px and 420px */
+  }
   .poputHomeOne {
     width: auto;
   }
@@ -417,9 +437,10 @@
   }
 
   .HomeNavMainBtns .Navbtns {
-    margin-right: 1em;
-    padding: 0.8rem 1.8rem; /* Adjust padding for screens between 320px and 420px */
-    font-size: 0.95rem; /* Adjust font size for screens between 320px and 420px */
+    /* width: 2em; */
+    /* margin-right: 1em; */
+    padding: 0; /* Adjust padding for screens between 320px and 420px */
+    /* font-size: 0.95rem; Adjust font size for screens between 320px and 420px */
   }
 }
 
