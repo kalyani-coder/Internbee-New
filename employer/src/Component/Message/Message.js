@@ -62,7 +62,7 @@ const Message = () => {
           </div>
         )}
         <h1 className="text-2xl font-bold mb-4">Helpdesk</h1>
-        <div className="mb-4">
+        <div className="divmess mb-4">
           <button
             className={`${
               filter === "pending"

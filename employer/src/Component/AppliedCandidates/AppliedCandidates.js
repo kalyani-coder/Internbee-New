@@ -96,7 +96,7 @@ const closeModal = () => {
               <div className="table-container">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr className="tps">
                       <th className="py-4 px-6 border-b  text-l">
                         Sr.No.
                       </th>

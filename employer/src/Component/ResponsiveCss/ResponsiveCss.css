@@ -370,8 +370,9 @@ padding-right: 2px !important;
   width: 16rem !important;
 }
 .SearchTable{
-  padding-left: 0% !important;
-  padding-right: 0% !important;
+  /* padding-left: 0% !important;
+  padding-right: 0% !important; */
+  padding: 7px !important;
 }
 .MonthlyPad{
   padding: 0px !important;
@@ -442,6 +443,27 @@ padding-right: 2px !important;
 
   width: -webkit-fill-available !important;
 }
+.tps{
+  display: flex;
+}
+/* .accsec{
+
+  margin-left: 9px !important;
+  margin-right: 9px !important;
+} */
+.divmess{
+  align-items: center;
+  gap: 14px;
+  flex-direction: column;
+  display: flex;
+}
+.about{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding: 12px;
+}
+
+
 }
 
 
