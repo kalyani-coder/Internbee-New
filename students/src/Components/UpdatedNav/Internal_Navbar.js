@@ -32,6 +32,11 @@ const Internal_Navbar = () => {
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
+
+  };
+
+  const handleResume = () => {
+    navigate("/resume");
   };
 
   return (
@@ -63,13 +68,7 @@ const Internal_Navbar = () => {
             Students
           </NavLink>
 
-          <NavLink
-            to="/freeplan"
-            className="text-xl font-bold focus:text-black hover:text-black"
-            onClick={() => setIsOpen(false)}
-          >
-            Plans & Pricing
-          </NavLink>
+          
 
           {/* <NavLink
             to="/companies"
@@ -91,6 +90,14 @@ const Internal_Navbar = () => {
             onClick={() => setIsOpen(false)}
           >
             Applied Internship
+          </NavLink>
+
+          <NavLink
+            to="/freeplan"
+            className="text-xl font-bold focus:text-black hover:text-black"
+            onClick={() => setIsOpen(false)}
+          >
+            Plans & Pricing
           </NavLink>
         </div>
 
@@ -116,6 +123,14 @@ const Internal_Navbar = () => {
                 >
                   Create Profile
                 </div>
+
+                <div
+                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                  onClick={handleResume }
+                >
+                  Create Resume
+                </div>
+
                 <div
                   className="py-2 px-4 cursor-pointer hover:bg-gray-100"
                   onClick={handleViewProfile}

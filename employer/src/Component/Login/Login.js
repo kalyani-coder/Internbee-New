@@ -46,7 +46,7 @@ const Login = () => {
         // navigate(`/view-profile-page`);
 
         // navigate("/privacypolicy");
-        navigate("/home")
+        navigate("/postinternship")
       } else {
         if (response.status === 404) {
           setError("email", {
@@ -80,26 +80,10 @@ const Login = () => {
       <div className=" my-0">
       <Link to={'https://internsbee.com'}>
         <div className="flex justify-item-left ">
-      <img src={logo} alt=""  className='w-94 my-1'/>
+      <img src={logo} alt=""  className='imglogin w-94 my-1'/>
     </div>
     </Link>
-        {/* <div className="bg-slate-50 p-4 flex items-center justify-between border shadow-xl">
-          <div className="flex items-center space-x-2">
-            <img src="./logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
-            <h1 className="text-4xl font-bold">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1>
-          </div>
-
-          <div className="items-center space-x-6">
-            <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" onClick={handleHome}>Home</a>
-            <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" >Companies</a>
-            <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4" >Internships</a>
-          </div>
-
-          <div className="flex items-center space-x-6 mr-10">
-            <a href="#" className="px-6 py-2  text-xl font-bold border rounded-md bg-yellow-300">Login</a>
-            <a href="#" className="px-6 py-2  text-xl font-bold border rounded-md bg-yellow-300">Signup</a>
-          </div>
-        </div> */}
+       
         <div className="flex justify-center items-center">
           {/* <h1 className="text-4xl font-bold">Login to your Account</h1> */}
         </div>

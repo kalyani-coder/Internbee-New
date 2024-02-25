@@ -41,7 +41,7 @@ const AccountSettings = () => {
   return (
     <> <div><Navbar/></div>
   
-  <div className="max-w-md mx-auto mt-8 p-6 rounded-md shadow-md mb-3" style={{ backgroundColor: '#FFBD59' }}>
+  <div className="accsec max-w-md mx-auto mt-8 p-6 rounded-md shadow-md mb-3" style={{ backgroundColor: '#FFBD59' }}>
       <h2 className="text-2xl font-semibold mb-4">Account Settings</h2>
       {/* Email Section */}
       <div className="mb-4">

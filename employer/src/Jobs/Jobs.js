@@ -108,13 +108,7 @@ const Jobs = () => {
         </div>
 
         <div className="w-full p-4">
-        {/* <Link to={"/postinternship"}>
-        <div className="flex justify-end">
-        <button className="px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 hover:text-amber-300 ml-96">
-                  Post Internship
-                </button>
-                </div>
-                </Link> */}
+       
           <h1 className="text-xl font-bold mb-4">Internship List</h1>
           <input
             type="text"

@@ -85,7 +85,7 @@ const ViewProfilePage = () => {
           </div> */}
 
           <div className="mt-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="xyzp grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-gray-600">Name</label>
                 <p>{profileData.empName}</p>
@@ -111,7 +111,7 @@ const ViewProfilePage = () => {
 
           <button
             onClick={openEditModal}
-            className="mt-6 p-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 focus:outline-none focus:ring focus:ring-amber-200"
+            className="xyzp mt-6 p-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 focus:outline-none focus:ring focus:ring-amber-200"
           >
             Edit Profile
           </button>
@@ -189,7 +189,7 @@ const ViewProfilePage = () => {
                 <button
                   type="button"
                   onClick={closeEditModal}
-                  className="ml-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+                  className=" ml-2 text-gray-600 hover:text-gray-800 focus:outline-none"
                 >
                   Cancel
                 </button>

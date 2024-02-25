@@ -85,7 +85,7 @@ const Footer = () => {
                     </div>
                     
                     <div>
-                <p className=" flex items-center gap-4 justify-center mt-12 pt-2">2024 Internsbee.All Right Reserved.</p>
+                <p className=" flex items-center gap-4 justify-center mt-36 pt-2">2024 Internsbee.All Right Reserved.</p>
                 </div>
                 </div>
                
@@ -102,7 +102,6 @@ const Footer = () => {
                             ))}
                         </ul>
                     </div>
-
                     <div className="flex flex-col items-start ">
                         <h2 className="text-xl font-bold mb-4">Roles</h2>
                         <ul className="text-lg  space-y-2">

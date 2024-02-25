@@ -15,17 +15,19 @@ const Profile = () => {
   const [selectedPDF2, setSelectedPDF2] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");   
   const [birthdate, setDateOfBirth] = useState("");
 
   const [permanentaddress, setPermanentAddress] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
+  const [state, setState] = useState("");
   const [country, setCountry] = useState("");
 
   const [currentaddress, setCurrentAddress] = useState("");
   const [currentcity, setCurrentCity] = useState("");
   const [currentdistrict, setCurrentDistrict] = useState("");
+  const [currentstate, setCurrentState] = useState("");
   const [currentcountry, setCurrentCountry] = useState("");
   const [education, setEducation] = useState("");
   const [instituteName, setInstituteName] = useState("");
@@ -33,6 +35,8 @@ const Profile = () => {
   const [passOutYear, setPassOutYear] = useState("");
   const [percentage, setPercentage] = useState("");
   const [contact, setContact] = useState("");
+  const [gender, setGender] = useState("");
+
 
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
@@ -40,6 +44,7 @@ const Profile = () => {
   const [salaryExpectations, setSalaryExpectations] = useState("");
   const [projectName, setProjectName] = useState("");
   const [projectSummary, setProjectSummary] = useState("");
+  
 
   // 12th education details
 
@@ -177,6 +182,11 @@ const Profile = () => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
+ 
+  const handleStateChange = (event) => {
+    setState(event.target.value);
+  }
+
 
   const handleCurrentAddressChange = (event) => {
     setCurrentAddress(event.target.value);
@@ -191,9 +201,17 @@ const Profile = () => {
     setCurrentCountry(event.target.value);
   };
 
+  const handleCurrentStateChange = (event) => {
+    setCurrentState(event.target.value);
+  }
+
   const handleContactChange = (event) => {
     setContact(event.target.value);
   };
+
+  const handlGenderChange = (event) =>{
+    setGender(event.target.value);
+  }
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -211,11 +229,16 @@ const Profile = () => {
       formData.append("city", city);
       formData.append("district", district);
       formData.append("country", country);
+      formData.append("state", state);
       formData.append("currentaddress", currentaddress);
       formData.append("currentCity", currentcity);
       formData.append("currentdistrict", currentdistrict);
       formData.append("currentcountry", currentcountry);
       formData.append("contact", contact);
+      formData.append("currentstate", state);
+      formData.append("gender", gender);
+
+
 
       formData.append("education", education);
       formData.append("instituteName", instituteName);
@@ -273,27 +296,7 @@ const Profile = () => {
     }
   };
 
-  const handleProfileIconClick = () => {
-    setShowProfileDropdown(!showProfileDropdown);
-  };
-
-  const navigate = useNavigate();
-
-  const handleResume = () => {
-    navigate("/Resume");
-  };
-
-  const handleCreateProfile = () => {
-    navigate("/Profile");
-  };
-  const handleViewProfile = () => {
-    navigate("/viewprofile");
-  };
-
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
+  
   return (
     <div className=" ">
       <div className="">
@@ -431,8 +434,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="state"
                   name="state"
-                  value={country}
-                  onChange={handleCountryChange}
+                  value={state}
+                  onChange={handleStateChange}
                   required
                 />
               </div>
@@ -529,8 +532,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="currentstate"
                   name="currentstate"
-                  // value={currentstate}
-                  // onChange={handleCurrentStateChange}
+                  value={currentstate}
+                  onChange={handleCurrentStateChange}
                   required
                 />
               </div>
@@ -547,8 +550,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="currentcountry"
                   name="currentcountry"
-                  // value={currentcountry}
-                  // onChange={handleCurrentCountryChange}
+                  value={currentcountry}
+                  onChange={handleCurrentCountryChange}
                   required
                 />
               </div>
@@ -571,24 +574,20 @@ const Profile = () => {
               </div>
               <div className="form-group">
                 <label
-                  htmlFor="contact"
+                  htmlFor="gender"
                   className="block text-large font-medium"
                 >
-                  Gender <span className="text-red-500">*</span>
+                  gender <span className="text-red-500">*</span>
                 </label>
-                <select
-                  id="currentstate"
-                  name="currentstate"
-                  // value={currentstate}
-                  // onChange={handleCurrentStateChange}
-                  required
+                <input
+                  type="text"
                   className="mt-1 p-2 w-full border rounded-md text-large"
-                >
-                  <option value="">Select Gender</option>
-                  <option value="state1">Male</option>
-                  <option value="state2">Female</option>
-                  {/* Add more options as needed */}
-                </select>
+                  id="gender"
+                  name="gender"
+                  value={gender}
+                  onChange={handlGenderChange}
+                  required
+                />
               </div>
             </div>
 
@@ -841,7 +840,7 @@ const Profile = () => {
                   htmlFor="stream_10"
                   className="block text-large font-medium"
                 >
-                  Stream
+                  Stream<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -850,6 +849,7 @@ const Profile = () => {
                   name="stream_10"
                   value={stream_10}
                   onChange={handleStream_10Change}
+                  required
                 />
               </div>
 
@@ -1062,20 +1062,20 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="flex justify-center gap-8 pb-3 bottom-section-of-the-profile-resume-section">
-              <button
+            <div className="flex justify-center gap-2 pb-3 bottom-section-of-the-profile-resume-section">
+              {/* <button
                 type="button"
                 style={{}}
                 className="mt-8 p-2  text-white border rounded-md bg-black"
                 onClick={handleResume}
               >
-                create resume
-              </button>
+                Create Resume
+              </button> */}
 
               <button
                 // onClick={handleUpload}
                 style={{}}
-                className=" px-4 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Back
@@ -1084,7 +1084,7 @@ const Profile = () => {
               <button
                 // onClick={handleUpload}
                 style={{}}
-                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Cancel
@@ -1093,7 +1093,7 @@ const Profile = () => {
               <button
                 onClick={handleUpload}
                 style={{}}
-                className=" p-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className=" px-2 mt-8  text-white border border-black rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Submit
