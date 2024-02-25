@@ -8,7 +8,8 @@ const FAQPage = () => {
     const faqData = [
         {
             question: "How do I apply for an internship?",
-            answer: "To apply for an internship, navigate to the 'Apply for Internships' section on our portal, choose the internship position you are interested in, and follow the application instructions provided."
+            answer: "To apply for an internship, navigate to the 'Apply for Internships' section on our portal,"
+                      
         },
         {
             question: "Is there any age restriction for applying to internships?",
@@ -53,13 +54,13 @@ const FAQPage = () => {
             <QuickNavbar />
 
             <div className="container mx-auto mt-8 p-6 pt-12 bg-white rounded-xl shadow-md mb-5">
-                <h2 className="text-xl font-bold mb-6">Frequently Asked Questions</h2>
+                <h2 className="text-xl font-bold mb-6 pl-60 ml-80">Frequently Asked Questions</h2>
 
                 <div className="FaqsAlign space-y-6">
                     {faqData.map((faq, index) => (
                         <div key={index}>
-                            <h3 className="text-l font-semibold">{faq.question}</h3>
-                            <p className="text-gray-600">{faq.answer}</p>
+                            <h3 className="text-l font-semibold ml-8">{faq.question}</h3>
+                            <p className="text-gray-600 ml-8">{faq.answer}</p>
                         </div>
                     ))}
                 </div>
