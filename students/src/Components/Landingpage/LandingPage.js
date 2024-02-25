@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,7 @@ const LandingPage = () => {
   const [trackerWidth, setTrackerWidth] = useState(0);
   const carouselRef = useRef(null);
   const carouselsRef = useRef(null);
-
+  const [internships, setInternships] = useState([]);
   const handleTrackerHover = () => {
     setTrackerWidth(100);
   };
@@ -54,6 +54,29 @@ const LandingPage = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://backend.internsbee.com/api/postinternship/"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setInternships(data);
+        } else {
+          console.error("Failed to fetch data");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+
   //   const handleNextSlide = () => {
   //     const carousel = carouselRef.current;
   //     if (carousel) {
@@ -172,22 +195,24 @@ const LandingPage = () => {
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
           <div className="carousel" ref={carouselsRef}>
+          {internships.slice(0, 3).map((internship) => (
             <div className="card-landing-page">
+            
               <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">
-                    Social Media Marketing Intern
+                  {internship.job_Title}
                   </h2>
-                  <p className="text-gray-700 mb-2">SlideUpLift</p>
+                  <p className="text-gray-700 mb-2"> {internship.company}</p>
                   <hr className="my-2" />
 
                   <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
                     <div>
-                      <p className="text-gray-600">Location: Pune</p>
-                      <p className="text-gray-600">Stipend: -</p>
-                      <p className="text-gray-600">Duration: 6 months</p>
+                      <p className="text-gray-600">Location:{internship.location}</p>
+                      <p className="text-gray-600">Stipend: {internship.stipend} </p>
+                      <p className="text-gray-600">Duration:{internship.duration} </p>
                     </div>
-                    <Link to={"/login"}>
+                    <Link to={`/applyinternshiplanding/${internship._id}`}>
                       <button
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
@@ -198,8 +223,10 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
+              
             </div>
-            <div className="card-landing-page">
+            ))}
+            {/* <div className="card-landing-page">
               <div className="width-for-each-card-scrollable max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">
@@ -292,7 +319,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="upperSectionbtnslider text-3xl flex items-center justify-center gap-12 mb-20">
             <button onClick={handlePreviousCarouselSlide}>
@@ -319,7 +346,39 @@ const LandingPage = () => {
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
           <div className="carousel " ref={carouselRef}>
+          {internships.slice(0, 3).map((internship) => (
             <div className="card-landing-page">
+            
+              <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold mb-2">
+                  {internship.job_Title}
+                  </h2>
+                  <p className="text-gray-700 mb-2"> {internship.company}</p>
+                  <hr className="my-2" />
+
+                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
+                    <div>
+                      <p className="text-gray-600">Location:{internship.location}</p>
+                      <p className="text-gray-600">Stipend: {internship.stipend} </p>
+                      <p className="text-gray-600">Duration:{internship.duration} </p>
+                    </div>
+                    <Link to={`/applyinternshiplanding/${internship._id}`}>
+                      <button
+                        className=" text-black px-4 py-2 rounded-md focus:outline-none"
+                        style={{ backgroundColor: "#FFBD59" }}
+                      >
+                        Apply Now
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            ))}
+
+            {/* <div className="card-landing-page">
               <div className="width-for-each-card-scrollable bg-white rounded-md overflow-hidden shadow-lg">
                 <div className="p-4">
                   <h2 className="text-xl font-semibold mb-2">
@@ -436,7 +495,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="NextPriv text-3xl flex items-center justify-center gap-12 mb-20">
             <button onClick={handlePreviousSlide}>

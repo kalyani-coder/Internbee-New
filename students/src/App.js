@@ -37,6 +37,7 @@ import Terms from "./Components/Terms/Terms";
 import Refund from "./Components/Refund/Refund";
 import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Internal_Navbar";
 import QuickNav from "./Components/QuickNav";
+import ApplyInternshipLanding from "./Components/ApplyInernshipLanding/ApplyInternshipLanding";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -82,6 +83,10 @@ function App() {
         <Route
           path="/apply-internship/:internshipId"
           element={<ApplyInternship />}
+        />
+         <Route
+          path="/applyinternshiplanding/:internshipId"
+          element={<ApplyInternshipLanding />}
         />
         <Route path="/applied-internship" element={<AppliedIntersnship />} />
         <Route path="/freeplan" element={<FreePlan />} />
