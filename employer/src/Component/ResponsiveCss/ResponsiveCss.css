@@ -448,9 +448,11 @@ padding-right: 2px !important;
 }
 /* .accsec{
 
-  margin-left: 9px !important;
-  margin-right: 9px !important;
-} */
+      margin-right: 11px;
+    background-color: rgb(255, 189, 89);
+    margin-left: 11px; */
+
+
 .divmess{
   align-items: center;
   gap: 14px;
@@ -461,6 +463,14 @@ padding-right: 2px !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
   padding: 12px;
+}
+.xyzp{
+  margin: 12px !important;
+  display: block !important;
+}
+.imglogin{
+
+  height: auto
 }
 
 

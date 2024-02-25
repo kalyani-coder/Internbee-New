@@ -80,7 +80,7 @@ const Login = () => {
       <div className=" my-0">
       <Link to={'https://internsbee.com'}>
         <div className="flex justify-item-left ">
-      <img src={logo} alt=""  className='w-94 my-1'/>
+      <img src={logo} alt=""  className='imglogin w-94 my-1'/>
     </div>
     </Link>
         {/* <div className="bg-slate-50 p-4 flex items-center justify-between border shadow-xl">
