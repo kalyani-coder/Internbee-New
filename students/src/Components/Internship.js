@@ -140,78 +140,7 @@ const Internship = () => {
   return (
     <>
       <Internal_Navbar />
-      {/* <div className=" navbar-container fixed top-0 left-0 w-full z-50 shadow-md p-4 flex items-center justify-between border" style={{ backgroundColor: '#FFBD59' }}>
-
-        <Link to={'/'}>
-        <div className="flex items-center space-x-2">
-          <img src={logo} alt="Logo" className="home1-logo h-14 max-w-15rem rounded-full" />
-
-        </div>
-        </Link>
-
-
-        <div className="flex items-center space-x-6">
-          <Link
-            to="/home"
-            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-          >
-            Students
-          </Link>
-
-          <Link
-            to="/internship"
-            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-            onClick={Internship}
-          >
-            Internships
-          </Link>
-
-          <Link
-            to="/applied-internship"
-            className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-          >
-            Applied Internship
-          </Link>
-        </div>
-
-
-        <div className="flex items-center space-x-4 relative">
-          {/* <div>
-            <IoNotificationsOutline className="mr-4 text-4xl" />
-          </div> */}
-      {/* <div
-            className="cursor-pointer"
-            onMouseEnter={() => setShowProfileDropdown(true)}
-            onClick={handleProfileIconClick}
-          >
-            <FiUser className="mr-4 text-4xl" />
-
-            {showProfileDropdown && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
-                <div
-                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                  onClick={handleCreateProfile}
-                >
-                  Create Profile
-                </div>
-                <div
-                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                  onClick={handleViewProfile}
-                >
-                  View Profile
-                </div>
-                <div
-                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                  onClick={handleLogout}
-                >
-                  Log Out
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-     */}
+     
 
       {/* Search Section */}
       <div className="bg-slate-100 mt-20">
@@ -384,9 +313,9 @@ const Internship = () => {
                       Duration : {internship.position}
                     </p>
                   </div>
-                  <p className="card-description text-sm text-gray-700 my-4">
+                  {/* <p className="card-description text-sm text-gray-700 my-4">
                     {internship.job_Description}
-                  </p>
+                  </p> */}
                   <div className="flex justify-between">
 
 

@@ -52,8 +52,11 @@ const ViewProfile = () => {
                                 <h2 className="text-2xl font-bold mb-2 text-gray-800">
                                     {userDetails && `${userDetails.firstName} ${userDetails.lastName}`}
                                 </h2>
-                                <p className="text-gray-600">Address : {userDetails && userDetails.currentaddress}</p>
+                                <p className="text-gray-600">State: {userDetails && userDetails.gender}</p>
+
+                                 <p className="text-gray-600">Address : {userDetails && userDetails.currentaddress}</p>
                                 <p className="text-gray-600">Contact: {userDetails && userDetails.contact}</p>
+                                <p className="text-gray-600">State: {userDetails && userDetails.state}</p>
                             </div>
                         </section>
                     </div>

@@ -15,17 +15,19 @@ const Profile = () => {
   const [selectedPDF2, setSelectedPDF2] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");   
   const [birthdate, setDateOfBirth] = useState("");
 
   const [permanentaddress, setPermanentAddress] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
+  const [state, setState] = useState("");
   const [country, setCountry] = useState("");
 
   const [currentaddress, setCurrentAddress] = useState("");
   const [currentcity, setCurrentCity] = useState("");
   const [currentdistrict, setCurrentDistrict] = useState("");
+  const [currentstate, setCurrentState] = useState("");
   const [currentcountry, setCurrentCountry] = useState("");
   const [education, setEducation] = useState("");
   const [instituteName, setInstituteName] = useState("");
@@ -33,6 +35,8 @@ const Profile = () => {
   const [passOutYear, setPassOutYear] = useState("");
   const [percentage, setPercentage] = useState("");
   const [contact, setContact] = useState("");
+  const [gender, setGender] = useState("");
+
 
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
@@ -40,6 +44,7 @@ const Profile = () => {
   const [salaryExpectations, setSalaryExpectations] = useState("");
   const [projectName, setProjectName] = useState("");
   const [projectSummary, setProjectSummary] = useState("");
+  
 
   // 12th education details
 
@@ -177,6 +182,11 @@ const Profile = () => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
+ 
+  const handleStateChange = (event) => {
+    setState(event.target.value);
+  }
+
 
   const handleCurrentAddressChange = (event) => {
     setCurrentAddress(event.target.value);
@@ -191,9 +201,17 @@ const Profile = () => {
     setCurrentCountry(event.target.value);
   };
 
+  const handleCurrentStateChange = (event) => {
+    setCurrentState(event.target.value);
+  }
+
   const handleContactChange = (event) => {
     setContact(event.target.value);
   };
+
+  const handlGenderChange = (event) =>{
+    setGender(event.target.value);
+  }
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -211,11 +229,16 @@ const Profile = () => {
       formData.append("city", city);
       formData.append("district", district);
       formData.append("country", country);
+      formData.append("state", state);
       formData.append("currentaddress", currentaddress);
       formData.append("currentCity", currentcity);
       formData.append("currentdistrict", currentdistrict);
       formData.append("currentcountry", currentcountry);
       formData.append("contact", contact);
+      formData.append("currentstate", state);
+      formData.append("gender", gender);
+
+
 
       formData.append("education", education);
       formData.append("instituteName", instituteName);
@@ -431,8 +454,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="state"
                   name="state"
-                  value={country}
-                  onChange={handleCountryChange}
+                  value={state}
+                  onChange={handleStateChange}
                   required
                 />
               </div>
@@ -529,8 +552,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="currentstate"
                   name="currentstate"
-                  // value={currentstate}
-                  // onChange={handleCurrentStateChange}
+                  value={currentstate}
+                  onChange={handleCurrentStateChange}
                   required
                 />
               </div>
@@ -547,8 +570,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="currentcountry"
                   name="currentcountry"
-                  // value={currentcountry}
-                  // onChange={handleCurrentCountryChange}
+                  value={currentcountry}
+                  onChange={handleCurrentCountryChange}
                   required
                 />
               </div>
@@ -577,10 +600,10 @@ const Profile = () => {
                   Gender <span className="text-red-500">*</span>
                 </label>
                 <select
-                  id="currentstate"
-                  name="currentstate"
-                  // value={currentstate}
-                  // onChange={handleCurrentStateChange}
+                  id="gender"
+                  name="gender"
+                  value={gender}
+                  onChange={handlGenderChange}
                   required
                   className="mt-1 p-2 w-full border rounded-md text-large"
                 >
@@ -1069,7 +1092,7 @@ const Profile = () => {
                 className="mt-8 p-2  text-white border rounded-md bg-black"
                 onClick={handleResume}
               >
-                create resume
+                Create Resume
               </button>
 
               <button

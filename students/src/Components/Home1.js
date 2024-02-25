@@ -150,43 +150,6 @@ const Home1 = () => {
     navigate("/login");
   };
 
-  const companies = [
-    {
-      // id: 1,
-      // name: "SlideUP Lift",
-      // // Job Title: "",
-      // description: "Social Media Marketing Intern ",
-    },
-    {
-      // id: 2,
-      // name: "Parallel Minds",
-      // // logo: "tata.jpg",
-      // description:
-      //   "Business Development Intern",
-    },
-    {
-      // id: 3,
-      // name: "Ecozen Solutions",
-      // // logo: "tata.jpg",
-      // description:
-      //   "Market Research Intern",
-    },
-    {
-      // id: 4,
-      // name: "Tifants Ingress",
-      // // logo: "tata.jpg",
-      // description:
-      //   "Software Development Intern",
-    },
-    {
-      // id: 5,
-      // name: "Ally Digital Media",
-      // // logo: "tata.jpg",
-      // description:
-      //   "Search Engine Optimization (SEO) Intern",
-    },
-    // Add more companies as needed
-  ];
 
   const yourCardArray = [
     {

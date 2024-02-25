@@ -89,7 +89,7 @@ const closeModal = () => {
         <Sidebar />
         <div className=" flex">
           <div className="abc">
-            <h1 className=" text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            <h1 className=" text-xl font-bold mb-4 mt-8" style={{ fontFamily: 'Arial, sans-serif' }}>
               View Applied Candidate Details
             </h1>
             <div className="appliedscroll flex gap-10">
