@@ -216,10 +216,10 @@ const MonthlyPackages = () => {
                         </svg>
                       </button>
 
-                      <p className="text-xs text-black mt-3">
+                      {/* <p className="text-xs text-black mt-3">
                         Literally you probably haven't heard of them jean
                         shorts.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>

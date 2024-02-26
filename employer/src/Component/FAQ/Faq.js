@@ -54,7 +54,7 @@ const FAQPage = () => {
             <QuickNavbar />
 
             <div className="container mx-auto mt-8 p-6 pt-12 bg-white rounded-xl shadow-md mb-5">
-                <h2 className="text-xl font-bold mb-6 pl-60 ml-80">Frequently Asked Questions</h2>
+                <h2 className="text-xl font-bold mb-6 faq-title ml-12">Frequently Asked Questions</h2>
 
                 <div className="FaqsAlign space-y-6">
                     {faqData.map((faq, index) => (

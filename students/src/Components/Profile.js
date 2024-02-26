@@ -286,11 +286,11 @@ const Profile = () => {
           alert("Profile Created Successfully", "success");
         })
         .catch((error) => {
-          console.error("Error uploading files:", error);
-          if (error.message.includes("User already has a profile")) {
-            alert("User already has a profile", "error");
+          console.error("Please fill all mandatory fields:", error);
+          if (error.message.includes("Please fill all mandatory fields")) {
+            alert("Please fill all mandatory fields", "error");
           } else {
-            alert("User already has a profile", "error");
+            alert("User ", "error");
           }
         });
     }
