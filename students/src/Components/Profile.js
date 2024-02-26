@@ -665,7 +665,7 @@ const Profile = () => {
                   htmlFor="passoutyear"
                   className="block text-large font-medium"
                 >
-                  Pass-out Year<span className="text-red-500">*</span>
+                  Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -762,7 +762,7 @@ const Profile = () => {
                   htmlFor="passOutYear_12"
                   className="block text-large font-medium"
                 >
-                  Pass-out Year<span className="text-red-500">*</span>
+                 Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -858,7 +858,7 @@ const Profile = () => {
                   htmlFor="passOutYear_10"
                   className="block text-large font-medium"
                 >
-                  Pass-out Year<span className="text-red-500">*</span>
+                 Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -1071,16 +1071,15 @@ const Profile = () => {
               >
                 Create Resume
               </button> */}
-
+              <Link to={'/home'}>
               <button
-                // onClick={handleUpload}
-                style={{}}
+                 style={{}}
                 className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >
                 {" "}
                 Back
               </button>
-
+              </Link>
               <button
                 // onClick={handleUpload}
                 style={{}}

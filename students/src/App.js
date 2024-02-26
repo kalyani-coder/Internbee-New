@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
 import Home1 from "./Components/Home1";
-
+import Free from "./Components/Plans/Free";
+import Month from "./Components/Plans/month";
 import Resume from "./Components/Resume";
 import Registration from "./Components/Registration";
 import Signin from "./Components/Signin";
@@ -66,6 +67,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/month" element={<Month/>} />
         <Route path="/quicknav" element={<QuickNav />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
@@ -88,6 +90,7 @@ function App() {
           path="/applyinternshiplanding/:internshipId"
           element={<ApplyInternshipLanding />}
         />
+        <Route path="/free"  element={<Free/>} />
         <Route path="/applied-internship" element={<AppliedIntersnship />} />
         <Route path="/freeplan" element={<FreePlan />} />
         <Route path="/monthlyplan" element={<MonthlyPackages />} />

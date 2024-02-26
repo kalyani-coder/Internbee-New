@@ -217,7 +217,7 @@ const LandingPage = () => {
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
                       >
-                        Apply Now
+                        View Details
                       </button>
                     </Link>
                   </div>
@@ -368,7 +368,7 @@ const LandingPage = () => {
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
                       >
-                        Apply Now
+                        View Details
                       </button>
                     </Link>
                   </div>

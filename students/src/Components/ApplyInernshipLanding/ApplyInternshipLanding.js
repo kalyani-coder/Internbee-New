@@ -134,9 +134,9 @@ const ApplyInternshipLanding = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <Internal_Navbar />
-      </div>
+      </div> */}
       <div className=" apply-card mx-auto max-w-2xl p-6">
         <div className="card w-full m-6 rounded-md flex flex-grow justify-between items-center justify-center bg-white shadow-md overflow-hidden mt-20">
           <div className="flex-grow px-6 py-4">
