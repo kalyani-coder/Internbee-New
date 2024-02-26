@@ -9,6 +9,54 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 const jwtKey = "amar";
 
+
+router.patch('/:userId/freePackage', async (req, res) => {
+  const userId = req.params.userId;
+  const updates = req.body; // JSON data from the request body
+
+  try {
+      const user = await User.findById(userId);
+
+      if (!user) {
+          return res.status(404).json({ error: "User not found" });
+      }
+
+      // Update the freePackage details
+      user.freePackage = { ...user.freePackage, ...updates };
+
+      await user.save();
+
+      res.json(user); // Sending back the updated user object
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+router.patch('/:userId/monthlyPackage', async (req, res) => {
+  const userId = req.params.userId;
+  const updates = req.body; // JSON data from the request body
+
+  try {
+      const user = await User.findById(userId);
+
+      if (!user) {
+          return res.status(404).json({ error: "User not found" });
+      }
+
+      // Update the freePackage details
+      user.monthlyPackage = { ...user.monthlyPackage, ...updates };
+
+      await user.save();
+
+      res.json(user); // Sending back the updated user object
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // router.post("/signup", async (req, res) => {
 //   const { fullName, email, number, password, freePackagePrice, searches,
 //     verified_application,

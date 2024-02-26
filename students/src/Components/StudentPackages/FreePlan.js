@@ -9,62 +9,10 @@ import "../ResponsiveCss/ResponsiveCss.css";
 import Internal_Navbar from "../UpdatedNav/Internal_Navbar";
 
 const MonthlyPackages = () => {
-  const navigate = useNavigate();
   const [monthlyPackage, setMonthlyPackage] = useState(null);
   console.log(monthlyPackage);
 
-  const handleSubscribe = async () => {
-    const userId = localStorage.getItem("userId");
-
-    if (!window.confirm("Are you sure you want to subscribe?")) {
-      return;
-    }
-
-    try {
-      // Fetch the user data first
-      const userResponse = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}`
-      );
-      const userData = await userResponse.json();
-
-      // Update the freePackage object
-      const updatedUserData = {
-        ...userData,
-        freePackage: {
-          package_type: "free",
-          freePackagePrice: monthlyPackage.freePackagePrice,
-          searches: monthlyPackage.searches,
-          verified_application: monthlyPackage.verified_application,
-          dedicated_crm: monthlyPackage.dedicated_crm,
-          opportunities: monthlyPackage.opportunities,
-        },
-      };
-
-      // Perform the patch request to update user's data
-      const response = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedUserData),
-        }
-      );
-
-      if (response.ok) {
-        alert("Subscription successful!");
-        // You may want to fetch and update the user data again after the subscription
-        // For example: fetchData();
-      } else {
-        console.error("Failed to subscribe:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error during subscription:", error);
-    }
-  };
-
-  useEffect(() => {
+  
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -76,9 +24,55 @@ const MonthlyPackages = () => {
         console.error("Error fetching data:", error);
       }
     };
-
+    useEffect(() => {
     fetchData();
   }, []);
+
+  const handleSubscribe = async () => {
+    const userId = localStorage.getItem("userId");
+  
+    if (!window.confirm("Are you sure you want to subscribe?")) {
+      return;
+    }
+  
+    try {
+      // Fetch the user data first
+      const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userData = await userResponse.json();
+  
+      // Update the freePackage object
+      userData.freePackage = {
+        package_type: "free",
+        freePackagePrice: monthlyPackage.freePackagePrice,
+        searches: monthlyPackage.searches,
+        verified_application: monthlyPackage.verified_application,
+        dedicated_crm: monthlyPackage.dedicated_crm,
+        opportunities: monthlyPackage.opportunities,
+      };
+  
+      // Perform the patch request to update user's data
+      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}/freePackage`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData.freePackage), // Send only the freePackage object
+      });
+  
+      if (response.ok) {
+        alert("Subscription successful!");
+        // Refresh the freePackage data
+        fetchData();
+  
+        // Log the updated freePackage object
+        console.log("Updated freePackage:", userData.freePackage);
+      } else {
+        console.error("Failed to subscribe:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error during subscription:", error);
+    }
+  };
 
   return (
     <>

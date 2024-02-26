@@ -12,51 +12,95 @@ const SubscribePackage = () => {
   const location = useLocation();
   const { state } = location;
   const { monthlyPackage } = state || {};
-  console.log(monthlyPackage);
+  console.log("Monthly Package",monthlyPackage);
 
   const handleAccountHolderNameChange = (e) => {
     setAccountHolderName(e.target.value);
   };
 
 
+  // const handlePayment = async () => {
+  //   try {
+  //     // Step 1: Retrieve user ID from localStorage
+  //     const studentId = localStorage.getItem('userId');
+  
+  //     // Step 2: Construct the API endpoint
+  //     const apiUrl = `http://localhost:8000/api/auth/${studentId}`;
+  
+  //     // Step 3: Construct the data object
+  //     const dataToUpdate = {
+  //       monthlyPackage: {
+  //         package_type: 'monthly',
+  //         monthlyPackage_Price: monthlyPackage.monthlyPackage_Price,
+  //         searches: monthlyPackage.searches,
+  //         verified_application: monthlyPackage.verified_application,
+  //         dedicated_crm: monthlyPackage.dedicated_crm,
+  //         monthlyOpportunities: monthlyPackage.opportunities,
+  //         accountHolderName: accountHolderName,
+  //       },
+  //     };
+  
+  //     // Step 4: Perform the PATCH request
+  //     const response = await axios.patch(apiUrl, dataToUpdate);
+  //     console.log("vvv", dataToUpdate);
+  
+  //     if (response.data) {
+  //       console.log('User data updated successfully');
+  //       alert('User data updated successfully');
+  //       // Additional logic or redirection can be added here
+  //     } else {
+  //       console.error('Error updating user data');
+  //       alert('Payment Failed');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error during payment:', error);
+  //     alert('Error during payment');
+  //   }
+  // };
+
   const handlePayment = async () => {
+    const userId = localStorage.getItem("userId");
+  
     try {
-      // Step 1: Retrieve user ID from localStorage
-      const studentId = localStorage.getItem('userId');
+      // Fetch the user data first
+      const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userData = await userResponse.json();
   
-      // Step 2: Construct the API endpoint
-      const apiUrl = `https://backend.internsbee.com/api/auth/${studentId}`;
-  
-      // Step 3: Construct the data object
-      const dataToUpdate = {
-        monthlyPackage: {
-          package_type: 'monthly',
-          monthlyPackage_Price: monthlyPackage.monthlyPackage_Price,
-          searches: monthlyPackage.searches,
-          verified_application: monthlyPackage.verified_application,
-          dedicated_crm: monthlyPackage.dedicated_crm,
-          monthlyOpportunities: monthlyPackage.opportunities,
-          accountHolderName: accountHolderName,
-        },
+      // Update the monthlyPackage object in userData
+      userData.monthlyPackage = {
+        package_type: 'monthly',
+        monthlyPackage_Price: monthlyPackage.monthlyPackage_Price,
+        searches: monthlyPackage.searches,
+        verified_application: monthlyPackage.verified_application,
+        dedicated_crm: monthlyPackage.dedicated_crm,
+        monthlyOpportunities: monthlyPackage.opportunities,
+        accountHolderName: accountHolderName,
       };
   
-      // Step 4: Perform the PATCH request
-      const response = await axios.patch(apiUrl, dataToUpdate);
-      console.log("vvv", dataToUpdate);
+      // Perform the patch request to update user's data
+      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}/monthlyPackage`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData.monthlyPackage), // Send only the monthlyPackage object
+      });
   
-      if (response.data) {
-        console.log('User data updated successfully');
-        alert('User data updated successfully');
-        // Additional logic or redirection can be added here
+      if (response.ok) {
+        alert("Subscription successful!");
+        // Refresh the monthlyPackage data (if needed)
+        // monthlyPackage(); // Remove this line if not needed
+  
+        // Log the updated monthlyPackage object
+        console.log("Updated monthlyPackage:", userData.monthlyPackage);
       } else {
-        console.error('Error updating user data');
-        alert('Payment Failed');
+        console.error("Failed to subscribe:", response.statusText);
       }
     } catch (error) {
-      console.error('Error during payment:', error);
-      alert('Error during payment');
+      console.error("Error during subscription:", error);
     }
   };
+  
 
 
   return (
