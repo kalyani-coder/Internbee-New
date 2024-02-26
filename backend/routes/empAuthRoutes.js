@@ -579,30 +579,31 @@ router.post("/signin", async (req, res) => {
 //   }
 // });
 
+// for the employer login otp auto patch in api 
 
-router.patch("/:userId", async (req, res) => {
-  const userId = req.params.userId;
-  const { otp } = req.body;
+// router.patch("/:userId", async (req, res) => {
+//   const userId = req.params.userId;
+//   const { otp } = req.body;
 
-  try {
-    // Find the employer by userId
-    const employer = await EmployerAuth.findById(userId);
+//   try {
+//     // Find the employer by userId
+//     const employer = await EmployerAuth.findById(userId);
 
-    if (!employer) {
-      return res.status(404).json({ error: 'Employer not found' });
-    }
+//     if (!employer) {
+//       return res.status(404).json({ error: 'Employer not found' });
+//     }
 
-    // Update the employer's OTP
-    employer.otp = otp;
-    await employer.save();
+//     // Update the employer's OTP
+//     employer.otp = otp;
+//     await employer.save();
 
-    res.json({ message: 'OTP updated successfully', employer });
+//     res.json({ message: 'OTP updated successfully', employer });
 
-  } catch (error) {
-    console.error('Error updating OTP:', error);
-    res.status(500).json({ error: "Something went wrong" });
-  }
-});
+//   } catch (error) {
+//     console.error('Error updating OTP:', error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
 
 
 router.get("/:id", async (req, res) => {

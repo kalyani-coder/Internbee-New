@@ -10,6 +10,8 @@ const GetPackage = () => {
   const { monthlyPackage } = state || {};
   const [accountHolderName, setAccountHolderName] = useState('');
 
+  console.log("MonthlyPackage" , monthlyPackage)
+
   useEffect(() => {
     // Set initial values from monthlyPackage when it's available
     if (monthlyPackage) {
@@ -67,7 +69,7 @@ const GetPackage = () => {
 
     const searchesAsNumber = monthlyPackage.searches !== null ? parseInt(monthlyPackage.searches, 10) : null;
   
-    const apiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${emploerId}`;
+    const apiUrl = `https://backend.internsbee.com/api/employer/${emploerId}`;
   
     const data = {
       empName,

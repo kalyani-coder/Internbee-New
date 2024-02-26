@@ -153,7 +153,7 @@ const Registration = () => {
       formData.append('enter_CIN_Number', enter_CIN_Number);
   
       try {
-        const response = await fetch('http://localhost:8000/api/employer/signup', {
+        const response = await fetch('https://backend.internsbee.com/api/employer/signup', {
           method: 'POST',
           body: formData,
         });
