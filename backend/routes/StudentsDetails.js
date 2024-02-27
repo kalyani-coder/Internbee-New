@@ -64,6 +64,32 @@ router.get("/userId/:id", async (req, res) => {
   }
 });
 
+// patch detils by userId 
+router.patch("/userId/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const student = await StudentDetailsModel.findOneAndUpdate(
+      { userId: userId },
+      { 
+        $set: { 
+          keySkills: req.body.keySkills ,
+          experience: req.body.experience,
+
+        } },
+     
+      { new: true }
+    );
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    res.json({message : "Student Detils Updated Successfully"});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // getting conflict 
 // POST route
 // router.post("/", async (req, res) => {

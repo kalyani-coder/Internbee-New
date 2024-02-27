@@ -10,6 +10,31 @@ import '../ResponsiveCss/ResponsiveCss.css';
 const ViewProfile = () => {
 
     const [userDetails, setUserDetails] = useState(null);
+    const [editedSkills, setEditedSkills] = useState('');
+     const [isEditing, setIsEditing] = useState(false);
+     const [editedExperience, setEditedExperience] = useState('');
+
+    const userId = localStorage.getItem('userId');
+
+    const toggleEditPopup = () => {
+        setIsEditing(!isEditing);
+        setEditedSkills('');
+    };
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        
+        try {
+            await axios.patch(`http://localhost:8000/api/studentsdetails/userId/${userId}`, {
+                keySkills: editedSkills
+            });
+            setIsEditing(false);
+        } catch (error) {
+            console.error('Error editing skills:', error);
+        }
+    };
+
 
     useEffect(() => {
         // Retrieve user ID from local storage
@@ -54,7 +79,7 @@ const ViewProfile = () => {
                                 </h2>
                                 {/* <p className="text-gray-600">State: {userDetails && userDetails.gender}</p> */}
 
-                                 <p className="text-gray-600">Address : {userDetails && userDetails.currentaddress}</p>
+                                <p className="text-gray-600">Address : {userDetails && userDetails.currentaddress}</p>
                                 <p className="text-gray-600">Contact: {userDetails && userDetails.contact}</p>
                                 <p className="text-gray-600">State: {userDetails && userDetails.state}</p>
                             </div>
@@ -86,25 +111,73 @@ const ViewProfile = () => {
                             <p>Upload New Resume</p>
                             <input type="file" className="ml-4" />
                         </div> */}
+                        
+                        {/* <div className='items-center flex      subscribe-btn-for-the-view-profile-button-div-section'>
+                            <Link>
+                                <button className='border p-2 subscribe-btn-for-the-view-profile-button' style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}>Edit</button>
+                            </Link>
+                        </div> */}
+
                     </div>
                 </section>
 
+
                 {/* Skills Section */}
-                <section className="mb-8  bg-white shadow-lg p-6 rounded-lg">
-                    <h2 className="text-2xl font-bold mb-4 text-left text-gray-800">Skills</h2>
-                    <div className="grid grid-cols-3 gap-4">
-                        {/* Check if userDetails and keySkills are available before mapping */}
-                        {userDetails && userDetails.keySkills && typeof userDetails.keySkills === 'string' ? (
-                            userDetails.keySkills.split(',').map((skill, index) => (
-                                <div key={index} className="text-gray-700">
-                                    {skill.trim()} {/* Trim to remove leading/trailing spaces */}
-                                </div>
-                            ))
-                        ) : (
-                            <p>No skills available</p>
-                        )}
+               <section className="mb-8 bg-white shadow-lg p-6 rounded-lg">
+            <h2 className="text-2xl font-bold mb-4 text-left text-gray-800">Skills</h2>
+            <div className="grid grid-cols-3 gap-4">
+                {/* Check if userDetails and keySkills are available before mapping */}
+                {userDetails && userDetails.keySkills && typeof userDetails.keySkills === 'string' ? (
+                    userDetails.keySkills.split(',').map((skill, index) => (
+                        <div key={index} className="text-gray-700">
+                            {skill.trim()}
+                        </div>
+                    ))
+                ) : (
+                    <p>No skills available</p>
+                )}
+                <div className='items-center flex subscribe-btn-for-the-view-profile-button-div-section'>
+                    <button 
+                        onClick={toggleEditPopup} 
+                        className="border p-2 subscribe-btn-for-the-view-profile-button" 
+                        style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}
+                    >
+                        Edit
+                    </button>
+                </div>
+            </div>
+            {/* Popup for editing skills */}
+            {isEditing && (
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg">
+                        <h2 className="text-xl font-bold mb-4">Edit Skills</h2>
+                        <form onSubmit={handleSubmit}>
+                            <input 
+                                type="text" 
+                                value={editedSkills} 
+                                onChange={(e) => setEditedSkills(e.target.value)} 
+                                className="border p-2 rounded-md mr-2"
+                            />
+                            <button 
+                                type="submit" 
+                                className="border p-2" 
+                                style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}
+                            >
+                                Save
+                            </button>
+                            <button 
+                                type="button" 
+                                onClick={toggleEditPopup} 
+                                className="border p-2 ml-2" 
+                                style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}
+                            >
+                                Cancel
+                            </button>
+                        </form>
                     </div>
-                </section>
+                </div>
+            )}
+               </section>
 
 
                 {/* Experience Section */}
@@ -117,7 +190,14 @@ const ViewProfile = () => {
                         ) : (
                             <p>No experience data available</p>
                         )}
+
                     </div>
+
+                        <div className='items-center flex      subscribe-btn-for-the-view-profile-button-div-section'>
+                            <Link>
+                                <button className='border p-2 subscribe-btn-for-the-view-profile-button' style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}>Edit</button>
+                            </Link>
+                        </div>
                 </section>
 
 
