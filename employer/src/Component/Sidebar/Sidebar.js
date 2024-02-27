@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion ,faTimes,faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faUser, faComments, faSearch, faInbox, faQuestion, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import { MdPeopleAlt } from "react-icons/md";
@@ -43,7 +43,8 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link to="/weeklycalender">
+          <Link
+            target="_blank" to="https://calendar.google.com/calendar/u/0/r">
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faComments} className="w-6 h-6 mr-2 text-amber-300" />
               Interviews
@@ -56,7 +57,7 @@ const Sidebar = () => {
               Search CV
             </a>
           </Link>
-        
+
           <Link to="/message">
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon icon={faInbox} className="w-6 h-6 mr-2 text-amber-300" />
@@ -76,7 +77,7 @@ const Sidebar = () => {
       {/* <button className="lg:hidden bg-white" onClick={handleToggleSidebar}>
         {isSidebarOpen ? 'Close' : 'Open'} Sidebar
       </button> */}
-       <button className="IconBtnSideBar lg:hidden bg-white p-2 rounded-md" onClick={handleToggleSidebar}>
+      <button className="IconBtnSideBar lg:hidden bg-white p-2 rounded-md" onClick={handleToggleSidebar}>
         {isSidebarOpen ? (
           <FontAwesomeIcon icon={faTimes} className="text-gray-800 close-icon" />
         ) : (

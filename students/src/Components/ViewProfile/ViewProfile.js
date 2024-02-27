@@ -111,7 +111,7 @@ const ViewProfile = () => {
                             <p>Upload New Resume</p>
                             <input type="file" className="ml-4" />
                         </div> */}
-                        
+
                         {/* <div className='items-center flex      subscribe-btn-for-the-view-profile-button-div-section'>
                             <Link>
                                 <button className='border p-2 subscribe-btn-for-the-view-profile-button' style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}>Edit</button>
@@ -193,11 +193,11 @@ const ViewProfile = () => {
 
                     </div>
 
-                        <div className='items-center flex      subscribe-btn-for-the-view-profile-button-div-section'>
+                        {/* <div className='items-center flex      subscribe-btn-for-the-view-profile-button-div-section'>
                             <Link>
                                 <button className='border p-2 subscribe-btn-for-the-view-profile-button' style={{ backgroundColor: '#FFBD59', borderRadius: "5px" }}>Edit</button>
                             </Link>
-                        </div>
+                        </div> */}
                 </section>
 
 
