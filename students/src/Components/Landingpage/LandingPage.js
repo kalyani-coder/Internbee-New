@@ -193,8 +193,8 @@ const LandingPage = () => {
         {/* Popular Categories */}
 
         {/* card-landing-page Carousel */}
-        <div className="carousel-container mt-5 overflow-hidden">
-          <div className="carousel" ref={carouselsRef}>
+        <div className="carousel-container mt-5 overflow-hidden ">
+          <div className="carousel justify-content-center" ref={carouselsRef}>
           {internships.slice(0, 3).map((internship) => (
             <div className="card-landing-page">
             
@@ -217,7 +217,7 @@ const LandingPage = () => {
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
                       >
-                        Apply Now
+                        View Details
                       </button>
                     </Link>
                   </div>
@@ -340,12 +340,12 @@ const LandingPage = () => {
         className="landingpage-latest-jobs flex-1"
         id="dream-career-section"
       >
-        <h1 className="heading">Latest jobs on InternsBee</h1>
+        <h1 className="heading">Latest Internships on InternsBee</h1>
 
         {/* Popular Categories */}
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
-          <div className="carousel " ref={carouselRef}>
+          <div className="carousel carousel justify-content-center " ref={carouselRef}>
           {internships.slice(0, 3).map((internship) => (
             <div className="card-landing-page">
             
@@ -368,7 +368,7 @@ const LandingPage = () => {
                         className=" text-black px-4 py-2 rounded-md focus:outline-none"
                         style={{ backgroundColor: "#FFBD59" }}
                       >
-                        Apply Now
+                        View Details
                       </button>
                     </Link>
                   </div>

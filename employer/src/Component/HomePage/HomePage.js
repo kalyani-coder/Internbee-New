@@ -62,7 +62,7 @@ const EmployerSection = () => {
                       <p>Location: {job.location}</p>
                       <p>Company Name: {job.company_Name}</p>
                       <p>Job Type: {job.job_Type}</p>
-                      <p>Number of Positions: {job.position}</p>
+                      <p>Duration: {job.position}</p>
                       <p>Skills: {job.skills}</p>
                       <p>Application start Date: {job.start_Date}</p>
                       <p>Application end Date: {job.end_Date}</p>
@@ -72,10 +72,6 @@ const EmployerSection = () => {
                   </div>
                 ))}
               </div>
-
-
-
-
             )}
           </div>
         </div>

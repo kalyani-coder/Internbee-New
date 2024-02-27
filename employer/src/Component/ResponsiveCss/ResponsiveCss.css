@@ -8,6 +8,9 @@
         margin: 0;
         padding-right: 0;
     }
+
+    /* faqscreen */
+    
   
     .landingpage-title-font {
       font-size: 1.8rem;
@@ -471,6 +474,10 @@ padding-right: 2px !important;
 .imglogin{
 
   height: auto
+}
+
+.faqText{
+  margin-right: 0px ;
 }
 
 

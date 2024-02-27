@@ -6,9 +6,9 @@ import Footer from "./../Footer";
 // import AppliedInternNavBar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
 // import Applied_Intern_Internal_Navbar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
 import "../ResponsiveCss/ResponsiveCss.css";
-import Internal_Navbar from "../UpdatedNav/Internal_Navbar";
-
-const MonthlyPackages = () => {
+// import Internal_Navbar from "../UpdatedNav/Internal_Navbar";
+import QuickNav from "../QuickNav";
+const Free = () => {
   const [monthlyPackage, setMonthlyPackage] = useState(null);
   console.log(monthlyPackage);
 
@@ -77,7 +77,7 @@ const MonthlyPackages = () => {
   return (
     <>
       {/* <div><Internal_Navbar/></div>  */}
-      <Internal_Navbar />
+      <QuickNav/>
 
       <section className="text-black body-font flex">
         {/* <div><Sidebar /></div> */}
@@ -88,12 +88,12 @@ const MonthlyPackages = () => {
             </h1>
             {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p> */}
             <div className="flex mx-auto border-2 border-amber-300 rounded overflow-hidden mt-6">
-              <Link to={"/freeplan"}>
+              <Link to={"/free"}>
                 <button className={`py-1 px-4 text-black focus:outline-none`}>
                   Freemium
                 </button>
               </Link>
-              <Link to={"/monthlyplan"}>
+              <Link to={"/month"}>
                 <button
                   className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
                   title="This functionality is under development"
@@ -230,4 +230,4 @@ const MonthlyPackages = () => {
   );
 };
 
-export default MonthlyPackages;
+export default Free;

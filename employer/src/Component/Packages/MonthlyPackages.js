@@ -128,7 +128,7 @@ const MonthlyPackages = () => {
                         
                   
 
-                      <p className="text-xs text-black mt-3">Literally you probably haven't heard of them jean shorts.</p>
+                      {/* <p className="text-xs text-black mt-3">Literally you probably haven't heard of them jean shorts.</p> */}
                     </div>
                   </div>
                 </div>

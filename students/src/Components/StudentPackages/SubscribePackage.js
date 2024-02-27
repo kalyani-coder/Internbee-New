@@ -7,7 +7,7 @@ import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Inter
 import '../ResponsiveCss/ResponsiveCss.css';
 
 
-const SubscribePackage = () => {
+const Free = () => {
   const [accountHolderName, setAccountHolderName] = useState('');
   const location = useLocation();
   const { state } = location;
@@ -107,7 +107,7 @@ const SubscribePackage = () => {
     <div>
       <div>
         {/* <Internal_Navbar /> */}
-        <Applied_Intern_Internal_Navbar/>
+        {/* <Applied_Intern_Internal_Navbar/> */}
       </div>
       <div className="flex gap-10 mt-20">
         <div className="w-full md:w-1/2 mx-auto">
@@ -145,4 +145,4 @@ const SubscribePackage = () => {
   );
 };
 
-export default SubscribePackage;
+export default Free;

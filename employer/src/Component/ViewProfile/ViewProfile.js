@@ -14,6 +14,9 @@ const ViewProfilePage = () => {
     number: '',
     companyAddress: '',
     Description: '',
+    selectedFile: '',
+    company_Website_URL:'',
+    enter_CIN_Number:'',
   });
 
   const [editedData, setEditedData] = useState({ ...profileData });
@@ -105,6 +108,14 @@ const ViewProfilePage = () => {
               <div className="mt-4">
                 <label className="block text-sm text-gray-600">Company Description</label>
                 <p>{profileData.Description}</p>
+              </div>
+              <div className="mt-4">
+                <label className="block text-sm text-gray-600">CompanyWebsite</label>
+                <p>{profileData.company_Website_URL}</p>
+              </div>
+              <div className="mt-4">
+                <label className="block text-sm text-gray-600">CIN No-</label>
+                <p>{profileData.enter_CIN_Number}</p>
               </div>
             </div>
           </div>

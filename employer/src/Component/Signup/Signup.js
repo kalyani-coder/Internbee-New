@@ -149,7 +149,7 @@ const Registration = () => {
       formData.append('companyAddress', companyAddress);
       formData.append('number', number);
       formData.append('Description', Description);
-      formData.append('company_Website_URL', company_Website_URL);
+      formData.append('company_Website_URL',  selectedFile);
       formData.append('enter_CIN_Number', enter_CIN_Number);
   
       try {

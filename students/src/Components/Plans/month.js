@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../ResponsiveCss/ResponsiveCss.css';
 import { Link } from 'react-router-dom';
-
 // import Footer from '../Footer/Footer';
 import Footer from './../Footer';
-import Internal_Navbar from '../UpdatedNav/Internal_Navbar';
-
-const MonthlyPackages = () => {
+// import Internal_Navbar from '../UpdatedNav/Internal_Navbar';
+import QuickNav from "../QuickNav";
+const Month = () => {
     const navigate = useNavigate();
     const [monthlyPackage, setMonthlyPackage] = useState(null);
     console.log(monthlyPackage)
@@ -33,7 +32,7 @@ const MonthlyPackages = () => {
     return (
         <>
             
-             <Internal_Navbar />
+             <QuickNav/>
 
             <section className="text-gray-600 body-font flex">
                 {/* <div><Sidebar /></div> */}
@@ -42,14 +41,14 @@ const MonthlyPackages = () => {
                         <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">Monthly Packages</h1>
                         {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-black">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p> */}
                         <div className="flex mx-auto border-2 border-amber-300 rounded overflow-hidden mt-6">
-                            <Link to={'/freeplan'}>
+                            <Link to={'/free'}>
                                 <button
                                     className={`py-1 px-4 text-black focus:outline-none`}
                                 >
                                     Freemium
                                 </button>
                             </Link>
-                            <Link to={'/monthlyplan'}>
+                            <Link to={'/month'}>
                                 <button
                                     className={`py-1 px-4 text-black focus:outline-none border-b-2 border-indigo-600`}
                                     title="This functionality is under development"
@@ -135,7 +134,7 @@ const MonthlyPackages = () => {
     );
 }
 
-export default MonthlyPackages;
+export default Month;
 
 
 

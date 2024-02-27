@@ -218,7 +218,7 @@ const Resume = () => {
                     htmlFor="currentsalary"
                     className="block text-l font-medium"
                   >
-                    Current Salary<span className="text-red-500">*</span>
+                    Current Salary/month<span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -405,7 +405,7 @@ const Resume = () => {
                       htmlFor="passoutyear"
                       className="block text-l font-medium"
                     >
-                      Pass-out Year<span className="text-red-500">*</span>
+                       Year<span className="text-red-500">*</span>
                     </label>
                     <DatePicker
                       selected={birthdate}
@@ -480,7 +480,7 @@ const Resume = () => {
                       htmlFor="passOutYear_12"
                       className="block text-l font-medium"
                     >
-                      Pass-out Year<span className="text-red-500">*</span>
+                      Year<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -571,7 +571,7 @@ const Resume = () => {
                       htmlFor="passOutYear_10"
                       className="block text-large font-medium"
                     >
-                      Pass-out Year<span className="text-red-500">*</span>
+                       Year<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -710,6 +710,24 @@ const Resume = () => {
                       })}
                     />
                   </div>
+
+                  <div className="form-group">
+                    <label
+                      htmlFor="Expectation"
+                      className="block text-l font-medium"
+                    >
+                      Current Employer<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md text-l"
+                      id="Expectation"
+                      {...register("Expectation", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+
                   <div className="form-group col-span-4">
                     <label
                       htmlFor="Career"
