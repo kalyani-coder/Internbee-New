@@ -31,7 +31,7 @@ const ViewProfile = () => {
     return (
         <>
             <div>
-                {/* <HomeNav /> */}
+                {/* <HomeNav /> *****/}
                 <Internal_Navbar />
 
             </div>
