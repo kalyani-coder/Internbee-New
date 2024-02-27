@@ -172,12 +172,12 @@ const Internship = () => {
       </div>
 
       {/* Filters Section */}
-      {/* <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}> */}
+      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}>
 
-      <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}>
+      {/* <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}> */}
 
-        {/* <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '250%' }}> */}
-        <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}>
+        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}>
+        {/* <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}> */}
 
 
         
@@ -331,9 +331,9 @@ const Internship = () => {
                   <div className="flex justify-between">
 
 
-                    <div>
+                    <div className="    ml-[78%]">
                       <Link to={`/apply-internship/${internship._id}`}>
-                        <button className="text-black p-2 rounded-lg" style={{ backgroundColor: '#FFBD59' }}>
+                        <button className="text-black p-2 rounded-lg " style={{ backgroundColor: '#FFBD59' }}>
                           View
                         </button>
                       </Link>
