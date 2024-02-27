@@ -172,8 +172,18 @@ const Internship = () => {
       </div>
 
       {/* Filters Section */}
-      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}>
-        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '250%' }}>
+      {/* <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}> */}
+
+      <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}>
+
+        {/* <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '250%' }}> */}
+        <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}>
+
+
+        
+
+
+
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
           {/* <div className="mb-4">
@@ -257,15 +267,17 @@ const Internship = () => {
         </div>
 
         {/* Display Internships Section */}
-        <div className="flex flex-col items-center ml-8 Internships-card ">
+        <div className="flex flex-col items-center ml-8 Internships-card " style={{}}>
+        {/* <div className="flex flex-col items-center  Internships-card " style={{}}> */}
+
           {/* Map through the filtered internships (or all internships if not filtered) */}
           {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden" style={{width:'100%'}}
               >
-                <div className="intern-card-all-the-information-abtt flex-grow pl-4 pr-0 py-4 " >
+                <div className="intern-card-all-the-information-abtt flex-grow pl-4 pr-4 py-4 " style={{width:'100%'}} >
                   {/* Internship details */}
                   <h2 className="card-title text-xl font-semibold text-gray-800 ">
                     {internship.job_Title}
