@@ -62,7 +62,7 @@ const FAQPage = () => {
                     {faqData.map((faq, index) => (
                         <div key={index}>
                             <h3 className="text-l font-semibold ml-8">{faq.question}</h3>
-                            <p className="text-gray-600 mr-96 ml-8">{faq.answer}</p>
+                            <p className="faqText text-gray-600 mr-96 ml-8">{faq.answer}</p>
                         </div>
                     ))}
                 </div>

@@ -443,8 +443,13 @@
     padding: 0; /* Adjust padding for screens between 320px and 420px */
     /* font-size: 0.95rem; Adjust font size for screens between 320px and 420px */
   }
+  
 }
 
+@media screen and (max-width: 768px){.faqText{
+  margin-right: 0px;
+}
+}
 /* Styles for screens between 426px and 615px */
 @media screen and (min-width: 426px) and (max-width: 615px) {
   /* Your CSS rules for screens between 426px and 615px */
