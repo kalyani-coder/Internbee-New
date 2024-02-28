@@ -46,7 +46,7 @@ const Login = () => {
         // navigate(`/view-profile-page`);
 
         // navigate("/privacypolicy");
-        navigate("/postinternship")
+        navigate("/home")
       } else {
         if (response.status === 404) {
           setError("email", {

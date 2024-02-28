@@ -290,13 +290,61 @@ const Profile = () => {
           if (error.message.includes("Please fill all mandatory fields")) {
             alert("Please fill all mandatory fields", "error");
           } else {
-            alert("User ", "error");
+            alert("Please fill all mandatory fields ", "error");
           }
         });
     }
   };
 
-  
+  const resetForm = () => {
+    // Reset all state variables to their initial values
+    setShowProfileDropdown(false);
+    setSelectedImage(null);
+    setSelectedPDF(null);
+    setSelectedPDF2(null);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setDateOfBirth("");
+    setPermanentAddress("");
+    setCity("");
+    setDistrict("");
+    setCountry("");
+    setState("");
+    setCurrentAddress("");
+    setCurrentCity("");
+    setCurrentDistrict("");
+    setCurrentCountry("");
+    setContact("");
+    setGender("");
+    setEducation("");
+    setInstituteName("");
+    setStream("");
+    setPassOutYear("");
+    setPercentage("");
+    setKeySkills("");
+    setLanguages("");
+    setExperience("");
+    setSalaryExpectations("");
+    setProjectName("");
+    setProjectSummary("");
+    seteducation_12("");
+    setinstituteName_12("");
+    setstream_12("");
+    setpassOutYear_12("");
+    setpercentage_12("");
+    seteducation_10("");
+    setinstituteName_10("");
+    setstream_10("");
+    setpassOutYear_10("");
+    setpercentage_10("");
+    
+  };
+
+  const handleCancel = () => {
+    // Call resetForm when cancel button is clicked
+    resetForm();
+  };
   return (
     <div className=" ">
       <div className="">
@@ -1081,7 +1129,7 @@ const Profile = () => {
               </button>
               </Link>
               <button
-                // onClick={handleUpload}
+                onClick={handleCancel}
                 style={{}}
                 className=" px-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
               >

@@ -45,6 +45,7 @@
     display: grid;
     justify-content: center;
   }
+  
   .logo-for-partners {
     display: flex;
     gap: 80px;
@@ -146,7 +147,7 @@
   }
 
   .cardMain {
-    width: 33em;
+    width: 100%;
     display: grid;
     justify-content: center;
     height: auto;
@@ -446,7 +447,8 @@
   
 }
 
-@media screen and (max-width: 768px){.faqText{
+@media screen and (max-width: 768px){
+  .faqText{
   margin-right: 0px;
 }
 }
@@ -457,7 +459,7 @@
   .cardMain {
     display: grid;
     justify-content: center;
-    width: 33em;
+    width: 100%;
     height: auto;
   }
 }

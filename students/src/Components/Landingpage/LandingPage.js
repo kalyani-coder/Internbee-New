@@ -195,7 +195,7 @@ const LandingPage = () => {
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden ">
           <div className="carousel justify-content-center" ref={carouselsRef}>
-          {internships.slice(0, 3).map((internship) => (
+          {internships.map((internship) => (
             <div className="card-landing-page">
             
               <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
@@ -346,7 +346,7 @@ const LandingPage = () => {
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
           <div className="carousel carousel justify-content-center " ref={carouselRef}>
-          {internships.slice(0, 3).map((internship) => (
+          {internships.map((internship) => (
             <div className="card-landing-page">
             
               <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">

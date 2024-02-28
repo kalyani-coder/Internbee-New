@@ -84,11 +84,31 @@ const Home1 = () => {
   const navigate = useNavigate();
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [allInternships, setAllInternships] = useState([]);
+
+  const [mainSearchQuery, setMainSearchQuery] = useState("");
 
   const handleProfileIconClick = () => {
     setShowProfileDropdown(!showProfileDropdown);
   };
-
+  const filterByLocation = (location) => {
+    if (location === "All") {
+      setFilteredInternships(allInternships); // Show all internships if "All" or "Any" is selected
+    } else {
+      const filtered = allInternships.filter(
+        (internship) =>
+          internship.location.toLowerCase() === location.toLowerCase()
+      );
+      setFilteredInternships(filtered);
+    }
+  };
+  const filterByJobType = (jobType) => {
+    const filtered = allInternships.filter(
+      (internship) =>
+        internship.job_Type.toLowerCase() === jobType.toLowerCase()
+    );
+    setFilteredInternships(filtered);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -191,6 +211,35 @@ const Home1 = () => {
     navigate("/Applied-internship");
   };
 
+  const handleMainSearch = () => {
+    const lowerCaseQuery = mainSearchQuery.toLowerCase();
+
+    const filtered = allInternships.filter((item) => {
+      const {
+        job_Title,
+        empName,
+        position,
+        location,
+        skills, // Include skills field in the destructuring
+      } = item;
+
+      const skillsArray = skills.split(" "); // Split the skills string into an array
+
+      return (
+        job_Title.toLowerCase().includes(lowerCaseQuery) ||
+        empName.toLowerCase().includes(lowerCaseQuery) ||
+        position.toLowerCase().includes(lowerCaseQuery) ||
+        location.toLowerCase().includes(lowerCaseQuery) ||
+        skillsArray.some((skill) =>
+          skill.toLowerCase().includes(lowerCaseQuery)
+        )
+        // Add other checks as needed
+      );
+    });
+
+    setFilteredInternships(filtered);
+  };
+
   return (
     <>
      
@@ -203,14 +252,19 @@ const Home1 = () => {
 
       <div className="inpimp flex items-center justify-center my-10 mt-5">
         <div className=" inputhomess relative flex items-center gap-8">
-          <input
-            type="text"
-            placeholder="Enter skills/designations"
-            className="iii-input-box-for-the-student-section-internsbee h-20 rounded-full border border-gray-800 pl-8 pr-16"
-          />
-          <button className=" bg-black hover:bg-black text-white rounded-md px-4 mr-1 py-2">
-            Search
-          </button>
+        <input
+              type="text"
+              placeholder="Enter skills/designations/companies"
+              value={mainSearchQuery}
+              onChange={(e) => setMainSearchQuery(e.target.value)}
+              className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+            />
+           <button
+              className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+              onClick={handleMainSearch}
+            >
+              Search
+            </button>
         </div>
       </div>
       {/* <div ref={companiesRef}>
@@ -319,7 +373,7 @@ const Home1 = () => {
         </div>
 
         <div className="flex all-the-content-for-the-page-contains-home flex-row justify-center items-center flex-wrap gap-4">
-          {internships.slice(0, 3).map((internship) => (
+          {internships.slice(0, 8).map((internship) => (
             <div
               key={internship._id}
               className="cardMain h-1/2  rounded-md flex flex-col justify-between items-left bg-white shadow-md overflow-hidden "
