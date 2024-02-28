@@ -132,17 +132,18 @@ router.patch("/userId/:id", async (req, res) => {
 // });
 
 // image upload route
-
 router.post("/cheak-first/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     console.log(userId);
-    const hascreated = await StudentDetailsModel.find({ userId: userId });
+    const hasCreated = await StudentDetailsModel.find({ userId: userId });
+    console.log(hasCreated);
 
-    if (!hascreated) {
-      res.status(404).json({ message: "Student profile not found" });
+    if (hasCreated.length === 0) {
+      return res.status(404).json({ message: "Profile not created" });
+    } else {
+      res.status(200).json({ message: "Profile already exists" });
     }
-    res.status(200).json({ message: "profile has been created " });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
