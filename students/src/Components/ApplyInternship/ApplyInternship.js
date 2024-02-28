@@ -43,87 +43,30 @@ const ApplyInternship = () => {
   
     try {
       const userId = localStorage.getItem("userId");
+      console.log("User Id: ", userId);
   
       // Fetch user data from the API
       const userResponse = await axios.get(`https://backend.internsbee.com/api/auth/${userId}`);
+  
+      if (!userResponse || !userResponse.data) {
+        console.error("Error fetching user data. Response:", userResponse);
+        alert("An error occurred while fetching user data");
+        console.log(userResponse);
+        return;
+      }
+  
       const userData = userResponse.data;
   
-      console.log("User Data:", userData); // Log user data
-  
-      // Determine the type of package (free or monthly)
-      const packageType = userData.freePackage ? "freePackage" : "monthlyPackage";
-  
-      const opportunities_Counter = userData.opportunities_Counter || 0;
-      const opportunities = userData[packageType].opportunities || 0;
-  
-      console.log("Opportunities_Counter:", opportunities_Counter);
-      console.log("Opportunities:", opportunities);
-  
-      // Check if any of the required fields is empty or null
-      if (
-        userData[packageType].freePackagePrice === "" ||
-        userData[packageType].searches === null ||
-        userData[packageType].verified_application === "" ||
-        userData[packageType].dedicated_crm === "" ||
-        userData[packageType].opportunities === null
-      ) {
-        console.log("Empty or null field detected:", userData);
-        alert("You need to subscribe first. Please update your subscription.");
-        return;
-      }
-  
-      console.log("Before opportunities check:", opportunities_Counter, opportunities);
-  
-      console.log("User Data:", userData);
-      console.log("Opportunities_Counter:", opportunities_Counter);
-      console.log("Opportunities:", opportunities);
-  
-      if (opportunities_Counter >= opportunities) {
-        alert("Apply limit reached. You can't apply for more jobs.");
-        return;
-      }
-  
-      console.log("After opportunities check. Proceeding with the application.");
-  
-      const formData = {
-        postId: internshipId,
-        InternId: userId,
-      };
-  
-      const response = await axios.post(
-        "https://backend.internsbee.com/api/applyinternship/",
-        formData
-      );
-  
-      if (response.data) {
-        // Increment the internship_counter
-        const updatedUserData = {
-          ...userData,
-          freePackage: {
-            ...userData.freePackage,
-            opportunities_Counter: (userData.freePackage.opportunities_Counter || 0) + 1,
-            opportunities: userData[packageType].opportunities - 1,
-          },
-        };
-  
-        // Update user details with the incremented opportunities_Counter
-        await axios.patch(`https://backend.internsbee.com/api/auth/${userId}`, updatedUserData);
-  
-        alert("Applied Successfully");
-        setShowConfirmation(false); // Close the confirmation popup upon successful submission
-      } else {
-        // Handle the case where the response is not as expected
-        alert("Error: Unable to apply for the internship");
-      }
+      // ... rest of your code
     } catch (error) {
-      // Handle errors from the API
       console.error("Error:", error.message);
-      console.log("Error details:", error.response.data); // Log the response details
+      console.log("Error details:", error.response?.data); // Log the response details
       alert("An error occurred");
     } finally {
       setIsSubmitting(false);
     }
   };
+  
   
 
 
@@ -211,7 +154,7 @@ const ApplyInternship = () => {
                     </button>
                     <button
                       onClick={handleConfirmation}
-                      disabled={isSubmitting} // Disable the button while submitting
+                      // disabled={isSubmitting} 
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
                     >
                       Confirm

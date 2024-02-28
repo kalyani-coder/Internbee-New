@@ -91,24 +91,7 @@ const Home1 = () => {
   const handleProfileIconClick = () => {
     setShowProfileDropdown(!showProfileDropdown);
   };
-  const filterByLocation = (location) => {
-    if (location === "All") {
-      setFilteredInternships(allInternships); // Show all internships if "All" or "Any" is selected
-    } else {
-      const filtered = allInternships.filter(
-        (internship) =>
-          internship.location.toLowerCase() === location.toLowerCase()
-      );
-      setFilteredInternships(filtered);
-    }
-  };
-  const filterByJobType = (jobType) => {
-    const filtered = allInternships.filter(
-      (internship) =>
-        internship.job_Type.toLowerCase() === jobType.toLowerCase()
-    );
-    setFilteredInternships(filtered);
-  };
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -128,6 +111,7 @@ const Home1 = () => {
 
     fetchData();
   }, []);
+  
 
   // const handleInternshipClick = (id) => {
   //   navigate(`/internship/${id}`);
@@ -211,10 +195,13 @@ const Home1 = () => {
     navigate("/Applied-internship");
   };
 
+
+  
   const handleMainSearch = () => {
+    console.log('Search button clicked');
     const lowerCaseQuery = mainSearchQuery.toLowerCase();
 
-    const filtered = allInternships.filter((item) => {
+    const filtered = allInternships.filter((item) =>{
       const {
         job_Title,
         empName,
@@ -236,7 +223,7 @@ const Home1 = () => {
         // Add other checks as needed
       );
     });
-
+    console.log('Filtered Internships:', filtered);
     setFilteredInternships(filtered);
   };
 
@@ -253,13 +240,17 @@ const Home1 = () => {
       <div className="inpimp flex items-center justify-center my-10 mt-5">
         <div className=" inputhomess relative flex items-center gap-8">
         <input
-              type="text"
-              placeholder="Enter skills/designations/companies"
-              value={mainSearchQuery}
-              onChange={(e) => setMainSearchQuery(e.target.value)}
-              className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
-            />
-           <button
+  type="text"
+  placeholder="Enter skills/designations/companies"
+  value={mainSearchQuery}
+  onChange={(e) => {
+    setMainSearchQuery(e.target.value);
+    console.log('Search query:', e.target.value);
+  }}
+  className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+/>
+
+             <button
               className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
               onClick={handleMainSearch}
             >
@@ -367,7 +358,7 @@ const Home1 = () => {
 
       {/* </Slider> */}
       {/* </div>  */}
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center">
         <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center ">
           <h1>Latest Internships</h1>
         </div>

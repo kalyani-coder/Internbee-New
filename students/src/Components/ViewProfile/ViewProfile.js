@@ -301,6 +301,8 @@ const ViewProfile = () => {
                             <p>Currentaddress: {userDetails.currentaddress}</p>
                             <p>City: {userDetails.city}</p>
                             <p>District: {userDetails.district}</p>
+                            <p>Birth Date: {userDetails.birthdate}</p>
+                            
 
 
                         </>
