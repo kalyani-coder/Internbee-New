@@ -1,6 +1,6 @@
 // Import necessary modules and components
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import { FaRegClock, FaMoneyBill, FaMapMarkerAlt } from "react-icons/fa";
 import Navbar from "../Navbar";
 import axios from "axios";
