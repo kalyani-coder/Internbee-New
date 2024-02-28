@@ -4,6 +4,7 @@ import Navbar from './../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import QuickNavbar from '../QuickNav/QuickNav';
 import '../ResponsiveCss/ResponsiveCss.css';
+import FaqNav from '../FaqNav/FaqNav';
 
 const FAQPage = () => {
     const faqData = [
@@ -52,7 +53,7 @@ const FAQPage = () => {
 
     return (
         <>
-            <QuickNavbar />
+            <FaqNav />
 
             <div className="container mx-auto mt-8 p-6 pt-12 bg-white rounded-xl shadow-md mb-5">
                 <h2 className="text-xl font-bold mb-6 faq-title ml-12">Frequently Asked Questions</h2>
