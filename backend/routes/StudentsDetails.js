@@ -1,8 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const StudentDetailsModel = require("../models/StudentsDetails"); // Adjust the path accordingly
+const User = require("../models/user")
 const multer = require("multer");
 const path = require("path");
+
+
+
+
+
+
+
+
 
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -34,6 +43,8 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
 router.get("/studentId/:id", async (req, res) => {
   const studentId = req.params.id;
   try {
@@ -132,22 +143,22 @@ router.patch("/userId/:id", async (req, res) => {
 // });
 
 // image upload route
-router.post("/cheak-first/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    console.log(userId);
-    const hasCreated = await StudentDetailsModel.find({ userId: userId });
-    console.log(hasCreated);
+// router.post("/cheak-first/:id", async (req, res) => {
+//   try {
+//     const userId = req.params.id;
+//     console.log(userId);
+//     const hasCreated = await StudentDetailsModel.find({ userId: userId });
+//     console.log(hasCreated);
 
-    if (hasCreated.length === 0) {
-      return res.status(404).json({ message: "Profile not created" });
-    } else {
-      res.status(200).json({ message: "Profile already exists" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+//     if (hasCreated.length === 0) {
+//       return res.status(404).json({ message: "Profile not created" });
+//     } else {
+//       res.status(200).json({ message: "Profile already exists" });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 router.post(
   "/",
@@ -167,9 +178,9 @@ router.post(
       }
 
       if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
-        const publicImageUrl = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.image[0].filename}`;
-        const publicPdfUrl = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.pdf[0].filename}`;
-        const publicPdfUrl2 = `https://internbee-backend-apis.onrender.com/public/uploads/${req.files.pdf2[0].filename}`;
+        const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
+        const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
+        const publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
 
         const fileData = new StudentDetailsModel({
           filename: req.files.image[0].originalname,
@@ -232,6 +243,8 @@ router.post(
     }
   }
 );
+
+
 
 // PATCH route
 router.patch("/:id", async (req, res) => {

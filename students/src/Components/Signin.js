@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Alert from './Alert/Alert';
@@ -15,9 +15,16 @@ const Login = () => {
   } = useForm();
   const [apiError, setApiError] = useState(null);
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+     navigate('/home');
+    }
+  }, []);
+
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('https://backend.internsbee.com/api/auth/signin', {
+      const response = await fetch('http://localhost:8000/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,31 +35,34 @@ const Login = () => {
       if (response.ok) {
         const responseData = await response.json();
   
-        if (responseData.userId) {
-          localStorage.setItem('userId', responseData.userId);
+        // Store user data in localStorage
+        localStorage.setItem('userId', responseData.userId);
+        localStorage.setItem('token', responseData.token);
+        localStorage.setItem('email', responseData.email);
+  
+        // Check if user details exist in studentsdetails API
+        const userId = responseData.userId;
+        const checkDetailsResponse = await fetch(`http://localhost:8000/api/studentsdetails/userId/${userId}`);
+        const checkDetailsData = await checkDetailsResponse.json();
+  
+        if (checkDetailsResponse.ok) {
+          // If user details exist, navigate to home page
+          navigate('/home');
+        } else {
+          // If user details don't exist, navigate to profile page
+          navigate('/profile');
         }
-   
-        if (responseData.email) {
-          localStorage.setItem('email', responseData.email);
-        }
-        navigate('/home'); 
-       
-       
       } else {
-        // The credentials are incorrect, handle the error (e.g., show an error message)
+        // Handle invalid credentials
         const errorData = await response.json();
-        setApiError(errorData.error);
-        setError('email', {
-          type: 'manual',
-          message: errorData.error || 'User Not Found. Please Sign up',
-        });
-        console.error('Invalid credentials');
+        console.error('Invalid credentials:', errorData.error);
+        // Handle the error, show an error message, etc.
       }
     } catch (error) {
       console.error('Error signing in:', error);
+      // Handle other errors, show an error message, etc.
     }
   };
-  
   
 
   return (

@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const StudentDetailsSchema = new mongoose.Schema({
   // Personal Details
   userId : String,
-  user_email: String ,
   user_number : String,
   firstName: String,
   lastName: String,
+  user_email: String ,
   email: String,
   birthdate: String,
   permanentaddress: String,
@@ -18,7 +18,7 @@ const StudentDetailsSchema = new mongoose.Schema({
   currentcity: String,
   currentdistrict: String,
   currentstate : String,
-  currentcountry : String,
+  // currentcountry : String,
   gender : String,
   currentcountry: String,
   contact : String,
@@ -63,8 +63,10 @@ const StudentDetailsSchema = new mongoose.Schema({
   student_certificate : String,
   certificatePath : String,
 
- 
+  
+  
 });
+
 
 const StudentDetailsModel = mongoose.model('StudentDetails', StudentDetailsSchema);
 

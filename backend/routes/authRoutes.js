@@ -9,6 +9,45 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 const jwtKey = "amar";
 
+const validator = require('validator');
+
+
+router.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
+
+  // Validate email using validator
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ error: "Please enter a valid email address" });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid password" });
+    }
+
+    const token = jwt.sign({ email: user.email, userId: user._id }, jwtKey);
+
+    // Include user data and token in the response
+    res.json({
+      userId: user._id,
+      email: user.email,
+      number: user.number,
+      verified: user.verified,
+      fullName: user.fullName,
+      token: token 
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
 router.patch('/:userId/freePackage', async (req, res) => {
   const userId = req.params.userId;
@@ -227,7 +266,7 @@ router.patch('/:userId/monthlyPackage', async (req, res) => {
 //   }
 // });
 
-// otp when students signup 
+// latest working otp signupotp when students signup 
 
 router.post("/signup", async (req, res) => {
   const {
@@ -240,13 +279,13 @@ router.post("/signup", async (req, res) => {
     verified_application,
     dedicated_crm,
     opportunities,
-    opportunities_Counter,
     monthlyPackage_Price,
     monthlySearches,
     monthlyVerifiedApplication,
     monthlyDedicatedCRM,
     monthlyOpportunities,
     accountHolderName,
+    
   } = req.body;
 
   try {
@@ -392,37 +431,39 @@ router.patch("/:id", async (req, res) => {
 });
 
 
+// working signin route 
+// router.post("/signin", async (req, res) => {
+//   const { email, password } = req.body;
 
-router.post("/signin", async (req, res) => {
-  const { email, password } = req.body;
+//   try {
+//     const user = await User.findOne({ email });
 
-  try {
-    const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
+//     const passwordMatch = await bcrypt.compare(password, user.password);
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: "Invalid password" });
+//     }
 
-    if (!passwordMatch) {
-      return res.status(401).json({ error: "Invalid password" });
-    }
+//     const token = jwt.sign({ email }, jwtKey);
 
-    const token = jwt.sign({ email }, jwtKey);
+//     // Include user data in the response with modified userId (_id)
+//     res.json({
+//       userId: user._id,
+//       email: user.email,
+//       number: user.number,
+//       verified: user.verified,
+//       fullName: user.fullName,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
 
-    // Include user data in the response with modified userId (_id)
-    res.json({
-      userId: user._id,
-      email: user.email,
-      number: user.number,
-      verified: user.verified,
-      fullName: user.fullName,
-    });
-  } catch (error) {
-    res.status(500).json({ error: "Something went wrong" });
-  }
-});
+
 
 
 // router.post("/signin", async (req, res) => {

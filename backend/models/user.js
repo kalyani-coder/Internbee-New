@@ -56,6 +56,7 @@ const userSchema = new mongoose.Schema({
   },
   opportunities_Counter : {
     type: Number,
+    default : 0,
   },
  },
 
