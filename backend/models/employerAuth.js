@@ -52,6 +52,10 @@ const EmpAuthSchema = new mongoose.Schema({
     type : String,
     default : ""
   },
+  forgetPassotp : {
+    type : String,
+    default : ""
+  },
   verified: {
     type: Boolean,
     default: false, 

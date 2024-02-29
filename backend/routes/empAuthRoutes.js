@@ -3,18 +3,17 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // const EmployerAuth = require("../models/EmployerAuth");
 // const EmployerAuth = require("../models/employerAuth");
-const multer = require('multer');
-const path = require('path');
+const multer = require("multer");
+const path = require("path");
 
-const EmployerAuth = require('../models/employerAuth')
+const EmployerAuth = require("../models/employerAuth");
 
 const router = express.Router();
 const jwtKey = "amar";
-const nodemailer = require('nodemailer');
-
+const nodemailer = require("nodemailer");
 
 const storage = multer.diskStorage({
-  destination: './public/uploads/',
+  destination: "./public/uploads/",
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
@@ -22,9 +21,35 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Generate OTP
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// Send OTP via email
+async function sendOTPByEmail(email, otp) {
+  const transporter = nodemailer.createTransport({
+    host: "bulk.smtp.mailtrap.io",
+    port: 587,
+    auth: {
+      user: "api",
+      pass: "3654cc89cd6851318ac5989aaac06799",
+    },
+  });
+
+  const mailOptions = {
+    from: "<mailtrap@internsbee.com>",
+    to: email,
+    subject: "OTP for Password Reset",
+    text: `Your OTP for password reset is: ${otp}`,
+  };
+
+  await transporter.sendMail(mailOptions);
+}
+
 // router.post("/signup", async (req, res) => {
-//   const { empName, email, number, password, companyAddress, Description, 
-//     paymentStatus, accountHolderName, packagePrice, purchacepackageEndDate, 
+//   const { empName, email, number, password, companyAddress, Description,
+//     paymentStatus, accountHolderName, packagePrice, purchacepackageEndDate,
 //     purchacepackageDate,searches,
 //     internshipEnquiry,
 //     verifiedApplication,
@@ -84,8 +109,7 @@ const upload = multer({ storage: storage });
 //   }
 // });
 
-
-// sending email to employer for registration 
+// sending email to employer for registration
 // router.post("/signup", async (req, res) => {
 //   const {
 //     empName,
@@ -185,8 +209,7 @@ const upload = multer({ storage: storage });
 //   }
 // });
 
-// otp on sing then thanking email afetr verify otp 
-
+// otp on sing then thanking email afetr verify otp
 
 // this is my lates code for signup employer working fine with otp
 // router.post("/signup", upload.single('image'), async (req, res) => {
@@ -296,8 +319,8 @@ const upload = multer({ storage: storage });
 //   }
 // });
 
-// foe logo upload cin number new route 
-router.post("/signup", upload.single('image'), async (req, res) => {
+// foe logo upload cin number new route
+router.post("/signup", upload.single("image"), async (req, res) => {
   const {
     empName,
     email,
@@ -350,14 +373,14 @@ router.post("/signup", upload.single('image'), async (req, res) => {
       port: 587,
       auth: {
         user: "api",
-        pass: "3654cc89cd6851318ac5989aaac06799"
-      }
+        pass: "3654cc89cd6851318ac5989aaac06799",
+      },
     });
 
     const mailOptions = {
-      from: '<mailtrap@internsbee.com>',
+      from: "<mailtrap@internsbee.com>",
       to: email,
-      subject: 'OTP for Employer Registration',
+      subject: "OTP for Employer Registration",
       text: `Dear ${empName},
     
       Your OTP for employer registration at Internsbee is: ${otp}.
@@ -369,7 +392,7 @@ router.post("/signup", upload.single('image'), async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    console.log('OTP sent to', email);
+    console.log("OTP sent to", email);
 
     // Store the file path if uploaded
     let imageUrl;
@@ -411,12 +434,10 @@ router.post("/signup", upload.single('image'), async (req, res) => {
 
     res.status(201).json({ userId: createdEmpAuth._id });
   } catch (error) {
-    console.error('Error signing up employer:', error);
+    console.error("Error signing up employer:", error);
     res.status(500).json({ error: "Something went wrong" });
   }
 });
-
-
 
 router.post("/registrationemail", async (req, res) => {
   const { email, empName } = req.body;
@@ -426,14 +447,14 @@ router.post("/registrationemail", async (req, res) => {
     port: 587,
     auth: {
       user: "api",
-      pass: "3654cc89cd6851318ac5989aaac06799"
-    }
+      pass: "3654cc89cd6851318ac5989aaac06799",
+    },
   });
 
   const welcomeMailOptions = {
-    from: '<mailtrap@internsbee.com>',
+    from: "<mailtrap@internsbee.com>",
     to: email,
-    subject: 'Welcome to Internsbee - Registration Successful',
+    subject: "Welcome to Internsbee - Registration Successful",
     text: `Dear ${empName},
 
     Welcome to Internsbee! Your registration was successful. We're excited to have you on board. At Internsbee, we strive to connect employers like you with talented individuals seeking opportunities.
@@ -447,16 +468,14 @@ router.post("/registrationemail", async (req, res) => {
   // Send the welcome email
   transporter.sendMail(welcomeMailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending welcome email:', error);
+      console.error("Error sending welcome email:", error);
       res.status(500).json({ error: "Error sending welcome email" });
     } else {
-      console.log('Welcome email sent successfully:', info.response);
+      console.log("Welcome email sent successfully:", info.response);
       res.status(200).json({ message: "Welcome email sent successfully" });
     }
   });
 });
-
-
 
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
@@ -487,7 +506,7 @@ router.post("/signin", async (req, res) => {
   }
 });
 
-// working email for otp 
+// working email for otp
 
 // router.post("/signin", async (req, res) => {
 //   const { email } = req.body;
@@ -500,7 +519,7 @@ router.post("/signin", async (req, res) => {
 //     }
 
 //     // Generate OTP
-//     const otp = Math.floor(100000 + Math.random() * 900000); 
+//     const otp = Math.floor(100000 + Math.random() * 900000);
 
 //     // Send OTP via email
 //     const transporter = nodemailer.createTransport({
@@ -533,7 +552,7 @@ router.post("/signin", async (req, res) => {
 //   }
 // });
 
-// this route for send verification otp on mail 
+// this route for send verification otp on mail
 // router.post("/signin", async (req, res) => {
 //   const { email } = req.body;
 
@@ -545,7 +564,7 @@ router.post("/signin", async (req, res) => {
 //     }
 
 //     // Generate OTP
-//     const otp = Math.floor(100000 + Math.random() * 900000); 
+//     const otp = Math.floor(100000 + Math.random() * 900000);
 
 //     // Send OTP via email
 //     const transporter = nodemailer.createTransport({
@@ -579,7 +598,7 @@ router.post("/signin", async (req, res) => {
 //   }
 // });
 
-// for the employer login otp auto patch in api 
+// for the employer login otp auto patch in api
 
 // router.patch("/:userId", async (req, res) => {
 //   const userId = req.params.userId;
@@ -604,7 +623,6 @@ router.post("/signin", async (req, res) => {
 //     res.status(500).json({ error: "Something went wrong" });
 //   }
 // });
-
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -634,11 +652,10 @@ router.delete("/:id", async (req, res) => {
   try {
     const empAuth = await EmployerAuth.findByIdAndDelete(id);
     res.status(200).json({ message: "Employer Delete Successfully" });
-
   } catch (e) {
     res.status(500).json({ error: "Something went wrong" });
   }
-})
+});
 
 router.get("/", async (req, res) => {
   try {
@@ -649,17 +666,77 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/forgetpass/:id", async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
 
+  try {
+    const emp = await EmployerAuth.findById(id);
 
+    if (!emp) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
+    if (emp.email !== email) {
+      return res
+        .status(400)
+        .json({ error: "Email does not match the user's registered email" });
+    }
 
+    const otp = generateOTP();
 
+    // Patch the generated OTP into the user document
+    emp.signupotp = otp;
+    await emp.save();
 
+    await sendOTPByEmail(email, otp);
+
+    // Return the generated OTP in the response
+    res
+      .status(200)
+      .json({ message: "OTP sent successfully on your registered Email", otp });
+  } catch (error) {
+    console.error("Error sending OTP:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+// Route to verify OTP and update password
+router.post("/verifyotp/:id", async (req, res) => {
+  const id = req.params.id;
+  const { resetPassword, otp } = req.body;
+  try {
+    const employee = await EmployerAuth.findById(id);
+    if (!employee) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const isMatch = otp === employee.signupotp;
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid OTP" });
+    }
+    const hashedPassword = await bcrypt.hash(resetPassword, 10);
+
+    const newEmployee = await EmployerAuth.findByIdAndUpdate(
+      id,
+      {
+        password: hashedPassword,
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!newEmployee) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({ user: newEmployee, message: "Password updated successfully" });
+  } catch (error) {
+    console.error("Error updating password:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
 module.exports = router;
-
-
-
-
-
-

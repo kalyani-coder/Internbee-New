@@ -39,6 +39,7 @@ import Refund from "./Components/Refund/Refund";
 import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Internal_Navbar";
 import QuickNav from "./Components/QuickNav";
 import ApplyInternshipLanding from "./Components/ApplyInernshipLanding/ApplyInternshipLanding";
+import ProfileConfirmMessage from "./Components/ProfileConfirmMessage/ProfileConfirmMessage";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -67,7 +68,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/month" element={<Month/>} />
+        <Route path="/month" element={<Month />} />
         <Route path="/quicknav" element={<QuickNav />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
@@ -86,11 +87,11 @@ function App() {
           path="/apply-internship/:internshipId"
           element={<ApplyInternship />}
         />
-         <Route
+        <Route
           path="/applyinternshiplanding/:internshipId"
           element={<ApplyInternshipLanding />}
         />
-        <Route path="/free"  element={<Free/>} />
+        <Route path="/free" element={<Free />} />
         <Route path="/applied-internship" element={<AppliedIntersnship />} />
         <Route path="/freeplan" element={<FreePlan />} />
         <Route path="/monthlyplan" element={<MonthlyPackages />} />
@@ -105,6 +106,7 @@ function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/refund" element={<Refund />} />
         <Route path="/Test" element={<Applied_Intern_Internal_Navbar />} />
+        <Route path="/profileconfirm" element={<ProfileConfirmMessage />} />
 
         {/* <Route path="/Test" element={<Applied_Intern_Internal_Navbar/>} */}
       </Routes>
