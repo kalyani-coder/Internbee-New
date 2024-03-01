@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useNavigate} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../Assets/white_header1.png";
 
 const VerifyOtp = () => {
+    const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
