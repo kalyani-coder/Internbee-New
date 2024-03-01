@@ -116,7 +116,7 @@ const ViewProfile = () => {
     if (userId) {
       // Make a request to fetch user details by userId
       // Example using fetch API:
-      fetch(`http://localhost:8000/api/studentsdetails/${userId}`)
+      fetch(`https://backend.internsbee.com/api/studentsdetails/${userId}`)
         .then((response) => response.json())
         .then((data) => setUserData(data))
         .catch((error) => console.error("Error fetching user details:", error));
@@ -131,7 +131,7 @@ const ViewProfile = () => {
     // Perform the PATCH request to update user details
     const userId = localStorage.getItem("userId");
     if (userId) {
-      fetch(`http://localhost:8000/api/studentsdetails/${userId}`, {
+      fetch(`/api/studentsdetails/${userId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
