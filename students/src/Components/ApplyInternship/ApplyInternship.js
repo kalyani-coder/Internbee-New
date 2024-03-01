@@ -6,6 +6,7 @@ import Navbar from "../Navbar";
 import axios from "axios";
 import Internal_Navbar from "../UpdatedNav/Internal_Navbar.js";
 import "../ApplyInternship/Applyintern.css";
+import {Link} from "react-router-dom"
 
 const ApplyInternship = () => {
   const { internshipId } = useParams();
@@ -38,6 +39,7 @@ const ApplyInternship = () => {
     return <p>Loading...</p>;
   }
 
+
   const handleConfirmation = async () => {
     setIsSubmitting(true);
   
@@ -45,7 +47,7 @@ const ApplyInternship = () => {
       const userId = localStorage.getItem("userId");
   
       // Fetch user data from the API
-      const userResponse = await axios.get(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userResponse = await axios.get(`http://localhost:8000/api/auth/${userId}`);
       const userData = userResponse.data;
   
       console.log("User Data:", userData); // Log user data
@@ -91,7 +93,7 @@ const ApplyInternship = () => {
       };
   
       const response = await axios.post(
-        "https://backend.internsbee.com/api/applyinternship/",
+        "http://localhost:8000/api/applyinternship/",
         formData
       );
   
@@ -102,12 +104,12 @@ const ApplyInternship = () => {
           freePackage: {
             ...userData.freePackage,
             opportunities_Counter: (userData.freePackage.opportunities_Counter || 0) + 1,
-            opportunities: userData[packageType].opportunities - 1,
+            opportunities: 0,
           },
         };
   
-        // Update user details with the incremented opportunities_Counter
-        await axios.patch(`https://backend.internsbee.com/api/auth/${userId}`, updatedUserData);
+        // Update user details with the incremented opportunities_Counter and set opportunities to 0
+        await axios.patch(`http://localhost:8000/api/auth/${userId}`, updatedUserData);
   
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission
@@ -125,13 +127,8 @@ const ApplyInternship = () => {
     }
   };
   
-
-
-
-
-
-
-
+  
+  
   return (
     <>
       <div>
@@ -201,17 +198,21 @@ const ApplyInternship = () => {
                 <div className="bg-white p-6 rounded-md">
                   <p className="text-xl">Confirm your application?</p>
                   <div className="flex justify-end mt-4">
+
+                  <Link to="/freeplan">
                     <button
                       onClick={() => setShowConfirmation(false)}
                       disabled={isSubmitting} // Disable the button while submitting
                       className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+                      
 
                     >
                       Cancel
                     </button>
+                    </Link>
                     <button
                       onClick={handleConfirmation}
-                      disabled={isSubmitting} // Disable the button while submitting
+                      // disabled={isSubmitting} 
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
                     >
                       Confirm

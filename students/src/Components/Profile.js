@@ -5,9 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
+import Profile_Navbar from './ProfileNavBar/Profile_Navbar';
+import './ResponsiveCss/ResponsiveCss.css';
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
-import "./ResponsiveCss/ResponsiveCss.css";
-import "./Profile.css";
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -18,17 +18,17 @@ const Profile = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setDateOfBirth] = useState("");
+  const [gender, setGender] = useState("");
 
   const [permanentaddress, setPermanentAddress] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
-  const [state, setState] = useState("");
   const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
 
   const [currentaddress, setCurrentAddress] = useState("");
   const [currentcity, setCurrentCity] = useState("");
   const [currentdistrict, setCurrentDistrict] = useState("");
-  const [currentstate, setCurrentState] = useState("");
   const [currentcountry, setCurrentCountry] = useState("");
   const [education, setEducation] = useState("");
   const [instituteName, setInstituteName] = useState("");
@@ -36,7 +36,6 @@ const Profile = () => {
   const [passOutYear, setPassOutYear] = useState("");
   const [percentage, setPercentage] = useState("");
   const [contact, setContact] = useState("");
-  const [gender, setGender] = useState("");
 
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
@@ -182,10 +181,6 @@ const Profile = () => {
     setCountry(event.target.value);
   };
 
-  const handleStateChange = (event) => {
-    setState(event.target.value);
-  };
-
   const handleCurrentAddressChange = (event) => {
     setCurrentAddress(event.target.value);
   };
@@ -199,98 +194,10 @@ const Profile = () => {
     setCurrentCountry(event.target.value);
   };
 
-  const handleCurrentStateChange = (event) => {
-    setCurrentState(event.target.value);
-  };
-
   const handleContactChange = (event) => {
     setContact(event.target.value);
   };
 
-  const handlGenderChange = (event) => {
-    setGender(event.target.value);
-  };
-
-  const handleUpload = (e) => {
-    e.preventDefault();
-    if (selectedImage || selectedPDF) {
-      const formData = new FormData();
-      if (selectedImage) formData.append("image", selectedImage);
-      if (selectedPDF) formData.append("pdf", selectedPDF);
-      if (selectedPDF) formData.append("pdf2", selectedPDF2);
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-      formData.append("email", email);
-      formData.append("birthdate", birthdate);
-
-      formData.append("permanentaddress", permanentaddress);
-      formData.append("city", city);
-      formData.append("district", district);
-      formData.append("country", country);
-      formData.append("state", state);
-      formData.append("currentaddress", currentaddress);
-      formData.append("currentCity", currentcity);
-      formData.append("currentdistrict", currentdistrict);
-      formData.append("currentcountry", currentcountry);
-      formData.append("contact", contact);
-      formData.append("currentstate", state);
-      formData.append("gender", gender);
-
-      formData.append("education", education);
-      formData.append("instituteName", instituteName);
-      formData.append("stream", stream);
-      formData.append("passOutYear", passOutYear);
-      formData.append("percentage", percentage);
-
-      formData.append("education_12", education_12);
-      formData.append("instituteName_12", instituteName_12);
-      formData.append("stream_12", stream_12);
-      formData.append("passOutYear_12", passOutYear_12);
-      formData.append("percentage_12", percentage_12);
-
-      formData.append("education_10", education_10);
-      formData.append("instituteName_10", instituteName_10);
-      formData.append("stream_10", stream_10);
-      formData.append("passOutYear_10", passOutYear_10);
-      formData.append("percentage_10", percentage_10);
-
-      formData.append("keySkills", keySkills);
-      formData.append("languages", languages);
-      formData.append("experience", experience);
-      formData.append("salaryExpectations", salaryExpectations);
-      formData.append("projectName", projectName);
-      formData.append("projectSummary", projectSummary);
-
-      const storedUserId = localStorage.getItem("userId");
-      formData.append("userId", storedUserId);
-      console.log(storedUserId);
-
-      //  https://internbee-backend-apis.onrender.com/api/studentsdetails
-
-      fetch("https://internbee-backend-apis.onrender.com/api/studentsdetails", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Files uploaded successfully:", data);
-          alert("Profile Created Successfully", "success");
-        })
-        .catch((error) => {
-          console.error("Please fill all mandatory fields:", error);
-          if (error.message.includes("Please fill all mandatory fields")) {
-            alert("Please fill all mandatory fields", "error");
-          } else {
-            alert("Please fill all mandatory fields ", "error");
-          }
-        });
-    }
-  };
 
   const resetForm = () => {
     // Reset all state variables to their initial values
@@ -334,21 +241,192 @@ const Profile = () => {
     setstream_10("");
     setpassOutYear_10("");
     setpercentage_10("");
-  };
 
-  const handleCancel = () => {
+  };
+    const handleCancel = () => {
     // Call resetForm when cancel button is clicked
     resetForm();
   };
+  const handleUpload = (e) => {
+    e.preventDefault();
+    if (selectedImage || selectedPDF) {
+      const formData = new FormData();
+      if (selectedImage) formData.append("image", selectedImage);
+      if (selectedPDF) formData.append("pdf", selectedPDF);
+      if (selectedPDF) formData.append("pdf2", selectedPDF2);
+      formData.append("firstName", firstName);
+      formData.append("lastName", lastName);
+      formData.append("email", email);
+      formData.append("birthdate", birthdate);
+      formData.append("gender", gender);
+      formData.append("state", state);
+
+
+      formData.append("permanentaddress", permanentaddress);
+      formData.append("city", city);
+      formData.append("district", district);
+      formData.append("country", country);
+      formData.append("currentaddress", currentaddress);
+      formData.append("currentCity", currentcity);
+      formData.append("currentdistrict", currentdistrict);
+      formData.append("currentcountry", currentcountry);
+      formData.append("contact", contact);
+
+      formData.append("education", education);
+      formData.append("instituteName", instituteName);
+      formData.append("stream", stream);
+      formData.append("passOutYear", passOutYear);
+      formData.append("percentage", percentage);
+
+      formData.append("education_12", education_12);
+      formData.append("instituteName_12", instituteName_12);
+      formData.append("stream_12", stream_12);
+      formData.append("passOutYear_12", passOutYear_12);
+      formData.append("percentage_12", percentage_12);
+
+      formData.append("education_10", education_10);
+      formData.append("instituteName_10", instituteName_10);
+      formData.append("stream_10", stream_10);
+      formData.append("passOutYear_10", passOutYear_10);
+      formData.append("percentage_10", percentage_10);
+
+      formData.append("keySkills", keySkills);
+      formData.append("languages", languages);
+      formData.append("experience", experience);
+      formData.append("salaryExpectations", salaryExpectations);
+      formData.append("projectName", projectName);
+      formData.append("projectSummary", projectSummary);
+
+      const storedUserId = localStorage.getItem("userId");
+      formData.append("userId", storedUserId);
+      console.log(storedUserId);
+
+      //  https://internbee-backend-apis.onrender.com/api/studentsdetails
+
+      fetch("http://localhost:8000/api/studentsdetails", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Files uploaded successfully:", data);
+          alert("Profile Created Successfully", "success");
+        })
+        .catch((error) => {
+          console.error("Error uploading files:", error);
+          if (error.message.includes("User already has a profile")) {
+            alert("User already has a profile", "error");
+          } else {
+            alert("User already has a profile", "error");
+          }
+        });
+    }
+  };
+
+  const handleProfileIconClick = () => {
+    setShowProfileDropdown(!showProfileDropdown);
+  };
+
+  const navigate = useNavigate();
+
+  const handleResume = () => {
+    navigate("/Resume");
+  };
+
+
+
+  const handleCreateProfile = () => {
+    navigate("/Profile");
+  };
+  const handleViewProfile = () => {
+    navigate("/viewprofile");
+  };
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
+
   return (
     <div className=" ">
       <div className="">
-        <Internal_Navbar />
+        {/* <div
+          className="p-6 flex items-center justify-between border shadow-xl w-full"
+          style={{ backgroundColor: "#FFBD59" }}
+        >
+          <Link to={"/"}>
+            <div className="flex items-center space-x-2">
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-14 h-14 rounded-full"
+                style={{ width: "15rem" }}
+              />
+            </div>
+          </Link>
 
-        {/* ///////////////////////////////////////////////////////// */}
+          <div className="flex items-center space-x-6">
+            <Link
+              to="/home"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
+            >
+              Students
+            </Link>
+
+            <Link
+              to="/internship"
+              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
+            >
+              Internships
+            </Link>
+          </div>
+
+
+
+          <div className="flex items-center space-x-4">
+
+            <div
+              className="cursor-pointer"
+              onMouseEnter={() => setShowProfileDropdown(true)}
+              onClick={handleProfileIconClick}
+            >
+              <FiUser className="mr-4  text-4xl" />
+              {showProfileDropdown && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
+                  <div
+                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                    onClick={handleCreateProfile}
+                  >
+                    Create Profile
+                  </div>
+                  <div
+                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                    onClick={handleViewProfile}
+                  >
+                    View Profile
+                  </div>
+                  <div
+                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                    onClick={handleLogout}
+                  >
+                    Log Out
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div> */}
+
+<Internal_Navbar/>
+
+{/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
           <div className="CardSizeProfile w-2/3 border border-black p-2  bg-gray-50 shadow-lg mt-[113px]">
-            <div className="mt-6 text-2xl font-bold pl-4">
+            <div className="mt-6 text-2xl font-bold">
               <h6>1.Personal Details</h6>
             </div>
 
@@ -469,24 +547,6 @@ const Profile = () => {
                   htmlFor="country"
                   className="block text-large font-medium"
                 >
-                  State<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="state"
-                  name="state"
-                  value={state}
-                  onChange={handleStateChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="country"
-                  className="block text-large font-medium"
-                >
                   Country<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -499,6 +559,7 @@ const Profile = () => {
                   required
                 />
               </div>
+
             </div>
 
             <br></br>
@@ -510,7 +571,7 @@ const Profile = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
               <div className="form-group">
                 <label
-                  htmlFor="currentaddress"
+                  htmlFor="current_address"
                   className="block text-large font-medium"
                 >
                   Current Address<span className="text-red-500">*</span>
@@ -525,9 +586,10 @@ const Profile = () => {
                   required
                 />
               </div>
+
               <div className="form-group">
                 <label
-                  htmlFor="currentcity"
+                  htmlFor="current_city"
                   className="block text-large font-medium"
                 >
                   Current City<span className="text-red-500">*</span>
@@ -563,24 +625,6 @@ const Profile = () => {
 
               <div className="form-group">
                 <label
-                  htmlFor="currentstate"
-                  className="block text-large font-medium"
-                >
-                  Current State<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentstate"
-                  name="currentstate"
-                  value={currentstate}
-                  onChange={handleCurrentStateChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
                   htmlFor="currentcountry"
                   className="block text-large font-medium"
                 >
@@ -596,6 +640,7 @@ const Profile = () => {
                   required
                 />
               </div>
+
               <div className="form-group">
                 <label
                   htmlFor="contact"
@@ -613,28 +658,10 @@ const Profile = () => {
                   required
                 />
               </div>
-              <div className="form-group">
-                <label
-                  htmlFor="gender"
-                  className="block text-large font-medium"
-                >
-                  gender <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="gender"
-                  name="gender"
-                  value={gender}
-                  onChange={handlGenderChange}
-                  required
-                />
-              </div>
             </div>
-
             <hr />
 
-            <div className="mt-6 text-2xl font-bold pl-4">
+            <div className="mt-6 text-2xl font-bold">
               <h6>2. Educational Details Graduation</h6>
             </div>
 
@@ -698,7 +725,7 @@ const Profile = () => {
                   htmlFor="passoutyear"
                   className="block text-large font-medium"
                 >
-                  Year<span className="text-red-500">*</span>
+                  Pass-out Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="number"
@@ -795,7 +822,7 @@ const Profile = () => {
                   htmlFor="passOutYear_12"
                   className="block text-large font-medium"
                 >
-                  Year<span className="text-red-500">*</span>
+                  Pass-out Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="number"
@@ -828,7 +855,7 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="mt-6 text-2xl font-bold pl-4">
+            <div className="mt-6 text-2xl font-bold">
               <h6> Educational Details 10th</h6>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
@@ -873,7 +900,7 @@ const Profile = () => {
                   htmlFor="stream_10"
                   className="block text-large font-medium"
                 >
-                  Stream<span className="text-red-500">*</span>
+                  Stream
                 </label>
                 <input
                   type="text"
@@ -882,7 +909,6 @@ const Profile = () => {
                   name="stream_10"
                   value={stream_10}
                   onChange={handleStream_10Change}
-                  required
                 />
               </div>
 
@@ -891,7 +917,7 @@ const Profile = () => {
                   htmlFor="passOutYear_10"
                   className="block text-large font-medium"
                 >
-                  Year<span className="text-red-500">*</span>
+                  Pass-out Year<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="number"
@@ -923,7 +949,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="mt-6 text-2xl font-bold pl-4">
+            <div className="mt-6 text-2xl font-bold">
               <h6>3.Technical Details</h6>
             </div>
 
@@ -946,12 +972,15 @@ const Profile = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="languages" className="block  font-medium">
+                <label
+                  htmlFor="languages"
+                  className="block text-xl font-medium"
+                >
                   Languages<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                   id="languages"
                   name="languages"
                   value={languages}
@@ -961,12 +990,15 @@ const Profile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="experience" className="block  font-medium">
+                <label
+                  htmlFor="experience"
+                  className="block text-xl font-medium"
+                >
                   Experience(if any)<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                   id="experience"
                   name="experience"
                   value={experience}
@@ -979,13 +1011,13 @@ const Profile = () => {
               <div className="form-group">
                 <label
                   htmlFor="salaryexpectations"
-                  className="block  font-medium"
+                  className="block text-xl font-medium"
                 >
                   Salary Expectations<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md "
+                  type="text"
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                   id="salaryexpectations"
                   name="salaryExpectations"
                   value={salaryExpectations}
@@ -995,12 +1027,15 @@ const Profile = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="projectname" className="block  font-medium">
+                <label
+                  htmlFor="projectname"
+                  className="block text-xl font-medium"
+                >
                   Project Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                   id="projectname"
                   name="projectName"
                   value={projectName}
@@ -1009,12 +1044,15 @@ const Profile = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="projectsummary" className="block  font-medium">
+                <label
+                  htmlFor="projectsummary"
+                  className="block text-xl font-medium"
+                >
                   Project Summary<span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="projectsummary"
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                   rows="4"
                   name="projectSummary"
                   value={projectSummary}
@@ -1028,13 +1066,13 @@ const Profile = () => {
 
             <hr />
 
-            <div className="mt-6 text-2xl font-bold pl-4">
+            <div className="mt-6 text-2xl font-bold">
               <h6>4.Upload Documents</h6>
             </div>
 
             <div className="UploadResume grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="form-group">
-                <label htmlFor="resume" className="block  font-medium">
+                <label htmlFor="resume" className="block text-xl font-medium">
                   Resume<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -1042,18 +1080,18 @@ const Profile = () => {
                   accept="application/pdf"
                   onChange={handlePDFChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                 />
               </div>
 
               <div className="form-group col-span-3 md:col-span-1 mt-10">
-                {/* <span className="block  font-large">OR</span> */}
+                {/* <span className="block text-xl font-large">OR</span> */}
               </div>
 
               <div className="form-group">
                 <label
                   htmlFor="certification"
-                  className="block  font-medium mt-10"
+                  className="block text-xl font-medium mt-10"
                 >
                   Certification
                 </label>
@@ -1061,14 +1099,14 @@ const Profile = () => {
                   type="file"
                   accept="application/pdf"
                   onChange={handlePDFChange2}
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                 />
               </div>
 
               <div className="form-group">
                 <label
                   htmlFor="profilePicture"
-                  className="block  font-medium mt-10"
+                  className="block text-xl font-medium mt-10"
                 >
                   Profile Picture<span className="text-red-500">*</span>
                 </label>
@@ -1077,7 +1115,7 @@ const Profile = () => {
                   accept="image/*"
                   onChange={handleImageChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md "
+                  className="mt-1 p-2 w-full border rounded-md text-xl"
                 />
               </div>
             </div>
@@ -1119,11 +1157,14 @@ const Profile = () => {
                 Submit
               </button>
             </div>
+
+
+
+            </div>
           </div>
         </div>
       </div>
-      //{" "}
-    </div>
+
   );
 };
 

@@ -211,9 +211,10 @@ const Home1 = () => {
   };
 
   const handleMainSearch = () => {
+    console.log('Search button clicked');
     const lowerCaseQuery = mainSearchQuery.toLowerCase();
 
-    const filtered = allInternships.filter((item) => {
+    const filtered = allInternships.filter((item) =>{
       const {
         job_Title,
         empName,
@@ -235,7 +236,7 @@ const Home1 = () => {
         // Add other checks as needed
       );
     });
-
+    console.log('Filtered Internships:', filtered);
     setFilteredInternships(filtered);
   };
 
@@ -365,7 +366,7 @@ const Home1 = () => {
 
       {/* </Slider> */}
       {/* </div>  */}
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center">
         <div className="Homehead mt-5 mb-10 text-2xl font-bold flex flex-col items-center ">
           <h1>Latest Internships</h1>
         </div>
