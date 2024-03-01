@@ -5,14 +5,18 @@ import Footer from "../Footer";
 // import Applied_Intern_Internal_Navbar from "../AppliedInternNavBar/Applied_Intern_Internal_Navbar";
 import "../ResponsiveCss/ResponsiveCss.css";
 import QuickNav from "../QuickNav";
+import "./AboutUs.css";
 const AboutUs = () => {
   return (
     <>
       <div className="abc">
         {/* <Internal_Navbar/> */}
-        <QuickNav/>
+        <QuickNav />
       </div>
-      <div className="py-14 bg-white mt-24 text-center all-about-section-content-for-the-abt-us-page">
+      <div
+        className="py-14 bg-white mt-24 text-center p-4 all-about-section-content-for-the-abt-us-page"
+        style={{ padding: "1em" }}
+      >
         <h2 className="text-2xl text-gray-900 font-bold md:text-4xl mx-8">
           About Us
         </h2>

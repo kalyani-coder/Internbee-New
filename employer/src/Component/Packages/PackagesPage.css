@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  .main-packaage-for-the-packages-section-card {
+    padding: 0;
+    font-size: 15px;
+  }
+  .main-package-amount-for-the-annually-package-price {
+    font-size: 35px;
+  }
+  .main-package-amount-for-the-annually-package-price-container {
+  }
+  .main-packaage-for-the-packages-section-card-monthly {
+    padding: 1em;
+  }
+  .Whatever-cardigan-tote-bag-tumblr-hexagon-brooklyn-asymmetrical {
+    font-size: 15px;
+  }
+}

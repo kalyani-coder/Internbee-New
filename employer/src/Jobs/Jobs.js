@@ -108,7 +108,7 @@ const Jobs = () => {
         </div>
 
         <div className="w-full p-4">
-       
+
           <h1 className="text-xl font-bold mb-4">Internship List</h1>
           <input
             type="text"
@@ -146,7 +146,7 @@ const Jobs = () => {
                   <p>Job Type: {internship.job_Type}</p>
                   <p>Position: {internship.position}</p>
                   <p>Job Description: {internship.job_Description}</p>
-                  <div className="flex justify-end">
+                  <div className="flex justify-end view-applied-button-employer-jobs">
                     <button
                       className="bg-blue-500 text-white p-2 rounded transition-all"
                       onClick={() =>

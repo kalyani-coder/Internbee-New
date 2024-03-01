@@ -170,7 +170,6 @@ const Home1 = () => {
     navigate("/login");
   };
 
-
   const yourCardArray = [
     {
       icons: FaMobile,
@@ -242,7 +241,6 @@ const Home1 = () => {
 
   return (
     <>
-     
       <Internal_Navbar />
 
       {/* /////////////////////////////////////////////////////////////////////// */}
@@ -252,19 +250,19 @@ const Home1 = () => {
 
       <div className="inpimp flex items-center justify-center my-10 mt-5">
         <div className=" inputhomess relative flex items-center gap-8">
-        <input
-              type="text"
-              placeholder="Enter skills/designations/companies"
-              value={mainSearchQuery}
-              onChange={(e) => setMainSearchQuery(e.target.value)}
-              className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
-            />
-           <button
-              className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
-              onClick={handleMainSearch}
-            >
-              Search
-            </button>
+          <input
+            type="text"
+            placeholder="Enter skills/designations/companies"
+            value={mainSearchQuery}
+            onChange={(e) => setMainSearchQuery(e.target.value)}
+            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+          />
+          <button
+            className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+            onClick={handleMainSearch}
+          >
+            Search
+          </button>
         </div>
       </div>
       {/* <div ref={companiesRef}>

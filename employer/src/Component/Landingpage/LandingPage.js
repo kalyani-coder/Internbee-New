@@ -22,7 +22,6 @@ const LandingPage = () => {
   const carouselRef = useRef(null);
   const carouselsRef = useRef(null);
 
-
   const handleTrackerHover = () => {
     setTrackerWidth(100);
   };
@@ -53,35 +52,35 @@ const LandingPage = () => {
       });
     }
   };
-//   const handleNextSlide = () => {
-//     const carousel = carouselRef.current;
-//     if (carousel) {
-//       const scrollWidth = carousel.scrollWidth;
-//       const scrollLeft = carousel.scrollLeft;
-//       const clientWidth = carousel.clientWidth;
-//       const maxScrollLeft = scrollWidth - clientWidth;
-//       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
+  //   const handleNextSlide = () => {
+  //     const carousel = carouselRef.current;
+  //     if (carousel) {
+  //       const scrollWidth = carousel.scrollWidth;
+  //       const scrollLeft = carousel.scrollLeft;
+  //       const clientWidth = carousel.clientWidth;
+  //       const maxScrollLeft = scrollWidth - clientWidth;
+  //       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
 
-//       carousel.scrollTo({
-//         left: newScrollLeft,
-//         behavior: "smooth",
-//       });
-//     }
-//   };
+  //       carousel.scrollTo({
+  //         left: newScrollLeft,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
 
-//   const handlePreviousSlide = () => {
-//     const carousel = carouselRef.current;
-//     if (carousel) {
-//       const scrollLeft = carousel.scrollLeft;
-//       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
+  //   const handlePreviousSlide = () => {
+  //     const carousel = carouselRef.current;
+  //     if (carousel) {
+  //       const scrollLeft = carousel.scrollLeft;
+  //       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
 
-//       carousel.scrollTo({
-//         left: newScrollLeft,
-//         behavior: "smooth",
-//       });
-//     }
-//   };
-const handleNextSlide = () => {
+  //       carousel.scrollTo({
+  //         left: newScrollLeft,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
+  const handleNextSlide = () => {
     const carousel = carouselRef.current;
     if (carousel) {
       const scrollWidth = carousel.scrollWidth;
@@ -89,20 +88,20 @@ const handleNextSlide = () => {
       const clientWidth = carousel.clientWidth;
       const maxScrollLeft = scrollWidth - clientWidth;
       const newScrollLeft = Math.min(scrollLeft + clientWidth, maxScrollLeft);
-  
+
       carousel.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
       });
     }
   };
-  
+
   const handlePreviousSlide = () => {
     const carousel = carouselRef.current;
     if (carousel) {
       const scrollLeft = carousel.scrollLeft;
       const newScrollLeft = Math.max(scrollLeft - carousel.clientWidth, 0);
-  
+
       carousel.scrollTo({
         left: newScrollLeft,
         behavior: "smooth",
@@ -167,7 +166,6 @@ const handleNextSlide = () => {
         <h1 className=" heading ">Latest Internships on InternsBee</h1>
 
         {/* Popular Categories */}
-      
 
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
@@ -272,7 +270,9 @@ const handleNextSlide = () => {
                     <div className="cardlowercont flex items-center justify-between mt-2">
                       <div>
                         <p className="text-gray-600">Location: Pune</p>
-                        <p className="text-gray-600">Stipend: Performance based</p>
+                        <p className="text-gray-600">
+                          Stipend: Performance based
+                        </p>
                         <p className="text-gray-600">Duration: 2 months</p>
                       </div>
 
@@ -291,12 +291,12 @@ const handleNextSlide = () => {
             </div>
           </div>
           <div className="upperSectionbtnslider text-3xl flex items-center justify-center gap-12 mb-20">
-          <button onClick={handlePreviousCarouselSlide}>
-            <GrPrevious />
-          </button>
-          <button onClick={handleNextCarouselSlide}>
-            <GrNext />
-          </button>
+            <button onClick={handlePreviousCarouselSlide}>
+              <GrPrevious />
+            </button>
+            <button onClick={handleNextCarouselSlide}>
+              <GrNext />
+            </button>
           </div>
         </div>
       </section>
@@ -400,11 +400,8 @@ const handleNextSlide = () => {
                       </Link>
                     </div>
                   </div>
-                  
                 </div>
-                
               </div>
-              
             </div>
             <div className="card-landing-page">
               <div className="card-landing-page">
@@ -433,15 +430,12 @@ const handleNextSlide = () => {
                       </Link>
                     </div>
                   </div>
-                  
                 </div>
-                
               </div>
-              
             </div>
           </div>
           <div className="NextPriv text-3xl flex items-center justify-center gap-12 mb-20">
-          <button onClick={handlePreviousSlide}>
+            <button onClick={handlePreviousSlide}>
               <GrPrevious />
             </button>
 
@@ -450,12 +444,9 @@ const handleNextSlide = () => {
             </button>
           </div>
         </div>
-
       </section>
-     
 
-
-     {/* /////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////// */}
 
       {/* section 5 */}
 

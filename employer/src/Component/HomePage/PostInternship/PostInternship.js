@@ -4,12 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { enIN } from "date-fns/locale";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../Navbar/Navbar";
 import Sidebar from "../../Sidebar/Sidebar";
 import Footer from "../../Footer/Footer";
-import '../../ResponsiveCss/ResponsiveCss.css';
-
+import "../../ResponsiveCss/ResponsiveCss.css";
+import "./PostInternship.css";
 const PostInternship = () => {
   const [posting, setPosting] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -57,7 +57,6 @@ const PostInternship = () => {
     });
   };
 
-
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const email = localStorage.getItem("email");
@@ -81,10 +80,9 @@ const PostInternship = () => {
     }
   }, []);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Fetch employer details from the API
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -94,17 +92,18 @@ const PostInternship = () => {
       });
       return;
     }
-  
+
     const employerDetailsApiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${userId}`;
-    const postInternshipApiUrl = "https://internbee-backend-apis.onrender.com/api/postinternship";
-  
+    const postInternshipApiUrl =
+      "https://internbee-backend-apis.onrender.com/api/postinternship";
+
     try {
       // Fetch employer details
       const employerResponse = await fetch(employerDetailsApiUrl);
       const employerDetails = await employerResponse.json();
-  
+
       console.log("Employer Details:", employerDetails);
-  
+
       // Check paymentStatus
       if (employerDetails.paymentStatus === "") {
         console.log("Payment not accepted. Please complete the payment first.");
@@ -114,7 +113,7 @@ const PostInternship = () => {
         });
         return; // Stop the submission if payment is not accepted
       }
-  
+
       // Check if paymentStatus is not "Accepted"
       if (employerDetails.paymentStatus !== "Accepted") {
         console.log("Payment not accepted. Please complete the payment first.");
@@ -124,19 +123,19 @@ const PostInternship = () => {
         });
         return; // Stop the submission if paymentStatus is not "Accepted"
       }
-  
+
       // Check if the employer has available internship slots
       if (employerDetails.internshipEnquiry <= 0) {
-        console.log('Employer has reached the internship posting limit');
+        console.log("Employer has reached the internship posting limit");
         setAlert({
           type: "alert ",
           message: "Employer has reached the internship posting limit",
         });
         return;
       }
-  
+
       console.log("Payment Accepted. Proceeding to post internship.");
-  
+
       // Formatting dates to the desired format
       const formattedStartDate = format(formData.start_Date, "dd/MM/yyyy", {
         locale: enIN,
@@ -144,7 +143,7 @@ const PostInternship = () => {
       const formattedEndDate = format(formData.end_Date, "dd/MM/yyyy", {
         locale: enIN,
       });
-  
+
       setPosting(true);
       const postResponse = await fetch(postInternshipApiUrl, {
         method: "POST",
@@ -157,7 +156,7 @@ const PostInternship = () => {
           end_Date: formattedEndDate,
         }),
       });
-  
+
       if (postResponse.ok) {
         // Increment the internshipCounter in the employer's details
         const updatedEmployerDetails = {
@@ -165,7 +164,7 @@ const PostInternship = () => {
           internshipCounter: (employerDetails.internshipCounter || 0) + 1,
           internshipEnquiry: employerDetails.internshipEnquiry - 1, // Decrease available slots
         };
-  
+
         // Update employer details with the incremented internshipCounter
         const updateResponse = await fetch(employerDetailsApiUrl, {
           method: "PATCH",
@@ -174,9 +173,8 @@ const PostInternship = () => {
           },
           body: JSON.stringify(updatedEmployerDetails),
         });
-  
-        if (updateResponse.ok) {
 
+        if (updateResponse.ok) {
           console.log("Employer internshipCounter updated successfully");
           setAlert({
             type: "success",
@@ -190,9 +188,8 @@ const PostInternship = () => {
           });
         }
 
-  
         // Set other state or perform additional actions as needed
-  
+
         setAlert({
           type: "success",
           message: "Internship submitted successfully",
@@ -225,18 +222,11 @@ const PostInternship = () => {
       setPosting(false);
     }
   };
-  
-
-
-
 
   return (
-
     <>
-
       <div>
         <Navbar />
-
       </div>
 
       <div className="SideNPostInternship flex">
@@ -248,14 +238,14 @@ const PostInternship = () => {
           <h2 className="text-3xl md:text-2xl lg:text-2xl font-bold mb-0">
             Post Internship
           </h2>
-          {alert && (
+          {/* {alert && (
             <Alert type={alert.type}>
               <p className="">
                 {alert.type === "success" ? "Success" : "alert "}
               </p>
               <p>{alert.message}</p>
             </Alert>
-          )}
+          )} */}
 
           <form
             onSubmit={handleSubmit}
@@ -266,7 +256,7 @@ const PostInternship = () => {
             <div className="w-full md:w-1/2 px-4 mb-4">
               <label
                 htmlFor="job_Title"
-                className="block text-sm font-medium text-black"
+                className="block text-sm font-medium text-black internship-titile-for-post-internship"
               >
                 Internship Title:
               </label>
@@ -276,7 +266,7 @@ const PostInternship = () => {
                 name="job_Title"
                 value={formData.job_Title}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className=" mt-1 p-2 border rounded-md w-full"
                 placeholder="Enter Internship title here"
                 required
               />
@@ -296,7 +286,7 @@ const PostInternship = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 placeholder="Enter your Internship location here"
                 required
               />
@@ -316,7 +306,7 @@ const PostInternship = () => {
                 name="company_Name"
                 value={formData.company_Name}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 placeholder="Enter your Company name here"
                 required
               />
@@ -336,7 +326,7 @@ const PostInternship = () => {
                 selected={formData.start_Date}
                 onChange={handleStartDateChange}
                 dateFormat="dd/MM/yyyy"
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 required
               />
             </div>
@@ -353,7 +343,7 @@ const PostInternship = () => {
                 selected={formData.end_Date}
                 onChange={handleEndDateChange}
                 dateFormat="dd/MM/yyyy"
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 required
               />
             </div>
@@ -371,7 +361,7 @@ const PostInternship = () => {
                 name="job_Type"
                 value={formData.job_Type}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 required
               >
                 <option value="Full-time">Full Time</option>
@@ -393,7 +383,7 @@ const PostInternship = () => {
                 name="skills"
                 value={formData.skills}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 placeholder="Enter required skills here"
               />
             </div>
@@ -412,7 +402,7 @@ const PostInternship = () => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 placeholder="Enter the position here"
                 required
               />
@@ -432,7 +422,7 @@ const PostInternship = () => {
                 name="stipend"
                 value={formData.stipend}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
                 required
               />
             </div>
@@ -450,7 +440,7 @@ const PostInternship = () => {
                 name="job_Description"
                 value={formData.job_Description}
                 onChange={handleChange}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="input-field-for-the-post-internship-page-text-area mt-1 p-2 border rounded-md w-full"
                 placeholder="Write Internship description"
                 rows="4"
                 required
@@ -458,11 +448,11 @@ const PostInternship = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="w-full px-4 mt-4">
+            <div className="post-internship-btn-for-the-post-intership-page w-full px-4 mt-4">
               <button
                 type="submit"
                 disabled={posting}
-                className="bg-black text-amber-300 py-2 px-4 rounded hover:bg-gray-800"
+                className="bg-black text-amber-300 py-2 px-4 rounded hover:bg-gray-800 "
               >
                 Post Internship
               </button>

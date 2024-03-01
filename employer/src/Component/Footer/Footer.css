@@ -1,23 +1,50 @@
-@media screen and (max-width:768px) {
-    .footer-resopnsive{
-        display: block;
-        width: 100%;
-
-    }
-    .footer-content{
-        display: block;
-    }
-    .footer-content>li{
-        margin-left: 0;
-    }
-   .footer-div{
-    margin-bottom: 20px;
-   }
-   .MainFooter{
-    display: block !important;
-   }
-   .footer-content {
-    display: block !important;
+.img-logo-for-the-footer-internsbeee {
+  width: 15em;
 }
+@media screen and (max-width: 768px) {
+  .footer-resopnsive {
+    display: block;
+    width: 100%;
+  }
+  .footer-content {
+    /* display: grid; */
+    text-align: left;
+    gap: 2em;
+    padding: 2em 0;
+    justify-content: center;
+  }
+  .footer-content > li {
+    margin-left: 0;
+  }
+  .footer-div {
+    margin-bottom: 20px;
+  }
+  .MainFooter {
+    display: block !important;
+  }
 
+  .div-logo-for-the-footer-internsbeee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .img-logo-for-the-footer-internsbeee {
+    width: 10em;
+  }
+  .locatins-for-the-footer-internbeee {
+    font-size: 15px;
+    /* text-align: center; */
+  }
+  .other-links-in-the-footer-page {
+    /* text-align: center; */
+    font-size: 15px;
+    align-items: top;
+    /* margin: auto; */
+    /* display: grid; */
+    justify-content: center;
+    display: grid;
+  }
+  .interns-bee-all-righ-reserved-footerr {
+    font-size: 15px;
+  }
 }

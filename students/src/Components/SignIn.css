@@ -3,18 +3,18 @@
     text-align: center;
     font-size: 22px;
   }
-
 }
 .logo-for-sign-in-page-width-set {
-    width: 14rem;
-    height: 4.5rem;
+  width: 14rem;
+  height: 4.5rem;
+}
+
+@media (min-width: 100px) and (max-width: 425px) {
+  .logo-for-sign-in-page-width-set {
+    width: 10rem;
+    height: 3rem;
   }
-
-  @media (min-width: 100px) and (max-width: 425px) {
-    .logo-for-sign-in-page-width-set {
-        width: 10rem;
-        height: 3rem;
-      }
-
-
+  .sign-in-div-student {
+    width: 100%;
   }
+}

@@ -75,8 +75,6 @@ const LandingPage = () => {
     fetchData();
   }, []);
 
-
-
   //   const handleNextSlide = () => {
   //     const carousel = carouselRef.current;
   //     if (carousel) {
@@ -195,36 +193,40 @@ const LandingPage = () => {
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden ">
           <div className="carousel justify-content-center" ref={carouselsRef}>
-          {internships.map((internship) => (
-            <div className="card-landing-page">
-            
-              <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">
-                  {internship.job_Title}
-                  </h2>
-                  <p className="text-gray-700 mb-2"> {internship.company}</p>
-                  <hr className="my-2" />
+            {internships.map((internship) => (
+              <div className="card-landing-page">
+                <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
+                  <div className="p-4">
+                    <h2 className="text-xl font-semibold mb-2">
+                      {internship.job_Title}
+                    </h2>
+                    <p className="text-gray-700 mb-2"> {internship.company}</p>
+                    <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
-                    <div>
-                      <p className="text-gray-600">Location:{internship.location}</p>
-                      <p className="text-gray-600">Stipend: {internship.stipend} </p>
-                      <p className="text-gray-600">Duration:{internship.duration} </p>
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
+                      <div>
+                        <p className="text-gray-600">
+                          Location:{internship.location}
+                        </p>
+                        <p className="text-gray-600">
+                          Stipend: {internship.stipend}{" "}
+                        </p>
+                        <p className="text-gray-600">
+                          Duration:{internship.duration}{" "}
+                        </p>
+                      </div>
+                      <Link to={`/applyinternshiplanding/${internship._id}`}>
+                        <button
+                          className=" text-black px-4 py-2 rounded-md focus:outline-none"
+                          style={{ backgroundColor: "#FFBD59" }}
+                        >
+                          View Details
+                        </button>
+                      </Link>
                     </div>
-                    <Link to={`/applyinternshiplanding/${internship._id}`}>
-                      <button
-                        className=" text-black px-4 py-2 rounded-md focus:outline-none"
-                        style={{ backgroundColor: "#FFBD59" }}
-                      >
-                        View Details
-                      </button>
-                    </Link>
                   </div>
                 </div>
               </div>
-              
-            </div>
             ))}
             {/* <div className="card-landing-page">
               <div className="width-for-each-card-scrollable max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
@@ -345,37 +347,44 @@ const LandingPage = () => {
         {/* Popular Categories */}
         {/* card-landing-page Carousel */}
         <div className="carousel-container mt-5 overflow-hidden">
-          <div className="carousel carousel justify-content-center " ref={carouselRef}>
-          {internships.map((internship) => (
-            <div className="card-landing-page">
-            
-              <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">
-                  {internship.job_Title}
-                  </h2>
-                  <p className="text-gray-700 mb-2"> {internship.company}</p>
-                  <hr className="my-2" />
+          <div
+            className="carousel carousel justify-content-center "
+            ref={carouselRef}
+          >
+            {internships.map((internship) => (
+              <div className="card-landing-page">
+                <div className="width-for-each-card-scrollable  bg-white rounded-md overflow-hidden shadow-lg">
+                  <div className="p-4">
+                    <h2 className="text-xl font-semibold mb-2">
+                      {internship.job_Title}
+                    </h2>
+                    <p className="text-gray-700 mb-2"> {internship.company}</p>
+                    <hr className="my-2" />
 
-                  <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
-                    <div>
-                      <p className="text-gray-600">Location:{internship.location}</p>
-                      <p className="text-gray-600">Stipend: {internship.stipend} </p>
-                      <p className="text-gray-600">Duration:{internship.duration} </p>
+                    <div className="flex items-center justify-between mt-2 locations-stipend-duration-and-btn-for-landing-page-card">
+                      <div>
+                        <p className="text-gray-600">
+                          Location:{internship.location}
+                        </p>
+                        <p className="text-gray-600">
+                          Stipend: {internship.stipend}{" "}
+                        </p>
+                        <p className="text-gray-600">
+                          Duration:{internship.duration}{" "}
+                        </p>
+                      </div>
+                      <Link to={`/applyinternshiplanding/${internship._id}`}>
+                        <button
+                          className=" text-black px-4 py-2 rounded-md focus:outline-none"
+                          style={{ backgroundColor: "#FFBD59" }}
+                        >
+                          View Details
+                        </button>
+                      </Link>
                     </div>
-                    <Link to={`/applyinternshiplanding/${internship._id}`}>
-                      <button
-                        className=" text-black px-4 py-2 rounded-md focus:outline-none"
-                        style={{ backgroundColor: "#FFBD59" }}
-                      >
-                        View Details
-                      </button>
-                    </Link>
                   </div>
                 </div>
               </div>
-              
-            </div>
             ))}
 
             {/* <div className="card-landing-page">

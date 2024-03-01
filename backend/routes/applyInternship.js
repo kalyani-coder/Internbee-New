@@ -26,7 +26,7 @@ router.get("/shortlisted/:id", async (req, res) => {
   }
 });
 
-// shortlisted candidates list in whch multiple candidates available 
+// shortlisted candidates list in whch multiple candidates available
 router.get("/shortlisted", async (req, res) => {
   try {
     const allShortlisted = await appliedInternshipModel.find({
@@ -37,7 +37,6 @@ router.get("/shortlisted", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 router.get("/internId/:InternId", async (req, res) => {
   const { InternId } = req.params;
@@ -172,20 +171,23 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// deleted shorlisted candidates by main _Id 
+// deleted shorlisted candidates by main _Id
 router.delete("/shortlisted/:id", async (req, res) => {
   try {
     const deletedInternship = await appliedInternshipModel.findByIdAndDelete(
       req.params.id
     );
     if (!deletedInternship) {
-      return res.status(404).json({ message: "Shortlisted candidate not found" });
+      return res
+        .status(404)
+        .json({ message: "Shortlisted candidate not found" });
     }
-    res.status(200).json({ message: "Shortlisted candidate deleted successfully" });
+    res
+      .status(200)
+      .json({ message: "Shortlisted candidate deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 module.exports = router;

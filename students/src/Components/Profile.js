@@ -7,6 +7,7 @@ import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import "./ResponsiveCss/ResponsiveCss.css";
+import "./Profile.css";
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -15,7 +16,7 @@ const Profile = () => {
   const [selectedPDF2, setSelectedPDF2] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");   
+  const [email, setEmail] = useState("");
   const [birthdate, setDateOfBirth] = useState("");
 
   const [permanentaddress, setPermanentAddress] = useState("");
@@ -37,14 +38,12 @@ const Profile = () => {
   const [contact, setContact] = useState("");
   const [gender, setGender] = useState("");
 
-
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
   const [experience, setExperience] = useState("");
   const [salaryExpectations, setSalaryExpectations] = useState("");
   const [projectName, setProjectName] = useState("");
   const [projectSummary, setProjectSummary] = useState("");
-  
 
   // 12th education details
 
@@ -182,11 +181,10 @@ const Profile = () => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
- 
+
   const handleStateChange = (event) => {
     setState(event.target.value);
-  }
-
+  };
 
   const handleCurrentAddressChange = (event) => {
     setCurrentAddress(event.target.value);
@@ -203,15 +201,15 @@ const Profile = () => {
 
   const handleCurrentStateChange = (event) => {
     setCurrentState(event.target.value);
-  }
+  };
 
   const handleContactChange = (event) => {
     setContact(event.target.value);
   };
 
-  const handlGenderChange = (event) =>{
+  const handlGenderChange = (event) => {
     setGender(event.target.value);
-  }
+  };
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -237,8 +235,6 @@ const Profile = () => {
       formData.append("contact", contact);
       formData.append("currentstate", state);
       formData.append("gender", gender);
-
-
 
       formData.append("education", education);
       formData.append("instituteName", instituteName);
@@ -338,7 +334,6 @@ const Profile = () => {
     setstream_10("");
     setpassOutYear_10("");
     setpercentage_10("");
-    
   };
 
   const handleCancel = () => {
@@ -348,7 +343,6 @@ const Profile = () => {
   return (
     <div className=" ">
       <div className="">
-       
         <Internal_Navbar />
 
         {/* ///////////////////////////////////////////////////////// */}
@@ -505,7 +499,6 @@ const Profile = () => {
                   required
                 />
               </div>
-          
             </div>
 
             <br></br>
@@ -611,7 +604,7 @@ const Profile = () => {
                   Contact Number <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="contact"
                   name="contact"
@@ -640,14 +633,6 @@ const Profile = () => {
             </div>
 
             <hr />
-
-
-
-
-
-
-
-
 
             <div className="mt-6 text-2xl font-bold pl-4">
               <h6>2. Educational Details Graduation</h6>
@@ -716,7 +701,7 @@ const Profile = () => {
                   Year<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="passOutYear"
                   name="passOutYear"
@@ -734,7 +719,7 @@ const Profile = () => {
                   Percentage / CGPA<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="percentage"
                   name="percentage"
@@ -746,7 +731,7 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="mt-6 text-2xl font-bold">
+            <div className="mt-6 text-2xl pl-4 font-bold">
               <h6> Educational Details 12th</h6>
             </div>
 
@@ -810,10 +795,10 @@ const Profile = () => {
                   htmlFor="passOutYear_12"
                   className="block text-large font-medium"
                 >
-                 Year<span className="text-red-500">*</span>
+                  Year<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="passOutYear_12"
                   name="passOutYear_12"
@@ -831,7 +816,7 @@ const Profile = () => {
                   Percentage<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="percentage_12"
                   name="percentage_12"
@@ -906,10 +891,10 @@ const Profile = () => {
                   htmlFor="passOutYear_10"
                   className="block text-large font-medium"
                 >
-                 Year<span className="text-red-500">*</span>
+                  Year<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="passOutYear_10"
                   name="passOutYear_10"
@@ -927,7 +912,7 @@ const Profile = () => {
                   Percentage<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md text-large"
                   id="percentage_10"
                   name="percentage_10"
@@ -961,10 +946,7 @@ const Profile = () => {
                 />
               </div>
               <div className="form-group">
-                <label
-                  htmlFor="languages"
-                  className="block  font-medium"
-                >
+                <label htmlFor="languages" className="block  font-medium">
                   Languages<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -979,10 +961,7 @@ const Profile = () => {
               </div>
 
               <div className="form-group">
-                <label
-                  htmlFor="experience"
-                  className="block  font-medium"
-                >
+                <label htmlFor="experience" className="block  font-medium">
                   Experience(if any)<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -1005,7 +984,7 @@ const Profile = () => {
                   Salary Expectations<span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 p-2 w-full border rounded-md "
                   id="salaryexpectations"
                   name="salaryExpectations"
@@ -1016,10 +995,7 @@ const Profile = () => {
               </div>
 
               <div className="form-group">
-                <label
-                  htmlFor="projectname"
-                  className="block  font-medium"
-                >
+                <label htmlFor="projectname" className="block  font-medium">
                   Project Name<span className="text-red-500">*</span>
                 </label>
                 <input
@@ -1033,10 +1009,7 @@ const Profile = () => {
                 />
               </div>
               <div className="form-group">
-                <label
-                  htmlFor="projectsummary"
-                  className="block  font-medium"
-                >
+                <label htmlFor="projectsummary" className="block  font-medium">
                   Project Summary<span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -1119,14 +1092,14 @@ const Profile = () => {
               >
                 Create Resume
               </button> */}
-              <Link to={'/home'}>
-              <button
-                 style={{}}
-                className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
-              >
-                {" "}
-                Back
-              </button>
+              <Link to={"/home"}>
+                <button
+                  style={{}}
+                  className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                >
+                  {" "}
+                  Back
+                </button>
               </Link>
               <button
                 onClick={handleCancel}

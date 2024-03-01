@@ -1,0 +1,16 @@
+@media screen and (max-width: 768px) {
+  .input-field-for-the-post-internship-page {
+    font-size: 15px;
+    height: 2.5em;
+  }
+  .post-internship-btn-for-the-post-intership-page {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-field-for-the-post-internship-page-text-area {
+    font-size: 15px;
+    height: 4em;
+  }
+}

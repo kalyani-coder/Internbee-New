@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+  .para-in-faq-page-media-query {
+    font-size: 15px;
+    padding: 1em 0;
+  }
+  .header-in-faq-page-media-query {
+    font-size: 17px;
+  }
+  .container-for-the-faq-container-main {
+    padding: 0;
+  }
+}

@@ -1,0 +1,32 @@
+.InputSearch {
+  /* flex-direction: column; */
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .search-btn-for-search-cv {
+    margin: auto;
+    width: 7em;
+    height: 2.5em;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .InputSearch {
+    display: grid;
+    justify-content: center;
+    gap: 1em;
+  }
+  .name-skill-view-download-btns-for-the-search-cv {
+    font-size: 15px;
+    /* display: flex; */
+    /* gap: 6em; */
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+  .main-div-for-the-cv-search-page-main-container {
+    padding: 1em;
+  }
+}

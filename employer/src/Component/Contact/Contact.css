@@ -1,0 +1,18 @@
+@media screen and (max-width: 768px) {
+  .main-container-for-the-contact-page-main-contnent {
+    padding: 0;
+    margin-top: 4em;
+    gap: 1em;
+    margin-bottom: 0;
+  }
+  .location-phone-email-section-in-contact-page {
+    display: grid;
+    justify-content: center;
+    gap: 0em;
+  }
+}
+/* .location-phone-email-section-in-contact-page {
+  display: flex;
+  justify-content: center;
+  gap: 5em;
+} */

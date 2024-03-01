@@ -1,6 +1,6 @@
 /* @media only screen and (max-width: 768px) {
     .flex {
-      flex-direction: column; 
+      flex-direction: column;
     }
 }
 
@@ -8,13 +8,13 @@
     .p-4 {
       padding: 2rem;
     }
-  
+
     .max-h-96 {
-      max-height: none; 
+      max-height: none;
     }
-  
+
     .scrollable-jobs {
-      overflow-y: auto; 
+      overflow-y: auto;
     }
     .card-component-posted-internship{
         width: 100%;
@@ -22,11 +22,18 @@
     .post-job-card-div{
         width: 100%;
     }
-  
+
 
   }
   @media (max-width: 768px) {
     .card {
-      width: 90% !important; 
+      width: 90% !important;
     }
   } */
+
+.scrollable-jobs {
+  max-height: 38em;
+}
+.card-body {
+  background-color: rgb(255 189 89);
+}

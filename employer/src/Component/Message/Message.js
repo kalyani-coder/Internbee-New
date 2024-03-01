@@ -8,7 +8,7 @@ const Message = () => {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [filter, setFilter] = useState("pending"); 
+  const [filter, setFilter] = useState("pending");
 
   const fetchEnquiries = async () => {
     setLoading(true);
@@ -49,26 +49,24 @@ const Message = () => {
 
   return (
     <>
-     
       <div>
         <Navbar />
       </div>
-    
+
       <div className="flex flex-col items-center justify-center text-center mt-10">
-     
         {loading && (
           <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
             <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
           </div>
         )}
         <h1 className="text-2xl font-bold mb-4">Helpdesk</h1>
-        <div className="divmess mb-4">
+        <div className="divmess mb-4 flex gap-4">
           <button
             className={`${
               filter === "pending"
                 ? "bg-blue-700 text-white"
                 : "bg-blue-500 hover:bg-blue-700 text-white"
-            } font-bold py-2 px-4 rounded mr-2`}
+            } font-bold py-2 px-4 rounded`}
             onClick={() => setFilter("pending")}
           >
             New Enquiry

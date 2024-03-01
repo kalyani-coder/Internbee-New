@@ -4,7 +4,7 @@
 }
 .wid-fr-partners {
   /* width: 80em; */
-  max-width:1000px;
+  max-width: 1000px;
 }
 /* .logo-for-partners {
   display: flex;
@@ -20,23 +20,23 @@
   cursor: pointer;
 } */
 .logo-for-partners {
-    display: flex;
-    gap: 80px;
-    align-items: center;
-    /* overflow: hidden; */
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  /* overflow: hidden; */
   overflow-x: scroll;
 
-    /* animation: scroll 60s linear infinite; */
-    /* width: 800%; Set a width large enough to accommodate all images */
-  }
-  
-  .logo-for-partners img {
-    width: 100%;
-    min-width: 100px;
-    cursor: pointer;
-  }
-  
-  /* @keyframes scroll {
+  /* animation: scroll 60s linear infinite; */
+  /* width: 800%; Set a width large enough to accommodate all images */
+}
+
+.logo-for-partners img {
+  width: 100%;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+/* @keyframes scroll {
     0% {
       transform: translateX(0%);
     }
@@ -44,11 +44,9 @@
       transform: translateX(-100%);
     }
   } */
-  
 
-  /* @media screen and (max-width: 767px) { */
-  @media (min-width: 100px) and (max-width: 425px) {
-
+/* @media screen and (max-width: 767px) { */
+@media (min-width: 100px) and (max-width: 425px) {
   .wid-fr-partners {
     width: 100%;
     padding: 1em;
@@ -63,17 +61,21 @@
     /* animation: scroll 60s linear infinite; */
     /* width: 800%; Set a width large enough to accommodate all images */
   }
-  
-
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .all-partners {
     display: flex;
     justify-content: center;
     overflow-x: scroll;
-  }.wid-fr-partners {
+  }
+  .wid-fr-partners {
     display: flex;
     justify-content: center;
     overflow-x: scroll;
-}
+  }
+  .logo-for-partners img {
+    cursor: pointer;
+    min-width: 120px;
+    width: 100%;
+  }
 }

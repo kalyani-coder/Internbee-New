@@ -45,7 +45,7 @@
     display: grid;
     justify-content: center;
   }
-  
+
   .logo-for-partners {
     display: flex;
     gap: 80px;
@@ -62,7 +62,7 @@
     height: auto;
   }
   .all-about-section-content-for-the-abt-us-page {
-    margin: 1em;
+    padding: 1em;
   }
   .Homecardsdivs {
     display: flex;
@@ -195,6 +195,7 @@
   }
   .UploadResume {
     display: block;
+    margin-left: 1.5rem;
   }
   .poputHomeOne {
     width: auto;
@@ -229,7 +230,6 @@
   }
   .MainFaqs {
     margin-top: 96px;
-    
   }
   .SignupOtp {
     width: 100%;
@@ -362,9 +362,12 @@
     height: 3em;
     margin: 1em 0;
   }
-
+  .heading {
+    font-size: 27px;
+    position: relative;
+  }
   .HomeNavMainBtns .Navbtns {
-    width: 5em;
+    width: 6em;
     font-size: 12px;
     /* margin-right: 1em; */
     padding: 0; /* Adjust padding for screens between 320px and 420px */
@@ -444,13 +447,12 @@
     padding: 0; /* Adjust padding for screens between 320px and 420px */
     /* font-size: 0.95rem; Adjust font size for screens between 320px and 420px */
   }
-  
 }
 
-@media screen and (max-width: 768px){
-  .faqText{
-  margin-right: 0px;
-}
+@media screen and (max-width: 768px) {
+  .faqText {
+    margin-right: 0px;
+  }
 }
 /* Styles for screens between 426px and 615px */
 @media screen and (min-width: 426px) and (max-width: 615px) {

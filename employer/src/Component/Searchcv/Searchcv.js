@@ -4,8 +4,8 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Footer from "../Footer/Footer";
 import StudentDetailsPopup from "./StudentDetailsPopup";
-import '../ResponsiveCss/ResponsiveCss.css';
-
+import "../ResponsiveCss/ResponsiveCss.css";
+import "./Searchcv.css";
 const StudentCVItem = ({ student, handleView, handleDownload }) => (
   <tr key={student._id}>
     <td className="border px-4 py-2">{`${student.firstName} ${student.lastName}`}</td>
@@ -36,9 +36,12 @@ const SearchCVPage = () => {
   const handleSearch = async () => {
     try {
       // Fetch data from your API using axios
-      const response = await axios.post("https://backend.internsbee.com/api/search", {
-        skill: searchQuery,
-      });
+      const response = await axios.post(
+        "https://backend.internsbee.com/api/search",
+        {
+          skill: searchQuery,
+        }
+      );
       setStudentCVs(response.data.results);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -57,61 +60,58 @@ const SearchCVPage = () => {
     setSelectedStudent(null);
   };
 
-
   const handleDownload = async (student) => {
-  try {
-    // Fetch employer details
-    const employerId = localStorage.getItem("userId");
-    const employerDetailsApiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
-    const employerResponse = await axios.get(employerDetailsApiUrl);
-    const employerDetails = employerResponse.data;
+    try {
+      // Fetch employer details
+      const employerId = localStorage.getItem("userId");
+      const employerDetailsApiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
+      const employerResponse = await axios.get(employerDetailsApiUrl);
+      const employerDetails = employerResponse.data;
 
-    // Get the current number of clicks and dynamic searches limit
-    const resumeDownloadCounter = employerDetails.resumeDownloadCounter || 0;
-    const remainingSearches = employerDetails.searches || 0;
+      // Get the current number of clicks and dynamic searches limit
+      const resumeDownloadCounter = employerDetails.resumeDownloadCounter || 0;
+      const remainingSearches = employerDetails.searches || 0;
 
-    // Check if the download limit is reached
-    if (resumeDownloadCounter >= remainingSearches) {
-      alert("Download limit reached. You cannot download more files.");
-      return;
+      // Check if the download limit is reached
+      if (resumeDownloadCounter >= remainingSearches) {
+        alert("Download limit reached. You cannot download more files.");
+        return;
+      }
+
+      // Trigger a download using browser functionality
+      const url = student.student_PDF;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "student_file.pdf"; // Optional filename for download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Update employer data
+      const response = await axios.patch(
+        `https://backend.internsbee.com/api/employer/${employerId}`,
+        {
+          resumeDownloadCounter: resumeDownloadCounter + 1,
+          searches: remainingSearches - 1,
+        }
+      );
+
+      // Update local storage with the new employer data and increment resumeDownloadCounter
+      localStorage.setItem("employerData", JSON.stringify(response.data));
+    } catch (error) {
+      console.error("Error downloading file or updating employer data:", error);
     }
-
-    // Trigger a download using browser functionality
-    const url = student.student_PDF;
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "student_file.pdf"; // Optional filename for download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // Update employer data
-    const response = await axios.patch(`https://backend.internsbee.com/api/employer/${employerId}`, {
-      resumeDownloadCounter: resumeDownloadCounter + 1,
-      searches: remainingSearches - 1,
-    });
-
-    // Update local storage with the new employer data and increment resumeDownloadCounter
-    localStorage.setItem("employerData", JSON.stringify(response.data));
-  } catch (error) {
-    console.error("Error downloading file or updating employer data:", error);
-  }
-};
-
-  
-  
-
-
+  };
 
   return (
     <>
       <Navbar />
-    
+
       <div className="displayBlock flex">
         <Sidebar />
-        <div className="flex flex-col items-center w-full mb-3">
+        <div className="flex flex-col items-center w-full mb-3 main-div-for-the-cv-search-page-main-container">
           {/* Search Inputs */}
-          <div className="InputSearch flex items-center mb-8 mt-5">
+          <div className="InputSearch items-center mb-8 mt-5">
             <input
               type="text"
               placeholder="Job title, skill, company"
@@ -121,13 +121,13 @@ const SearchCVPage = () => {
             />
             <button
               onClick={handleSearch}
-              className="bg-black text-white ml-4 px-4 py-2"
+              className="bg-black text-white ml-4 px-4 py-2 search-btn-for-search-cv"
             >
               Search
             </button>
           </div>
 
-          <table className="border-collapse w-2/3 mt-8">
+          <table className="border-collapse name-skill-view-download-btns-for-the-search-cv w-2/3 mt-8">
             <thead>
               <tr>
                 <th className="SearchTable border px-4 py-2">Name</th>
@@ -155,7 +155,7 @@ const SearchCVPage = () => {
           )}
         </div>
       </div>
-      
+
       <Footer />
     </>
   );

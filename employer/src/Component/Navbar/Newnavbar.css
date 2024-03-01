@@ -19,7 +19,10 @@
   height: 2px;
   background-color: black;
 }
-
+.main-navbar-for-the-employeee-page-internbee {
+  width: 11em;
+  height: 4em;
+}
 .open .bar:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
@@ -42,30 +45,49 @@
 
 /* Media query for mobile view */
 @media (max-width: 768px) {
+  .main-navbar-for-the-employeee-page-internbee {
+    width: 9.8em;
+    height: 3.9em;
+  }
   .nav-items {
     position: absolute;
     /* top: 67px; */
-    top: 80px;
+    top: 64px;
     left: 0;
     width: 100%;
-    background-color: #FFBD59;
+    background-color: #ffbd59;
     padding: 7px;
     z-index: 999;
     display: inline;
     display: none;
-
   }
 
   .nav-items ul {
     flex-direction: column;
+    font-size: 15px;
+    margin-bottom: 3em;
   }
 
   .nav-items li {
-    margin-bottom: 10px;
+    /* text-align: center;
+    display: grid;
+    gap: 1em; */
   }
 
   .nav-items li:last-child {
     margin-bottom: 0;
   }
- 
+  .quick-links-for-the-navbar-of-employer-navigation {
+    font-size: 15px;
+  }
+  .quick-links-for-the-navbar-of-employer-navigation-ul {
+    display: grid;
+    gap: 1em;
+    align-items: center;
+  }
+}
+.quick-links-for-the-navbar-of-employer-navigation-ul {
+  display: flex;
+  gap: 2em;
+  align-items: center;
 }

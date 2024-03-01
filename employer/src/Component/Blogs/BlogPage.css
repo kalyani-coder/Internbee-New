@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) {
+  .all-the-text-in-the-blog-full-para-text {
+    font-size: 15px;
+    padding: 1em 0;
+  }
+  .view-more-btn-for-the-blog-page {
+    font-size: 15px;
+  }
+}

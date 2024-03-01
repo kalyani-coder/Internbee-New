@@ -3,7 +3,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
-
+import "./Candidates.css";
 const CandidatePage = () => {
   const [candidates, setCandidates] = useState([]);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
@@ -45,21 +45,26 @@ const CandidatePage = () => {
           <Sidebar />
         </div>
 
-        <div className=" w-3/4 p-8">
-          <div className=" flex items-center justify-between mb-8">
-            <h1 className="text-xl font-bold">Shortlisted Candidates</h1>
-          </div>
-          <div className="mb-5">
+        <div className=" w-3/4 p-8 all-the-content-in-shortlisted-candidates-sidebar">
+          <div className="mb-5 input-field-for-in-shortlisted-candidates-sidebar">
+            {/* <div className="flex items-center justify-between mb-8"> */}
+            <h1 className="text-xl font-bold pt-4 pb-4 short-listed-candidates-text-header-candidate-page">
+              Shortlisted Candidates
+            </h1>
+            {/* </div> */}
             <input
               type="text"
-              placeholder="inputCandi Search by Job Title"
+              placeholder="input Candi Search by Job Title"
               className=" inputCandi border p-2 rounded w-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
-          <div className="overflow-y-auto" style={{ height: "60vh" }}>
+          <div
+            className="overflow-y-auto cards-thats-scrolling-in-the-shortlisted-candidates-page"
+            style={{ height: "60vh" }}
+          >
             {filteredCandidates.length === 0 ? (
               <div className="flex flex-col items-center">
                 <p>No candidates available.</p>
@@ -69,8 +74,8 @@ const CandidatePage = () => {
                 {filteredCandidates.map((candidate) => (
                   <div
                     key={candidate._id}
-                    className="mb-8 p-4 rounded-md"
-                    style={{ backgroundColor: '#FFBD59' }}
+                    className="mb-8 p-4 rounded-md main-card-for-the-shortlisted-candidate-pagee"
+                    style={{ backgroundColor: "#FFBD59" }}
                   >
                     <h3 className="text-l font-semibold mb-2">
                       Job Title : {candidate.job_Title}
@@ -78,8 +83,11 @@ const CandidatePage = () => {
                     <p>Postion : {candidate.position}</p>
                     <p>Job Description : {candidate.job_Description}</p>
                     <p>Skills : {candidate.skills}</p>
-                    <Link to={`/shortlisted/${candidate._id}`}>
-                      <button className="bg-dark text-white px-4 py-2 mt-2 rounded">
+                    <Link
+                      to={`/shortlisted/${candidate._id}`}
+                      className=" View-Shortlisted-candidate-buttons-for-candidate-page-links"
+                    >
+                      <button className="bg-dark text-white px-4 py-2 mt-2 rounded View-Shortlisted-candidate-buttons-for-candidate-page">
                         View Shortlisted candidate
                       </button>
                     </Link>

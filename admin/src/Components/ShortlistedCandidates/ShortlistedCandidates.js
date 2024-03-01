@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
-import Footer from './../Footer/Footer'; 
+import Footer from "./../Footer/Footer";
 import { FaTrash } from "react-icons/fa";
-import './ShorlistedCandidates.css'
-import '../ResponsiveCss/Responsive.css';
-
+import "./ShorlistedCandidates.css";
+import "../ResponsiveCss/Responsive.css";
 
 const ShortlistedCandidates = () => {
   const [shortlistedCandidates, setShortlistedCandidates] = useState([]);
@@ -15,36 +14,34 @@ const ShortlistedCandidates = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [candidateDetails, setCandidateDetails] = useState(null);
 
-
-
   const openModal = () => {
     setIsModalOpen(true);
-   
-};
+  };
 
-const closeModal = () => {
-  setIsModalOpen(false);
-};
-const handleViewMoreClick = (candidate) => {
-  openModal();
-  // Set detailed information for the modal
-  setCandidateDetails(candidate);
-};
-    const fetchShortlistedCandidates = async () => {
-      try {
-        const response = await fetch("https://backend.internsbee.com/api/applyInternship/shortlisted");
-        const data = await response.json();
-        setShortlistedCandidates(data);
-      } catch (error) {
-        console.error("Error fetching shortlisted candidates:", error);
-      }
-    };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleViewMoreClick = (candidate) => {
+    openModal();
+    // Set detailed information for the modal
+    setCandidateDetails(candidate);
+  };
+  const fetchShortlistedCandidates = async () => {
+    try {
+      const response = await fetch(
+        "https://backend.internsbee.com/api/applyInternship/shortlisted"
+      );
+      const data = await response.json();
+      setShortlistedCandidates(data);
+    } catch (error) {
+      console.error("Error fetching shortlisted candidates:", error);
+    }
+  };
 
-    useEffect(() => {
-      // Call the fetchShortlistedCandidates function
-      fetchShortlistedCandidates();
-    }, []);
-  
+  useEffect(() => {
+    // Call the fetchShortlistedCandidates function
+    fetchShortlistedCandidates();
+  }, []);
 
   const handleViewMore = (candidate) => {
     setSelectedCandidate(candidate);
@@ -70,9 +67,12 @@ const handleViewMoreClick = (candidate) => {
   const handleConfirmDelete = async () => {
     try {
       // Make the API call for deletion using candidateToDelete._id
-      const response = await fetch(`https://backend.internsbee.com/api/applyInternship/shortlisted/${candidateToDelete._id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://backend.internsbee.com/api/applyInternship/shortlisted/${candidateToDelete._id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         // If deletion is successful, fetch updated data
@@ -108,21 +108,41 @@ const handleViewMoreClick = (candidate) => {
                 <table className="w-full bg-white border border-gray-300">
                   <thead>
                     <tr>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Sr No</th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Name</th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Company Name</th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Location</th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Actions</th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Delete</th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Sr No
+                      </th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Name
+                      </th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Company Name
+                      </th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Location
+                      </th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Actions
+                      </th>
+                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
+                        Delete
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {shortlistedCandidates.map((candidate, index) => (
                       <tr key={candidate._id}>
-                        <td className="py-2 px-4 border-b text-lg">{index + 1}</td>
-                        <td className="py-2 px-4 border-b text-lg">{candidate.InternName}</td>
-                        <td className="py-2 px-4 border-b text-lg">{candidate.empName}</td>
-                        <td className="py-2 px-4 border-b text-lg">{candidate.location}</td>
+                        <td className="py-2 px-4 border-b text-lg">
+                          {index + 1}
+                        </td>
+                        <td className="py-2 px-4 border-b text-lg">
+                          {candidate.InternName}
+                        </td>
+                        <td className="py-2 px-4 border-b text-lg">
+                          {candidate.empName}
+                        </td>
+                        <td className="py-2 px-4 border-b text-lg">
+                          {candidate.location}
+                        </td>
                         <td className="py-2 px-4 border-b text-lg">
                           <button
                             className="text-blue-500 hover:text-blue-700 mr-2"
@@ -151,40 +171,54 @@ const handleViewMoreClick = (candidate) => {
         <div className="confirmation-modal">
           <p>Are you sure you want to delete this candidate?</p>
           <button onClick={handleConfirmDelete}>Yes</button>
-          <button className="not-delete" onClick={handleCancelDelete}>No</button>
+          <button className="not-delete" onClick={handleCancelDelete}>
+            No
+          </button>
         </div>
       )}
 
       {isModalOpen && (
-  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
-    <div className="bg-white p-8 max-w-md w-full rounded-md">
-      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
-      {/* Display detailed information here */}
-      <div>
-        <label className="block mb-2">Intern Name: {candidateDetails.InternName}</label><hr/>
-        <label>Intern Email: {candidateDetails.InternEmail}</label><hr/>
-        <label>Intern Number: {candidateDetails.InternNumber}</label><hr/>
-        <label>Skills: {candidateDetails.skills}</label><hr/>
-        <label>location: {candidateDetails.location}</label><hr/>
-        <label>empName: {candidateDetails.empName}</label><hr/>
-        <label>position: {candidateDetails.position}</label><hr/>
-        <label>stipend : {candidateDetails.stipend}</label><hr/>
-        <label>job_Title: {candidateDetails.job_Title}</label><hr/>
-        <label>end_Date: {candidateDetails.end_Date}</label><hr/>
-       
-        {/* Add more labels for additional fields */}
-      </div>
-      <div className="flex justify-between mt-3">
-        <button
-          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
-          onClick={closeModal}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 max-w-md w-full rounded-md">
+            <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+            {/* Display detailed information here */}
+            <div>
+              <label className="block mb-2">
+                Intern Name: {candidateDetails.InternName}
+              </label>
+              <hr />
+              <label>Intern Email: {candidateDetails.InternEmail}</label>
+              <hr />
+              <label>Intern Number: {candidateDetails.InternNumber}</label>
+              <hr />
+              <label>Skills: {candidateDetails.skills}</label>
+              <hr />
+              <label>location: {candidateDetails.location}</label>
+              <hr />
+              <label>empName: {candidateDetails.empName}</label>
+              <hr />
+              <label>position: {candidateDetails.position}</label>
+              <hr />
+              <label>stipend : {candidateDetails.stipend}</label>
+              <hr />
+              <label>job_Title: {candidateDetails.job_Title}</label>
+              <hr />
+              <label>end_Date: {candidateDetails.end_Date}</label>
+              <hr />
+
+              {/* Add more labels for additional fields */}
+            </div>
+            <div className="flex justify-between mt-3">
+              <button
+                className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
