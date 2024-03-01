@@ -39,6 +39,9 @@ import Terms from './Component/Terms/Terms';
 import Refund from './Component/Refund/Refund';
 import Alert from './Component/Alert/Alert';
 import QuickNavbar from './Component/QuickNav/QuickNav';
+import RestPass from './Component/ResetPass/RestPass';
+
+import VerifyOtp from './Component/ResetPass/VerifyOtp';
 function App() {
 
   const [monthlyPackage, setMonthlyPackage] = useState(null);
@@ -110,6 +113,8 @@ function App() {
            <Route path='/privacy'element={<Privacy/>}/>
            <Route path='/terms'element={<Terms/>}/>
            <Route path='/refund'element={<Refund/>}/>
+           <Route path='/resetpass'element={<RestPass/>}/>
+           <Route path='/verifyotp'element={<VerifyOtp/>}/>
            {/* <Route path='/HomeNav'element={<Navbar/>}/> */}
 
     
