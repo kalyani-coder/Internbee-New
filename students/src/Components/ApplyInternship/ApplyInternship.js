@@ -1,12 +1,12 @@
 // Import necessary modules and components
 import React, { useEffect, useState } from "react";
-import { useParams , useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaRegClock, FaMoneyBill, FaMapMarkerAlt } from "react-icons/fa";
 import Navbar from "../Navbar";
 import axios from "axios";
 import Internal_Navbar from "../UpdatedNav/Internal_Navbar.js";
 import "../ApplyInternship/Applyintern.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const ApplyInternship = () => {
   const { internshipId } = useParams();
@@ -39,28 +39,31 @@ const ApplyInternship = () => {
     return <p>Loading...</p>;
   }
 
-
   const handleConfirmation = async () => {
     setIsSubmitting(true);
-  
+
     try {
       const userId = localStorage.getItem("userId");
-  
+
       // Fetch user data from the API
-      const userResponse = await axios.get(`http://localhost:8000/api/auth/${userId}`);
+      const userResponse = await axios.get(
+        `https://backend.internsbee.com/api/auth/${userId}`
+      );
       const userData = userResponse.data;
-  
+
       console.log("User Data:", userData); // Log user data
-  
+
       // Determine the type of package (free or monthly)
-      const packageType = userData.freePackage ? "freePackage" : "monthlyPackage";
-  
+      const packageType = userData.freePackage
+        ? "freePackage"
+        : "monthlyPackage";
+
       const opportunities_Counter = userData.opportunities_Counter || 0;
       const opportunities = userData[packageType].opportunities || 0;
-  
+
       console.log("Opportunities_Counter:", opportunities_Counter);
       console.log("Opportunities:", opportunities);
-  
+
       // Check if any of the required fields is empty or null
       if (
         userData[packageType].freePackagePrice === "" ||
@@ -73,44 +76,54 @@ const ApplyInternship = () => {
         alert("You need to subscribe first. Please update your subscription.");
         return;
       }
-  
-      console.log("Before opportunities check:", opportunities_Counter, opportunities);
-  
+
+      console.log(
+        "Before opportunities check:",
+        opportunities_Counter,
+        opportunities
+      );
+
       console.log("User Data:", userData);
       console.log("Opportunities_Counter:", opportunities_Counter);
       console.log("Opportunities:", opportunities);
-  
+
       if (opportunities_Counter >= opportunities) {
         alert("Apply limit reached. You can't apply for more jobs.");
         return;
       }
-  
-      console.log("After opportunities check. Proceeding with the application.");
-  
+
+      console.log(
+        "After opportunities check. Proceeding with the application."
+      );
+
       const formData = {
         postId: internshipId,
         InternId: userId,
       };
-  
+
       const response = await axios.post(
-        "http://localhost:8000/api/applyinternship/",
+        "https://backend.internsbee.com/api/applyinternship/",
         formData
       );
-  
+
       if (response.data) {
         // Increment the internship_counter
         const updatedUserData = {
           ...userData,
           freePackage: {
             ...userData.freePackage,
-            opportunities_Counter: (userData.freePackage.opportunities_Counter || 0) + 1,
+            opportunities_Counter:
+              (userData.freePackage.opportunities_Counter || 0) + 1,
             opportunities: 0,
           },
         };
-  
+
         // Update user details with the incremented opportunities_Counter and set opportunities to 0
-        await axios.patch(`http://localhost:8000/api/auth/${userId}`, updatedUserData);
-  
+        await axios.patch(
+          `https://backend.internsbee.com/api/auth/${userId}`,
+          updatedUserData
+        );
+
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission
       } else {
@@ -126,9 +139,7 @@ const ApplyInternship = () => {
       setIsSubmitting(false);
     }
   };
-  
-  
-  
+
   return (
     <>
       <div>
@@ -186,7 +197,7 @@ const ApplyInternship = () => {
                 Skills: {internship.skills}
               </p>
 
-              <button 
+              <button
                 onClick={() => setShowConfirmation(true)}
                 className="bg-amber-300 text-black p-2 rounded-lg w-24 mt-4 mx-auto"
               >
@@ -198,21 +209,18 @@ const ApplyInternship = () => {
                 <div className="bg-white p-6 rounded-md">
                   <p className="text-xl">Confirm your application?</p>
                   <div className="flex justify-end mt-4">
-
-                  <Link to="/freeplan">
-                    <button
-                      onClick={() => setShowConfirmation(false)}
-                      disabled={isSubmitting} // Disable the button while submitting
-                      className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
-                      
-
-                    >
-                      Cancel
-                    </button>
+                    <Link to="/freeplan">
+                      <button
+                        onClick={() => setShowConfirmation(false)}
+                        disabled={isSubmitting} // Disable the button while submitting
+                        className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+                      >
+                        Cancel
+                      </button>
                     </Link>
                     <button
                       onClick={handleConfirmation}
-                      // disabled={isSubmitting} 
+                      // disabled={isSubmitting}
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
                     >
                       Confirm

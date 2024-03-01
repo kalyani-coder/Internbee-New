@@ -1,17 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const StudentDetailsModel = require("../models/StudentsDetails"); // Adjust the path accordingly
-const User = require("../models/user")
+const User = require("../models/user");
 const multer = require("multer");
 const path = require("path");
-
-
-
-
-
-
-
-
 
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -43,7 +35,6 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 router.get("/studentId/:id", async (req, res) => {
   const studentId = req.params.id;
@@ -178,9 +169,9 @@ router.post(
       }
 
       if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
-        const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
-        const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
-        const publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
+        const publicImageUrl = `https://backend.internsbee.com/public/uploads/${req.files.image[0].filename}`;
+        const publicPdfUrl = `https://backend.internsbee.com/public/uploads/${req.files.pdf[0].filename}`;
+        const publicPdfUrl2 = `https://backend.internsbee.com/public/uploads/${req.files.pdf2[0].filename}`;
 
         const fileData = new StudentDetailsModel({
           filename: req.files.image[0].originalname,
@@ -243,8 +234,6 @@ router.post(
     }
   }
 );
-
-
 
 // PATCH route
 router.patch("/:id", async (req, res) => {

@@ -1,11 +1,11 @@
-import React, { useState} from "react";
-import {useNavigate} from "react-router-dom"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../Assets/white_header1.png";
 
 const VerifyOtp = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -16,14 +16,17 @@ const VerifyOtp = () => {
     try {
       const userId = localStorage.getItem("userId"); // You can fetch this dynamically from local storage if needed
 
-      const response = await axios.post(`http://localhost:8000/api/employer/verifyotp/${userId}`, {
-        otp: otp,
-        resetPassword: password
-      });
+      const response = await axios.post(
+        `https://backend.internsbee.com/api/employer/verifyotp/${userId}`,
+        {
+          otp: otp,
+          resetPassword: password,
+        }
+      );
 
       setMessage(response.data.message);
-      alert("success")
-      navigate('/login')
+      alert("success");
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error.response.data);
       setMessage("Something went wrong.");
@@ -33,16 +36,21 @@ const VerifyOtp = () => {
   return (
     <>
       <div className="my-0">
-        <Link to={'https://internsbee.com'}>
+        <Link to={"https://internsbee.com"}>
           <div className="flex justify-item-left ">
-            <img src={logo} alt="" className='imglogin w-94 my-1' />
+            <img src={logo} alt="" className="imglogin w-94 my-1" />
           </div>
         </Link>
 
         <div className="flex justify-center items-center"></div>
 
         <div className="LoginMainDiv flex items-center justify-between px-6 py-8 mr-40 ">
-          <img src="./login.jpg" alt="design" className="" style={{ height: 500 }} />
+          <img
+            src="./login.jpg"
+            alt="design"
+            className=""
+            style={{ height: 500 }}
+          />
 
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black mt-0">
             <div className="p-6 space-y-4 md:space-y-0 sm:p-8">
@@ -52,7 +60,10 @@ const VerifyOtp = () => {
 
               <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="otp" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                  <label
+                    htmlFor="otp"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                  >
                     Enter Your OTP
                   </label>
                   <input
@@ -65,7 +76,10 @@ const VerifyOtp = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                  <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                  >
                     New Password
                   </label>
                   <input
@@ -84,7 +98,7 @@ const VerifyOtp = () => {
                   Submit
                 </button>
               </form>
-              
+
               {message && <p>{message}</p>}
             </div>
           </div>

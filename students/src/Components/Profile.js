@@ -5,8 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
-import Profile_Navbar from './ProfileNavBar/Profile_Navbar';
-import './ResponsiveCss/ResponsiveCss.css';
+import Profile_Navbar from "./ProfileNavBar/Profile_Navbar";
+import "./ResponsiveCss/ResponsiveCss.css";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -198,7 +198,6 @@ const Profile = () => {
     setContact(event.target.value);
   };
 
-
   const resetForm = () => {
     // Reset all state variables to their initial values
     setShowProfileDropdown(false);
@@ -241,9 +240,8 @@ const Profile = () => {
     setstream_10("");
     setpassOutYear_10("");
     setpercentage_10("");
-
   };
-    const handleCancel = () => {
+  const handleCancel = () => {
     // Call resetForm when cancel button is clicked
     resetForm();
   };
@@ -260,7 +258,6 @@ const Profile = () => {
       formData.append("birthdate", birthdate);
       formData.append("gender", gender);
       formData.append("state", state);
-
 
       formData.append("permanentaddress", permanentaddress);
       formData.append("city", city);
@@ -303,7 +300,7 @@ const Profile = () => {
 
       //  https://internbee-backend-apis.onrender.com/api/studentsdetails
 
-      fetch("http://localhost:8000/api/studentsdetails", {
+      fetch("https://backend.internsbee.com/api/studentsdetails", {
         method: "POST",
         body: formData,
       })
@@ -337,8 +334,6 @@ const Profile = () => {
   const handleResume = () => {
     navigate("/Resume");
   };
-
-
 
   const handleCreateProfile = () => {
     navigate("/Profile");
@@ -421,9 +416,9 @@ const Profile = () => {
           </div>
         </div> */}
 
-<Internal_Navbar/>
+        <Internal_Navbar />
 
-{/* ///////////////////////////////////////////////////////// */}
+        {/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
           <div className="CardSizeProfile w-2/3 border border-black p-2  bg-gray-50 shadow-lg mt-[113px]">
             <div className="mt-6 text-2xl font-bold">
@@ -559,7 +554,6 @@ const Profile = () => {
                   required
                 />
               </div>
-
             </div>
 
             <br></br>
@@ -1157,14 +1151,10 @@ const Profile = () => {
                 Submit
               </button>
             </div>
-
-
-
-            </div>
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 

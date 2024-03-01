@@ -27,13 +27,16 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:8000/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://backend.internsbee.com/api/auth/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -46,7 +49,7 @@ const Login = () => {
         // Check if user details exist in studentsdetails API
         const userId = responseData.userId;
         const checkDetailsResponse = await fetch(
-          `http://localhost:8000/api/studentsdetails/userId/${userId}`
+          `https://backend.internsbee.com/api/studentsdetails/userId/${userId}`
         );
         const checkDetailsData = await checkDetailsResponse.json();
 
