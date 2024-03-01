@@ -30,14 +30,14 @@ const StudentDetailsSchema = new mongoose.Schema({
   passOutYear: String,
   percentage : String,
 
-  // 12th education details 
+  // 12th education details
   education_12 : String,
   instituteName_12 : String,
   stream_12 : String,
   passOutYear_12 : String,
   percentage_12 : String,
 
-  // 10th details 
+  // 10th details
   education_10 : String,
   instituteName_10 : String,
   stream_10 : String,
@@ -46,7 +46,7 @@ const StudentDetailsSchema = new mongoose.Schema({
 
 
 
-  // Technical Details 
+  // Technical Details
   keySkills: String,
   languages: String,
   experience: String,
@@ -54,7 +54,7 @@ const StudentDetailsSchema = new mongoose.Schema({
   projectName: String,
   projectSummary: String,
 
-  // resume 
+  // resume
   filename: String,
   path: String,
   profile_pic: String,
@@ -63,8 +63,8 @@ const StudentDetailsSchema = new mongoose.Schema({
   student_certificate : String,
   certificatePath : String,
 
-  
-  
+
+
 });
 
 

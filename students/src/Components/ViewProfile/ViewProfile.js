@@ -55,6 +55,103 @@ const ViewProfile = () => {
     }
   }, []);
 
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [userData, setUserData] = useState({
+    userId: "",
+    user_number: "",
+    firstName: "",
+    lastName: "",
+    user_email: "",
+    email: "",
+    birthdate: "",
+    permanentaddress: "",
+    city: "",
+    district: "",
+    country: "",
+    currentaddress: "",
+    currentcity: "",
+    currentdistrict: "",
+    currentstate: "",
+    gender: "",
+    currentcountry: "",
+    contact: "",
+
+    education: "",
+    instituteName: "",
+    stream: "",
+    passOutYear: "",
+    percentage: "",
+
+    education_12: "",
+    instituteName_12: "",
+    stream_12: "",
+    passOutYear_12: "",
+    percentage_12: "",
+
+    education_10: "",
+    instituteName_10: "",
+    stream_10: "",
+    passOutYear_10: "",
+    percentage_10: "",
+
+    keySkills: "",
+    languages: "",
+    experience: "",
+    salaryExpectations: "",
+    projectName: "",
+    projectSummary: "",
+
+    filename: "",
+    path: "",
+    profile_pic: "",
+    student_PDF: "",
+    pdfPath: "",
+    student_certificate: "",
+    certificatePath: "",
+  });
+
+  // Fetch user data by user id from local storage or API
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      // Make a request to fetch user details by userId
+      // Example using fetch API:
+      fetch(`http://localhost:8000/api/studentsdetails/${userId}`)
+        .then((response) => response.json())
+        .then((data) => setUserData(data))
+        .catch((error) => console.error("Error fetching user details:", error));
+    }
+  }, []); // Run this effect only once on component mount
+
+  const handleEditProfileClick = () => {
+    setPopupOpen(true);
+  };
+
+  const handleSaveClick = () => {
+    // Perform the PATCH request to update user details
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      fetch(`http://localhost:8000/api/studentsdetails/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle successful update
+          console.log("Profile updated successfully:", data);
+          setPopupOpen(false); // Close the popup after successful save
+        })
+        .catch((error) => console.error("Error updating profile:", error));
+    }
+  };
+
+  const handleCancelClick = () => {
+    // Close the popup without saving
+    setPopupOpen(false);
+  };
   return (
     <>
       <div>
@@ -106,6 +203,385 @@ const ViewProfile = () => {
                 Subscribe
               </button>
             </Link>
+
+            <button
+              className="border p-2 subscribe-btn-for-the-view-profile-button"
+              style={{ backgroundColor: "#FFBD59" }}
+              onClick={handleEditProfileClick}
+            >
+              Edit Profile
+            </button>
+            {isPopupOpen && (
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div
+                  className="bg-white p-8  max-w-screen-md rounded-md  overflow-y-auto"
+                  style={{ width: "80%", height: "70%" }}
+                >
+                  {/* User Details */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      First Name:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.firstName}
+                      onChange={(e) =>
+                        setUserData({ ...userData, firstName: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Last Name:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.lastName}
+                      onChange={(e) =>
+                        setUserData({ ...userData, lastName: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      User Email:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.user_email}
+                      onChange={(e) =>
+                        setUserData({ ...userData, user_email: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Email:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.email}
+                      onChange={(e) =>
+                        setUserData({ ...userData, email: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Birthdate:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.birthdate}
+                      onChange={(e) =>
+                        setUserData({ ...userData, birthdate: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Permanent Address:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.permanentaddress}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          permanentaddress: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      City:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.city}
+                      onChange={(e) =>
+                        setUserData({ ...userData, city: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      District:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.district}
+                      onChange={(e) =>
+                        setUserData({ ...userData, district: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Country:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.country}
+                      onChange={(e) =>
+                        setUserData({ ...userData, country: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Current Address:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.currentaddress}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentaddress: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Current City:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.currentcity}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentcity: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Current District:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.currentdistrict}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentdistrict: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Current State:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.currentstate}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentstate: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Gender:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.gender}
+                      onChange={(e) =>
+                        setUserData({ ...userData, gender: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Current Country:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.currentcountry}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentcountry: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Contact:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.contact}
+                      onChange={(e) =>
+                        setUserData({ ...userData, contact: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+                  {/* Repeat similar blocks for other fields in the schema */}
+                  {/* ... */}
+
+                  {/* Educational Details */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Education:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.education}
+                      onChange={(e) =>
+                        setUserData({ ...userData, education: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Institute Name:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.instituteName}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          instituteName: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  {/* Repeat similar blocks for other educational fields */}
+                  {/* ... */}
+
+                  {/* Technical Details */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Key Skills:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.keySkills}
+                      onChange={(e) =>
+                        setUserData({ ...userData, keySkills: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Languages:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.languages}
+                      onChange={(e) =>
+                        setUserData({ ...userData, languages: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  {/* Repeat similar blocks for other technical fields */}
+                  {/* ... */}
+
+                  {/* Resume Details */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Filename:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.filename}
+                      onChange={(e) =>
+                        setUserData({ ...userData, filename: e.target.value })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-600">
+                      Profile Picture:
+                    </label>
+                    <input
+                      type="text"
+                      value={userData.profile_pic}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          profile_pic: e.target.value,
+                        })
+                      }
+                      className="w-full border p-2 rounded-md"
+                    />
+                  </div>
+
+                  {/* Repeat similar blocks for other resume fields */}
+                  {/* ... */}
+
+                  {/* Save and Cancel Buttons */}
+                  <div className="flex justify-end">
+                    <button
+                      onClick={handleSaveClick}
+                      className="bg-blue-500 text-white p-2 rounded-md mr-2"
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={handleCancelClick}
+                      className="bg-gray-400 text-white p-2 rounded-md"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {/* Resume Section */}
