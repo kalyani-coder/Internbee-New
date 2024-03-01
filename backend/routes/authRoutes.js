@@ -11,6 +11,9 @@ const jwtKey = "amar";
 
 const validator = require('validator');
 
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
@@ -685,6 +688,158 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+async function sendOTPByEmail(email, otp) {
+  const transporter = nodemailer.createTransport({
+    host: "bulk.smtp.mailtrap.io",
+    port: 587,
+    auth: {
+      user: "api",
+      pass: "3654cc89cd6851318ac5989aaac06799",
+    },
+  });
+
+  const mailOptions = {
+    from: "<mailtrap@internsbee.com>",
+    to: email,
+    subject: "OTP for Password Reset",
+    text: `Your OTP for password reset is: ${otp}`,
+  };
+
+  await transporter.sendMail(mailOptions);
+}
+
+// router.post("/forgetpass/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { email } = req.body;
+
+//   try {
+//     const emp = await User.findById(id);
+
+//     if (!emp) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     if (emp.email !== email) {
+//       return res
+//         .status(400)
+//         .json({ error: "Email does not match the user's registered email" });
+//     }
+
+//     const otp = generateOTP();
+
+//     // Patch the generated OTP into the user document
+//     emp.signupotp = otp;
+//     await emp.save();
+
+//     await sendOTPByEmail(email, otp);
+
+//     // Return the generated OTP in the response
+//     res
+//       .status(200)
+//       .json({ message: "OTP sent successfully on your registered Email", otp });
+//   } catch (error) {
+//     console.error("Error sending OTP:", error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
+
+router.post("/forgetpass/:id", async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
+
+  try {
+    const emp = await User.findById(id);
+
+    if (!emp) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    if (emp.email !== email) {
+      return res
+        .status(400)
+        .json({ error: "Email does not match the user's registered email" });
+    }
+
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    // Patch the generated OTP into the employer document
+    emp.signupotp = otp;
+    await emp.save();
+
+    // Send OTP via email
+    const transporter = nodemailer.createTransport({
+      host: "bulk.smtp.mailtrap.io",
+      port: 587,
+      auth: {
+        user: "api",
+        pass: "3654cc89cd6851318ac5989aaac06799"
+      }
+    });
+
+    const mailOptions = {
+      from: '<mailtrap@internsbee.com>',
+      to: email,
+      subject: 'OTP for Password Recovery',
+      text: `Dear ${emp.fullName},
+
+      Your OTP for password recovery at Internsbee is: ${otp}.
+
+      Please use this OTP to reset your password.
+
+      Best Regards,
+      Internsbee Team`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    // Return success message in the response
+    res.status(200).json({ message: "OTP sent successfully on your registered Email" });
+  } catch (error) {
+    console.error("Error sending OTP:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+router.post("/verifyotp/:id", async (req, res) => {
+  const id = req.params.id;
+  const { resetPassword, otp } = req.body;
+  try {
+    const employee = await User.findById(id);
+    if (!employee) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const isMatch = otp === employee.signupotp;
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid OTP" });
+    }
+    const hashedPassword = await bcrypt.hash(resetPassword, 10);
+
+    const newEmployee = await User.findByIdAndUpdate(
+      id,
+      {
+        password: hashedPassword,
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!newEmployee) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({ user: newEmployee, message: "Password updated successfully" });
+  } catch (error) {
+    console.error("Error updating password:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 
 module.exports = router;
 

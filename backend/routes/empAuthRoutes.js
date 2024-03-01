@@ -616,13 +616,14 @@ router.post("/signin", async (req, res) => {
       return res.status(401).json({ error: "Invalid password" });
     }
 
-    const token = jwt.sign({ email }, jwtKey);
+    const token = jwt.sign({ email: empAuth.email, userId: empAuth._id }, jwtKey);
 
     res.json({
       userId: empAuth._id,
       empName: empAuth.empName,
       email: empAuth.email,
       number: empAuth.number,
+      token: token // Send the generated JWT token in the response
     });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
@@ -789,6 +790,45 @@ router.get("/", async (req, res) => {
   }
 });
 
+// forget passotp 
+
+// router.post("/forgetpass/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { email } = req.body;
+
+//   try {
+//     const emp = await EmployerAuth.findById(id);
+
+//     if (!emp) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     if (emp.email !== email) {
+//       return res
+//         .status(400)
+//         .json({ error: "Email does not match the user's registered email" });
+//     }
+
+//     const otp = generateOTP();
+
+//     // Patch the generated OTP into the user document
+//     emp.signupotp = otp;
+//     await emp.save();
+
+//     await sendOTPByEmail(email, otp);
+
+//     // Return the generated OTP in the response
+//     res
+//       .status(200)
+//       .json({ message: "OTP sent successfully on your registered Email", otp });
+//   } catch (error) {
+//     console.error("Error sending OTP:", error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
+
+// with email otp verify 
+
 router.post("/forgetpass/:id", async (req, res) => {
   const { id } = req.params;
   const { email } = req.body;
@@ -806,23 +846,47 @@ router.post("/forgetpass/:id", async (req, res) => {
         .json({ error: "Email does not match the user's registered email" });
     }
 
-    const otp = generateOTP();
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000);
 
-    // Patch the generated OTP into the user document
+    // Patch the generated OTP into the employer document
     emp.signupotp = otp;
     await emp.save();
 
-    await sendOTPByEmail(email, otp);
+    // Send OTP via email
+    const transporter = nodemailer.createTransport({
+      host: "bulk.smtp.mailtrap.io",
+      port: 587,
+      auth: {
+        user: "api",
+        pass: "3654cc89cd6851318ac5989aaac06799"
+      }
+    });
 
-    // Return the generated OTP in the response
-    res
-      .status(200)
-      .json({ message: "OTP sent successfully on your registered Email", otp });
+    const mailOptions = {
+      from: '<mailtrap@internsbee.com>',
+      to: email,
+      subject: 'OTP for Password Recovery',
+      text: `Dear ${emp.empName},
+
+      Your OTP for password recovery at Internsbee is: ${otp}.
+
+      Please use this OTP to reset your password.
+
+      Best Regards,
+      Internsbee Team`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    // Return success message in the response
+    res.status(200).json({ message: "OTP sent successfully on your registered Email" });
   } catch (error) {
     console.error("Error sending OTP:", error);
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
 
 // Route to verify OTP and update password
 router.post("/verifyotp/:id", async (req, res) => {
