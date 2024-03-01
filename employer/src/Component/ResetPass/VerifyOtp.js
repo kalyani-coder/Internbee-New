@@ -21,6 +21,7 @@ const VerifyOtp = () => {
 
       setMessage(response.data.message);
       alert("success")
+      navigate('/login')
     } catch (error) {
       console.error("Error:", error.response.data);
       setMessage("Something went wrong.");
