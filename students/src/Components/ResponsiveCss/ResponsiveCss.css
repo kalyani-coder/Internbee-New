@@ -1,3 +1,10 @@
+.input-field-search-bar-for-home-page-student-cc {
+  height: 3em;
+  width: 20em;
+  text-align: center;
+  font-size: 15px;
+  padding: 1em;
+}
 .navbar-logo-for-internsbeestudent {
   width: 14rem;
   height: 4rem;
@@ -18,7 +25,7 @@
   margin: 0 10em;
 }
 .width-set-for-the-premium-or-freemium-packages {
-  width: 50em;
+  width: 35em;
 }
 .ViewProfileCard {
   height: 7rem;
@@ -219,12 +226,10 @@
   .ResponsiveResume {
     display: block;
   }
-  .Freecard {
+  /* .Freecard {
     padding: 0% !important;
-  }
-  .Freecards {
-    padding: 1em;
-  }
+  } */
+  /*   */
   .preeHeading {
     font-size: 30px;
   }
@@ -257,9 +262,9 @@
     height: auto;
   } */
 
-  .width-set-for-the-premium-or-freemium-packages {
+  /* .width-set-for-the-premium-or-freemium-packages {
     width: auto;
-  }
+  } */
   .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
@@ -290,9 +295,9 @@
   .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }
-  .width-set-for-the-premium-or-freemium-packages {
+  /* .width-set-for-the-premium-or-freemium-packages {
     width: auto;
-  }
+  } */
   .navbar-logo-for-internsbeestudent {
     height: 2.7em;
     width: 10rem;
@@ -350,9 +355,9 @@
   .w-15 {
     width: rem; /* Adjust the width of the logo for smaller screens */
   }
-  .width-set-for-the-premium-or-freemium-packages {
+  /* .width-set-for-the-premium-or-freemium-packages {
     width: auto;
-  }
+  } */
 }
 
 @media (min-width: 320px) and (max-width: 420px) {
@@ -403,9 +408,9 @@
     display: grid;
     justify-content: center;
   }
-  .width-set-for-the-premium-or-freemium-packages {
+  /* .width-set-for-the-premium-or-freemium-packages {
     width: auto;
-  }
+  } */
   .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }

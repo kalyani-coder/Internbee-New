@@ -2,18 +2,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
-import logo from "../Assets/yellow_header1.png"
+import logo from "../Assets/yellow_header1.png";
 import { FiUser } from "react-icons/fi";
-import {
-  FaMoneyBill,
-  FaMapMarkerAlt,
-  FaRegClock,
-} from "react-icons/fa";
+import { FaMoneyBill, FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
 import Footer from "../Components/Footer";
 // import '../Components/UpdatedNav/Internal_Navbar.js';
-import '../Components/UpdatedNav/Internal_Navbar';
+import "../Components/UpdatedNav/Internal_Navbar";
 import Internal_Navbar from "../Components/UpdatedNav/Internal_Navbar";
-import '../Components/Internship.css';
+import "../Components/Internship.css";
 // Define the Internship component
 const Internship = () => {
   // Refs for scrolling
@@ -31,7 +27,9 @@ const Internship = () => {
 
   const fetchInternshipData = async () => {
     try {
-      const response = await fetch("https://backend.internsbee.com/api/postinternship/");
+      const response = await fetch(
+        "https://backend.internsbee.com/api/postinternship/"
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok.");
       }
@@ -140,14 +138,13 @@ const Internship = () => {
   return (
     <>
       <Internal_Navbar />
-    
 
       {/* Search Section */}
-      <div className="bg-slate-100 mt-20">
-        <div className=" head  mb-10 text-2xl font-bold flex flex-col items-center justify-center" >
+      <div className=" mt-20">
+        <div className=" head  mb-10 text-2xl font-bold flex flex-col items-center justify-center">
           <h1 className="mt-20">Search Your Dream Internship here</h1>
         </div>
-        <div className="inputinternship relative flex items-center gap-2 mb-20 ml-80 justify-center ">
+        <div className="inputinternship">
           {/* Input for main search query */}
           <div>
             <input
@@ -155,34 +152,33 @@ const Internship = () => {
               placeholder="Enter skills/designations/companies"
               value={mainSearchQuery}
               onChange={(e) => setMainSearchQuery(e.target.value)}
-              className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+              className="input rounded-full border border-gray-500 focus:border-gray-400 input-box-for-the-search-bar-container-internship-page"
             />
           </div>
           {/* Main Search button */}
           <div>
             <button
-              className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+              className="btnintern bg-black hover:bg-black text-white rounded-md"
               onClick={handleMainSearch}
             >
               Search
             </button>
           </div>
-
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="FilterSectionMain flex w-96 mx-60" style={{ width: '60%', }}>
+      <div
+        className="FilterSectionMain flex"
+        // style={{ width: "60%" }}
+      >
+        {/* <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}> */}
 
-      {/* <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}> */}
-
-        <div className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}>
-        {/* <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}> */}
-
-
-        
-
-
+        <div
+          className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2"
+          style={{ width: "31%" }}
+        >
+          {/* <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}> */}
 
           <h2 className="text-lg font-semibold mb-4">All Filters</h2>
           {/* Profile filter */}
@@ -267,17 +263,24 @@ const Internship = () => {
         </div>
 
         {/* Display Internships Section */}
-        <div className="flex flex-col items-center ml-8 Internships-card " style={{}}>
-        {/* <div className="flex flex-col items-center  Internships-card " style={{}}> */}
+        <div
+          className="flex flex-col items-center Internships-card "
+          style={{}}
+        >
+          {/* <div className="flex flex-col items-center  Internships-card " style={{}}> */}
 
           {/* Map through the filtered internships (or all internships if not filtered) */}
           {filteredInternships.length > 0 ? (
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden" style={{width:'100%'}}
+                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+                style={{ width: "90%" }}
               >
-                <div className="intern-card-all-the-information-abtt flex-grow pl-4 pr-4 py-4 " style={{width:'100%'}} >
+                <div
+                  className="intern-card-all-the-information-abtt flex-grow pl-4 pr-4 py-4 "
+                  style={{ width: "100%" }}
+                >
                   {/* Internship details */}
                   <h2 className="card-title text-xl font-semibold text-gray-800 ">
                     {internship.job_Title}
@@ -329,11 +332,12 @@ const Internship = () => {
                     {internship.job_Description}
                   </p> */}
                   <div className="flex justify-between">
-
-
                     <div className="    ml-[78%]">
                       <Link to={`/apply-internship/${internship._id}`}>
-                        <button className="text-black p-2 rounded-lg " style={{ backgroundColor: '#FFBD59' }}>
+                        <button
+                          className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss"
+                          style={{ backgroundColor: "#FFBD59" }}
+                        >
                           View
                         </button>
                       </Link>

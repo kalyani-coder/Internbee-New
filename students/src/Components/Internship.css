@@ -13,10 +13,12 @@
     margin-left: 0px;
   }
   .inputinternship {
+    display: grid;
     justify-content: center;
     align-items: center;
-    margin-left: 1rem;
-    display: grid;
+    /* gap: 2em; */
+    margin: 3em 0;
+    text-align: center;
   }
   .btnintern {
     margin-right: 0px;
@@ -53,4 +55,33 @@
     display: grid;
     gap: 1em;
   }
+}
+.inputinternship {
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  align-items: center;
+  gap: 2em;
+  margin: 3em 0;
+}
+.input-box-for-the-search-bar-container-internship-page {
+  height: 3em;
+  width: 20em;
+  text-align: center;
+  font-size: 15px;
+  padding: 1em;
+}
+.btnintern {
+  width: 7em;
+  height: 2em;
+}
+.FilterSectionMain {
+  justify-content: center;
+  /* align-items: center; */
+  gap: 0em;
+  width: 74%;
+  margin: auto;
+}
+.btn-fro-the-view-btn-apply-internship-cardss {
+  width: 5em;
 }

@@ -12,34 +12,35 @@ const MonthlyPackages = () => {
   const [monthlyPackage, setMonthlyPackage] = useState(null);
   console.log(monthlyPackage);
 
-  
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://backend.internsbee.com/api/students/students-free-package"
-        );
-        const data = await response.json();
-        setMonthlyPackage(data[0]);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://backend.internsbee.com/api/students/students-free-package"
+      );
+      const data = await response.json();
+      setMonthlyPackage(data[0]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
 
   const handleSubscribe = async () => {
     const userId = localStorage.getItem("userId");
-  
+
     if (!window.confirm("Are you sure you want to subscribe?")) {
       return;
     }
-  
+
     try {
       // Fetch the user data first
-      const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userResponse = await fetch(
+        `https://backend.internsbee.com/api/auth/${userId}`
+      );
       const userData = await userResponse.json();
-  
+
       // Update the freePackage object
       userData.freePackage = {
         package_type: "free",
@@ -49,21 +50,24 @@ const MonthlyPackages = () => {
         dedicated_crm: monthlyPackage.dedicated_crm,
         opportunities: monthlyPackage.opportunities,
       };
-  
+
       // Perform the patch request to update user's data
-      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}/freePackage`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData.freePackage), // Send only the freePackage object
-      });
-  
+      const response = await fetch(
+        `https://backend.internsbee.com/api/auth/${userId}/freePackage`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData.freePackage), // Send only the freePackage object
+        }
+      );
+
       if (response.ok) {
         alert("Subscription successful!");
         // Refresh the freePackage data
         fetchData();
-  
+
         // Log the updated freePackage object
         console.log("Updated freePackage:", userData.freePackage);
       } else {
@@ -105,7 +109,7 @@ const MonthlyPackages = () => {
           </div>
 
           {monthlyPackage && (
-            <div className="w-full width-set-for-the-premium-or-freemium-packages mx-auto">
+            <div className=" width-set-for-the-premium-or-freemium-packages mx-auto">
               <div className="Freecard p-4 xl:w-full w-full">
                 <div className="Freecard h-full p-6 rounded-lg flex flex-col relative overflow-hidden">
                   <div className="Freecard p-4 w-full">

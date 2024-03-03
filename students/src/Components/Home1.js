@@ -211,10 +211,10 @@ const Home1 = () => {
   };
 
   const handleMainSearch = () => {
-    console.log('Search button clicked');
+    console.log("Search button clicked");
     const lowerCaseQuery = mainSearchQuery.toLowerCase();
 
-    const filtered = allInternships.filter((item) =>{
+    const filtered = allInternships.filter((item) => {
       const {
         job_Title,
         empName,
@@ -236,7 +236,7 @@ const Home1 = () => {
         // Add other checks as needed
       );
     });
-    console.log('Filtered Internships:', filtered);
+    console.log("Filtered Internships:", filtered);
     setFilteredInternships(filtered);
   };
 
@@ -256,10 +256,10 @@ const Home1 = () => {
             placeholder="Enter skills/designations/companies"
             value={mainSearchQuery}
             onChange={(e) => setMainSearchQuery(e.target.value)}
-            className="input h-16 w-3/4 mx-20 rounded-full border border-gray-500 focus:border-gray-400 pl-4 pr-5 mb-20"
+            className="input rounded-full border border-gray-500 focus:border-gray-400 input-field-search-bar-for-home-page-student-cc"
           />
           <button
-            className="btnintern mr-96 bg-black hover:bg-black text-white rounded-md px-4 py-2 mb-20"
+            className="btnintern bg-black hover:bg-black text-white rounded-md"
             onClick={handleMainSearch}
           >
             Search
