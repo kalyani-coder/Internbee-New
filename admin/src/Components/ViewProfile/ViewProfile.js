@@ -8,7 +8,7 @@ const ViewProfile = () => {
   useEffect(() => {
     const fetchAdminDetails = async () => {
       try {
-        const response = await fetch('https://backend.internsbee.com/api/adminlogin');
+        const response = await fetch('http://localhost:8000/api/adminlogin');
         const data = await response.json();
         setAdminDetails(data);
       } catch (error) {

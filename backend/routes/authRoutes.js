@@ -99,74 +99,74 @@ router.patch('/:userId/monthlyPackage', async (req, res) => {
   }
 });
 
-// router.post("/signup", async (req, res) => {
-//   const { fullName, email, number, password, freePackagePrice, searches,
-//     verified_application,
-//     dedicated_crm,
-//     opportunities,
-//     opportunities_Counter,
-//     monthlyPackage_Price,
-//     monthlySearches,
-//     monthlyVerifiedApplication,
-//     monthlyDedicatedCRM,
-//     monthlyOpportunities,
-//     accountHolderName,
-//    } = req.body;
+router.post("/signup", async (req, res) => {
+  const { fullName, email, number, password, freePackagePrice, searches,
+    verified_application,
+    dedicated_crm,
+    opportunities,
+    opportunities_Counter,
+    monthlyPackage_Price,
+    monthlySearches,
+    monthlyVerifiedApplication,
+    monthlyDedicatedCRM,
+    monthlyOpportunities,
+    accountHolderName,
+   } = req.body;
 
-//   try {
-//     const existingUser = await User.findOne({ email });
-//     const existingnumber = await User.findOne({ number });
+  try {
+    const existingUser = await User.findOne({ email });
+    const existingnumber = await User.findOne({ number });
 
-//     if (existingUser) {
-//       return res.status(409).json({ error: "User already exists" });
-//     } else if (existingnumber) {
-//       return res.status(409).json({ error: "Number already exists" });
-//     }
+    if (existingUser) {
+      return res.status(409).json({ error: "User already exists" });
+    } else if (existingnumber) {
+      return res.status(409).json({ error: "Number already exists" });
+    }
 
-//     const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-//     const newUser = new User({
-//       fullName: fullName,
-//       email: email,
-//       number: number,
-//       password: hashedPassword,
+    const newUser = new User({
+      fullName: fullName,
+      email: email,
+      number: number,
+      password: hashedPassword,
 
 
 
-//       freePackage: {
-//         package_type: 'free',
-//         freePackagePrice: freePackagePrice,
-//         searches: searches,
-//         verified_application: verified_application,
-//         dedicated_crm: dedicated_crm,
-//         opportunities: opportunities,
-//         opportunities_Counter: opportunities_Counter,
-//       },
+      freePackage: {
+        package_type: 'free',
+        freePackagePrice: freePackagePrice,
+        searches: searches,
+        verified_application: verified_application,
+        dedicated_crm: dedicated_crm,
+        opportunities: opportunities,
+        opportunities_Counter: opportunities_Counter,
+      },
 
-//       monthlyPackage: {
-//         package_type: 'monthly',
-//         monthlyPackage_Price,
-//         searches: monthlySearches,
-//         verified_application: monthlyVerifiedApplication,
-//         dedicated_crm: monthlyDedicatedCRM,
-//         monthlyOpportunities: monthlyOpportunities,
-//         accountHolderName: accountHolderName
-//       },
+      monthlyPackage: {
+        package_type: 'monthly',
+        monthlyPackage_Price,
+        searches: monthlySearches,
+        verified_application: monthlyVerifiedApplication,
+        dedicated_crm: monthlyDedicatedCRM,
+        monthlyOpportunities: monthlyOpportunities,
+        accountHolderName: accountHolderName
+      },
 
-//     });
+    });
 
-//     const createdUser = await newUser.save();
-//     const token = jwt.sign({ email: createdUser.email }, jwtKey);
+    const createdUser = await newUser.save();
+    const token = jwt.sign({ email: createdUser.email }, jwtKey);
 
-//     // Return the token and created user's email in the response
-//     res.json({
-//       userId: createdUser._id,
-//       email: createdUser.email,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ error: "Something went wrong" });
-//   }
-// });
+    // Return the token and created user's email in the response
+    res.json({
+      userId: createdUser._id,
+      email: createdUser.email,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
 
 
@@ -271,109 +271,109 @@ router.patch('/:userId/monthlyPackage', async (req, res) => {
 
 // latest working otp signupotp when students signup 
 
-router.post("/signup", async (req, res) => {
-  const {
-    fullName,
-    email,
-    number,
-    password,
-    freePackagePrice,
-    searches,
-    verified_application,
-    dedicated_crm,
-    opportunities,
-    monthlyPackage_Price,
-    monthlySearches,
-    monthlyVerifiedApplication,
-    monthlyDedicatedCRM,
-    monthlyOpportunities,
-    accountHolderName,
+// router.post("/signup", async (req, res) => {
+//   const {
+//     fullName,
+//     email,
+//     number,
+//     password,
+//     freePackagePrice,
+//     searches,
+//     verified_application,
+//     dedicated_crm,
+//     opportunities,
+//     monthlyPackage_Price,
+//     monthlySearches,
+//     monthlyVerifiedApplication,
+//     monthlyDedicatedCRM,
+//     monthlyOpportunities,
+//     accountHolderName,
     
-  } = req.body;
+//   } = req.body;
 
-  try {
-    const existingUser = await User.findOne({ email });
-    const existingNumber = await User.findOne({ number });
+//   try {
+//     const existingUser = await User.findOne({ email });
+//     const existingNumber = await User.findOne({ number });
 
-    if (existingUser) {
-      return res.status(409).json({ error: "User already exists" });
-    } else if (existingNumber) {
-      return res.status(409).json({ error: "Number already exists" });
-    }
+//     if (existingUser) {
+//       return res.status(409).json({ error: "User already exists" });
+//     } else if (existingNumber) {
+//       return res.status(409).json({ error: "Number already exists" });
+//     }
 
-    // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 900000);
+//     // Generate OTP
+//     const otp = Math.floor(100000 + Math.random() * 900000);
 
-    // Send OTP via email
-    const transporter = nodemailer.createTransport({
-      host: "bulk.smtp.mailtrap.io",
-      port: 587,
-      auth: {
-        user: "api",
-        pass: "3654cc89cd6851318ac5989aaac06799"
-      }
-    });
+//     // Send OTP via email
+//     const transporter = nodemailer.createTransport({
+//       host: "bulk.smtp.mailtrap.io",
+//       port: 587,
+//       auth: {
+//         user: "api",
+//         pass: "3654cc89cd6851318ac5989aaac06799"
+//       }
+//     });
 
-    const mailOptions = {
-      from: '<mailtrap@internsbee.com>',
-      to: email,
-      subject: 'OTP for Student Registration',
-      text: `Dear ${fullName},
+//     const mailOptions = {
+//       from: '<mailtrap@internsbee.com>',
+//       to: email,
+//       subject: 'OTP for Student Registration',
+//       text: `Dear ${fullName},
 
-      Your OTP for student registration at Internsbee is: ${otp}.
+//       Your OTP for student registration at Internsbee is: ${otp}.
 
-      Please use this OTP to complete your registration process.
+//       Please use this OTP to complete your registration process.
 
-      Best Regards,
-      Internsbee Team`,
-    };
+//       Best Regards,
+//       Internsbee Team`,
+//     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('OTP sent to', email);
+//     await transporter.sendMail(mailOptions);
+//     console.log('OTP sent to', email);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+//     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({
-      fullName,
-      email,
-      number,
-      password: hashedPassword,
-      verified: false,
-      freePackage: {
-        package_type: 'free',
-        freePackagePrice,
-        searches,
-        verified_application,
-        dedicated_crm,
-        opportunities,
-        opportunities_Counter,
-      },
-      monthlyPackage: {
-        package_type: 'monthly',
-        monthlyPackage_Price,
-        searches: monthlySearches,
-        verified_application: monthlyVerifiedApplication,
-        dedicated_crm: monthlyDedicatedCRM,
-        monthlyOpportunities,
-        accountHolderName,
-      },
-      signupotp: otp // Saving OTP to the database
-    });
+//     const newUser = new User({
+//       fullName,
+//       email,
+//       number,
+//       password: hashedPassword,
+//       verified: false,
+//       freePackage: {
+//         package_type: 'free',
+//         freePackagePrice,
+//         searches,
+//         verified_application,
+//         dedicated_crm,
+//         opportunities,
+//         opportunities_Counter,
+//       },
+//       monthlyPackage: {
+//         package_type: 'monthly',
+//         monthlyPackage_Price,
+//         searches: monthlySearches,
+//         verified_application: monthlyVerifiedApplication,
+//         dedicated_crm: monthlyDedicatedCRM,
+//         monthlyOpportunities,
+//         accountHolderName,
+//       },
+//       signupotp: otp // Saving OTP to the database
+//     });
 
-    const createdUser = await newUser.save();
+//     const createdUser = await newUser.save();
 
-    // Send welcome email to the registered user (You can keep this part as it is)
+//     // Send welcome email to the registered user (You can keep this part as it is)
 
-    // Return the user's ID and email in the response
-    res.json({
-      userId: createdUser._id,
-      email: createdUser.email,
-    });
-  } catch (error) {
-    console.error('Error signing up user:', error);
-    res.status(500).json({ error: "Something went wrong" });
-  }
-});
+//     // Return the user's ID and email in the response
+//     res.json({
+//       userId: createdUser._id,
+//       email: createdUser.email,
+//     });
+//   } catch (error) {
+//     console.error('Error signing up user:', error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
 
 // send email thanking after succefull signup 
 router.post("/registrationemailstudent", async (req, res) => {

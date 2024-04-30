@@ -17,7 +17,7 @@ function EnquiryPage() {
         const userId = localStorage.getItem("userId");
 
         const res = await axios.get(
-          `https://backend.internsbee.com/api/enquiry/studentId/${userId}?status=${filter}`
+          `http://localhost:8000/api/enquiry/studentId/${userId}?status=${filter}`
         );
         setEnquiries(res.data);
       } catch (error) {
@@ -37,7 +37,7 @@ function EnquiryPage() {
   const fetchInternshipInfo = async (postId) => {
     try {
       const res = await axios.get(
-        `https://backend.internsbee.com/api/postinternship/${postId}`
+        `http://localhost:8000/api/postinternship/${postId}`
       );
       setSelectedInternship(res.data);
     } catch (error) {

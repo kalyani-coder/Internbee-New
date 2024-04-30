@@ -298,9 +298,9 @@ const Profile = () => {
       formData.append("userId", storedUserId);
       console.log(storedUserId);
 
-      //  https://internbee-backend-apis.onrender.com/api/studentsdetails
+      //  http://localhost:8000/api/studentsdetails
 
-      fetch("https://backend.internsbee.com/api/studentsdetails", {
+      fetch("http://localhost:8000/api/studentsdetails", {
         method: "POST",
         body: formData,
       })

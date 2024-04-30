@@ -169,9 +169,9 @@ router.post(
       }
 
       if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
-        const publicImageUrl = `https://backend.internsbee.com/public/uploads/${req.files.image[0].filename}`;
-        const publicPdfUrl = `https://backend.internsbee.com/public/uploads/${req.files.pdf[0].filename}`;
-        const publicPdfUrl2 = `https://backend.internsbee.com/public/uploads/${req.files.pdf2[0].filename}`;
+        const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
+        const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
+        const publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
 
         const fileData = new StudentDetailsModel({
           filename: req.files.image[0].originalname,

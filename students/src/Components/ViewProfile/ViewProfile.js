@@ -25,7 +25,7 @@ const ViewProfile = () => {
 
     try {
       await axios.patch(
-        `https://backend.internsbee.com/api/studentsdetails/userId/${userId}`,
+        `http://localhost:8000/api/studentsdetails/userId/${userId}`,
         {
           keySkills: editedSkills,
         }
@@ -44,7 +44,7 @@ const ViewProfile = () => {
       // Fetch user details from the API based on the user ID
       axios
         .get(
-          `https://backend.internsbee.com/api/studentsdetails/userId/${userId}`
+          `http://localhost:8000/api/studentsdetails/userId/${userId}`
         )
         .then((response) => {
           setUserDetails(response.data);
@@ -116,7 +116,7 @@ const ViewProfile = () => {
     if (userId) {
       // Make a request to fetch user details by userId
       // Example using fetch API:
-      fetch(`https://backend.internsbee.com/api/studentsdetails/${userId}`)
+      fetch(`http://localhost:8000/api/studentsdetails/${userId}`)
         .then((response) => response.json())
         .then((data) => setUserData(data))
         .catch((error) => console.error("Error fetching user details:", error));

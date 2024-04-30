@@ -15,7 +15,7 @@ const MonthlyPackages = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://backend.internsbee.com/api/students/students-free-package"
+        "http://localhost:8000/api/students/students-free-package"
       );
       const data = await response.json();
       setMonthlyPackage(data[0]);
@@ -37,7 +37,7 @@ const MonthlyPackages = () => {
     try {
       // Fetch the user data first
       const userResponse = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}`
+        `http://localhost:8000/api/auth/${userId}`
       );
       const userData = await userResponse.json();
 
@@ -53,7 +53,7 @@ const MonthlyPackages = () => {
 
       // Perform the patch request to update user's data
       const response = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}/freePackage`,
+        `http://localhost:8000/api/auth/${userId}/freePackage`,
         {
           method: "PATCH",
           headers: {

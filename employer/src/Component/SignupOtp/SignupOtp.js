@@ -16,13 +16,13 @@ const SignupOtp = () => {
       const userId = localStorage.getItem('userId');
   
       // Fetch employer data from the API
-      const response = await fetch(`https://backend.internsbee.com/api/employer/${userId}`);
+      const response = await fetch(`http://localhost:8000/api/employer/${userId}`);
       const employerData = await response.json();
   
       // Check if the entered OTP matches the OTP stored in the API
       if (employerData.signupotp && employerData.signupotp.toString() === otp) {
         // Send thanking email
-        const thankingResponse = await fetch('https://backend.internsbee.com/api/employer/registrationemail', {
+        const thankingResponse = await fetch('http://localhost:8000/api/employer/registrationemail', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

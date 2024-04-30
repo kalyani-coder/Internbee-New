@@ -23,7 +23,7 @@ const Free = () => {
   //     const studentId = localStorage.getItem('userId');
 
   //     // Step 2: Construct the API endpoint
-  //     const apiUrl = `https://backend.internsbee.com/api/auth/${studentId}`;
+  //     const apiUrl = `http://localhost:8000/api/auth/${studentId}`;
 
   //     // Step 3: Construct the data object
   //     const dataToUpdate = {
@@ -62,7 +62,7 @@ const Free = () => {
     try {
       // Fetch the user data first
       const userResponse = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}`
+        `http://localhost:8000/api/auth/${userId}`
       );
       const userData = await userResponse.json();
 
@@ -79,7 +79,7 @@ const Free = () => {
 
       // Perform the patch request to update user's data
       const response = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}/monthlyPackage`,
+        `http://localhost:8000/api/auth/${userId}/monthlyPackage`,
         {
           method: "PATCH",
           headers: {

@@ -26,7 +26,7 @@ const Refund = () => {
     // Check if a user is logged in and has accepted terms
 //     if (loggedInUserId && acceptTerms) {
 //       // Make a PATCH request to the API
-//       fetch(`https://backend.internsbee.com/api/employer/${loggedInUserId}`, {
+//       fetch(`http://localhost:8000/api/employer/${loggedInUserId}`, {
 //         method: 'PATCH',
 //         headers: {
 //           'Content-Type': 'application/json',

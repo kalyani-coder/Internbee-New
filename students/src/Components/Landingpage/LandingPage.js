@@ -59,7 +59,7 @@ const LandingPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://backend.internsbee.com/api/postinternship/"
+          "http://localhost:8000/api/postinternship/"
         );
         if (response.ok) {
           const data = await response.json();

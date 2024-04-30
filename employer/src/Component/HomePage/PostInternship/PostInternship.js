@@ -93,9 +93,9 @@ const PostInternship = () => {
       return;
     }
 
-    const employerDetailsApiUrl = `https://internbee-backend-apis.onrender.com/api/employer/${userId}`;
+    const employerDetailsApiUrl = `http://localhost:8000/api/employer/${userId}`;
     const postInternshipApiUrl =
-      "https://internbee-backend-apis.onrender.com/api/postinternship";
+      "http://localhost:8000/api/postinternship";
 
     try {
       // Fetch employer details

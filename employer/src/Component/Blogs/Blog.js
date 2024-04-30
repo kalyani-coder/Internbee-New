@@ -16,7 +16,7 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://backend.internsbee.com/api/adminblog"
+          "http://localhost:8000/api/adminblog"
         );
         setBlogs(response.data);
       } catch (error) {

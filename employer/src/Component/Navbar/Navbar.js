@@ -85,7 +85,7 @@ const Navbar = () => {
                   Profile
                 </button>
 
-                <ul className="mt-4 absolute hidden bg-black text-white p-2 space-y-2 rounded-md transition duration-300 ease-in-out group-hover:block w-48">
+                <ul className=" absolute hidden bg-black text-white p-2 space-y-2 rounded-md transition duration-300 ease-in-out group-hover:block w-48">
                   <li>
                     <Link to="/view-profile-page" className="flex items-center">
                       <span className="mr-2">👤</span> View Profile

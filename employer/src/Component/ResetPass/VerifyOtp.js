@@ -17,7 +17,7 @@ const VerifyOtp = () => {
       const userId = localStorage.getItem("userId"); // You can fetch this dynamically from local storage if needed
 
       const response = await axios.post(
-        `https://backend.internsbee.com/api/employer/verifyotp/${userId}`,
+        `http://localhost:8000/api/employer/verifyotp/${userId}`,
         {
           otp: otp,
           resetPassword: password,

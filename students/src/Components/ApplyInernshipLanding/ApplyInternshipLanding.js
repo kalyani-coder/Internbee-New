@@ -16,7 +16,7 @@ const ApplyInternshipLanding = () => {
     const fetchInternshipData = async () => {
       try {
         const response = await fetch(
-          `https://backend.internsbee.com/api/postinternship/${internshipId}`
+          `http://localhost:8000/api/postinternship/${internshipId}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok.");
@@ -45,7 +45,7 @@ const ApplyInternshipLanding = () => {
       const userId = localStorage.getItem("userId");
   
       // Fetch user data from the API
-      const userResponse = await axios.get(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userResponse = await axios.get(`http://localhost:8000/api/auth/${userId}`);
       const userData = userResponse.data;
   
       console.log("User Data:", userData); // Log user data
@@ -91,7 +91,7 @@ const ApplyInternshipLanding = () => {
       };
   
       const response = await axios.post(
-        "https://backend.internsbee.com/api/applyinternship/",
+        "http://localhost:8000/api/applyinternship/",
         formData
       );
   
@@ -107,7 +107,7 @@ const ApplyInternshipLanding = () => {
         };
   
         // Update user details with the incremented opportunities_Counter
-        await axios.patch(`https://backend.internsbee.com/api/auth/${userId}`, updatedUserData);
+        await axios.patch(`http://localhost:8000/api/auth/${userId}`, updatedUserData);
   
         alert("Applied Successfully");
         setShowConfirmation(false); // Close the confirmation popup upon successful submission

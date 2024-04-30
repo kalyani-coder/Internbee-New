@@ -37,7 +37,7 @@ const SearchCVPage = () => {
     try {
       // Fetch data from your API using axios
       const response = await axios.post(
-        "https://backend.internsbee.com/api/search",
+        "http://localhost:8000/api/search",
         {
           skill: searchQuery,
         }
@@ -64,7 +64,7 @@ const SearchCVPage = () => {
     try {
       // Fetch employer details
       const employerId = localStorage.getItem("userId");
-      const employerDetailsApiUrl = `https://backend.internsbee.com/api/employer/${employerId}`;
+      const employerDetailsApiUrl = `http://localhost:8000/api/employer/${employerId}`;
       const employerResponse = await axios.get(employerDetailsApiUrl);
       const employerDetails = employerResponse.data;
 
@@ -89,7 +89,7 @@ const SearchCVPage = () => {
 
       // Update employer data
       const response = await axios.patch(
-        `https://backend.internsbee.com/api/employer/${employerId}`,
+        `http://localhost:8000/api/employer/${employerId}`,
         {
           resumeDownloadCounter: resumeDownloadCounter + 1,
           searches: remainingSearches - 1,

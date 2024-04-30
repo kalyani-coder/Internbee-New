@@ -13,7 +13,7 @@ const VerifyOtpPage = () => {
         try {
             const userId = localStorage.getItem('userId');
     
-            const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+            const userResponse = await fetch(`http://localhost:8000/api/auth/${userId}`);
             const userData = await userResponse.json();
     
             if (userData.otp && userData.otp.toString() === otp) {
@@ -22,7 +22,7 @@ const VerifyOtpPage = () => {
                     navigate('/privacypolicy');
                 }, 3000);
                 // Send PATCH request to update verified status
-                await fetch(`https://backend.internsbee.com/api/auth/${userId}`, {
+                await fetch(`http://localhost:8000/api/auth/${userId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const VerifyOtpPage = () => {
                     setError(null);
                 }, 2000);
                 // Send PATCH request to update verified status to false if OTP is invalid
-                await fetch(`https://backend.internsbee.com/api/auth/${userId}`, {
+                await fetch(`http://localhost:8000/api/auth/${userId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',

@@ -28,7 +28,7 @@ const CreateBlog = () => {
         formData.append('title', title);
         formData.append('description', description);
 
-        const response = await fetch('https://backend.internsbee.com/api/adminblog', {
+        const response = await fetch('http://localhost:8000/api/adminblog', {
           method: 'POST',
           body: formData,
         });

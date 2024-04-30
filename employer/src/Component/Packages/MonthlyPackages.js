@@ -19,7 +19,7 @@ const MonthlyPackages = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://backend.internsbee.com/api/adminmonthlypackage"
+          "http://localhost:8000/api/adminmonthlypackage"
         );
         const data = await response.json();
         setMonthlyPackage(data[0]); // Assuming the response is an array with a single object

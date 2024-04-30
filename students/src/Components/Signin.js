@@ -28,7 +28,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const response = await fetch(
-        "https://backend.internsbee.com/api/auth/signin",
+        "http://localhost:8000/api/auth/signin",
         {
           method: "POST",
           headers: {
@@ -49,7 +49,7 @@ const Login = () => {
         // Check if user details exist in studentsdetails API
         const userId = responseData.userId;
         const checkDetailsResponse = await fetch(
-          `https://backend.internsbee.com/api/studentsdetails/userId/${userId}`
+          `http://localhost:8000/api/studentsdetails/userId/${userId}`
         );
         const checkDetailsData = await checkDetailsResponse.json();
 
@@ -74,7 +74,7 @@ const Login = () => {
   const handleSavePasswordClick = async (data) => {
     try {
       const response = await fetch(
-        "https://backend.internsbee.com/api/employer/reset-password",
+        "http://localhost:8000/api/employer/reset-password",
         {
           method: "POST",
           headers: {
@@ -106,7 +106,7 @@ const Login = () => {
   const handleSendOtpClick = async (data) => {
     try {
       const response = await fetch(
-        "https://backend.internsbee.com/api/employer/send-otp",
+        "http://localhost:8000/api/employer/send-otp",
         {
           method: "POST",
           headers: {
@@ -228,15 +228,18 @@ const Login = () => {
                       </label>
                     </div>
                   </div>
-                  <a
-                    onClick={handleForgotPasswordClick}
+
+                  <Link to="/resetpass">
+                  <p
+                    
                     href="#"
                     className="text-sm font-medium text-primary-600
                     hover:underline dark:text-primary-500"
                   >
                     {" "}
                     Forgot password?
-                  </a>
+                  </p>
+                  </Link>
                 </div>
                 {apiError && <Alert type="error">{apiError}</Alert>}
                 <button
@@ -285,9 +288,12 @@ const Login = () => {
                 />
               </svg>
             </button>
+
+            <Link to={'/resetpass'}>
             <h1 className="text-lg font-bold leading-tight tracking-tight text-black">
               Forgot Password
             </h1>
+            </Link>
             <form
               onSubmit={handleSubmit(handleSendOtpClick)}
               className="space-y-4"

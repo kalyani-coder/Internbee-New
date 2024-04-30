@@ -212,112 +212,112 @@ async function sendOTPByEmail(email, otp) {
 // otp on sing then thanking email afetr verify otp
 
 // this is my lates code for signup employer working fine with otp
-router.post("/signup", upload.single('image'), async (req, res) => {
-  const {
-    empName,
-    email,
-    number,
-    password,
-    companyAddress,
-    Description,
-    paymentStatus,
-    accountHolderName,
-    packagePrice,
-    purchacepackageEndDate,
-    purchacepackageDate,
-    searches,
-    internshipEnquiry,
-    verifiedApplication,
-    ResumeView,
-    dedicatedCRM,
-    internshipCounter,
-    Privacy_policy,
-    resumeDownloadCounter,
-    enter_CIN_Number,
-    company_Website_URL
-  } = req.body;
+// router.post("/signup", upload.single('image'), async (req, res) => {
+//   const {
+//     empName,
+//     email,
+//     number,
+//     password,
+//     companyAddress,
+//     Description,
+//     paymentStatus,
+//     accountHolderName,
+//     packagePrice,
+//     purchacepackageEndDate,
+//     purchacepackageDate,
+//     searches,
+//     internshipEnquiry,
+//     verifiedApplication,
+//     ResumeView,
+//     dedicatedCRM,
+//     internshipCounter,
+//     Privacy_policy,
+//     resumeDownloadCounter,
+//     enter_CIN_Number,
+//     company_Website_URL
+//   } = req.body;
 
-  try {
-    const existingEmpName = await EmployerAuth.findOne({ empName });
-    const existingUser = await EmployerAuth.findOne({ email });
-    const existingNumber = await EmployerAuth.findOne({ number });
+//   try {
+//     const existingEmpName = await EmployerAuth.findOne({ empName });
+//     const existingUser = await EmployerAuth.findOne({ email });
+//     const existingNumber = await EmployerAuth.findOne({ number });
 
-    if (existingUser) {
-      return res.status(409).json({ error: "User already exists" });
-    } else if (existingNumber) {
-      return res.status(409).json({ error: "Number already exists" });
-    } else if (existingEmpName) {
-      return res.status(409).json({ error: "Company Name already exists" });
-    }
+//     if (existingUser) {
+//       return res.status(409).json({ error: "User already exists" });
+//     } else if (existingNumber) {
+//       return res.status(409).json({ error: "Number already exists" });
+//     } else if (existingEmpName) {
+//       return res.status(409).json({ error: "Company Name already exists" });
+//     }
 
-    // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 900000);
+//     // Generate OTP
+//     const otp = Math.floor(100000 + Math.random() * 900000);
 
-    // Send OTP via email
-    const transporter = nodemailer.createTransport({
-      host: "bulk.smtp.mailtrap.io",
-      port: 587,
-      auth: {
-        user: "api",
-        pass: "3654cc89cd6851318ac5989aaac06799"
-      }
-    });
+//     // Send OTP via email
+//     const transporter = nodemailer.createTransport({
+//       host: "bulk.smtp.mailtrap.io",
+//       port: 587,
+//       auth: {
+//         user: "api",
+//         pass: "3654cc89cd6851318ac5989aaac06799"
+//       }
+//     });
 
-    const mailOptions = {
-      from: '<mailtrap@internsbee.com>',
-      to: email,
-      subject: 'OTP for Employer Registration',
-      text: `Dear ${empName},
+//     const mailOptions = {
+//       from: '<mailtrap@internsbee.com>',
+//       to: email,
+//       subject: 'OTP for Employer Registration',
+//       text: `Dear ${empName},
 
-      Your OTP for employer registration at Internsbee is: ${otp}.
+//       Your OTP for employer registration at Internsbee is: ${otp}.
 
-      Please use this OTP to complete your registration process.
+//       Please use this OTP to complete your registration process.
 
-      Best Regards,
-      Internsbee Team`,
-    };
+//       Best Regards,
+//       Internsbee Team`,
+//     };
 
-    await transporter.sendMail(mailOptions);
-    console.log('OTP sent to', email);
+//     await transporter.sendMail(mailOptions);
+//     console.log('OTP sent to', email);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+//     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newEmpAuth = new EmployerAuth({
-      empName: empName,
-      email: email,
-      number: number,
-      password: hashedPassword,
-      companyAddress: companyAddress,
-      Description: Description,
-      paymentStatus: paymentStatus,
-      accountHolderName: accountHolderName,
-      packagePrice: packagePrice,
-      purchacepackageEndDate: purchacepackageEndDate,
-      purchacepackageDate: purchacepackageDate,
-      searches: searches,
-      internshipEnquiry: internshipEnquiry,
-      verifiedApplication: verifiedApplication,
-      ResumeView: ResumeView,
-      dedicatedCRM: dedicatedCRM,
-      internshipCounter: internshipCounter,
-      Privacy_policy: Privacy_policy,
-      resumeDownloadCounter: resumeDownloadCounter,
-      signupotp: otp ,
-      company_Website_URL,
-      enter_CIN_Number,
-    });
+//     const newEmpAuth = new EmployerAuth({
+//       empName: empName,
+//       email: email,
+//       number: number,
+//       password: hashedPassword,
+//       companyAddress: companyAddress,
+//       Description: Description,
+//       paymentStatus: paymentStatus,
+//       accountHolderName: accountHolderName,
+//       packagePrice: packagePrice,
+//       purchacepackageEndDate: purchacepackageEndDate,
+//       purchacepackageDate: purchacepackageDate,
+//       searches: searches,
+//       internshipEnquiry: internshipEnquiry,
+//       verifiedApplication: verifiedApplication,
+//       ResumeView: ResumeView,
+//       dedicatedCRM: dedicatedCRM,
+//       internshipCounter: internshipCounter,
+//       Privacy_policy: Privacy_policy,
+//       resumeDownloadCounter: resumeDownloadCounter,
+//       signupotp: otp ,
+//       company_Website_URL,
+//       enter_CIN_Number,
+//     });
 
-    const createdEmpAuth = await newEmpAuth.save();
+//     const createdEmpAuth = await newEmpAuth.save();
 
-    // Return the registered employer's ID in the response
-    res.json({
-      userId: createdEmpAuth._id,
-    });
-  } catch (error) {
-    console.error('Error signing up employer:', error);
-    res.status(500).json({ error: "Something went wrong" });
-  }
-});
+//     // Return the registered employer's ID in the response
+//     res.json({
+//       userId: createdEmpAuth._id,
+//     });
+//   } catch (error) {
+//     console.error('Error signing up employer:', error);
+//     res.status(500).json({ error: "Something went wrong" });
+//   }
+// });
 
 // foe logo upload cin number new route 
 // router.post("/signup", upload.single('image'), async (req, res) => {
@@ -398,7 +398,7 @@ router.post("/signup", upload.single('image'), async (req, res) => {
 //     // Store the file path if uploaded
 //     let imageUrl;
 //     if (req.file) {
-//       imageUrl = `https://backend.internsbee.com/public/uploads/${req.file.filename}`;
+//       imageUrl = `http://localhost:8000/public/uploads/${req.file.filename}`;
 //     }
 
 //     // Hash password
@@ -518,7 +518,7 @@ router.post("/signup", upload.single("image"), async (req, res) => {
     // Store the file path if uploaded
     let imageUrl;
     if (req.file) {
-      imageUrl = `https://backend.internsbee.com/public/uploads/${req.file.filename}`;
+      imageUrl = `http://localhost:8000/public/uploads/${req.file.filename}`;
     }
 
     // Hash password

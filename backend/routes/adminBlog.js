@@ -48,7 +48,7 @@ router.get('/', async (req, res) => {
 router.post('/', upload.single('image'), async (req, res) => {
     try {
       if (req.file) {
-        const publicUrl = `https://backend.internsbee.com/public/uploads/${req.file.originalname}`;
+        const publicUrl = `http://localhost:8000/public/uploads/${req.file.originalname}`;
 
         const imageData = new adminBlog({
           filename: req.file.originalname,

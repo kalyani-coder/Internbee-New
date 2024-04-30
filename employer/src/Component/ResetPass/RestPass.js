@@ -17,7 +17,7 @@ const RestPass = () => {
     const userId = localStorage.getItem("userId");
     try {
       const response = await fetch(
-        `https://backend.internsbee.com/api/employer/forgetpass/${userId}`,
+        `http://localhost:8000/api/employer/forgetpass/${userId}`,
         {
           method: "POST",
           headers: {

@@ -42,7 +42,7 @@ const Signup = () => {
 
     try {
       const response = await fetch(
-        "https://backend.internsbee.com/auth/signup",
+        "http://localhost:8000/auth/signup",
         {
           method: "POST",
           headers: {

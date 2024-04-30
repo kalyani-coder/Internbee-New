@@ -16,7 +16,7 @@ const Free = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://backend.internsbee.com/api/students/students-free-package"
+          "http://localhost:8000/api/students/students-free-package"
         );
         const data = await response.json();
         setMonthlyPackage(data[0]);
@@ -37,7 +37,7 @@ const Free = () => {
   
     try {
       // Fetch the user data first
-      const userResponse = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const userResponse = await fetch(`http://localhost:8000/api/auth/${userId}`);
       const userData = await userResponse.json();
   
       // Update the freePackage object
@@ -51,7 +51,7 @@ const Free = () => {
       };
   
       // Perform the patch request to update user's data
-      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}/freePackage`, {
+      const response = await fetch(`http://localhost:8000/api/auth/${userId}/freePackage`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

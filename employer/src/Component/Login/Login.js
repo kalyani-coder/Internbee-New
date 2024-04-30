@@ -20,21 +20,23 @@ const Login = () => {
   } = useForm();
 
   // direct navigate to home page if data save in localstorage
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("userId");
-  //   const email = localStorage.getItem("email");
-  //   const empName = localStorage.getItem("empName");
-  //   const number = localStorage.getItem("number");
 
-  //   if (storedData && email && empName && number) {
-  //     navigate("/Home");
-  //   }
-  // }, [navigate]);
+  
+  useEffect(() => {
+    const storedData = localStorage.getItem("userId");
+    const email = localStorage.getItem("email");
+    const empName = localStorage.getItem("empName");
+    const number = localStorage.getItem("number");
+
+    if (storedData && email && empName && number) {
+      navigate("/Home");
+    }
+  }, [navigate]);
 
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://backend.internsbee.com/api/employer/signin", {
+      const response = await fetch("http://localhost:8000/api/employer/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

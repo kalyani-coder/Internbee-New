@@ -14,13 +14,13 @@ const SignupOtp = () => {
       const userId = localStorage.getItem('userId');
 
       // Fetch student data from the API
-      const response = await fetch(`https://backend.internsbee.com/api/auth/${userId}`);
+      const response = await fetch(`http://localhost:8000/api/auth/${userId}`);
       const studentData = await response.json();
 
       // Check if the entered OTP matches the OTP stored in the API
       if (studentData.signupotp && studentData.signupotp.toString() === otp) {
         // Send thanking email
-        const thankingResponse = await fetch('https://backend.internsbee.com/api/auth/registrationemailstudent', {
+        const thankingResponse = await fetch('http://localhost:8000/api/auth/registrationemailstudent', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

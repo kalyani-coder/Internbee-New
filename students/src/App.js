@@ -40,6 +40,8 @@ import Applied_Intern_Internal_Navbar from "./Components/Test/Applied_Intern_Int
 import QuickNav from "./Components/QuickNav";
 import ApplyInternshipLanding from "./Components/ApplyInernshipLanding/ApplyInternshipLanding";
 import ProfileConfirmMessage from "./Components/ProfileConfirmMessage/ProfileConfirmMessage";
+import RestPass from "./Components/RestPass/ResetPass";
+import VerifyOtp from "./Components/RestPass/VerifyOtp";
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -107,6 +109,8 @@ function App() {
         <Route path="/refund" element={<Refund />} />
         <Route path="/Test" element={<Applied_Intern_Internal_Navbar />} />
         <Route path="/profileconfirm" element={<ProfileConfirmMessage />} />
+        <Route path="/resetpass" element={<RestPass />} />
+        <Route path="/verifyotp" element={<VerifyOtp />} />
 
         {/* <Route path="/Test" element={<Applied_Intern_Internal_Navbar/>} */}
       </Routes>

@@ -19,7 +19,7 @@ export default function ViewStudentProfile() {
     const fetchStudentData = async () => {
       try {
         const response = await fetch(
-          `https://backend.internsbee.com/api/studentsdetails/userId/${id}`
+          `http://localhost:8000/api/studentsdetails/userId/${id}`
         );
         const data = await response.json();
         setStudentData(data);
@@ -34,7 +34,7 @@ export default function ViewStudentProfile() {
   const handleShortlistConfirmation = () => {
     try {
       const res = axios.patch(
-        `https://backend.internsbee.com/api/applyinternship/${candidateId}`,
+        `http://localhost:8000/api/applyinternship/${candidateId}`,
         {
           status: "Shortlisted",
         }

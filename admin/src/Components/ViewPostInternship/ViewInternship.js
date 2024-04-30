@@ -15,7 +15,7 @@ const ViewInternship = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://backend.internsbee.com/api/postinternship');
+                const response = await fetch('http://localhost:8000/api/postinternship');
                 const data = await response.json();
                 setInternships(data);
             } catch (error) {

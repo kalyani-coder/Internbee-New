@@ -17,7 +17,7 @@ const Blog = () => {
     // Fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://backend.internsbee.com/api/adminblog");
+        const response = await axios.get("http://localhost:8000/api/adminblog");
         setBlogs(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -42,7 +42,7 @@ const Blog = () => {
 
     try {
       // Make a DELETE request to your backend API to delete the blog
-      await axios.delete(`https://backend.internsbee.com/api/adminblog/${blogId}`);
+      await axios.delete(`http://localhost:8000/api/adminblog/${blogId}`);
 
       // After successful deletion, update the state to remove the deleted blog
       setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== blogId));

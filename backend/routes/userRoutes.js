@@ -138,7 +138,7 @@ router.put("/studentinfo/:id", async (req, res) => {
     try {
       // Fetch details from the first API endpoint
       const response = await fetch(
-        "https://backend.internsbee.com/api/students/students-free-package"
+        "http://localhost:8000/api/students/students-free-package"
       );
 
       if (!response.ok) {
@@ -163,7 +163,7 @@ router.put("/studentinfo/:id", async (req, res) => {
 
       // Perform the patch request to update user's data
       const patchResponse = await fetch(
-        `https://backend.internsbee.com/api/auth/${userId}`,
+        `http://localhost:8000/api/auth/${userId}`,
         {
           method: "PATCH",
           headers: {

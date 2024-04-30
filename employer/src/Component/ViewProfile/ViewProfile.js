@@ -25,7 +25,7 @@ const ViewProfilePage = () => {
     const fetchProfileData = async () => {
       try {
         const userId = await localStorage.getItem("userId");
-        const response = await fetch(`https://backend.internsbee.com/api/employer/${userId}`);
+        const response = await fetch(`http://localhost:8000/api/employer/${userId}`);
         const data = await response.json();
         setProfileData(data);
         setEditedData(data);
@@ -56,7 +56,7 @@ const ViewProfilePage = () => {
   const saveEditedData = async () => {
     try {
       const userId = await localStorage.getItem("userId");
-      await fetch(`https://backend.internsbee.com/api/employer/${userId}`, {
+      await fetch(`http://localhost:8000/api/employer/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

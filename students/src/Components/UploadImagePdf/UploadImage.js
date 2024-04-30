@@ -25,7 +25,7 @@ const UploadImage = () => {
       if (selectedPDF) formData.append('pdf', selectedPDF);
       formData.append('serviceName', serviceName);
 
-      fetch('https://backend.internsbee.com/api/imageupload', {
+      fetch('http://localhost:8000/api/imageupload', {
         method: 'POST',
         body: formData,
       })
@@ -48,14 +48,14 @@ const UploadImage = () => {
   }, []);
 
   const fetchCandidates = () => {
-    fetch('https://backend.internsbee.com/api/imageupload')
+    fetch('http://localhost:8000/api/imageupload')
       .then((response) => response.json())
       .then((data) => setCandidates(data))
       .catch((error) => console.error('Error fetching candidates:', error));
   };
 
   const handleDownloadPDF = (pdfPath) => {
-    window.open(`https://backend.internsbee.com/${pdfPath}`, '_blank');
+    window.open(`http://localhost:8000/${pdfPath}`, '_blank');
   };
   return (
     <div>

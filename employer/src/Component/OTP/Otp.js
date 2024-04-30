@@ -14,13 +14,13 @@ const Otp = () => {
       const userId = localStorage.getItem('userId');
   
       // Fetch employer data from the API
-      const response = await fetch(`https://backend.internsbee.com/api/employer/${userId}`);
+      const response = await fetch(`http://localhost:8000/api/employer/${userId}`);
       const employerData = await response.json();
   
       // Check if the entered OTP matches the OTP stored in the API
       if (employerData.otp && employerData.otp.toString() === otp) {
         // Update verified status to true and reset OTP
-        const patchResponse = await fetch(`https://backend.internsbee.com/api/employer/${userId}`, {
+        const patchResponse = await fetch(`http://localhost:8000/api/employer/${userId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Otp = () => {
         }
       } else {
         // Update verified status to false
-        const patchResponse = await fetch(`https://backend.internsbee.com/api/employer/${userId}`, {
+        const patchResponse = await fetch(`http://localhost:8000/api/employer/${userId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

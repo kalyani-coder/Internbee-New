@@ -23,7 +23,7 @@ const Jobs = () => {
       try {
         const userId = localStorage.getItem("userId");
         const response = await fetch(
-          `https://backend.internsbee.com/api/postinternship/userId/${userId}`
+          `http://localhost:8000/api/postinternship/userId/${userId}`
         );
         const data = await response.json();
         setInternships(data);

@@ -45,19 +45,19 @@ const AdminDashboard = () => {
   const generateExcel = async () => {
     // Fetch data for job postings from your API
     const jobPostingsResponse = await fetch(
-      "https://backend.internsbee.com/api/postinternship"
+      "http://localhost:8000/api/postinternship"
     );
     const jobPostingsData = await jobPostingsResponse.json();
 
     // Fetch data for applied students from your API
     const appliedStudentsResponse = await fetch(
-      "https://backend.internsbee.com/api/applyInternship"
+      "http://localhost:8000/api/applyInternship"
     );
     const appliedStudentsData = await appliedStudentsResponse.json();
 
     // Fetch data for shortlisted candidates from your API
     const shortlistedCandidatesResponse = await fetch(
-      "https://backend.internsbee.com/api/applyInternship/shortlisted"
+      "http://localhost:8000/api/applyInternship/shortlisted"
     );
     const shortlistedCandidatesData =
       await shortlistedCandidatesResponse.json();
@@ -146,7 +146,7 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       try {
         const responseJobs = await fetch(
-          "https://backend.internsbee.com/api/postinternship"
+          "http://localhost:8000/api/postinternship"
         );
         if (!responseJobs.ok) {
           throw new Error(`HTTP error! Status: ${responseJobs.status}`);
@@ -164,7 +164,7 @@ const AdminDashboard = () => {
     const fetchAppliedCandidatesCount = async () => {
       try {
         const responseCandidates = await fetch(
-          "https://backend.internsbee.com/api/applyInternship"
+          "http://localhost:8000/api/applyInternship"
         );
         if (!responseCandidates.ok) {
           throw new Error(`HTTP error! Status: ${responseCandidates.status}`);
@@ -183,7 +183,7 @@ const AdminDashboard = () => {
     const fetchEmployerPackagesCount = async () => {
       try {
         const responseCandidates = await fetch(
-          "https://backend.internsbee.com/api/packages"
+          "http://localhost:8000/api/packages"
         );
         if (!responseCandidates.ok) {
           throw new Error(`HTTP error! Status: ${responseCandidates.status}`);
@@ -202,7 +202,7 @@ const AdminDashboard = () => {
     const fetchShortlistedCandidatesCount = async () => {
       try {
         const responseCandidates = await fetch(
-          "https://backend.internsbee.com/api/applyInternship/shortlisted"
+          "http://localhost:8000/api/applyInternship/shortlisted"
         );
         if (!responseCandidates.ok) {
           throw new Error(`HTTP error! Status: ${responseCandidates.status}`);

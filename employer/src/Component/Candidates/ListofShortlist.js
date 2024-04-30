@@ -14,7 +14,7 @@ export default function ListofShortlist() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `https://backend.internsbee.com/api/applyInternship/shortlisted/${id}`
+          `http://localhost:8000/api/applyInternship/shortlisted/${id}`
         );
         setShortlistData(res.data);
       } catch (error) {
