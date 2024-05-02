@@ -101,12 +101,12 @@ const Footer = () => {
   return (
     <>
       <footer
-        className="h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive w-full"
+        className="h-400 text-black p-6 flex justify-evenly  items-center footer-resopnsive w-full"
         style={{ backgroundColor: "#FFBD59" }}
-      >
-        <div className="grid gap-4 items-start space-y-4">
+      > 
+        <div className="grid gap-4 items-start space-y-4 footer-part-one">
           <Link to={"/"}>
-            <div className="items-center">
+            <div className="items-center footer-logo">
               <img
                 src={logo}
                 alt="Footer Logo"
@@ -116,20 +116,16 @@ const Footer = () => {
               {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
             </div>
           </Link>
-          <div className="text-2xl flex items-center gap-4 justify-center ">
+          <div className="flex items-center justify-center gap-4 footer-link-icon">
             {socialIcons.map((icon, index) => (
-              <div key={index}>{icon}</div>
+              <div key={index} className="text-2xl hover:text-white">
+                {icon}
+              </div>
             ))}
           </div>
-          <div className="Internsbee-All-Right-Reserved">
-        {/* <p className="flex items-center gap-4 justify-center p-8">
-          2024 Internsbee.All Right Reserved.
-        </p> */}
-        <p className=" flex items-center gap-4 justify-center mt-36 pt-2">2024 Internsbee.All Right Reserved.</p>
-      </div>
         </div>
 
-        <div className="flex flex-row gap-14 footer-content">
+        <div className="flex flex-row gap-14 footer-content p-4 footer-part-two">
           <div className="flex flex-col  space-y-7">
             <h2 className="text-xl font-bold ">Quick Links</h2>
             <ul className="text-xl space-y-2">
@@ -162,7 +158,11 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      
+      <div style={{ borderTop: "3px dashed #fff", backgroundColor: "#FFBD59" }}>
+        <p className=" flex items-center gap-4 justify-center p-4">
+          2024 Internsbee.All Right Reserved.
+        </p>
+      </div>
     </>
   );
 };
