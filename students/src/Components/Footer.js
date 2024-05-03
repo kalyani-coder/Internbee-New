@@ -46,6 +46,24 @@ const Footer = () => {
       jobs: 40,
     },
   ];
+  const Helpful = [
+    {
+
+      help: "Term and Policy",
+
+    },
+    {
+
+      help: "Refund Policy",
+
+    },
+    {
+
+      help: "Plans and Pricing",
+
+    },
+
+  ];
 
   const socialIcons = [
     <a
@@ -87,23 +105,20 @@ const Footer = () => {
   const navbarContent = [
     { label: "About Us", link: "/aboutus" },
     { label: "Contact", link: "/contactus" },
-    { label: "FAQ", link: "/faqs" },
-    { label: "Privacy Policy", link: "/privacy" },
-    { label: "Terms & Conditions", link: "/terms" },
-    { label: "Refund Policy", link: "/refund" },
+    { label: "Home", link: "/home" },
     { label: "Blog", link: "/blogs" },
-    { label: "Plans & Pricing", link: "/month" },
+
   ];
 
   const rolesContent = yourCardArray.map((card) => card.role);
-
+  const helpfulContent = Helpful.map((helpfull) => helpfull.help);
   const locationContent = ["Pune"];
   return (
     <>
       <footer
         className="h-400 text-black p-6 flex justify-evenly  items-center footer-resopnsive w-full"
         style={{ backgroundColor: "#FFBD59" }}
-      > 
+      >
         <div className="grid gap-4 items-start space-y-4 footer-part-one">
           <Link to={"/"}>
             <div className="items-center footer-logo">
@@ -156,7 +171,18 @@ const Footer = () => {
               ))}
             </ul>
           </div>
+
+          <div className="flex flex-col items-start footer-content">
+            <h2 className="text-xl font-bold mb-4">Helpful</h2>
+            <ul className="text-xl  space-y-2">
+              {helpfulContent.map((help, index) => (
+                <li key={index}>{help}</li>
+              ))}
+            </ul>
+          </div>
         </div>
+
+
       </footer>
       <div style={{ borderTop: "3px dashed #fff", backgroundColor: "#FFBD59" }}>
         <p className=" flex items-center gap-4 justify-center p-4">

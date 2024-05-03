@@ -101,6 +101,17 @@ const Internship = () => {
     );
     setFilteredInternships(filtered);
   };
+  const filterByJobTitle = (jobTitle) => {
+    if (jobTitle === "All") {
+      setFilteredInternships(allInternships); // Show all internships if "All" is selected
+    } else {
+      const filtered = allInternships.filter(
+        (internship) => internship.job_Title === jobTitle
+      );
+      setFilteredInternships(filtered);
+    }
+  };
+
 
   // Function to handle the Navbar search logic
 
@@ -136,137 +147,27 @@ const Internship = () => {
 
   // JSX structure for the Internship component
   return (
-    <>
+    <div className="bg-gray-50">
       <Internal_Navbar />
 
-      {/* Search Section */}
-      <div className=" mt-20">
-        <div className=" head  mb-10 text-2xl font-bold flex flex-col items-center justify-center">
-          <h1 className="mt-20">Search Your Dream Internship here</h1>
-        </div>
-        <div className="inputinternship">
-          {/* Input for main search query */}
-          <div>
-            <input
-              type="text"
-              placeholder="Enter skills/designations/companies"
-              value={mainSearchQuery}
-              onChange={(e) => setMainSearchQuery(e.target.value)}
-              className="input rounded-full border border-gray-500 focus:border-gray-400 input-box-for-the-search-bar-container-internship-page"
-            />
-          </div>
-          {/* Main Search button */}
-          <div>
-            <button
-              className="btnintern bg-black hover:bg-black text-white rounded-md"
-              onClick={handleMainSearch}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* Filters Section */}
       <div
         className="FilterSectionMain flex"
-        // style={{ width: "60%" }}
+      // style={{ width: "60%" }}
       >
         {/* <div className="FilterSectionMain flex " style={{ width: '100%', flexDirection: "column", justifyContent:'center', alignItems:'center'}}> */}
 
-        <div
-          className="filter w-1/5 bg-gray-100 p-7  h-1/5 mt-2"
-          style={{ width: "31%" }}
-        >
-          {/* <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}> */}
 
-          <h2 className="text-lg font-semibold mb-4">All Filters</h2>
-          {/* Profile filter */}
-          {/* <div className="mb-4">
-            <h3 className="text-md font-semibold mb-2">Profile</h3>
-            <select className="w-full p-2 border rounded">
-              <option value="">All</option>
-              <option value="">Web development</option>
-              <option value="">Mobile Development</option>
-
-            </select>
-          </div> */}
-          {/* Location filter */}
-          <div className="mb-4">
-            <h3 className="text-md font-semibold mb-2">Location</h3>
-            <select
-              className="w-full p-2 border rounded"
-              onChange={(e) => {
-                const selectedLocation = e.target.value;
-                filterByLocation(selectedLocation);
-              }}
-            >
-              <option value="All">All</option>
-              <option value="Pune">Pune</option>
-              <option value="Bangalore">Bangalore</option>
-              <option value="Mumbai">Mumbai</option>
-              {/* Add more locations as needed */}
-            </select>
-          </div>
-          {/* Stipend filter */}
-          <div className="mb-4">
-            <h3 className="text-md font-semibold mb-2">Stipend</h3>
-            <select
-              className="w-full p-2 border rounded"
-              onChange={(e) => {
-                const [min, max] = e.target.value.split("-").map(Number);
-                filterByStipendRange(min, max);
-              }}
-            >
-              <option value="0-10000000">Any</option>
-              <option value="1000-5000">1000-5000</option>
-              <option value="5000-10000">5000-10000</option>
-              <option value="10000-20000">10000-20000</option>
-              {/* Add more options as needed */}
-            </select>
-          </div>
-          {/* Other filters */}
-
-          <div>
-            <h3 className="text-md font-semibold mb-2">Other Filters</h3>
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                className="form-checkbox"
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    filterByJobType("part-time");
-                  } else {
-                    // If unchecked, reset the filter (show all)
-                    setFilteredInternships(allInternships);
-                  }
-                }}
-              />
-              <span>Part-time</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                className="form-checkbox"
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    filterByJobType("full-time");
-                  } else {
-                    // If unchecked, reset the filter (show all)
-                    setFilteredInternships(allInternships);
-                  }
-                }}
-              />
-              <span>Full-time</span>
-            </label>
-          </div>
-        </div>
 
         {/* Display Internships Section */}
         <div
           className="flex flex-col items-center Internships-card "
           style={{}}
         >
+          <div className="mt-20 head mb-10 text-2xl font-bold flex items-center justify-center">
+            <h1 className="mt-20">Total Internships</h1>
+          </div>
           {/* <div className="flex flex-col items-center  Internships-card " style={{}}> */}
 
           {/* Map through the filtered internships (or all internships if not filtered) */}
@@ -274,7 +175,7 @@ const Internship = () => {
             filteredInternships.map((internship) => (
               <div
                 key={internship.id}
-                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center bg-white shadow-md overflow-hidden"
+                className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center shadow-md overflow-hidden"
                 style={{ width: "90%" }}
               >
                 <div
@@ -348,14 +249,153 @@ const Internship = () => {
             ))
           ) : (
             // Display a message if no internships are found
-            <p>No internships found.</p>
+            <div className="mt-36 text-orange-400"> 
+              <p>No internships found.</p>
+            </div>
           )}
+        </div>
+        {/* Search Section */}
+        <div className="mt-20">
+          <div className="mb-10 mt-16">
+            <div className=" head text-2xl font-bold flex items-center justify-center">
+              <h1 className="text-center">Search Your Dream Internship here</h1>
+            </div>
+            <div className="inputinternship">
+              {/* Input for main search query */}
+              <div className="flex justify-center p-2">
+                <input
+                  type="text"
+                  placeholder="Enter skills/designations/companies"
+                  value={mainSearchQuery}
+                  onChange={(e) => setMainSearchQuery(e.target.value)}
+                  className="input rounded-full  text-orange-400 border-1 border-orange-400 focus:border-orange-400 input-box-for-the-search-bar-container-internship-page"
+                />
+              </div>
+              {/* Main Search button */}
+              <div className="flex justify-center p-2">
+                <button
+                  className="btnintern bg-white text-orange-400 border-1 border-orange-400 hover:bg-black hover: rounded-md"
+                  onClick={handleMainSearch}
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            className="filter-intership bg-white border border-orange-400 shadow-md rounded-md overflow-hidden p-7 mt-2"
+          // style={{ width: "31%" }}
+          >
+            {/* <div className="filter  bg-gray-100 p-7  h-1/5 mt-2" style={{ width: '31%' }}> */}
+
+            <h2 className="text-lg font-semibold mb-4">All Filters</h2>
+            {/* Profile filter */}
+            <div className="mb-4">
+              <h3 className="text-md font-semibold mb-2">Job Title</h3>
+              <select
+                className="w-full p-2 border rounded"
+                onChange={(e) => {
+                  const selectedJobTitle = e.target.value;
+                  filterByJobTitle(selectedJobTitle);
+                }}
+              >
+                <option value="All">All</option>
+                {filteredInternships.map((internship) => (
+                  <option key={internship.id} value={internship.job_Title}>
+                    {internship.job_Title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Location filter */}
+            <div className="mb-4">
+              <h3 className="text-md font-semibold mb-2">Location</h3>
+              <select
+                className="w-full p-2 border rounded"
+                onChange={(e) => {
+                  const selectedLocation = e.target.value;
+                  filterByLocation(selectedLocation);
+                }}
+              >
+                <option value="All">All</option>
+                <option value="Pune">Pune</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Mumbai">Mumbai</option>
+                {/* Add more locations as needed */}
+              </select>
+            </div>
+            {/* Stipend filter */}
+            <div className="mb-4">
+              <h3 className="text-md font-semibold mb-2">Stipend</h3>
+              <select
+                className="w-full p-2 border rounded"
+                onChange={(e) => {
+                  const [min, max] = e.target.value.split("-").map(Number);
+                  filterByStipendRange(min, max);
+                }}
+              >
+                <option value="0-10000000">Any</option>
+                <option value="1000-5000">1000-5000</option>
+                <option value="5000-10000">5000-10000</option>
+                <option value="10000-20000">10000-20000</option>
+                {/* Add more options as needed */}
+              </select>
+            </div>
+            {/*skils*/}
+            <div className="mb-4">
+              <h3 className="text-md font-semibold mb-2">Skils</h3>
+              <select
+                className="w-full p-2 border rounded"
+
+              >
+                <option value="0-10000000">Any</option>
+
+                {/* Add more options as needed */}
+              </select>
+            </div>
+            {/* Other filters */}
+
+            <div>
+              <h3 className="text-md font-semibold mb-2">Other Filters</h3>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  className="form-checkbox"
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      filterByJobType("part-time");
+                    } else {
+                      // If unchecked, reset the filter (show all)
+                      setFilteredInternships(allInternships);
+                    }
+                  }}
+                />
+                <span>Part-time</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  className="form-checkbox"
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      filterByJobType("full-time");
+                    } else {
+                      // If unchecked, reset the filter (show all)
+                      setFilteredInternships(allInternships);
+                    }
+                  }}
+                />
+                <span>Full-time</span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
 };
 

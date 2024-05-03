@@ -7,7 +7,7 @@
   .filter {
     width: 100% !important;
   }
-  .InternCard {
+  .card {
     /* margin: 0px; */
     width: 100%;
     margin-left: 0px;
@@ -57,16 +57,18 @@
   }
 }
 .inputinternship {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  gap: 4em;
+  gap: 4em; */
+  position: relative;
+  top: 50%;
   align-items: center;
-  gap: 2em;
-  margin: 3em 0;
+  /* gap: 2em;
+  margin: 2em 0; */
 }
 .input-box-for-the-search-bar-container-internship-page {
   height: 3em;
-  width: 20em;
+  width: 18em;
   text-align: center;
   font-size: 15px;
   padding: 1em;
@@ -78,7 +80,7 @@
 .FilterSectionMain {
   justify-content: center;
   /* align-items: center; */
-  gap: 0em;
+  gap: 2em;
   width: 74%;
   margin: auto;
 }

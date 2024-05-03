@@ -10,7 +10,7 @@
   
   .footer-part-two {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     gap: 20px;
   }
 
@@ -32,12 +32,13 @@
   .footer-part-one,
   .footer-part-two {
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
   }
   
   .footer-part-two {
     gap: 10px;
   }
+  
 
   /* Further adjust text sizes for even smaller screens */
   .footer-part-two h2 {
