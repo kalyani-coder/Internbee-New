@@ -14,13 +14,18 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+
 router.get("/", async (req, res) => {
   try {
-    // Assuming you want to retrieve all internship posts from the database
+    // Retrieve all internship posts from the database
     const internships = await newInterShipSchema.find();
 
-    // Respond with the fetched data
-    res.json(internships);
+    // Get the total count of internships
+    const totalCount = await newInterShipSchema.countDocuments();
+
+    // Respond with the fetched data along with the total count
+    res.json({ totalCount, internships });
   } catch (error) {
     // Handle errors
     console.error(error);
