@@ -1,17 +1,17 @@
-// src/components/FAQPage.js
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import QuickNavbar from "../QuickNav/QuickNav";
-import "../ResponsiveCss/ResponsiveCss.css";
 import FaqNav from "../FaqNav/FaqNav";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import "./Faq.css";
+
 const FAQPage = () => {
   const faqData = [
     {
       question: "How do I apply for an internship?",
       answer:
-        "To apply for an internship, navigate to the 'Apply for Internships' section on our portal,",
+        "To apply for an internship, navigate to the 'Apply for Internships' section on our portal.",
     },
     {
       question: "Is there any age restriction for applying to internships?",
@@ -62,31 +62,87 @@ const FAQPage = () => {
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [FAQPerPage] = useState(4);
+
+  const toggleFAQ = (index) => {
+    if (activeIndex === index) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
+  };
+
+  const indexOfLastFAQ = currentPage * FAQPerPage;
+  const indexOfFirstFAQ = indexOfLastFAQ - FAQPerPage;
+  const currentFAQs = faqData.slice(indexOfFirstFAQ, indexOfLastFAQ);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const nextPage = () => setCurrentPage(currentPage + 1);
+
+  const prevPage = () => setCurrentPage(currentPage - 1);
+
   return (
     <>
       <FaqNav />
-
-      <div className="container container-for-the-faq-container-main mx-auto mt-8 p-6 pt-12 bg-white rounded-xl shadow-md mb-5">
-        <div className="FaqsAlign space-y-6 m-8">
-          <h2 className="text-xl font-bold mb-6 faq-title">
-            Frequently Asked Questions
-          </h2>
-          {faqData.map((faq, index) => (
-            <div key={index}>
-              <h3 className="text-l font-semibold header-in-faq-page-media-query">
-                {faq.question}
-              </h3>
-              <p
-                className=" text-gray-600 para-in-faq-page-media-query"
-                id="faqText"
+      <div className="faq1 mb-40">
+        <h1 className="faq-h1">Frequently Asked Questions</h1>
+        <div className="flex justify-center">
+          <div className="faq-container">
+            {currentFAQs.map((faq, index) => (
+              <div
+                className={`faq ${activeIndex === index ? "active" : ""}`}
+                key={index}
               >
-                {faq.answer}
-              </p>
-            </div>
-          ))}
+                <h3 className="faq-title">{faq.question}</h3>
+                <p className="faq-text">{faq.answer}</p>
+                <button
+                  className="faq-toggle"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  {activeIndex === index ? <FaTimes /> : <FaPlus />}
+                </button>
+              </div>
+            ))}
+            {faqData.length > FAQPerPage && (
+              <ul className="pagination mb-2 flex justify-center">
+                <li className="page-item p-2">
+                  <button
+                    onClick={prevPage}
+                    className="page-link text-orange-500 border-2 border-orange-500 hover:bg-orange-400 hover:text-black"
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                </li>
+                {Array.from({
+                  length: Math.ceil(faqData.length / FAQPerPage),
+                }).map((_, index) => (
+                  <li key={index} className="page-item p-2">
+                    <button
+                      onClick={() => paginate(index + 1)}
+                      className="page-link text-orange-500 border-2 border-orange-500 hover:bg-orange-400 hover:text-black"
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                ))}
+                <li className="page-item p-2">
+                  <button
+                    onClick={nextPage}
+                    className="page-link text-orange-500 border-2 border-orange-500 hover:bg-orange-400 hover:text-black"
+                    disabled={indexOfLastFAQ >= faqData.length}
+                  >
+                    Next
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
       </div>
-
       <Footer />
     </>
   );

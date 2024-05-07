@@ -2,6 +2,8 @@ const express = require("express");
 const appliedInternshipModel = require("../models/appliedInternship");
 const PostInternship = require("../models/postInternship");
 const User = require("../models/user");
+const StudentDetailsModel = require("../models/StudentsDetails")
+
 
 const router = express.Router();
 
@@ -52,7 +54,21 @@ router.get("/internId/:InternId", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+const checkProfile = async (req, res, next) => {
+  try {
+    const { InternId } = req.body;
+    const Intern = await StudentDetailsModel.findOne({ userId: InternId });
+    if (!Intern) {
+      return res.status(404).json({ message: "Student not found" , redirectToProfile: true });
+    }
+    next();
+  } catch (error) {
+    console.error("Error in checkProfile middleware:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+router.post("/",checkProfile, async (req, res) => {
   try {
     const { postId, InternId } = req.body;
 

@@ -1,13 +1,19 @@
 import React, { useState, useRef } from "react";
 import logo from "../../Assets/Interns_bee_combination-removebg-preview.png";
 import { Link, useNavigate } from "react-router-dom";
-import "../ResponsiveCss/ResponsiveCss.css";
+
+import "../Landingpage/Navbar.css"
+import EmployerRegistration from '../../Component/Signup/Signup';
+
+import Login from "../../Component/Login/Login"
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedUserType, setSelectedUserType] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
+  const [loginPopup, setLoginPopup] = useState(false);
+    const [registerPopup, setRegisterPopup] = useState(false);
 
   const handleLoginClick = (event) => {
     const buttonRect = event.target.getBoundingClientRect();
@@ -46,6 +52,21 @@ const Navbar = () => {
       }
     }
   };
+  const openLoginPopup = () => {
+    setLoginPopup(true);
+};
+
+const closeLoginPopup = () => {
+    setLoginPopup(false);
+};
+
+const openRegisternPopup = () => {
+    setRegisterPopup(true);
+};
+
+const closeRegisterPopup = () => {
+    setRegisterPopup(false);
+};
   // const HandleNavigate = () => {
   //     window.location.href = 'https://internbee-students.vercel.app/login';
   // }
@@ -62,63 +83,48 @@ const Navbar = () => {
 
   return (
     <div className="mb-10">
-      <div className="navbar-containers fixed top-0 left-0 w-full z-50 bg-white shadow-md  flex items-center justify-between border">
-        <div className="flex items-center ">
-          <img src={logo} alt="Logo" className="w-15 h-14 rounded-full" />
-          {/* <h1 className="text-4xl font-bold heading-in-navbar">Interns <span className="text-4xl font-bold text-amber-300">Bee</span></h1> */}
+    <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between border">
+        <div className="flex items-center space-x-2">
+            <Link to={'/'}>
+                <div className='navbar-logo'>
+                    <img src={logo} alt="Logo" className="navbar-logo-for-internsbeestudent rounded-full" />
+                </div>
+            </Link>
         </div>
-        {/* <div className="items-center space-x-6">
-                    <a href="#" className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Home</a>
-
-                </div> */}
-        <div className="flex items-center gap-3 ">
-          {/* <div className="flex items-center space-x-6">
-
-                        <Link to={'/blogs'} className="text-2xl font-bold focus:text-yellow-300 focus:border-yellow-300 focus:border-b-4">Blogs</Link>
-                    </div> */}
-
-          <div class="dropdown">
-            <button
-              class="btnshome bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Login
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <Link to="/login">
-                  <a class="dropdown-item"> Employers</a>
-                </Link>
-              </li>
-              <hr />
-            </ul>
-          </div>
-
-          <div class="dropdown">
-            <button
-              class="btnshome bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Register
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <Link to={"/register"}>
-                  <a class="dropdown-item"> Employers </a>
-                </Link>
-              </li>
-              <hr />
-            </ul>
-          </div>
+        <div>
+            <div className='relative right-16'>
+                <ul className="menu clearfix">
+                    <li className="parent p-2">
+                        <a href="">Login</a>
+                        <ul className="children">
+                            <li><a onClick={openLoginPopup}>Employee</a></li>
+                        </ul>
+                    </li>
+                    <li className="parent p-2">
+                        <a href="">Register</a>
+                        <ul className="children">
+                          <li><a onClick={openRegisternPopup}>Employee</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
+    {loginPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="">
+                <Login onClose={closeLoginPopup} />
+            </div>
+        </div>
+    )}
+    {registerPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="">
+                <EmployerRegistration onClose={closeRegisterPopup} />
+            </div>
+        </div>
+    )}
+</div>
   );
 };
 

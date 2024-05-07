@@ -31,7 +31,7 @@ const Internal_Navbar = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
 
   };
 
@@ -56,18 +56,18 @@ const Internal_Navbar = () => {
         </Link>
       </div>
       <div className="contains-all-the-left-side-section-of-the-navbar">
-        <div
+       <div
           className={`Navlist navlist-for-the-student-navbar-header-pages nav-items ${isOpen && "open"
             }`}
         >
-          <NavLink
+         {/* <NavLink
             to="/home"
             className="text-xl font-bold focus:text-black hover:text-black"
             onClick={() => setIsOpen(false)}
           >
             Students
           </NavLink>
-
+          */}
           
 
           {/* <NavLink

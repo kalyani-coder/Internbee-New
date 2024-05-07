@@ -5,7 +5,7 @@ import Alert from "./Alert/Alert";
 import { Link } from "react-router-dom";
 import logo from "../Assets/white_header1.png";
 import "./SignIn.css";
-const Login = () => {
+const Login = ({ onClose }) => {
   const navigate = useNavigate();
   const {
     register,
@@ -128,32 +128,12 @@ const Login = () => {
     }
   };
   return (
-    <>
+    <div className="">
       <div className="">
-        <Link to={"/"}>
-          <div className="flex justify-item-left ">
-            <img
-              src={logo}
-              alt=""
-              className="w-94 my-2 logo-for-sign-in-page-width-set"
-            />
-          </div>
-        </Link>
-        <div className="flex justify-center items-center mt-10">
-          <h1 className="text-3xl font-bold Login-and-Apply-for-the-Internship-text">
-            Login and Apply for the Internship
-          </h1>
-        </div>
-
-        <div className="flex flex-col items-center px-6 py-8 md:flex-row md:justify-center md:px-0">
-          <img
-            src="./design.jpg"
-            alt="design"
-            className="w-full md:w-auto md:max-w-md"
-          />
-
-          <div className="w-auto bg-white rounded-lg shadow-md mt-8 md:mt-0 md:ml-8 xl:p-0">
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div className="flex flex-col items-center md:flex-row md:justify-center md:px-0">
+          <div className="w-auto md:mt-0 md:ml-8 xl:p-0 mt-40" 
+          >
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8 border border-black bg-white">
               <h1 className="text-lg font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
                 Sign in to your account
               </h1>
@@ -174,9 +154,8 @@ const Login = () => {
                     name="email"
                     id="email"
                     {...register("email", { required: "Email is required" })}
-                    className={`bg-gray-50 border ${
-                      errors.email ? "border-red-500" : "border-black"
-                    } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
+                    className={`bg-gray-50 border ${errors.email ? "border-red-500" : "border-black"
+                      } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
                     placeholder="name@company.com"
                     required
                   />
@@ -199,9 +178,8 @@ const Login = () => {
                       required: "Password is required",
                     })}
                     placeholder="••••••••"
-                    className={`bg-gray-50 border ${
-                      errors.password ? "border-red-500" : "border-black"
-                    } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
+                    className={`bg-gray-50 border ${errors.password ? "border-red-500" : "border-black"
+                      } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
                     required
                   />
                   {errors.password && (
@@ -230,21 +208,21 @@ const Login = () => {
                   </div>
 
                   <Link to="/resetpass">
-                  <p
-                    
-                    href="#"
-                    className="text-sm font-medium text-primary-600
+                    <p
+
+                      href="#"
+                      className="text-sm font-medium text-primary-600
                     hover:underline dark:text-primary-500"
-                  >
-                    {" "}
-                    Forgot password?
-                  </p>
+                    >
+                      {" "}
+                      Forgot password?
+                    </p>
                   </Link>
                 </div>
                 {apiError && <Alert type="error">{apiError}</Alert>}
                 <button
                   type="submit"
-                  className="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-black bg-orange-400  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign in
                 </button>
@@ -261,11 +239,13 @@ const Login = () => {
                   </Link>
                 </p>
               </form>
+              <button onClick={onClose} className="w-full text-black bg-white  border-1 border-solid border-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                Close
+              </button>
             </div>
           </div>
         </div>
       </div>
-
       {showForgotPasswordPopup && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-90 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
@@ -290,9 +270,9 @@ const Login = () => {
             </button>
 
             <Link to={'/resetpass'}>
-            <h1 className="text-lg font-bold leading-tight tracking-tight text-black">
-              Forgot Password
-            </h1>
+              <h1 className="text-lg font-bold leading-tight tracking-tight text-black">
+                Forgot Password
+              </h1>
             </Link>
             <form
               onSubmit={handleSubmit(handleSendOtpClick)}
@@ -312,9 +292,8 @@ const Login = () => {
                   {...register("forgotEmail", {
                     required: "Email is required",
                   })}
-                  className={`bg-gray-50 border ${
-                    errors.forgotEmail ? "border-red-500" : "border-black"
-                  } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
+                  className={`bg-gray-50 border ${errors.forgotEmail ? "border-red-500" : "border-black"
+                    } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
                   placeholder="name@company.com"
                   required
                 />
@@ -344,9 +323,8 @@ const Login = () => {
                     </label>
                     <input
                       type="password"
-                      className={`bg-gray-50 border ${
-                        errors.forgotEmail ? "border-red-500" : "border-black"
-                      } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
+                      className={`bg-gray-50 border ${errors.forgotEmail ? "border-red-500" : "border-black"
+                        } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
                       required
                     />
                     {errors.forgotEmail && (
@@ -366,9 +344,8 @@ const Login = () => {
                     name="otp"
                     id="otp"
                     {...register("otp", { required: "OTP is required" })}
-                    className={`bg-gray-50 border ${
-                      errors.otp ? "border-red-500" : "border-black"
-                    } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
+                    className={`bg-gray-50 border ${errors.otp ? "border-red-500" : "border-black"
+                      } text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-black dark:placeholder-gray-700 dark:text-black dark:focus:ring-black dark:focus:border-black`}
                     placeholder="Enter OTP"
                     required
                   />
@@ -394,7 +371,7 @@ const Login = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

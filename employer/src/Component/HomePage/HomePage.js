@@ -30,7 +30,7 @@ const EmployerSection = () => {
   };
 
   return (
-    <>
+    <div className="bg-gray-50">
       {" "}
       <div className="AllHomeMain">
         <div>
@@ -106,7 +106,7 @@ const EmployerSection = () => {
           <Footer />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

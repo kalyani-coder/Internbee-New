@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../ResponsiveCss/ResponsiveCss.css";
 import logo from "../../Assets/white_header1.png";
 
-const Registration = () => {
+const Registration = ({onClose}) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -95,21 +95,17 @@ const Registration = () => {
   };
 
   return (
-    <>
-      <Link to={"/"}>
-        <div className="flex justify-item-left">
-          <img src={logo} alt="" className="w-94 my-0" />
-        </div>
-      </Link>
+    <div className="relative top-4">
+    
 
-      <div className="MainSignup flex h-screen items-center justify-between ">
-        <img src="./signup.jpg" alt="design" className=" " />
+      <div className="MainSignup flex h-screen items-center justify-between">
+       
 
         <div
-          className=" SignupForm px-5 py-1 rounded shadow-md w-full bg-slate-50 mb-44 "
-          style={{ width: "40rem" }}
+          className=" SignupForm px-5 py-1 rounded shadow-md w-full bg-slate-50"
+          style={{ width: "30rem" }}
         >
-          <h1 className="text-xl font-semibold mb-1 text-center">
+          <h1 className="text-xl font-semibold mb-1 text-center p-4">
             Employer Registration
           </h1>
 
@@ -258,10 +254,13 @@ const Registration = () => {
                 </a>
               </Link>
             </p>
+            <button onClick={onClose} className="w-full text-black bg-white  border-1 border-solid border-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Close
+          </button>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

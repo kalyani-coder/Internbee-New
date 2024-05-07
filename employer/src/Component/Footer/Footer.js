@@ -46,6 +46,24 @@ const Footer = () => {
       jobs: 40,
     },
   ];
+  const Helpful = [
+    {
+
+      help: "Term and Policy",
+
+    },
+    {
+
+      help: "Refund Policy",
+
+    },
+    {
+
+      help: "Plans and Pricing",
+
+    },
+
+  ];
 
   const socialIcons = [
     <a
@@ -86,86 +104,92 @@ const Footer = () => {
   ];
   const navbarContent = [
     { label: "About Us", link: "/aboutus" },
-    { label: "Contact", link: "/contact" },
-    { label: "FAQ", link: "/faq" },
-    { label: "Privacy Policy", link: "/privacy" },
-    { label: "Terms & Conditions", link: "/terms" },
-    { label: "Refund Policy", link: "/refund" },
+    { label: "Contact", link: "/contactus" },
+    { label: "Home", link: "/home" },
     { label: "Blog", link: "/blogs" },
-    { label: "Plans & Pricing", link: "/anuallypackage" },
+
   ];
 
   const rolesContent = yourCardArray.map((card) => card.role);
-
+  const helpfulContent = Helpful.map((helpfull) => helpfull.help);
   const locationContent = ["Pune"];
   return (
     <>
-      <footer
-        className="MainFooter h-400 text-black p-6 flex justify-evenly items-center footer-resopnsive shadow-md"
-        style={{ backgroundColor: "#FFBD59" }}
-      >
-        <div className="grid gap-4 items-start space-y-4">
-          <Link to={"https://internsbee.com"}>
-            <div className="items-center div-logo-for-the-footer-internsbeee">
-              <img
-                src={logo}
-                alt="Footer Logo"
-                className="img-logo-for-the-footer-internsbeee"
-                // style={{ width: "15rem" }}
-              />
-              {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
-            </div>
-          </Link>
-          <div className="text-xl flex items-center gap-4 justify-center ">
-            {socialIcons.map((icon, index) => (
-              <div key={index}>{icon}</div>
-            ))}
+    <footer
+      className="h-400 text-black p-6 flex justify-evenly  items-center footer-resopnsive w-full"
+      style={{ backgroundColor: "#FFBD59" }}
+    >
+      <div className="grid gap-4 items-start space-y-4 footer-part-one">
+        <Link to={"/"}>
+          <div className="items-center footer-logo">
+            <img
+              src={logo}
+              alt="Footer Logo"
+              className=""
+              style={{ width: "15rem" }}
+            />
+            {/* <p className="text-xl font-bold ">Interns  <span className='text-white'>Bee</span></p> */}
           </div>
+        </Link>
+        <div className="flex items-center justify-center gap-4 footer-link-icon">
+          {socialIcons.map((icon, index) => (
+            <div key={index} className="text-2xl hover:text-white">
+              {icon}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-14 footer-content p-4 footer-part-two">
+        <div className="flex flex-col  space-y-7">
+          <h2 className="text-xl font-bold ">Quick Links</h2>
+          <ul className="text-xl space-y-2">
+            {navbarContent.map((item, index) => (
+              <li key={index}>
+                <a className="hover:text-white" href={item.link}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="flex gap-14 flex-row footer-content">
-          <div className="flex flex-col other-links-in-the-footer-page items-start space-y-7">
-            <ul className="text-xl space-y-2">
-              <h2 className="text-xl font-bold ">Quick Links</h2>
-              {navbarContent.map((item, index) => (
-                <li key={index}>
-                  <a
-                    className="hover:text-white text-lg locatins-for-the-footer-internbeee"
-                    href={item.link}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>{" "}
-          <div className="flex flex-col other-links-in-the-footer-page items-start ">
-            <h2 className="text-xl font-bold">Roles</h2>
-            <ul className="text-lg locatins-for-the-footer-internbeee space-y-2 ">
-              {rolesContent.map((role, index) => (
-                <li key={index}>{role}</li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-col items-start footer-content">
+          <h2 className="text-xl font-bold mb-4">Roles</h2>
+          <ul className="text-xl  space-y-2">
+            {rolesContent.map((role, index) => (
+              <li key={index}>{role}</li>
+            ))}
+          </ul>
         </div>
-        <div className="flex flex-col other-links-in-the-footer-page items-start">
+
+        <div className="flex flex-col items-start space-y-7 footer-content">
           <h2 className="text-xl font-bold">Locations</h2>
-          <ul className="text-lg locatins-for-the-footer-internbeee">
+          <ul className="text-xl space-y-2">
             {locationContent.map((location, index) => (
               <li key={index}>{location}</li>
             ))}
           </ul>
         </div>
-      </footer>{" "}
-      <div>
-        <p
-          style={{ backgroundColor: "#FFBD59" }}
-          className="interns-bee-all-righ-reserved-footerr flex items-center gap-4 justify-center p-2"
-        >
-          2024 Internsbee.All Right Reserved.
-        </p>
+
+        <div className="flex flex-col items-start footer-content">
+          <h2 className="text-xl font-bold mb-4">Helpful</h2>
+          <ul className="text-xl  space-y-2">
+            {helpfulContent.map((help, index) => (
+              <li key={index}>{help}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </>
+
+
+    </footer>
+    <div style={{ borderTop: "3px dashed #fff", backgroundColor: "#FFBD59" }}>
+      <p className=" flex items-center gap-4 justify-center p-4">
+        2024 Internsbee.All Right Reserved.
+      </p>
+    </div>
+  </>
   );
 };
 export default Footer;

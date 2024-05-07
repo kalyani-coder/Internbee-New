@@ -111,6 +111,7 @@ function App() {
         <Route path="/profileconfirm" element={<ProfileConfirmMessage />} />
         <Route path="/resetpass" element={<RestPass />} />
         <Route path="/verifyotp" element={<VerifyOtp />} />
+        
 
         {/* <Route path="/Test" element={<Applied_Intern_Internal_Navbar/>} */}
       </Routes>

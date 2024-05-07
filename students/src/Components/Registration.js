@@ -13,7 +13,7 @@ import { Link } from "react-router-dom"; // Import the Alert component
 import logo from "../Assets/white_header1.png";
 import "./Registration.css";
 import Alert from "./Alert/Alert";
-const Registration = () => {
+const Registration = ({ onClose }) => {
   const [showEmailOtpInput, setShowEmailOtpInput] = useState(false);
   const [emailOtp, setEmailOtp] = useState("");
 
@@ -102,26 +102,13 @@ const Registration = () => {
 
   return (
     <div>
-      <Link to={"/"}>
-        <div className="flex justify-item-left ">
-          <img src={logo} alt="" className="w-94 my-1" />
-        </div>
-      </Link>
-      <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 ">
-        <div class="flex flex-col items-center justify-center mt-1">
-          <h1 class="text-2xl font-bold text-center Register-and-Apply-for-the-Internship">
-            Register and Apply for the Internship
-          </h1>
-        </div>
+      
+      <div class="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 bg-white p-4 border">
 
-        <div class="flex flex-col lg:flex-row items-center justify-between mt-0">
-          <img
-            src="./design.jpg"
-            alt="design"
-            class="w-full lg:w-1/2 xl:w-2/3"
-          />
+        <div class="flex justify-center flex-col lg:flex-row items-center mt-0">
 
-          <div class="p-3 rounded shadow-md bg-slate-50 w-full lg:w-1/2 xl:w-2/3 mt-8 lg:mt-0">
+
+          <div class="">
             <h1 class="text-3xl font-semibold mb-4 text-center">
               Student Registration
             </h1>
@@ -306,7 +293,8 @@ const Registration = () => {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-2 rounded mt-4 hover:bg-red-600"
+                className="w-full text-black bg-orange-400  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              
               >
                 Sign Up
               </button>
@@ -323,7 +311,11 @@ const Registration = () => {
                 </Link>
               </p>
             </form>
+            <button onClick={onClose} className="w-full text-black bg-white  border-1 border-solid border-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Close
+          </button>
           </div>
+          
         </div>
       </div>
     </div>
