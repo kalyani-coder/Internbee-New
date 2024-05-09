@@ -17,7 +17,7 @@ const Internship = () => {
   const [filteredInternships, setFilteredInternships] = useState([]);
   const [allInternships, setAllInternships] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const internshipsPerPage = 5;
+  const internshipsPerPage = 4;
 
   const fetchInternshipData = async () => {
     try {
@@ -209,14 +209,14 @@ const Internship = () => {
                       Duration : {internship.position}
                     </p>
                   </div>
-                  <div className="ml-[78%]">
+                  <div className="flex justify-center">
                     <Link to={`/apply-internship/${internship._id}`}>
-                      <button
-                        className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss"
-                        style={{ backgroundColor: "#FFBD59" }}
-                      >
-                        View
-                      </button>
+                    <button
+                    className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss bg-yellow-400 hover:bg-yellow-500 sm:min-w-0 sm:px-4 md:px-2 lg:px-4"
+                  >
+                    View
+                  </button>
+                  
                     </Link>
                   </div>
                 </div>
@@ -250,11 +250,11 @@ const Internship = () => {
           )}
         </div>
         <div className="mt-20">
-          <div className="mb-10 mt-16">
+          <div className="mb-10 mt-20">
             <div className="head text-2xl font-bold flex items-center justify-center">
               <h1 className="text-center">Search Your Dream Internship here</h1>
             </div>
-            <div className="inputinternship">
+            <div className="inputinternship mt-9">
               <div className="flex justify-center p-2">
                 <input
                   type="text"
@@ -264,7 +264,7 @@ const Internship = () => {
                   className="input rounded-full  text-orange-400 border-1 border-orange-400 focus:border-orange-400 input-box-for-the-search-bar-container-internship-page"
                 />
               </div>
-              <div className="flex justify-center p-2">
+              <div className="flex justify-center p-2 mt-2">
                 <button
                   className="btnintern bg-white text-orange-400 border-1 border-orange-400 hover:bg-black hover: rounded-md"
                   onClick={handleMainSearch}

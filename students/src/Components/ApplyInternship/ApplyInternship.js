@@ -37,30 +37,30 @@ const ApplyInternship = () => {
 
   const handleApply = async () => {
     setIsSubmitting(true);
-  
+
     try {
       const userId = localStorage.getItem("userId");
-  
+
       // Check if student ID exists in studentsdetails API
       const studentDetailsResponse = await axios.get(
         `http://localhost:8000/api/studentsdetails/${userId}`
       );
-  
+
       if (studentDetailsResponse.data.redirectToProfile) {
         alert("Please complete your profile first.");
         return navigate("/profile");
       }
-  
+
       const userResponse = await axios.get(
         `http://localhost:8000/api/auth/${userId}`
       );
       const userData = userResponse.data;
-  
+
       const packageType = userData.freePackage ? "freePackage" : "monthlyPackage";
-  
+
       const opportunities_Counter = userData.opportunities_Counter || 0;
       const opportunities = userData[packageType].opportunities || 0;
-  
+
       if (
         userData[packageType].freePackagePrice === "" ||
         userData[packageType].searches === null ||
@@ -71,22 +71,22 @@ const ApplyInternship = () => {
         alert("You need to subscribe first. Please update your subscription.");
         return;
       }
-  
+
       if (opportunities_Counter >= opportunities) {
         alert("Apply limit reached. You can't apply for more jobs.");
         return;
       }
-  
+
       const formData = {
         postId: internshipId,
         InternId: userId,
       };
-  
+
       const response = await axios.post(
         "http://localhost:8000/api/applyinternship/",
         formData
       );
-  
+
       if (response.status === 201) {
         const updatedUserData = {
           ...userData,
@@ -96,12 +96,12 @@ const ApplyInternship = () => {
             opportunities: 0,
           },
         };
-  
+
         await axios.patch(
           `http://localhost:8000/api/auth/${userId}`,
           updatedUserData
         );
-  
+
         alert("Application submitted successfully!");
       } else {
         alert("Error: Unable to apply for the internship");
@@ -109,7 +109,7 @@ const ApplyInternship = () => {
     } catch (error) {
       console.error("Error:", error.message);
       console.log("Error details:", error.response.data);
-      if(error.response.data.message === "Student not found"){
+      if (error.response.data.message === "Student not found") {
         navigate("/profile");
 
       }
@@ -119,8 +119,8 @@ const ApplyInternship = () => {
       setIsSubmitting(false);
     }
   };
-  
-  
+
+
 
   return (
     <div className="bg-gray-50">
@@ -163,10 +163,20 @@ const ApplyInternship = () => {
                 </p>
               </div>
             </div>
-            <p className="card-description text-base text-gray-700 my-4">
-              Job Type: {internship.job_Type}
-            </p>
-            <p className="card-description text-base text-gray-700 my-4">
+            <div className="flex gap-32">
+              <div>
+                <p className="card-description text-base text-gray-700 mb-3">
+                  Job Type: {internship.job_Type}
+                </p>
+              </div>
+              <div className="flex items-center">
+                <FaRegClock className="mr-2" />
+                <p className="card-duration text-sm text-gray-700">
+                  Duration : {internship.position}
+                </p>
+              </div>
+            </div>
+            <p className="card-description text-base text-gray-700 mb-3">
               {internship.job_Description}
             </p>
             <div className=" justify-between items-center">
@@ -184,7 +194,7 @@ const ApplyInternship = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
