@@ -8,6 +8,7 @@ import { FiUser } from "react-icons/fi";
 import Profile_Navbar from "./ProfileNavBar/Profile_Navbar";
 import "./ResponsiveCss/ResponsiveCss.css";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
+import Footer from '../Components/Footer';
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -347,7 +348,7 @@ const Profile = () => {
   };
 
   return (
-    <div className=" ">
+    <div className=" bg-gray-50">
       <div className="">
         {/* <div
           className="p-6 flex items-center justify-between border shadow-xl w-full"
@@ -420,7 +421,13 @@ const Profile = () => {
 
         {/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
-          <div className="CardSizeProfile w-2/3 border border-black p-2  bg-gray-50 shadow-lg mt-[113px]">
+
+          <div className="CardSizeProfile w-2/3 border border-black bg-white p-4 mt-[113px] mb-10">
+            <div className="flex justify-center">
+              <div className="mt-6 text-3xl font-bold">
+                <h4>Create Profile</h4>
+              </div>
+            </div>
             <div className="mt-6 text-2xl font-bold">
               <h6>1.Personal Details</h6>
             </div>
@@ -431,7 +438,7 @@ const Profile = () => {
                   First Name<span className="text-red-500">*</span>
                 </label>
                 <input
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -446,7 +453,7 @@ const Profile = () => {
                   Last Name<span className="text-red-500">*</span>
                 </label>
                 <input
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -461,7 +468,7 @@ const Profile = () => {
                   Email<span className="text-red-500">*</span>
                 </label>
                 <input
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   type="email"
                   id="email"
                   name="email"
@@ -476,7 +483,7 @@ const Profile = () => {
                   Birthdate<span className="text-red-500">*</span>
                 </label>
                 <input
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   type="date"
                   id="birthdate"
                   name="birthdate"
@@ -491,11 +498,11 @@ const Profile = () => {
                   htmlFor="permanentaddress"
                   className="block text-large font-medium"
                 >
-                  Permanent Address<span className="text-red-500">*</span>
+                  Address<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="permanentaddress"
                   name="permanentaddress"
                   value={permanentaddress}
@@ -510,7 +517,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="city"
                   name="city"
                   value={city}
@@ -528,7 +535,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="district"
                   name="district"
                   value={district}
@@ -546,7 +553,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="country"
                   name="country"
                   value={country}
@@ -558,11 +565,11 @@ const Profile = () => {
 
             <br></br>
 
-            <div className="mt-6 text-2xl font-bold pl-4">
-              {/* <h6>1.Personal Details</h6> */}
-            </div>
+            {/* <div className="mt-6 text-2xl font-bold pl-4">
+               <h6>1.Personal Details</h6> 
+            </div>*/}
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+            {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
               <div className="form-group">
                 <label
                   htmlFor="current_address"
@@ -652,14 +659,13 @@ const Profile = () => {
                   required
                 />
               </div>
-            </div>
+      </div>*/}
             <hr />
-
             <div className="mt-6 text-2xl font-bold">
-              <h6>2. Educational Details Graduation</h6>
+              <h6>2. Post Graduation</h6>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
               <div className="form-group">
                 <label
                   htmlFor="education"
@@ -669,7 +675,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="education"
                   name="education"
                   value={education}
@@ -687,7 +693,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="instituteName"
                   name="instituteName"
                   value={instituteName}
@@ -705,7 +711,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="stream"
                   name="stream"
                   value={stream}
@@ -723,7 +729,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="passOutYear"
                   name="passOutYear"
                   value={passOutYear}
@@ -741,7 +747,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="percentage"
                   name="percentage"
                   value={percentage}
@@ -752,7 +758,104 @@ const Profile = () => {
             </div>
             <hr />
 
-            <div className="mt-6 text-2xl pl-4 font-bold">
+            <div className="mt-6 text-2xl font-bold">
+              <h6>3. Educational Details Graduation</h6>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
+              <div className="form-group">
+                <label
+                  htmlFor="education"
+                  className="block text-large font-medium"
+                >
+                  Education<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="education"
+                  name="education"
+                  value={education}
+                  onChange={handleEducationChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label
+                  htmlFor="institutename"
+                  className="block text-large font-medium"
+                >
+                  Collage Name<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="instituteName"
+                  name="instituteName"
+                  value={instituteName}
+                  onChange={handleInstituteNameChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label
+                  htmlFor="stream"
+                  className="block text-large font-medium"
+                >
+                  Stream<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="stream"
+                  name="stream"
+                  value={stream}
+                  onChange={handleStreamChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label
+                  htmlFor="passoutyear"
+                  className="block text-large font-medium"
+                >
+                  Pass-out Year<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="passOutYear"
+                  name="passOutYear"
+                  value={passOutYear}
+                  onChange={handlePassOutYearChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label
+                  htmlFor="percentage"
+                  className="block text-large font-medium"
+                >
+                  Percentage / CGPA<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="percentage"
+                  name="percentage"
+                  value={percentage}
+                  onChange={handlePercentageChange}
+                  required
+                />
+              </div>
+            </div>
+
+
+            {/*  <div className="mt-6 text-2xl pl-4 font-bold">
               <h6> Educational Details 12th</h6>
             </div>
 
@@ -846,10 +949,10 @@ const Profile = () => {
                   required
                 />
               </div>
-            </div>
-            <hr />
+    </div>*/}
 
-            <div className="mt-6 text-2xl font-bold">
+
+            {/*  <div className="mt-6 text-2xl font-bold">
               <h6> Educational Details 10th</h6>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
@@ -942,12 +1045,12 @@ const Profile = () => {
                 />
               </div>
             </div>
-
+  */}<hr />
             <div className="mt-6 text-2xl font-bold">
-              <h6>3.Technical Details</h6>
+              <h6>4.Technical Details</h6>
             </div>
 
-            <div className=" grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+            <div className=" grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
               <div className="form-group">
                 <label
                   htmlFor="keyskills"
@@ -957,7 +1060,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="keyskills"
                   name="keySkills"
                   value={keySkills}
@@ -974,7 +1077,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                   id="languages"
                   name="languages"
                   value={languages}
@@ -992,7 +1095,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                   id="experience"
                   name="experience"
                   value={experience}
@@ -1011,7 +1114,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                   id="salaryexpectations"
                   name="salaryExpectations"
                   value={salaryExpectations}
@@ -1029,7 +1132,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                   id="projectname"
                   name="projectName"
                   value={projectName}
@@ -1046,7 +1149,7 @@ const Profile = () => {
                 </label>
                 <textarea
                   id="projectsummary"
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                   rows="4"
                   name="projectSummary"
                   value={projectSummary}
@@ -1061,10 +1164,10 @@ const Profile = () => {
             <hr />
 
             <div className="mt-6 text-2xl font-bold">
-              <h6>4.Upload Documents</h6>
+              <h6>5. Upload Documents</h6>
             </div>
 
-            <div className="UploadResume grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="UploadResume  md:grid-cols-3 gap-10 mb-4">
               <div className="form-group">
                 <label htmlFor="resume" className="block text-xl font-medium">
                   Resume<span className="text-red-500">*</span>
@@ -1074,28 +1177,11 @@ const Profile = () => {
                   accept="application/pdf"
                   onChange={handlePDFChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                 />
               </div>
 
-              <div className="form-group col-span-3 md:col-span-1 mt-10">
-                {/* <span className="block text-xl font-large">OR</span> */}
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="certification"
-                  className="block text-xl font-medium mt-10"
-                >
-                  Certification
-                </label>
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  onChange={handlePDFChange2}
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
-                />
-              </div>
+         
 
               <div className="form-group">
                 <label
@@ -1109,51 +1195,41 @@ const Profile = () => {
                   accept="image/*"
                   onChange={handleImageChange}
                   required
-                  className="mt-1 p-2 w-full border rounded-md text-xl"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                 />
               </div>
             </div>
             <hr />
 
-            <div className="flex justify-center gap-2 pb-3 bottom-section-of-the-profile-resume-section">
-              {/* <button
-                type="button"
-                style={{}}
-                className="mt-8 p-2  text-white border rounded-md bg-black"
-                onClick={handleResume}
-              >
-                Create Resume
-              </button> */}
+            <div className="flex flex-col md:flex-row justify-center md:justify-end gap-2 pb-3 bottom-section-of-the-profile-resume-section mt-4">
               <Link to={"/home"}>
                 <button
                   style={{}}
-                  className=" px-3 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                  className="px-3 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
                 >
-                  {" "}
                   Back
                 </button>
               </Link>
               <button
                 onClick={handleCancel}
                 style={{}}
-                className=" px-2 mt-8  text-white border rounded-md  bg-black submit-your-application"
+                className="px-2 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
               >
-                {" "}
                 Cancel
               </button>
-
               <button
                 onClick={handleUpload}
                 style={{}}
-                className=" px-2 mt-8  text-white border border-black rounded-md  bg-black submit-your-application"
+                className="px-2 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
               >
-                {" "}
                 Submit
               </button>
             </div>
+
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

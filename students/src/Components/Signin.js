@@ -58,7 +58,7 @@ const Login = ({ onClose }) => {
           navigate("/home");
         } else {
           // If user details don't exist, navigate to profile page
-          navigate("/profile");
+          navigate("/internship");
         }
       } else {
         // Handle invalid credentials

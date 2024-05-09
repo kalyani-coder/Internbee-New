@@ -49,7 +49,7 @@ const Footer = () => {
   const Helpful = [
     {
 
-      help: "Term and Policy",
+      help: "Terms and Conditions",
 
     },
     {

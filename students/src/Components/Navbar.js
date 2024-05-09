@@ -58,7 +58,7 @@ const Navbar = () => {
     
     return (
         <div className="mb-10">
-            <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md p-2 flex items-center justify-between border">
+            <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between border">
                 <div className="flex items-center space-x-2">
                     <Link to={'/'}>
                         <div className='navbar-logo'>
@@ -67,9 +67,9 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div>
-                    <div className='relative right-16'>
+                    <div className='relative right-24'>
                         <ul className="menu clearfix">
-                            <li className="parent p-2">
+                            <li className="parent p-2 relative right-1">
                                 <a href="">Login</a>
                                 <ul className="children">
                                     <li><a href="">Employee</a></li>

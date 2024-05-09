@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import '../ResponsiveCss/ResponsiveCss.css';
 import logo from "../../Assets/white_header1.png";
-const Login = () => {
+const Login = ({onClose}) => {
 
   useEffect(() => {
     const StoredToken = localStorage.getItem('token');
@@ -21,7 +21,7 @@ const Login = () => {
 
   // direct navigate to home page if data save in localstorage
 
-  
+
   useEffect(() => {
     const storedData = localStorage.getItem("userId");
     const email = localStorage.getItem("email");
@@ -87,19 +87,11 @@ const Login = () => {
   return (
     <>
       <div className=" my-0">
-      <Link to={'https://internsbee.com'}>
-        <div className="flex justify-item-left ">
-      <img src={logo} alt=""  className='imglogin w-94 my-1'/>
-    </div>
-    </Link>
        
-        <div className="flex justify-center items-center">
-          {/* <h1 className="text-4xl font-bold">Login to your Account</h1> */}
-        </div>
 
+      
         <div className="LoginMainDiv flex items-center justify-between px-6 py-8 mr-40 ">
-          <img src="./login.jpg" alt="design" className="" style={{height:500}}/>
-
+         
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black mt-0">
             <div className="p-6 space-y-4 md:space-y-0 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
@@ -174,18 +166,18 @@ const Login = () => {
                       </label>
                     </div>
                   </div>
-               <Link to={"/resetpass"}>
-               <a
-                    href="#"
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Forgot password?
-                  </a>
-               </Link>
+                  <Link to={"/resetpass"}>
+                    <a
+                      href="#"
+                      className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    >
+                      Forgot password?
+                    </a>
+                  </Link>
                 </div>
                 <button
                   type="submit"
-                  className="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-black bg-orange-400  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign in
                 </button>
@@ -199,6 +191,9 @@ const Login = () => {
                   </Link>
                 </p>
               </form>
+              <button onClick={onClose} className="w-full text-black bg-white  border-1 border-solid border-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+              Close
+            </button>
             </div>
           </div>
         </div>

@@ -77,7 +77,7 @@ const Sidebar = () => {
             </a>
           </Link>
 
-          <Link to="/searchcv">
+         {/* <Link to="/searchcv">
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">
               <FontAwesomeIcon
                 icon={faSearch}
@@ -85,7 +85,7 @@ const Sidebar = () => {
               />
               Search CV
             </a>
-          </Link>
+      </Link>*/}
 
           <Link to="/message">
             <a className="flex items-center px-4 py-3 text-white hover:text-white text-bold hover:bg-gray-600">

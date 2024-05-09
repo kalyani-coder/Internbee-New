@@ -149,7 +149,7 @@ const Internship = () => {
       <div className="FilterSectionMain flex">
         <div className="flex flex-col items-center Internships-card">
           <div className="mt-20 head mb-10 text-2xl font-bold flex items-center justify-center">
-            <h1 className="mt-20">Total Internships</h1>
+            <h1 className="mt-20">Total Internships {allInternships.length}</h1>
           </div>
 
           {currentInternships.length > 0 ? (
