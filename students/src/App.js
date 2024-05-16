@@ -42,6 +42,7 @@ import ApplyInternshipLanding from "./Components/ApplyInernshipLanding/ApplyInte
 import ProfileConfirmMessage from "./Components/ProfileConfirmMessage/ProfileConfirmMessage";
 import RestPass from "./Components/RestPass/ResetPass";
 import VerifyOtp from "./Components/RestPass/VerifyOtp";
+import ViewResume from './Components/ViewResume';
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -85,6 +86,8 @@ function App() {
         <Route path="/nav" element={<Internal_Navbar />} />
         <Route path="/viewprofile" element={<ViewProfile />} />
         <Route path="/uploadimage" element={<UploadImagePdf />} />
+        <Route path="/viewresume" element={<ViewResume />} />
+
         <Route
           path="/apply-internship/:internshipId"
           element={<ApplyInternship />}

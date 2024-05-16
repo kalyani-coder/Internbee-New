@@ -5,95 +5,111 @@ import "react-datepicker/dist/react-datepicker.css";
 import { IoMdClose } from "react-icons/io";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import Footer from '../Components/Footer';
-import { useEffect } from "react";
-const DatePickerInput = ({ selected, onChange }) => {
-  return (
-    <DatePicker
-      selected={selected}
-      onChange={onChange}
-      dateFormat="MM/dd/yyyy"
-      className="mt-1 p-2 w-full border rounded-md text-xl"
-    />
-  );
-};
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
 const Resume = () => {
-  const { register, handleSubmit, setValue, watch } = useForm();
-  const [skills, setSkills] = useState([]);
-  const [experiences, setExperiences] = useState([]);
-  const [portfolios, setPortfolios] = useState([]);
-  const [educations, setEducations] = useState([]);
+  const { register, handleSubmit, watch } = useForm();
   const [birthdate, setBirthdate] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  // ... (other states for skills, experiences, portfolios, educations)
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleBirthdateChange = (date) => {
     setBirthdate(date);
   };
 
-  const onAdd = () => {
-    const skillsFormData = {
-      Skills: watch("Skills"),
-      level: watch("level"),
-    };
-    setSkills((prevSkills) => [...prevSkills, skillsFormData]);
-  };
-  const onDeleteSkill = (index) => {
-    setSkills((prevSkills) => prevSkills.filter((_, i) => i !== index));
-  };
-  const [data, setData] = useState([]);
+  const studentId = localStorage.getItem("userId");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const saveResume = async (data) => {
     try {
-      const response = await fetch('http://localhost:8000/api/resume');
-      const jsonData = await response.json();
-      setData(jsonData);
+      // Prepare personal information data
+      const personalInformation = {
+        ...data.personalInformation,
+        Student_Id: studentId // Assign userId to the Student_Id
+      };
+  
+      // Save personal information
+      const savedPersonalInformation = await savePersonalInformation(personalInformation);
+  
+      // Combine all resume data
+      const resumeData = {
+        personalInformation: savedPersonalInformation,
+        education: data.education,
+        experience: data.experience,
+        portfolio: data.portfolio
+      };
+  
+      // Now save the complete resume
+      const response = await axios.post('http://localhost:8000/api/resume/', resumeData);
+      console.log('Resume saved successfully:', response.data);
+  
+      // Redirect to View Resume page
+      navigate("/viewresume");
     } catch (error) {
-      console.error('Error fetching data: ', error);
+      console.error('Error saving resume:', error);
     }
   };
-  const handleSave = async () => {
-    const formData = {
-      personalInfo: {
-        fullname: watch("fullname"),
-        lastname: watch("lastname"),
-        email: watch("email"),
-        permanentaddress: watch("permanentaddress"),
-        phoneNumber: watch("phoneNumber"),
-        gender: watch("gender"),
-        birthdate: birthdate,
-        expectation: watch("Expectation"),
-        careerProfile: watch("Career"),
-      },
-      skills: skills,
-      educations: educations,
-      experiences: experiences,
-    };
+  
 
+  const savePersonalInformation = async (data) => {
     try {
-      const response = await fetch('http://localhost:8000/api/resume', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        // Data saved successfully, you can update state or show a success message
-        console.log('Data saved successfully');
-      } else {
-        // Data not saved, handle the error
-        console.error('Failed to save data:', response.statusText);
-      }
+      const response = await axios.post('http://localhost:8000/api/resume/', { personalInformation: data });
+      console.log('Personal Information saved successfully:', response.data);
+      return response.data;
     } catch (error) {
-      console.error('Error saving data:', error);
+      console.error('Error saving personal information:', error);
+      throw error;
     }
   };
 
+  const saveEducation = async (data) => {
+    try {
+      const response = await axios.patch('http://localhost:8000/api/resume/', { education: data });
+      console.log('Education saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving education:', error);
+    }
+  };
+
+  const saveExperience = async (data) => {
+    try {
+      const response = await axios.patch('http://localhost:8000/api/resume/', { experience: data });
+      console.log('Experience saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving experience:', error);
+    }
+  };
+
+  const savePortfolio = async (data) => {
+    try {
+      const response = await axios.patch('http://localhost:8000/api/resume/', { portfolio: data });
+      console.log('Portfolio saved successfully:', response.data);
+    } catch (error) {
+      console.error('Error saving portfolio:', error);
+    }
+  };
+
+  const onSubmit = async (data) => {
+    try {
+      await saveResume(data);
+      
+      // Save education
+      await saveEducation(data.education);
+      
+      // Save experience
+      await saveExperience(data.experience);
+      
+      // Save portfolio
+      await savePortfolio(data.portfolio);
+      
+      console.log('Resume saved successfully');
+    } catch (error) {
+      console.error('Error saving resume:', error);
+    }
+  };
+  
   return (
     <div className=" bg-gray-50">
       <Internal_Navbar />
@@ -102,9 +118,10 @@ const Resume = () => {
           <div className="">
             <div className="flex-1 p-8">
               <h1 className="text-3xl font-bold">Resume Format </h1>
-              <form>
+              <form onSubmit={handleSubmit(onSubmit)}>{/* Attach handleSubmit to form */}
                 <h1 className="text-xl font-bold m-4 ">Personal Information</h1>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                  
                   <div className="form-group">
                     <label
                       htmlFor="firstname"
@@ -115,8 +132,8 @@ const Resume = () => {
                     <input
                       type="text"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="fullname"
-                      {...register("fullname", {
+                      id="firstname"
+                      {...register("personalInformation.firstname", {
                         required: "This field is required",
                       })}
                     />
@@ -132,27 +149,27 @@ const Resume = () => {
                       type="text"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
                       id="lastname"
-                      {...register("lastname", {
+                      {...register("personalInformation.lastname", {
                         required: "This field is required",
                       })}
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="email" className="block text-l font-medium">
+                    <label htmlFor="emailaddress" className="block text-l font-medium">
                       Email address<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="email"
-                      {...register("email", {
+                      id="emailaddress"
+                      {...register("personalInformation.emailaddress", {
                         required: "This field is required",
                       })}
                     />
                   </div>
                   <div className="form-group">
                     <label
-                      htmlFor="permanentaddress"
+                      htmlFor="address"
                       className="block text-l font-medium"
                     >
                       Address<span className="text-red-500">*</span>
@@ -160,24 +177,24 @@ const Resume = () => {
                     <input
                       type="text"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="permanentaddress"
-                      {...register("permanentaddress", {
+                      id="address"
+                      {...register("personalInformation.address", {
                         required: "This field is required",
                       })}
                     />
                   </div>
                   <div className="form-group">
                     <label
-                      htmlFor="phoneNumber"
+                      htmlFor="phonenumber"
                       className="block text-l font-medium"
                     >
                       Phone Number<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
-                      id="phoneNumber"
+                      id="phonenumber"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      {...register("phoneNumber", {
+                      {...register("personalInformation.phonenumber", {
                         required: "Phone number is required",
                         pattern: {
                           value: /^\d{10}$/, // Example pattern for a 10-digit phone number
@@ -193,7 +210,7 @@ const Resume = () => {
                     <select
                       id="gender"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      {...register("gender", {
+                      {...register("personalInformation.gender", {
                         required: "Please select a gender",
                       })}
                     >
@@ -203,80 +220,67 @@ const Resume = () => {
                       <option value="other">Other</option>
                     </select>
                   </div>
+            
                   <div className="form-group">
                     <label
-                      htmlFor="currentsalary"
+                      htmlFor="currentSalary"
                       className="block text-l font-medium"
                     >
-                      Current Salary/month<span className="text-red-500">*</span>
+                      Current Salary<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
+                      id="currentSalary"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="currentsalary"
-                      {...register("currentsalary", {
+                      {...register("personalInformation.currentSalary", {
                         required: "This field is required",
                       })}
                     />
                   </div>
                   <div className="form-group">
                     <label
-                      htmlFor="Expectation"
+                      htmlFor="expectation"
                       className="block text-l font-medium"
                     >
                       Expectation<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
+                      id="expectation"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="Expectation"
-                      {...register("Expectation", {
+                      {...register("personalInformation.expectation", {
                         required: "This field is required",
                       })}
                     />
                   </div>
+                 
                   <div className="form-group">
                     <label
-                      htmlFor="birthdate"
+                      htmlFor="careerProfile"
                       className="block text-l font-medium"
                     >
-                      Birth Date<span className="text-red-500">*</span>
-                    </label>
-                    <DatePicker
-                      selected={birthdate}
-                      onChange={handleBirthdateChange}
-                      dateFormat="MM/dd/yyyy"
-                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
-
-                  <div className="form-group col-span-4">
-                    <label htmlFor="Career" className="block text-l font-medium">
                       Career Profile<span className="text-red-500">*</span>
                     </label>
                     <textarea
+                      id="careerProfile"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="Career"
-                      rows="5"
-                      {...register("Career", {
+                      rows="3"
+                      {...register("personalInformation.careerProfile", {
                         required: "This field is required",
                       })}
-                    />
+                    ></textarea>
                   </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
                   <div className="form-group">
-                    <label htmlFor="Skills" className="block text-l font-medium">
+                    <label htmlFor="skills" className="block text-l font-medium">
                       Skills<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
+                      id="skills"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="Skills"
-                      {...register("Skills", {
-                        required: "This field is required",
+                      placeholder="Separate skills with commas"
+                      {...register("personalInformation.skills", {
+                        required: "Skills are required",
                       })}
                     />
                   </div>
@@ -287,535 +291,188 @@ const Resume = () => {
                     <select
                       id="level"
                       className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      {...register("level", {
-                        required: "Please select a gender",
+                      {...register("personalInformation.level", {
+                        required: "Please select a level",
                       })}
                     >
-                      <option value="">Select level</option>
-                      <option value="Begineer">Begineer</option>
-                      <option value="Intermediate">Intermediate</option>
-                      <option value="Advanced">Advanced</option>
+                      <option value="">Select Level</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
                     </select>
                   </div>
-
-                  <div className=" from-group text-l relative top-[33%]">
-                  <button
-                    type="button"
-                    onClick={() => onAdd()}
-                    className="p-2 text-lg text-white border rounded-md bg-amber-500 hover:bg-black"
-                  >
-                    Add
-                  </button>
                 </div>
-                  {skills.length > 0 && (
-                    <div className="mt-8 p-2 text-xl mr-4 border rounded-md border-black">
-                      <h2>Skills List</h2>
-                      <ul>
-                        {skills.map((skill, index) => (
-                          <li
-                            key={index}
-                            className="bg-slate-100 flex items-center mt-2"
-                          >
-                            {`${skill.Skills} (${skill.level}) `}
-                            <IoMdClose onClick={() => onDeleteSkill(index)} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-               
-                <hr/>
-                <div>
-                  <h1 className="text-xl font-bold m-4 ">Education</h1>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-4">
-                    <div className="form-group">
-                      <label htmlFor="Name" className="block text-l font-medium">
-                        Name<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Name"
-                        {...register("Name", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="Degree"
-                        className="block text-l font-medium"
-                      >
-                        Degree<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Degree"
-                        {...register("Degree", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="Institute"
-                        className="block text-l font-medium"
-                      >
-                        Institute<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Institute"
-                        {...register("Institute", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="percentage"
-                        className="block text-l font-medium"
-                      >
-                        Percentage / CGPA<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="percentage"
-                        name="percentage"
-                      // value={percentage}
-                      // onChange={handlePercentageChange}
-                      />
-                    </div>
-                    <div className="form-group mb-4">
-                      <label
-                        htmlFor="passoutyear"
-                        className="block text-l font-medium"
-                      >
-                        Year<span className="text-red-500">*</span>
-                      </label>
-                      <DatePicker
-                        selected={birthdate}
-                        onChange={handleBirthdateChange}
-                        dateFormat="MM/dd/yyyy"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
-                      />
-                    </div>
+                <h1 className="text-xl font-bold m-4 ">Education</h1>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                  <div className="form-group">
+                    <label htmlFor="Name" className="block text-l font-medium">
+                      Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="Name"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.Name", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  <hr/>
-                  {/* <h1 className="text-2xl font-bold m-4 ">Education</h1> */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-4"></div>
-                  <div className="mt-6 text-xl font-bold">
-                    <h6> Educational Details 12th</h6>
+                  <div className="form-group">
+                    <label htmlFor="degree" className="block text-l font-medium">
+                      Degree<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="degree"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.degree", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
-                    <div className="form-group">
-                      <label
-                        htmlFor="education_12"
-                        className="block text-l font-medium"
-                      >
-                        Education 12th<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="education_12"
-                        name="education_12"
-                      // value={education_12}
-                      // onChange={handleEducation_12Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="instituteName_12"
-                        className="block text-l font-medium"
-                      >
-                        School/Institute Name
-                        <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="instituteName_12"
-                        name="instituteName_12"
-                      // value={instituteName_12}
-                      // onChange={handleInstitute_12Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="stream_12"
-                        className="block text-l font-medium"
-                      >
-                        Stream<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="stream_12"
-                        name="stream_12"
-                      // value={stream_12}
-                      // onChange={handleStream_12Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="passOutYear_12"
-                        className="block text-l font-medium"
-                      >
-                        Year<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="passOutYear_12"
-                        name="passOutYear_12"
-                      // value={passOutYear_12}
-                      // onChange={handlePassOutYear_12Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="percentage_12"
-                        className="block text-l font-medium"
-                      >
-                        Percentage<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="percentage_12"
-                        name="percentage_12"
-                      // value={percentage_12}
-                      // onChange={handlePercentage_12Change}
-                      />
-                    </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="institute"
+                      className="block text-l font-medium"
+                    >
+                      Institute<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="institute"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.institute", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  <hr/>
-                  <div className="mt-6 text-xl font-bold">
-                    <h6> Educational Details 10th</h6>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
-                    <div className="form-group">
-                      <label
-                        htmlFor="education_10"
-                        className="block text-large font-medium"
-                      >
-                        Education 10th<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="education_10"
-                        name="education_10"
-                      // value={education_10}
-                      // onChange={handleEducation_10Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="instituteName_10"
-                        className="block text-large font-medium"
-                      >
-                        School/Institute Name
-                        <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="instituteName_10"
-                        name="instituteName_10"
-                      // value={instituteName_10}
-                      // onChange={handleInstitute_10Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="stream_10"
-                        className="block text-large font-medium"
-                      >
-                        Stream<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="stream_10"
-                        name="stream_10"
-                      // value={stream_10}
-                      // onChange={handleStream_10Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="passOutYear_10"
-                        className="block text-large font-medium"
-                      >
-                        Year<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="passOutYear_10"
-                        name="passOutYear_10"
-                      // value={passOutYear_10}
-                      // onChange={handlePassOutYear_10Change}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="percentage_10"
-                        className="block text-large font-medium"
-                      >
-                        Percentage<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                        id="percentage_10"
-                        name="percentage_10"
-                      // value={percentage_10}
-                      // onChange={handlePercentage_10Change}
-                      />
-                    </div>
-                  </div>
-                  <hr/>
-                  <div className=" from-group text-xl flex ">
-                    {/* <button
-             type="button"
-             onClick={() => onAddEducation()}
-             className="mt-8 p-2 text-xl border mr-4 text-white border rounded-md bg-gray-800"
-           >
-             Add Education
-           </button> */}
-                    {/* Display added educations */}
-                    {educations.length > 0 && (
-                      <div className="mt-8 p-2 text-l mr-4 border rounded-md border-black">
-                        <h2>Educations List</h2>
-                        <ul>
-                          {educations.map((education, index) => (
-                            <li
-                              key={index}
-                              className="bg-slate-100 flex items-center mt-2"
-                            >
-                              {/* Display education details */}
-                              {`${education.name} - ${education.degree} at ${education.institute}, Year: ${education.passoutYear}`}
-                              {/* Include other details as needed */}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  <div className="form-group">
+                    <label
+                      htmlFor="passOutYear"
+                      className="block text-l font-medium"
+                    >
+                      Pass Out Year<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="passOutYear"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.passOutYear", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
                 </div>
-                <form>
-                  <h1 className="text-xl font-bold m-4 ">Experience</h1>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 m-4">
-                    <div className="form-group">
-                      <label
-                        htmlFor="firstname"
-                        className="block text-l font-medium"
-                      >
-                        Company Name<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="fullname"
-                        {...register("fullname", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="lastname"
-                        className="block text-l font-medium"
-                      >
-                        Designation<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="lastname"
-                        {...register("lastname", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
+                <h1 className="text-xl font-bold m-4 ">Experience</h1>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                  <div className="form-group">
+                    <label
+                      htmlFor="companyname"
+                      className="block text-l font-medium"
+                    >
+                      Company Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="companyname"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("experience.companyname", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-                    <div className="form-group">
-                      <label
-                        htmlFor="birthdate"
-                        className="block text-l font-medium"
-                      >
-                        Start From<span className="text-red-500">*</span>
-                      </label>
-                      <DatePicker
-                        selected={birthdate}
-                        onChange={handleBirthdateChange}
-                        dateFormat="MM/dd/yyyy"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="birthdate"
-                        className="block text-l font-medium"
-                      >
-                        End on<span className="text-red-500">*</span>
-                      </label>
-                      <DatePicker
-                        selected={birthdate}
-                        onChange={handleBirthdateChange}
-                        dateFormat="MM/dd/yyyy"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="Expectation"
-                        className="block text-l font-medium"
-                      >
-                        Location<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Expectation"
-                        {...register("Expectation", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group col-span-4">
-                      <label
-                        htmlFor="Career"
-                        className="block text-l font-medium"
-                      >
-                        About Company<span className="text-red-500">*</span>
-                      </label>
-                      <textarea
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Career"
-                        rows="5"
-                        {...register("Career", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    {/* Display added experiences */}
-                    {experiences.length > 0 && (
-                      <div className="mt-8 p-2 text-xl mr-4 border rounded-md border-black">
-                        <h2>Experiences List</h2>
-                        <ul>
-                          {experiences.map((experience, index) => (
-                            <li
-                              key={index}
-                              className="bg-slate-100 flex items-center mt-2"
-                            >
-                              {/* Display experience details */}
-                              {/* For example: */}
-                              {`${experience.companyName} - ${experience.designation}`}
-                              {/* Include other details as needed */}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  <div className="form-group">
+                    <label
+                      htmlFor="designation"
+                      className="block text-l font-medium"
+                    >
+                      Designation<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="designation"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("experience.designation", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  <h1 className="text-xl font-bold m-4 ">Portfolio</h1>
-                  <div className="ResponsiveResume grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
-                    <div className="form-group">
-                      <label
-                        htmlFor="Expectation"
-                        className="block text-l font-medium"
-                      >
-                        Project Name<span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Expectation"
-                        {...register("Expectation", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="birthdate"
-                        className="block text-l font-medium"
-                      >
-                        Start date<span className="text-red-500">*</span>
-                      </label>
-                      <DatePicker
-                        selected={birthdate}
-                        onChange={handleBirthdateChange}
-                        dateFormat="MM/dd/yyyy"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="birthdate"
-                        className="block text-l font-medium"
-                      >
-                        End Date<span className="text-red-500">*</span>
-                      </label>
-                      <DatePicker
-                        selected={birthdate}
-                        onChange={handleBirthdateChange}
-                        dateFormat="MM/dd/yyyy"
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      />
-                    </div>
-                    <div className="form-group col-span-4">
-                      <label
-                        htmlFor="Career"
-                        className="block text-l font-medium"
-                      >
-                        Project Description<span className="text-red-500">*</span>
-                      </label>
-                      <textarea
-                        className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                        id="Career"
-                        rows="5"
-                        {...register("Career", {
-                          required: "This field is required",
-                        })}
-                      />
-                    </div>
+                 
+                  <div className="form-group">
+                    <label
+                      htmlFor="location"
+                      className="block text-l font-medium"
+                    >
+                      Location<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="location"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("experience.location", {
+                        required: "This field is required",
+                      })}
+                    />
                   </div>
-                  {/* Display added portfolios */}
-                  {portfolios.length > 0 && (
-                    <div className="mt-8 p-2 text-xl mr-4 border rounded-md border-black">
-                      <h2>Portfolios List</h2>
-                      <ul>
-                        {portfolios.map((portfolio, index) => (
-                          <li
-                            key={index}
-                            className="bg-slate-100 flex items-center mt-2"
-                          >
-                            {/* Display portfolio details */}
-                            {`${portfolio.projectName} - ${portfolio.startDate} to ${portfolio.endDate}`}
-                            {/* Include other details as needed */}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </form>
-                <div className="text-xl flex justify-center">
+                  <div className="form-group">
+                    <label
+                      htmlFor="aboutcompany"
+                      className="block text-l font-medium"
+                    >
+                      About Company<span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      id="aboutcompany"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      rows="3"
+                      {...register("experience.aboutcompany", {
+                        required: "This field is required",
+                      })}
+                    ></textarea>
+                  </div>
+                </div>
+                <h1 className="text-xl font-bold m-4 ">Portfolio</h1>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                  <div className="form-group">
+                    <label
+                      htmlFor="projectname"
+                      className="block text-l font-medium"
+                    >
+                      Project Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="projectname"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("portfolio.projectname", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label
+                      htmlFor="projectdescription"
+                      className="block text-l font-medium"
+                    >
+                      Project Description<span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      id="projectdescription"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      rows="3"
+                      {...register("portfolio.projectdescription", {
+                        required: "This field is required",
+                      })}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="flex justify-end mt-4">
                   <button
                     type="submit"
-                    className="mt-8 p-2 text-xl text-white border rounded-md bg-amber-500 hover:bg-black"
-                    onClick={handleSave}
+                    className="text-white bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700"
                   >
-                    Save
+                    Save Resume
                   </button>
                 </div>
               </form>
@@ -827,4 +484,5 @@ const Resume = () => {
     </div>
   );
 };
+
 export default Resume;

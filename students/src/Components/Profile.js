@@ -38,6 +38,13 @@ const Profile = () => {
   const [percentage, setPercentage] = useState("");
   const [contact, setContact] = useState("");
 
+  const [postEducation, setPostEducation] = useState("");
+  const [postInstituteName, setPostInstituteName] = useState("");
+  const [postStream, setPostStream] = useState("");
+  const [postPassOutYear, setPostPassOutYear] = useState("");
+  const [postPrcentage, setPostPercentage] = useState("");
+
+
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
   const [experience, setExperience] = useState("");
@@ -141,6 +148,24 @@ const Profile = () => {
     setPercentage(event.target.value);
   };
 
+//
+const handlePostEducationChange = (event) => {
+  setPostEducation(event.target.value);
+};
+const handlePostInstituteNameChange = (event) => {
+  setPostInstituteName(event.target.value);
+};
+const handlePostStreamChange = (event) => {
+  setPostStream(event.target.value);
+};
+const handlePostPassOutYearChange = (event) => {
+  setPostPassOutYear(event.target.value);
+};
+
+const handlePostPercentageChange = (event) => {
+  setPostPercentage(event.target.value);
+};
+  
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
@@ -225,6 +250,11 @@ const Profile = () => {
     setStream("");
     setPassOutYear("");
     setPercentage("");
+    setPostEducation("");
+    setPostInstituteName("");
+    setPostStream("");
+    setPostPassOutYear("");
+    setPostPercentage("");
     setKeySkills("");
     setLanguages("");
     setExperience("");
@@ -275,6 +305,12 @@ const Profile = () => {
       formData.append("stream", stream);
       formData.append("passOutYear", passOutYear);
       formData.append("percentage", percentage);
+
+      formData.append("posteducation", postEducation);
+      formData.append("postinstituteName", postInstituteName);
+      formData.append("stream", postStream);
+      formData.append("postpassOutYear", postPassOutYear);
+      formData.append("postpercentage", postPrcentage);
 
       formData.append("education_12", education_12);
       formData.append("instituteName_12", instituteName_12);
@@ -678,8 +714,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="education"
                   name="education"
-                  value={education}
-                  onChange={handleEducationChange}
+                  value={postEducation}
+                  onChange={handlePostEducationChange}
                   required
                 />
               </div>
@@ -689,15 +725,15 @@ const Profile = () => {
                   htmlFor="institutename"
                   className="block text-large font-medium"
                 >
-                  Collage Name<span className="text-red-500">*</span>
+                  College Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="instituteName"
                   name="instituteName"
-                  value={instituteName}
-                  onChange={handleInstituteNameChange}
+                  value={postInstituteName}
+                  onChange={handlePostInstituteNameChange}
                   required
                 />
               </div>
@@ -714,8 +750,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="stream"
                   name="stream"
-                  value={stream}
-                  onChange={handleStreamChange}
+                  value={postStream}
+                  onChange={handlePostStreamChange}
                   required
                 />
               </div>
@@ -732,8 +768,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="passOutYear"
                   name="passOutYear"
-                  value={passOutYear}
-                  onChange={handlePassOutYearChange}
+                  value={postPassOutYear}
+                  onChange={handlePostPassOutYearChange}
                   required
                 />
               </div>
@@ -750,8 +786,8 @@ const Profile = () => {
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                   id="percentage"
                   name="percentage"
-                  value={percentage}
-                  onChange={handlePercentageChange}
+                  value={postPrcentage}
+                  onChange={handlePostPercentageChange}
                   required
                 />
               </div>
@@ -786,7 +822,7 @@ const Profile = () => {
                   htmlFor="institutename"
                   className="block text-large font-medium"
                 >
-                  Collage Name<span className="text-red-500">*</span>
+                  College Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"

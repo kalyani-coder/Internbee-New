@@ -3,48 +3,29 @@ import Navbar from "../Navbar/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
+import "./Message.css";
+import { MdFindInPage } from "react-icons/md";
+import Footer from "../Footer/Footer";
+import { FaTimes, FaPlus } from "react-icons/fa";
 
 const Message = () => {
-  const [enquiries, setEnquiries] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [filter, setFilter] = useState("pending");
-
-  const fetchEnquiries = async () => {
-    setLoading(true);
-
-    try {
-      const userId = localStorage.getItem("userId");
-      const res = await axios.get(
-        `http://localhost:8000/api/enquiry/employerId/${userId}?status=${filter}`
-      );
-      setEnquiries(res.data);
-    } catch (error) {
-      console.error("Error fetching enquiries:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [currentFAQs, setCurrentFAQs] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    fetchEnquiries();
-  }, [filter]);
+    // Fetch FAQs from backend or set faqData to fetch FAQs
+    const faqData = [
+      {
+        question: "How do I apply for an internship?",
+        answer:
+          "To apply for an internship, navigate to the 'Apply for Internships' section on our portal.",
+      },
+    ];
+    setCurrentFAQs(faqData);
+  }, []);
 
-  const fetchPostInfo = async (postId) => {
-    try {
-      const res = await axios.get(
-        `http://localhost:8000/api/postinternship/${postId}`
-      );
-      setSelectedPost(res.data);
-    } catch (error) {
-      console.error("Error fetching post info:", error);
-    }
-  };
-
-  const handleViewPost = (postId) => {
-    fetchPostInfo(postId);
-    // Implement logic to show the popup/modal for the selected post
-    console.log(`View Post clicked for ID: ${postId}`);
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
@@ -52,123 +33,66 @@ const Message = () => {
       <div>
         <Navbar />
       </div>
-
-      <div className="flex flex-col items-center justify-center text-center mt-10">
-        {loading && (
-          <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500"></div>
-          </div>
-        )}
-        <h1 className="text-2xl font-bold mb-4">Helpdesk</h1>
-        <div className="divmess mb-4 flex gap-4">
-          <button
-            className={`${
-              filter === "pending"
-                ? "bg-blue-700 text-white"
-                : "bg-blue-500 hover:bg-blue-700 text-white"
-            } font-bold py-2 px-4 rounded`}
-            onClick={() => setFilter("pending")}
-          >
-            New Enquiry
-          </button>
-          <button
-            className={`${
-              filter === "resolved"
-                ? "bg-green-700 text-white"
-                : "bg-green-500 hover:bg-green-700 text-white"
-            } font-bold py-2 px-4 rounded`}
-            onClick={() => setFilter("resolved")}
-          >
-            Resolved Enquiry
-          </button>
+      <div className="flex">
+        <div>
+          <Sidebar />
         </div>
-
-        <div className="w-full">
-          {enquiries.map((enquiry) => (
-            <div
-              key={enquiry._id}
-              className="bg-white border border-gray-300 p-4 m-2 rounded-md w-3/4 mx-auto flex flex-col"
-            >
-              <h3 className="text-left mb-2 font-bold text-lg">
-                student Enquiry: {enquiry.Enquiry}
-              </h3>
-              <h2 className="text-left mb-2 font-bold text-lg">
-                Reply : {enquiry.EnquiryReply || "Resolve this "}
-              </h2>
-              <p className="text-left mb-2">Student: {enquiry.StudentName}</p>
-              <p className="text-left mb-2">Email: {enquiry.StudentEmail}</p>
-              <p className="text-left mb-2">Phone: {enquiry.StudentPhone}</p>
-              <p className="text-left mb-2">
-                Enquiry Date: {enquiry.EnquiryDate}
-              </p>
-              <p className="text-left mb-2">status : {enquiry.EnquiryStatus}</p>
-              <div className="flex justify-end mb-2">
-                <button
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mr-2"
-                  onClick={() => handleViewPost(enquiry.postId)}
-                >
-                  View Post
-                </button>
-                <Link
-                  to={{
-                    pathname: `/resolve/${enquiry._id}`,
-                  }}
-                >
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                    Resolve
-                  </button>
-                </Link>
-              </div>
+        <div>
+          <div>
+            <h2 className="flex justify-center p-4 relative top-10" style={{ fontSize: '32px' }}>Help Centre</h2>
+            <p className="flex justify-center p-4 text-center">Welcome to the Help Centre for internsbee.com We're here to assist you with any questions or issues you might have. Choose a category below to get started.</p>
+          </div>
+          <div className="dropdown flex justify-center p-4">
+            <select className="w-1/2 h-11 border-1 border-amber-400 p-2" >
+              <option value="option1">Filter Help Center</option>
+              <option value="option2">Finding Internships</option>
+              <option value="option3">Managing Your Account</option>
+              <option value="option4">Application Process</option>
+              <option value="option5">Troubleshooting</option>
+              <option value="option6">Contact Us</option>
+            </select>
+          </div>
+          <div className="row1 flex justify-center gap-7 p-4">
+            <div className="card1">
+              <h4>What is internsbee.com?</h4>
+              <p>internsbee.com connects students and recent graduates with internship opportunities at top companies. Our platform helps you find internships that match your skills and career goals.</p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {selectedPost && (
-        <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-4 m-2 rounded-md">
-            <h2 className="text-xl font-bold mb-4">
-              Post Information for {selectedPost.job_Title}
-            </h2>
-            <p>
-              <strong>Job Title:</strong> {selectedPost.job_Title}
-            </p>
-            <p>
-              <strong>Location:</strong> {selectedPost.location}
-            </p>
-            <p>
-              <strong>Company Name:</strong> {selectedPost.company_Name}
-            </p>
-            <p>
-              <strong>Start Date:</strong> {selectedPost.start_Date}
-            </p>
-            <p>
-              <strong>End Date:</strong> {selectedPost.end_Date}
-            </p>
-            <p>
-              <strong>Job Type:</strong> {selectedPost.job_Type}
-            </p>
-            <p>
-              <strong>Skills:</strong> {selectedPost.skills}
-            </p>
-            <p>
-              <strong>Position:</strong> {selectedPost.position}
-            </p>
-            <p>
-              <strong>Job Description:</strong> {selectedPost.job_Description}
-            </p>
-            <p>
-              <strong>Stipend:</strong> {selectedPost.stipend}
-            </p>
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-              onClick={() => setSelectedPost(null)}
-            >
-              Close
-            </button>
+            <div className="card1">
+              <h4>How do I sign up?</h4>
+              <p>1. Go to our [sign-up page](#).<br />
+                2. Enter your email address and create a password.<br />
+                3. Complete your profile with your personal information, education, skills, and resume.<br />
+                4. Verify your email address to activate your account.<br />
+              </p>
+            </div>
           </div>
+          <div className="p-2">
+            <div className="flex justify-center">
+              <h1 className="flex gap-2" style={{ fontSize: '20px' }}><MdFindInPage />Finding Internships</h1>
+            </div>
+            {currentFAQs.map((faq, index) => (
+              <div
+                className={`faq ${activeIndex === index ? "active" : ""}`}
+                key={index}
+              >
+                <h3 className="faq-title">{faq.question}</h3>
+                <p className="faq-text">{faq.answer}</p>
+                <button
+                  className="faq-toggle"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  {activeIndex === index ? <FaTimes /> : <FaPlus />}
+                </button>
+              </div>
+            ))}
+          </div>
+
         </div>
-      )}
+
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 };
