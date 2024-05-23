@@ -1,22 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoNotificationsOutline } from "react-icons/io5";
-import logo from "../Assets/yellow_header1.png";
+
 import { FiUser } from "react-icons/fi";
 import { FaMoneyBill, FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
-import Footer from "../Components/Footer";
-import "../Components/UpdatedNav/Internal_Navbar";
-import Internal_Navbar from "../Components/UpdatedNav/Internal_Navbar";
-import axios from "axios"
-import "../Components/Internship.css";
 
-const Internship = () => {
+
+import "./LandingInternship.css";
+import Navbar from './../Navbar';
+import Footer from './../Footer';
+import Login from './../Signin';
+
+const LandingInternship = () => {
   const companiesRef = useRef(null);
   const navigate = useNavigate();
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [mainSearchQuery, setMainSearchQuery] = useState("");
   const [filteredInternships, setFilteredInternships] = useState([]);
   const [allInternships, setAllInternships] = useState([]);
+  const [loginPopup, setLoginPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const internshipsPerPage = 4;
 
@@ -93,22 +95,35 @@ const Internship = () => {
       setFilteredInternships(filtered);
     }
   };
-  const handleMainSearch = async () => {
-    try {
-      const response = await axios.post("http://localhost:8000/api/postinternship/search", {
-        searchItem: mainSearchQuery
-      });
-  
-      console.log(response.data);
-  
-      // Assuming setFilteredInternships is a state setter function
-      setFilteredInternships(response.data);
-    } catch (error) {
-      console.error("Error occurred during search:", error);
-      // Handle error if needed
-    }
+
+  const handleMainSearch = () => {
+    const lowerCaseQuery = mainSearchQuery.toLowerCase();
+
+    const filtered = allInternships.filter((item) => {
+      const {
+        job_Title,
+        empName,
+        position,
+        location,
+        skills,
+      } = item;
+
+      const skillsArray = skills.split(" ");
+
+      return (
+        job_Title.toLowerCase().includes(lowerCaseQuery) ||
+        empName.toLowerCase().includes(lowerCaseQuery) ||
+        position.toLowerCase().includes(lowerCaseQuery) ||
+        location.toLowerCase().includes(lowerCaseQuery) ||
+        skillsArray.some((skill) =>
+          skill.toLowerCase().includes(lowerCaseQuery)
+        )
+      );
+    });
+
+    setFilteredInternships(filtered);
   };
-  
+
   const indexOfLastInternship = currentPage * internshipsPerPage;
   const indexOfFirstInternship = indexOfLastInternship - internshipsPerPage;
   const currentInternships = filteredInternships.slice(
@@ -129,19 +144,21 @@ const Internship = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  const openLoginPopup = () => {
+    setLoginPopup(true);
+};
 
-  const uniqueJobTitles = new Set();
-
-  allInternships.forEach(internship => {
-    uniqueJobTitles.add(internship.job_Title);
-  });
-  
-  // Convert Set back to an array for mapping
-  const uniqueJobTitlesArray = [...uniqueJobTitles];
+const closeLoginPopup = () => {
+    setLoginPopup(false);
+};
 
   return (
     <div className="bg-gray-50">
-      <Internal_Navbar />
+      
+    <div>
+    <Navbar />
+
+</div>
 
       <div className="FilterSectionMain flex">
         <div className="flex flex-col items-center Internships-card">
@@ -152,7 +169,7 @@ const Internship = () => {
           {currentInternships.length > 0 ? (
             currentInternships.map((internship) => (
               <div
-                key={internship._id}
+                key={internship.id}
                 className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center shadow-md overflow-hidden"
                 style={{ width: "90%" }}
               >
@@ -207,14 +224,14 @@ const Internship = () => {
                     </p>
                   </div>
                   <div className="flex justify-center">
-                    <Link to={`/apply-internship/${internship._id}`}>
-                    <button
+                
+                    <button onClick={openLoginPopup}
                     className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss bg-yellow-400 hover:bg-yellow-500 sm:min-w-0 sm:px-4 md:px-2 lg:px-4"
                   >
                     View
                   </button>
                   
-                    </Link>
+                    
                   </div>
                 </div>
               </div>
@@ -283,9 +300,9 @@ const Internship = () => {
                 }}
               >
                 <option value="All">All</option>
-                {uniqueJobTitlesArray.map(jobTitle => (
-                  <option key={jobTitle} value={jobTitle}>
-                    {jobTitle}
+                {filteredInternships.map((internship) => (
+                  <option key={internship.id} value={internship.job_Title}>
+                    {internship.job_Title}
                   </option>
                 ))}
               </select>
@@ -359,10 +376,17 @@ const Internship = () => {
             </div>
           </div>
         </div>
+        {loginPopup && (
+            <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+                <div className="">
+                    <Login onClose={closeLoginPopup} />
+                </div>
+            </div>
+        )}
       </div>
       <Footer />
     </div>
   );
 };
 
-export default Internship;
+export default LandingInternship;

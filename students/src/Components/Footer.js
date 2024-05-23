@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa";
 import logo from "../Assets/yellow_header1.png";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   const yourCardArray = [
     {
@@ -46,23 +47,20 @@ const Footer = () => {
       jobs: 40,
     },
   ];
+
   const Helpful = [
     {
-
       help: "Terms and Conditions",
-
+      link: "/privacypolicy",
     },
     {
-
       help: "Refund Policy",
-
+      link: "/refund",
     },
     {
-
       help: "Plans and Pricing",
-
+      // link: "/plans-and-pricing",
     },
-
   ];
 
   const socialIcons = [
@@ -102,17 +100,18 @@ const Footer = () => {
       <FaTwitter />
     </a>,
   ];
+
   const navbarContent = [
     { label: "About Us", link: "/aboutus" },
     { label: "Contact", link: "/contactus" },
-    { label: "Home", link: "/home" },
+    { label: "Home", link: "/" },
     { label: "Blog", link: "/blogs" },
-
   ];
 
   const rolesContent = yourCardArray.map((card) => card.role);
-  const helpfulContent = Helpful.map((helpfull) => helpfull.help);
+  const helpfulContent = Helpful.map((helpful) => helpful);
   const locationContent = ["Pune"];
+
   return (
     <>
       <footer
@@ -146,9 +145,9 @@ const Footer = () => {
             <ul className="text-xl space-y-2">
               {navbarContent.map((item, index) => (
                 <li key={index}>
-                  <a className="hover:text-white" href={item.link}>
+                  <Link className="hover:text-white" to={item.link}>
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -176,13 +175,15 @@ const Footer = () => {
             <h2 className="text-xl font-bold mb-4">Helpful</h2>
             <ul className="text-xl  space-y-2">
               {helpfulContent.map((help, index) => (
-                <li key={index}>{help}</li>
+                <li key={index}>
+                  <Link className="hover:text-white" to={help.link}>
+                    {help.help}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
         </div>
-
-
       </footer>
       <div style={{ borderTop: "3px dashed #fff", backgroundColor: "#FFBD59" }}>
         <p className=" flex items-center gap-4 justify-center p-4">
@@ -192,4 +193,5 @@ const Footer = () => {
     </>
   );
 };
+
 export default Footer;

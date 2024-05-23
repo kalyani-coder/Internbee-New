@@ -28,6 +28,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post('/search', async (req, res) => {
+  const { searchItem } = req.body;
+
+  const query = {
+    $or: [
+      { job_Title: new RegExp(searchItem, 'i') },
+      { location: new RegExp(searchItem, 'i') },
+      { company_Name: new RegExp(searchItem, 'i') },
+      { skills: new RegExp(searchItem, 'i') },
+    ],
+  };
+
+  try {
+    const jobs = await newInterShipSchema.find(query);
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // post route
 
 router.post("/", async (req, res) => {

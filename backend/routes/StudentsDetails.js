@@ -151,6 +151,7 @@ router.patch("/userId/:id", async (req, res) => {
 //   }
 // });
 
+
 router.post(
   "/",
   upload.fields([
@@ -159,81 +160,84 @@ router.post(
     { name: "pdf2", maxCount: 1 },
   ]),
   async (req, res) => {
+    console.log("body data ", req.body);
     try {
-      const existingProfile = await StudentDetailsModel.findOne({
+      const existingProfile = await StudentDetailsModel.find({
         userId: req.body.userId,
       });
+      console.log("existing profile ", existingProfile);
+      if (existingProfile.length > 0) {
+        console.log("inloop", existingProfile.length > 0);
 
-      if (existingProfile) {
         return res.status(400).json({ error: "User already has a profile" });
       }
 
-      if (req.files && req.files.image && req.files.pdf && req.files.pdf2) {
-        const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
-        const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
-        const publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
+      console.log("files ", req.files, req.files.image, req.files.pdf, req.files.pdf2);
 
-        const fileData = new StudentDetailsModel({
-          filename: req.files.image[0].originalname,
-          path: req.files.image[0].path,
-          pdfPath: req.files.pdf[0].path,
-          certificatePath: req.files.pdf2[0].path,
-          profile_pic: publicImageUrl,
-          student_PDF: publicPdfUrl,
-          student_certificate: publicPdfUrl2,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          birthdate: req.body.birthdate,
-          permanentaddress: req.body.permanentaddress,
-          city: req.body.city,
-          district: req.body.district,
-          country: req.body.country,
-          currentaddress: req.body.currentaddress,
-          currentcity: req.body.currentcity,
-          currentdistrict: req.body.currentdistrict,
-          currentcountry: req.body.currentcountry,
-          passOutYear: req.body.passOutYear,
-          percentage: req.body.percentage,
-          stream: req.body.stream,
-          instituteName: req.body.instituteName,
-          education: req.body.education,
-          keySkills: req.body.keySkills,
-          languages: req.body.languages,
-          experience: req.body.experience,
-          salaryExpectations: req.body.salaryExpectations,
-          projectName: req.body.projectName,
-          projectSummary: req.body.projectSummary,
-          userId: req.body.userId,
-          contact: req.body.contact,
-          currentstate: req.body.currentstate,
-          currentcountry: req.body.currentcountry,
-          gender: req.body.gender,
-
-          education_12: req.body.education_12,
-          instituteName_12: req.body.instituteName_12,
-          stream_12: req.body.stream_12,
-          passOutYear_12: req.body.passOutYear_12,
-          percentage_12: req.body.percentage_12,
-
-          education_10: req.body.education_10,
-          instituteName_10: req.body.instituteName_10,
-          stream_10: req.body.stream_10,
-          passOutYear_10: req.body.passOutYear_10,
-          percentage_10: req.body.percentage_10,
-        });
-
-        await fileData.save();
-        res.status(201).json(fileData);
-      } else {
-        res.status(400).json({ error: "Image and PDF files are required" });
+      const publicImageUrl = `http://localhost:8000/public/uploads/${req.files.image[0].filename}`;
+      const publicPdfUrl = `http://localhost:8000/public/uploads/${req.files.pdf[0].filename}`;
+      let publicPdfUrl2 = null;
+      if (req.files.pdf2) {
+        publicPdfUrl2 = `http://localhost:8000/public/uploads/${req.files.pdf2[0].filename}`;
       }
+
+      const fileData = new StudentDetailsModel({
+        filename: req.files.image[0].originalname,
+        path: req.files.image[0].path,
+        pdfPath: req.files.pdf[0].path,
+        certificatePath: req.files.pdf2 ? req.files.pdf2[0].path : null,
+        profile_pic: publicImageUrl,
+        student_PDF: publicPdfUrl,
+        student_certificate: publicPdfUrl2,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        birthdate: req.body.birthdate,
+        permanentaddress: req.body.permanentaddress,
+        city: req.body.city,
+        district: req.body.district,
+        country: req.body.country,
+        currentaddress: req.body.currentaddress,
+        currentcity: req.body.currentcity,
+        currentdistrict: req.body.currentdistrict,
+        currentstate: req.body.currentstate,
+        currentcountry: req.body.currentcountry,
+        contact: req.body.contact,
+        education: req.body.education,
+        instituteName: req.body.instituteName,
+        stream: Array.isArray(req.body.stream) ? req.body.stream.join(", ") : req.body.stream,
+        passOutYear: req.body.passOutYear,
+        percentage: req.body.percentage,
+        education_12: req.body.education_12,
+        instituteName_12: req.body.instituteName_12,
+        stream_12: req.body.stream_12,
+        passOutYear_12: req.body.passOutYear_12,
+        percentage_12: req.body.percentage_12,
+        education_10: req.body.education_10,
+        instituteName_10: req.body.instituteName_10,
+        stream_10: req.body.stream_10,
+        passOutYear_10: req.body.passOutYear_10,
+        percentage_10: req.body.percentage_10,
+        keySkills: req.body.keySkills,
+        languages: req.body.languages,
+        experience: req.body.experience,
+        salaryExpectations: req.body.salaryExpectations,
+        projectName: req.body.projectName,
+        projectSummary: req.body.projectSummary,
+        userId: req.body.userId,
+        gender: req.body.gender,
+      });
+      console.log("fileData", fileData);
+
+      await fileData.save();
+      res.status(200).json(fileData);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
 );
+
 
 // PATCH route
 router.patch("/:id", async (req, res) => {

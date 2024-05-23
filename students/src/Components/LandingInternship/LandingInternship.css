@@ -1,0 +1,90 @@
+@media screen and (max-width: 768px) {
+    .FilterSectionMain {
+      margin-left: 0%;
+      display: block;
+      margin-right: 0%;
+    }
+    .filter {
+      width: 100% !important;
+    }
+    .card {
+      /* margin: 0px; */
+      width: 100%;
+      margin-left: 0px;
+    }
+    .inputinternship {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      /* gap: 2em; */
+      margin: 3em 0;
+      text-align: center;
+    }
+    .btnintern {
+      margin-right: 0px;
+      /* width: 30%; */
+      margin-left: 4%;
+      width: 92%;
+    }
+    .input {
+      width: 100%;
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-bottom: 6%;
+    }
+  
+    .head {
+      margin-left: 3rem;
+    }
+    .blockcard {
+      display: block;
+    }
+    .FilterSectionMain {
+      /* width: -webkit-fill-available ; */
+      width: 100% !important;
+    }
+    .Internships-card {
+      margin: 1rem;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 420px) {
+    .intern-card-all-the-information-abtt {
+      margin: 0;
+      width: auto;
+      height: auto;
+      display: grid;
+      gap: 1em;
+    }
+  }
+  .inputinternship {
+    /* display: flex;
+    justify-content: center;
+    gap: 4em; */
+    position: relative;
+    top: 50%;
+    align-items: center;
+    /* gap: 2em;
+    margin: 2em 0; */
+  }
+  .input-box-for-the-search-bar-container-internship-page {
+    height: 3em;
+    width: 18em;
+    text-align: center;
+    font-size: 15px;
+    padding: 1em;
+  }
+  .btnintern {
+    width: 7em;
+    height: 2em;
+  }
+  .FilterSectionMain {
+    justify-content: center;
+    /* align-items: center; */
+    gap: 2em;
+    width: 74%;
+    margin: auto;
+  }
+  .btn-fro-the-view-btn-apply-internship-cardss {
+    width: 5em;
+  }
+  

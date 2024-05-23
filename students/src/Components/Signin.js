@@ -5,6 +5,7 @@ import Alert from "./Alert/Alert";
 import { Link } from "react-router-dom";
 import logo from "../Assets/white_header1.png";
 import "./SignIn.css";
+import Registration from './Registration';
 const Login = ({ onClose }) => {
   const navigate = useNavigate();
   const {
@@ -17,7 +18,7 @@ const Login = ({ onClose }) => {
   const [showForgotPasswordPopup, setShowForgotPasswordPopup] = useState(false);
   const [showResetPasswordPopup, setShowResetPasswordPopup] = useState(false);
   const [showResetButton, setShowResetButton] = useState(false);
-
+  const [registerPopup, setRegisterPopup] = useState(false);
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
@@ -127,6 +128,14 @@ const Login = ({ onClose }) => {
       console.error("Error sending OTP:", error);
     }
   };
+  
+  const openRegisternPopup = () => {
+    setRegisterPopup(true);
+};
+
+const closeRegisterPopup = () => {
+    setRegisterPopup(false);
+};
   return (
     <div className="">
       <div className="">
@@ -228,15 +237,16 @@ const Login = ({ onClose }) => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-black">
                   Don’t have an account yet?{" "}
-                  <Link to="/register">
+                
                     {" "}
                     <a
+                    onClick={openRegisternPopup}
                       href="#"
                       className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                     >
                       Sign up
                     </a>
-                  </Link>
+                
                 </p>
               </form>
               <button onClick={onClose} className="w-full text-black bg-white  border-1 border-solid border-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
@@ -371,6 +381,13 @@ const Login = ({ onClose }) => {
           </div>
         </div>
       )}
+      {registerPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="">
+                <Registration onClose={closeRegisterPopup} />
+            </div>
+        </div>
+    )}
     </div>
   );
 };

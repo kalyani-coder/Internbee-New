@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../Assets/white_header1.png';
-import Home from './Home';
 import './ResponsiveCss/ResponsiveCss.css';
 import '../Components/Navbar.css';
 import Login from './Signin';
@@ -11,9 +10,9 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedUserType, setSelectedUserType] = useState(null);
-    const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
     const [loginPopup, setLoginPopup] = useState(false);
     const [registerPopup, setRegisterPopup] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const handleUserTypeSelect = (userType) => {
         setShowDropdown(false);
@@ -31,45 +30,63 @@ const Navbar = () => {
             }
         }
     };
-    
-    const navigateToStudents = () => {
-        window.location.href = 'http://employer.internsbee.com/login';
-    };
-    
-    const navigateToStudentsregister = () => {
-        window.location.href = 'http://employer.internsbee.com/register';
-    };
-    
+
     const openLoginPopup = () => {
         setLoginPopup(true);
     };
-    
+
     const closeLoginPopup = () => {
         setLoginPopup(false);
     };
-    
+
     const openRegisternPopup = () => {
         setRegisterPopup(true);
     };
-    
+
     const closeRegisterPopup = () => {
         setRegisterPopup(false);
     };
-    
+
     return (
         <div className="mb-10">
             <div className="navbar-container fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between border">
                 <div className="flex items-center space-x-2">
                     <Link to={'/'}>
                         <div className='navbar-logo'>
-                            <img src={logo} alt="Logo" className="navbar-logo-for-internsbeestudent w-26 rounded-full" />
+                            <img src={logo} alt="Logo" className="navbar-logo-for-internsbeestudent w-[12rem] rounded-full" />
                         </div>
                     </Link>
+                    <button className="mobile-menu-button md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+
+                    </button>
+                    <div className={`nav-links md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
+                        <div className='flex gap-4 p-2'>
+                            <Link to='/'>
+                                <p className='hover:text-amber-500'>Home</p>
+                            </Link>
+                            <Link to='/aboutus'>
+                                <p className='hover:text-amber-500'>About Us</p>
+                            </Link>
+                            <Link to='/blogs'>
+                                <p className='hover:text-amber-500'>Blogs</p>
+                            </Link>
+                            <Link to='/LandingInternship'>
+                                <p className='hover:text-amber-500'>Internship</p>
+                            </Link>
+                            <Link to="/TPO">
+                                <p className='hover:text-amber-500'>TPO</p>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <div className='relative right-24'>
+
+                <div className={`login-register md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
+                    <div className='relative'>
                         <ul className="menu clearfix">
-                            <li className="parent p-2 relative right-1">
+                            <li className="parent p-2">
                                 <a href="">Login</a>
                                 <ul className="children">
                                     <li><a href="">Employee</a></li>

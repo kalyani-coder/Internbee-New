@@ -93,7 +93,7 @@ const Sidebar = () => {
                 icon={faInbox}
                 className="w-6 h-6 mr-2 text-amber-300"
               />
-              Helpdesk
+              Help Center
             </a>
           </Link>
 

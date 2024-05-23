@@ -12,6 +12,7 @@ const ViewResume = () => {
       try {
         const studentId = localStorage.getItem("userId");
         const response = await axios.get(`http://localhost:8000/api/resume/student/${studentId}`);
+        console.log("resume Data " , response.data )
         setResumeData(response.data);
       } catch (error) {
         console.error('Error fetching resume data:', error);

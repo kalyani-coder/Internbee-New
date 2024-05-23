@@ -1,18 +1,17 @@
-// BlogPage.js
-
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FiSearch, FiTrash2, FiX } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 import axios from "axios";
-import '../ResponsiveCss/ResponsiveCss.css';
-// import Navbar from "../Navbar";
 import QuickNav from '../QuickNav';
+import Navbar from './../Navbar';
+import Footer from './../Footer';
+import './Blogs.css';
+
 const Blog = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [blogs, setBlogs] = useState([]);
+    const [showFullDescription, setShowFullDescription] = useState({});
 
     useEffect(() => {
-        // Fetch data from the API
         const fetchData = async () => {
             try {
                 const response = await axios.get("http://localhost:8000/api/adminblog");
@@ -23,71 +22,67 @@ const Blog = () => {
         };
 
         fetchData();
-    }, []); // Empty dependency array to fetch data only once when the component mounts
+    }, []);
 
-    const [showFullDescription, setShowFullDescription] = useState(false);
+    const handleViewToggle = (id) => {
+        setShowFullDescription((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }));
+    };
 
-  
+    const filteredBlogs = blogs.filter((blog) =>
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <>
-            <QuickNav/>
-            <div className="flex">
-
-
-                <div className="flex flex-col items-center justify-center w-full flex-1 overflow-y-auto mt-12">
-                    <div className="container mx-auto mt-8 w-full max-w-screen-md">
-                        <div className=" blogh flex items-center justify-between mb-4">
-                            <h1 className="text-3xl font-bold">Latest Blogs</h1>
-                            <div className="flex items-center">
-                                <div className="relative mr-4">
-                                    <input
-                                        type="text"
-                                        placeholder="Search by title..."
-                                        value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                        className="p-2 border rounded-md"
-                                    />
-                                    {searchTerm && (
-                                        <span
-                                            className="absolute top-0 right-0 p-1 cursor-pointer"
-                                            onClick={() => setSearchTerm("")}
-                                        >
-                                            <FiX />
-                                        </span>
+            <Navbar />
+            <div className="container mx-auto mt-24 px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-4">
+                    <h2 className="text-2xl text-amber-500 font-bold md:text-4xl mx-8">Latest Blogs</h2>
+                </div>
+                {/* <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search by title..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full p-2 border border-gray-300 rounded"
+                    />
+                    {searchTerm && (
+                        <span onClick={() => setSearchTerm("")} className="absolute right-0 top-0 mt-2 mr-2 cursor-pointer">
+                            <FiX />
+                        </span>
+                    )}
+                    <FiSearch className="absolute right-0 top-0 mt-2 mr-2" />
+                </div> */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {filteredBlogs.map((blog) => (
+                        <div key={blog._id} className="col-span-1 mb-4">
+                            <div className="blog-card border-2 border-amber-400 shadow" style={{ borderRadius: '15px 50px' }}>
+                                <div className="blog-card__background">
+                                    {blog.blogimage && (
+                                        <img src={blog.blogimage} alt={blog.title} className="w-full" />
                                     )}
                                 </div>
-                                <FiSearch />
+                                <div className="blog-card__info p-4">
+                                    <h2 className="text-lg font-bold">{blog.title}</h2>
+                                    <p>
+                                        {showFullDescription[blog._id]
+                                            ? blog.description
+                                            : `${blog.description.slice(0, blog.description.length / 7)}...`}
+                                    </p>
+                                    <button onClick={() => handleViewToggle(blog._id)} className="text-blue-500 underline">
+                                        {showFullDescription[blog._id] ? "View Less" : "View More"}
+                                    </button>
+                                </div>
                             </div>
                         </div>
-
-                        {blogs.map((blog, index) => (
-                            <div key={blog._id} className={`mb-8 ${index !== 0 ? 'border-t-2 pt-4' : ''} flex flex-col relative`}>
-                                {blog.blogimage && (
-                                    <img src={blog.blogimage} alt={blog.title} className="mb-4 rounded-lg" style={{ width: '100%', height: "300px" }} />
-                                )}
-
-                                <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-
-                                {/* Displaying 1/3 of the description */}
-                                <p className="text-gray-600 mb-2">
-                                    {showFullDescription ? blog.description : `${blog.description.slice(0, blog.description.length / 3)}...`}
-                                </p>
-
-                                {/* View more button */}
-                                <button
-                                    onClick={() => setShowFullDescription(!showFullDescription)}
-                                    className="text-blue-500 block text-center"
-                                >
-                                    {showFullDescription ? "View Less" : "View More"}
-                                </button>
-
-                                
-                            </div>
-                        ))}
-                    </div>
+                    ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

@@ -13,6 +13,35 @@ import hero from "../../Assets/home-hero.svg";
 import Registration from "../Registration";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
+import landingpageimg from "../../Assets/home.png"
+const easeOutQuad = t => t * (2 - t);
+const frameDuration = 1000 / 60;
+const CountUpAnimation = ({ children, duration = 2000 }) => {
+  const countTo = parseInt(children, 10);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+    const totalFrames = Math.round(duration / frameDuration);
+    const counter = setInterval(() => {
+      frame++;
+      const progress = easeOutQuad(frame / totalFrames);
+      setCount(countTo * progress);
+
+      if (frame === totalFrames) {
+        clearInterval(counter);
+      }
+    }, frameDuration);
+
+    return () => {
+      clearInterval(counter);
+    };
+  }, [countTo, duration]);
+
+  return <span>{Math.floor(count)}</span>;
+};
+
+
 const LandingPage = () => {
   const images = [
     "https://dummyimage.com/500x500/000/fff",
@@ -163,7 +192,7 @@ const LandingPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <section className="landingpage-hero-content text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+       {/* <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-2 md:mb-0 items-center text-center">
             <h1 className="landingpage-title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-left">
               Your Journey to
@@ -178,7 +207,10 @@ const LandingPage = () => {
               src={hero}
             />
           </div>
-        </div>
+  </div>*/}
+  <div>
+    <img src={landingpageimg}/>
+  </div>
       </section>
 
       {/* Section 2: Latest Internships and Categories */}
@@ -357,19 +389,22 @@ const LandingPage = () => {
             <div className="flex flex-wrap -m-4 text-center justify-center">
               <div className="p-4 sm:w-1/4 w-1/2">
                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">
-                  500+
+                <CountUpAnimation duration={1000}>500</CountUpAnimation>+
                 </h2>
                 <p className="leading-relaxed">Companies hiring</p>
               </div>
+              
+
+
               <div className="p-4 sm:w-1/4 w-1/2">
                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">
-                  200+
+                <CountUpAnimation duration={1000}>200</CountUpAnimation>+
                 </h2>
                 <p className="leading-relaxed">New openings everyday</p>
               </div>
               <div className="p-4 sm:w-1/4 w-1/2">
                 <h2 className="title-font font-medium sm:text-4xl text-3xl text-sky-900">
-                  2000+
+                <CountUpAnimation duration={1000}>2000</CountUpAnimation>+
                 </h2>
                 <p className="leading-relaxed">active students</p>
               </div>

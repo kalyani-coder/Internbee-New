@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Refund.css'; // Import your CSS file
-import './Refund.css'
+
 import { useNavigate } from "react-router-dom";
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 
 const Refund = () => {
@@ -24,34 +26,35 @@ const Refund = () => {
     // const loggedInUserId = localStorage.getItem('userId'); // Replace with your actual key
 
     // Check if a user is logged in and has accepted terms
-//     if (loggedInUserId && acceptTerms) {
-//       // Make a PATCH request to the API
-//       fetch(`http://localhost:8000/api/employer/${loggedInUserId}`, {
-//         method: 'PATCH',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
-//       })
-//         .then(response => response.json())
-//         .then(data => {
-//           // Handle the response as needed
-//           console.log('Privacy policy accepted:');
-//           navigate("/home");
-//         })
-//         .catch(error => {
-//           // Handle errors
-//           console.error('Error accepting privacy policy:', error);
-//         });
-//     } else {
-//       console.error('User not logged in or terms not accepted');
-//     }
+    //     if (loggedInUserId && acceptTerms) {
+    //       // Make a PATCH request to the API
+    //       fetch(`http://localhost:8000/api/employer/${loggedInUserId}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ Privacy_policy: true }), // Assuming you want to set it to true
+    //       })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //           // Handle the response as needed
+    //           console.log('Privacy policy accepted:');
+    //           navigate("/home");
+    //         })
+    //         .catch(error => {
+    //           // Handle errors
+    //           console.error('Error accepting privacy policy:', error);
+    //         });
+    //     } else {
+    //       console.error('User not logged in or terms not accepted');
+    //     }
   };
   return (
     <>
+      <Navbar />
       <div className="policy-popup">
 
-       {/* Terms And Conditions section  */}
+        {/* Terms And Conditions section  */}
 
         {/* {showMore ? (
           <>
@@ -165,7 +168,9 @@ const Refund = () => {
                 2.	Any assignment(s) given to Applicants to assess their suitability for the Job should be fair and relevant to the Job profile. Prohibitions include attempting to obtain work for free from Applicants under the guise of an assessment or soliciting downloads for an app, or likes/shares/comments for an Employer's social media handles solely for the purpose of obtaining free publicity under the guise of an assignment.<br />
                 3.	All communications with Applicants, whether through Interns Bee Chat or other means, must be professional and devoid of any obscene or offensive content.<br />
                 4.	Upon hiring any Applicant(s) for their Job, Employers must provide them with an offer letter that clearly outlines important details of the Job, such as roles and responsibilities, remuneration, payment mechanism, as well as complete address and contact details of the Employer.<br />
-                5.	Employers must fulfill their commitment to pay the promised remuneration to the selected Applicant(s) in a timely manner, adhering to the agreed terms and conditions of the Job as detailed in the offer letter.
+                5.	Employers must fulfill their commitment to pay the promised remuneration to the selected Applicant(s) in a timely mimport Footer from './../Footer';
+anner, adhering to the agreed terms and conditions of the Job as detailed in the offer letter.import Navbar from './../Navbar';
+
 
                 <h1 className='privacy-heading-middle'>Disclaimers</h1>
                 This Site and its content are provided "as is," and Interns Bee, along with its directors, employees, content providers, agents, and affiliates, excludes, to the fullest extent permitted by applicable law, any warranty, express or implied. This includes, without limitation, any implied warranties of merchantability, satisfactory quality, or fitness for a particular purpose. Interns Bee will not be liable for any damages arising from the use of this site. The functions embodied on or in the materials of this site are not warranted to be uninterrupted or without error. You, not Interns Bee, assume the entire cost of all necessary care or correction due to your use of this site or content. Interns Bee makes no warranty that the site or the content is free from infection by viruses or anything else that has contaminating or destructive properties. Interns Bee uses reasonable efforts to ensure the accuracy, correctness, and <br />
@@ -197,7 +202,7 @@ const Refund = () => {
                  All license agreements, use, or any issues arising out of any activity regarding the use of this website will be governed by the laws of India and subject to the exclusive jurisdiction of courts in Maharashtra.
 
                 {/* all contente here  */}
-                {/* <div className="button-container">
+        {/* <div className="button-container">
                   <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore}>
                     View Less
                   </button>
@@ -227,108 +232,108 @@ const Refund = () => {
                 Please refer to our Privacy Policy for more details on how we collect, store, use, and retain your data on the Site.
 
                 {/* show first two paragraphs */}
-                {/* <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
+        {/* <button className="view-more-button fw-bold text-yellow-500 px-4 py-2 rounded " onClick={toggleShowMore}>
                   View More
                 </button> */}
-              {/* </> */}
+        {/* </> */}
         {/* )}  */}
-            
-
-                  {/* Privacy policy section  */}
 
 
-              {showMore2 ? (
-                <>
-                  <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1>
-                  {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+        {/* Privacy policy section  */}
 
-<h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
-               
-                Thank you for choosing Interns Bee. We appreciate your commitment to utilizing 
-               our services for your internship needs. Please take a moment to review our No Refund
-                Policy, specifically regarding subscription payments.
-                  <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
-                  Upon subscribing to Interns Bee, users gain access to a range of features 
-                  and opportunities designed to enhance their internship experience. Subscription 
-                  fees are non-refundable, regardless of whether the subscription is cancelled during 
-                  its term.
-                  <br></br>
-                  <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
-                   We do not provide refunds for partially used subscription periods. 
-                   Once a subscription fee is processed, it is deemed fully earned, and no 
-                   reimbursements will be issued for any unused portion of the subscription.
-                 
-                  <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
-                   Users have the option to cancel their subscription at any time.
-                    However, the cancellation will not result in a refund for the remaining 
-                    duration of the subscription term.
-                  
-                  <h1 className='privacy-heading-middle'>No Refunds for Inactivity:</h1>
-                  Refunds will not be granted based on a user's lack of activity or engagement
-                   on the platform. The subscription fee is charged to grant continuous access to our 
-                   services, and the level of user participation does not affect the refund eligibility.
-                 
-                  <h1 className='privacy-heading-middle'>Modification or Termination of Services:</h1>
-                  Interns Bee reserves the right to modify, suspend, 
-                  or terminate its services at any time without prior notice. In such cases, 
-                  no refunds will be issued for subscription fees paid.
-                  <h1 className='privacy-heading-middle'>Contact Us:</h1>
-                  If you have any questions or concerns regarding our No Refund Policy, 
-                  please feel free to contact our customer support at hellointerns@internsbee.com. 
-                  We are here to assist you and provide clarification on any queries you may have.
-                  <br></br>
-                  By subscribing to Interns Bee, you acknowledge and agree to abide by the terms 
-                  outlined in this No Refund Policy. We appreciate your understanding and look forward 
-                  to supporting you in your internship endeavours.
-                  {/* ... */}
-                  <div className="button-container">
-                    <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
-                      View Less
-                    </button>
-
-                  </div>
-                </>
-              ) : (
-                <>
-                <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1><br/>
-                {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+        {showMore2 ? (
+          <>
+            <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1>
+            {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
 
             <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
 
-            Thank you for choosing Interns Bee. We appreciate your commitment to utilizing 
-               our services for your internship needs. Please take a moment to review our No Refund
-                Policy, specifically regarding subscription payments.
-                  <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
-                  Upon subscribing to Interns Bee, users gain access to a range of features 
-                  and opportunities designed to enhance their internship experience. Subscription 
-                  fees are non-refundable, regardless of whether the subscription is cancelled during 
-                  its term.
-                  <br></br>
-                  <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
-                   We do not provide refunds for partially used subscription periods. 
-                   Once a subscription fee is processed, it is deemed fully earned, and no 
-                   reimbursements will be issued for any unused portion of the subscription.
-                 
-                  <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
-                   Users have the option to cancel their subscription at any time.
-                    However, the cancellation will not result in a refund for the remaining 
-                    duration of the subscription term.
-                  
-                 
-                 
-                  {/* ... */}
-                  <button className="view-more-button  text-white px-4 py-2 rounded " onClick={toggleShowMore2}>
-                    View More
-                  </button>
-                </>
-              )}
+
+            Thank you for choosing Interns Bee. We appreciate your commitment to utilizing
+            our services for your internship needs. Please take a moment to review our No Refund
+            Policy, specifically regarding subscription payments.
+            <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
+            Upon subscribing to Interns Bee, users gain access to a range of features
+            and opportunities designed to enhance their internship experience. Subscription
+            fees are non-refundable, regardless of whether the subscription is cancelled during
+            its term.
+            <br></br>
+            <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
+            We do not provide refunds for partially used subscription periods.
+            Once a subscription fee is processed, it is deemed fully earned, and no
+            reimbursements will be issued for any unused portion of the subscription.
+
+            <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
+            Users have the option to cancel their subscription at any time.
+            However, the cancellation will not result in a refund for the remaining
+            duration of the subscription term.
+
+            <h1 className='privacy-heading-middle'>No Refunds for Inactivity:</h1>
+            Refunds will not be granted based on a user's lack of activity or engagement
+            on the platform. The subscription fee is charged to grant continuous access to our
+            services, and the level of user participation does not affect the refund eligibility.
+
+            <h1 className='privacy-heading-middle'>Modification or Termination of Services:</h1>
+            Interns Bee reserves the right to modify, suspend,
+            or terminate its services at any time without prior notice. In such cases,
+            no refunds will be issued for subscription fees paid.
+            <h1 className='privacy-heading-middle'>Contact Us:</h1>
+            If you have any questions or concerns regarding our No Refund Policy,
+            please feel free to contact our customer support at hellointerns@internsbee.com.
+            We are here to assist you and provide clarification on any queries you may have.
+            <br></br>
+            By subscribing to Interns Bee, you acknowledge and agree to abide by the terms
+            outlined in this No Refund Policy. We appreciate your understanding and look forward
+            to supporting you in your internship endeavours.
+            {/* ... */}
+            <div className="button-container">
+              <button className="view-less-button fw-bold text-yellow-500 px-4 py-2 rounded" onClick={toggleShowMore2}>
+                View Less
+              </button>
+
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className='privacy-heading-main text-center'>Refund & Cancellation Policy</h1><br />
+            {/* <h1 className='privacy-heading-main text-center'>Terms And Conditions</h1> */}
+
+            <h1 className='privacy-heading fw-bold text-yellow-500 text-center'>Welcome to Interns Bee </h1><br></br>
+
+            Thank you for choosing Interns Bee. We appreciate your commitment to utilizing
+            our services for your internship needs. Please take a moment to review our No Refund
+            Policy, specifically regarding subscription payments.
+            <h1 className='privacy-heading-middle'>Subscription Fees:</h1>
+            Upon subscribing to Interns Bee, users gain access to a range of features
+            and opportunities designed to enhance their internship experience. Subscription
+            fees are non-refundable, regardless of whether the subscription is cancelled during
+            its term.
+            <br></br>
+            <h1 className='privacy-heading-middle'>No Refunds for Partial Usage:</h1>
+            We do not provide refunds for partially used subscription periods.
+            Once a subscription fee is processed, it is deemed fully earned, and no
+            reimbursements will be issued for any unused portion of the subscription.
+
+            <h1 className='privacy-heading-middle'>Cancellation of Subscription:</h1>
+            Users have the option to cancel their subscription at any time.
+            However, the cancellation will not result in a refund for the remaining
+            duration of the subscription term.
+
+
+
+            {/* ... */}
+            <button className="view-more-button  text-white px-4 py-2 rounded " onClick={toggleShowMore2}>
+              View More
+            </button>
+          </>
+        )}
 
 
 
 
-            
-              {/* <div>
+
+        {/* <div>
         <label>
           <input
             type="checkbox"
@@ -339,10 +344,10 @@ const Refund = () => {
           I agree to the terms and conditions
         </label>
       </div> */}
-       
 
-              {/* Submit button */}
-              {/* <div className="submit-button-container">
+
+        {/* Submit button */}
+        {/* <div className="submit-button-container">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
         //   onClick={handleAccept}
@@ -351,9 +356,10 @@ const Refund = () => {
         </button>
       </div> */}
 
-            </div>
-          </>
-        );
+      </div>
+      <Footer />
+    </>
+  );
 }
 
-        export default Refund;
+export default Refund;
