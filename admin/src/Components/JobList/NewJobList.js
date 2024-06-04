@@ -91,97 +91,57 @@ const NewJobList = () => {
         <Sidebar />
         <div className=" MainNewJob flex">
           <div>
-            <h1 className=" HeadingNewJobList text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            <h1 className=" HeadingNewJobList text-3xl font-bold mb-4 mt-8 text-center" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Job List
             </h1>
 
-            <div className="flex gap-10">
-              <div className="table-container w-[40%]">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
-                        Sr No
-                      </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
-                        Job Title
-                      </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
-                        Job Applicant
-                      </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">
-                        Employer
-                      </th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Apply Date</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
-                      <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {candidates.map((candidate, index) => (
-                      <tr key={candidate._id}>
-                        <td className="py-2 px-4 border-b text-lg">{index + 1}</td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {`${candidate.job_Title}`}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.InternName}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.empName}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.status}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.appliedDate}
-                        </td>
-
-                        {/* <td className="py-2 px-4 border-b">
-                         
-                          {candidate.profile_pic && (
-                            <img
-                              src={candidate.profile_pic}
-                              alt={`${candidate.firstName} ${candidate.lastName}`}
-                              className="rounded-full h-10 w-10 object-cover"
-                            />
-                          )}
-
-                        </td> */}
-
-                        <td className="py-2 px-4 border-b">
-                          <div className="actions">
-
-                            {/* <button
-                              className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
-                              onClick={() => handleViewMore(candidate)}
-                            >
-                              View More
-                            </button> */}
-
-                            <button
-                              className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
-                              onClick={() => handleViewMoreClick(candidate)}
-                            >
-                              View More
-                            </button>
-
-                          </div>
-                        </td>
-                        <td>
-                          <button onClick={() => handleDeleteClick(candidate)}>
-                            <FaTrash />
+            <div className="CandidateSlider1 flex flex-col md:flex-row gap-10 ml-7 mr-7 border-2">
+            <div className="table-container1 overflow-x-auto">
+              <table className="table1 w-full">
+                <thead>
+                  <tr>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Sr No</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Job Title</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Job Applicant</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Employer</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Apply Date</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Profile</th>
+                    <th className="py-4 px-6 border-b font-bold text-lg">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {candidates.map((candidate, index) => (
+                    <tr key={candidate._id}>
+                      <td className="py-2 px-4 border-b text-lg">{index + 1}</td>
+                      <td className="py-2 px-4 border-b text-lg">{candidate.job_Title}</td>
+                      <td className="py-2 px-4 border-b text-lg">{candidate.InternName}</td>
+                      <td className="py-2 px-4 border-b text-lg">{candidate.empName}</td>
+                      <td className="py-2 px-4 border-b text-lg">{candidate.status}</td>
+                      <td className="py-2 px-4 border-b text-lg">{candidate.appliedDate}</td>
+                      <td className="py-2 px-4 border-b">
+                        <div className="actions1">
+                          <button
+                            className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
+                            onClick={() => handleViewMoreClick(candidate)}
+                          >
+                            View More
                           </button>
-                        </td>
-
-
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                        </div>
+                      </td>
+                      <td>
+                        <button onClick={() => handleDeleteClick(candidate)}>
+                          <FaTrash />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+          </div>
+          
+          
           </div>
         </div>
       </div>
