@@ -46,20 +46,20 @@ const ViewInternship = () => {
         <>
             <Navbar />
             <div className="displaycontent flex h-screen">
-                <Sidebar />
-                <div className="ml-10 mt-4">
-                    <div className="max-w-full p-4">
-                        <h1 className="Heading text-3xl font-bold mb-4 mt-8">View Internship Details</h1>
-                        <div className='tabless-container'>
+            <Sidebar />
+            <div className="ml-10 mt-4">
+                <div className="max-w-full p-4">
+                    <h1 className="Heading text-3xl font-bold mb-4 mt-8">View Internship Details</h1>
+                    <div className="tabless-container">
+                        <div className="table-wrapper" style={{ height: '400px', overflow: 'auto' }}>
                             <table className="bless-containe w-full bg-white border border-gray-300">
                                 <thead>
                                     <tr>
                                         <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Job Title</th>
                                         <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Location</th>
                                         <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Company Name</th>
-                                        <th className="TableHeading py-4 px-6 border-b font-bold text-lg">EmployerName</th>
+                                        <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Employer Name</th>
                                         <th className="TableHeading py-4 px-6 border-b font-bold text-lg">View More</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,12 +70,6 @@ const ViewInternship = () => {
                                             <td className="py-2 px-4 border-b text-lg">{internship.company_Name}</td>
                                             <td className="py-2 px-4 border-b text-lg">{internship.empName}</td>
                                             <td>
-                                                {/* <button
-                                            onClick={() => handleViewMore(internship)}
-                                            className="bg-yellow-500 text-dark py-2 px-4 rounded hover:bg-amber-300 focus:outline-none focus:shadow-outline-green active:bg-green-800"
-                                        >
-                                            View More
-                                        </button> */}
                                                 <button
                                                     className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
                                                     onClick={() => handleViewMoreClick(internship)}
@@ -83,7 +77,6 @@ const ViewInternship = () => {
                                                     View More
                                                 </button>
                                             </td>
-
                                         </tr>
                                     ))}
                                 </tbody>
@@ -91,10 +84,9 @@ const ViewInternship = () => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
+        </div>
+        
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">

@@ -15,8 +15,8 @@ const ViewProfilePage = () => {
     companyAddress: '',
     Description: '',
     selectedFile: '',
-    company_Website_URL:'',
-    enter_CIN_Number:'',
+    company_Website_URL: '',
+    enter_CIN_Number: '',
   });
 
   const [editedData, setEditedData] = useState({ ...profileData });
@@ -78,17 +78,17 @@ const ViewProfilePage = () => {
       <div className='displayBlock flex gap-10'>
         <Sidebar />
 
-        <div className="container mx-auto mt-8 p-6 bg-white rounded-xl shadow-md">
-          <div className='text-center'>
-            <h2 className="text-large font-bold "> Profile</h2>
+        <div className="mx-auto mt-10 sm:mt-20 md:mt-28  sm:mb-20 md:mb-28 p-4 sm:p-6 bg-white rounded-xl shadow-md border-2 border-amber-500 h-[40%] md:h-[40%] max-w-lg md:max-w-2xl">
+          <div className="text-center">
+            <h2 className="text-xl sm:text-2xl font-bold">Profile</h2>
           </div>
 
           {/* <div className="mt-6">
-            <h1 className="text-2xl font-bold">{profileData.empName}</h1>
-          </div> */}
+    <h1 className="text-2xl font-bold">{profileData.empName}</h1>
+  </div> */}
 
           <div className="mt-6">
-            <div className="xyzp grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-gray-600">Name</label>
                 <p>{profileData.empName}</p>
@@ -105,28 +105,31 @@ const ViewProfilePage = () => {
                 <label className="block text-sm text-gray-600">Address</label>
                 <p>{profileData.companyAddress}</p>
               </div>
-              <div className="mt-4">
+              <div className="md:col-span-2 mt-4">
                 <label className="block text-sm text-gray-600">Company Description</label>
                 <p>{profileData.Description}</p>
               </div>
-              <div className="mt-4">
-                <label className="block text-sm text-gray-600">CompanyWebsite</label>
+              <div>
+                <label className="block text-sm text-gray-600">Company Website</label>
                 <p>{profileData.company_Website_URL}</p>
               </div>
-              <div className="mt-4">
-                <label className="block text-sm text-gray-600">CIN No-</label>
+              <div>
+                <label className="block text-sm text-gray-600">CIN No</label>
                 <p>{profileData.enter_CIN_Number}</p>
               </div>
             </div>
           </div>
 
-          <button
-            onClick={openEditModal}
-            className="xyzp mt-6 p-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 focus:outline-none focus:ring focus:ring-amber-200"
-          >
-            Edit Profile
-          </button>
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={openEditModal}
+              className="p-2 bg-amber-500 text-white rounded-md hover:bg-amber-600 focus:outline-none focus:ring focus:ring-amber-200"
+            >
+              Edit Profile
+            </button>
+          </div>
         </div>
+
       </div>
 
       {isEditModalOpen && (

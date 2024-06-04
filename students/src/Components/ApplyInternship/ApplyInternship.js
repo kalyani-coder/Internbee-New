@@ -138,25 +138,25 @@ const ApplyInternship = () => {
             </p>
 
             <div className="fild flex  items-center my-4 gap-8">
-              <div className="flex items-center ">
+              <div className="flex items-center p-2">
                 <FaRegClock className="mr-2" />
                 <p className="card-company text-xl text-gray-700">
                   Start Date: {internship.start_Date}
                 </p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center p-2">
                 <FaMoneyBill className="mr-2" />
                 <p className="card-location text-xl text-gray-700">
                   &#x20B9;{internship.stipend}
                 </p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center p-2">
                 <FaMapMarkerAlt className="mr-2" />
                 <p className="card-duration text-xl text-gray-700">
                   {internship.location}
                 </p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center p-2">
                 <FaRegClock className="mr-2" />
                 <p className="card-duration text-xl text-gray-700">
                   End Date: {internship.end_Date}

@@ -59,7 +59,7 @@ const Footer = () => {
     },
     {
       help: "Plans and Pricing",
-      // link: "/plans-and-pricing",
+       link: "/freeplan",
     },
   ];
 

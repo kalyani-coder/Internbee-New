@@ -167,25 +167,25 @@ const Internship = () => {
                     Company Name : {internship.company_Name}
                   </p>
                   <div className="blockcard flex justify-between items-center my-2 gap-3 ">
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-company text-sm text-gray-700">
                         Start Date : {internship.start_Date}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaMoneyBill className="mr-2 text-lg" />
                       <p className="card-location text-sm text-gray-700">
                         &#x20B9;{internship.stipend}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaMapMarkerAlt className="mr-2 text-sm" />
                       <p className="card-duration text-sm text-gray-700">
                         {internship.location}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-duration text-sm text-gray-700">
                         End Date : {internship.end_Date}

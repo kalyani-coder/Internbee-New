@@ -29,7 +29,7 @@
   width: 35em;
 }
 .ViewProfileCard {
-  height: 7rem;
+  height: 13rem;
   padding: 0 1em;
   align-items: center;
 }
@@ -409,9 +409,12 @@
     display: grid;
     justify-content: center;
   }
-  /* .width-set-for-the-premium-or-freemium-packages {
-    width: auto;
-  } */
+  .width-set-for-the-premium-or-freemium-packages {
+    /* width: auto; */
+    position: relative;
+    right: 6rem;
+    width: 30em;
+  }
   .all-about-section-content-for-the-abt-us-page {
     margin: 1em;
   }

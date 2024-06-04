@@ -1,6 +1,7 @@
 // ContactInfo.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Footer from "../Footer";
 // import Internal_Navbar from "../InternalNavbar";
 // import Applied_Intern_Internal_Navbar from '../AppliedInternNavBar/Applied_Intern_Internal_Navbar';
@@ -9,6 +10,7 @@ import QuickNav from '../QuickNav';
 import Navbar from './../Navbar';
 import './Contactus.css';
 import contactusimg from '../../Assets/contactUs.jpg';
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -24,12 +26,45 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here, you can handle form submission, like sending data to a server
-    console.log('Form data:', formData);
-    alert('Form submitted successfully!');
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const errors = {};
+
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!formData.name) {
+      errors.name = 'Name is required';
+    } else if (!nameRegex.test(formData.name)) {
+      errors.name = 'Name must contain only characters';
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/contactus/', formData);
+
+      if (!validate()) {
+        return;
+      }
+
+      if (response.status === 200) {
+        console.log('Form data submitted successfully!');
+        alert('Form submitted successfully!');
+      } else {
+        console.error('Failed to submit form data:', response.statusText);
+        alert('Form submitted successfully!');
+      }
+    } catch (error) {
+      console.error('Error submitting form data:', error);
+      alert('Error submitting form data');
+    }
+  };
+
   return (
     <>
       {/* <Internal_Navbar/> */}
@@ -45,7 +80,7 @@ const ContactUs = () => {
             </div>
 
             <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col items-center gap-3 mb-2 bg-white  shadow-main border-2 border-amber-500 p-4"  style={{ borderRadius: '15px 50px' }}>
+              <div className="flex flex-col items-center gap-3 mb-2 bg-white  shadow-main border-2 border-amber-500 p-4" style={{ borderRadius: '15px 50px' }}>
                 <span>
                   {/* Email SVG */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
@@ -56,7 +91,7 @@ const ContactUs = () => {
                 <p className="text-base leading-7 text-dark-grey-600">Contact us at</p>
                 <a className="text-lg font-bold text-purple-blue-500" href="mailto: hellointerns@internsbee.in">hellointerns@internsbee.in</a>
               </div>
-              <div className="flex flex-col items-center gap-3 mb-2 bg-white shadow-main border-2 border-amber-500 p-4"  style={{ borderRadius: '15px 50px' }}>
+              <div className="flex flex-col items-center gap-3 mb-2 bg-white shadow-main border-2 border-amber-500 p-4" style={{ borderRadius: '15px 50px' }}>
                 <span>
                   {/* Phone SVG */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
@@ -67,7 +102,7 @@ const ContactUs = () => {
                 <p className="text-base leading-7 text-dark-grey-600">Reach out to us by phone</p>
                 <a className="text-lg font-bold text-purple-blue-500" href="tel:9766094134">+91 9766094134</a>
               </div>
-              <div className="flex flex-col items-center gap-3 mb-2 bg-white shadow-main border-2 border-amber-500 p-4"  style={{ borderRadius: '15px 50px' }}>
+              <div className="flex flex-col items-center gap-3 mb-2 bg-white shadow-main border-2 border-amber-500 p-4" style={{ borderRadius: '15px 50px' }}>
                 <span>
                   {/* Location SVG */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
@@ -83,52 +118,56 @@ const ContactUs = () => {
           </div>
         </div>
         <div className='flex flex-col md:flex-row justify-center'>
-  <div className='w-full md:w-[50%] relative md:right-7'>
-    <img src={contactusimg} className='w-[80%] mx-auto md:mx-0' />
-  </div>
-  <div className='mt-12 md:mt-24 w-full md:w-auto'>
-    <form onSubmit={handleSubmit} className='w-full md:w-[120%]'>
-      <div className='p-2'>
-        <label htmlFor="name" className='p-2'>Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="p-2 w-full border-2 border-amber-400 rounded-3xl"
-        />
-      </div>
-      <div className='p-2'>
-        <label htmlFor="email" className='p-2'>Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="p-2 w-full border-2 border-amber-400 rounded-3xl"
-        />
-      </div>
-      <div className='p-2'>
-        <label htmlFor="message" className='p-2'>Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="p-2 w-full border-2 border-amber-400 rounded-3xl"
-        />
-      </div>
-      <div className='p-4'>
-        <button type="submit" className="bg-amber-400 w-full p-2 rounded-3xl">Submit</button>
-      </div>
-    </form>
-  </div>
-</div>
+          <div className='w-full md:w-[50%] relative md:right-7'>
+            <img src={contactusimg} className='w-[80%] mx-auto md:mx-0' />
+          </div>
+          <div className='mt-12 md:mt-24 w-full md:w-auto'>
+            <form onSubmit={handleSubmit} className='w-full md:w-[120%]'>
+            <div className='p-2'>
+            <label htmlFor="name" className='p-2'>Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="p-2 w-full border-2 border-amber-400 rounded-3xl"
+            />
+          </div>
+          {errors.name && <div className="text-red-500">{errors.name}</div>}
+                 
+              <div className='p-2'>
+                <label htmlFor="email" className='p-2'>Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="p-2 w-full border-2 border-amber-400 rounded-3xl"
+                />
+                
+              </div>
+                       
+              <div className='p-2'>
+                <label htmlFor="message" className='p-2'>Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="p-2 w-full border-2 border-amber-400 rounded-3xl"
+                />
+              </div>
+              <div className='p-4'>
+                <button type="submit" className="bg-amber-400 w-full p-2 rounded-3xl">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
 
       </div>
       <div><Footer /></div>

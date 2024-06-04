@@ -83,7 +83,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className={`login-register md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
+                <div className={`login-register mr-14 md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
                     <div className='relative'>
                         <ul className="menu clearfix">
                             <li className="parent p-2">

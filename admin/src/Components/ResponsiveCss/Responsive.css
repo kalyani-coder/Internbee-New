@@ -1,123 +1,188 @@
 @media screen and (max-width: 768px) {
-    .AdminDashBoardContent{
+    .AdminDashBoardContent {
 
         display: grid;
         align-items: center;
         justify-content: center;
     }
-.displaycontent{
 
-    display: contents;
-}
+    .displaycontent {
 
-.AppliedCandidatesCard{
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    margin-top: 3px;
-}
-.adminRegister{
+        display: contents;
+    }
 
-   
-    width: 24rem !important;
-}
-.Signup{
+    .AppliedCandidatesCard {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        margin-top: 3px;
+    }
 
-    display: block;
-}
+    .adminRegister {
 
-.CandidateSlider{
 
-    width: 93%;
+        width: 24rem !important;
+    }
+
+    .Signup {
+
+        display: block;
+    }
+
+    .CandidateSlider {
+
+        width: 93%;
         overflow-x: scroll;
-}
-.CandidateMain{
+        position: relative;
+        left: 1rem;
+        border: none;
+    }
 
-    width: -webkit-fill-available;
-}
-.candidatepadding{
+    .CandidateMain {
 
-    padding: 14px;
-}
-.tabless-container{
+        width: -webkit-fill-available;
+    }
 
+    .candidatepadding {
+
+        padding: 14px;
+    }
+
+    .tabless-container {
+
+        overflow-x: scroll;
+        width: 90%;
+        /* width: 51%; */
+    }
+
+    .tabless-container-sc {
+        overflow-x: scroll;
+        width: 90%;
+        position: relative;
+        left: 0;
+    }
+
+    .EmployerHeading {
+
+        font-size: 25px;
+        position: relative;
+        left: 2rem;
+        margin-top: 0;
+    }
+
+    .EmployerHeading-E {
+
+        font-size: 25px;
+        position: relative;
+        left: 0;
+        margin-top: 0;
+    }
+
+    .EmployerScroll {
+        position: relative;
+        left: 0;
+        text-align: center;
+        overflow-x: scroll;
+        width: 90%;
+    }
+
+    .shortlistdiv {
+
+        width: -webkit-fill-available;
+    }
+
+    .ViewEmployerSlider {
+
+        overflow-x: scroll;
+        /* width: 100%; */
+        width: 90% !important;
+        overflow-y: scroll;
+    }
+
+    .ViewEmployerSlider2 {
+        position: relative;
+        right: 0;
+        font-size: 25px;
+    }
+
+    .TableHeading {
+
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .ViewEmployeeHeading {
+        font-size: 20px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .serachboxviewemployer {
+        margin-left: 0;
+        text-align: center;
+        align-items: center;
+    }
+
+    .ViewEmpBtn {
+
+        padding: 4px !important;
+    }
+
+    .JobListTable {
+        overflow-x: scroll;
+        /* width: 100%; */
+        width: 90% !important;
+        overflow-y: scroll;
+    }
+
+    .JobListOptions {
+
+        display: inline-grid;
+    }
+
+    .mainAboutusTwoDivs {
+
+        display: block;
+    }
+
+    .DivAboutusContent {
+
+        width: 100%;
+    }
+
+    .Heading {
+
+        font-size: 25px;
+    }
+
+    .BlogMainDiv {
+        display: flex;
+        gap: 26px;
+        flex-direction: column;
+    }
+
+    .DisplayBlock {
+        display: block;
+    }
+
+    .table-container {
+        overflow-x: scroll;
+        width: 62%;
+    }
+
+    .HeadingNewJobList {
+      
+        width: auto;
+        position: relative;
+        left: 10%;
+    }
+.table-candidates{
     overflow-x: scroll;
-    width: 90%;
-    /* width: 51%; */
-}
-.EmployerHeading{
-
-    font-size: 25px;
-}
-.EmployerScroll{
-
-    overflow-x: scroll;
-    width: 90%;
-}
-.shortlistdiv{
-
-    width: -webkit-fill-available;
-}
-.ViewEmployerSlider{
-
-    overflow-x: scroll;
-    /* width: 100%; */
-    width: 90% !important;
+    width: 40%;
+   
     overflow-y: scroll;
 }
-.TableHeading{
+    .MainNewJob {
+        padding: 9px;
+    }
 
-    font-size: 13px;
-    line-height: 17px;
-}
-.ViewEmployeeHeading{
-    font-size: 24px;
-}
-.ViewEmpBtn{
-
-    padding: 4px !important;
-}
-.JobListTable{
-    overflow-x: scroll;
-    /* width: 100%; */
-    width: 90% !important;
-    overflow-y: scroll;
-}
-.JobListOptions{
-
-    display: inline-grid;
-}
-.mainAboutusTwoDivs{
-
-    display: block;
-}
-.DivAboutusContent{
-
-    width: 100%;
-}
-.Heading{
-
-    font-size: 25px;
-}
-
-.BlogMainDiv{
-    display: flex;
-    gap: 26px;
-    flex-direction: column;
-}
-.DisplayBlock {
-    display: block;
-}
-.table-container{
-overflow-x: scroll;
-width: 62%;
-}
-
-.HeadingNewJobList{
-
-    width: auto;
-}
-.MainNewJob{
-    padding: 9px;
-}  
-    
 }

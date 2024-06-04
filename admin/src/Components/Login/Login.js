@@ -39,10 +39,10 @@ const Login = () => {
   };
 
   return (
-    <div className="MainLoginDiv flex items-center justify-between px-6 py-8 mr-40">
+    <div className="MainLoginDiv flex items-center justify-between px-6 py-8 mr-40 mt-24">
     <img src="./adminsign-up.jpg" alt="design" className="" />
 
-    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark: dark:border-black">
+    <div className="w-full bg-white rounded-lg shadow  border-2 border-amber-500 md:mt-0 sm:max-w-md xl:p-0">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl dark:text-black">
           Sign in to your Admin account
@@ -108,14 +108,16 @@ const Login = () => {
           </a>
         </div>
 
-        {/* Sign In Button */}
-        <button
-          type="button"
-          onClick={handleLogin}
-          className="w-full text-black bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-        >
-          Sign in
-        </button>
+      <div className='flex justify-center'>
+         {/* Sign In Button */}
+         <button
+         type="button"
+         onClick={handleLogin}
+         className="px-3 mt-2 md:mt-0 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
+         >
+         Sign in
+       </button>
+      </div>
 
         
       </form>

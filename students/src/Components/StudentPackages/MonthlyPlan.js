@@ -61,7 +61,7 @@ const MonthlyPackages = () => {
                     </div>
 
                     {monthlyPackage && (
-                        <div className="w-full md:w-1/2 mx-auto">
+                        <div className=" width-set-for-the-premium-or-freemium-packages w-full md:w-1/2 mx-auto">
                             <div className="p-4 xl:w-full md:w-1/2 w-full">
                                 <div className="Freecards h-full p-6 rounded-lg flex flex-col relative overflow-hidden">
                                     <div className="Freecard p-4 w-full">

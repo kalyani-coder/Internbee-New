@@ -100,50 +100,30 @@ const ShortlistedCandidates = () => {
         <div className="flex mt-5">
           <div className=" shortlistdiv p-10 flex">
             <div className="shortlistdiv">
-              <h1 className="EmployerHeading text-3xl font-bold mb-4 mt-8">
+              <h1 className="EmployerHeading text-3xl font-bold mb-4 mt-8 relative left-[60%]">
                 Shortlisted Candidates
               </h1>
 
-              <div className="tabless-container overflow-x-auto">
-                <table className="w-full bg-white border border-gray-300">
+              <div className="tabless-container-sc overflow-x-auto relative left-[40%]">
+                <table className="w-full bg-white border-2 border-gray-300">
                   <thead>
                     <tr>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Sr No
-                      </th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Name
-                      </th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Company Name
-                      </th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Location
-                      </th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Actions
-                      </th>
-                      <th className="TableHeading py-4 px-6 border-b font-bold text-lg">
-                        Delete
-                      </th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Sr No</th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Name</th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Company Name</th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Location</th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Actions</th>
+                      <th className="TableHeading py-4 px-2 md:px-6 border-b font-bold text-sm md:text-lg">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
                     {shortlistedCandidates.map((candidate, index) => (
                       <tr key={candidate._id}>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {index + 1}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.InternName}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.empName}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
-                          {candidate.location}
-                        </td>
-                        <td className="py-2 px-4 border-b text-lg">
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">{index + 1}</td>
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">{candidate.InternName}</td>
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">{candidate.empName}</td>
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">{candidate.location}</td>
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">
                           <button
                             className="text-blue-500 hover:text-blue-700 mr-2"
                             onClick={() => handleViewMoreClick(candidate)}
@@ -151,7 +131,7 @@ const ShortlistedCandidates = () => {
                             View More
                           </button>
                         </td>
-                        <td className="py-2 px-4 border-b">
+                        <td className="py-2 px-2 md:px-4 border-b text-sm md:text-lg">
                           <button onClick={() => handleDeleteClick(candidate)}>
                             <FaTrash />
                           </button>
@@ -161,6 +141,7 @@ const ShortlistedCandidates = () => {
                   </tbody>
                 </table>
               </div>
+
             </div>
           </div>
         </div>

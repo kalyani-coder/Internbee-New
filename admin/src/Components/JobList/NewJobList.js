@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
 import './Joblist.css'
 import '../ResponsiveCss/Responsive.css';
+import Footer from './../Footer/Footer';
 
 
 const NewJobList = () => {
@@ -11,32 +12,32 @@ const NewJobList = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
 
-  const [jobList , setJobList] = useState()
+  const [jobList, setJobList] = useState()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-  
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/api/applyInternship");
-        const data = await response.json();
-        setCandidates(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    useEffect(() => {
-      // Call the fetchShortlistedCandidates function
-      fetchData();
-    }, []);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/applyInternship");
+      const data = await response.json();
+      setCandidates(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-  
+  useEffect(() => {
+    // Call the fetchShortlistedCandidates function
+    fetchData();
+  }, []);
 
 
-   // Function to handle delete confirmation
-   const handleDeleteClick = (candidate) => {
+
+
+  // Function to handle delete confirmation
+  const handleDeleteClick = (candidate) => {
     setCandidateToDelete(candidate);
     setShowConfirmation(true);
   };
@@ -71,31 +72,31 @@ const NewJobList = () => {
   };
   const openModal = () => {
     setIsModalOpen(true);
-   
-};
 
-const closeModal = () => {
+  };
+
+  const closeModal = () => {
     setIsModalOpen(false);
-};
+  };
 
-const handleViewMoreClick = (candidate) => {
-  openModal();
-  // Set detailed information for the modal
-  setJobList(candidate);
-};
-    return (
-      <>
+  const handleViewMoreClick = (candidate) => {
+    openModal();
+    // Set detailed information for the modal
+    setJobList(candidate);
+  };
+  return (
+    <>
       <Navbar />
       <div className="displaycontent flex h-screen">
         <Sidebar />
         <div className=" MainNewJob flex">
           <div>
             <h1 className=" HeadingNewJobList text-3xl font-bold mb-4 mt-8" style={{ fontFamily: 'Roboto, sans-serif' }}>
-             Job List
+              Job List
             </h1>
-            
+
             <div className="flex gap-10">
-              <div className="table-container">
+              <div className="table-container w-[40%]">
                 <table className="table">
                   <thead>
                     <tr>
@@ -106,10 +107,10 @@ const handleViewMoreClick = (candidate) => {
                         Job Title
                       </th>
                       <th className="py-4 px-6 border-b font-bold text-lg">
-                      Job Applicant
+                        Job Applicant
                       </th>
                       <th className="py-4 px-6 border-b font-bold text-lg">
-                      Employer
+                        Employer
                       </th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Status</th>
                       <th className="py-4 px-6 border-b font-bold text-lg">Apply Date</th>
@@ -160,16 +161,16 @@ const handleViewMoreClick = (candidate) => {
                             </button> */}
 
                             <button
-                className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
-                onClick={() => handleViewMoreClick(candidate)}
-              >
-                View More
-              </button>
+                              className="text-blue-500 hover:text-blue-700 mr-2 text-lg"
+                              onClick={() => handleViewMoreClick(candidate)}
+                            >
+                              View More
+                            </button>
 
                           </div>
                         </td>
                         <td>
-                        <button onClick={() => handleDeleteClick(candidate)}>
+                          <button onClick={() => handleDeleteClick(candidate)}>
                             <FaTrash />
                           </button>
                         </td>
@@ -185,8 +186,8 @@ const handleViewMoreClick = (candidate) => {
         </div>
       </div>
 
-        {/* Confirmation Modal */}
-        {showConfirmation && (
+      {/* Confirmation Modal */}
+      {showConfirmation && (
         <div className="confirmation-modal">
           <p>Are you sure you want to delete this candidate?</p>
           <button onClick={handleConfirmDelete}>Yes</button>
@@ -196,41 +197,41 @@ const handleViewMoreClick = (candidate) => {
 
 
       {isModalOpen && (
-  <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
-    <div className="bg-white p-8 max-w-md w-full rounded-md">
-      <h2 className="text-xl font-semibold mb-4">Student Details</h2>
-      {/* Display detailed information here */}
-      <div>
-        <label className="block mb-2">Applicant Name: {jobList.InternName}</label><hr/>
-        <label>Email: {jobList.InternEmail}</label><hr/>
-        <label>InternNumber: {jobList.InternNumber}</label><hr/>
-        <label>location: {jobList.location}</label><hr/>
-        <label>empName: {jobList.empName}</label><hr/>
-        <label>job_Description: {jobList.job_Description}</label><hr/>
-        <label>position: {jobList.position}</label><hr/>
-        <label>skills: {jobList.skills}</label><hr/>
-        <label>stipend: {jobList.stipend}</label><hr/>
-        <label>job_Title: {jobList.job_Title}</label><hr/>
-        <label>appliedDate: {jobList.appliedDate}</label><hr/>
-        
-        {/* Add more labels for additional fields */}
-      </div>
-      <div className="flex justify-between mt-3">
-        <button
-          className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
-          onClick={closeModal}
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 max-w-md w-full rounded-md">
+            <h2 className="text-xl font-semibold mb-4">Student Details</h2>
+            {/* Display detailed information here */}
+            <div>
+              <label className="block mb-2">Applicant Name: {jobList.InternName}</label><hr />
+              <label>Email: {jobList.InternEmail}</label><hr />
+              <label>InternNumber: {jobList.InternNumber}</label><hr />
+              <label>location: {jobList.location}</label><hr />
+              <label>empName: {jobList.empName}</label><hr />
+              <label>job_Description: {jobList.job_Description}</label><hr />
+              <label>position: {jobList.position}</label><hr />
+              <label>skills: {jobList.skills}</label><hr />
+              <label>stipend: {jobList.stipend}</label><hr />
+              <label>job_Title: {jobList.job_Title}</label><hr />
+              <label>appliedDate: {jobList.appliedDate}</label><hr />
 
-     
+              {/* Add more labels for additional fields */}
+            </div>
+            <div className="flex justify-between mt-3">
+              <button
+                className="text-black bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-500"
+                onClick={closeModal}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <Footer/>
 
     </>
-    )
+  )
 }
 
 export default NewJobList

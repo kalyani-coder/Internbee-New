@@ -45,6 +45,8 @@ import VerifyOtp from "./Components/RestPass/VerifyOtp";
 import ViewResume from './Components/ViewResume';
 import TPO from './Components/TPO/TPO';
 import LandingInternship from './Components/LandingInternship/LandingInternship';
+import FAQ from './Components/FAQ/FAQ';
+import HelpCenter from './Components/HelpCenter/HelpCenter';
 function App() {
   // useEffect(() => {
   //   const handleKeyDown = (e) => {
@@ -91,6 +93,10 @@ function App() {
         <Route path="/viewresume" element={<ViewResume />} />
         <Route path="/TPO" element={<TPO />} />
         <Route path="/LandingInternship" element={<LandingInternship />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/helpcenter" element={<HelpCenter />} />
+
+        
 
         
 

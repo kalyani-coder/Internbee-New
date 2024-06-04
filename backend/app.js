@@ -29,6 +29,9 @@ const adminAnnuallyPackage = require("./routes/adminAnnuallyPackage");
 const SearchRoute = require("./routes/searchRoute");
 const EnquiryRoute = require("./routes/enquiryRoutes");
 const studentPackages = require("./routes/studentsMonthlyPackage")
+const tpoRoutes = require("./routes/tpoRoutes")
+const ContactUsRoutes = require("./routes/contactUsRoutes")
+
 
 
 const bodyParser = require("body-parser");
@@ -85,7 +88,8 @@ apiRouter.use("/adminannuallypackage", adminAnnuallyPackage);
 apiRouter.use("/search", SearchRoute); 
 apiRouter.use("/enquiry", EnquiryRoute);
 apiRouter.use("/students", studentPackages);
-
+apiRouter.use("/tpo" , tpoRoutes)
+apiRouter.use("/contactus" , ContactUsRoutes)
 app.use("/api", apiRouter);
 
 // const handleExpiredInternships = async () => {

@@ -25,9 +25,18 @@ const Internal_Navbar = () => {
   const handleCreateProfile = () => {
     navigate("/Profile");
   };
+  const handleFAQ = () => {
+    navigate("/faq")
+  }
+  const handleHelpCenter = () => {
+    navigate("/helpcenter")
+  }
   const handleViewProfile = () => {
     navigate("/viewprofile");
   };
+  const handleViewResume = () => {
+    navigate("/viewresume")
+  }
 
   const handleLogout = () => {
     localStorage.clear();
@@ -56,11 +65,11 @@ const Internal_Navbar = () => {
         </Link>
       </div>
       <div className="contains-all-the-left-side-section-of-the-navbar">
-       <div
+        <div
           className={`Navlist navlist-for-the-student-navbar-header-pages nav-items ${isOpen && "open"
             }`}
         >
-         {/* <NavLink
+          {/* <NavLink
             to="/home"
             className="text-xl font-bold focus:text-black hover:text-black"
             onClick={() => setIsOpen(false)}
@@ -68,7 +77,7 @@ const Internal_Navbar = () => {
             Students
           </NavLink>
           */}
-          
+
 
           {/* <NavLink
             to="/companies"
@@ -126,7 +135,7 @@ const Internal_Navbar = () => {
 
                 <div
                   className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                  onClick={handleResume }
+                  onClick={handleResume}
                 >
                   Create Resume
                 </div>
@@ -137,6 +146,24 @@ const Internal_Navbar = () => {
                 >
                   View Profile
                 </div>
+                <div
+                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                  onClick={handleViewResume}
+                >
+                  View Resume
+                </div>
+                <div
+                  className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                  onClick={handleFAQ}
+                >
+                  FAQ
+                </div>
+                <div
+                className="py-2 px-4 cursor-pointer hover:bg-gray-100"
+                onClick={handleHelpCenter}
+              >
+                Help Center
+              </div>
                 <div
                   className="py-2 px-4 cursor-pointer hover:bg-gray-100"
                   onClick={handleLogout}

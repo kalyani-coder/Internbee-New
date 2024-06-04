@@ -266,7 +266,7 @@ const PostInternship = () => {
                 name="job_Title"
                 value={formData.job_Title}
                 onChange={handleChange}
-                className=" mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 placeholder="Enter Internship title here"
                 required
               />
@@ -286,7 +286,7 @@ const PostInternship = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 placeholder="Enter your Internship location here"
                 required
               />
@@ -306,12 +306,49 @@ const PostInternship = () => {
                 name="company_Name"
                 value={formData.company_Name}
                 onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 placeholder="Enter your Company name here"
                 required
               />
             </div>
+            {/* Job Type */}
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label
+                htmlFor="job_Type"
+                className="block text-sm font-medium text-black"
+              >
+                Job Type:
+              </label>
+              <select
+                id="job_Type"
+                name="job_Type"
+                value={formData.job_Type}
+                onChange={handleChange}
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                required
+              >
+                <option value="Full-time">Full Time</option>
+                <option value="Part-time">Part Time</option>
+              </select>
+            </div>
 
+            {/* End Date */}
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label
+                htmlFor="end_Date"
+                className="block text-sm font-medium text-black"
+              >
+                End Date:
+              </label>
+              <DatePicker
+                id="end_Date"
+                selected={formData.end_Date}
+                onChange={handleEndDateChange}
+                dateFormat="dd/MM/yyyy"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                required
+              />
+            </div>
             {/* Start Date */}
 
             <div className="w-full md:w-1/2 px-4 mb-4">
@@ -326,48 +363,11 @@ const PostInternship = () => {
                 selected={formData.start_Date}
                 onChange={handleStartDateChange}
                 dateFormat="dd/MM/yyyy"
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 required
               />
             </div>
-            {/* End Date */}
-            <div className="w-full md:w-1/2 px-4 mb-4">
-              <label
-                htmlFor="end_Date"
-                className="block text-sm font-medium text-black"
-              >
-                End Date:
-              </label>
-              <DatePicker
-                id="end_Date"
-                selected={formData.end_Date}
-                onChange={handleEndDateChange}
-                dateFormat="dd/MM/yyyy"
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
-                required
-              />
-            </div>
-
-            {/* Job Type */}
-            <div className="w-full md:w-1/2 px-4 mb-4">
-              <label
-                htmlFor="job_Type"
-                className="block text-sm font-medium text-black"
-              >
-                Job Type:
-              </label>
-              <select
-                id="job_Type"
-                name="job_Type"
-                value={formData.job_Type}
-                onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
-                required
-              >
-                <option value="Full-time">Full Time</option>
-                <option value="Part-time">Part Time</option>
-              </select>
-            </div>
+            
 
             {/* Skills */}
             <div className="w-full px-4 mb-4">
@@ -383,7 +383,7 @@ const PostInternship = () => {
                 name="skills"
                 value={formData.skills}
                 onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 placeholder="Enter required skills here"
               />
             </div>
@@ -402,7 +402,7 @@ const PostInternship = () => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 placeholder="Enter the position here"
                 required
               />
@@ -422,7 +422,7 @@ const PostInternship = () => {
                 name="stipend"
                 value={formData.stipend}
                 onChange={handleChange}
-                className="input-field-for-the-post-internship-page mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
                 required
               />
             </div>

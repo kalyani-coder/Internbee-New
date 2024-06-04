@@ -51,7 +51,6 @@ const Refund = () => {
   };
   return (
     <>
-      <Navbar />
       <div className="policy-popup">
 
         {/* Terms And Conditions section  */}
@@ -357,7 +356,7 @@ anner, adhering to the agreed terms and conditions of the Job as detailed in the
       </div> */}
 
       </div>
-      <Footer />
+      
     </>
   );
 }

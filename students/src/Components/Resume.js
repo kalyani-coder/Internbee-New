@@ -7,166 +7,113 @@ import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import Footer from '../Components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-
 const Resume = () => {
-  const { register, handleSubmit, watch } = useForm();
-  const [birthdate, setBirthdate] = useState(null);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState({});
 
-  const handleBirthdateChange = (date) => {
-    setBirthdate(date);
+  const validate = (data) => {
+    const errors = {};
+    const firstNameRegex = /^[a-zA-Z\s]+$/;
+    const lastNameRegex = /^[a-zA-Z\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!firstNameRegex.test(data.personalInformation.firstname)) {
+      errors.firstname = 'First Name must contain only characters';
+    }
+    if (!lastNameRegex.test(data.personalInformation.lastname)) {
+      errors.lastname = 'Last Name must contain only characters';
+    }
+    if (!emailRegex.test(data.personalInformation.emailaddress)) {
+      errors.emailaddress = 'Email is not valid';
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const studentId = localStorage.getItem("userId");
 
-  const saveResume = async (data) => {
+  const onSubmit = async (data) => {
+    if (!validate(data)) {
+      return;
+    }
+
+    console.log('Form Data:', data);
+
     try {
-      // Prepare personal information data
       const personalInformation = {
         ...data.personalInformation,
-        Student_Id: studentId // Assign userId to the Student_Id
+        Student_Id: studentId
       };
-  
-      // Save personal information
-      const savedPersonalInformation = await savePersonalInformation(personalInformation);
-  
-      // Combine all resume data
+
+      const education = [data.education];
+      const experience = [data.experience];
+      const portfolio = [data.portfolio];
+
       const resumeData = {
-        personalInformation: savedPersonalInformation,
-        education: data.education,
-        experience: data.experience,
-        portfolio: data.portfolio
+        personalInformation,
+        education,
+        experience,
+        portfolio
       };
-  
-      // Now save the complete resume
+
       const response = await axios.post('http://localhost:8000/api/resume/', resumeData);
       console.log('Resume saved successfully:', response.data);
-  
-      // Redirect to View Resume page
       navigate("/viewresume");
     } catch (error) {
       console.error('Error saving resume:', error);
     }
   };
-  
-
-  const savePersonalInformation = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:8000/api/resume/', { personalInformation: data });
-      console.log('Personal Information saved successfully:', response.data);
-      return response.data;
-    } catch (error) {
-      console.error('Error saving personal information:', error);
-      throw error;
-    }
-  };
-
-  const saveEducation = async (data) => {
-    try {
-      const response = await axios.patch('http://localhost:8000/api/resume/', { education: data });
-      console.log('Education saved successfully:', response.data);
-    } catch (error) {
-      console.error('Error saving education:', error);
-    }
-  };
-
-  const saveExperience = async (data) => {
-    try {
-      const response = await axios.patch('http://localhost:8000/api/resume/', { experience: data });
-      console.log('Experience saved successfully:', response.data);
-    } catch (error) {
-      console.error('Error saving experience:', error);
-    }
-  };
-
-  const savePortfolio = async (data) => {
-    try {
-      const response = await axios.patch('http://localhost:8000/api/resume/', { portfolio: data });
-      console.log('Portfolio saved successfully:', response.data);
-    } catch (error) {
-      console.error('Error saving portfolio:', error);
-    }
-  };
-
-  const onSubmit = async (data) => {
-    try {
-      await saveResume(data);
-      
-      // Save education
-      await saveEducation(data.education);
-      
-      // Save experience
-      await saveExperience(data.experience);
-      
-      // Save portfolio
-      await savePortfolio(data.portfolio);
-      
-      console.log('Resume saved successfully');
-    } catch (error) {
-      console.error('Error saving resume:', error);
-    }
-  };
-  
   return (
     <div className=" bg-gray-50">
       <Internal_Navbar />
       <div className="flex justify-center relative top-14 mb-32">
-        <div className="w-2/3 border border-black p-2 bg-white mt-[40px]">
+        <div className="w-[86.666667%] border border-black p-2 bg-white mt-[40px]">
           <div className="">
             <div className="flex-1 p-8">
               <h1 className="text-3xl font-bold">Resume Format </h1>
               <form onSubmit={handleSubmit(onSubmit)}>{/* Attach handleSubmit to form */}
                 <h1 className="text-xl font-bold m-4 ">Personal Information</h1>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-                  
-                  <div className="form-group">
-                    <label
-                      htmlFor="firstname"
-                      className="block text-l font-medium"
-                    >
-                      First Name<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="firstname"
-                      {...register("personalInformation.firstname", {
-                        required: "This field is required",
-                      })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label
-                      htmlFor="lastname"
-                      className="block text-l font-medium"
-                    >
-                      Last Name<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="lastname"
-                      {...register("personalInformation.lastname", {
-                        required: "This field is required",
-                      })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="emailaddress" className="block text-l font-medium">
-                      Email address<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                      id="emailaddress"
-                      {...register("personalInformation.emailaddress", {
-                        required: "This field is required",
-                      })}
-                    />
-                  </div>
+                <div className="form-group">
+                <label htmlFor="firstname" className="block text-l font-medium">
+                  First Name<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                  id="firstname"
+                  {...register("personalInformation.firstname", { required: "This field is required" })}
+                />
+                {errors.personalInformation?.firstname && <div className="text-red-500">{errors.personalInformation.firstname.message}</div>}
+                {formErrors.firstname && <div className="text-red-500">{formErrors.firstname}</div>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastname" className="block text-l font-medium">
+                  Last Name<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                  id="lastname"
+                  {...register("personalInformation.lastname", { required: "This field is required" })}
+                />
+                {errors.personalInformation?.lastname && <div className="text-red-500">{errors.personalInformation.lastname.message}</div>}
+                {formErrors.lastname && <div className="text-red-500">{formErrors.lastname}</div>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="emailaddress" className="block text-l font-medium">
+                  Email address<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                  id="emailaddress"
+                  {...register("personalInformation.emailaddress", { required: "This field is required" })}
+                />
+                {errors.personalInformation?.emailaddress && <div className="text-red-500">{errors.personalInformation.emailaddress.message}</div>}
+                {formErrors.emailaddress && <div className="text-red-500">{formErrors.emailaddress}</div>}
+              </div>
                   <div className="form-group">
                     <label
                       htmlFor="address"
@@ -220,7 +167,6 @@ const Resume = () => {
                       <option value="other">Other</option>
                     </select>
                   </div>
-            
                   <div className="form-group">
                     <label
                       htmlFor="currentSalary"
@@ -253,7 +199,6 @@ const Resume = () => {
                       })}
                     />
                   </div>
-                 
                   <div className="form-group">
                     <label
                       htmlFor="careerProfile"
@@ -397,7 +342,6 @@ const Resume = () => {
                       })}
                     />
                   </div>
-                 
                   <div className="form-group">
                     <label
                       htmlFor="location"
@@ -449,7 +393,6 @@ const Resume = () => {
                       })}
                     />
                   </div>
-                  
                   <div className="form-group">
                     <label
                       htmlFor="projectdescription"
@@ -467,10 +410,10 @@ const Resume = () => {
                     ></textarea>
                   </div>
                 </div>
-                <div className="flex justify-end mt-4">
+                <div className="flex justify-center mt-4">
                   <button
                     type="submit"
-                    className="text-white bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700"
+                    className="px-3 mt-2 md:mt-0 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
                   >
                     Save Resume
                   </button>
@@ -484,5 +427,4 @@ const Resume = () => {
     </div>
   );
 };
-
 export default Resume;

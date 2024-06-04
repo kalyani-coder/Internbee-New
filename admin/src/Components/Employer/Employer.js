@@ -95,12 +95,12 @@ const handleViewMoreClick = (candidate) => {
       <Sidebar />
       <div className="ml-10 mt-4">
         <div className="max-w-full p-4">
-          <h1 className=" EmployerHeading text-3xl font-bold mb-4 mt-8">
+          <h1 className=" EmployerHeading-E text-3xl font-bold mb-4 mt-8 relative left-[50%]">
             View Employer Details
           </h1>
-          <div className=" EmployerScroll flex gap-10">
+          <div className=" EmployerScroll flex gap-10 relative left-[20%]">
             <div>
-              <table className="w-full bg-white border border-gray-300">
+              <table className="w-full bg-white border-2 border-gray-300">
                 <thead>
                   <tr>
                     <th className="TableHeading py-4 px-6 border-b font-bold text-lg">Sr No</th>

@@ -1,0 +1,175 @@
+.card1 {
+
+  border-radius: 10px;
+  border: 1px solid #ffbd59;
+  filter: drop-shadow(0 5px 10px 0 #ffffff);
+  width: 45%;
+  height: 25%;
+  background-color: #ffffff;
+  padding: 20px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  transition: 0.6s ease-in;
+  margin: 2rem;
+}
+
+.card1::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -15px;
+  right: -15px;
+  background: #ffbd59;
+  height: 220px;
+  width: 27px;
+  border-radius: 32px;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.25s ease-out;
+}
+
+.card1:hover::before {
+  transition-delay: 0.2s;
+
+  transform: scale(40);
+}
+
+.card1:hover {
+  color: #ffffff;
+
+}
+
+.card1 p {
+  padding: 10px 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+.help1 {
+  position: relative;
+  top: 4rem;
+}
+
+.help-h1 {
+  margin: 50px 0 30px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.help-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.help {
+  background-color: transparent;
+  border: 2px solid rgb(255, 189, 89);
+  border-radius: 10px;
+  margin: 20px 0;
+  overflow: hidden;
+  padding: 30px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.help.active {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-title {
+  margin: 0 35px 0 0;
+  font-size: larger;
+}
+
+.help-text {
+  display: none;
+  margin: 30px 0 0;
+}
+
+.help.active .help-text {
+  display: block;
+}
+
+.help-toggle {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  height: 30px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 30px;
+}
+
+.help-toggle .fa-times,
+.help.active .help-toggle .fa-chevron-down {
+  display: none;
+}
+
+.help.active .help-toggle .fa-times {
+  color: #fff;
+  display: block;
+}
+
+.help-toggle .fa-chevron-down {
+  display: block;
+}
+
+.help.active .help-toggle {
+  background-color: rgb(255, 189, 89);
+}
+
+.pagination {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.pagination button {
+  background-color: transparent;
+  border: 1px solid #ffbd59;
+  color: #ffbd59;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #ffbd59;
+  color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  .help-container {
+    max-width: 90%;
+  }
+
+  .help {
+    padding: 20px;
+    position: relative;
+        right: 1rem;
+  }
+
+  .help-toggle {
+    right: 20px;
+    top: 20px;
+  }
+
+  .card1 {
+    width: 152%;
+    position: relative;
+    right: 1rem;
+  }
+}

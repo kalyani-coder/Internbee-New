@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { FaUser } from "react-icons/fa";
-import { IoNotificationsOutline } from "react-icons/io5";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../Assets/yellow_header1.png";
-import { FiUser } from "react-icons/fi";
-import Profile_Navbar from "./ProfileNavBar/Profile_Navbar";
 import "./ResponsiveCss/ResponsiveCss.css";
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import Footer from '../Components/Footer';
 const Profile = () => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
   const [selectedPDF2, setSelectedPDF2] = useState(null);
@@ -19,14 +13,13 @@ const Profile = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setDateOfBirth] = useState("");
-  const [gender, setGender] = useState("");
 
+  const [gender, setGender] = useState("");
   const [permanentaddress, setPermanentAddress] = useState("");
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
-
   const [currentaddress, setCurrentAddress] = useState("");
   const [currentcity, setCurrentCity] = useState("");
   const [currentdistrict, setCurrentDistrict] = useState("");
@@ -37,78 +30,18 @@ const Profile = () => {
   const [passOutYear, setPassOutYear] = useState("");
   const [percentage, setPercentage] = useState("");
   const [contact, setContact] = useState("");
-
   const [postEducation, setPostEducation] = useState("");
   const [postInstituteName, setPostInstituteName] = useState("");
   const [postStream, setPostStream] = useState("");
   const [postPassOutYear, setPostPassOutYear] = useState("");
   const [postPrcentage, setPostPercentage] = useState("");
-
-
   const [keySkills, setKeySkills] = useState("");
   const [languages, setLanguages] = useState("");
   const [experience, setExperience] = useState("");
   const [salaryExpectations, setSalaryExpectations] = useState("");
   const [projectName, setProjectName] = useState("");
   const [projectSummary, setProjectSummary] = useState("");
-
-  // 12th education details
-
-  const [education_12, seteducation_12] = useState("");
-  const [instituteName_12, setinstituteName_12] = useState("");
-  const [stream_12, setstream_12] = useState("");
-  const [passOutYear_12, setpassOutYear_12] = useState("");
-  const [percentage_12, setpercentage_12] = useState("");
-
-  // 10th education details
-  const [education_10, seteducation_10] = useState("");
-  const [instituteName_10, setinstituteName_10] = useState("");
-  const [stream_10, setstream_10] = useState("");
-  const [passOutYear_10, setpassOutYear_10] = useState("");
-  const [percentage_10, setpercentage_10] = useState("");
-
-  // const [userId, setUserId] = useState(null);
-
-  // 12th education details
-
-  const handleEducation_12Change = (event) => {
-    seteducation_12(event.target.value);
-  };
-
-  const handleInstitute_12Change = (event) => {
-    setinstituteName_12(event.target.value);
-  };
-
-  const handleStream_12Change = (event) => {
-    setstream_12(event.target.value);
-  };
-  const handlePassOutYear_12Change = (event) => {
-    setpassOutYear_12(event.target.value);
-  };
-  const handlePercentage_12Change = (event) => {
-    setpercentage_12(event.target.value);
-  };
-
-  // 10 th education details
-
-  const handleEducation_10Change = (event) => {
-    seteducation_10(event.target.value);
-  };
-
-  const handleInstitute_10Change = (event) => {
-    setinstituteName_10(event.target.value);
-  };
-
-  const handleStream_10Change = (event) => {
-    setstream_10(event.target.value);
-  };
-  const handlePassOutYear_10Change = (event) => {
-    setpassOutYear_10(event.target.value);
-  };
-  const handlePercentage_10Change = (event) => {
-    setpercentage_10(event.target.value);
-  };
-
+  const [errors, setErrors] = useState({});
   const handleKeySkills = (event) => {
     setKeySkills(event.target.value);
   };
@@ -118,19 +51,15 @@ const Profile = () => {
   const handleExperience = (event) => {
     setExperience(event.target.value);
   };
-
   const handleSalaryExpectations = (event) => {
     setSalaryExpectations(event.target.value);
   };
-
   const handleProjectName = (event) => {
     setProjectName(event.target.value);
   };
-
   const handleProjectSummary = (event) => {
     setProjectSummary(event.target.value);
   };
-
   const handleEducationChange = (event) => {
     setEducation(event.target.value);
   };
@@ -143,60 +72,49 @@ const Profile = () => {
   const handlePassOutYearChange = (event) => {
     setPassOutYear(event.target.value);
   };
-
   const handlePercentageChange = (event) => {
     setPercentage(event.target.value);
   };
-
-//
-const handlePostEducationChange = (event) => {
-  setPostEducation(event.target.value);
-};
-const handlePostInstituteNameChange = (event) => {
-  setPostInstituteName(event.target.value);
-};
-const handlePostStreamChange = (event) => {
-  setPostStream(event.target.value);
-};
-const handlePostPassOutYearChange = (event) => {
-  setPostPassOutYear(event.target.value);
-};
-
-const handlePostPercentageChange = (event) => {
-  setPostPercentage(event.target.value);
-};
-  
+  //
+  const handlePostEducationChange = (event) => {
+    setPostEducation(event.target.value);
+  };
+  const handlePostInstituteNameChange = (event) => {
+    setPostInstituteName(event.target.value);
+  };
+  const handlePostStreamChange = (event) => {
+    setPostStream(event.target.value);
+  };
+  const handlePostPassOutYearChange = (event) => {
+    setPostPassOutYear(event.target.value);
+  };
+  const handlePostPercentageChange = (event) => {
+    setPostPercentage(event.target.value);
+  };
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
-
   const handlePDFChange = (event) => {
     setSelectedPDF(event.target.files[0]);
   };
-
   const handlePDFChange2 = (event) => {
     setSelectedPDF2(event.target.files[0]);
   };
-
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
-
   const handleLastNameChange = (event) => {
     setLastName(event.target.value);
   };
-
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
   const handleDateOfBirthChange = (event) => {
     setDateOfBirth(event.target.value);
   };
-
   const handlePermanentAddressChange = (event) => {
     setPermanentAddress(event.target.value);
   };
-
   const handleCityChange = (event) => {
     setCity(event.target.value);
   };
@@ -206,7 +124,6 @@ const handlePostPercentageChange = (event) => {
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
-
   const handleCurrentAddressChange = (event) => {
     setCurrentAddress(event.target.value);
   };
@@ -219,11 +136,9 @@ const handlePostPercentageChange = (event) => {
   const handleCurrentCountryChange = (event) => {
     setCurrentCountry(event.target.value);
   };
-
   const handleContactChange = (event) => {
     setContact(event.target.value);
   };
-
   const resetForm = () => {
     // Reset all state variables to their initial values
     setShowProfileDropdown(false);
@@ -261,22 +176,41 @@ const handlePostPercentageChange = (event) => {
     setSalaryExpectations("");
     setProjectName("");
     setProjectSummary("");
-    seteducation_12("");
-    setinstituteName_12("");
-    setstream_12("");
-    setpassOutYear_12("");
-    setpercentage_12("");
-    seteducation_10("");
-    setinstituteName_10("");
-    setstream_10("");
-    setpassOutYear_10("");
-    setpercentage_10("");
   };
   const handleCancel = () => {
     // Call resetForm when cancel button is clicked
     resetForm();
   };
+  const validate = () => {
+    const errors = {};
+    const firstNameRegex = /^[a-zA-Z\s]+$/;
+    if (!firstName) {
+        errors.firstName = 'First Name is required';
+    } else if (!firstNameRegex.test(firstName)) {
+        errors.firstName = 'First Name must contain only characters';
+    }
+
+    const lastNameRegex = /^[a-zA-Z\s]+$/;
+    if (!lastName) {
+        errors.lastName = 'Last Name is required';
+    } else if (!lastNameRegex.test(lastName)) {
+        errors.lastName = 'Last Name must contain only characters';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+        errors.email = 'Email is required';
+    } else if (!emailRegex.test(email)) {
+        errors.email = 'Email is not valid';
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+};
   const handleUpload = (e) => {
+    if (!validate()) {
+      return;
+    }
     e.preventDefault();
     if (selectedImage || selectedPDF) {
       const formData = new FormData();
@@ -289,7 +223,6 @@ const handlePostPercentageChange = (event) => {
       formData.append("birthdate", birthdate);
       formData.append("gender", gender);
       formData.append("state", state);
-
       formData.append("permanentaddress", permanentaddress);
       formData.append("city", city);
       formData.append("district", district);
@@ -299,44 +232,26 @@ const handlePostPercentageChange = (event) => {
       formData.append("currentdistrict", currentdistrict);
       formData.append("currentcountry", currentcountry);
       formData.append("contact", contact);
-
       formData.append("education", education);
       formData.append("instituteName", instituteName);
       formData.append("stream", stream);
       formData.append("passOutYear", passOutYear);
       formData.append("percentage", percentage);
-
       formData.append("posteducation", postEducation);
       formData.append("postinstituteName", postInstituteName);
       formData.append("stream", postStream);
       formData.append("postpassOutYear", postPassOutYear);
       formData.append("postpercentage", postPrcentage);
-
-      formData.append("education_12", education_12);
-      formData.append("instituteName_12", instituteName_12);
-      formData.append("stream_12", stream_12);
-      formData.append("passOutYear_12", passOutYear_12);
-      formData.append("percentage_12", percentage_12);
-
-      formData.append("education_10", education_10);
-      formData.append("instituteName_10", instituteName_10);
-      formData.append("stream_10", stream_10);
-      formData.append("passOutYear_10", passOutYear_10);
-      formData.append("percentage_10", percentage_10);
-
       formData.append("keySkills", keySkills);
       formData.append("languages", languages);
       formData.append("experience", experience);
       formData.append("salaryExpectations", salaryExpectations);
       formData.append("projectName", projectName);
       formData.append("projectSummary", projectSummary);
-
       const storedUserId = localStorage.getItem("userId");
       formData.append("userId", storedUserId);
       console.log(storedUserId);
-
       //  http://localhost:8000/api/studentsdetails
-
       fetch("http://localhost:8000/api/studentsdetails", {
         method: "POST",
         body: formData,
@@ -361,103 +276,13 @@ const handlePostPercentageChange = (event) => {
         });
     }
   };
-
-  const handleProfileIconClick = () => {
-    setShowProfileDropdown(!showProfileDropdown);
-  };
-
   const navigate = useNavigate();
-
-  const handleResume = () => {
-    navigate("/Resume");
-  };
-
-  const handleCreateProfile = () => {
-    navigate("/Profile");
-  };
-  const handleViewProfile = () => {
-    navigate("/viewprofile");
-  };
-
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
   return (
     <div className=" bg-gray-50">
       <div className="">
-        {/* <div
-          className="p-6 flex items-center justify-between border shadow-xl w-full"
-          style={{ backgroundColor: "#FFBD59" }}
-        >
-          <Link to={"/"}>
-            <div className="flex items-center space-x-2">
-              <img
-                src={logo}
-                alt="Logo"
-                className="w-14 h-14 rounded-full"
-                style={{ width: "15rem" }}
-              />
-            </div>
-          </Link>
-
-          <div className="flex items-center space-x-6">
-            <Link
-              to="/home"
-              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-            >
-              Students
-            </Link>
-
-            <Link
-              to="/internship"
-              className="text-lg font-bold focus:text-black focus:border-black focus:border-b-4 hover:text-black"
-            >
-              Internships
-            </Link>
-          </div>
-
-
-
-          <div className="flex items-center space-x-4">
-
-            <div
-              className="cursor-pointer"
-              onMouseEnter={() => setShowProfileDropdown(true)}
-              onClick={handleProfileIconClick}
-            >
-              <FiUser className="mr-4  text-4xl" />
-              {showProfileDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleCreateProfile}
-                  >
-                    Create Profile
-                  </div>
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleViewProfile}
-                  >
-                    View Profile
-                  </div>
-                  <div
-                    className="py-2 px-4 cursor-pointer hover:bg-gray-100"
-                    onClick={handleLogout}
-                  >
-                    Log Out
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div> */}
-
         <Internal_Navbar />
-
         {/* ///////////////////////////////////////////////////////// */}
         <div className="mainProfile flex justify-center ">
-
           <div className="CardSizeProfile w-2/3 border border-black bg-white p-4 mt-[113px] mb-10">
             <div className="flex justify-center">
               <div className="mt-6 text-3xl font-bold">
@@ -467,53 +292,52 @@ const handlePostPercentageChange = (event) => {
             <div className="mt-6 text-2xl font-bold">
               <h6>1.Personal Details</h6>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-              <div className="form-group">
-                <label htmlFor="firstName">
-                  First Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={firstName}
-                  required
-                  onChange={handleFirstNameChange}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="lastName">
-                  Last Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={lastName}
-                  onChange={handleLastNameChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">
-                  Email<span className="text-red-500">*</span>
-                </label>
-                <input
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  required
-                />
-              </div>
-
+            <div className="form-group">
+            <label htmlFor="firstName">
+                First Name<span className="text-red-500">*</span>
+            </label>
+            <input
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={firstName}
+                onChange={handleFirstNameChange}
+                required
+            />
+            {errors.firstName && <div className="text-red-500">{errors.firstName}</div>}
+        </div>
+        <div className="form-group">
+            <label htmlFor="lastName">
+                Last Name<span className="text-red-500">*</span>
+            </label>
+            <input
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={lastName}
+                onChange={handleLastNameChange}
+                required
+            />
+            {errors.lastName && <div className="text-red-500">{errors.lastName}</div>}
+        </div>
+        <div className="form-group">
+            <label htmlFor="email">
+                Email<span className="text-red-500">*</span>
+            </label>
+            <input
+                className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+            />
+            {errors.email && <div className="text-red-500">{errors.email}</div>}
+        </div>
               <div className="form-group">
                 <label htmlFor="birthdate">
                   Birthdate<span className="text-red-500">*</span>
@@ -528,7 +352,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="permanentaddress"
@@ -546,7 +369,23 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
+              <div className="form-group">
+                <label
+                  htmlFor="permanentaddress"
+                  className="block text-large font-medium"
+                >
+                  Contcat No<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="Number"
+                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-large"
+                  id="contact"
+                  name="contact"
+                  value={contact}
+                  onChange={handleContactChange}
+                  required
+                />
+              </div>
               <div className="form-group">
                 <label htmlFor="city" className="block text-large font-medium">
                   City<span className="text-red-500">*</span>
@@ -561,7 +400,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="district"
@@ -579,7 +417,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="country"
@@ -598,109 +435,11 @@ const handlePostPercentageChange = (event) => {
                 />
               </div>
             </div>
-
             <br></br>
-
-            {/* <div className="mt-6 text-2xl font-bold pl-4">
-               <h6>1.Personal Details</h6> 
-            </div>*/}
-
-            {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-              <div className="form-group">
-                <label
-                  htmlFor="current_address"
-                  className="block text-large font-medium"
-                >
-                  Current Address<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentaddress"
-                  name="currentaddress"
-                  value={currentaddress}
-                  onChange={handleCurrentAddressChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="current_city"
-                  className="block text-large font-medium"
-                >
-                  Current City<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentcity"
-                  name="currentcity"
-                  value={currentcity}
-                  onChange={handleCurrentCityChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="currentdistrict"
-                  className="block text-large font-medium"
-                >
-                  Current District<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentdistrict"
-                  name="currentdistrict"
-                  value={currentdistrict}
-                  onChange={handleCurrentDistrictChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="currentcountry"
-                  className="block text-large font-medium"
-                >
-                  Current Country<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="currentcountry"
-                  name="currentcountry"
-                  value={currentcountry}
-                  onChange={handleCurrentCountryChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="contact"
-                  className="block text-large font-medium"
-                >
-                  Contact Number <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="contact"
-                  name="contact"
-                  value={contact}
-                  onChange={handleContactChange}
-                  required
-                />
-              </div>
-      </div>*/}
             <hr />
             <div className="mt-6 text-2xl font-bold">
               <h6>2. Post Graduation</h6>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
               <div className="form-group">
                 <label
@@ -719,7 +458,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="institutename"
@@ -737,7 +475,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="stream"
@@ -755,7 +492,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="passoutyear"
@@ -773,7 +509,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="percentage"
@@ -793,11 +528,9 @@ const handlePostPercentageChange = (event) => {
               </div>
             </div>
             <hr />
-
             <div className="mt-6 text-2xl font-bold">
               <h6>3. Educational Details Graduation</h6>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
               <div className="form-group">
                 <label
@@ -816,7 +549,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="institutename"
@@ -834,7 +566,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="stream"
@@ -852,7 +583,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="passoutyear"
@@ -870,7 +600,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="percentage"
@@ -889,203 +618,10 @@ const handlePostPercentageChange = (event) => {
                 />
               </div>
             </div>
-
-
-            {/*  <div className="mt-6 text-2xl pl-4 font-bold">
-              <h6> Educational Details 12th</h6>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-              <div className="form-group">
-                <label
-                  htmlFor="education_12"
-                  className="block text-large font-medium"
-                >
-                  Education 12th<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="education_12"
-                  name="education_12"
-                  value={education_12}
-                  onChange={handleEducation_12Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="instituteName_12"
-                  className="block text-large font-medium"
-                >
-                  School/Institute Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="instituteName_12"
-                  name="instituteName_12"
-                  value={instituteName_12}
-                  onChange={handleInstitute_12Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="stream_12"
-                  className="block text-large font-medium"
-                >
-                  Stream<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="stream_12"
-                  name="stream_12"
-                  value={stream_12}
-                  onChange={handleStream_12Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="passOutYear_12"
-                  className="block text-large font-medium"
-                >
-                  Pass-out Year<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="passOutYear_12"
-                  name="passOutYear_12"
-                  value={passOutYear_12}
-                  onChange={handlePassOutYear_12Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="percentage_12"
-                  className="block text-large font-medium"
-                >
-                  Percentage<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="percentage_12"
-                  name="percentage_12"
-                  value={percentage_12}
-                  onChange={handlePercentage_12Change}
-                  required
-                />
-              </div>
-    </div>*/}
-
-
-            {/*  <div className="mt-6 text-2xl font-bold">
-              <h6> Educational Details 10th</h6>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-              <div className="form-group">
-                <label
-                  htmlFor="education_10"
-                  className="block text-large font-medium"
-                >
-                  Education 10th<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="education_10"
-                  name="education_10"
-                  value={education_10}
-                  onChange={handleEducation_10Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="instituteName_10"
-                  className="block text-large font-medium"
-                >
-                  School/Institute Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="instituteName_10"
-                  name="instituteName_10"
-                  value={instituteName_10}
-                  onChange={handleInstitute_10Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="stream_10"
-                  className="block text-large font-medium"
-                >
-                  Stream
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="stream_10"
-                  name="stream_10"
-                  value={stream_10}
-                  onChange={handleStream_10Change}
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="passOutYear_10"
-                  className="block text-large font-medium"
-                >
-                  Pass-out Year<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="passOutYear_10"
-                  name="passOutYear_10"
-                  value={passOutYear_10}
-                  onChange={handlePassOutYear_10Change}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label
-                  htmlFor="percentage_10"
-                  className="block text-large font-medium"
-                >
-                  Percentage<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="number"
-                  className="mt-1 p-2 w-full border rounded-md text-large"
-                  id="percentage_10"
-                  name="percentage_10"
-                  value={percentage_10}
-                  onChange={handlePercentage_10Change}
-                  required
-                />
-              </div>
-            </div>
-  */}<hr />
+            <hr />
             <div className="mt-6 text-2xl font-bold">
               <h6>4.Technical Details</h6>
             </div>
-
             <div className=" grid grid-cols-1 md:grid-cols-3 gap-10 m-4">
               <div className="form-group">
                 <label
@@ -1121,7 +657,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="experience"
@@ -1140,7 +675,6 @@ const handlePostPercentageChange = (event) => {
                   placeholder="fresher or 1 year"
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="salaryexpectations"
@@ -1158,7 +692,6 @@ const handlePostPercentageChange = (event) => {
                   required
                 />
               </div>
-
               <div className="form-group">
                 <label
                   htmlFor="projectname"
@@ -1194,15 +727,11 @@ const handlePostPercentageChange = (event) => {
                 />
               </div>
             </div>
-
             {/* here is the button for save  */}
-
             <hr />
-
             <div className="mt-6 text-2xl font-bold">
               <h6>5. Upload Documents</h6>
             </div>
-
             <div className="UploadResume  md:grid-cols-3 gap-10 mb-4">
               <div className="form-group">
                 <label htmlFor="resume" className="block text-xl font-medium">
@@ -1216,9 +745,6 @@ const handlePostPercentageChange = (event) => {
                   className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-xl"
                 />
               </div>
-
-         
-
               <div className="form-group">
                 <label
                   htmlFor="profilePicture"
@@ -1236,32 +762,20 @@ const handlePostPercentageChange = (event) => {
               </div>
             </div>
             <hr />
-
             <div className="flex flex-col md:flex-row justify-center md:justify-end gap-2 pb-3 bottom-section-of-the-profile-resume-section mt-4">
-              <Link to={"/home"}>
-                <button
-                  style={{}}
-                  className="px-3 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
-                >
-                  Back
-                </button>
-              </Link>
               <button
                 onClick={handleCancel}
-                style={{}}
-                className="px-2 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
+                className="px-3 mt-2 md:mt-0 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpload}
-                style={{}}
-                className="px-2 mt-2 md:mt-8 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
+                className="px-3 mt-2 md:mt-0 text-white border rounded-md bg-amber-500 hover:bg-black p-2 submit-your-application"
               >
                 Submit
               </button>
             </div>
-
           </div>
         </div>
       </div>
@@ -1269,5 +783,4 @@ const handlePostPercentageChange = (event) => {
     </div>
   );
 };
-
 export default Profile;
