@@ -31,6 +31,7 @@ const EnquiryRoute = require("./routes/enquiryRoutes");
 const studentPackages = require("./routes/studentsMonthlyPackage")
 const tpoRoutes = require("./routes/tpoRoutes")
 const ContactUsRoutes = require("./routes/contactUsRoutes")
+const NewResume = require("./routes/NewResumeRoute")
 
 
 
@@ -90,6 +91,7 @@ apiRouter.use("/enquiry", EnquiryRoute);
 apiRouter.use("/students", studentPackages);
 apiRouter.use("/tpo" , tpoRoutes)
 apiRouter.use("/contactus" , ContactUsRoutes)
+apiRouter.use("/newresume", NewResume)
 app.use("/api", apiRouter);
 
 // const handleExpiredInternships = async () => {
