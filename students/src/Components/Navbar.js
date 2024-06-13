@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../Assets/white_header1.png';
 import './ResponsiveCss/ResponsiveCss.css';
@@ -39,7 +39,7 @@ const Navbar = () => {
         setLoginPopup(false);
     };
 
-    const openRegisternPopup = () => {
+    const openRegisterPopup = () => {
         setRegisterPopup(true);
     };
 
@@ -60,26 +60,26 @@ const Navbar = () => {
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-
                     </button>
-                    <div className={`nav-links md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
-                        <div className='flex gap-4 p-2'>
-                            <Link to='/'>
-                                <p className='hover:text-amber-500'>Home</p>
-                            </Link>
-                            <Link to='/aboutus'>
-                                <p className='hover:text-amber-500'>About Us</p>
-                            </Link>
-                            <Link to='/blogs'>
-                                <p className='hover:text-amber-500'>Blogs</p>
-                            </Link>
-                            <Link to='/LandingInternship'>
-                                <p className='hover:text-amber-500'>Internship</p>
-                            </Link>
-                            <Link to="/TPO">
-                                <p className='hover:text-amber-500'>TPO</p>
-                            </Link>
-                        </div>
+                </div>
+
+                <div className={`nav-links md:flex ${isMobileMenuOpen ? 'block' : 'hidden'} md:block`}>
+                    <div className='flex gap-4 p-2'>
+                        <Link to='/'>
+                            <p className='hover:text-amber-500'>Home</p>
+                        </Link>
+                        <Link to='/aboutus'>
+                            <p className='hover:text-amber-500'>About Us</p>
+                        </Link>
+                        <Link to='/blogs'>
+                            <p className='hover:text-amber-500'>Blogs</p>
+                        </Link>
+                        <Link to='/LandingInternship'>
+                            <p className='hover:text-amber-500'>Internship</p>
+                        </Link>
+                        <Link to="/TPO">
+                            <p className='hover:text-amber-500'>TPO</p>
+                        </Link>
                     </div>
                 </div>
 
@@ -87,17 +87,17 @@ const Navbar = () => {
                     <div className='relative'>
                         <ul className="menu clearfix">
                             <li className="parent p-2">
-                                <a href="">Login</a>
+                                <a href="#" className="navbar_loginregister_mr">Login</a>
                                 <ul className="children">
-                                    <li><a href="">Employee</a></li>
+                                    <li><a href="#">Employee</a></li>
                                     <li><a onClick={openLoginPopup}>Student</a></li>
                                 </ul>
                             </li>
                             <li className="parent p-2">
-                                <a href="">Register</a>
+                                <a href="#"  className="navbar_loginregister_mr">Register</a>
                                 <ul className="children">
-                                    <li><a href="">Employee</a></li>
-                                    <li><a onClick={openRegisternPopup}>Student</a></li>
+                                    <li><a href="#">Employee</a></li>
+                                    <li><a onClick={openRegisterPopup}>Student</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -146,30 +146,30 @@ const LandingInternship = () => {
   };
   const openLoginPopup = () => {
     setLoginPopup(true);
-};
+  };
 
-const closeLoginPopup = () => {
+  const closeLoginPopup = () => {
     setLoginPopup(false);
-};
+  };
 
   return (
     <div className="bg-gray-50">
-      
-    <div>
-    <Navbar />
 
-</div>
+      <div>
+        <Navbar />
+
+      </div>
 
       <div className="FilterSectionMain flex">
         <div className="flex flex-col items-center Internships-card">
           <div className="mt-20 head mb-10 text-2xl font-bold flex items-center justify-center">
-          <h1 className="text-2xl text-amber-500 font-bold md:text-4xl mx-8 mt-20">Total Internships {allInternships.length}</h1>
+            <h1 className="text-2xl text-amber-500 font-bold md:text-4xl mx-8 mt-20">Total Internships {allInternships.length}</h1>
           </div>
 
           {currentInternships.length > 0 ? (
             currentInternships.map((internship) => (
               <div
-                key={internship.id}
+                key={internship._id}
                 className="InternCard ml-40 card w-98 m-2 rounded-md flex flex-grow justify-between items-center shadow-md overflow-hidden"
                 style={{ width: "90%" }}
               >
@@ -184,25 +184,25 @@ const closeLoginPopup = () => {
                     Company Name : {internship.company_Name}
                   </p>
                   <div className="blockcard flex justify-between items-center my-2 gap-3 ">
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-company text-sm text-gray-700">
                         Start Date : {internship.start_Date}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaMoneyBill className="mr-2 text-lg" />
                       <p className="card-location text-sm text-gray-700">
                         &#x20B9;{internship.stipend}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaMapMarkerAlt className="mr-2 text-sm" />
                       <p className="card-duration text-sm text-gray-700">
                         {internship.location}
                       </p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center p-2">
                       <FaRegClock className="mr-2 text-xl" />
                       <p className="card-duration text-sm text-gray-700">
                         End Date : {internship.end_Date}
@@ -224,14 +224,11 @@ const closeLoginPopup = () => {
                     </p>
                   </div>
                   <div className="flex justify-center">
-                
                     <button onClick={openLoginPopup}
-                    className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss bg-yellow-400 hover:bg-yellow-500 sm:min-w-0 sm:px-4 md:px-2 lg:px-4"
-                  >
-                    View
-                  </button>
-                  
-                    
+                      className="text-black p-2 rounded-lg btn-fro-the-view-btn-apply-internship-cardss bg-yellow-400 hover:bg-yellow-500 sm:min-w-0 sm:px-4 md:px-2 lg:px-4"
+                    >
+                      View
+                    </button>
                   </div>
                 </div>
               </div>
@@ -377,11 +374,11 @@ const closeLoginPopup = () => {
           </div>
         </div>
         {loginPopup && (
-            <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-                <div className="">
-                    <Login onClose={closeLoginPopup} />
-                </div>
+          <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="">
+              <Login onClose={closeLoginPopup} />
             </div>
+          </div>
         )}
       </div>
       <Footer />

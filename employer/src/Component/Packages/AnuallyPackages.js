@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import "../ResponsiveCss/ResponsiveCss.css";
 import "./PackagesPage.css";
+import Footer from './../Footer/Footer';
 function AnuallyPackages() {
   return (
     <>
@@ -11,7 +12,7 @@ function AnuallyPackages() {
         <div>
           <Navbar />
         </div>
-        <div className=" displayBlock flex">
+        <div className="displayBlock flex">
           <div>
             <Sidebar />
           </div>
@@ -157,6 +158,7 @@ function AnuallyPackages() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

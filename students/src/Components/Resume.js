@@ -8,62 +8,59 @@ import Footer from '../Components/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const Resume = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
 
+  // Validation function
   const validate = (data) => {
     const errors = {};
     const firstNameRegex = /^[a-zA-Z\s]+$/;
     const lastNameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!firstNameRegex.test(data.personalInformation.firstname)) {
-      errors.firstname = 'First Name must contain only characters';
+    if (!firstNameRegex.test(data.personalInformation?.firstname)) {
+      errors.firstname = "First Name must contain only characters";
     }
-    if (!lastNameRegex.test(data.personalInformation.lastname)) {
-      errors.lastname = 'Last Name must contain only characters';
+    if (!lastNameRegex.test(data.personalInformation?.lastname)) {
+      errors.lastname = "Last Name must contain only characters";
     }
-    if (!emailRegex.test(data.personalInformation.emailaddress)) {
-      errors.emailaddress = 'Email is not valid';
+    if (!emailRegex.test(data.personalInformation?.emailaddress)) {
+      errors.emailaddress = "Email is not valid";
     }
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  const studentId = localStorage.getItem("userId");
-
   const onSubmit = async (data) => {
-    if (!validate(data)) {
-      return;
-    }
-
-    console.log('Form Data:', data);
-
     try {
-      const personalInformation = {
-        ...data.personalInformation,
-        Student_Id: studentId
-      };
-
-      const education = [data.education];
-      const experience = [data.experience];
-      const portfolio = [data.portfolio];
-
-      const resumeData = {
-        personalInformation,
-        education,
-        experience,
-        portfolio
-      };
-
-      const response = await axios.post('http://localhost:8000/api/resume/', resumeData);
-      console.log('Resume saved successfully:', response.data);
-      navigate("/viewresume");
+      const studentId = localStorage.getItem("userId");
+      const response = await axios.post("http://localhost:8000/api/newresume", {
+        data,
+        studentId: studentId,
+      });
+      console.log("Resume saved successfully:", response.data);
+      navigate("/success");
     } catch (error) {
-      console.error('Error saving resume:', error);
+      if (error.response) {
+        // Request was made and server responded with a status code that falls out of the range of 2xx
+        console.error("Server responded with error:", error.response.data);
+        console.error("Status code:", error.response.status);
+      } else if (error.request) {
+        // Request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error setting up the request:", error.message);
+      }
+      console.error("Error saving resume:", error);
+      // Optionally, display an error message to the user or handle the error state
     }
   };
+  
+  
+  
   return (
     <div className=" bg-gray-50">
       <Internal_Navbar />
@@ -75,45 +72,45 @@ const Resume = () => {
               <form onSubmit={handleSubmit(onSubmit)}>{/* Attach handleSubmit to form */}
                 <h1 className="text-xl font-bold m-4 ">Personal Information</h1>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
-                <div className="form-group">
-                <label htmlFor="firstname" className="block text-l font-medium">
-                  First Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                  id="firstname"
-                  {...register("personalInformation.firstname", { required: "This field is required" })}
-                />
-                {errors.personalInformation?.firstname && <div className="text-red-500">{errors.personalInformation.firstname.message}</div>}
-                {formErrors.firstname && <div className="text-red-500">{formErrors.firstname}</div>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname" className="block text-l font-medium">
-                  Last Name<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                  id="lastname"
-                  {...register("personalInformation.lastname", { required: "This field is required" })}
-                />
-                {errors.personalInformation?.lastname && <div className="text-red-500">{errors.personalInformation.lastname.message}</div>}
-                {formErrors.lastname && <div className="text-red-500">{formErrors.lastname}</div>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="emailaddress" className="block text-l font-medium">
-                  Email address<span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
-                  id="emailaddress"
-                  {...register("personalInformation.emailaddress", { required: "This field is required" })}
-                />
-                {errors.personalInformation?.emailaddress && <div className="text-red-500">{errors.personalInformation.emailaddress.message}</div>}
-                {formErrors.emailaddress && <div className="text-red-500">{formErrors.emailaddress}</div>}
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="firstname" className="block text-l font-medium">
+                      First Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      id="firstname"
+                      {...register("personalInformation.firstname", { required: "This field is required" })}
+                    />
+                    {errors.personalInformation?.firstname && <div className="text-red-500">{errors.personalInformation.firstname.message}</div>}
+                    {formErrors.firstname && <div className="text-red-500">{formErrors.firstname}</div>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastname" className="block text-l font-medium">
+                      Last Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      id="lastname"
+                      {...register("personalInformation.lastname", { required: "This field is required" })}
+                    />
+                    {errors.personalInformation?.lastname && <div className="text-red-500">{errors.personalInformation.lastname.message}</div>}
+                    {formErrors.lastname && <div className="text-red-500">{formErrors.lastname}</div>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="emailaddress" className="block text-l font-medium">
+                      Email address<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      id="emailaddress"
+                      {...register("personalInformation.emailaddress", { required: "This field is required" })}
+                    />
+                    {errors.personalInformation?.emailaddress && <div className="text-red-500">{errors.personalInformation.emailaddress.message}</div>}
+                    {formErrors.emailaddress && <div className="text-red-500">{formErrors.emailaddress}</div>}
+                  </div>
                   <div className="form-group">
                     <label
                       htmlFor="address"
@@ -251,7 +248,7 @@ const Resume = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
                   <div className="form-group">
                     <label htmlFor="Name" className="block text-l font-medium">
-                      Name<span className="text-red-500">*</span>
+                    Degree<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -264,7 +261,68 @@ const Resume = () => {
                   </div>
                   <div className="form-group">
                     <label htmlFor="degree" className="block text-l font-medium">
-                      Degree<span className="text-red-500">*</span>
+                    Specialization<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="degree"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.degree", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="institute"
+                      className="block text-l font-medium"
+                    >
+                      Institute<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="institute"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.institute", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label
+                      htmlFor="passOutYear"
+                      className="block text-l font-medium"
+                    >
+                      Pass Out Year<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="passOutYear"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.passOutYear", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+                </div>
+                <h1 className="text-xl font-bold m-4 ">Education</h1>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 m-4">
+                  <div className="form-group">
+                    <label htmlFor="Name" className="block text-l font-medium">
+                    Degree<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="Name"
+                      className="mt-1 p-2 w-full border-1 border-amber-300 rounded-md text-l"
+                      {...register("education.Name", {
+                        required: "This field is required",
+                      })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="degree" className="block text-l font-medium">
+                    Specialization<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"

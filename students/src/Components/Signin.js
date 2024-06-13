@@ -22,7 +22,7 @@ const Login = ({ onClose }) => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
-      navigate("/home");
+      navigate("/internship");
     }
   }, []);
 
@@ -56,7 +56,7 @@ const Login = ({ onClose }) => {
 
         if (checkDetailsResponse.ok) {
           // If user details exist, navigate to home page
-          navigate("/home");
+          navigate("/internship");
         } else {
           // If user details don't exist, navigate to profile page
           navigate("/internship");

@@ -91,7 +91,10 @@
     clear: both;
     height: 0;
 }
-
+.nav-links{
+    position: relative;
+    right: 20rem;
+}
 @media (max-width: 768px) {
     .navbar-container {
         flex-direction: column;
@@ -101,7 +104,13 @@
     .navbar-logo {
         margin-bottom: 10px;
     }
+    .navbar-logo-for-internsbeestudent {
+        width: 14rem;
+        height: 4rem;
+    }
     .mobile-menu-button {
+        position: relative;
+        left: 6rem;
         display: block;
         background: none;
         border: none;
@@ -111,23 +120,27 @@
     .nav-links, .login-register {
         width: 100%;
     }
+    .nav-links {
+        position: relative;
+        top: 2rem;
+        right: 0;
+    }
     .nav-links .flex, .login-register .relative {
         flex-direction: column;
         gap: 0;
     }
     .nav-links a, .login-register a {
-        padding: 10px 0;
+        padding: 1rem;
         border-bottom: 1px solid #eee;
     }
     .nav-links a:hover, .login-register a:hover {
         background-color: rgb(255, 189, 89);
         color: white;
     }
-}
-
-/* Responsive styles if not covered in Navbar.css */
-@media (max-width: 768px) {
-    .navbar-container {
-        padding: 0 20px;
-    }
+    /* .login-register{
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+    } */
+  
 }

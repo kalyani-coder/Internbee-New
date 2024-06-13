@@ -91,11 +91,11 @@ const Navbar = () => {
                       <span className="mr-2">👤</span> View Profile
                     </Link>
                   </li>
-                  <li>
+                  {/*<li>
                     <Link to="/accountsetting" className="flex items-center">
                       <span className="mr-2">🔧</span> Settings
                     </Link>
-                  </li>
+                  </li>*/}
                   <li>
                     <Link to="/packages" className="flex items-center">
                       <span className="mr-2">🔄</span> Subscriptions

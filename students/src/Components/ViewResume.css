@@ -1,0 +1,14 @@
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    .printreusme, .printreusme * {
+      visibility: visible;
+    }
+    .printreusme {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  

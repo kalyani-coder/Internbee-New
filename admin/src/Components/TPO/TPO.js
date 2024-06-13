@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './../Navbar/Navbar';
 import Sidebar from './../Sidebar/Sidebar';
-
 import Footer from './../Footer/Footer';
+import * as XLSX from 'xlsx';
 
 const TpoList = () => {
     const [data, setData] = useState([]);
@@ -22,6 +22,13 @@ const TpoList = () => {
             });
     }, []);
 
+    const exportToExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "TPO Data");
+        XLSX.writeFile(workbook, "TPO_Data.xlsx");
+    };
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading data: {error.message}</p>;
 
@@ -33,23 +40,45 @@ const TpoList = () => {
                 <div className="w-full p-8">
                     <div className="container11 mx-auto p-4">
                         <h1 className="text-2xl font-bold mb-4 flex justify-center text-amber-400">TPO List</h1>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {data.map(item => (
-                                <div key={item._id} className="bg-white shadow-md rounded-lg p-4 border-2 border-amber-500">
-                                    <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-                                    <p><strong>College:</strong> {item.collage}</p>
-                                    <p><strong>Contact Number:</strong> {item.contactNumber}</p>
-                                    <p><strong>Email:</strong> {item.email}</p>
-                                    <p><strong>Number of Interns:</strong> {item.numberOfIntern}</p>
-                                    <p><strong>Education Field:</strong> {item.educationField}</p>
-                                    <p><strong>Remark:</strong> {item.remark}</p>
-                                </div>
-                            ))}
+                        <div className="overflow-auto" style={{ maxHeight: '600px' }}>
+                            <table className="min-w-full bg-white border">
+                                <thead>
+                                    <tr>
+                                        <th className="py-2 px-4 border-b">Name</th>
+                                        <th className="py-2 px-4 border-b">College</th>
+                                        <th className="py-2 px-4 border-b">Contact Number</th>
+                                        <th className="py-2 px-4 border-b">Email</th>
+                                        <th className="py-2 px-4 border-b">Number of Interns</th>
+                                        <th className="py-2 px-4 border-b">Education Field</th>
+                                        <th className="py-2 px-4 border-b">Remark</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.map(item => (
+                                        <tr key={item._id}>
+                                            <td className="py-2 px-4 border-b">{item.name}</td>
+                                            <td className="py-2 px-4 border-b">{item.collage}</td>
+                                            <td className="py-2 px-4 border-b">{item.contactNumber}</td>
+                                            <td className="py-2 px-4 border-b">{item.email}</td>
+                                            <td className="py-2 px-4 border-b">{item.numberOfIntern}</td>
+                                            <td className="py-2 px-4 border-b">{item.educationField}</td>
+                                            <td className="py-2 px-4 border-b">{item.remark}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
+                    <div className="flex justify-center relative bottom-10 top-1">
+                        <button onClick={exportToExcel} className="bg-blue-500 text-white px-4 py-2 rounded">
+                            Export to Excel
+                        </button>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <div className='mt-10'>
+            <Footer />
+            </div>
         </div>
     );
 };

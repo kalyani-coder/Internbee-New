@@ -95,11 +95,6 @@ function App() {
         <Route path="/LandingInternship" element={<LandingInternship />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/helpcenter" element={<HelpCenter />} />
-
-        
-
-        
-
         <Route
           path="/apply-internship/:internshipId"
           element={<ApplyInternship />}
