@@ -1,27 +1,46 @@
-const express = require("express")
-const router = express.Router()
-const ResumeSchema = require("../models/NewResumeModel")
-
+const express = require("express");
+const router = express.Router();
+const ResumeSchema = require("../models/NewResumeModel");
 
 // GET ROUTE 
 router.get("/", async (req, res) => {
+
     try {
+        const resume = await ResumeSchema.find();
 
-        const GetResume = await ResumeSchema.find()
-        if (!GetResume) {
-            res.status(404).json({ message: "Resume Not found" })
+        if (!resume) {
+            return res.status(404).json({ message: "Resume not found" });
         }
-        res.status(201).json(GetResume)
 
-
-    } catch (e) {
-        res.status(500).json({ message: "Internal server error " })
+        res.status(200).json(resume);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
     }
-})
+});
+
+// GET ROUTE - Fetch resume by studentId
+router.get("/student/:studentId", async (req, res) => {
+    const studentId = req.params.studentId;
+
+    try {
+        const resume = await ResumeSchema.findOne({ StudentId: studentId });
+
+        if (!resume) {
+            return res.status(404).json({ message: "Resume not found" });
+        }
+
+        res.status(200).json(resume);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 
 // POST ROUTE 
 router.post("/", async (req, res) => {
-    const { personalInformation, education, StudentId } = req.body;
+    const { personalInformation, education, experience, portfolio, StudentId, education2 } = req.body;
 
     if (!personalInformation.firstName) {
         return res.status(400).json({ message: "First name is required" });
@@ -54,6 +73,9 @@ router.post("/", async (req, res) => {
     if (!education.passOutYear) {
         return res.status(400).json({ message: "Pass out year is required" });
     }
+    if (!education.percentage) {
+        return res.status(400).json({ message: "percentage is required" });
+    }
     if (!StudentId) {
         return res.status(400).json({ message: "StudentId is required" });
     }
@@ -64,7 +86,16 @@ router.post("/", async (req, res) => {
             return res.status(400).json({ message: "Student resume already created" });
         }
 
-        const newResume = new ResumeSchema(req.body);
+        const newResumeData = {
+            personalInformation,
+            education,
+            experience,
+            education2,
+            portfolio,
+            StudentId,
+        };
+
+        const newResume = new ResumeSchema(newResumeData);
         await newResume.save();
         res.status(201).send({ message: "Resume created successfully", newResume });
     } catch (error) {
@@ -76,7 +107,7 @@ router.post("/", async (req, res) => {
 // PATCH ROUTE
 router.patch("/:studentId", async (req, res) => {
     const studentId = req.params.studentId;
-    const { personalInformation, education, experience, portfolio } = req.body;
+    const { personalInformation, education, education2, experience, portfolio } = req.body;
 
     // Validate personalInformation fields
     if (personalInformation) {
@@ -90,6 +121,7 @@ router.patch("/:studentId", async (req, res) => {
             return res.status(400).json({ message: "Career profile must be at most 200 characters" });
         }
     }
+    // Validate education fields
     if (education) {
         if (!education.Name) {
             return res.status(400).json({ message: "Education name is required" });
@@ -103,7 +135,12 @@ router.patch("/:studentId", async (req, res) => {
         if (!education.passOutYear) {
             return res.status(400).json({ message: "Pass out year is required" });
         }
+        if (!education.percentage) {
+            return res.status(400).json({ message: "percentage is required" });
+        }
     }
+    
+   
     // Validate portfolio fields
     if (portfolio) {
         if (portfolio.projectDescription && portfolio.projectDescription.length > 200) {
@@ -118,6 +155,9 @@ router.patch("/:studentId", async (req, res) => {
     }
     if (education) {
         updateData['education'] = education;
+    }
+    if (education2) {
+        updateData['education2'] = education2;
     }
     if (experience) {
         updateData['experience'] = experience;
@@ -158,5 +198,4 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-
-module.exports = router
+module.exports = router;

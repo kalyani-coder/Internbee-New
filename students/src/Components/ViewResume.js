@@ -1,172 +1,210 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import Internal_Navbar from "./UpdatedNav/Internal_Navbar";
 import Footer from '../Components/Footer';
-import axios from 'axios';
-import jsPDF from 'jspdf';
 import "./ViewResume.css";
 
 const ViewResume = () => {
-  const [resumeData, setResumeData] = useState(null);
+  const [resume, setResume] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [editModePersonalInformation, setEditModePersonalInformation] = useState(false);
+  const [editModeEducation, setEditModeEducation] = useState(false);
+  const [editModeExperience, setEditModeExperience] = useState(false);
+  const [editModePortfolio, setEditModePortfolio] = useState(false);
+  const [personalInformation, setPersonalInformation] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    gender: '',
+    careerProfile: '',
+    skills: []
+  });
+
+  const [education, setEducation] = useState({
+    Name: '',
+    education: '',
+    institute: '',
+    passOutYear: '',
+    percentage: ''
+  });
+  const [education2, setEducation2] = useState({
+    Name2: '',
+    education2: '',
+    institute2: '',
+    passOutYear2: '',
+    percentage2: ''
+  });
+  const [experience, setExperience] = useState({
+    companyName: '',
+    designation: '',
+    location: '',
+    aboutCompany: ''
+  });
+  const [portfolio, setPortfolio] = useState({
+    projectname: '',
+    projectDescription: ''
+  });
 
   useEffect(() => {
-    const fetchResumeData = async () => {
+    const fetchData = async () => {
+      const studentId = localStorage.getItem("userId");
+
+      if (!studentId) {
+        setError("No student ID found in localStorage");
+        return;
+      }
+
       try {
-        const studentId = localStorage.getItem("userId");
-        const response = await axios.get(`http://localhost:8000/api/resume/student/${studentId}`);
-        setResumeData(response.data);
+        setLoading(true);
+        const response = await axios.get(`http://localhost:8000/api/newresume/student/${studentId}`);
+        setResume(response.data); // Assuming response.data is the resume object
+        setPersonalInformation(response.data.personalInformation);
+        setEducation(response.data.education);
+        setEducation2(response.data.education2);
+        setExperience(response.data.experience);
+        setPortfolio(response.data.portfolio);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching resume data:', error);
+        setError(error.message);
+        setLoading(false);
       }
     };
 
-    fetchResumeData();
+    fetchData();
   }, []);
- 
 
-  const generatePDF = () => {
-    if (!resumeData || resumeData.length === 0) {
-      return;
-    }
-  
-    const { personalInformation, education, experience, portfolio } = resumeData[0];
-    const doc = new jsPDF('p', 'mm', 'a4');
-    const pageHeight = doc.internal.pageSize.height;
-    const margin = 10;
-    const contentWidth = 190 - 2 * margin;
-    const lineHeight = 10;
-    const horizontalLineSpacing = 5; // Added spacing between horizontal lines
-    const startX = 20;
-    let startY = 30;
-  
-    // Define widths for columns
-    const personalInfoWidth = 60;
-    const careerProfileWidth = 60;
-    const skillsWidth = 60;
-  
-    const wrapText = (text, x, y, maxWidth) => {
-      const lines = doc.splitTextToSize(text, maxWidth);
-      lines.forEach((line, i) => {
-        if (y + (i * lineHeight) > pageHeight - margin) {
-          doc.addPage();
-          y = margin + lineHeight;
-        }
-        doc.text(line, x, y + (i * lineHeight));
-      });
-      return y + (lines.length * lineHeight);
-    };
-  
-    const addSectionTitle = (title, x, y) => {
-      if (y + lineHeight > pageHeight - margin) {
-        doc.addPage();
-        y = margin + lineHeight;
-      }
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.text(title, x, y);
-      return y + lineHeight;
-    };
-  
-    const addHorizontalLine = (x, y, width) => {
-      if (y + lineHeight / 2 > pageHeight - margin) {
-        doc.addPage();
-        y = margin;
-      }
-      doc.setLineWidth(0.2);
-      doc.line(x, y + lineHeight / 2, x + width, y + lineHeight / 2);
-      return y + lineHeight + horizontalLineSpacing; // Add spacing after horizontal line
-    };
-  
-    const addContent = (text, x, y, width) => {
-      if (y > pageHeight - margin) {
-        doc.addPage();
-        y = margin;
-      }
-      return wrapText(text, x, y, width);
-    };
-  
-    // Add a border
-    doc.setLineWidth(1);
-    doc.rect(10, 10, 190, 277);
-  
-    // Add personal information, Career Profile, and Skills in one line
-    doc.setFontSize(17);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`${personalInformation.firstname} ${personalInformation.lastname}`, startX, startY);
-    startY += lineHeight;
-  
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-  
-    // Personal Information column
-    let tempY = startY;
-  
-    // Add email with blue color and underline
-    doc.setTextColor(0, 0, 255); // Set color to blue
-    doc.setFont('helvetica', 'underline'); // Set font to underline
-    tempY = addContent(personalInformation.emailaddress, startX, tempY, personalInfoWidth);
-  
-    // Reset text color and font
-    doc.setTextColor(0, 0, 0);
-    doc.setFont('helvetica', 'normal');
-    tempY = addContent(personalInformation.address, startX, tempY, personalInfoWidth);
-    tempY = addContent(personalInformation.phonenumber, startX, tempY, personalInfoWidth);
-  
-    // Career Profile column
-    let tempCareerY = startY;
-    tempCareerY = addContent(personalInformation.careerProfile, startX + personalInfoWidth, tempCareerY, careerProfileWidth);
-    tempCareerY = addContent(`Current Salary: ${personalInformation.currentSalary}`, startX + personalInfoWidth, tempCareerY, careerProfileWidth);
-    tempCareerY = addContent(`Expectation: ${personalInformation.expectation}`, startX + personalInfoWidth, tempCareerY, careerProfileWidth);
-  
-    // Skills column
-    let tempSkillsY = startY;
-    tempSkillsY = addContent(`Skills: ${personalInformation.skills.join(', ')}`, startX + personalInfoWidth + careerProfileWidth, tempSkillsY, skillsWidth);
-    tempSkillsY = addContent(`Level: ${personalInformation.level}`, startX + personalInfoWidth + careerProfileWidth, tempSkillsY, skillsWidth);
-  
-    startY = Math.max(tempY, tempCareerY, tempSkillsY);
-  
-    startY = addHorizontalLine(startX, startY, contentWidth);
-  
-    // Add Education
-    startY = addSectionTitle('Education', startX, startY);
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    education.forEach((edu, index) => {
-      startY = addContent(`${edu.degree} percentage`, startX, startY, contentWidth);
-      startY = addContent(`${edu.institute} ${edu.passOutYear}`, startX, startY, contentWidth);
-    });
-  
-    startY = addHorizontalLine(startX, startY, contentWidth);
-  
-    // Add Experience
-    startY = addSectionTitle('Experience', startX, startY);
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    experience.forEach((exp, index) => {
-      startY = addContent(`Company Name: ${exp.companyname} ${exp.location}`, startX, startY, contentWidth);
-      startY = addContent(`Designation: ${exp.designation}`, startX, startY, contentWidth);
-      startY = addContent(`About Company: ${exp.aboutcompany}`, startX, startY, contentWidth);
-    });
-  
-    startY = addHorizontalLine(startX, startY, contentWidth);
-  
-    // Add Portfolio
-    startY = addSectionTitle('Portfolio', startX, startY);
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    portfolio.forEach((proj, index) => {
-      startY = addContent(`Project Name: ${proj.projectname}`, startX, startY, contentWidth);
-      startY = addContent(`Project Description: ${proj.projectdescription}`, startX, startY, contentWidth);
-    });
-    startY = addHorizontalLine(startX, startY, contentWidth);
-  
-    doc.save('resume.pdf');
+
+
+  const toggleEditModeEducation = () => {
+    setEditModeEducation(!editModeEducation);
   };
-  
+
+  const toggleEditModeExperience = () => {
+    setEditModeExperience(!editModeExperience);
+  };
+
+  const toggleEditModePortfolio = () => {
+    setEditModePortfolio(!editModePortfolio);
+  };
+
+  const handleInputChange = (section, e) => {
+    const { name, value } = e.target;
+
+    switch (section) {
+      case 'personalInformation':
+        if (name === 'skills') {
+          // Split the input value into an array of skills
+          const skillsArray = value.split(',').map(skill => skill.trim());
+          setPersonalInformation(prevState => ({
+            ...prevState,
+            skills: skillsArray
+          }));
+        } else {
+          setPersonalInformation(prevState => ({
+            ...prevState,
+            [name]: value
+          }));
+        }
+        break;
+      case 'education':
+        setEducation(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+        break;
+      case 'education2':
+        setEducation2(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+        break;
+      case 'experience':
+        setExperience(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+        break;
+      case 'portfolio':
+        setPortfolio(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+        break;
+      default:
+        break;
+    }
+  };
 
 
-  if (!resumeData || resumeData.length === 0) {
-    return <div>Loading...</div>;
+  const handleSaveChanges = (section) => {
+    const studentId = localStorage.getItem("userId");
+    let dataToUpdate = {};
+
+    switch (section) {
+      case 'personalInformation':
+        dataToUpdate = { personalInformation };
+        break;
+      case 'education':
+        dataToUpdate = { education, education2 };
+        break;
+      case 'experience':
+        dataToUpdate = { experience };
+        break;
+      case 'portfolio':
+        dataToUpdate = { portfolio };
+        break;
+      default:
+        break;
+    }
+
+    axios.patch(`http://localhost:8000/api/newresume/${studentId}`, dataToUpdate, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        console.log('Data update Successfully', response.data);
+        switch (section) {
+          case 'personalInformation':
+            setEditModePersonalInformation(false);
+            break;
+          case 'education':
+            setEditModeEducation(false);
+            break;
+          case 'experience':
+            setEditModeExperience(false);
+            break;
+          case 'portfolio':
+            setEditModePortfolio(false);
+            break;
+          default:
+            break;
+        }
+      })
+      .catch(error => {
+        console.error('Error updating data:', error);
+        // Handle error state or display a message to the user
+      });
+  };
+
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!resume) {
+    return <p>No resume data available</p>;
+  }
+
+  // Destructure resume object for easier access
+  // const { personalInformation: pi } = resume;
 
   return (
     <div className="bg-gray-50">
@@ -174,74 +212,284 @@ const ViewResume = () => {
       <div className="flex justify-center relative top-24 mb-32">
         <div className="max-w-5xl w-full bg-white p-8 shadow-md rounded-lg">
           <h1 className="text-2xl font-bold mb-6 text-center">Resume</h1>
-
           <div className="printreusme border-2 border-black p-4">
-            <div className="mb-6">
-              <p className="p-1 text-2xl"><strong>{resumeData[0].personalInformation.firstname} {resumeData[0].personalInformation.lastname}</strong></p>
-              <div className="flex justify-between">
-                <div className="p-1">
-                  <p>{resumeData[0].personalInformation.emailaddress} </p>
-                  <p>{resumeData[0].personalInformation.address}</p>
-                  <p>{resumeData[0].personalInformation.phonenumber}</p>
+            {editModePersonalInformation ? (
+              <>
+                <div className="flex gap-14">
+                  <div className="p-2">
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={personalInformation.firstName}
+                      onChange={(e) => handleInputChange('personalInformation', e)}
+                      className="border-2 border-amber-500 p-2"
+                    />
+                  </div>
+                  <div className="p-2">
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={personalInformation.lastName}
+                      onChange={(e) => handleInputChange('personalInformation', e)}
+                      className="border-2 border-amber-500 p-2"
+                    />
+                  </div>
                 </div>
-                <div className="p-1">
-                  <p>Career Profile: {resumeData[0].personalInformation.careerProfile}</p>
-                  <p>Current Salary: {resumeData[0].personalInformation.currentSalary}</p>
-                  <p>Expectation: {resumeData[0].personalInformation.expectation}</p>
+                <div className="flex">
+                  <div className="">
+                    <div>
+                      <input
+                        type="text"
+                        name="email"
+                        value={personalInformation.email}
+                        onChange={(e) => handleInputChange('personalInformation', e)}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="phoneNumber"
+                        value={personalInformation.phoneNumber}
+                        onChange={(e) => handleInputChange('personalInformation', e)}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="gender"
+                      value={personalInformation.gender}
+                      onChange={(e) => handleInputChange('personalInformation', e)}
+                    />
+                    <input
+                      type="text"
+                      name="careerProfile"
+                      value={personalInformation.careerProfile}
+                      onChange={(e) => handleInputChange('personalInformation', e)}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      name="skills"
+                      value={personalInformation.skills.join(', ')}
+                      onChange={(e) => handleInputChange('personalInformation', e)}
+                    />
+                  </div>
                 </div>
-                <div className="p-1 relative right-7">
-                  <h2 className="text-xl font-semibold">Skills:</h2>
-                  <p>{resumeData[0].personalInformation.skills.join(', ')}</p>
-                  <p>Level: {resumeData[0].personalInformation.level}</p>
+                <button onClick={() => handleSaveChanges('personalInformation')}>Save</button>
+              </>
+            ) : (
+              <>
+                <div className="p-2 text-lg">
+                  <strong> <p>{personalInformation.firstName} {personalInformation.lastName}</p></strong>
                 </div>
-              </div>
-            </div>
+                <div className="flex justify-between">
+                  <div>
+                    <p>{personalInformation.email}</p>
+                    <p>{personalInformation.phoneNumber}</p>
+                  </div>
+                  <div>
+                    <p>{personalInformation.gender}</p>
+                    <p>{personalInformation.careerProfile}</p>
+                  </div>
+                  <div className="relative right-14">
+                    <p>Skills: {personalInformation.skills.join(', ')}</p>
+                  </div>
+                </div>
+
+                <p
+                  className="text-amber-500 underline text-lg sm:text-xl hover:text-black cursor-pointer mt-2 sm:mt-0 sm:text-left"
+                  onClick={() => setEditModePersonalInformation(true)}
+                >
+                  Edit
+                </p>
+              </>
+            )}
+
             <hr />
             <div className="mb-3 mt-3">
               <div className="p-1">
                 <h2 className="text-xl font-semibold">Education</h2>
-                {resumeData[0].education.map((edu, index) => (
-                  <div key={index}>
-                    <p>{edu.degree} percentage</p>
-                    <p>{edu.institute} {edu.passOutYear}</p>
-                  </div>
-                ))}
+                {editModeEducation ? (
+                  <>
+                    <input
+                      type="text"
+                      name="Name"
+                      value={education.Name}
+                      onChange={(e) => handleInputChange('education', e)}
+                    />
+                    <input
+                      type="text"
+                      name="education"
+                      value={education.education}
+                      onChange={(e) => handleInputChange('education', e)}
+                    />
+                    <input
+                      type="text"
+                      name="institute"
+                      value={education.institute}
+                      onChange={(e) => handleInputChange('education', e)}
+                    />
+                    <input
+                      type="text"
+                      name="passOutYear"
+                      value={education.passOutYear}
+                      onChange={(e) => handleInputChange('education', e)}
+                    />
+                    <input
+                      type="text"
+                      name="percentage"
+                      value={education.percentage}
+                      onChange={(e) => handleInputChange('education', e)}
+                    />
+                    {education2 && (
+                      <>
+                        <input
+                          type="text"
+                          name="Name2"
+                          value={education2.Name2}
+                          onChange={(e) => handleInputChange('education2', e)}
+                        />
+                        <input
+                          type="text"
+                          name="education2"
+                          value={education2.education2}
+                          onChange={(e) => handleInputChange('education2', e)}
+                        />
+                        <input
+                          type="text"
+                          name="institute2"
+                          value={education2.institute2}
+                          onChange={(e) => handleInputChange('education2', e)}
+                        />
+                        <input
+                          type="text"
+                          name="passOutYear2"
+                          value={education2.passOutYear2}
+                          onChange={(e) => handleInputChange('education2', e)}
+                        />
+                        <input
+                          type="text"
+                          name="percentage2"
+                          value={education2.percentage2}
+                          onChange={(e) => handleInputChange('education2', e)}
+                        />
+                      </>
+                    )}
+                    <button onClick={() => handleSaveChanges('education')}>Save</button>
+                  </>
+                ) : (
+                  <>
+                    <p>{education.Name} {education.education} {education.percentage}</p>
+                    <p>{education.institute} {education.passOutYear}</p>
+                    {education2 && (
+                      <>
+                        <p>{education2.Name2} {education2.education2} {education2.percentage2}</p>
+                        <p>{education2.institute2} {education2.passOutYear2}</p>
+                      </>
+                    )}
+                    <p className="text-amber-500 underline text-lg sm:text-xl hover:text-black cursor-pointer mt-2 sm:mt-0 sm:text-left"
+                      onClick={toggleEditModeEducation}>
+                      Edit
+                    </p>
+                  </>
+                )}
               </div>
             </div>
             <hr />
             <div className="mb-3 mt-3">
-              <div className="p-1">
-                <h2 className="text-xl font-semibold">Experience</h2>
-                {resumeData[0].experience.map((exp, index) => (
-                  <div key={index}>
-                    <p><strong>Company Name:</strong> {exp.companyname} {exp.location}</p>
-                    <p><strong>Designation:</strong> {exp.designation}</p>
-                    <p><strong>About Company:</strong> {exp.aboutcompany}</p>
-                  </div>
-                ))}
-              </div>
+              {editModeExperience ? (
+                <>
+                  <input
+                    type="text"
+                    name="companyName"
+                    value={experience.companyName}
+                    onChange={(e) => handleInputChange('experience', e)}
+                  />
+                  <input
+                    type="text"
+                    name="designation"
+                    value={experience.designation}
+                    onChange={(e) => handleInputChange('experience', e)}
+                  />
+                  <input
+                    type="text"
+                    name="location"
+                    value={experience.location}
+                    onChange={(e) => handleInputChange('experience', e)}
+                  />
+                  <textarea
+                    name="aboutCompany"
+                    value={experience.aboutCompany}
+                    onChange={(e) => handleInputChange('experience', e)}
+                  />
+                  <button onClick={() => handleSaveChanges('experience')}>Save</button>
+                </>
+              ) : (
+                <>
+                  {experience && experience.companyName ? (
+                    <>
+                      <h2 className="text-xl font-semibold">Experience</h2>
+                      <p>{experience.companyName}</p>
+                      <p>{experience.location}</p>
+                      <p>{experience.designation}</p>
+                      <p>{experience.aboutCompany}</p>
+                      <p className="text-amber-500 underline text-lg sm:text-xl hover:text-black cursor-pointer mt-2 sm:mt-0 sm:text-left"
+                        onClick={toggleEditModeExperience}>
+                        Edit
+                      </p>
+                    </>
+                  ) : (
+                    <p>No experience available</p>
+                  )}
+                </>
+              )}
             </div>
             <hr />
             <div className="mb-3 mt-3">
               <div className="p-1">
-                <h2 className="text-xl font-semibold">Portfolio</h2>
-                {resumeData[0].portfolio.map((proj, index) => (
-                  <div key={index}>
-                    <p><strong>Project Name:</strong> {proj.projectname}</p>
-                    <p><strong>Project Description:</strong> {proj.projectdescription}</p>
-                  </div>
-                ))}
+                {editModePortfolio ? (
+                  <>
+                    <input
+                      type="text"
+                      name="projectname"
+                      value={portfolio.projectname}
+                      onChange={(e) => handleInputChange('portfolio', e)}
+                    />
+                    <textarea
+                      name="projectDescription"
+                      value={portfolio.projectDescription}
+                      onChange={(e) => handleInputChange('portfolio', e)}
+                    />
+                    <button onClick={() => handleSaveChanges('portfolio')}>Save</button>
+                  </>
+                ) : (
+                  <>
+                    {portfolio && portfolio.projectname ? (
+                      <>
+                        <h2 className="text-xl font-semibold">Portfolio</h2>
+                        <p>{portfolio.projectname}</p>
+                        <p>{portfolio.projectDescription}</p>
+                        <p className="text-amber-500 underline text-lg sm:text-xl hover:text-black cursor-pointer mt-2 sm:mt-0 sm:text-left"
+                          onClick={toggleEditModePortfolio}>
+                          Edit
+                        </p>
+                      </>
+                    ) : (
+                      <p>No portfolio available</p>
+                    )}
+                  </>
+                )}
               </div>
             </div>
-          </div>
-          <div className="flex justify-center p-4">
-            <button onClick={generatePDF} className="p-2">Print Resume</button>
           </div>
         </div>
       </div>
       <Footer />
     </div>
   );
+
 };
 
 export default ViewResume;

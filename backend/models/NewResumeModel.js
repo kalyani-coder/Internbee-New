@@ -38,14 +38,6 @@ const NewResumeSchema = new mongoose.Schema({
             type: String,
             required: [true, "Gender is required"]
         },
-        currentSalary: {
-            type: Number,
-            default: " "
-        },
-        expectation: {
-            type: Number,
-            default: " "
-        },
         careerProfile: {
             type: String,
             maxlength: [200, "Career profile cannot exceed 200 characters"],
@@ -55,10 +47,7 @@ const NewResumeSchema = new mongoose.Schema({
             type: String,
             default: " "
         }],
-        level: {
-            type: String,
-            default: " "
-        }
+
     },
     education: {
         Name: {
@@ -76,6 +65,32 @@ const NewResumeSchema = new mongoose.Schema({
         passOutYear: {
             type: String,
             required: [true, "Pass out year is required"]
+        },
+        percentage: {
+            type: String,
+            required: [true, "percentage is required"]
+        }
+    },
+    education2: {
+        Name2: {
+            type: String,
+            default: " "
+        },
+        education2: {
+            type: String,
+            default: " "
+        },
+        institute2: {
+            type: String,
+            default: " "
+        },
+        passOutYear2: {
+            type: String,
+            default: " "
+        },
+        percentage2: {
+            type: String,
+            default: " "
         }
     },
     experience: {

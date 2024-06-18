@@ -66,90 +66,27 @@ router.get("/userId/:id", async (req, res) => {
   }
 });
 
-// patch detils by userId
 router.patch("/userId/:id", async (req, res) => {
-  const userId = req.params.id;
-  try {
-    const student = await StudentDetailsModel.findOneAndUpdate(
-      { userId: userId },
-      {
-        $set: {
-          keySkills: req.body.keySkills,
-          experience: req.body.experience,
-        },
-      },
+  const { id } = req.params;
+  const updateData = req.body; // Assuming the updated data is sent in the request body
 
-      { new: true }
+  try {
+    const updatedStudent = await StudentDetailsModel.findOneAndUpdate(
+      { userId: id },
+      updateData,
+      { new: true, runValidators: true } // To return the updated document and run schema validators
     );
 
-    if (!student) {
-      return res.status(404).json({ message: "Student not found" });
+    if (!updatedStudent) {
+      return res.status(404).json({ message: 'Student not found' });
     }
 
-    res.json({ message: "Student Detils Updated Successfully" });
+    res.status(200).json(updatedStudent);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// getting conflict
-// POST route
-// router.post("/", async (req, res) => {
-//   const studentData = req.body;
-//   const studentId = studentData.student_id;
-
-//   try {
-//     // Check if a student with the same student_id already exists
-//     const existingStudent = await StudentDetailsModel.findOne({
-//       student_id: studentId,
-//     });
-
-//     if (existingStudent) {
-//       return res
-//         .status(409)
-//         .json({ message: "Student with the same ID already exists" });
-//     }
-
-//     // If no existing student with the same ID, create and save the new student
-//     const student = new StudentDetailsModel(studentData);
-//     await student.save();
-//     res.status(201).json(student);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
-// POST ROUTE
-// router.post("/", async (req, res) => {
-//   const studentData = req.body;
-
-//   try {
-//     // Create and save the new student without checking for existing students
-//     const student = new StudentDetailsModel(studentData);
-//     await student.save();
-//     res.status(201).json(student);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
-// image upload route
-// router.post("/cheak-first/:id", async (req, res) => {
-//   try {
-//     const userId = req.params.id;
-//     console.log(userId);
-//     const hasCreated = await StudentDetailsModel.find({ userId: userId });
-//     console.log(hasCreated);
-
-//     if (hasCreated.length === 0) {
-//       return res.status(404).json({ message: "Profile not created" });
-//     } else {
-//       res.status(200).json({ message: "Profile already exists" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
 
 
 router.post(

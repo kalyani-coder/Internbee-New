@@ -7,9 +7,9 @@ import Internal_Navbar from "../UpdatedNav/Internal_Navbar";
 import "../ResponsiveCss/ResponsiveCss.css";
 import Footer from './../Footer';
 import "./ViewProfile.css"
+
 const ViewProfile = () => {
   const [userDetails, setUserDetails] = useState(null);
-
   const userId = localStorage.getItem("userId");
 
   const [editProfile, setEditProfile] = useState(false);
@@ -65,11 +65,10 @@ const ViewProfile = () => {
     }
   };
 
-  const handleSubmit = async (event, data, field) => {
+  const handleSubmit = async (event, field) => {
     event.preventDefault();
-
     try {
-      await axios.patch(`http://localhost:8000/api/studentsdetails/userId/${userId}`, data);
+      await axios.patch(`http://localhost:8000/api/studentsdetails/userId/${userId}`, formData);
 
       // Fetch the updated user details after a successful update
       const response = await axios.get(`http://localhost:8000/api/studentsdetails/userId/${userId}`);
@@ -88,6 +87,7 @@ const ViewProfile = () => {
         .get(`http://localhost:8000/api/studentsdetails/userId/${userId}`)
         .then((response) => {
           setUserDetails(response.data);
+          setFormData(response.data); // Pre-fill the form with existing user details
         })
         .catch((error) => {
           console.error("Error fetching user details:", error);
@@ -107,7 +107,7 @@ const ViewProfile = () => {
 
     return (
       <form
-        onSubmit={(event) => handleSubmit(event, formData, field)}
+        onSubmit={(event) => handleSubmit(event, field)}
         className="p-2"
       >
         {formFields[field].map((key) => (
